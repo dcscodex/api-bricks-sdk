@@ -1,3 +1,6 @@
+Requirements:
+ * Python >= 3
+
 To run examples:
 
 ```bash

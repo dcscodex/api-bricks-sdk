@@ -21,7 +21,7 @@ type Exchange struct {
 type Asset struct {
 	Asset_id       string `json:"asset_id"`
 	Name           string `json:"name"`
-	Type_is_crypto bool   `json:"type_is_crypto"`
+	Type_is_crypto int   `json:"type_is_crypto"`
 }
 
 type SymbolBase struct {
@@ -507,7 +507,6 @@ func (sdk SDK) get_response_text(path string) (responseBody string, err error) {
 		}
 		return "", fmt.Errorf("Server responded with status code: %d", resp.StatusCode)
 	}
-	fmt.Println("response:", string(body))
 	return string(body), nil
 }
 

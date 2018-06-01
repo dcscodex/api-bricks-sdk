@@ -45,10 +45,6 @@
 - (void)getLatestOrderbooksData:(NSString*)symbol_id limit:(NSInteger)limit;
 - (void)getHistoricalOrderbooksData:(NSString*)symbol_id time_start:(NSString*)time_start time_end:(NSString*)time_end limit:(NSInteger)limit;
 
-/** Twitter Functions **/
-- (void)getLatestTwitterData:(NSInteger)limit;
-- (void)getHistoricalTwitterData:(NSString*)time_start time_end:(NSString*)time_end limit:(NSInteger)limit;
-
 /*************** Websocket API ***************/
 
 @end

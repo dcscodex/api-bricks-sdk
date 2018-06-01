@@ -39,13 +39,7 @@ module CoinApi (ApiKey (..)
                ,orderbooks_historical_data
                ,orderbooks_historical_data_e
                ,orderbooks_historical_data_l
-               ,orderbooks_historical_data_el
-               ,twitter_latest_data
-               ,twitter_latest_data_l
-               ,twitter_historical_data
-               ,twitter_historical_data_e
-               ,twitter_historical_data_l
-               ,twitter_historical_data_el) where
+               ,orderbooks_historical_data_el) where
 
 import Debug.Trace
 
@@ -80,9 +74,6 @@ import qualified CoinApi.Types.Symbol as Symbol
 
 import CoinApi.Types.Trade (Trade)
 import qualified CoinApi.Types.Trade as Trade
-
-import CoinApi.Types.Tweet (Tweet)
-import qualified CoinApi.Types.Tweet as Tweet
 
 ----
 
@@ -309,27 +300,3 @@ orderbooks_historical_data_el apiKey symbol_id time_start time_end limit = reque
                                                                                            "&amp;time_end=" ++ showTime time_end ++
                                                                                            "&amp;limit=" ++ show limit)
 
-twitter_latest_data :: MonadIO m => ApiKey -> m (Either String [Tweet])
-twitter_latest_data apiKey = request apiKey "/v1/twitter/latest"
-
-twitter_latest_data_l :: MonadIO m => ApiKey -> Int -> m (Either String [Tweet])
-twitter_latest_data_l apiKey limit = request apiKey ("/v1/twitter/latest?limit=" ++ show limit)
-
-twitter_historical_data :: MonadIO m => ApiKey -> UTCTime -> m (Either String [Tweet])
-twitter_historical_data apiKey time_start = request apiKey ("/v1/twitter/history?time_start=" ++ showTime time_start)
-
-twitter_historical_data_e :: MonadIO m => ApiKey -> UTCTime -> UTCTime -> m (Either String [Tweet])
-twitter_historical_data_e apiKey time_start time_end = request apiKey ("/v1/twitter/history?time_start=" ++
-                                                                      showTime time_start ++
-                                                                      "&amp;time_end=" ++ showTime time_end)
-
-twitter_historical_data_l :: MonadIO m => ApiKey -> UTCTime -> Int -> m (Either String [Tweet])
-twitter_historical_data_l apiKey time_start limit = request apiKey ("/v1/twitter/history" ++
-                                                                   "?time_start=" ++ showTime time_start ++
-                                                                   "&amp;limit=" ++ show limit)
-
-twitter_historical_data_el :: MonadIO m => ApiKey -> UTCTime -> UTCTime -> Int -> m (Either String [Tweet])
-twitter_historical_data_el apiKey time_start time_end limit = request apiKey ("/v1/twitter/history" ++
-                                                                              "?time_start=" ++ showTime time_start ++
-                                                                              "&amp;time_end=" ++ showTime time_end ++
-                                                                              "&amp;limit=" ++ show limit)

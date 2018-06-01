@@ -31,9 +31,6 @@ import qualified CoinApi.Types.Symbol as Symbol
 import CoinApi.Types.Trade (Trade)
 import qualified CoinApi.Types.Trade as Trade
 
-import CoinApi.Types.Tweet (Tweet)
-import qualified CoinApi.Types.Tweet as Tweet
-
 ----
 
 import CoinApi as CA
@@ -162,21 +159,3 @@ orderbooks_historical_data_l symbol_id time_start limit = get >>= (\key -> CA.or
 
 orderbooks_historical_data_el :: MonadIO m => String -> UTCTime -> UTCTime -> Int -> CoinApi m (Either String [Orderbook])
 orderbooks_historical_data_el symbol_id time_start time_end limit = get >>= (\key -> CA.orderbooks_historical_data_el key symbol_id time_start time_end limit)
-
-twitter_latest_data :: MonadIO m => CoinApi m (Either String [Tweet])
-twitter_latest_data = get >>= CA.twitter_latest_data
-
-twitter_latest_data_l :: MonadIO m => Int -> CoinApi m (Either String [Tweet])
-twitter_latest_data_l limit = get >>= (\key -> CA.twitter_latest_data_l key limit)
-
-twitter_historical_data :: MonadIO m => UTCTime -> CoinApi m (Either String [Tweet])
-twitter_historical_data time_start = get >>= (\key -> CA.twitter_historical_data key time_start)
-
-twitter_historical_data_e :: MonadIO m => UTCTime -> UTCTime -> CoinApi m (Either String [Tweet])
-twitter_historical_data_e time_start time_end = get >>= (\key -> CA.twitter_historical_data_e key time_start time_end)
-
-twitter_historical_data_l :: MonadIO m => UTCTime -> Int -> CoinApi m (Either String [Tweet])
-twitter_historical_data_l time_start limit = get >>= (\key -> CA.twitter_historical_data_l key time_start limit)
-
-twitter_historical_data_el :: MonadIO m => UTCTime -> UTCTime -> Int -> CoinApi m (Either String [Tweet])
-twitter_historical_data_el time_start time_end limit = get >>= (\key -> CA.twitter_historical_data_el key time_start time_end limit)

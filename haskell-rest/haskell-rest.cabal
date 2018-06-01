@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     CoinApi, CoinApi.Monadic, CoinApi.Types.Asset, CoinApi.Types.Exchange, CoinApi.Types.OHLCV, CoinApi.Types.Orderbook,
-                        CoinApi.Types.Period, CoinApi.Types.Quote, CoinApi.Types.Rate, CoinApi.Types.Symbol, CoinApi.Types.Trade, CoinApi.Types.Tweet
+                        CoinApi.Types.Period, CoinApi.Types.Quote, CoinApi.Types.Rate, CoinApi.Types.Symbol, CoinApi.Types.Trade
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.9 && <4.10, http-conduit >= 2.2, http-types >= 0.9, aeson >= 1.1, bytestring >= 0.10, case-insensitive >= 1.2, text >= 1.2, time >= 1.6, scientific >= 0.3, vector >= 0.11, mtl >= 2.2

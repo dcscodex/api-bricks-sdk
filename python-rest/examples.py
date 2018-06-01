@@ -255,5 +255,3 @@ for data in orderbooks_historical_data_btc_usd:
         print('- Price: %s' % bid['price'])
         print('- Size: %s' % bid['size'])
 
-twitter_latest_data = api.twitter_latest_data()
-twitter_historical_data = api.twitter_historical_data({'time_start': start_of_2016})

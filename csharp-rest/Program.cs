@@ -526,11 +526,6 @@ namespace csharp_rest {
                 Console.Write(Environment.NewLine);
             }
 
-            var twitter_latest_data = coinApi.Twitter_last_data();
-            var twitter_historical_data = coinApi.Twitter_historical_data(start_of_2016);
-
-
-
             Console.ReadLine();
         }
     }

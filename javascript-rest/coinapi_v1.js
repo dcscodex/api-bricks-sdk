@@ -251,34 +251,6 @@ var COIN_API_SDK = (function () {
             return resp.data;
         });
     };
-    COIN_API_SDK.prototype.twitter_latest_data = function (limit) {
-        if (limit === void 0) { limit = null; }
-        var path = this.url + "/v1/twitter/latest";
-        var params = {};
-        if (limit) {
-            params.limit = limit;
-        }
-        return axios.get(path, { headers: this.headers, transformResponse: transformResponse, params: params })
-            .then(function (resp) {
-            return resp.data;
-        });
-    };
-    COIN_API_SDK.prototype.twitter_historical_data = function (time_start, time_end, limit) {
-        if (time_end === void 0) { time_end = null; }
-        if (limit === void 0) { limit = null; }
-        var path = this.url + ("/v1/twitter/history?time_start=" + time_start.toISOString());
-        var params = {};
-        if (time_end) {
-            params.time = time_end.toISOString();
-        }
-        if (limit) {
-            params.limit = limit;
-        }
-        return axios.get(path, { headers: this.headers, transformResponse: transformResponse, params: params })
-            .then(function (resp) {
-            return resp.data;
-        });
-    };
     return COIN_API_SDK;
 }());
 exports.__esModule = true;

@@ -224,5 +224,4 @@ for entry in orderbooks_historical_data_btc_usd
   print_entry(entry)
 end
 
-twitter_latest_data = api.twitter_latest_data()
-twitter_historical_data = api.twitter_historical_data(time_start: start_of_2016)
+

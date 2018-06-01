@@ -172,20 +172,6 @@ class OrderbooksHistoricalDataRequest:
     def endpoint(self):
         return '/orderbooks/%s/history' % self.symbol_id
 
-class TwitterLatestDataRequest:
-    def __init__(self, query_parameters = dict()):
-        self.query_parameters = query_parameters
-
-    def endpoint(self):
-        return '/twitter/latest'
-
-class TwitterHistoricalDataRequest:
-    def __init__(self, query_parameters = dict()):
-        self.query_parameters = query_parameters
-
-    def endpoint(self):
-        return '/twitter/history'
-
 class CoinAPIv1:
     DEFAULT_HEADERS = {
         'Accept': 'application/json'
@@ -354,18 +340,3 @@ class CoinAPIv1:
                                    request.query_parameters)
         return client.perform()
 
-    def twitter_latest_data(self,
-                            query_parameters = dict()):
-        request = TwitterLatestDataRequest(query_parameters)
-        client = self.client_class(request.endpoint(),
-                                   self.headers,
-                                   request.query_parameters)
-        return client.perform()
-
-    def twitter_historical_data(self,
-                                query_parameters = dict()):
-        request = TwitterHistoricalDataRequest(query_parameters)
-        client = self.client_class(request.endpoint(),
-                                   self.headers,
-                                   request.query_parameters)
-        return client.perform()

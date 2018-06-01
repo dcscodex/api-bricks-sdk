@@ -150,16 +150,6 @@ module CoinAPIv1
       end
     end
 
-    def twitter_latest_data(parameters: {})
-      endpoint = "twitter/latest"
-      request(endpoint: endpoint, parameters: parameters)
-    end
-
-    def twitter_historical_data(time_start:, parameters: {})
-      endpoint = "twitter/history"
-      request(endpoint: endpoint, parameters: parameters)
-    end
-
     private
     def default_headers
       headers = {}

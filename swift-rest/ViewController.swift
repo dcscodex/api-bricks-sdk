@@ -104,17 +104,7 @@ class ViewController: UIViewController {
             print("Orderbooks - Historical data :: \(jsonResponse)")
             print("error: \(String(describing: error))")
         }
-        
-        
-        coin.latestTwitterData(count: 0)  { (jsonResponse: Any, error: Error?) in
-            print("Twitter - Latest data : \(jsonResponse)")
-            print("error: \(String(describing: error))")
-        }
-        
-        coin.historicalTwitterData(timeStartAt: "2016-01-01T00:00:00", timeEnd: "", limit: 0)  { (jsonResponse: Any, error: Error?) in
-            print("Twitter - Historical data :: \(jsonResponse)")
-            print("error: \(String(describing: error))")
-        }
+       
     }
 
 }

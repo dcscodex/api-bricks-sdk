@@ -103,16 +103,6 @@ async function run(){
   console.log('Orderbooks_historical_data:')
   console.log('number: ', Orderbooks_historical_data.length)
   Orderbooks_historical_data.forEach(x=> { console.log(x) })
-
-  let Twitter_latest_data = await sdk.twitter_latest_data(5)
-  console.log('Twitter_latest_data:')
-  console.log('number: ', Twitter_latest_data.length)
-  Twitter_latest_data.forEach(x=> { console.log(x) })
-
-  let Twitter_historical_data = await sdk.twitter_historical_data(t, new Date(), 5)
-  console.log('Twitter_historical_data:')
-  console.log('number: ', Twitter_historical_data.length)
-  Twitter_historical_data.forEach(x=> { console.log(x) })
 }
 
 run();

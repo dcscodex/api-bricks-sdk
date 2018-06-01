@@ -180,48 +180,6 @@ pure = do
     Left  err    -> putStrLn err
   putStrLn ""
 
-  putStrLn "twitter_latest_data:"
-  ex <- twitter_latest_data key
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
-  putStrLn "twitter_latest_data_l:"
-  ex <- twitter_latest_data_l key limit
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
-  putStrLn "twitter_historical_data:"
-  ex <- twitter_historical_data key time_start
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
-  putStrLn "twitter_historical_data_e:"
-  ex <- twitter_historical_data_e key time_start time_end
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
-  putStrLn "twitter_historical_data_l:"
-  ex <- twitter_historical_data_l key time_start limit
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
-  putStrLn "twitter_historical_data_el:"
-  ex <- twitter_historical_data_el key time_start time_end limit
-  case ex of
-    Right result -> mapM_ print $ take 2 result
-    Left  err    -> putStrLn err
-  putStrLn ""
-
 -- using monadic interface
 monadic :: IO ()
 monadic = M.withApiKey key $ do
@@ -381,48 +339,6 @@ monadic = M.withApiKey key $ do
 
   ex <- M.orderbooks_historical_data_el symbol_id time_start time_end limit
   liftIO $ do putStrLn "orderbooks_historical_data_el:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_latest_data
-  liftIO $ do putStrLn "twitter_latest_data:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_latest_data_l limit
-  liftIO $ do putStrLn "twitter_latest_data_l:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_historical_data time_start
-  liftIO $ do putStrLn "twitter_historical_data:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_historical_data_e time_start time_end
-  liftIO $ do putStrLn "twitter_historical_data_e:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_historical_data_l time_start limit
-  liftIO $ do putStrLn "twitter_historical_data_l:"
-              case ex of
-                Right result -> mapM_ print $ take 2 result
-                Left  err    -> putStrLn err
-              putStrLn ""
-
-  ex <- M.twitter_historical_data_el time_start time_end limit
-  liftIO $ do putStrLn "twitter_historical_data_el:"
               case ex of
                 Right result -> mapM_ print $ take 2 result
                 Left  err    -> putStrLn err

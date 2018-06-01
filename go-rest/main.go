@@ -259,40 +259,4 @@ func main() {
 	fmt.Println("number:", len(Orderbooks_historical_data_with_time_end_and_limit))
 	Orderbooks_historical_data_with_time_end_and_limit_item, _ := json.MarshalIndent(&Orderbooks_historical_data_with_time_end_and_limit[0], "", "  ")
 	fmt.Println("first items:", string(Orderbooks_historical_data_with_time_end_and_limit_item))
-
-	Twitter_latest_data_all, _ := sdk.Twitter_latest_data()
-	fmt.Println("Twitter_latest_data_all:")
-	fmt.Println("number:", len(Twitter_latest_data_all))
-	Twitter_latest_data_all_item, _ := json.MarshalIndent(&Twitter_latest_data_all[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_latest_data_all_item))
-
-	Twitter_latest_data_all_with_limit, _ := sdk.Twitter_latest_data_with_limit(5)
-	fmt.Println("Twitter_latest_data_all_with_limit:")
-	fmt.Println("number:", len(Twitter_latest_data_all_with_limit))
-	Twitter_latest_data_all_with_limit_item, _ := json.MarshalIndent(&Twitter_latest_data_all_with_limit[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_latest_data_all_with_limit_item))
-
-	Twitter_historical_data, _ := sdk.Twitter_historical_data(t)
-	fmt.Println("Twitter_historical_data:")
-	fmt.Println("number:", len(Twitter_historical_data))
-	Twitter_historical_data_item, _ := json.MarshalIndent(&Twitter_historical_data[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_historical_data_item))
-
-	Twitter_historical_data_with_limit, _ := sdk.Twitter_historical_data_with_limit(t, 5)
-	fmt.Println("Twitter_historical_data_with_limit:")
-	fmt.Println("number:", len(Twitter_historical_data_with_limit))
-	Twitter_historical_data_with_limit_item, _ := json.MarshalIndent(&Twitter_historical_data_with_limit[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_historical_data_with_limit_item))
-
-	Twitter_historical_data_with_time_end, _ := sdk.Twitter_historical_data_with_time_end(t, time.Now())
-	fmt.Println("Twitter_historical_data_with_time_end:")
-	fmt.Println("number:", len(Twitter_historical_data_with_time_end))
-	Twitter_historical_data_with_time_end_item, _ := json.MarshalIndent(&Twitter_historical_data_with_time_end[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_historical_data_with_time_end_item))
-
-	Twitter_historical_data_with_time_end_and_limit, _ := sdk.Twitter_historical_data_with_time_end_and_limit(t, time.Now(), 5)
-	fmt.Println("Twitter_historical_data_with_time_end_and_limit:")
-	fmt.Println("number:", len(Twitter_historical_data_with_time_end_and_limit))
-	Twitter_historical_data_with_time_end_and_limit_item, _ := json.MarshalIndent(&Twitter_historical_data_with_time_end_and_limit[0], "", "  ")
-	fmt.Println("first items:", string(Twitter_historical_data_with_time_end_and_limit_item))
 }

@@ -40,7 +40,7 @@ var COIN_API_SDK = typeof window !== 'undefined' ? window.COIN_API_SDK : coinapi
 var sdk = new COIN_API_SDK("YOUR_API_KEY_HERE");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
-        var t, exchanges, Metadata_list_assets, Metadata_list_symbols, Exchange_rates_get_specific_rate, Exchange_rates_get_all_current_rates, Ohlcv_list_all_periods, Ohlcv_latest_data, Ohlcv_historic_data, Trades_latest_data_all, Trades_latest_data_symbol, Trades_historical_data, Quotes_current_data_all, Quotes_current_data_symbol, Quotes_latest_data_all, Quotes_latest_data_symbol, Quotes_historical_data, Orderbooks_current_data_all, Orderbooks_current_data_symbol, Orderbooks_latest_data, Orderbooks_historical_data, Twitter_latest_data, Twitter_historical_data;
+        var t, exchanges, Metadata_list_assets, Metadata_list_symbols, Exchange_rates_get_specific_rate, Exchange_rates_get_all_current_rates, Ohlcv_list_all_periods, Ohlcv_latest_data, Ohlcv_historic_data, Trades_latest_data_all, Trades_latest_data_symbol, Trades_historical_data, Quotes_current_data_all, Quotes_current_data_symbol, Quotes_latest_data_all, Quotes_latest_data_symbol, Quotes_historical_data, Orderbooks_current_data_all, Orderbooks_current_data_symbol, Orderbooks_latest_data, Orderbooks_historical_data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -161,18 +161,6 @@ function run() {
                     console.log('Orderbooks_historical_data:');
                     console.log('number: ', Orderbooks_historical_data.length);
                     Orderbooks_historical_data.forEach(function (x) { console.log(x); });
-                    return [4 /*yield*/, sdk.twitter_latest_data(5)];
-                case 21:
-                    Twitter_latest_data = _a.sent();
-                    console.log('Twitter_latest_data:');
-                    console.log('number: ', Twitter_latest_data.length);
-                    Twitter_latest_data.forEach(function (x) { console.log(x); });
-                    return [4 /*yield*/, sdk.twitter_historical_data(t, new Date(), 5)];
-                case 22:
-                    Twitter_historical_data = _a.sent();
-                    console.log('Twitter_historical_data:');
-                    console.log('number: ', Twitter_historical_data.length);
-                    Twitter_historical_data.forEach(function (x) { console.log(x); });
                     return [2 /*return*/];
             }
         });

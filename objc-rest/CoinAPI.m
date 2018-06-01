@@ -322,43 +322,4 @@
     }] resume];
 }
 
-/** Twitter Functions **/
-- (void)getLatestTwitterData:(NSInteger)limit
-{
-    NSURL *url = [NSURL URLWithString:@"https://rest.coinapi.io/v1/twitter/latest"];
-    if (limit > 0){
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?limit=%ld", [url absoluteString], limit]];
-    }
-    
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:100];
-    [request setHTTPMethod: @"GET"];
-    [request addValue:strAPIKey forHTTPHeaderField:@"X-CoinAPI-Key"] ;
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *jsonResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"Twitter - Latest data : %@", jsonResult);
-    }] resume];
-}
-
-- (void)getHistoricalTwitterData:(NSString*)time_start time_end:(NSString*)time_end limit:(NSInteger)limit
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://rest.coinapi.io/v1/twitter/history?time_start=%@", time_start]];
-    if (time_end){
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&time_end=%@", [url absoluteString], time_end]];
-    }
-    if (limit > 0){
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&limit=%ld", [url absoluteString], limit]];
-    }
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:100];
-    [request setHTTPMethod: @"GET"];
-    [request addValue:strAPIKey forHTTPHeaderField:@"X-CoinAPI-Key"] ;
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *jsonResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"Twitter - Historical data : %@", jsonResult);
-    }] resume];
-}
-
 @end

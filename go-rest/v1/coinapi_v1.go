@@ -467,45 +467,6 @@ func (sdk SDK) Orderbooks_historical_data_with_time_end_and_limit(symbol_id stri
 
 // orderbooks end
 
-// twitter
-func (sdk SDK) Twitter_latest_data() (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/latest")
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-func (sdk SDK) Twitter_latest_data_with_limit(limit uint32) (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/latest?limit=%d", limit)
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-func (sdk SDK) Twitter_historical_data(time_start time.Time) (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/history?time_start=%s", time_start.Format(time.RFC3339))
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-func (sdk SDK) Twitter_historical_data_with_limit(time_start time.Time, limit uint32) (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/history?time_start=%s&limit=%d", time_start.Format(time.RFC3339), limit)
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-func (sdk SDK) Twitter_historical_data_with_time_end(time_start time.Time, time_end time.Time) (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/history?time_start=%s&time_end=%s", time_start.Format(time.RFC3339), time_end.Format(time.RFC3339))
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-func (sdk SDK) Twitter_historical_data_with_time_end_and_limit(time_start time.Time, time_end time.Time, limit uint32) (tweets []Tweet, err error) {
-	path := fmt.Sprintf("/v1/twitter/history?time_start=%s&time_end=%s&limit=%d", time_start.Format(time.RFC3339), time_end.Format(time.RFC3339), limit)
-	err = sdk.do_request_and_unmarshal(path, &tweets)
-	return
-}
-
-// twitter end
-
 func (sdk SDK) do_request_and_unmarshal(path string, o interface{}) (err error) {
 	text, req_err := sdk.get_response_text(path)
 	if req_err != nil {

@@ -32,7 +32,7 @@ let transformResponse = (axios.defaults.transformResponse as AxiosTransformer[])
 export default class COIN_API_SDK {
   private api_key = ""
   private headers = {}
-  private url = "https://rest-test.coinapi.io"
+  private url = "https://rest.coinapi.io"
 
   constructor(api_key: string = null) {
     if (api_key) {
@@ -245,29 +245,6 @@ export default class COIN_API_SDK {
         return resp.data as Orderbook[]
       })
   }
-
-  twitter_latest_data(limit: number = null) {
-    let path = this.url + `/v1/twitter/latest`
-    let params: any = {}
-    if (limit) { params.limit = limit }
-
-    return axios.get(path, { headers: this.headers, transformResponse, params })
-      .then(resp => {
-        return resp.data as Tweet[]
-      })
-  }
-
-  twitter_historical_data(time_start: Date, time_end: Date = null, limit: number = null) {
-    let path = this.url + `/v1/twitter/history?time_start=${time_start.toISOString()}`
-    let params: any = {}
-    if (time_end) { params.time = time_end.toISOString() }
-    if (limit) { params.limit = limit }
-
-    return axios.get(path, { headers: this.headers, transformResponse, params })
-      .then(resp => {
-        return resp.data as Quote[]
-      })
-  }
 }
 
 
@@ -376,31 +353,4 @@ interface Orderbook {
   time_coinapi: Date
   asks: Bid[]
   bids: Bid[]
-}
-
-interface Tweet {
-  createdAt: string
-  favoriteCount: number
-  favorited: boolean
-  filterLevel: string
-  iD: number
-  iDStr: string
-  inReplyToScreenName: string
-  inReplyToStatusID: number
-  inReplyToStatusIDStr: string
-  inReplyToUserID: number
-  inReplyToUserIDStr: string
-  lang: string
-  possiblySensitive: boolean
-  retweetCount: number
-  retweeted: boolean
-  source: string
-  text: string
-  fullText: string
-  truncated: boolean
-  withheldCopyright: boolean
-  withheldInCountries: string[]
-  withheldScope: string
-  quotedStatusID: number
-  quotedStatusIDStr: string
 }

@@ -297,46 +297,6 @@ class CoinAPI
         }
         return $this->CurlRequest($url);
     }
-    //Twitter
-    function GetTwitterLatest($limit = null)
-    {
-        if ($limit == null)
-        {
-            $url = 'https://rest.coinapi.io/v1/twitter/latest';
-        }
-        else
-        {
-            $url = 'https://rest.coinapi.io/v1/twitter/latest?limit=' . $limit;
-        }
-        return $this->CurlRequest($url);
-    }
-    function GetTwitterHistory($time_start, $time_end = null, $limit = null)
-    {
-        if ($time_start == null)
-        {
-            throw new InvalidArgumentException("time_start is required");
-        }
-        $time_start = $this->FormatDateTime($time_start);
-        if ($time_end == null && $limit != null)
-        {
-            $url = 'https://rest.coinapi.io/v1/twitter/history?time_start=' . $time_start . '&limit=' . $limit;
-        }
-        else if ($limit == null && $time_end != null)
-        {
-            $time_end = $this->FormatDateTime($time_end);
-            $url      = 'https://rest.coinapi.io/v1/twitter/history?time_start=' . $time_start . '&time_end=' . $time_end;
-        }
-        else if ($limit == null && $time_end == null)
-        {
-            $url = 'https://rest.coinapi.io/v1/twitter/history?time_start=' . $time_start;
-        }
-        else
-        {
-            $time_end = $this->FormatDateTime($time_end);
-            $url      = 'https://rest.coinapi.io/v1/twitter/history?time_start=' . $time_start . '&time_end=' . $time_end . '&limit=' . $limit;
-        }
-        return $this->CurlRequest($url);
-    }
     //Formate DateTime Object
     function FormatDateTime($DateTimeObj)
     {

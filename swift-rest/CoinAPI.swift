@@ -63,12 +63,6 @@ protocol OrderbooksDataProtocol {
     func historicalOrderBooksData(symbol id: String, timeStart: String, timeEnd:String, limit: Int, completionHandler: @escaping APIResponse)
 }
 
-/** Twitter Functions **/
-protocol TwitterDataProtocol {
-    func latestTwitterData(count limit: Int, completionHandler: @escaping APIResponse)
-    func historicalTwitterData(timeStartAt timeStart: String, timeEnd:String, limit: Int, completionHandler: @escaping APIResponse)
-}
-
 /*
  * CoinAPI Class
  **/
@@ -462,55 +456,4 @@ extension CoinAPI: OrderbooksDataProtocol {
         perform(request: request as URLRequest, completionHandler: completionHandler)
     }
     
-}
-
-// MARK: - Twitter Implementation
-extension CoinAPI: TwitterDataProtocol {
-    
-    func latestTwitterData(count limit: Int, completionHandler: @escaping APIResponse){
-        // build URI string
-        var requestResource = "/v1/twitter/latest"
-        
-        if limit > 0 {
-            requestResource.append("?limit=\(limit)")
-        }
-        
-        guard let requestUrl = URL(string: COINAPI_URL.appending(requestResource)) else {
-            completionHandler(nil, CoinAPIError.invalidRequest)
-            return
-        }
-        
-        // Build request
-        let request = NSMutableURLRequest(url: requestUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 100)
-        request.httpMethod = "GET"
-        request.addValue(self.apiKey, forHTTPHeaderField: HEADER_API_KEY)
-        
-        // Perform request
-        perform(request: request as URLRequest, completionHandler: completionHandler)
-    }
-    
-    func historicalTwitterData(timeStartAt timeStart: String, timeEnd:String, limit: Int, completionHandler: @escaping APIResponse) {
-        // build URI string
-        var requestResource = "/v1/twitter/history?time_start=\(timeStart)"
-        
-        if !timeEnd.isEmpty {
-            requestResource.append("&time_end=\(timeEnd)")
-        }
-        if limit > 0 {
-            requestResource.append("&limit=\(limit)")
-        }
-        
-        guard let requestUrl = URL(string: COINAPI_URL.appending(requestResource)) else {
-            completionHandler(nil, CoinAPIError.invalidRequest)
-            return
-        }
-        
-        // Build request
-        let request = NSMutableURLRequest(url: requestUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 100)
-        request.httpMethod = "GET"
-        request.addValue(self.apiKey, forHTTPHeaderField: HEADER_API_KEY)
-        
-        // Perform request
-        perform(request: request as URLRequest, completionHandler: completionHandler)
-    }
 }

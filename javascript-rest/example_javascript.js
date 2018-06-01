@@ -120,17 +120,6 @@ function run() {
     Orderbooks_historical_data.forEach(x=> { console.log(x) })
 
   });
-  sdk.twitter_latest_data(5).then(function (Twitter_latest_data) {
-    console.log('Twitter_latest_data:')
-    console.log('number: ', Twitter_latest_data.length)
-    Twitter_latest_data.forEach(x=> { console.log(x) })
-
-  });
-  sdk.twitter_historical_data(t, new Date(), 5).then(function (Twitter_historical_data) {
-    console.log('Twitter_historical_data:')
-    console.log('number: ', Twitter_historical_data.length)
-    Twitter_historical_data.forEach(x=> { console.log(x) })
-  })
 }
 
 run();

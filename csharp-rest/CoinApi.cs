@@ -205,30 +205,6 @@ namespace csharp_rest {
             var url = string.Format("/v1/orderbooks/{0}/history?time_start={1}&limit={2}", symbolId, start.ToString(dateFormat), limit);
             return GetData<List<Orderbook>>(url);
         }
-        public List<Twitter> Twitter_last_data(int limit) {
-            var url = string.Format("/v1/twitter/latest?limit={0}", limit);
-            return GetData<List<Twitter>>(url);
-        }
-        public List<Twitter> Twitter_last_data() {
-            var url = "/v1/twitter/latest";
-            return GetData<List<Twitter>>(url);
-        }
-        public List<Twitter> Twitter_historical_data(DateTime start, DateTime end, int limit) {
-            var url = string.Format("/v1/twitter/history?time_start={0}&time_end={1}&limit={2}", start.ToString(dateFormat), end.ToString(dateFormat), limit);
-            return GetData<List<Twitter>>(url);
-        }
-        public List<Twitter> Twitter_historical_data(DateTime start) {
-            var url = string.Format("/v1/twitter/history?time_start={0}", start.ToString(dateFormat));
-            return GetData<List<Twitter>>(url);
-        }
-        public List<Twitter> Twitter_historical_data(DateTime start, DateTime end) {
-            var url = string.Format("/v1/twitter/history?time_start={0}&time_end={1}", start.ToString(dateFormat), end.ToString(dateFormat));
-            return GetData<List<Twitter>>(url);
-        }
-        public List<Twitter> Twitter_historical_data(DateTime start, int limit) {
-            var url = string.Format("/v1/twitter/history?time_start={0}&limit={1}", start.ToString(dateFormat), limit);
-            return GetData<List<Twitter>>(url);
-        }
     }
 
 }

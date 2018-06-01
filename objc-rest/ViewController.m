@@ -60,9 +60,6 @@
     [coin getLatestOrderbooksData:@"BITSTAMP_SPOT_BTC_USD" limit:0];
     [coin getHistoricalOrderbooksData:@"BITSTAMP_SPOT_BTC_USD" time_start:@"2016-01-01T00:00:00" time_end:NULL limit:0];
     
-    /* Twitter Functions */
-    [coin getLatestTwitterData:0];
-    [coin getHistoricalTwitterData:@"2016-01-01T00:00:00" time_end:NULL limit:0];
 }
 
 

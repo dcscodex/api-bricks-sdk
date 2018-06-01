@@ -5,8 +5,7 @@
 
 #include "coin_api.h"
 
-#define TEST_KEY "73034021-0EBC-493D-8A00-E0F138111F41" 
-//                73034021-0EBC-493D-8A00-E0F138111F411
+#define TEST_KEY "YOUR_API_KEY" 
 
 std::wostream& operator<<(std::wostream& os, const cpp_rest::response::precise_time& pt) {
 	os << pt.year << "/" << pt.month << "/" << pt.day << " ";
@@ -176,151 +175,6 @@ std::wostream& operator<<(std::wostream& os, const cpp_rest::response::orderbook
 		os << entry.bids[i].price << "(" << entry.bids[i].size << "), ";
 	}
 	os << std::endl;
-
-	return os;
-}
-
-std::wostream& operator<<(std::wostream& os, const cpp_rest::response::twitter& entry) {
-	os << " Created at " << entry.created_at.c_str() << std::endl;
-	os << " ID:        " << entry.id << " (" <<  entry.id_str.c_str() << ")" << std::endl;
-	os << " Text:      " << entry.text.c_str() << std::endl;
-	os << " Source:    " << entry.source.c_str() << std::endl;
-	if (entry.truncated)
-		os << " Truncated" << std::endl;
-	else
-		os << " Not truncated" << std::endl;
-
-	if (entry.display_text_range.size()) {
-		os << "  Display text range: ";
-		for(size_t j=0; j<entry.display_text_range.size(); j++) {
-			os << entry.display_text_range[j] << ", ";
-		}
-		os << std::endl;
-	}
-
-	if (!entry.in_reply_to_status_id_is_null)
-		os << "     in_reply_to_status_id:     " << entry.in_reply_to_status_id << std::endl;
-
-	if (!entry.in_reply_to_status_id_str_is_null)
-		os << "     in_reply_to_status_id_str: " << entry.in_reply_to_status_id_str.c_str() << std::endl;
-
-	if (!entry.in_reply_to_user_id_is_null)
-		os << "     in_reply_to_user_id:       " << entry.in_reply_to_user_id << std::endl;
-
-	if (!entry.in_reply_to_user_id_str_is_null)
-		os << "     in_reply_to_user_id_str:   " << entry.in_reply_to_user_id_str.c_str() << std::endl;
-
-	if (!entry.in_reply_to_screen_name_is_null)
-		os << "     in_reply_to_screen_name:   " << entry.in_reply_to_screen_name.c_str() << std::endl;
-
-	os << "  User ID:        " << entry.user.id << " (" <<  entry.user.id_str.c_str() << ")" << std::endl;
-	os << "  User name:      " << entry.user.name.c_str() << ", Screen name: " << entry.user.screen_name.c_str() << std::endl;
-	if (entry.user.location.size())
-		os << "  User location:      " << entry.user.location.c_str() << std::endl;
-	if (entry.user.url.size())
-		os << "  User URL:           " << entry.user.url.c_str() << std::endl;
-	if (entry.user.description.size())
-		os << "  User description:   " << entry.user.description.c_str() << std::endl;
-	if (entry.user.protected_user)
-		os << "   Protected, ";
-	else
-		os << "   Not protected, ";
-	if (entry.user.verified_user)
-		os << "   Verified, ";
-	else
-		os << "   Not verified, ";
-	os << std::endl;
-	os << "  User Followers count: " << entry.user.followers_count << std::endl;
-	os << "  User Friends count: " << entry.user.friends_count << std::endl;
-	os << "  User Listed count: " << entry.user.listed_count << std::endl;
-	os << "  User Favorites count: " << entry.user.favourites_count << std::endl;
-	os << "  User Statuses count: " << entry.user.statuses_count << std::endl;
-	os << "  User Created at: " << entry.user.created_at.c_str() << std::endl;
-	os << "  User UTC Offset: " << entry.user.utc_offset << std::endl;
-	os << "  User Time Zone: " << entry.user.time_zone.c_str() << std::endl;
-	if (entry.user.geo_enabled)
-		os << "   Geo enabled " << std::endl;
-   	os << "  User lang: " << entry.user.lang.c_str() << std::endl;
-	if (entry.user.contributors_enabled)
-		os << "   Contributors enabled " << std::endl;
-	if (entry.user.is_translator)
-		os << "   Translator " << std::endl;
-	else
-		os << "   Not Translator " << std::endl;
-
-	os << "  User Profile background color: " << entry.user.profile_background_color.c_str() << std::endl;
-	os << "  User Profile background image URL: " << entry.user.profile_background_image_url.c_str() << std::endl;
-	os << "  User Profile background image URL HTTPS: " << entry.user.profile_background_image_url_https.c_str() << std::endl;
-	if (entry.user.profile_background_tile)
-		os << "  User Profile background tile" << std::endl;
-	os << "  User Profile link color: " << entry.user.profile_link_color.c_str() << std::endl;
-	os << "  User Profile sidebar border color: " << entry.user.profile_sidebar_border_color.c_str() << std::endl;
-	os << "  User Profile sidebar fill color: " << entry.user.profile_sidebar_fill_color.c_str() << std::endl;
-	os << "  User Profile text color: " << entry.user.profile_text_color.c_str() << std::endl;
-	os << "  User Profile image URL: " << entry.user.profile_image_url.c_str() << std::endl;
-	os << "  User Profile image URL HTTPS: " << entry.user.profile_image_url_https.c_str() << std::endl;
-	os << "  User Profile image banner URL: " << entry.user.profile_banner_url.c_str() << std::endl;
-	if (entry.user.default_profile)
-		os << "  User Default Profile" << std::endl;
-	if (entry.user.default_profile_image)
-		os << "  User Default Profile Image" << std::endl;
-
-	if (entry.is_quote_status)
-		os << " Quote status" << std::endl;
-	else
-		os << " Not quite status" << std::endl;
-
-	if (entry.retweeted)
-		os << " Retweeted" << std::endl;
-	else
-		os << " Not retweeted" << std::endl;
-
-	if (entry.favorited)
-		os << " Favorited" << std::endl;
-	else
-		os << " Not favorited" << std::endl;
-
-	if (entry.possibly_sensitive)
-		os << " Possible sensitive" << std::endl;
-
-	os << " Entities: " << std::endl;
-	os << " Hashtags: "  << std::endl;
-	for(size_t i=0; i<entry.entities.hashtags.size(); i++) {
-		os << entry.entities.hashtags[i].text.c_str();
-		os << std::endl;
-		for(size_t j=0; j<entry.entities.hashtags[i].indices.size(); j++) {
-			os << entry.entities.hashtags[i].indices[j] << ", ";
-		}
-		os << std::endl;
-	}
-
-	os << " URLS: "  << std::endl;
-	for(size_t i=0; i<entry.entities.urls.size(); i++) {
-		os << entry.entities.urls[i].url.c_str() << " , ";
-		os << entry.entities.urls[i].expanded_url.c_str() << " , ";
-		os << entry.entities.urls[i].display_url.c_str();
-		os << std::endl;
-		for(size_t j=0; j<entry.entities.urls[i].indices.size(); j++) {
-			os << entry.entities.urls[i].indices[j] << ", ";
-		}
-		os << std::endl;
-	}
-
-	os << " User mentions: "  << std::endl;
-	for(size_t i=0; i<entry.entities.user_mentions.size(); i++) {
-		os << entry.entities.user_mentions[i].id << " (" << entry.entities.user_mentions[i].id_str.c_str() << ")" << std::endl;
-		os << entry.entities.user_mentions[i].name.c_str() << " (" << entry.entities.user_mentions[i].screen_name.c_str() << ")" << std::endl;
-
-		for(size_t j=0; j<entry.entities.user_mentions[i].indices.size(); j++) {
-			os << entry.entities.user_mentions[i].indices[j] << ", ";
-		}
-		os << std::endl;
-	}
-
-	os << " Retweet count: " << entry.retweet_count << ", Favorite count: " << entry.favorite_count << std::endl;
-	os << " Filter level:  " << entry.filter_level.c_str() << std::endl;
-	os << " Lang :         " << entry.lang.c_str() << std::endl;
-	os << " Timestamp:     " << entry.timestamp_ms.c_str() << std::endl;
 
 	return os;
 }
@@ -749,75 +603,6 @@ void test_orderbooks_get_historical_data(std::string symbol, cpp_rest::response:
 	}).wait();
 }
 
-
-void test_twitter_get_latest_data() {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get latest twitters started" << std::endl;
-	c.twitter_get_latest_data().then([=](cpp_rest::response::twitters result) {
-		std::wcout << result.size() + " ..." << std::endl;
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get latest twitters finished" << std::endl;
-	}).wait();
-}
-
-void test_twitter_get_latest_data(int limit) {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get latest twitters started" << std::endl;
-	c.twitter_get_latest_data(limit).then([=](cpp_rest::response::twitters result) {
-		std::wcout << result.size() + " ..." << std::endl;
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get latest twitters finished" << std::endl;
-	}).wait();
-}
-
-void test_twitter_get_historical_data(cpp_rest::response::precise_time time_start) {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get historical twitters started" << std::endl;
-	c.twitter_get_historical_data(time_start).then([=](cpp_rest::response::twitters result) {
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get historical twitters finished" << std::endl;
-	}).wait();
-}
-
-void test_twitter_get_historical_data(cpp_rest::response::precise_time time_start, int limit) {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get historical twitters started" << std::endl;
-	c.twitter_get_historical_data(time_start, limit).then([=](cpp_rest::response::twitters result) {
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get historical twitters finished" << std::endl;
-	}).wait();
-}
-
-void test_twitter_get_historical_data(cpp_rest::response::precise_time time_start, cpp_rest::response::precise_time time_end) {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get historical twitters started" << std::endl;
-	c.twitter_get_historical_data(time_start, time_end).then([=](cpp_rest::response::twitters result) {
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get historical twitters finished" << std::endl;
-	}).wait();
-}
-
-void test_twitter_get_historical_data(cpp_rest::response::precise_time time_start, cpp_rest::response::precise_time time_end, int limit) {
-	cpp_rest::coin_api c(TEST_KEY);   
-	std::wcout << "Get historical twitters started" << std::endl;
-	c.twitter_get_historical_data(time_start, time_end, limit).then([=](cpp_rest::response::twitters result) {
-		for(size_t i=0; i<result.size(); i++) {
-			std::wcout << result[i] << std::endl;
-		}
-		std::wcout << "Get historical twitters finished" << std::endl;
-	}).wait();
-}
-
 int main(int argc, char* argv[]) {
 	try {
 		// https://rest.coinapi.io/v1/exchanges?apikey=73034021-0EBC-493D-8A00-E0F138111F41
@@ -935,24 +720,6 @@ int main(int argc, char* argv[]) {
 
 		// https://rest.coinapi.io/v1/orderbooks/BITSTAMP_SPOT_BTC_USD/history?time_start=2016-11-01T22:08:41Z&time_end=2017-06-25T10:24:09-05:00&limit=5&apikey=73034021-0EBC-493D-8A00-E0F138111F41
 		test_orderbooks_get_historical_data("BITSTAMP_SPOT_BTC_USD", cpp_rest::response::precise_time(2016,11,1,22,8,41), cpp_rest::response::precise_time(2017,6,25,3,24,9), 5);
-
-		// https://rest.coinapi.io/v1/twitter/latest?apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_latest_data();
-
-		// https://rest.coinapi.io/v1/twitter/latest?limit=5&apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_latest_data(5);
-
-		// https://rest.coinapi.io/v1/twitter/history?time_start=2016-11-01T22:08:41Z&apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_historical_data(cpp_rest::response::precise_time(2016,11,1,22,8,41));
-
-		// https://rest.coinapi.io/v1/twitter/history?time_start=2016-11-01T22:08:41Z&limit=5&apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_historical_data(cpp_rest::response::precise_time(2016,11,1,22,8,41), 5);
-
-		// https://rest.coinapi.io/v1/twitter/history?time_start=2016-11-01T22:08:41Z&time_end=2017-06-25T10:24:10-05:00&apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_historical_data(cpp_rest::response::precise_time(2016,11,1,22,8,41), cpp_rest::response::precise_time(2017,6,25,3,24,10));
-
-		// https://rest.coinapi.io/v1/twitter/history?time_start=2016-11-01T22:08:41Z&time_end=2017-06-25T10:24:10-05:00&limit=5&apikey=73034021-0EBC-493D-8A00-E0F138111F41
-		test_twitter_get_historical_data(cpp_rest::response::precise_time(2016,11,1,22,8,41), cpp_rest::response::precise_time(2017,6,25,3,24,10), 5);
 
 	}
 	catch(const std::exception& ex) {

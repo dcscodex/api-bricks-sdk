@@ -53,8 +53,4 @@ print_r($capi->GetOrderbookCurrent($symbol_id));
 print_r($capi->GetOrderbookLatest($symbol_id, $limit));
 // get history Orderbooks from specific symbol and time range
 print_r($capi->GetOrderbookHistory($symbol_id, $time_start, $time_end, $limit));
-// get latest twitter data
-print_r($capi->GetTwitterLatest($limit));
-// get history twitter data from specific time range
-print_r($capi->GetTwitterHistory($time_start, $time_end, $limit));
 ?>

@@ -5,7 +5,7 @@ library(jsonlite)
 ## Free account provides 100 daily requests free.
 ## The next tier allows 1000 daily requests for US$79/month
 
-base     <- "https://rest.coinapi.io/"
+base     <- "https://rest.coinapi.io"
 endpoint <- "/v1/exchangerate/BTC?apikey="
 api_key  <- "[your key]"
 

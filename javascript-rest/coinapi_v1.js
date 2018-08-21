@@ -104,7 +104,7 @@ var COIN_API_SDK = (function () {
         var path = this.url + ("/v1/ohlcv/" + symbol_id + "/history?period_id=" + period_id + "&time_start=" + time_start.toISOString());
         var params = {};
         if (time_end) {
-            params.time = time_end.toISOString();
+            params.time_end = time_end.toISOString();
         }
         if (limit) {
             params.limit = limit;
@@ -144,7 +144,7 @@ var COIN_API_SDK = (function () {
         var path = this.url + ("/v1/trades/" + symbol_id + "/history?time_start=" + time_start.toISOString());
         var params = {};
         if (time_end) {
-            params.time = time_end.toISOString();
+            params.time_end = time_end.toISOString();
         }
         if (limit) {
             params.limit = limit;
@@ -198,7 +198,7 @@ var COIN_API_SDK = (function () {
         var path = this.url + ("/v1/quotes/" + symbol_id + "/history?time_start=" + time_start.toISOString());
         var params = {};
         if (time_end) {
-            params.time = time_end.toISOString();
+            params.time_end = time_end.toISOString();
         }
         if (limit) {
             params.limit = limit;
@@ -241,7 +241,7 @@ var COIN_API_SDK = (function () {
         var path = this.url + ("/v1/orderbooks/" + symbol_id + "/history?time_start=" + time_start.toISOString());
         var params = {};
         if (time_end) {
-            params.time = time_end.toISOString();
+            params.time_end = time_end.toISOString();
         }
         if (limit) {
             params.limit = limit;

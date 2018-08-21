@@ -1,7 +1,5 @@
-** Differences between /java-rest/ and /java-rest-v2/ **
-
 --------------------------------------------------
-Refactoring steps
+Refactoring steps /java-rest/ and /java-rest-v2/
 --------------------------------------------------
 
 1) changed all the files to be correctly formatted:

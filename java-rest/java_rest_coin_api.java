@@ -488,7 +488,7 @@ public class java_rest_coin_api {
             case _20MIN:
                 return "20MIN";
             case _30MIN:
-                return "20MIN";
+                return "30MIN";
             case _1HRS:
                 return "1HRS";
             case _2HRS:

@@ -10,7 +10,7 @@ namespace csharp_fix
         Session _session = null;
 
         private bool ExecuteSymbolListRequest = false;
-        private string FilterBySymbolId = "DERIBIT_OPT_";
+        private string FilterBySymbolId = "DERIBIT_OPT_(.*)";
         private string FilterByExchangeName = "GEMINI";
 
         private string[] SubscribeBySymbolRegex = new string[] 

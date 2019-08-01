@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_fix
+namespace COINAPI.FIX.V2
 {
     class Program
     {

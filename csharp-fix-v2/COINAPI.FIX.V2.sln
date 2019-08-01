@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_fix", "csharp_fix.csproj", "{EE9BC3A5-32F6-4BB7-8751-D80634527705}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COINAPI.FIX.V2", "COINAPI.FIX.V2.csproj", "{EE9BC3A5-32F6-4BB7-8751-D80634527705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DC7BBDC-2478-4E1D-B9EB-80A2297AB9E1}
 	EndGlobalSection
 EndGlobal

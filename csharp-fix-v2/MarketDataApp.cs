@@ -3,14 +3,14 @@ using QuickFix;
 using QuickFix.Fields;
 using System.Collections.Generic;
 
-namespace csharp_fix
+namespace COINAPI.FIX.V2
 {
     public class MarketDataApp : QuickFix.MessageCracker, QuickFix.IApplication
     {
         Session _session = null;
 
         private bool ExecuteSymbolListRequest = false;
-        private string FilterBySymbolId = "DERIBIT_OPT_(.*)";
+        private string FilterBySymbolId = "DERIBIT_OPT_";
         private string FilterByExchangeName = "GEMINI";
 
         private string[] SubscribeBySymbolRegex = new string[] 
@@ -50,10 +50,12 @@ namespace csharp_fix
             }
 
             // subscribe by symbol ids
-            MarketDataRequest(SubscribeBySymbolRegex);
+            //MarketDataRequestTrades(SubscribeBySymbolRegex);
+            //MarketDataRequestQuotes(SubscribeBySymbolRegex);
+            MarketDataRequestFullOrderbook(SubscribeBySymbolRegex);
         }
 
-        private void MarketDataRequest(string[] symbol_ids)
+        private void MarketDataRequestTrades(string[] symbol_ids)
         {
             QuickFix.FIX44.MarketDataRequest mdr = new QuickFix.FIX44.MarketDataRequest();
             mdr.MDReqID = new MDReqID(Guid.NewGuid().ToString());
@@ -63,6 +65,64 @@ namespace csharp_fix
             var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
             type.MDEntryType = new MDEntryType(MDEntryType.TRADE);
             mdr.AddGroup(type);
+
+            foreach (var symbol_id in symbol_ids)
+            {
+                var relatedsym = new QuickFix.FIX44.MarketDataRequest.NoRelatedSymGroup();
+                relatedsym.Symbol = new Symbol(symbol_id);
+                mdr.AddGroup(relatedsym);
+            }
+
+            SendMessage(mdr);
+        }
+
+        private void MarketDataRequestQuotes(string[] symbol_ids)
+        {
+            QuickFix.FIX44.MarketDataRequest mdr = new QuickFix.FIX44.MarketDataRequest();
+            mdr.MDReqID = new MDReqID(Guid.NewGuid().ToString());
+            mdr.SubscriptionRequestType = new SubscriptionRequestType(SubscriptionRequestType.SNAPSHOT_PLUS_UPDATES);
+            mdr.MarketDepth = new MarketDepth(1);
+            mdr.MDUpdateType = new MDUpdateType(MDUpdateType.FULL_REFRESH);
+
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.BID);
+                mdr.AddGroup(type);
+            }
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.OFFER);
+                mdr.AddGroup(type);
+            }
+
+            foreach (var symbol_id in symbol_ids)
+            {
+                var relatedsym = new QuickFix.FIX44.MarketDataRequest.NoRelatedSymGroup();
+                relatedsym.Symbol = new Symbol(symbol_id);
+                mdr.AddGroup(relatedsym);
+            }
+
+            SendMessage(mdr);
+        }
+
+        private void MarketDataRequestFullOrderbook(string[] symbol_ids)
+        {
+            QuickFix.FIX44.MarketDataRequest mdr = new QuickFix.FIX44.MarketDataRequest();
+            mdr.MDReqID = new MDReqID(Guid.NewGuid().ToString());
+            mdr.SubscriptionRequestType = new SubscriptionRequestType(SubscriptionRequestType.SNAPSHOT_PLUS_UPDATES);
+            mdr.MarketDepth = new MarketDepth(0);
+            mdr.MDUpdateType = new MDUpdateType(MDUpdateType.INCREMENTAL_REFRESH);
+
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.BID);
+                mdr.AddGroup(type);
+            }
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.OFFER);
+                mdr.AddGroup(type);
+            }
 
             foreach (var symbol_id in symbol_ids)
             {
@@ -160,7 +220,10 @@ namespace csharp_fix
                 msg.GetGroup(idx + 1, item);
 
                 Console.WriteLine($"{item.MDEntryType} {item.MDUpdateAction} @ {item.Symbol}:");
-                Console.WriteLine($" ID: {item.MDEntryID}");
+                if (item.IsSetMDEntryID())
+                {
+                    Console.WriteLine($" ID: {item.MDEntryID}");
+                }
                 Console.WriteLine($" Date: {item.MDEntryDate}");
                 Console.WriteLine($" Time: {item.MDEntryTime}");
                 Console.WriteLine($" Px: {item.MDEntryPx}");
@@ -176,16 +239,16 @@ namespace csharp_fix
         public void OnMessage(QuickFix.FIX44.MarketDataSnapshotFullRefresh msg,
             SessionID s)
         {
-            //for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
-            //{
-            //    var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();
-            //    msg.GetGroup(idx + 1, level);
-            //    Console.WriteLine($"Orderbook {level.MDEntryType} @ {msg.Symbol}:");
-            //    Console.WriteLine($" Date: {level.MDEntryDate}");
-            //    Console.WriteLine($" Time: {level.MDEntryTime}");
-            //    Console.WriteLine($" Px: {level.MDEntryPx}");
-            //    Console.WriteLine($" Size: {level.MDEntrySize}");
-            //}
+            for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
+            {
+                var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();
+                msg.GetGroup(idx + 1, level);
+                Console.WriteLine($"{level.MDEntryType} @ {msg.Symbol}:");
+                Console.WriteLine($" Date: {level.MDEntryDate}");
+                Console.WriteLine($" Time: {level.MDEntryTime}");
+                Console.WriteLine($" Px: {level.MDEntryPx}");
+                Console.WriteLine($" Size: {level.MDEntrySize}");
+            }
         }
 
         private void SendMessage(Message m)

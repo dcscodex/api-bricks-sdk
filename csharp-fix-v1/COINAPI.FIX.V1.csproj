@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EE9BC3A5-32F6-4BB7-8751-D80634527705}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>csharp_fix</RootNamespace>
+    <RootNamespace>COINAPI.FIX.V1</RootNamespace>
     <AssemblyName>csharp_fix</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>csharp_fix.Program</StartupObject>
+    <StartupObject>COINAPI.FIX.V2.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="QuickFix, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">

@@ -3,7 +3,7 @@ using QuickFix;
 using QuickFix.Fields;
 using System.Collections.Generic;
 
-namespace csharp_fix
+namespace COINAPI.FIX.V2
 {
     public class MarketDataApp : QuickFix.MessageCracker, QuickFix.IApplication
     {

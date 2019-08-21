@@ -1,4 +1,4 @@
-﻿namespace csharp_rest
+﻿namespace CoinAPI.REST.V1
 {
     public class ErrorMessage
     {

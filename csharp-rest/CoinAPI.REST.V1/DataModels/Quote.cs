@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
+namespace CoinAPI.REST.V1 {
     public class Quote {
         public string symbol_id { get; set; }
         public DateTime time_exchange { get; set; }

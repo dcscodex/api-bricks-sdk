@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace csharp_rest.Exceptions
+namespace CoinAPI.REST.V1.Exceptions
 {
     public class TooManyRequestsException : CoinApiException
     {
@@ -14,10 +14,6 @@ namespace csharp_rest.Exceptions
         }
 
         public TooManyRequestsException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
-
-        protected TooManyRequestsException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

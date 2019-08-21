@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
+namespace CoinAPI.REST.V1 {
     public class OHLCV {
         public DateTime time_period_start { get; set; }
         public DateTime time_period_end { get; set; }

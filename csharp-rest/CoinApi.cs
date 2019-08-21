@@ -10,9 +10,13 @@ namespace csharp_rest {
     class CoinApi {
         private string apikey;
         private string dateFormat = "yyyy-MM-ddTHH:mm:ss.fff";
-        private static string WebUrl = "https://rest.coinapi.io";// "https://rest-test.coinapi.io";
-        public CoinApi(string apikey) {
+        private string WebUrl = "https://rest.coinapi.io";// "https://rest-test.coinapi.io";
+        public CoinApi(string apikey, bool sandbox = false) {
             this.apikey = apikey;
+			if (sandbox)
+			{
+				WebUrl = "https://rest-sandbox.coinapi.io";
+			}
         }
 
         private T GetData<T>(string url)

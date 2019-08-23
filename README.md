@@ -1,8 +1,18 @@
 # CoinAPI-SDK
 
+![GitHub language count](https://img.shields.io/github/languages/count/coinapi/coinapi-sdk)
+
 Welcome to the CoinAPI SDK. This repository contain SDK for our API documented at https://docs.coinapi.io/ 
 
-In this repository you can find libraries that will help you use our API with minimal development effort from:
+## Package managers coverage
+
+Language | Package manager | Protocol | Package name | Address |
+--- | --- | --- | --- | --- |
+C# | NuGet | REST | CoinAPI.REST.V1 | https://www.nuget.org/packages/CoinAPI.REST.V1/1.0.0 |
+
+## Language coverage
+
+In this repository you can find libraries that will help you use our API with minimal development effort from languages like:
  * Python
  * R
  * Matlab
@@ -20,7 +30,7 @@ In this repository you can find libraries that will help you use our API with mi
  * Objective-C
  * Swift
 
-If you spot something wrong, feel free to make Pull Request with proposed changes or create an Issue on which we respond as soon as possible.
+Feel free to make Pull Request with proposed changes or create an Issue on which we respond as soon as possible.
 
 # WebSocket connection example
 

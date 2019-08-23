@@ -14,7 +14,7 @@ public class REST_methods_test {
 	
 	// -------------------- constants --------------------
 	
-	private static final String COINAPI_KEY = "YOUR_API_KEY_HERE";
+	private static final String COINAPI_KEY = "23db0ed6-92a2-4cdf-b69b-d1e8e1e15a36";
 	
 	// -------------------- main --------------------
 	
@@ -558,26 +558,37 @@ public class REST_methods_test {
 	private static String symbol_to_string(Symbol s) {
 		String result = "";
 		String additional = "";
-		
-		if (s.get_symbol_type() == Symbol_type.SPOT) {
-			result += "SPOT symbol ";
-		} else if (s.get_symbol_type() == Symbol_type.FUTURES) {
-			result += "FUTURES symbol ";
-			additional += "\n    Delivery date: " + s.get_future_delivery_time().toString();
-		} else if (s.get_symbol_type() == Symbol_type.OPTION) {
-			result += "OPTION symbol ";
-			additional += "\n    Type of option: " + (s.get_option_type_is_call() ? "Call" : "Put") + ", ";
-			additional += "Strike price: " + s.get_option_strike_price() + ", ";
-			additional += "Conract Unit: " + s.get_option_contract_unit();
 
-			if (s.get_option_exercise_style() == Option_exercise_style.EUROPEAN)
-				additional += "\n    EUROPEAN exercise style";
-			if (s.get_option_exercise_style() == Option_exercise_style.AMERICAN)
-				additional += "\n    AMERICAN exercise style";
-			additional += "\n    Expiration time: " + s.get_option_expiration_time();
-		} else {
-			result += "Invalid symbol ";
+		switch (s.get_symbol_type()) {
+			case SymbolType.SPOT:
+				result += "SPOT symbol";
+				break;
+			case SymbolType.FUTURES:
+				result += "FUTURES symbol ";
+				additional += "\n    Delivery date: " + s.get_future_delivery_time().toString();
+				break;
+			case SymbolType.OPTION:
+				result += "OPTION symbol ";
+				additional += "\n    Type of option: " + (s.get_is_option_type_is_call() ? "Call" : "Put") + ", ";
+				additional += "Strike price: " + s.get_option_strike_price() + ", ";
+				additional += "Conract Unit: " + s.get_option_contract_unit();
+
+				if (s.get_option_exercise_style().equals(OptionExerciseStyle.EUROPEAN))
+					additional += "\n    EUROPEAN exercise style";
+				if (s.get_option_exercise_style().equals(OptionExerciseStyle.AMERICAN))
+					additional += "\n    AMERICAN exercise style";
+				additional += "\n    Expiration time: " + s.get_option_expiration_time();
+			case SymbolType.INDEX:
+				result += "INDEX symbol";
+				break;
+			case SymbolType.PERPETUAL:
+				result += "PERPETUAL symbol";
+				break;
+			default:
+				result += "Invalid symbol ";
+				break;
 		}
+
 
 		result += "(symbol_id = " + s.get_symbol_id();
 		result += ", exchange_id = " + s.get_exchange_id();

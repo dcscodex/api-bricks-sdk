@@ -2,6 +2,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -127,28 +128,34 @@ public class REST_methods implements Closeable {
 		for (int i = 0; i < array.length(); i++) {
 			String symbol_id = array.getJSONObject(i).getString("symbol_id");
 			String exchange_id = array.getJSONObject(i).getString("exchange_id");
-			Symbol_type symbol_type = Symbol_type.valueOf(array.getJSONObject(i).getString("symbol_type"));
-			String asset_id_base = array.getJSONObject(i).getString("asset_id_base");
-			String asset_id_quote = array.getJSONObject(i).getString("asset_id_quote");
-			if (symbol_type == Symbol_type.FUTURES) {
-				Instant future_delivery_time = Instant.parse(array.getJSONObject(i).getString("future_delivery_time"));
-				result[i] = new Symbol(
-					symbol_id, exchange_id, symbol_type, asset_id_base, asset_id_quote, false,
-					0.0, 0.0, null, null, future_delivery_time
-				);
-			} else if (symbol_type == Symbol_type.OPTION) {
-				boolean option_type_is_call = array.getJSONObject(i).getBoolean("option_type_is_call");
-				double option_strike_price = array.getJSONObject(i).getDouble("option_strike_price");
-				double option_contract_unit = array.getJSONObject(i).getDouble("option_contract_unit");
-				Option_exercise_style option_exercise_style = Option_exercise_style.valueOf(array.getJSONObject(i).getString("option_exercise_style"));
-				Instant option_expiration_time = Instant.parse(array.getJSONObject(i).getString("option_expiration_time"));
-				result[i] = new Symbol(
-					symbol_id, exchange_id, symbol_type, asset_id_base, asset_id_quote, option_type_is_call,
-					option_strike_price, option_contract_unit, option_exercise_style, option_expiration_time, null
-				);
-			} else {
-				result[i] = new Symbol(symbol_id, exchange_id, symbol_type, asset_id_base, asset_id_quote);
-			}
+			String symbol_type = array.getJSONObject(i).getString("symbol_type");
+			String asset_id_base = UtilsJSON.parseStringFromJson("asset_id_base", array.getJSONObject(i));
+			String asset_id_quote = UtilsJSON.parseStringFromJson("asset_id_quote", array.getJSONObject(i));
+			String asset_id_unit = UtilsJSON.parseStringFromJson("asset_id_unit", array.getJSONObject(i));
+			String data_start = UtilsJSON.parseStringFromJson("data_start", array.getJSONObject(i));
+			String data_end = UtilsJSON.parseStringFromJson("data_end", array.getJSONObject(i));
+			Double volume_1hrs = UtilsJSON.parseDoubleFromJson("volume_1hrs", array.getJSONObject(i));
+			Double volume_1hrs_usd = UtilsJSON.parseDoubleFromJson("volume_1hrs_usd", array.getJSONObject(i));
+			Double volume_1day = UtilsJSON.parseDoubleFromJson("volume_1day", array.getJSONObject(i));
+			Double volume_1day_usd = UtilsJSON.parseDoubleFromJson("volume_1day_usd", array.getJSONObject(i));
+			Double volume_1mth = UtilsJSON.parseDoubleFromJson("volume_1mth", array.getJSONObject(i));
+			Double volume_1mth_usd = UtilsJSON.parseDoubleFromJson("volume_1mth_usd", array.getJSONObject(i));
+			String index_id = UtilsJSON.parseStringFromJson("index_id", array.getJSONObject(i));
+			String index_display_name = UtilsJSON.parseStringFromJson("index_display_name", array.getJSONObject(i));
+			String index_display_description = UtilsJSON.parseStringFromJson("index_display_description", array.getJSONObject(i));
+			Instant future_delivery_time = UtilsJSON.parseInstantFromJson("future_delivery_time", array.getJSONObject(i));
+			Integer future_contract_unit = UtilsJSON.parseIntegerFromJson("future_contract_unit", array.getJSONObject(i));
+			String future_contract_unit_asset = UtilsJSON.parseStringFromJson("future_contract_unit_asset", array.getJSONObject(i));
+			Boolean option_type_is_call = UtilsJSON.parseBooleanFromJson("option_type_is_call", array.getJSONObject(i));
+			Double option_strike_price = UtilsJSON.parseDoubleFromJson("option_strike_price", array.getJSONObject(i));
+			Double option_contract_unit = UtilsJSON.parseDoubleFromJson("option_contract_unit", array.getJSONObject(i));
+			String option_exercise_style = UtilsJSON.parseStringFromJson("option_exercise_style", array.getJSONObject(i));
+			Instant option_expiration_time = UtilsJSON.parseInstantFromJson("option_expiration_time", array.getJSONObject(i));
+
+			result[i] = new Symbol(symbol_id, exchange_id, symbol_type, asset_id_base, asset_id_quote, asset_id_unit, data_start, data_end,
+					volume_1hrs, volume_1hrs_usd, volume_1day, volume_1day_usd, volume_1mth, volume_1mth_usd, index_id, index_display_name, index_display_description,
+					future_delivery_time, future_contract_unit, future_contract_unit_asset, option_type_is_call, option_strike_price, option_contract_unit,
+					option_exercise_style, option_expiration_time);
 		}
 		return result;
 	}

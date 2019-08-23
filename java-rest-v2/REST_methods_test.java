@@ -14,11 +14,13 @@ public class REST_methods_test {
 	
 	// -------------------- constants --------------------
 	
-	private static final String COINAPI_KEY = "23db0ed6-92a2-4cdf-b69b-d1e8e1e15a36";
+	private static String COINAPI_KEY;
 	
 	// -------------------- main --------------------
 	
 	public static void main(String[] args) throws IOException {
+		Config config = new Config();
+		COINAPI_KEY = config.getPropValues("coinapi_key");
 		if (COINAPI_KEY.equals("YOUR_API_KEY_HERE")) {
 			System.err.println(
 				"ERROR: REST_methods_test.main will abort because its constant COINAPI_KEY has the value \"" + COINAPI_KEY + "\"" + "\n"

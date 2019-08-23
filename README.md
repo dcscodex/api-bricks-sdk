@@ -8,7 +8,7 @@ Welcome to the CoinAPI SDK. This repository contain SDK for our API documented a
 
 Language | Package manager | Protocol | Package name | Version/Link |
 --- | --- | --- | --- | --- |
-C# | NuGet | REST | CoinAPI.REST.V1 | https://img.shields.io/nuget/v/CoinAPI.REST.v1.svg |
+C# | NuGet | REST | CoinAPI.REST.V1 | ![Nuget](https://img.shields.io/nuget/v/CoinAPI.REST.v1) |
 
 ## Language coverage
 

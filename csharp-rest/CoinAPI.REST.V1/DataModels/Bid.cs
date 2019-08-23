@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
-    public class Ask {
+namespace CoinAPI.REST.V1 {
+    public class Bid {
         public decimal price { get; set; }
         public decimal size { get; set; }
     }
+
 }

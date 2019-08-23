@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
+namespace CoinAPI.REST.V1 {
     public class Period {
         public string period_id { get; set; }
         public int length_seconds { get; set; }

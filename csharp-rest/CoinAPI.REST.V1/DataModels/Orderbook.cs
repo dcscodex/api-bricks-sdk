@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
+namespace CoinAPI.REST.V1 {
     public class Orderbook {
         public string symbol_id { get; set; }
         public string time_exchange { get; set; }

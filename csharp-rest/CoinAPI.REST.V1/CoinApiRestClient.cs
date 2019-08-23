@@ -4,15 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using csharp_rest.Exceptions;
+using CoinAPI.REST.V1.Exceptions;
 
-namespace csharp_rest {
-    class CoinApi {
+namespace CoinAPI.REST.V1 {
+    public class CoinApiRestClient
+    {
         private string apikey;
         private string dateFormat = "yyyy-MM-ddTHH:mm:ss.fff";
-        private static string WebUrl = "https://rest.coinapi.io";// "https://rest-test.coinapi.io";
-        public CoinApi(string apikey) {
+        private string WebUrl = "https://rest.coinapi.io";// "https://rest-test.coinapi.io";
+
+        public CoinApiRestClient(string apikey, bool sandbox = false)
+        {
             this.apikey = apikey;
+			if (sandbox)
+			{
+				WebUrl = "https://rest-sandbox.coinapi.io";
+			}
         }
 
         private T GetData<T>(string url)

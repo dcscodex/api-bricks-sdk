@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp_rest {
+namespace CoinAPI.REST.V1 {
     public class Symbol {
         public string symbol_id { get; set; }
         public string exchange_id { get; set; }

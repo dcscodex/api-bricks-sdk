@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 import org.json.JSONObject;
 
 import java.time.Instant;

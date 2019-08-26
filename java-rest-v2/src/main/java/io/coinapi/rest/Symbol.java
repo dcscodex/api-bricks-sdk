@@ -1,4 +1,4 @@
-import com.sun.istack.internal.Nullable;
+package io.coinapi.rest;
 
 import java.time.Instant;
 

@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Symbol types list (enumeration of symbol_type output variable)
  */

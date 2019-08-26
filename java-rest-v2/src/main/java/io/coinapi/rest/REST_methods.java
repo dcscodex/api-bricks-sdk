@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.time.Instant;
@@ -58,9 +60,9 @@ public class REST_methods implements Closeable {
 			//.post(body)
 			.addHeader("X-CoinAPI-Key", key)
 			.build();
-		
+
 		try (
-			Response response = client.newCall(request).execute()    // you MUST always immediately close response, easiest way is like this; see https://square.github.io/okhttp/3.x/okhttp/okhttp3/ResponseBody.html 
+			Response response = client.newCall(request).execute()    // you MUST always immediately close response, easiest way is like this; see https://square.github.io/okhttp/3.x/okhttp/okhttp3/ResponseBody.html
 		) {
 			ResponseBody body = response.body();    // no need to null check the result of body(): it is annotated @Nullable but its javadoc states that "Returns a non-null value if this response was ... returned from Call.execute()" which is the case above; see https://square.github.io/okhttp/3.x/okhttp/okhttp3/Response.html#body--
 			

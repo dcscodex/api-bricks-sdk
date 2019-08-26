@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 import java.io.IOException;
 import java.time.Instant;
 

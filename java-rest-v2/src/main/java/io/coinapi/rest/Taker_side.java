@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Defines all the elements of a taker_side, as described in <a href= "https://docs.coinapi.io/#json-structure">https://docs.coinapi.io/#json-structure</a>.
  * <p>

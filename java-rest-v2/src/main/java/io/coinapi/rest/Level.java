@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Stores all the state for an orderbook level, as described in <a href= "https://docs.coinapi.io/#order-book">https://docs.coinapi.io/#order-book</a>.
  * <p>

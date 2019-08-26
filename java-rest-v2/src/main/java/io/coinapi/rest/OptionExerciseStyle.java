@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Option exercise style. Can be EUROPEAN or AMERICAN
  */

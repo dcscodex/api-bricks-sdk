@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class Trade
+    public struct Trade
     {
         public DateTime time_exchange { get; set; }
         public DateTime time_coinapi { get; set; }

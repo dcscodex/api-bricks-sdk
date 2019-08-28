@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class OrderBook
+    public struct OrderBook
     {
         public bool? is_snapshot { get; set; }
         public DateTime time_exchange { get; set; }

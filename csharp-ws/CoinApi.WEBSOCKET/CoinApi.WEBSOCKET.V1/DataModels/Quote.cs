@@ -2,7 +2,7 @@
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class Quote
+    public struct Quote
     {
         public DateTime time_exchange { get; set; }
         public DateTime time_coinapi { get; set; }

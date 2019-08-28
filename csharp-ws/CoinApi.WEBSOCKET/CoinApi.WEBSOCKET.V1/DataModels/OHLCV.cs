@@ -2,7 +2,7 @@
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class OHLCV
+    public struct OHLCV
     {
         public string period_id { get; set; }
         public DateTime time_period_start { get; set; }

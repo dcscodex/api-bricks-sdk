@@ -2,9 +2,9 @@
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class Volume
+    public struct Volume
     {
-        public DateTime time_coinapi { get; set; } = DateTime.UtcNow;
+        public DateTime time_coinapi { get; set; }
         public string period_id { get; set; }
         public object[] volume_by_symbol { get; set; }
     }

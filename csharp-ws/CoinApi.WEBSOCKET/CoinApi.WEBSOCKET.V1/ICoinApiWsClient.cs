@@ -1,4 +1,5 @@
 ﻿using CoinApi.WEBSOCKET.V1.DataModels;
+using System.Threading.Tasks;
 
 namespace CoinApi.WEBSOCKET.V1
 {
@@ -10,7 +11,7 @@ namespace CoinApi.WEBSOCKET.V1
 
     public interface ICoinApiWsClient
     {
-        void AcceptHelloMessage(Hello helloMessage);
+        Task AcceptHelloMessage(Hello helloMessage);
         WebsocketState GetWebsocketState { get; }
         event OHLCVEventHandler OHLCVEvent;
         event OrderBookEventHandler OrderBookEvent;

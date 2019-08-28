@@ -3,6 +3,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using CoinApi.WEBSOCKET.V1.DataModels;
+using Utf8Json;
 
 namespace CoinApi.WEBSOCKET.V1
 {
@@ -17,13 +18,16 @@ namespace CoinApi.WEBSOCKET.V1
         private bool _useAllocation;
         private readonly ClientWebSocket _client = null;
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
-        private readonly QueueThread
+        private readonly QueueThread<MessageData> _queueThread = null;
 
         public CoinApiWsClient(bool isSandbox, string apiKey, bool useAllocation)
         {
             _isSandbox = isSandbox;
             _apiKey = apiKey;
             _useAllocation = useAllocation;
+            _queueThread = new QueueThread<MessageData>();
+
+            _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
 
             if(_isSandbox)
             {
@@ -43,16 +47,71 @@ namespace CoinApi.WEBSOCKET.V1
             {
                 return Task.Run(() => Connect(helloMessage));
             }
-            //else dorobic reconnect
+            else
+            {
+                //reconnect
+            }
 
             return Task.CompletedTask;
+        }
+
+        private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<dynamic>(item.Data);
+            var type = data["type"] as string;
+
+            Enum.TryParse(type, out MessageType messageType);
+
+            switch(messageType)
+            {
+                case MessageType.book:
+                    break;
+                case MessageType.ohlcv:
+                    break;
+                case MessageType.quote:
+                    break;
+                case MessageType.trade:
+                    break;
+                case MessageType.volume:
+                    break;
+            }
+        }
+
+        private void HandleBookItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<OrderBook>(item.Data);
+            OrderBookEvent?.Invoke(sender, data);
+        }
+
+        private void HandleOHLCVItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<OHLCV>(item.Data);
+            OHLCVEvent?.Invoke(sender, data);
+        }
+
+        private void HandleQuoteItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<Quote>(item.Data);
+            QuoteEvent?.Invoke(sender, data);
+        }
+
+        private void HandleTradeItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<Trade>(item.Data);
+            TradeEvent?.Invoke(sender, data);
+        }
+
+        private void HandleVolumeItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<Volume>(item.Data);
+            VolumeEvent?.Invoke(sender, data);
         }
 
         private async Task Connect(Hello helloMessage)
         {
             while (!_cts.IsCancellationRequested)
             {
-                await HandleConnection();
+                await HandleConnection(helloMessage);
             }
         }
 
@@ -64,6 +123,7 @@ namespace CoinApi.WEBSOCKET.V1
         private async Task HandleConnection(Hello helloMessage)
         {
             await _client.ConnectAsync(new Uri(_url), _cts.Token);
+
             Task.Run(() => DataHandler());
 
             //send hello message

@@ -11,7 +11,7 @@ namespace CoinApi.WEBSOCKET.V1
 
     public interface ICoinApiWsClient
     {
-        Task AcceptHelloMessage(Hello helloMessage);
+        void AcceptHelloMessage(Hello helloMessage);
         WebsocketState GetWebsocketState { get; }
         event OHLCVEventHandler OHLCVEvent;
         event OrderBookEventHandler OrderBookEvent;

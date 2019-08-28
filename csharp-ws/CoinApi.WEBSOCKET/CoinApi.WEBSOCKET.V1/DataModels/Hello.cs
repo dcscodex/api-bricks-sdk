@@ -2,11 +2,8 @@
 
 namespace CoinApi.WEBSOCKET.V1.DataModels
 {
-    public class Hello
+    public struct Hello
     {
-        public Hello()
-        {
-        }
         public Guid apikey { get; set; }
         public bool heartbeat { get; set; }
         public string[] subscribe_data_type { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.WebSockets;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CoinApi.WEBSOCKET.V1.DataModels;
@@ -15,16 +16,36 @@ namespace CoinApi.WEBSOCKET.V1
         private bool _isSandbox;
         private string _apiKey;
         private string _url;
-        private bool _useAllocation;
-        private readonly ClientWebSocket _client = null;
+        private ClientWebSocket _client = null;
+        private Hello? _helloMessage = null;
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private readonly QueueThread<MessageData> _queueThread = null;
 
-        public CoinApiWsClient(bool isSandbox, string apiKey, bool useAllocation)
+        private readonly object _helloSync = new object();
+
+        private Hello? helloMessage
+        {
+            get
+            {
+                lock(_helloSync)
+                {
+                    return _helloMessage;
+                }
+            }
+
+            set
+            {
+                lock(_helloSync)
+                {
+                    _helloMessage = value;
+                }
+            }
+        }
+
+        public CoinApiWsClient(bool isSandbox, string apiKey)
         {
             _isSandbox = isSandbox;
             _apiKey = apiKey;
-            _useAllocation = useAllocation;
             _queueThread = new QueueThread<MessageData>();
 
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
@@ -41,18 +62,16 @@ namespace CoinApi.WEBSOCKET.V1
 
         public WebsocketState GetWebsocketState => throw new NotImplementedException();
 
-        public Task AcceptHelloMessage(Hello helloMessage)
+        public void AcceptHelloMessage(Hello msg)
         {
-            if(_client == null)
-            {
-                return Task.Run(() => Connect(helloMessage));
-            }
-            else
-            {
-                //reconnect
-            }
+            var startClient = !helloMessage.HasValue;
 
-            return Task.CompletedTask;
+            helloMessage = msg;
+
+            if(startClient)
+            {
+                Task.Run(() => Connect());
+            }
         }
 
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
@@ -107,38 +126,45 @@ namespace CoinApi.WEBSOCKET.V1
             VolumeEvent?.Invoke(sender, data);
         }
 
-        private async Task Connect(Hello helloMessage)
+        private async Task Connect()
         {
             while (!_cts.IsCancellationRequested)
             {
-                await HandleConnection(helloMessage);
+                await HandleConnection();
             }
         }
 
-        private async Task ReConnect(Hello helloMessage)
+        private async Task HandleConnection()
         {
-            _cts.Cancel();
-        }
-
-        private async Task HandleConnection(Hello helloMessage)
-        {
-            await _client.ConnectAsync(new Uri(_url), _cts.Token);
-
-            Task.Run(() => DataHandler());
-
-            //send hello message
-        }
-
-        private void DataHandler()
-        {
-            while(!_cts.IsCancellationRequested)
+            using(_client = new ClientWebSocket())
             {
+                await _client.ConnectAsync(new Uri(_url), _cts.Token);
 
+                var helloMsg = new ArraySegment<byte>(JsonSerializer.Serialize(helloMessage.Value));
+
+                await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, _cts.Token);
+
+                while(_client.State == WebSocketState.Open && ! _cts.IsCancellationRequested)
+                {
+                    var messageData = await WSUtils.ReceiveMessage(_client);
+
+                    if (messageData.MessageType == WebSocketMessageType.Close)
+                    {
+                        return;
+                    }
+
+                    _queueThread.Enqueue(messageData);
+                }
             }
         }
 
         public void Dispose()
         {
+            _queueThread.ItemDequeuedEvent -= _queueThread_ItemDequeuedEvent;
+            _queueThread.Dispose();
+
+            _cts.Cancel();
+            _cts.Dispose();
         }
 
         public event OHLCVEventHandler OHLCVEvent;

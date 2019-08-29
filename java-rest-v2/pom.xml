@@ -28,6 +28,17 @@
 
     <name>coinapi.rest.v1</name>
     <url>https://docs.coinapi.io</url>
+    <description>Java SDK for CoinAPI</description>
+    <developers>
+        <developer>
+            <id>tprzybysz</id>
+            <name>Tomasz Przybysz</name>
+            <email>tom.przybysz@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -149,6 +160,7 @@
                         <pushChanges>false</pushChanges>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                        <arguments>-DskipTests</arguments>
                     </configuration>
                     <dependencies>
                         <dependency>

@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Stores all the state for an exchange, as described in <a href= "https://docs.coinapi.io/#list-all-exchanges">https://docs.coinapi.io/#list-all-exchanges</a>.
  * <p>

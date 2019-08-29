@@ -13,6 +13,8 @@
     </organization>
 
     <scm>
+        <connection>scm:git:git@github.com:coinapi/coinapi-sdk.git</connection>
+        <developerConnection>scm:git:git@github.com:coinapi/coinapi-sdk.git</developerConnection>
         <url>https://github.com/coinapi/coinapi-sdk</url>
         <tag>HEAD</tag>
     </scm>

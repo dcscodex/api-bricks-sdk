@@ -160,10 +160,6 @@
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
                         <arguments>-DskipTests</arguments>
-						<autoVersionSubmodules>true</autoVersionSubmodules>
-						<useReleaseProfile>false</useReleaseProfile>
-						<releaseProfiles>release</releaseProfiles>
-						<goals>deploy</goals>
                     </configuration>
                     <dependencies>
                         <dependency>

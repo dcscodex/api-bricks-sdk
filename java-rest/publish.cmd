@@ -1,2 +1,1 @@
-mvn clean install -DskipTests
-mvn -B release:prepare release:perform -DskipTests
+mvn clean install -B release:prepare release:perform -DskipTests

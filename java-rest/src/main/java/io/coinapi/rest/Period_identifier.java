@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Defines all the elements of a Period identifier, as described in <a href= "https://docs.coinapi.io/#list-all-periods">https://docs.coinapi.io/#list-all-periods</a>.
  * <p>

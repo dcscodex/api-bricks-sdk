@@ -1,3 +1,5 @@
+package io.coinapi.rest;
+
 /**
  * Stores all the state for an asset, as described in <a href= "https://docs.coinapi.io/#list-all-assets">https://docs.coinapi.io/#list-all-assets</a>.
  * <p>

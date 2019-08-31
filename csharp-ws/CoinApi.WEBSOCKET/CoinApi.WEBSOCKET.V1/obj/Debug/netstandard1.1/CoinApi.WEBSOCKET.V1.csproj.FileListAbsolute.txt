@@ -1,9 +1,0 @@
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\bin\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.deps.json
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\bin\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.dll
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\bin\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.pdb
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.csprojAssemblyReference.cache
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.csproj.CoreCompileInputs.cache
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.AssemblyInfoInputs.cache
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.AssemblyInfo.cs
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.dll
-C:\Users\mateuszosojca\Desktop\repo\coinapi-sdk\coinapi-sdk\csharp-ws\CoinApi.WEBSOCKET\CoinApi.WEBSOCKET.V1\obj\Debug\netstandard1.1\CoinApi.WEBSOCKET.V1.pdb

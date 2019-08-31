@@ -59,7 +59,10 @@ namespace CoinApi.WEBSOCKET.V1
             }
         }
 
-        public WebsocketState GetWebsocketState => throw new NotImplementedException();
+        public WebsocketState GetWebsocketState => new WebsocketState
+        {
+            NotParsedCount = _queueThread.QueueSize
+        };
 
         public void AcceptHelloMessage(Hello msg)
         {
@@ -73,6 +76,15 @@ namespace CoinApi.WEBSOCKET.V1
             }
         }
 
+        public void StopConnection()
+        {
+            try
+            {
+                _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "testClose", _cts.Token).Wait();
+            }
+            catch { }
+        }
+
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
         {
             var data = JsonSerializer.Deserialize<dynamic>(item.Data);
@@ -83,14 +95,19 @@ namespace CoinApi.WEBSOCKET.V1
             switch(messageType)
             {
                 case MessageType.book:
+                    HandleBookItem(sender, item);
                     break;
                 case MessageType.ohlcv:
+                    HandleOHLCVItem(sender, item);
                     break;
                 case MessageType.quote:
+                    HandleQuoteItem(sender, item);
                     break;
                 case MessageType.trade:
+                    HandleTradeItem(sender, item);
                     break;
                 case MessageType.volume:
+                    HandleVolumeItem(sender, item);
                     break;
             }
         }

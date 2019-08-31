@@ -80,5 +80,16 @@ namespace CoinApi.WEBSOCKET.V1
             _messagesBufferEvent.Set();
             return true;
         }
+
+        public int QueueSize
+        {
+            get
+            {
+                lock (_messagesBuffer)
+                {
+                    return _messagesBuffer.Count;
+                }
+            }
+        }
     }
 }

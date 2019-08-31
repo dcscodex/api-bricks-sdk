@@ -42,10 +42,9 @@ namespace CoinApi.WEBSOCKET.V1
             }
         }
 
-        public CoinApiWsClient(bool isSandbox, string apiKey)
+        public CoinApiWsClient(bool isSandbox)
         {
             _isSandbox = isSandbox;
-            _apiKey = apiKey;
             _queueThread = new QueueThread<MessageData>();
 
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;

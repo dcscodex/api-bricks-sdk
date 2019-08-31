@@ -8,7 +8,7 @@ using Utf8Json;
 
 namespace CoinApi.WEBSOCKET.V1
 {
-    internal class CoinApiWsClient : ICoinApiWsClient, IDisposable
+    public class CoinApiWsClient : ICoinApiWsClient, IDisposable
     {
         private const string SandboxUrl = "wss://ws-sandbox.coinapi.io/";
         private const string NoneSandboxUrl = "wss://ws.coinapi.io/";
@@ -23,29 +23,9 @@ namespace CoinApi.WEBSOCKET.V1
 
         private readonly object _helloSync = new object();
 
-        private Hello? helloMessage
-        {
-            get
-            {
-                lock(_helloSync)
-                {
-                    return _helloMessage;
-                }
-            }
-
-            set
-            {
-                lock(_helloSync)
-                {
-                    _helloMessage = value;
-                }
-            }
-        }
-
-        public CoinApiWsClient(bool isSandbox, string apiKey)
+        public CoinApiWsClient(bool isSandbox)
         {
             _isSandbox = isSandbox;
-            _apiKey = apiKey;
             _queueThread = new QueueThread<MessageData>();
 
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
@@ -60,7 +40,29 @@ namespace CoinApi.WEBSOCKET.V1
             }
         }
 
-        public WebsocketState GetWebsocketState => throw new NotImplementedException();
+        private Hello? helloMessage
+        {
+            get
+            {
+                lock (_helloSync)
+                {
+                    return _helloMessage;
+                }
+            }
+
+            set
+            {
+                lock (_helloSync)
+                {
+                    _helloMessage = value;
+                }
+            }
+        }
+
+        public WebsocketState GetWebsocketState => new WebsocketState
+        {
+            NotParsedCount = _queueThread.QueueSize
+        };
 
         public void AcceptHelloMessage(Hello msg)
         {
@@ -74,6 +76,15 @@ namespace CoinApi.WEBSOCKET.V1
             }
         }
 
+        public void StopConnection()
+        {
+            try
+            {
+                _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "testClose", _cts.Token).Wait();
+            }
+            catch { }
+        }
+
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
         {
             var data = JsonSerializer.Deserialize<dynamic>(item.Data);
@@ -84,14 +95,19 @@ namespace CoinApi.WEBSOCKET.V1
             switch(messageType)
             {
                 case MessageType.book:
+                    HandleBookItem(sender, item);
                     break;
                 case MessageType.ohlcv:
+                    HandleOHLCVItem(sender, item);
                     break;
                 case MessageType.quote:
+                    HandleQuoteItem(sender, item);
                     break;
                 case MessageType.trade:
+                    HandleTradeItem(sender, item);
                     break;
                 case MessageType.volume:
+                    HandleVolumeItem(sender, item);
                     break;
             }
         }

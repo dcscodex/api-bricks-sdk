@@ -1,16 +1,15 @@
 using CoinAPI.WebSocket.V1.DataModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Configuration;
 using System.Threading;
 
 namespace CoinAPI.WebSocket.V1.Tests
 {
     [TestClass]
-    public class TestReconnections
+    public class TestVolume
     {
         [TestMethod]
-        public void TestMessageReceivedAfterReconnect()
+        public void TestVolumeReceive()
         {
             var config = new ConfigurationBuilder().AddJsonFile("config.json").Build();
 
@@ -18,24 +17,20 @@ namespace CoinAPI.WebSocket.V1.Tests
             var helloMsg = new Hello()
             {
                 apikey = System.Guid.Parse(config["TestApiKey"]),
-                subscribe_data_type = new string[] { "book", "quote", "trade" }
+                subscribe_data_type = new string[] { "volume" }
             };
 
             using(var wsClient = new CoinApiWsClient(false))
             {
-                wsClient.OrderBookEvent += (s, i) =>
+                wsClient.VolumeEvent += (s, i) =>
                 {
                     mssgCount++;
                 };
 
                 wsClient.AcceptHelloMessage(helloMsg);
 
-                Thread.Sleep(5000);
+                Thread.Sleep(50000);
 
-                wsClient.StopConnectionOnlyTestPurpose();
-                mssgCount = 0;
-
-                Thread.Sleep(5000);
                 Assert.AreNotEqual(0, mssgCount);
             }
         }

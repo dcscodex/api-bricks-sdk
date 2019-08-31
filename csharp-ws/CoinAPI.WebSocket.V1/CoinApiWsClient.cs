@@ -76,7 +76,7 @@ namespace CoinAPI.WebSocket.V1
             }
         }
 
-        public void StopConnection()
+        public void StopConnectionOnlyTestPurpose()
         {
             try
             {

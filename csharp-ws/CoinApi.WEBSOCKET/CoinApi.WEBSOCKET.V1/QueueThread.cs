@@ -22,7 +22,9 @@ namespace CoinApi.WEBSOCKET.V1
             _bufferCapacity = bufferCapacity;
             _messagesRouterThread = new Thread(MessagesRouter_Thread)
             {
-                IsBackground = true
+                IsBackground = true,
+                Name = "Coinapi.WEBSOCKET.V1.QueueThread",
+                Priority = ThreadPriority.Highest
             };
             _messagesRouterThread.Start();
         }

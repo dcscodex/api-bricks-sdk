@@ -8,7 +8,7 @@ using Utf8Json;
 
 namespace CoinApi.WEBSOCKET.V1
 {
-    internal class CoinApiWsClient : ICoinApiWsClient, IDisposable
+    public class CoinApiWsClient : ICoinApiWsClient, IDisposable
     {
         private const string SandboxUrl = "wss://ws-sandbox.coinapi.io/";
         private const string NoneSandboxUrl = "wss://ws.coinapi.io/";
@@ -22,25 +22,6 @@ namespace CoinApi.WEBSOCKET.V1
         private readonly QueueThread<MessageData> _queueThread = null;
 
         private readonly object _helloSync = new object();
-
-        private Hello? helloMessage
-        {
-            get
-            {
-                lock(_helloSync)
-                {
-                    return _helloMessage;
-                }
-            }
-
-            set
-            {
-                lock(_helloSync)
-                {
-                    _helloMessage = value;
-                }
-            }
-        }
 
         public CoinApiWsClient(bool isSandbox)
         {
@@ -56,6 +37,25 @@ namespace CoinApi.WEBSOCKET.V1
             else
             {
                 _url = NoneSandboxUrl;
+            }
+        }
+
+        private Hello? helloMessage
+        {
+            get
+            {
+                lock (_helloSync)
+                {
+                    return _helloMessage;
+                }
+            }
+
+            set
+            {
+                lock (_helloSync)
+                {
+                    _helloMessage = value;
+                }
             }
         }
 

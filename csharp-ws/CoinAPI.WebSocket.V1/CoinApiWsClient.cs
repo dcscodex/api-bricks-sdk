@@ -14,7 +14,6 @@ namespace CoinAPI.WebSocket.V1
         private const string UrlProduction = "wss://ws.coinapi.io/";
 
         private readonly bool _isSandbox;
-        private readonly string _apiKey;
         private readonly string _url;
         
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();

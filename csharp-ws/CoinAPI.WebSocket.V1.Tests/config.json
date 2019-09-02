@@ -1,5 +1,5 @@
 ﻿{
   "UseSandbox": "false",
   "TestTimeout": "10000",
-  "TestApiKey":""
+  "TestApiKey": ""
 }

@@ -32,7 +32,13 @@ namespace CoinAPI.WebSocket.V1.Tests
 
                 Thread.Sleep(5000);
 
-                wsClient.ForceReconnectUsedOnlyTestPurpose();
+                for(int i =0;i< 100; i++)
+                {
+                    Thread.Sleep(300);
+                    wsClient.ForceReconnectUsedOnlyTestPurpose();
+                }
+
+                
                 mssgCount = 0;
 
                 Thread.Sleep(5000);

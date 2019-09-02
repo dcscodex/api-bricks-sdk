@@ -127,22 +127,28 @@ namespace CoinAPI.WebSocket.V1
         {
             using(_client = new ClientWebSocket())
             {
-                await _client.ConnectAsync(new Uri(_url), _cts.Token);
-
-                var helloMsg = new ArraySegment<byte>(JsonSerializer.Serialize(helloMessage.Value));
-
-                await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, _cts.Token);
-
-                while(_client.State == WebSocketState.Open && ! _cts.IsCancellationRequested)
+                try
                 {
-                    var messageData = await WSUtils.ReceiveMessage(_client);
+                    await _client.ConnectAsync(new Uri(_url), _cts.Token);
 
-                    if (messageData.MessageType == WebSocketMessageType.Close)
+                    var helloMsg = new ArraySegment<byte>(JsonSerializer.Serialize(helloMessage.Value));
+
+                    await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, _cts.Token);
+
+                    while (_client.State == WebSocketState.Open && !_cts.IsCancellationRequested)
                     {
-                        return;
-                    }
+                        var messageData = await WSUtils.ReceiveMessage(_client);
 
-                    _queueThread.Enqueue(messageData);
+                        if (messageData.MessageType == WebSocketMessageType.Close)
+                        {
+                            return;
+                        }
+
+                        _queueThread.Enqueue(messageData);
+                    }
+                }
+                catch
+                {
                 }
             }
         }

@@ -58,10 +58,9 @@ namespace CoinAPI.WebSocket.V1
 
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
         {
-            var data = JsonSerializer.Deserialize<dynamic>(item.Data);
-            var type = data["type"] as string;
+            var data = JsonSerializer.Deserialize<MessageBase>(item.Data);
 
-            if (!Enum.TryParse(type, out MessageType messageType))
+            if (!Enum.TryParse(data.type, out MessageType messageType))
             {
                 // unknown type
                 return;

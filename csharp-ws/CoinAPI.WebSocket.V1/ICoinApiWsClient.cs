@@ -11,8 +11,8 @@ namespace CoinAPI.WebSocket.V1
 
     public interface ICoinApiWsClient
     {
-        void AcceptHelloMessage(Hello helloMessage);
-        WebsocketState GetWebsocketState { get; }
+        void SendHelloMessage(Hello helloMessage);
+        long UnprocessedMessagesQueueSize { get; }
         event OHLCVEventHandler OHLCVEvent;
         event OrderBookEventHandler OrderBookEvent;
         event QuoteEventHandler QuoteEvent;

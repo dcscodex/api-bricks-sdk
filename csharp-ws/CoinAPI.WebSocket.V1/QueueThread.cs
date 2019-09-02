@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace CoinAPI.WebSocket.V1
@@ -23,7 +24,7 @@ namespace CoinAPI.WebSocket.V1
             _messagesRouterThread = new Thread(MessagesRouter_Thread)
             {
                 IsBackground = true,
-                Name = "CoinAPI.WebSocket.V1.QueueThread",
+                Name = GetType().FullName,
                 Priority = ThreadPriority.Highest
             };
             _messagesRouterThread.Start();
@@ -61,6 +62,7 @@ namespace CoinAPI.WebSocket.V1
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                 }
             }
         }

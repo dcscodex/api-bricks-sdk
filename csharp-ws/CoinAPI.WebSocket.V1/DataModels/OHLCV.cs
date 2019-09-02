@@ -4,6 +4,8 @@ namespace CoinAPI.WebSocket.V1.DataModels
 {
     public struct OHLCV
     {
+        public string symbol_id { get; set; }
+        public long sequence { get; set; }
         public string period_id { get; set; }
         public DateTime time_period_start { get; set; }
         public DateTime time_period_end { get; set; }

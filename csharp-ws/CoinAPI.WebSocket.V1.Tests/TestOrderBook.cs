@@ -28,7 +28,7 @@ namespace CoinAPI.WebSocket.V1.Tests
                     mssgCount++;
                 };
 
-                wsClient.AcceptHelloMessage(helloMsg);
+                wsClient.SendHelloMessage(helloMsg);
 
                 Thread.Sleep(10000);
 

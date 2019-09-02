@@ -16,6 +16,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Company>MARMOT SOLUTIONS LTD</Company>
     <Copyright>MARMOT SOLUTIONS LTD or its affiliates</Copyright>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

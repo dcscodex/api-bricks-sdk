@@ -10,61 +10,32 @@ namespace CoinAPI.WebSocket.V1
 {
     public class CoinApiWsClient : ICoinApiWsClient, IDisposable
     {
-        private const string SandboxUrl = "wss://ws-sandbox.coinapi.io/";
-        private const string NoneSandboxUrl = "wss://ws.coinapi.io/";
+        private const string UrlSandbox = "wss://ws-sandbox.coinapi.io/";
+        private const string UrlProduction = "wss://ws.coinapi.io/";
 
-        private bool _isSandbox;
-        private string _apiKey;
-        private string _url;
-        private ClientWebSocket _client = null;
-        private Hello? _helloMessage = null;
+        private readonly bool _isSandbox;
+        private readonly string _apiKey;
+        private readonly string _url;
+        
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private readonly QueueThread<MessageData> _queueThread = null;
 
-        private readonly object _helloSync = new object();
+        // client reference is leaked here only for testing purposes (forcing reconnects)
+        private ClientWebSocket _client = null;
 
-        public CoinApiWsClient(bool isSandbox)
+        private Hello? helloMessage { get; set; }
+        public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
+
+        public CoinApiWsClient(bool isSandbox = false)
         {
             _isSandbox = isSandbox;
             _queueThread = new QueueThread<MessageData>();
-
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
-
-            if(_isSandbox)
-            {
-                _url = SandboxUrl;
-            }
-            else
-            {
-                _url = NoneSandboxUrl;
-            }
+            _url = _isSandbox ? UrlSandbox : UrlProduction;
         }
 
-        private Hello? helloMessage
-        {
-            get
-            {
-                lock (_helloSync)
-                {
-                    return _helloMessage;
-                }
-            }
 
-            set
-            {
-                lock (_helloSync)
-                {
-                    _helloMessage = value;
-                }
-            }
-        }
-
-        public WebsocketState GetWebsocketState => new WebsocketState
-        {
-            NotParsedCount = _queueThread.QueueSize
-        };
-
-        public void AcceptHelloMessage(Hello msg)
+        public void SendHelloMessage(Hello msg)
         {
             var startClient = !helloMessage.HasValue;
 
@@ -76,7 +47,7 @@ namespace CoinAPI.WebSocket.V1
             }
         }
 
-        public void StopConnectionOnlyTestPurpose()
+        public void ForceReconnectUsedOnlyTestPurpose()
         {
             try
             {
@@ -90,7 +61,11 @@ namespace CoinAPI.WebSocket.V1
             var data = JsonSerializer.Deserialize<dynamic>(item.Data);
             var type = data["type"] as string;
 
-            Enum.TryParse(type, out MessageType messageType);
+            if (!Enum.TryParse(type, out MessageType messageType))
+            {
+                // unknown type
+                return;
+            }
 
             switch(messageType)
             {

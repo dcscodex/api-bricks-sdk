@@ -4,7 +4,7 @@
 
     <groupId>io.coinapi.websocket</groupId>
     <artifactId>v1</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
 
     <organization>
@@ -16,7 +16,8 @@
         <connection>scm:git:git@github.com:coinapi/coinapi-sdk.git</connection>
         <developerConnection>scm:git:git@github.com:coinapi/coinapi-sdk.git</developerConnection>
         <url>https://github.com/coinapi/coinapi-sdk</url>
-    </scm>
+      <tag>j-ws-v1-1.0</tag>
+  </scm>
 
     <licenses>
         <license>

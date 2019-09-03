@@ -169,12 +169,11 @@ public class CoinAPIWebSocketImpl implements CoinAPIWebSocket {
     private void handle(String message, Class deserializeClass, InvokeFunction invokeFunction) throws IOException, NotImplementedException {
 
         Object deserialize = json.deserialize(deserializeClass, new ByteArrayInputStream(message.getBytes()));
-        try {
-            invokeFunction.preprocesMessages((MessageBase) deserialize);
-        }
-        catch (NullPointerException e) {
+
+        if (invokeFunction == null) {
             throw new NotImplementedException();
         }
+        invokeFunction.preprocesMessages((MessageBase) deserialize);
     }
 
     @Override

@@ -138,7 +138,7 @@ namespace CoinAPI.WebSocket.V1
             }
         }
 
-        private async Task HeartbeatWatcher(CancellationTokenSource connectionCts)
+        private async Task HeartbeatWatcher(ClientWebSocket client, CancellationTokenSource connectionCts)
         {
             while (!connectionCts.IsCancellationRequested)
             {
@@ -146,6 +146,9 @@ namespace CoinAPI.WebSocket.V1
                 if (lag > _hbTimeout)
                 {
                     connectionCts.Cancel();
+                    await client.CloseAsync(WebSocketCloseStatus.NormalClosure, 
+                        nameof(HeartbeatWatcher), 
+                        CancellationToken.None);
                     continue;
                 }
                 await Task.Delay(_hbTimeoutCheckInterval, connectionCts.Token);
@@ -155,12 +158,12 @@ namespace CoinAPI.WebSocket.V1
         private async Task HandleConnection(CancellationTokenSource connectionCts)
         {
             _hbLastAction = DateTime.UtcNow;
-            _ = Task.Run(() => HeartbeatWatcher(connectionCts));
 
             using (_client = new ClientWebSocket())
             {
                 try
                 {
+                    _ = Task.Run(() => HeartbeatWatcher(_client, connectionCts));
                     await _client.ConnectAsync(new Uri(_url), connectionCts.Token);
                     ConnectedEvent.Set();
                     ConnectedEvent.Reset();

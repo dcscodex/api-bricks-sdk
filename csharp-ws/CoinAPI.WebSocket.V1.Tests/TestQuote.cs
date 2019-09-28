@@ -1,6 +1,7 @@
 using CoinAPI.WebSocket.V1.DataModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Threading;
 
 namespace CoinAPI.WebSocket.V1.Tests
@@ -23,15 +24,16 @@ namespace CoinAPI.WebSocket.V1.Tests
 
             using(var wsClient = new CoinApiWsClient(false))
             {
+                var mre = new ManualResetEvent(false);
                 wsClient.QuoteEvent += (s, i) =>
                 {
+                    mre.Set();
                     mssgCount++;
                 };
 
                 wsClient.SendHelloMessage(helloMsg);
 
-                Thread.Sleep(10000);
-
+                mre.WaitOne(TimeSpan.FromSeconds(10));
                 Assert.AreNotEqual(0, mssgCount);
             }
         }

@@ -13,7 +13,9 @@ namespace CoinAPI.WebSocket.V1
         private static readonly int ReceiveBufferSize = 8192;
 
         internal async static Task<MessageData> ReceiveMessage(
-            System.Net.WebSockets.WebSocket webSocket, long maxSize = long.MaxValue)
+            System.Net.WebSockets.WebSocket webSocket, 
+            CancellationToken ct, 
+            long maxSize = long.MaxValue)
         {
             ArraySegment<Byte> buffer = new ArraySegment<byte>(new Byte[ReceiveBufferSize]);
             WebSocketReceiveResult result = null;
@@ -22,7 +24,7 @@ namespace CoinAPI.WebSocket.V1
             {
                 do
                 {
-                    result = await webSocket.ReceiveAsync(buffer, CancellationToken.None);
+                    result = await webSocket.ReceiveAsync(buffer, ct);
                     ms.Write(buffer.Array, buffer.Offset, result.Count);
                     if (ms.Length > maxSize)
                     {

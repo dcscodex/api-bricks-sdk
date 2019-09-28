@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>netstandard1.1;NET45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>CoinAPI.REST.V1</PackageId>
     <Authors>MARMOT SOLUTIONS LTD</Authors>
@@ -16,7 +16,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Company>MARMOT SOLUTIONS LTD</Company>
     <Copyright>MARMOT SOLUTIONS LTD or its affiliates</Copyright>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

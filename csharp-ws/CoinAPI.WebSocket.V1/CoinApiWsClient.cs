@@ -19,11 +19,20 @@ namespace CoinAPI.WebSocket.V1
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private readonly QueueThread<MessageData> _queueThread = null;
 
+        private readonly TimeSpan _hbTimeout = TimeSpan.FromSeconds(10);
+        private readonly TimeSpan _hbTimeoutCheckInterval = TimeSpan.FromSeconds(1);
+        private DateTime _hbLastAction = DateTime.MinValue;
+
         // client reference is leaked here only for testing purposes (forcing reconnects)
-        private ClientWebSocket _client = null;
+#pragma warning disable IDE0069 // Disposable fields should be disposed
+        protected ClientWebSocket _client = null;
+#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         private Hello? helloMessage { get; set; }
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
+        public event EventHandler<Exception> Error;
+        public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
+        protected bool? ForceOverrideHeartbeat { get; set; } = true;
 
         public CoinApiWsClient(bool isSandbox = false)
         {
@@ -32,27 +41,20 @@ namespace CoinAPI.WebSocket.V1
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
             _url = _isSandbox ? UrlSandbox : UrlProduction;
         }
-
-
         public void SendHelloMessage(Hello msg)
         {
             var startClient = !helloMessage.HasValue;
 
+            if (ForceOverrideHeartbeat.HasValue)
+            {
+                msg.heartbeat = ForceOverrideHeartbeat.Value;
+            }
             helloMessage = msg;
 
-            if(startClient)
+            if (startClient)
             {
                 Task.Run(() => Connect());
             }
-        }
-
-        public void ForceReconnectUsedOnlyTestPurpose()
-        {
-            try
-            {
-                _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "testClose", _cts.Token).Wait();
-            }
-            catch { }
         }
 
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
@@ -128,25 +130,50 @@ namespace CoinAPI.WebSocket.V1
         {
             while (!_cts.IsCancellationRequested)
             {
-                await HandleConnection();
+                using (var connectionCts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token))
+                {
+                    await HandleConnection(connectionCts);
+                    connectionCts.Cancel();
+                }
             }
         }
 
-        private async Task HandleConnection()
+        private async Task HeartbeatWatcher(CancellationTokenSource connectionCts)
         {
-            using(_client = new ClientWebSocket())
+            while (!connectionCts.IsCancellationRequested)
+            {
+                var lag = DateTime.UtcNow - _hbLastAction;
+                if (lag > _hbTimeout)
+                {
+                    connectionCts.Cancel();
+                    continue;
+                }
+                await Task.Delay(_hbTimeoutCheckInterval, connectionCts.Token);
+            }
+        }
+
+        private async Task HandleConnection(CancellationTokenSource connectionCts)
+        {
+            _hbLastAction = DateTime.UtcNow;
+            _ = Task.Run(() => HeartbeatWatcher(connectionCts));
+
+            using (_client = new ClientWebSocket())
             {
                 try
                 {
-                    await _client.ConnectAsync(new Uri(_url), _cts.Token);
+                    await _client.ConnectAsync(new Uri(_url), connectionCts.Token);
+                    ConnectedEvent.Set();
+                    ConnectedEvent.Reset();
+                    _hbLastAction = DateTime.UtcNow;
 
                     var helloMsg = new ArraySegment<byte>(JsonSerializer.Serialize(helloMessage.Value));
+                    await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, connectionCts.Token);
+                    _hbLastAction = DateTime.UtcNow;
 
-                    await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, _cts.Token);
-
-                    while (_client.State == WebSocketState.Open && !_cts.IsCancellationRequested)
+                    while (_client.State == WebSocketState.Open && !connectionCts.IsCancellationRequested)
                     {
-                        var messageData = await WSUtils.ReceiveMessage(_client);
+                        var messageData = await WSUtils.ReceiveMessage(_client, connectionCts.Token);
+                        _hbLastAction = DateTime.UtcNow;
 
                         if (messageData.MessageType == WebSocketMessageType.Close)
                         {
@@ -156,10 +183,17 @@ namespace CoinAPI.WebSocket.V1
                         _queueThread.Enqueue(messageData);
                     }
                 }
-                catch
+                catch (TaskCanceledException) { }
+                catch (Exception ex)
                 {
+                    OnError(ex);
                 }
             }
+        }
+
+        protected void OnError(Exception ex)
+        {
+            Error?.Invoke(this, ex);
         }
 
         public void Dispose()

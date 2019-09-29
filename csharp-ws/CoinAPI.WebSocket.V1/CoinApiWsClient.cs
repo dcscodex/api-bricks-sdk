@@ -28,7 +28,7 @@ namespace CoinAPI.WebSocket.V1
         protected ClientWebSocket _client = null;
 #pragma warning restore IDE0069 // Disposable fields should be disposed
 
-        private Hello? helloMessage { get; set; }
+        private Hello HelloMessage { get; set; }
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
         public event EventHandler<Exception> Error;
         public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
@@ -43,13 +43,18 @@ namespace CoinAPI.WebSocket.V1
         }
         public void SendHelloMessage(Hello msg)
         {
-            var startClient = !helloMessage.HasValue;
+            if (msg == null)
+            {
+                throw new ArgumentNullException(nameof(msg));
+            }
+
+            var startClient = HelloMessage == null;
 
             if (ForceOverrideHeartbeat.HasValue)
             {
                 msg.heartbeat = ForceOverrideHeartbeat.Value;
             }
-            helloMessage = msg;
+            HelloMessage = msg;
 
             if (startClient)
             {
@@ -169,12 +174,20 @@ namespace CoinAPI.WebSocket.V1
                     ConnectedEvent.Reset();
                     _hbLastAction = DateTime.UtcNow;
 
-                    var helloMsg = new ArraySegment<byte>(JsonSerializer.Serialize(helloMessage.Value));
-                    await _client.SendAsync(helloMsg, WebSocketMessageType.Text, true, connectionCts.Token);
+                    var currentHello = HelloMessage;
+                    var helloAs = new ArraySegment<byte>(JsonSerializer.Serialize(currentHello));
+                    await _client.SendAsync(helloAs, WebSocketMessageType.Text, true, connectionCts.Token);
                     _hbLastAction = DateTime.UtcNow;
 
                     while (_client.State == WebSocketState.Open && !connectionCts.IsCancellationRequested)
                     {
+                        if (currentHello != HelloMessage)
+                        {
+                            currentHello = HelloMessage;
+                            helloAs = new ArraySegment<byte>(JsonSerializer.Serialize(currentHello));
+                            await _client.SendAsync(helloAs, WebSocketMessageType.Text, true, connectionCts.Token);
+                            _hbLastAction = DateTime.UtcNow;
+                        }
                         var messageData = await WSUtils.ReceiveMessage(_client, connectionCts.Token);
                         _hbLastAction = DateTime.UtcNow;
 

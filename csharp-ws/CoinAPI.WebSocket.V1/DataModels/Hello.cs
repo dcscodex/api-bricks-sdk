@@ -2,7 +2,7 @@
 
 namespace CoinAPI.WebSocket.V1.DataModels
 {
-    public struct Hello
+    public class Hello
     {
         public Guid apikey { get; set; }
         public bool heartbeat { get; set; }

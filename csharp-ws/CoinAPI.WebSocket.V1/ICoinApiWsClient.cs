@@ -8,6 +8,7 @@ namespace CoinAPI.WebSocket.V1
     public delegate void TradeEventHandler(object sender, Trade item);
     public delegate void VolumeEventHandler(object sender, Volume item);
     public delegate void ExchangeRateHandler(object sneder, ExchangeRate item);
+    public delegate void TickerHandler(object sender, Ticker item);
 
     public interface ICoinApiWsClient
     {
@@ -19,5 +20,6 @@ namespace CoinAPI.WebSocket.V1
         event TradeEventHandler TradeEvent;
         event VolumeEventHandler VolumeEvent;
         event ExchangeRateHandler ExchangeRateEvent;
+        event TickerHandler TickerEvent;
     }
 }

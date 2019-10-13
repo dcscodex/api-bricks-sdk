@@ -10,6 +10,7 @@
         volume,
         ohlcv,
         error,
-        exrate
+        exrate,
+        ticker
     }
 }

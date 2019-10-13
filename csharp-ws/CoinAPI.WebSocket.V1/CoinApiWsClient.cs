@@ -92,6 +92,9 @@ namespace CoinAPI.WebSocket.V1
                 case MessageType.exrate:
                     HandleExchangeRateItem(sender, item);
                     break;
+                case MessageType.ticker:
+                    HandleTickerItem(sender, item);
+                    break;
             }
         }
 
@@ -129,6 +132,12 @@ namespace CoinAPI.WebSocket.V1
         {
             var data = JsonSerializer.Deserialize<ExchangeRate>(item.Data);
             ExchangeRateEvent?.Invoke(sender, data);
+        }
+
+        private void HandleTickerItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<Ticker>(item.Data);
+            TickerEvent?.Invoke(sender, data);
         }
 
         private async Task Connect()
@@ -227,5 +236,6 @@ namespace CoinAPI.WebSocket.V1
         public event TradeEventHandler TradeEvent;
         public event VolumeEventHandler VolumeEvent;
         public event ExchangeRateHandler ExchangeRateEvent;
+        public event TickerHandler TickerEvent;
     }
 }

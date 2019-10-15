@@ -127,6 +127,12 @@ namespace CoinAPI.REST.V1 {
             return GetData<List<OHLCV>>(url);
         }
 
+        public List<OHLCV> Ohlcv_latest_asset_data(string assetBase, string assetQuote, string periodId)
+        {
+            var url = string.Format("/v1/ohlcv/{0}/{1}/latest?period_id={2}", assetBase, assetQuote, periodId);
+            return GetData<List<OHLCV>>(url);
+        }
+
         public List<OHLCV> Ohlcv_historical_data(string symbolId, string periodId, DateTime start, DateTime end, int limit) {
             var url = string.Format("/v1/ohlcv/{0}/history?period_id={1}&time_start={2}&time_end={3}&limit={4}", symbolId, periodId, start.ToString("yyyy-MM-dd HH:ss:mm"), end.ToString("yyyy-MM-dd HH:ss:mm"), limit);
             return GetData<List<OHLCV>>(url);

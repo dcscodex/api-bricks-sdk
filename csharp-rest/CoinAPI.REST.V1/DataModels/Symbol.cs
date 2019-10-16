@@ -17,5 +17,14 @@ namespace CoinAPI.REST.V1 {
         public DateTime future_delivery_time { get; set; }
         public string asset_id_base { get; set; }
         public string asset_id_quote { get; set; }
+
+        public decimal? volume_1hrs { get; set; }
+        public decimal? volume_1hrs_usd { get; set; }
+        public decimal? volume_1day { get; set; }
+        public decimal? volume_1day_usd { get; set; }
+        public decimal? volume_1mth { get; set; }
+        public decimal? volume_1mth_usd { get; set; }
+        public decimal? price { get; set; }
+
     }
 }

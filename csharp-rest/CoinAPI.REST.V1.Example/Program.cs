@@ -11,7 +11,7 @@ namespace CoinAPI.REST.V1.Example
     {
         static void Main(string[] args)
         {
-            var coinApi = new CoinApiRestClient("YOUR_API_KEY_HERE");
+            var coinApi = new CoinApiRestClient("D0613CDB-B0E5-43EA-AFB2-09622079E619");
             Console.Write("Exchange:");
             Console.Write(Environment.NewLine);
             var exchange = coinApi.Metadata_list_exchanges();
@@ -23,6 +23,9 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
                 Console.Write("name:" + item.name);
                 Console.Write(Environment.NewLine);
+                Console.WriteLine("volume_1day_usd:" + item.volume_1day_usd);
+                Console.WriteLine("volume_1hrs_usd:" + item.volume_1hrs_usd);
+                Console.WriteLine("volume_1mth_usd:" + item.volume_1mth_usd);
                 Console.Write("--------------------------------------------------------------------------------------------------------");
                 Console.Write(Environment.NewLine);
             }
@@ -63,6 +66,13 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
                 Console.Write("asset_id_quote:" + item.asset_id_quote);
                 Console.Write(Environment.NewLine);
+                Console.WriteLine("volume_1day_usd:" + item.volume_1day_usd);
+                Console.WriteLine("volume_1hrs_usd:" + item.volume_1hrs_usd);
+                Console.WriteLine("volume_1mth_usd:" + item.volume_1mth_usd);
+                Console.WriteLine("volume_1day:" + item.volume_1day);
+                Console.WriteLine("volume_1hrs:" + item.volume_1hrs);
+                Console.WriteLine("volume_1mth:" + item.volume_1mth);
+                Console.WriteLine("price:" + item.price);
                 Console.Write("--------------------------------------------------------------------------------------------------------");
                 Console.Write(Environment.NewLine);
             }
@@ -88,6 +98,10 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
                 Console.Write("type_is_crypto:" + item.type_is_crypto);
                 Console.Write(Environment.NewLine);
+                Console.WriteLine("volume_1day_usd:" + item.volume_1day_usd);
+                Console.WriteLine("volume_1hrs_usd:" + item.volume_1hrs_usd);
+                Console.WriteLine("volume_1mth_usd:" + item.volume_1mth_usd);
+                Console.WriteLine("price_usd:" + item.price_usd);
                 Console.Write("--------------------------------------------------------------------------------------------------------");
                 Console.Write(Environment.NewLine);
             }

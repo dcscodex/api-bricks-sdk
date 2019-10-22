@@ -13,7 +13,6 @@ namespace CoinAPI.WebSocket.V1
         private const string UrlSandbox = "wss://ws-sandbox.coinapi.io/";
         private const string UrlProduction = "wss://ws.coinapi.io/";
 
-        private readonly bool _isSandbox;
         private readonly string _url;
         
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
@@ -36,10 +35,15 @@ namespace CoinAPI.WebSocket.V1
 
         public CoinApiWsClient(bool isSandbox = false)
         {
-            _isSandbox = isSandbox;
             _queueThread = new QueueThread<MessageData>();
             _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
-            _url = _isSandbox ? UrlSandbox : UrlProduction;
+            _url = isSandbox ? UrlSandbox : UrlProduction;
+        }
+        public CoinApiWsClient(string url)
+        {
+            _queueThread = new QueueThread<MessageData>();
+            _queueThread.ItemDequeuedEvent += _queueThread_ItemDequeuedEvent;
+            _url = url;
         }
         public void SendHelloMessage(Hello msg)
         {

@@ -12,6 +12,21 @@ namespace CoinAPI.REST.V1.Example
         static void Main(string[] args)
         {
             var coinApi = new CoinApiRestClient("D0613CDB-B0E5-43EA-AFB2-09622079E619");
+
+            Console.WriteLine("Assets with icons");
+            var assetsIcons = coinApi.Metadata_list_assets_icons(32);
+            foreach (var assetIcon in assetsIcons)
+            {
+                Console.WriteLine($"asset id = {assetIcon.Id} iconUrl = {assetIcon.Url}");
+            }
+
+            Console.WriteLine("Exchanges with icons");
+            var exhcangesIcons = coinApi.Metadata_list_exchanges_icons(32);
+            foreach(var exchaingeIcon in exhcangesIcons)
+            {
+                Console.WriteLine($"exchange id = {exchaingeIcon.Id} iconUrl = {exchaingeIcon.Url}");
+            }
+
             Console.Write("Exchange:");
             Console.Write(Environment.NewLine);
             var exchange = coinApi.Metadata_list_exchanges();
@@ -30,62 +45,62 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
             }
 
-            Console.Write("symbols:");
-            Console.Write(Environment.NewLine);
-            var symbols = coinApi.Metadata_list_symbols();
-            foreach (var item in symbols)
-            {
-                Console.Write("symbol_id:" + item.symbol_id);
-                Console.Write(Environment.NewLine);
-                Console.Write("exchange_id:" + item.exchange_id);
-                Console.Write(Environment.NewLine);
-                Console.Write("symbol_type:" + item.symbol_type);
-                Console.Write(Environment.NewLine);
+            //Console.Write("symbols:");
+            //Console.Write(Environment.NewLine);
+            //var symbols = coinApi.Metadata_list_symbols();
+            //foreach (var item in symbols)
+            //{
+            //    Console.Write("symbol_id:" + item.symbol_id);
+            //    Console.Write(Environment.NewLine);
+            //    Console.Write("exchange_id:" + item.exchange_id);
+            //    Console.Write(Environment.NewLine);
+            //    Console.Write("symbol_type:" + item.symbol_type);
+            //    Console.Write(Environment.NewLine);
 
-                if (item.symbol_type == "OPTION")
-                {
-                    Console.Write("option_type_is_call:" + item.option_type_is_call);
-                    Console.Write(Environment.NewLine);
-                    Console.Write("option_strike_price:" + item.option_strike_price);
-                    Console.Write(Environment.NewLine);
-                    Console.Write("option_contract_unit:" + item.option_contract_unit);
-                    Console.Write(Environment.NewLine);
-                    Console.Write("option_exercise_style:" + item.option_exercise_style);
-                    Console.Write(Environment.NewLine);
-                    Console.Write("option_expiration_time:" + item.option_expiration_time);
-                    Console.Write(Environment.NewLine);
-                }
+            //    if (item.symbol_type == "OPTION")
+            //    {
+            //        Console.Write("option_type_is_call:" + item.option_type_is_call);
+            //        Console.Write(Environment.NewLine);
+            //        Console.Write("option_strike_price:" + item.option_strike_price);
+            //        Console.Write(Environment.NewLine);
+            //        Console.Write("option_contract_unit:" + item.option_contract_unit);
+            //        Console.Write(Environment.NewLine);
+            //        Console.Write("option_exercise_style:" + item.option_exercise_style);
+            //        Console.Write(Environment.NewLine);
+            //        Console.Write("option_expiration_time:" + item.option_expiration_time);
+            //        Console.Write(Environment.NewLine);
+            //    }
 
-                if (item.symbol_type == "FUTURES")
-                {
-                    Console.Write("future_delivery_time:" + item.future_delivery_time);
-                    Console.Write(Environment.NewLine);
-                }
+            //    if (item.symbol_type == "FUTURES")
+            //    {
+            //        Console.Write("future_delivery_time:" + item.future_delivery_time);
+            //        Console.Write(Environment.NewLine);
+            //    }
 
-                Console.Write("asset_id_base:" + item.asset_id_base);
-                Console.Write(Environment.NewLine);
-                Console.Write("asset_id_quote:" + item.asset_id_quote);
-                Console.Write(Environment.NewLine);
-                Console.WriteLine("volume_1day_usd:" + item.volume_1day_usd);
-                Console.WriteLine("volume_1hrs_usd:" + item.volume_1hrs_usd);
-                Console.WriteLine("volume_1mth_usd:" + item.volume_1mth_usd);
-                Console.WriteLine("volume_1day:" + item.volume_1day);
-                Console.WriteLine("volume_1hrs:" + item.volume_1hrs);
-                Console.WriteLine("volume_1mth:" + item.volume_1mth);
-                Console.WriteLine("price:" + item.price);
-                Console.Write("--------------------------------------------------------------------------------------------------------");
-                Console.Write(Environment.NewLine);
-            }
+            //    Console.Write("asset_id_base:" + item.asset_id_base);
+            //    Console.Write(Environment.NewLine);
+            //    Console.Write("asset_id_quote:" + item.asset_id_quote);
+            //    Console.Write(Environment.NewLine);
+            //    Console.WriteLine("volume_1day_usd:" + item.volume_1day_usd);
+            //    Console.WriteLine("volume_1hrs_usd:" + item.volume_1hrs_usd);
+            //    Console.WriteLine("volume_1mth_usd:" + item.volume_1mth_usd);
+            //    Console.WriteLine("volume_1day:" + item.volume_1day);
+            //    Console.WriteLine("volume_1hrs:" + item.volume_1hrs);
+            //    Console.WriteLine("volume_1mth:" + item.volume_1mth);
+            //    Console.WriteLine("price:" + item.price);
+            //    Console.Write("--------------------------------------------------------------------------------------------------------");
+            //    Console.Write(Environment.NewLine);
+            //}
 
-            Console.WriteLine($"Symbols mapping for BCEX: ");
-            var mappingsList = coinApi.Metadata_symbol_mapping("BCEX");
+            //Console.WriteLine($"Symbols mapping for BCEX: ");
+            //var mappingsList = coinApi.Metadata_symbol_mapping("BCEX");
 
-            foreach(var mapping in mappingsList)
-            {
-                Console.WriteLine($"symbol_id_exchange: {mapping.symbol_id_exchange}");
-                Console.WriteLine($"price_precision: {mapping.price_precision}");
-                Console.WriteLine($"size_precision: {mapping.size_precision}");
-            }
+            //foreach (var mapping in mappingsList)
+            //{
+            //    Console.WriteLine($"symbol_id_exchange: {mapping.symbol_id_exchange}");
+            //    Console.WriteLine($"price_precision: {mapping.price_precision}");
+            //    Console.WriteLine($"size_precision: {mapping.size_precision}");
+            //}
 
             Console.Write("Asset:");
             Console.Write(Environment.NewLine);

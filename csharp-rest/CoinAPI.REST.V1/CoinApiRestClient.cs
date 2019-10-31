@@ -88,8 +88,19 @@ namespace CoinAPI.REST.V1 {
         public List<Asset> Metadata_list_assets() {
             return GetData<List<Asset>>("/v1/assets");
         }
+
         public List<Symbol> Metadata_list_symbols() {
             return GetData<List<Symbol>>("/v1/symbols");
+        }
+
+        public List<Icon> Metadata_list_assets_icons(int iconSize)
+        {
+            return GetData<List<Icon>>($"/v1/assets/icons/{iconSize}");
+        }
+
+        public List<Icon> Metadata_list_exchanges_icons(int iconSize)
+        {
+            return GetData<List<Icon>>($"/v1/exchanges/icons/{iconSize}");
         }
 
         public List<SymbolMapping> Metadata_symbol_mapping(string idExchange)

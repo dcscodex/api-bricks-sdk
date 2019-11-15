@@ -11,20 +11,20 @@ namespace CoinAPI.REST.V1.Example
     {
         static void Main(string[] args)
         {
-            var coinApi = new CoinApiRestClient("D0613CDB-B0E5-43EA-AFB2-09622079E619");
+            var coinApi = new CoinApiRestClient("4024ad18-9da0-4032-a5ea-1af956a2e8a5");
 
             Console.WriteLine("Assets with icons");
             var assetsIcons = coinApi.Metadata_list_assets_icons(32);
             foreach (var assetIcon in assetsIcons)
             {
-                Console.WriteLine($"asset id = {assetIcon.Id} iconUrl = {assetIcon.Url}");
+                Console.WriteLine($"asset id = {assetIcon.asset_id} iconUrl = {assetIcon.url}");
             }
 
             Console.WriteLine("Exchanges with icons");
             var exhcangesIcons = coinApi.Metadata_list_exchanges_icons(32);
             foreach(var exchaingeIcon in exhcangesIcons)
             {
-                Console.WriteLine($"exchange id = {exchaingeIcon.Id} iconUrl = {exchaingeIcon.Url}");
+                Console.WriteLine($"exchange id = {exchaingeIcon.exchange_id} iconUrl = {exchaingeIcon.url}");
             }
 
             Console.Write("Exchange:");

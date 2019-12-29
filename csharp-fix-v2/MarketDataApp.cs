@@ -9,16 +9,18 @@ namespace COINAPI.FIX.V2
     {
         Session _session = null;
 
-        private bool ExecuteSymbolListRequest = false;
-        private string FilterBySymbolId = "DERIBIT_OPT_";
-        private string FilterByExchangeName = "GEMINI";
+        private bool ExecuteSecurityListRequest = false;
+        private string FilterBySymbolIdForSecurityListRequest = "^DERIBIT_OPT_(.*)$";
+        private string FilterByExchangeNameForSecurityListRequest = "GEMINI";
 
         private string[] SubscribeBySymbolRegex = new string[] 
         {
-            "GEMINI_SPOT_BTC_USD", // you can use the exact match of the symbol id
-            "GEMINI_SPOT_(.*)_ETH", // or you can use the regular expression syntax to get eg. all spot symbols to ETH from GEMINI
-            "GEMINI_SPOT_(BCH|LTC)_USD" // second example of the regex, the BCH/USD & LTC/USD
+            "^GEMINI_SPOT_BTC_USD$", // you can use the exact match of the symbol id
+            "^GEMINI_SPOT_(.*)_ETH$", // or you can use the regular expression syntax to get eg. all spot symbols to ETH from GEMINI
+            "^GEMINI_SPOT_(BCH|LTC)_USD$" // second example of the regex, the BCH/USD & LTC/USD
         };
+
+        private HashSet<string> _seen = null;
 
         #region IApplication interface overrides
 
@@ -29,30 +31,33 @@ namespace COINAPI.FIX.V2
 
         public void OnLogon(SessionID sessionID)
         {
+            _seen = new HashSet<string>();
+
             Console.WriteLine("Logon - " + sessionID.ToString());
 
-            if (ExecuteSymbolListRequest)
+            if (ExecuteSecurityListRequest)
             {
                 // get all the symbols
                 SecurityListRequestAll();
 
                 // get symbols only by the symbol prefix
-                if (!string.IsNullOrWhiteSpace(FilterBySymbolId))
+                if (!string.IsNullOrWhiteSpace(FilterBySymbolIdForSecurityListRequest))
                 {
-                    SecurityListRequestFilteredBySymbolIdPrefix(FilterBySymbolId);
+                    SecurityListRequestFilteredBySymbolIdPrefix(FilterBySymbolIdForSecurityListRequest);
                 }
 
                 // get symbols from specific exchange
-                if (!string.IsNullOrWhiteSpace(FilterByExchangeName))
+                if (!string.IsNullOrWhiteSpace(FilterByExchangeNameForSecurityListRequest))
                 {
-                    SecurityListRequestFilteredByExchange(FilterByExchangeName);
+                    SecurityListRequestFilteredByExchange(FilterByExchangeNameForSecurityListRequest);
                 }
             }
 
             // subscribe by symbol ids
             //MarketDataRequestTrades(SubscribeBySymbolRegex);
             //MarketDataRequestQuotes(SubscribeBySymbolRegex);
-            MarketDataRequestFullOrderbook(SubscribeBySymbolRegex);
+            //MarketDataRequestFullOrderbook(SubscribeBySymbolRegex);
+            MarketDataRequestFullOrderbookIncremential(SubscribeBySymbolRegex);
         }
 
         private void MarketDataRequestTrades(string[] symbol_ids)
@@ -110,6 +115,36 @@ namespace COINAPI.FIX.V2
             QuickFix.FIX44.MarketDataRequest mdr = new QuickFix.FIX44.MarketDataRequest();
             mdr.MDReqID = new MDReqID(Guid.NewGuid().ToString());
             mdr.SubscriptionRequestType = new SubscriptionRequestType(SubscriptionRequestType.SNAPSHOT_PLUS_UPDATES);
+            mdr.MarketDepth = new MarketDepth(20);
+            mdr.MDUpdateType = new MDUpdateType(MDUpdateType.FULL_REFRESH);
+
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.BID);
+                mdr.AddGroup(type);
+            }
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.OFFER);
+                mdr.AddGroup(type);
+            }
+
+            foreach (var symbol_id in symbol_ids)
+            {
+                var relatedsym = new QuickFix.FIX44.MarketDataRequest.NoRelatedSymGroup();
+                relatedsym.Symbol = new Symbol(symbol_id);
+                mdr.AddGroup(relatedsym);
+            }
+
+            SendMessage(mdr);
+        }
+
+        private void MarketDataRequestFullOrderbookIncremential(string[] symbol_ids)
+        {
+            Console.WriteLine($"Sending MarketDataRequest with {symbol_ids.Length} items.");
+            QuickFix.FIX44.MarketDataRequest mdr = new QuickFix.FIX44.MarketDataRequest();
+            mdr.MDReqID = new MDReqID(Guid.NewGuid().ToString());
+            mdr.SubscriptionRequestType = new SubscriptionRequestType(SubscriptionRequestType.SNAPSHOT_PLUS_UPDATES);
             mdr.MarketDepth = new MarketDepth(0);
             mdr.MDUpdateType = new MDUpdateType(MDUpdateType.INCREMENTAL_REFRESH);
 
@@ -121,6 +156,11 @@ namespace COINAPI.FIX.V2
             {
                 var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
                 type.MDEntryType = new MDEntryType(MDEntryType.OFFER);
+                mdr.AddGroup(type);
+            }
+            {
+                var type = new QuickFix.FIX44.MarketDataRequest.NoMDEntryTypesGroup();
+                type.MDEntryType = new MDEntryType(MDEntryType.TRADE);
                 mdr.AddGroup(type);
             }
 
@@ -170,11 +210,11 @@ namespace COINAPI.FIX.V2
 
         public void FromAdmin(Message message, SessionID sessionID)
         {
-            Console.WriteLine("FromAdmin - " + sessionID.ToString());
+            //Console.WriteLine("FromAdmin - " + sessionID.ToString());
         }
         public void ToAdmin(Message message, SessionID sessionID)
         {
-            Console.WriteLine("ToAdmin - " + sessionID.ToString());
+            //Console.WriteLine("ToAdmin - " + sessionID.ToString());
         }
 
         public void FromApp(Message message, SessionID sessionID)
@@ -198,9 +238,16 @@ namespace COINAPI.FIX.V2
         }
         #endregion
 
-        public void OnMessage(QuickFix.FIX44.SecurityList msg,
-            SessionID s)
+        public void OnMessage(QuickFix.FIX44.SecurityList msg, SessionID s)
         {
+            string text = $"Received SecurityList with id = {msg.SecurityReqID.getValue()}, type {msg.SecurityRequestResult.getValue()}";
+            if (msg.IsSetTotNoRelatedSym())
+            {
+                text += $", TotNoRelatedSym = {msg.TotNoRelatedSym.getValue()}, LastFragment = {msg.LastFragment.getValue()}, NoRelatedSym = {msg.NoRelatedSym.getValue()}";
+            }
+            Console.WriteLine(text);
+            return;
+
             for (int idx = 0; idx < msg.NoRelatedSym.getValue(); idx++)
             {
                 var symbol = new QuickFix.FIX44.SecurityList.NoRelatedSymGroup();
@@ -211,9 +258,39 @@ namespace COINAPI.FIX.V2
             Console.WriteLine($"--------------------------------------------------");
         }
 
-        public void OnMessage(QuickFix.FIX44.MarketDataIncrementalRefresh msg, 
-            SessionID s)
+        public void OnMessage(QuickFix.FIX44.MarketDataIncrementalRefresh msg, SessionID s)
         {
+            var symbols = new HashSet<string>();
+            var entryType = new HashSet<string>();
+
+            for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
+            {
+                var item = new QuickFix.FIX44.MarketDataIncrementalRefresh.NoMDEntriesGroup();
+                msg.GetGroup(idx + 1, item);
+                symbols.Add(item.Symbol.getValue());
+                if (MDEntryType.BID == item.MDEntryType.getValue())
+                {
+                    entryType.Add("BID");
+                }
+                else if (MDEntryType.OFFER == item.MDEntryType.getValue())
+                {
+                    entryType.Add("OFFER");
+                }
+                else if (MDEntryType.TRADE == item.MDEntryType.getValue())
+                {
+                    entryType.Add("TRADE");
+                }
+
+                if (!_seen.Contains(item.Symbol.getValue()) && MDEntryType.TRADE != item.MDEntryType.getValue())
+                {
+                    throw new Exception("Incremential before snapshot");
+                }
+
+            }
+
+            Console.WriteLine($"Received MarketDataIncrementalRefresh {msg.NoMDEntries.getValue()} items for {string.Join(",", symbols)} with {string.Join(",", entryType)}.");
+            return;
+
             for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
             {
                 var item = new QuickFix.FIX44.MarketDataIncrementalRefresh.NoMDEntriesGroup();
@@ -236,9 +313,11 @@ namespace COINAPI.FIX.V2
             Console.WriteLine($"--------------------------------------------------");
         }
 
-        public void OnMessage(QuickFix.FIX44.MarketDataSnapshotFullRefresh msg,
-            SessionID s)
+        public void OnMessage(QuickFix.FIX44.MarketDataSnapshotFullRefresh msg, SessionID s)
         {
+            Console.WriteLine($"Received MarketDataSnapshotFullRefresh for {msg.Symbol.getValue()} with {msg.NoMDEntries.getValue()} items.");
+            return;
+
             for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
             {
                 var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();

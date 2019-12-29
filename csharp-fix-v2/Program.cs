@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickFix;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ namespace COINAPI.FIX.V2
                 QuickFix.SessionSettings settings = new QuickFix.SessionSettings("config_nossl.cfg");
                 MarketDataApp application = new MarketDataApp();
                 QuickFix.IMessageStoreFactory storeFactory = new QuickFix.FileStoreFactory(settings);
-                QuickFix.ILogFactory logFactory = new QuickFix.ScreenLogFactory(settings);
+                QuickFix.ILogFactory logFactory = new NullLogFactory(settings);
                 QuickFix.Transport.SocketInitiator initiator = new QuickFix.Transport.SocketInitiator(application, storeFactory, settings, logFactory);
                 initiator.Start();
 
-                System.Threading.Thread.Sleep(TimeSpan.MaxValue);
+                System.Threading.Thread.Sleep(Int32.MaxValue);
             }
             catch (System.Exception e)
             {
@@ -29,6 +30,22 @@ namespace COINAPI.FIX.V2
                 Console.ReadLine();
             }
             Environment.Exit(1);
+        }
+
+        public class NullLogFactory : ILogFactory
+        {
+
+            #region LogFactory Members
+
+            public NullLogFactory(SessionSettings settings)
+            { }
+
+            public ILog Create(SessionID sessionID)
+            {
+                return new QuickFix.NullLog();
+            }
+
+            #endregion
         }
     }
 }

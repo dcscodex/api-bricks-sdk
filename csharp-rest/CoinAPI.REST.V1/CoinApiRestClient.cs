@@ -118,8 +118,8 @@ namespace CoinAPI.REST.V1 {
             return GetData<Exchangerate>(url);
         }
 
-        public ExchangeCurrentrate Exchange_rates_get_all_current_rates(string baseId) {
-            var url = string.Format("/v1/exchangerate/{0}", baseId);
+        public ExchangeCurrentrate Exchange_rates_get_all_current_rates(string baseId, bool invert = false) {
+            var url = string.Format("/v1/exchangerate/{0}?invert={1}", baseId, invert);
             return GetData<ExchangeCurrentrate>(url);
         }
 

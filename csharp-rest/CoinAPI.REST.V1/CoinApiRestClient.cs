@@ -12,7 +12,7 @@ namespace CoinAPI.REST.V1 {
     {
         private string apikey;
         private string dateFormat = "yyyy-MM-ddTHH:mm:ss.fff";
-        private string WebUrl = "https://rest.coinapi.io";// "https://rest-test.coinapi.io";
+        private string WebUrl = "https://rest.coinapi.io";
 
         public CoinApiRestClient(string apikey, bool sandbox = false)
         {
@@ -21,6 +21,12 @@ namespace CoinAPI.REST.V1 {
 			{
 				WebUrl = "https://rest-sandbox.coinapi.io";
 			}
+        }
+
+        public CoinApiRestClient(string apikey, string url)
+        {
+            this.apikey = apikey;
+            this.WebUrl = url.TrimEnd('/');
         }
 
         private T GetData<T>(string url)

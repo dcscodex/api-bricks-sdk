@@ -93,6 +93,11 @@ namespace CoinAPI.REST.V1 {
             return GetData<List<Symbol>>("/v1/symbols");
         }
 
+        public List<Symbol> Metadata_list_symbols_exchange(string exchangeId)
+        {
+            return GetData<List<Symbol>>($"/v1/symbols/{exchangeId}");
+        }
+
         public List<Icon> Metadata_list_assets_icons(int iconSize)
         {
             return GetData<List<Icon>>($"/v1/assets/icons/{iconSize}");

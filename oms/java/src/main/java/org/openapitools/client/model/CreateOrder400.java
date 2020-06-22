@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * CreateOrder400
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T11:06:54.569Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T11:11:02.765Z[Etc/UTC]")
 public class CreateOrder400 {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

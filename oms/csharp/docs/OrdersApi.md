@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Api.OrdersApi
+# CoinAPI.OMS.API.SDK23.Api.OrdersApi
 
 All URIs are relative to *http://localhost:3001*
 
@@ -24,9 +24,9 @@ Cancel all existing order.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {
@@ -99,9 +99,9 @@ Cancel an existing order, can be used to cancel margin, exchange, and derivative
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {
@@ -176,9 +176,9 @@ List your current open orders.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {
@@ -251,9 +251,9 @@ You can place two types of orders: limit and market. Orders can only be placed i
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {

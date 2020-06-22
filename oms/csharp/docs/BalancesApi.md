@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Api.BalancesApi
+# CoinAPI.OMS.API.SDK23.Api.BalancesApi
 
 All URIs are relative to *http://localhost:3001*
 
@@ -21,9 +21,9 @@ Returns all of your balances, including available balance.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {

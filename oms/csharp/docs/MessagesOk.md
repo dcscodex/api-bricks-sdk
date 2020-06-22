@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK.Model.MessagesOk
+# CoinAPI.OMS.API.SDK23.Model.MessagesOk
 
 ## Properties
 

@@ -40,7 +40,7 @@ if ! type nuget &>/dev/null; then
 fi
 
 mozroots --import --sync
-${nuget_cmd} install src/CoinAPI.OMS.API.SDK/packages.config -o packages;
+${nuget_cmd} install src/CoinAPI.OMS.API.SDK23/packages.config -o packages;
 
 echo "[INFO] Copy DLLs to the 'bin' folder"
 mkdir -p bin;
@@ -48,15 +48,15 @@ cp packages/Newtonsoft.Json.12.0.3/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.
 cp packages/RestSharp.105.1.0/lib/net45/RestSharp.dll bin/RestSharp.dll;
 cp packages/JsonSubTypes.1.6.0/lib/net45/JsonSubTypes.dll bin/JsonSubTypes.dll
 
-echo "[INFO] Run 'mcs' to build bin/CoinAPI.OMS.API.SDK.dll"
+echo "[INFO] Run 'mcs' to build bin/CoinAPI.OMS.API.SDK23.dll"
 mcs -langversion:${langversion} -sdk:${sdk} -r:bin/Newtonsoft.Json.dll,bin/JsonSubTypes.dll,\
 bin/RestSharp.dll,\
 System.ComponentModel.DataAnnotations.dll,\
 System.Runtime.Serialization.dll \
 -target:library \
--out:bin/CoinAPI.OMS.API.SDK.dll \
--recurse:'src/CoinAPI.OMS.API.SDK/*.cs' \
--doc:bin/CoinAPI.OMS.API.SDK.xml \
+-out:bin/CoinAPI.OMS.API.SDK23.dll \
+-recurse:'src/CoinAPI.OMS.API.SDK23/*.cs' \
+-doc:bin/CoinAPI.OMS.API.SDK23.xml \
 -platform:anycpu
 
 if [ $? -ne 0 ]
@@ -64,5 +64,5 @@ then
   echo "[ERROR] Compilation failed with exit code $?"
   exit 1
 else
-  echo "[INFO] bin/CoinAPI.OMS.API.SDK.dll was created successfully"
+  echo "[INFO] bin/CoinAPI.OMS.API.SDK23.dll was created successfully"
 fi

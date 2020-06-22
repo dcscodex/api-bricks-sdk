@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK.Model.OrderStatus
+# CoinAPI.OMS.API.SDK23.Model.OrderStatus
 
 ## Properties
 

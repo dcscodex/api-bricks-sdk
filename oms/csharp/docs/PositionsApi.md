@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Api.PositionsApi
+# CoinAPI.OMS.API.SDK23.Api.PositionsApi
 
 All URIs are relative to *http://localhost:3001*
 
@@ -21,9 +21,9 @@ Returns all of your positions.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.OMS.API.SDK23.Api;
+using CoinAPI.OMS.API.SDK23.Client;
+using CoinAPI.OMS.API.SDK23.Model;
 
 namespace Example
 {

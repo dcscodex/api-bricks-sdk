@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK.Model.CreateOrder400
+# CoinAPI.OMS.API.SDK23.Model.CreateOrder400
 
 ## Properties
 

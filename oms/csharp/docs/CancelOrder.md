@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK.Model.CancelOrder
+# CoinAPI.OMS.API.SDK23.Model.CancelOrder
 
 ## Properties
 

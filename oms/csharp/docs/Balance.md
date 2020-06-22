@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK.Model.Balance
+# CoinAPI.OMS.API.SDK23.Model.Balance
 
 ## Properties
 

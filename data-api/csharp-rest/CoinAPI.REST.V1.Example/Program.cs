@@ -11,7 +11,7 @@ namespace CoinAPI.REST.V1.Example
     {
         static void Main(string[] args)
         {
-            var coinApi = new CoinApiRestClient("4024ad18-9da0-4032-a5ea-1af956a2e8a5");
+            var coinApi = new CoinApiRestClient("4FAB4B58-9D8F-4CFF-9FB3-83833109584E");
 
             Console.WriteLine("Assets with icons");
             var assetsIcons = coinApi.Metadata_list_assets_icons(32);
@@ -276,7 +276,7 @@ namespace CoinAPI.REST.V1.Example
 
             Console.Write("Trades latest data symbol:");
             Console.Write(Environment.NewLine);
-            var latest_trades_doge = coinApi.Trades_latest_data_symbol("BITTREX_SPOT_BTC_DOGE");
+            var latest_trades_doge = coinApi.Trades_latest_data_symbol("BITSTAMP_SPOT_BTC_USD");
             foreach (var item in latest_trades_doge)
             {
                 Console.Write("symbol_id:" + item.symbol_id);
@@ -451,7 +451,7 @@ namespace CoinAPI.REST.V1.Example
             }
             Console.Write("Orderbooks current data all:");
             Console.Write(Environment.NewLine);
-            var orderbooks_current_data = coinApi.Orderbooks_current_data_all();
+            var orderbooks_current_data = coinApi.Orderbooks_current_data_all_filtered_bitstamp();
             foreach (var item in orderbooks_current_data)
             {
                 Console.Write("symbol_id:" + item.symbol_id);
@@ -594,6 +594,7 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
             }
 
+            Console.WriteLine("=== END ===");
             Console.ReadLine();
         }
     }

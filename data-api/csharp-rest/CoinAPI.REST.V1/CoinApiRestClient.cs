@@ -6,13 +6,15 @@ using System.Net;
 using System.Net.Http;
 using CoinAPI.REST.V1.Exceptions;
 using CoinAPI.REST.V1.DataModels;
+using System.Diagnostics;
+using System.Linq;
 
 namespace CoinAPI.REST.V1 {
     public class CoinApiRestClient
     {
         private string apikey;
         private string dateFormat = "yyyy-MM-ddTHH:mm:ss.fff";
-        private string WebUrl = "https://rest.coinapi.io";
+        private string WebUrl = "http://hdc1-enc-02-bay-01.bbxt.svisstack.com:800";
 
         public CoinApiRestClient(string apikey, bool sandbox = false)
         {
@@ -40,7 +42,27 @@ namespace CoinAPI.REST.V1 {
                     {
                         client.DefaultRequestHeaders.Add("X-CoinAPI-Key", apikey);
 
-                        var response = client.GetAsync(WebUrl + url).Result;
+                        HttpResponseMessage response = null;
+                        var swl = new List<long>();
+                        for (int idx = 0; idx < 10; idx++)
+                        {
+                            var sw = new Stopwatch();
+                            sw.Start();
+                            response = client.GetAsync(WebUrl + url).Result;
+                            sw.Stop();
+                            swl.Add(sw.ElapsedMilliseconds);
+                        }
+
+                        var link = WebUrl + url;
+                        if (!link.Contains("?"))
+                        {
+                            link = $"{link}?apikey={apikey};{swl.Min()};{(int)Math.Round(swl.Average(), 0)};{swl.Max()}";
+                        }
+                        else
+                        {
+                            link = $"{link}&apikey={apikey};{swl.Min()};{(int)Math.Round(swl.Average(), 0)};{swl.Max()}";
+                        }
+                        Debug.WriteLine(link);
 
                         if (!response.IsSuccessStatusCode) 
                             RaiseError(response);
@@ -254,8 +276,8 @@ namespace CoinAPI.REST.V1 {
             return GetData<List<Quote>>(url);
 
         }
-        public List<Orderbook> Orderbooks_current_data_all() {
-            var url = "/v1/orderbooks/current";
+        public List<Orderbook> Orderbooks_current_data_all_filtered_bitstamp() {
+            var url = "/v1/orderbooks/current?filter_symbol_id=BITSTAMP";
             return GetData<List<Orderbook>>(url);
         }
 

@@ -316,17 +316,40 @@ namespace COINAPI.FIX.V2
         public void OnMessage(QuickFix.FIX44.MarketDataSnapshotFullRefresh msg, SessionID s)
         {
             Console.WriteLine($"Received MarketDataSnapshotFullRefresh for {msg.Symbol.getValue()} with {msg.NoMDEntries.getValue()} items.");
-            return;
 
+            //for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
+            //{
+            //    var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();
+            //    msg.GetGroup(idx + 1, level);
+            //    Console.WriteLine($"{level.MDEntryType} @ {msg.Symbol}:");
+            //    Console.WriteLine($" Date: {level.MDEntryDate}");
+            //    Console.WriteLine($" Time: {level.MDEntryTime}");
+            //    Console.WriteLine($" Px: {level.MDEntryPx}");
+            //    Console.WriteLine($" Size: {level.MDEntrySize}");
+            //}
+
+            Console.WriteLine("BIDS:");
             for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
             {
                 var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();
                 msg.GetGroup(idx + 1, level);
-                Console.WriteLine($"{level.MDEntryType} @ {msg.Symbol}:");
-                Console.WriteLine($" Date: {level.MDEntryDate}");
-                Console.WriteLine($" Time: {level.MDEntryTime}");
-                Console.WriteLine($" Px: {level.MDEntryPx}");
-                Console.WriteLine($" Size: {level.MDEntrySize}");
+                if (level.MDEntryType.getValue() == MDEntryType.OFFER)
+                {
+                    continue;
+                }
+                Console.WriteLine($"P {level.MDEntryPx} @ S {level.MDEntrySize}");
+            }
+
+            Console.WriteLine("ASKS:");
+            for (int idx = 0; idx < msg.NoMDEntries.getValue(); idx++)
+            {
+                var level = new QuickFix.FIX44.MarketDataSnapshotFullRefresh.NoMDEntriesGroup();
+                msg.GetGroup(idx + 1, level);
+                if (level.MDEntryType.getValue() == MDEntryType.BID)
+                {
+                    continue;
+                }
+                Console.WriteLine($"P {level.MDEntryPx} @ S {level.MDEntrySize}");
             }
         }
 

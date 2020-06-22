@@ -2,7 +2,7 @@
 
 OMS - REST API ...@
 - API version: v1
-  - Build date: 2020-06-22T10:43:24.502Z[Etc/UTC]
+  - Build date: 2020-06-22T11:06:54.569Z[Etc/UTC]
 
 OMS Project
 

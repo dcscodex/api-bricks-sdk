@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK23 - the C# library for the OMS - REST API ...@
+# CoinAPI.OMS.API.SDK234567 - the C# library for the OMS - REST API ...@
 
 OMS Project
 
@@ -42,9 +42,9 @@ Run the following command to generate the DLL
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 
 ```csharp
-using CoinAPI.OMS.API.SDK23.Api;
-using CoinAPI.OMS.API.SDK23.Client;
-using CoinAPI.OMS.API.SDK23.Model;
+using CoinAPI.OMS.API.SDK234567.Api;
+using CoinAPI.OMS.API.SDK234567.Client;
+using CoinAPI.OMS.API.SDK234567.Model;
 
 ```
 
@@ -56,7 +56,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out CoinAPI.OMS.API.SDK23.csproj
+nuget pack -Build -OutputDirectory out CoinAPI.OMS.API.SDK234567.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -67,9 +67,9 @@ Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-p
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK23.Api;
-using CoinAPI.OMS.API.SDK23.Client;
-using CoinAPI.OMS.API.SDK23.Model;
+using CoinAPI.OMS.API.SDK234567.Api;
+using CoinAPI.OMS.API.SDK234567.Client;
+using CoinAPI.OMS.API.SDK234567.Model;
 
 namespace Example
 {

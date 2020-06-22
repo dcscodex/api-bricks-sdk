@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK23.Model.NewOrder
+# CoinAPI.OMS.API.SDK234567.Model.NewOrder
 
 ## Properties
 

@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.API.SDK234567.Model.TimeInForce
+# CoinAPI.OMS.REST.V1.Model.TimeInForce
 
 ## Properties
 

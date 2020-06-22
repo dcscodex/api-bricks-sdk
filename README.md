@@ -10,7 +10,7 @@ Directory | Description |
 --- | --- |
 data-sdk | SDK for CoinAPI Market Data API
 oms-sdk | SDK for CoinAPI Trading/OMS API (Order Management System)
-cryptotick-samples | Examples how to process CryptoTick CSV flat files
+cryptotick-samples | Examples related to processing CryptoTick GZIP+CSV flat files
 
 ## Package managers coverage
 

@@ -31,6 +31,7 @@ namespace CoinAPI.WebSocket.V1
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
         public event EventHandler<Exception> Error;
         public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
+        public DateTime? ConnectedTime { get; private set; }
         protected bool? ForceOverrideHeartbeat { get; set; } = true;
 
         public CoinApiWsClient(bool isSandbox = false)
@@ -151,6 +152,7 @@ namespace CoinAPI.WebSocket.V1
                 using (var connectionCts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token))
                 {
                     await HandleConnection(connectionCts);
+                    ConnectedTime = null;
                     connectionCts.Cancel();
                 }
             }
@@ -183,6 +185,7 @@ namespace CoinAPI.WebSocket.V1
                 {
                     _ = Task.Run(() => HeartbeatWatcher(_client, connectionCts));
                     await _client.ConnectAsync(new Uri(_url), connectionCts.Token);
+                    ConnectedTime = DateTime.UtcNow;
                     ConnectedEvent.Set();
                     ConnectedEvent.Reset();
                     _hbLastAction = DateTime.UtcNow;

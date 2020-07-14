@@ -4,19 +4,19 @@
     <TargetFrameworks>netstandard1.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>CoinAPI.REST.V1</PackageId>
-    <Authors>MARMOT SOLUTIONS LTD</Authors>
+    <Authors>COINAPI LTD</Authors>
     <Product>CoinAPI.REST</Product>
     <Description>SDK for www.CoinAPI.io REST API</Description>
     <PackageProjectUrl>https://www.CoinAPI.io</PackageProjectUrl>
-    <PackageIconUrl>https://www.coinapi.io/images/favicon.png</PackageIconUrl>
+    <PackageIconUrl>https://www.coinapi.io/img/favicon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/coinapi/coinapi-sdk/</RepositoryUrl>
     <RepositoryType>GitHub.com</RepositoryType>
     <PackageTags>coinapi sdk rest v1 api</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Company>MARMOT SOLUTIONS LTD</Company>
-    <Copyright>MARMOT SOLUTIONS LTD or its affiliates</Copyright>
-    <Version>1.4.5</Version>
+    <Company>COINAPI LTD</Company>
+    <Copyright>COINAPI LTD or its affiliates</Copyright>
+    <Version>1.4.6</Version>
   </PropertyGroup>
 
   <ItemGroup>

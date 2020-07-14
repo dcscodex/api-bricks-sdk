@@ -1,0 +1,1 @@
+Directory for FIX protocol specifications. Those files are linked publicly from the documentation and possibly other sources.

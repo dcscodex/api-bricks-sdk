@@ -1,5 +1,4 @@
-﻿using CoinAPI.OEML.Common.Model;
-using CoinAPI.REST.V1;
+﻿using CoinAPI.REST.V1;
 using CoinAPI.REST.V1.DataModels;
 using QuickFix;
 using System;

@@ -6,6 +6,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
 import 'package:openapi/model/balance.dart';
+import 'package:openapi/model/message.dart';
 
 class BalancesApi {
     final Dio _dio;
@@ -15,7 +16,7 @@ class BalancesApi {
 
         /// Get balances
         ///
-        /// Returns all of your balances, including available balance.
+        /// Get current currency balance from all or single exchange.
         Future<Response<List<Balance>>>v1BalancesGet({ String exchangeId,CancelToken cancelToken, Map<String, String> headers,}) async {
 
         String _path = "/v1/balances";

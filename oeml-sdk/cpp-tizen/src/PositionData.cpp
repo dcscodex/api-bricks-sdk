@@ -23,36 +23,30 @@ Position_data::~Position_data()
 void
 Position_data::__init()
 {
-	//id = std::string();
-	//symbol_exchange = std::string();
-	//symbol_coinapi = std::string();
+	//symbol_id_exchange = std::string();
+	//symbol_id_coinapi = std::string();
 	//avg_entry_price = double(0);
 	//quantity = double(0);
-	//is_buy = bool(false);
-	//unrealised_pn_l = double(0);
+	//side = new OrdSide();
+	//unrealized_pnl = double(0);
 	//leverage = double(0);
 	//cross_margin = bool(false);
 	//liquidation_price = double(0);
-	//raw_data = std::string();
+	//raw_data = null;
 }
 
 void
 Position_data::__cleanup()
 {
-	//if(id != NULL) {
+	//if(symbol_id_exchange != NULL) {
 	//
-	//delete id;
-	//id = NULL;
+	//delete symbol_id_exchange;
+	//symbol_id_exchange = NULL;
 	//}
-	//if(symbol_exchange != NULL) {
+	//if(symbol_id_coinapi != NULL) {
 	//
-	//delete symbol_exchange;
-	//symbol_exchange = NULL;
-	//}
-	//if(symbol_coinapi != NULL) {
-	//
-	//delete symbol_coinapi;
-	//symbol_coinapi = NULL;
+	//delete symbol_id_coinapi;
+	//symbol_id_coinapi = NULL;
 	//}
 	//if(avg_entry_price != NULL) {
 	//
@@ -64,15 +58,15 @@ Position_data::__cleanup()
 	//delete quantity;
 	//quantity = NULL;
 	//}
-	//if(is_buy != NULL) {
+	//if(side != NULL) {
 	//
-	//delete is_buy;
-	//is_buy = NULL;
+	//delete side;
+	//side = NULL;
 	//}
-	//if(unrealised_pn_l != NULL) {
+	//if(unrealized_pnl != NULL) {
 	//
-	//delete unrealised_pn_l;
-	//unrealised_pn_l = NULL;
+	//delete unrealized_pnl;
+	//unrealized_pnl = NULL;
 	//}
 	//if(leverage != NULL) {
 	//
@@ -102,35 +96,24 @@ Position_data::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
+	const gchar *symbol_id_exchangeKey = "symbol_id_exchange";
+	node = json_object_get_member(pJsonObject, symbol_id_exchangeKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
+			jsonToValue(&symbol_id_exchange, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *symbol_exchangeKey = "symbol_exchange";
-	node = json_object_get_member(pJsonObject, symbol_exchangeKey);
+	const gchar *symbol_id_coinapiKey = "symbol_id_coinapi";
+	node = json_object_get_member(pJsonObject, symbol_id_coinapiKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&symbol_exchange, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *symbol_coinapiKey = "symbol_coinapi";
-	node = json_object_get_member(pJsonObject, symbol_coinapiKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&symbol_coinapi, node, "std::string", "");
+			jsonToValue(&symbol_id_coinapi, node, "std::string", "");
 		} else {
 			
 		}
@@ -163,27 +146,30 @@ Position_data::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_buyKey = "is_buy";
-	node = json_object_get_member(pJsonObject, is_buyKey);
+	const gchar *sideKey = "side";
+	node = json_object_get_member(pJsonObject, sideKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_buy, node, "bool", "");
+		if (isprimitive("OrdSide")) {
+			jsonToValue(&side, node, "OrdSide", "OrdSide");
 		} else {
+			
+			OrdSide* obj = static_cast<OrdSide*> (&side);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
-	const gchar *unrealised_pn_lKey = "unrealised_pn_l";
-	node = json_object_get_member(pJsonObject, unrealised_pn_lKey);
+	const gchar *unrealized_pnlKey = "unrealized_pnl";
+	node = json_object_get_member(pJsonObject, unrealized_pnlKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("long long")) {
-			jsonToValue(&unrealised_pn_l, node, "long long", "");
+			jsonToValue(&unrealized_pnl, node, "long long", "");
 		} else {
 			
-			long long* obj = static_cast<long long*> (&unrealised_pn_l);
+			long long* obj = static_cast<long long*> (&unrealized_pnl);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -236,6 +222,9 @@ Position_data::fromJson(char* jsonStr)
 			jsonToValue(&raw_data, node, "std::string", "");
 		} else {
 			
+			std::string* obj = static_cast<std::string*> (&raw_data);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
 	}
 }
@@ -251,32 +240,23 @@ Position_data::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
+		std::string obj = getSymbolIdExchange();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *symbol_id_exchangeKey = "symbol_id_exchange";
+	json_object_set_member(pJsonObject, symbol_id_exchangeKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getSymbolExchange();
+		std::string obj = getSymbolIdCoinapi();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *symbol_exchangeKey = "symbol_exchange";
-	json_object_set_member(pJsonObject, symbol_exchangeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getSymbolCoinapi();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *symbol_coinapiKey = "symbol_coinapi";
-	json_object_set_member(pJsonObject, symbol_coinapiKey, node);
+	const gchar *symbol_id_coinapiKey = "symbol_id_coinapi";
+	json_object_set_member(pJsonObject, symbol_id_coinapiKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getAvgEntryPrice();
 		node = converttoJson(&obj, "long long", "");
@@ -305,29 +285,34 @@ Position_data::toJson()
 	}
 	const gchar *quantityKey = "quantity";
 	json_object_set_member(pJsonObject, quantityKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsBuy();
-		node = converttoJson(&obj, "bool", "");
+	if (isprimitive("OrdSide")) {
+		OrdSide obj = getSide();
+		node = converttoJson(&obj, "OrdSide", "");
 	}
 	else {
 		
-	}
-	const gchar *is_buyKey = "is_buy";
-	json_object_set_member(pJsonObject, is_buyKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getUnrealisedPnL();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getUnrealisedPnL());
+		OrdSide obj = static_cast<OrdSide> (getSide());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
-	const gchar *unrealised_pn_lKey = "unrealised_pn_l";
-	json_object_set_member(pJsonObject, unrealised_pn_lKey, node);
+	const gchar *sideKey = "side";
+	json_object_set_member(pJsonObject, sideKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getUnrealizedPnl();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getUnrealizedPnl());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *unrealized_pnlKey = "unrealized_pnl";
+	json_object_set_member(pJsonObject, unrealized_pnlKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getLeverage();
 		node = converttoJson(&obj, "long long", "");
@@ -371,6 +356,11 @@ Position_data::toJson()
 	}
 	else {
 		
+		std::string obj = static_cast<std::string> (getRawData());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
 	const gchar *raw_dataKey = "raw_data";
 	json_object_set_member(pJsonObject, raw_dataKey, node);
@@ -383,39 +373,27 @@ Position_data::toJson()
 }
 
 std::string
-Position_data::getId()
+Position_data::getSymbolIdExchange()
 {
-	return id;
+	return symbol_id_exchange;
 }
 
 void
-Position_data::setId(std::string  id)
+Position_data::setSymbolIdExchange(std::string  symbol_id_exchange)
 {
-	this->id = id;
+	this->symbol_id_exchange = symbol_id_exchange;
 }
 
 std::string
-Position_data::getSymbolExchange()
+Position_data::getSymbolIdCoinapi()
 {
-	return symbol_exchange;
+	return symbol_id_coinapi;
 }
 
 void
-Position_data::setSymbolExchange(std::string  symbol_exchange)
+Position_data::setSymbolIdCoinapi(std::string  symbol_id_coinapi)
 {
-	this->symbol_exchange = symbol_exchange;
-}
-
-std::string
-Position_data::getSymbolCoinapi()
-{
-	return symbol_coinapi;
-}
-
-void
-Position_data::setSymbolCoinapi(std::string  symbol_coinapi)
-{
-	this->symbol_coinapi = symbol_coinapi;
+	this->symbol_id_coinapi = symbol_id_coinapi;
 }
 
 long long
@@ -442,28 +420,28 @@ Position_data::setQuantity(long long  quantity)
 	this->quantity = quantity;
 }
 
-bool
-Position_data::getIsBuy()
+OrdSide
+Position_data::getSide()
 {
-	return is_buy;
+	return side;
 }
 
 void
-Position_data::setIsBuy(bool  is_buy)
+Position_data::setSide(OrdSide  side)
 {
-	this->is_buy = is_buy;
+	this->side = side;
 }
 
 long long
-Position_data::getUnrealisedPnL()
+Position_data::getUnrealizedPnl()
 {
-	return unrealised_pn_l;
+	return unrealized_pnl;
 }
 
 void
-Position_data::setUnrealisedPnL(long long  unrealised_pn_l)
+Position_data::setUnrealizedPnl(long long  unrealized_pnl)
 {
-	this->unrealised_pn_l = unrealised_pn_l;
+	this->unrealized_pnl = unrealized_pnl;
 }
 
 long long

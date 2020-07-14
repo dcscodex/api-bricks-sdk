@@ -1,5 +1,5 @@
---  OMS _ REST API
---  OMS Project
+--  OEML _ REST API
+--  This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
 --  ------------ EDIT NOTE ------------
 --  This file was generated with openapi-generator.  You can modify it to implement
 --  the server.  After you modify this file, you should add the following line

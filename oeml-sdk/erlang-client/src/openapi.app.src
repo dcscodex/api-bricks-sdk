@@ -1,5 +1,5 @@
 {application, openapi,
- [{description, "OMS Project"},
+ [{description, "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. "},
   {vsn, "0.1.0"},
   {registered, []},
   {applications,
@@ -13,6 +13,6 @@
   {modules, []},
 
   {maintainers, []},
-  {licenses, ["Apache 2.0"]},
+  {licenses, ["MIT"]},
   {links, ["https://www.coinapi.io"]}
 ]}.

@@ -1,4 +1,4 @@
-# org.openapitools.client - Kotlin client library for OMS - REST API
+# org.openapitools.client - Kotlin client library for OEML - REST API
 
 ## Requires
 
@@ -31,16 +31,17 @@ This runs all tests and packages the library.
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1balancesget) | **GET** /v1/balances | Get balances
-*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all order
-*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order
-*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get orders
-*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1orderspost) | **POST** /v1/orders | Create new order
-*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get positions
+*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions
 
 
 <a name="documentation-for-models"></a>
@@ -48,20 +49,20 @@ Class | Method | HTTP request | Description
 
  - [org.openapitools.client.models.Balance](docs/Balance.md)
  - [org.openapitools.client.models.BalanceData](docs/BalanceData.md)
- - [org.openapitools.client.models.CancelAllOrder](docs/CancelAllOrder.md)
- - [org.openapitools.client.models.CancelOrder](docs/CancelOrder.md)
- - [org.openapitools.client.models.CreateOrder400](docs/CreateOrder400.md)
- - [org.openapitools.client.models.Messages](docs/Messages.md)
- - [org.openapitools.client.models.MessagesInfo](docs/MessagesInfo.md)
- - [org.openapitools.client.models.MessagesOk](docs/MessagesOk.md)
- - [org.openapitools.client.models.NewOrder](docs/NewOrder.md)
- - [org.openapitools.client.models.Order](docs/Order.md)
- - [org.openapitools.client.models.OrderData](docs/OrderData.md)
- - [org.openapitools.client.models.OrderLive](docs/OrderLive.md)
- - [org.openapitools.client.models.OrderStatus](docs/OrderStatus.md)
+ - [org.openapitools.client.models.Message](docs/Message.md)
+ - [org.openapitools.client.models.OrdSide](docs/OrdSide.md)
+ - [org.openapitools.client.models.OrdStatus](docs/OrdStatus.md)
+ - [org.openapitools.client.models.OrdType](docs/OrdType.md)
+ - [org.openapitools.client.models.OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [org.openapitools.client.models.OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [org.openapitools.client.models.OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [org.openapitools.client.models.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [org.openapitools.client.models.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [org.openapitools.client.models.Position](docs/Position.md)
  - [org.openapitools.client.models.PositionData](docs/PositionData.md)
+ - [org.openapitools.client.models.Severity](docs/Severity.md)
  - [org.openapitools.client.models.TimeInForce](docs/TimeInForce.md)
+ - [org.openapitools.client.models.ValidationError](docs/ValidationError.md)
 
 
 <a name="documentation-for-authorization"></a>

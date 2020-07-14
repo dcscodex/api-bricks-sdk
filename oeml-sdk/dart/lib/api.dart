@@ -19,20 +19,20 @@ part 'api/positions_api.dart';
 
 part 'model/balance.dart';
 part 'model/balance_data.dart';
-part 'model/cancel_all_order.dart';
-part 'model/cancel_order.dart';
-part 'model/create_order400.dart';
-part 'model/messages.dart';
-part 'model/messages_info.dart';
-part 'model/messages_ok.dart';
-part 'model/new_order.dart';
-part 'model/order.dart';
-part 'model/order_data.dart';
-part 'model/order_live.dart';
-part 'model/order_status.dart';
+part 'model/message.dart';
+part 'model/ord_side.dart';
+part 'model/ord_status.dart';
+part 'model/ord_type.dart';
+part 'model/order_cancel_all_request.dart';
+part 'model/order_cancel_single_request.dart';
+part 'model/order_execution_report.dart';
+part 'model/order_execution_report_all_of.dart';
+part 'model/order_new_single_request.dart';
 part 'model/position.dart';
 part 'model/position_data.dart';
+part 'model/severity.dart';
 part 'model/time_in_force.dart';
+part 'model/validation_error.dart';
 
 
 ApiClient defaultApiClient = ApiClient();

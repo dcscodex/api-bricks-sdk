@@ -5,19 +5,19 @@
 use WWW::OpenAPIClient::Object::PositionsApi;
 ```
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_positions_get**](PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get positions
+[**v1_positions_get**](PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get open positions
 
 
 # **v1_positions_get**
 > ARRAY[Position] v1_positions_get(exchange_id => $exchange_id)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example 
 ```perl
@@ -26,7 +26,7 @@ use WWW::OpenAPIClient::PositionsApi;
 my $api_instance = WWW::OpenAPIClient::PositionsApi->new(
 );
 
-my $exchange_id = KRAKEN; # string | Exchange name
+my $exchange_id = KRAKEN; # string | Filter the balances to the specific exchange.
 
 eval { 
     my $result = $api_instance->v1_positions_get(exchange_id => $exchange_id);
@@ -41,7 +41,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **string**| Exchange name | [optional] 
+ **exchange_id** | **string**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -54,7 +54,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

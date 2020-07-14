@@ -8,17 +8,16 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique position ID | [optional] [default to null]
-**symbolExchange** | **String** | The contract for this position. | [optional] [default to null]
-**symbolCoinapi** | **String** | The coinapi contract for this position. | [optional] [default to null]
-**avgEntryPrice** | **num** |  | [optional] [default to null]
-**quantity** | **num** | The current position amount in contracts. | [optional] [default to null]
-**isBuy** | **bool** |  | [optional] [default to null]
-**unrealisedPnL** | **num** | Unrealised PNL is all the unrealised profit or loss coming from your portfolio&#39;s open positions. | [optional] [default to null]
-**leverage** | **num** | 1 / initMarginReq. | [optional] [default to null]
-**crossMargin** | **bool** | True/false depending on whether you set cross margin on this position. | [optional] [default to null]
-**liquidationPrice** | **num** | Once markPrice reaches this price, this position will be liquidated. | [optional] [default to null]
-**rawData** | **String** |  | [optional] [default to null]
+**symbolIdExchange** | **String** | Exchange symbol. | [optional] [default to null]
+**symbolIdCoinapi** | **String** | CoinAPI symbol. | [optional] [default to null]
+**avgEntryPrice** | **num** | Calculated average price of all fills on this position. | [optional] [default to null]
+**quantity** | **num** | The current position quantity. | [optional] [default to null]
+**side** | [**OrdSide**](OrdSide.md) |  | [optional] [default to null]
+**unrealizedPnl** | **num** | Unrealised profit or loss (PNL) of this position. | [optional] [default to null]
+**leverage** | **num** | Leverage for this position reported by the exchange. | [optional] [default to null]
+**crossMargin** | **bool** | Is cross margin mode enable for this position? | [optional] [default to null]
+**liquidationPrice** | **num** | Liquidation price. If mark price will reach this value, the position will be liquidated. | [optional] [default to null]
+**rawData** | [**Object**](.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

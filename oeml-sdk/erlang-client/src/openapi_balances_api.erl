@@ -5,7 +5,7 @@
 -define(BASE_URL, "").
 
 %% @doc Get balances
-%% Returns all of your balances, including available balance.
+%% Get current currency balance from all or single exchange.
 -spec v1_balances_get(ctx:ctx()) -> {ok, [openapi_balance:openapi_balance()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_balances_get(Ctx) ->
     v1_balances_get(Ctx, #{}).

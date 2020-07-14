@@ -1,4 +1,4 @@
-goog.provide('API.Client.balance');
+goog.provide('API.Client.Balance');
 
 /**
  * @record
@@ -6,21 +6,14 @@ goog.provide('API.Client.balance');
 API.Client.Balance = function() {}
 
 /**
- * Result type.
+ * Exchange identifier used to identify the routing destination.
  * @type {!string}
  * @export
  */
-API.Client.Balance.prototype.type;
+API.Client.Balance.prototype.exchangeId;
 
 /**
- * Exchange name.
- * @type {!string}
- * @export
- */
-API.Client.Balance.prototype.exchangeName;
-
-/**
- * @type {!Array<!API.Client.balance_data>}
+ * @type {!Array<!API.Client.Balance_data>}
  * @export
  */
 API.Client.Balance.prototype.data;

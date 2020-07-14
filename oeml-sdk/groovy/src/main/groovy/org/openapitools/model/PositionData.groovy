@@ -4,29 +4,28 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import org.openapitools.model.OrdSide;
 
 @Canonical
 class PositionData {
-    /* Unique position ID */
-    String id
-    /* The contract for this position. */
-    String symbolExchange
-    /* The coinapi contract for this position. */
-    String symbolCoinapi
-    
+    /* Exchange symbol. */
+    String symbolIdExchange
+    /* CoinAPI symbol. */
+    String symbolIdCoinapi
+    /* Calculated average price of all fills on this position. */
     BigDecimal avgEntryPrice
-    /* The current position amount in contracts. */
+    /* The current position quantity. */
     BigDecimal quantity
     
-    Boolean isBuy
-    /* Unrealised PNL is all the unrealised profit or loss coming from your portfolio's open positions. */
-    BigDecimal unrealisedPnL
-    /* 1 / initMarginReq. */
+    OrdSide side
+    /* Unrealised profit or loss (PNL) of this position. */
+    BigDecimal unrealizedPnl
+    /* Leverage for this position reported by the exchange. */
     BigDecimal leverage
-    /* True/false depending on whether you set cross margin on this position. */
+    /* Is cross margin mode enable for this position? */
     Boolean crossMargin
-    /* Once markPrice reaches this price, this position will be liquidated. */
+    /* Liquidation price. If mark price will reach this value, the position will be liquidated. */
     BigDecimal liquidationPrice
     
-    String rawData
+    Object rawData
 }

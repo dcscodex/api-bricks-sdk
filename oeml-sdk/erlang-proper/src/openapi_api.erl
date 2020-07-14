@@ -5,8 +5,8 @@
 
 -define(BASE_URL, "").
 
-%% @doc Get positions
-%% Returns all of your positions.
+%% @doc Get open positions
+%% Get current open positions across all or single exchange.
 -spec v1_positions_get() ->
   openapi_utils:response().
 v1_positions_get() ->

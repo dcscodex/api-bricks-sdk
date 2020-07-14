@@ -5,6 +5,7 @@ import 'package:jaguar_mimetype/jaguar_mimetype.dart';
 import 'dart:async';
 
 import 'package:openapi/model/balance.dart';
+import 'package:openapi/model/message.dart';
 
 part 'balances_api.jretro.dart';
 
@@ -18,7 +19,7 @@ class BalancesApi extends ApiClient with _$BalancesApiClient {
 
     /// Get balances
     ///
-    /// Returns all of your balances, including available balance.
+    /// Get current currency balance from all or single exchange.
     @GetReq(path: "/v1/balances")
     Future<List<Balance>> v1BalancesGet(
         

@@ -22,31 +22,29 @@ position_data_t* instantiate_position_data(int include_optional) {
   position_data_t* position_data = NULL;
   if (include_optional) {
     position_data = position_data_create(
-      "2873jkjhgdsd78ii",
-      "BTC",
-      "BTC",
+      "XBTUSD",
+      "BITMEX_PERP_BTC_USD",
       0.00134444,
-      0.00134444,
-      true,
+      7,
+      oeml___rest_api_position_data__"BUY",
       0.0,
       0.0,
       true,
       0.072323,
-      "xyz"
+      Other information provided by the exchange on this position.
     );
   } else {
     position_data = position_data_create(
-      "2873jkjhgdsd78ii",
-      "BTC",
-      "BTC",
+      "XBTUSD",
+      "BITMEX_PERP_BTC_USD",
       0.00134444,
-      0.00134444,
-      true,
+      7,
+      oeml___rest_api_position_data__"BUY",
       0.0,
       0.0,
       true,
       0.072323,
-      "xyz"
+      Other information provided by the exchange on this position.
     );
   }
 

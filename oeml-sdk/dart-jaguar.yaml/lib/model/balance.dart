@@ -6,12 +6,9 @@ import 'package:openapi/model/balance_data.dart';
 part 'balance.jser.dart';
 
 class Balance {
-   /* Result type. */
-  @Alias('type', isNullable: false,  )
-  final String type;
-   /* Exchange name. */
-  @Alias('exchange_name', isNullable: false,  )
-  final String exchangeName;
+   /* Exchange identifier used to identify the routing destination. */
+  @Alias('exchange_id', isNullable: false,  )
+  final String exchangeId;
   
   @Alias('data', isNullable: false,  )
   final List<BalanceData> data;
@@ -21,8 +18,7 @@ class Balance {
       
 
 {
-     this.type = null,  
-     this.exchangeName = null,  
+     this.exchangeId = null,  
      this.data = const [] 
     
     }
@@ -30,7 +26,7 @@ class Balance {
 
   @override
   String toString() {
-    return 'Balance[type=$type, exchangeName=$exchangeName, data=$data, ]';
+    return 'Balance[exchangeId=$exchangeId, data=$data, ]';
   }
 }
 

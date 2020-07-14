@@ -1,80 +1,75 @@
-goog.provide('API.Client.position_data');
+goog.provide('API.Client.Position_data');
 
 /**
+ * The Position object.
  * @record
  */
 API.Client.PositionData = function() {}
 
 /**
- * Unique position ID
+ * Exchange symbol.
  * @type {!string}
  * @export
  */
-API.Client.PositionData.prototype.id;
+API.Client.PositionData.prototype.symbolIdExchange;
 
 /**
- * The contract for this position.
+ * CoinAPI symbol.
  * @type {!string}
  * @export
  */
-API.Client.PositionData.prototype.symbolExchange;
+API.Client.PositionData.prototype.symbolIdCoinapi;
 
 /**
- * The coinapi contract for this position.
- * @type {!string}
- * @export
- */
-API.Client.PositionData.prototype.symbolCoinapi;
-
-/**
+ * Calculated average price of all fills on this position.
  * @type {!number}
  * @export
  */
 API.Client.PositionData.prototype.avgEntryPrice;
 
 /**
- * The current position amount in contracts.
+ * The current position quantity.
  * @type {!number}
  * @export
  */
 API.Client.PositionData.prototype.quantity;
 
 /**
- * @type {!boolean}
+ * @type {!API.Client.OrdSide}
  * @export
  */
-API.Client.PositionData.prototype.isBuy;
+API.Client.PositionData.prototype.side;
 
 /**
- * Unrealised PNL is all the unrealised profit or loss coming from your portfolio's open positions.
+ * Unrealised profit or loss (PNL) of this position.
  * @type {!number}
  * @export
  */
-API.Client.PositionData.prototype.unrealisedPnL;
+API.Client.PositionData.prototype.unrealizedPnl;
 
 /**
- * 1 / initMarginReq.
+ * Leverage for this position reported by the exchange.
  * @type {!number}
  * @export
  */
 API.Client.PositionData.prototype.leverage;
 
 /**
- * True/false depending on whether you set cross margin on this position.
+ * Is cross margin mode enable for this position?
  * @type {!boolean}
  * @export
  */
 API.Client.PositionData.prototype.crossMargin;
 
 /**
- * Once markPrice reaches this price, this position will be liquidated.
+ * Liquidation price. If mark price will reach this value, the position will be liquidated.
  * @type {!number}
  * @export
  */
 API.Client.PositionData.prototype.liquidationPrice;
 
 /**
- * @type {!string}
+ * @type {!API.Client.Object}
  * @export
  */
 API.Client.PositionData.prototype.rawData;

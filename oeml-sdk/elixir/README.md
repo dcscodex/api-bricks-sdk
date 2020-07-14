@@ -1,6 +1,6 @@
-# OMS-RESTAPI
+# OEML-RESTAPI
 
-OMS Project
+This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. 
 
 ### Building
 
@@ -13,14 +13,14 @@ mix do deps.get, compile
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `oms_restapi` to your list of dependencies in `mix.exs`:
+by adding `oeml_restapi` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:oms_restapi, "~> 0.1.0"}]
+  [{:oeml_restapi, "~> 0.1.0"}]
 end
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/oms_restapi](https://hexdocs.pm/oms_restapi).
+be found at [https://hexdocs.pm/oeml_restapi](https://hexdocs.pm/oeml_restapi).

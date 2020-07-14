@@ -22,23 +22,23 @@ balance_data_t* instantiate_balance_data(int include_optional) {
   balance_data_t* balance_data = NULL;
   if (include_optional) {
     balance_data = balance_data_create(
-      "BTC",
-      "BTC",
+      "XBT",
       "BTC",
       0.00134444,
       0.00134444,
       0.0,
-      oms___rest_api_balance_data_UPDATEORIGIN_"EXCHANGE"
+      oeml___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
+      1355.12
     );
   } else {
     balance_data = balance_data_create(
-      "BTC",
-      "BTC",
+      "XBT",
       "BTC",
       0.00134444,
       0.00134444,
       0.0,
-      oms___rest_api_balance_data_UPDATEORIGIN_"EXCHANGE"
+      oeml___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
+      1355.12
     );
   }
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-OMS - REST API
+OEML - REST API
 
-OMS Project
+This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
 
 The version of the OpenAPI document: v1
-
+Contact: support@coinapi.io
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1C9C147-E83B-41F8-A781-E7EC3DA32A87}</ProjectGuid>
+    <ProjectGuid>{CAD6EA58-222A-409C-958F-A32338842181}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CoinAPI.OMS.REST.V1</RootNamespace>

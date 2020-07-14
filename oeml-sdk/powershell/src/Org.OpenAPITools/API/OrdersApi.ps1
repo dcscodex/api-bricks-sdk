@@ -2,8 +2,8 @@ function Invoke-OrdersApiV1OrdersCancelAllPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [Org.OpenAPITools.Model.CancelAllOrder]
-        ${cancelAllOrder}
+        [Org.OpenAPITools.Model.OrderCancelAllRequest]
+        ${orderCancelAllRequest}
     )
 
     Process {
@@ -11,7 +11,7 @@ function Invoke-OrdersApiV1OrdersCancelAllPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:OrdersApi.V1OrdersCancelAllPost(
-            ${cancelAllOrder}
+            ${orderCancelAllRequest}
         )
     }
 }
@@ -20,8 +20,8 @@ function Invoke-OrdersApiV1OrdersCancelPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [Org.OpenAPITools.Model.CancelOrder]
-        ${cancelOrder}
+        [Org.OpenAPITools.Model.OrderCancelSingleRequest]
+        ${orderCancelSingleRequest}
     )
 
     Process {
@@ -29,7 +29,7 @@ function Invoke-OrdersApiV1OrdersCancelPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:OrdersApi.V1OrdersCancelPost(
-            ${cancelOrder}
+            ${orderCancelSingleRequest}
         )
     }
 }
@@ -56,8 +56,8 @@ function Invoke-OrdersApiV1OrdersPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [Org.OpenAPITools.Model.NewOrder]
-        ${newOrder}
+        [Org.OpenAPITools.Model.OrderNewSingleRequest]
+        ${orderNewSingleRequest}
     )
 
     Process {
@@ -65,7 +65,25 @@ function Invoke-OrdersApiV1OrdersPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:OrdersApi.V1OrdersPost(
-            ${newOrder}
+            ${orderNewSingleRequest}
+        )
+    }
+}
+
+function Invoke-OrdersApiV1OrdersStatusClientOrderIdGet {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${clientOrderId}
+    )
+
+    Process {
+        'Calling method: OrdersApi-V1OrdersStatusClientOrderIdGet' | Write-Verbose
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $Script:OrdersApi.V1OrdersStatusClientOrderIdGet(
+            ${clientOrderId}
         )
     }
 }

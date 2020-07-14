@@ -1,7 +1,7 @@
 /*
  * Position_data.h
  *
- * 
+ * The Position object.
  */
 
 #ifndef _Position_data_H_
@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "OrdSide.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -20,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief The Position object.
  *
  *  \ingroup Models
  *
@@ -45,74 +46,67 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique position ID
+	/*! \brief Get Exchange symbol.
 	 */
-	std::string getId();
+	std::string getSymbolIdExchange();
 
-	/*! \brief Set Unique position ID
+	/*! \brief Set Exchange symbol.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get The contract for this position.
+	void setSymbolIdExchange(std::string  symbol_id_exchange);
+	/*! \brief Get CoinAPI symbol.
 	 */
-	std::string getSymbolExchange();
+	std::string getSymbolIdCoinapi();
 
-	/*! \brief Set The contract for this position.
+	/*! \brief Set CoinAPI symbol.
 	 */
-	void setSymbolExchange(std::string  symbol_exchange);
-	/*! \brief Get The coinapi contract for this position.
-	 */
-	std::string getSymbolCoinapi();
-
-	/*! \brief Set The coinapi contract for this position.
-	 */
-	void setSymbolCoinapi(std::string  symbol_coinapi);
-	/*! \brief Get 
+	void setSymbolIdCoinapi(std::string  symbol_id_coinapi);
+	/*! \brief Get Calculated average price of all fills on this position.
 	 */
 	long long getAvgEntryPrice();
 
-	/*! \brief Set 
+	/*! \brief Set Calculated average price of all fills on this position.
 	 */
 	void setAvgEntryPrice(long long  avg_entry_price);
-	/*! \brief Get The current position amount in contracts.
+	/*! \brief Get The current position quantity.
 	 */
 	long long getQuantity();
 
-	/*! \brief Set The current position amount in contracts.
+	/*! \brief Set The current position quantity.
 	 */
 	void setQuantity(long long  quantity);
 	/*! \brief Get 
 	 */
-	bool getIsBuy();
+	OrdSide getSide();
 
 	/*! \brief Set 
 	 */
-	void setIsBuy(bool  is_buy);
-	/*! \brief Get Unrealised PNL is all the unrealised profit or loss coming from your portfolio's open positions.
+	void setSide(OrdSide  side);
+	/*! \brief Get Unrealised profit or loss (PNL) of this position.
 	 */
-	long long getUnrealisedPnL();
+	long long getUnrealizedPnl();
 
-	/*! \brief Set Unrealised PNL is all the unrealised profit or loss coming from your portfolio's open positions.
+	/*! \brief Set Unrealised profit or loss (PNL) of this position.
 	 */
-	void setUnrealisedPnL(long long  unrealised_pn_l);
-	/*! \brief Get 1 / initMarginReq.
+	void setUnrealizedPnl(long long  unrealized_pnl);
+	/*! \brief Get Leverage for this position reported by the exchange.
 	 */
 	long long getLeverage();
 
-	/*! \brief Set 1 / initMarginReq.
+	/*! \brief Set Leverage for this position reported by the exchange.
 	 */
 	void setLeverage(long long  leverage);
-	/*! \brief Get True/false depending on whether you set cross margin on this position.
+	/*! \brief Get Is cross margin mode enable for this position?
 	 */
 	bool getCrossMargin();
 
-	/*! \brief Set True/false depending on whether you set cross margin on this position.
+	/*! \brief Set Is cross margin mode enable for this position?
 	 */
 	void setCrossMargin(bool  cross_margin);
-	/*! \brief Get Once markPrice reaches this price, this position will be liquidated.
+	/*! \brief Get Liquidation price. If mark price will reach this value, the position will be liquidated.
 	 */
 	long long getLiquidationPrice();
 
-	/*! \brief Set Once markPrice reaches this price, this position will be liquidated.
+	/*! \brief Set Liquidation price. If mark price will reach this value, the position will be liquidated.
 	 */
 	void setLiquidationPrice(long long  liquidation_price);
 	/*! \brief Get 
@@ -124,13 +118,12 @@ public:
 	void setRawData(std::string  raw_data);
 
 private:
-	std::string id;
-	std::string symbol_exchange;
-	std::string symbol_coinapi;
+	std::string symbol_id_exchange;
+	std::string symbol_id_coinapi;
 	long long avg_entry_price;
 	long long quantity;
-	bool is_buy;
-	long long unrealised_pn_l;
+	OrdSide side;
+	long long unrealized_pnl;
 	long long leverage;
 	bool cross_margin;
 	long long liquidation_price;

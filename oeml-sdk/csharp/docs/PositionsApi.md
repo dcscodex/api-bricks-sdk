@@ -1,10 +1,10 @@
 # CoinAPI.OMS.REST.V1.Api.PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1PositionsGet**](PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get positions
+[**V1PositionsGet**](PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions
 
 
 
@@ -12,9 +12,9 @@ Method | HTTP request | Description
 
 > List&lt;Position&gt; V1PositionsGet (string exchangeId = null)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
@@ -31,13 +31,13 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "http://localhost:3001";
+            Configuration.Default.BasePath = "http://localhost:8080";
             var apiInstance = new PositionsApi(Configuration.Default);
-            var exchangeId = KRAKEN;  // string | Exchange name (optional) 
+            var exchangeId = KRAKEN;  // string | Filter the balances to the specific exchange. (optional) 
 
             try
             {
-                // Get positions
+                // Get open positions
                 List<Position> result = apiInstance.V1PositionsGet(exchangeId);
                 Debug.WriteLine(result);
             }
@@ -57,7 +57,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **string**| Exchange name | [optional] 
+ **exchangeId** | **string**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -70,12 +70,13 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Result |  -  |
+| **200** | Collection of positons. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

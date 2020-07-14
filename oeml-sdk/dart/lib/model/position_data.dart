@@ -1,44 +1,44 @@
 part of openapi.api;
 
 class PositionData {
-  /* Unique position ID */
-  String id = null;
-  /* The contract for this position. */
-  String symbolExchange = null;
-  /* The coinapi contract for this position. */
-  String symbolCoinapi = null;
-  
+  /* Exchange symbol. */
+  String symbolIdExchange = null;
+  /* CoinAPI symbol. */
+  String symbolIdCoinapi = null;
+  /* Calculated average price of all fills on this position. */
   num avgEntryPrice = null;
-  /* The current position amount in contracts. */
+  /* The current position quantity. */
   num quantity = null;
   
-  bool isBuy = null;
-  /* Unrealised PNL is all the unrealised profit or loss coming from your portfolio's open positions. */
-  num unrealisedPnL = null;
-  /* 1 / initMarginReq. */
+  OrdSide side = null;
+  //enum sideEnum {  BUY,  SELL,  };{
+  /* Unrealised profit or loss (PNL) of this position. */
+  num unrealizedPnl = null;
+  /* Leverage for this position reported by the exchange. */
   num leverage = null;
-  /* True/false depending on whether you set cross margin on this position. */
+  /* Is cross margin mode enable for this position? */
   bool crossMargin = null;
-  /* Once markPrice reaches this price, this position will be liquidated. */
+  /* Liquidation price. If mark price will reach this value, the position will be liquidated. */
   num liquidationPrice = null;
   
-  String rawData = null;
+  Object rawData = null;
   PositionData();
 
   @override
   String toString() {
-    return 'PositionData[id=$id, symbolExchange=$symbolExchange, symbolCoinapi=$symbolCoinapi, avgEntryPrice=$avgEntryPrice, quantity=$quantity, isBuy=$isBuy, unrealisedPnL=$unrealisedPnL, leverage=$leverage, crossMargin=$crossMargin, liquidationPrice=$liquidationPrice, rawData=$rawData, ]';
+    return 'PositionData[symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, avgEntryPrice=$avgEntryPrice, quantity=$quantity, side=$side, unrealizedPnl=$unrealizedPnl, leverage=$leverage, crossMargin=$crossMargin, liquidationPrice=$liquidationPrice, rawData=$rawData, ]';
   }
 
   PositionData.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    id = json['id'];
-    symbolExchange = json['symbol_exchange'];
-    symbolCoinapi = json['symbol_coinapi'];
+    symbolIdExchange = json['symbol_id_exchange'];
+    symbolIdCoinapi = json['symbol_id_coinapi'];
     avgEntryPrice = json['avg_entry_price'];
     quantity = json['quantity'];
-    isBuy = json['is_buy'];
-    unrealisedPnL = json['unrealised_pn_l'];
+    side = (json['side'] == null) ?
+      null :
+      OrdSide.fromJson(json['side']);
+    unrealizedPnl = json['unrealized_pnl'];
     leverage = json['leverage'];
     crossMargin = json['cross_margin'];
     liquidationPrice = json['liquidation_price'];
@@ -47,20 +47,18 @@ class PositionData {
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (id != null)
-      json['id'] = id;
-    if (symbolExchange != null)
-      json['symbol_exchange'] = symbolExchange;
-    if (symbolCoinapi != null)
-      json['symbol_coinapi'] = symbolCoinapi;
+    if (symbolIdExchange != null)
+      json['symbol_id_exchange'] = symbolIdExchange;
+    if (symbolIdCoinapi != null)
+      json['symbol_id_coinapi'] = symbolIdCoinapi;
     if (avgEntryPrice != null)
       json['avg_entry_price'] = avgEntryPrice;
     if (quantity != null)
       json['quantity'] = quantity;
-    if (isBuy != null)
-      json['is_buy'] = isBuy;
-    if (unrealisedPnL != null)
-      json['unrealised_pn_l'] = unrealisedPnL;
+    if (side != null)
+      json['side'] = side;
+    if (unrealizedPnl != null)
+      json['unrealized_pnl'] = unrealizedPnl;
     if (leverage != null)
       json['leverage'] = leverage;
     if (crossMargin != null)

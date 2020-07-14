@@ -7,9 +7,7 @@ private class OASTimeInForceTest {
             OASTimeInForce.GOOD_TILL_TIME_EXCHANGE,
             OASTimeInForce.GOOD_TILL_TIME_OMS,
             OASTimeInForce.FILL_OR_KILL,
-            OASTimeInForce.IMMEDIATE_OR_CANCEL,
-            OASTimeInForce.AUCTION_ONLY,
-            OASTimeInForce.INDICATION_OF_INTEREST
+            OASTimeInForce.IMMEDIATE_OR_CANCEL
         };
         Set<OASTimeInForce> actual  = new Set<OASTimeInForce>(OASTimeInForce.values());
         System.assertEquals(expected, actual);

@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Result type. | [optional] 
-**exchange_name** | **String** | Exchange name. | [optional] 
+**exchange_id** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
 **data** | [**Array&lt;BalanceData&gt;**](BalanceData.md) |  | [optional] 
 
 ## Code Sample
@@ -13,8 +12,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::Balance.new(type: snapshotBalances,
-                                 exchange_name: KRAKEN,
+instance = OpenapiClient::Balance.new(exchange_id: KRAKEN,
                                  data: null)
 ```
 

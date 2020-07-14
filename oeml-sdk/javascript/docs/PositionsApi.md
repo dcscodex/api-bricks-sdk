@@ -1,10 +1,10 @@
-# OmsRestApi.PositionsApi
+# OemlRestApi.PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 
@@ -12,18 +12,18 @@ Method | HTTP request | Description
 
 > [Position] v1PositionsGet(opts)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
 ```javascript
-import OmsRestApi from 'oms_rest_api';
+import OemlRestApi from 'oeml_rest_api';
 
-let apiInstance = new OmsRestApi.PositionsApi();
+let apiInstance = new OemlRestApi.PositionsApi();
 let opts = {
-  'exchangeId': KRAKEN // String | Exchange name
+  'exchangeId': KRAKEN // String | Filter the balances to the specific exchange.
 };
 apiInstance.v1PositionsGet(opts, (error, data, response) => {
   if (error) {
@@ -39,7 +39,7 @@ apiInstance.v1PositionsGet(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Exchange name | [optional] 
+ **exchangeId** | **String**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -52,5 +52,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 

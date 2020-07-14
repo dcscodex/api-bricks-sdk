@@ -1,10 +1,10 @@
 # PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 
@@ -12,9 +12,9 @@ Method | HTTP request | Description
 
 > List&lt;Position&gt; v1PositionsGet(exchangeId)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
@@ -23,7 +23,7 @@ Returns all of your positions.
 //import org.openapitools.client.api.PositionsApi;
 
 PositionsApi apiInstance = new PositionsApi();
-String exchangeId = KRAKEN; // String | Exchange name
+String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 try {
     List<Position> result = apiInstance.v1PositionsGet(exchangeId);
     System.out.println(result);
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Exchange name | [optional] [default to null]
+ **exchangeId** | **String**| Filter the balances to the specific exchange. | [optional] [default to null]
 
 ### Return type
 
@@ -51,5 +51,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 

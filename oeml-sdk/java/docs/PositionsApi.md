@@ -1,19 +1,19 @@
 # PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 <a name="v1PositionsGet"></a>
 # **v1PositionsGet**
 > List&lt;Position&gt; v1PositionsGet(exchangeId)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 ```java
@@ -27,10 +27,10 @@ import org.openapitools.client.api.PositionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:3001");
+    defaultClient.setBasePath("http://localhost:8080");
 
     PositionsApi apiInstance = new PositionsApi(defaultClient);
-    String exchangeId = KRAKEN; // String | Exchange name
+    String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
     try {
       List<Position> result = apiInstance.v1PositionsGet(exchangeId);
       System.out.println(result);
@@ -49,7 +49,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Exchange name | [optional]
+ **exchangeId** | **String**| Filter the balances to the specific exchange. | [optional]
 
 ### Return type
 
@@ -62,10 +62,11 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Result |  -  |
+**200** | Collection of positons. |  -  |
+**490** | Exchange is unreachable. |  -  |
 

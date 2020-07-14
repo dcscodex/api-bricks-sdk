@@ -1,8 +1,8 @@
-defmodule OMS-RESTAPI.Mixfile do
+defmodule OEML-RESTAPI.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :oms_restapi,
+    [app: :oeml_restapi,
      version: "v1",
      elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,

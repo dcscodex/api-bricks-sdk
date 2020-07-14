@@ -22,13 +22,11 @@ position_t* instantiate_position(int include_optional) {
   position_t* position = NULL;
   if (include_optional) {
     position = position_create(
-      "snapshotPositions",
       "KRAKEN",
       list_create()
     );
   } else {
     position = position_create(
-      "snapshotPositions",
       "KRAKEN",
       list_create()
     );

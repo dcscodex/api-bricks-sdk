@@ -14,9 +14,5 @@
 
     * `iMMEDIATEORCANCEL` (value: `"IMMEDIATE_OR_CANCEL"`)
 
-    * `aUCTIONONLY` (value: `"AUCTION_ONLY"`)
-
-    * `iNDICATIONOFINTEREST` (value: `"INDICATION_OF_INTEREST"`)
-
 
 

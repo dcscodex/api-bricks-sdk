@@ -7,6 +7,7 @@ import org.openapitools.common.ApiUserCredentials;
 import org.openapitools.event.Response;
 import org.openapitools.common.OpenApi;
 import org.openapitools.client.model.Balance;
+import org.openapitools.client.model.Message;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;

@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Message.h"
 #include "Position.h"
 #include "Error.h"
 
@@ -24,10 +25,10 @@ public:
 	PositionsManager();
 	virtual ~PositionsManager();
 
-/*! \brief Get positions. *Synchronous*
+/*! \brief Get open positions. *Synchronous*
  *
- * Returns all of your positions.
- * \param exchangeId Exchange name
+ * Get current open positions across all or single exchange.
+ * \param exchangeId Filter the balances to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -37,10 +38,10 @@ bool v1PositionsGetSync(char * accessToken,
 	void(* handler)(std::list<Position>, Error, void* )
 	, void* userData);
 
-/*! \brief Get positions. *Asynchronous*
+/*! \brief Get open positions. *Asynchronous*
  *
- * Returns all of your positions.
- * \param exchangeId Exchange name
+ * Get current open positions across all or single exchange.
+ * \param exchangeId Filter the balances to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -54,7 +55,7 @@ bool v1PositionsGetAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "http://localhost:3001";
+		return "http://localhost:8080";
 	}
 };
 /** @}*/

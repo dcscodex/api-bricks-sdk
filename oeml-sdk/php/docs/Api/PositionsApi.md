@@ -1,10 +1,10 @@
 # OpenAPI\Client\PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 
@@ -12,9 +12,9 @@ Method | HTTP request | Description
 
 > \OpenAPI\Client\Model\Position[] v1PositionsGet($exchange_id)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
@@ -28,7 +28,7 @@ $apiInstance = new OpenAPI\Client\Api\PositionsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$exchange_id = KRAKEN; // string | Exchange name
+$exchange_id = KRAKEN; // string | Filter the balances to the specific exchange.
 
 try {
     $result = $apiInstance->v1PositionsGet($exchange_id);
@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **string**| Exchange name | [optional]
+ **exchange_id** | **string**| Filter the balances to the specific exchange. | [optional]
 
 ### Return type
 
@@ -57,7 +57,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

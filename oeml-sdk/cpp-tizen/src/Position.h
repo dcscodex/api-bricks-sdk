@@ -47,20 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Result type.
+	/*! \brief Get Exchange identifier used to identify the routing destination.
 	 */
-	std::string getType();
+	std::string getExchangeId();
 
-	/*! \brief Set Result type.
+	/*! \brief Set Exchange identifier used to identify the routing destination.
 	 */
-	void setType(std::string  type);
-	/*! \brief Get Name of exchange.
-	 */
-	std::string getExchangeName();
-
-	/*! \brief Set Name of exchange.
-	 */
-	void setExchangeName(std::string  exchange_name);
+	void setExchangeId(std::string  exchange_id);
 	/*! \brief Get 
 	 */
 	std::list<Position_data> getData();
@@ -70,8 +63,7 @@ public:
 	void setData(std::list <Position_data> data);
 
 private:
-	std::string type;
-	std::string exchange_name;
+	std::string exchange_id;
 	std::list <Position_data>data;
 	void __init();
 	void __cleanup();

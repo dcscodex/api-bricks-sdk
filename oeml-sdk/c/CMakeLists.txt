@@ -21,7 +21,7 @@ else()
 	message (STATUS "OpenSSL Not found.")
 endif()
 
-set(pkgName "oms___rest_api")
+set(pkgName "oeml___rest_api")
 
 find_package(CURL 7.58.0 REQUIRED)
 if(CURL_FOUND)
@@ -40,20 +40,20 @@ set(SRCS
     model/object.c
     model/balance.c
     model/balance_data.c
-    model/cancel_all_order.c
-    model/cancel_order.c
-    model/create_order400.c
-    model/messages.c
-    model/messages_info.c
-    model/messages_ok.c
-    model/new_order.c
-    model/order.c
-    model/order_data.c
-    model/order_live.c
-    model/order_status.c
+    model/message.c
+    model/ord_side.c
+    model/ord_status.c
+    model/ord_type.c
+    model/order_cancel_all_request.c
+    model/order_cancel_single_request.c
+    model/order_execution_report.c
+    model/order_execution_report_all_of.c
+    model/order_new_single_request.c
     model/position.c
     model/position_data.c
+    model/severity.c
     model/time_in_force.c
+    model/validation_error.c
     api/BalancesAPI.c
     api/OrdersAPI.c
     api/PositionsAPI.c
@@ -69,20 +69,20 @@ set(HDRS
     model/object.h
     model/balance.h
     model/balance_data.h
-    model/cancel_all_order.h
-    model/cancel_order.h
-    model/create_order400.h
-    model/messages.h
-    model/messages_info.h
-    model/messages_ok.h
-    model/new_order.h
-    model/order.h
-    model/order_data.h
-    model/order_live.h
-    model/order_status.h
+    model/message.h
+    model/ord_side.h
+    model/ord_status.h
+    model/ord_type.h
+    model/order_cancel_all_request.h
+    model/order_cancel_single_request.h
+    model/order_execution_report.h
+    model/order_execution_report_all_of.h
+    model/order_new_single_request.h
     model/position.h
     model/position_data.h
+    model/severity.h
     model/time_in_force.h
+    model/validation_error.h
     api/BalancesAPI.h
     api/OrdersAPI.h
     api/PositionsAPI.h

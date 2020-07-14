@@ -9,8 +9,7 @@
 -export_type([openapi_balance/0]).
 
 -type openapi_balance() ::
-  [ {'type', binary() }
-  | {'exchange_name', binary() }
+  [ {'exchange_id', binary() }
   | {'data', list(openapi_balance_data:openapi_balance_data()) }
   ].
 
@@ -19,8 +18,7 @@ openapi_balance() ->
     openapi_balance([]).
 
 openapi_balance(Fields) ->
-  Default = [ {'type', binary() }
-            , {'exchange_name', binary() }
+  Default = [ {'exchange_id', binary() }
             , {'data', list(openapi_balance_data:openapi_balance_data()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -6,6 +6,7 @@ import org.openapitools.exception.ApiError;
 import org.openapitools.common.ApiUserCredentials;
 import org.openapitools.event.Response;
 import org.openapitools.common.OpenApi;
+import org.openapitools.client.model.Message;
 import org.openapitools.client.model.Position;
 
 import mx.rpc.AsyncToken;

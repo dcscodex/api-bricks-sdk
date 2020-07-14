@@ -10,5 +10,5 @@
   binary().
 
 openapi_time_in_force() ->
-  elements([<<"GOOD_TILL_CANCEL">>, <<"GOOD_TILL_TIME_EXCHANGE">>, <<"GOOD_TILL_TIME_OMS">>, <<"FILL_OR_KILL">>, <<"IMMEDIATE_OR_CANCEL">>, <<"AUCTION_ONLY">>, <<"INDICATION_OF_INTEREST">>]).
+  elements([<<"GOOD_TILL_CANCEL">>, <<"GOOD_TILL_TIME_EXCHANGE">>, <<"GOOD_TILL_TIME_OMS">>, <<"FILL_OR_KILL">>, <<"IMMEDIATE_OR_CANCEL">>]).
 

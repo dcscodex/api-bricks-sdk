@@ -1,32 +1,33 @@
-# OmsRestApi.OrdersApi
+# OemlRestApi.OrdersApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all order
-[**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order
-[**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get orders
-[**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Create new order
+[**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+[**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+[**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+[**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
 
 
 ## v1OrdersCancelAllPost
 
-> MessagesOk v1OrdersCancelAllPost(cancelAllOrder)
+> Message v1OrdersCancelAllPost(orderCancelAllRequest)
 
-Cancel all order
+Cancel all orders request
 
-Cancel all existing order.
+This request cancels all open orders on single specified exchange.
 
 ### Example
 
 ```javascript
-import OmsRestApi from 'oms_rest_api';
+import OemlRestApi from 'oeml_rest_api';
 
-let apiInstance = new OmsRestApi.OrdersApi();
-let cancelAllOrder = new OmsRestApi.CancelAllOrder(); // CancelAllOrder | 
-apiInstance.v1OrdersCancelAllPost(cancelAllOrder, (error, data, response) => {
+let apiInstance = new OemlRestApi.OrdersApi();
+let orderCancelAllRequest = new OemlRestApi.OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
+apiInstance.v1OrdersCancelAllPost(orderCancelAllRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -40,11 +41,11 @@ apiInstance.v1OrdersCancelAllPost(cancelAllOrder, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelAllOrder** | [**CancelAllOrder**](CancelAllOrder.md)|  | 
+ **orderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
 
 ### Return type
 
-[**MessagesOk**](MessagesOk.md)
+[**Message**](Message.md)
 
 ### Authorization
 
@@ -53,25 +54,25 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 
 ## v1OrdersCancelPost
 
-> OrderLive v1OrdersCancelPost(cancelOrder)
+> OrderExecutionReport v1OrdersCancelPost(orderCancelSingleRequest)
 
-Cancel order
+Cancel order request
 
-Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
+Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
 
 ### Example
 
 ```javascript
-import OmsRestApi from 'oms_rest_api';
+import OemlRestApi from 'oeml_rest_api';
 
-let apiInstance = new OmsRestApi.OrdersApi();
-let cancelOrder = new OmsRestApi.CancelOrder(); // CancelOrder | 
-apiInstance.v1OrdersCancelPost(cancelOrder, (error, data, response) => {
+let apiInstance = new OemlRestApi.OrdersApi();
+let orderCancelSingleRequest = new OemlRestApi.OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
+apiInstance.v1OrdersCancelPost(orderCancelSingleRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -85,11 +86,11 @@ apiInstance.v1OrdersCancelPost(cancelOrder, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelOrder** | [**CancelOrder**](CancelOrder.md)|  | 
+ **orderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
 
 ### Return type
 
-[**OrderLive**](OrderLive.md)
+[**OrderExecutionReport**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -103,20 +104,20 @@ No authorization required
 
 ## v1OrdersGet
 
-> [Order] v1OrdersGet(opts)
+> [OrderExecutionReport] v1OrdersGet(opts)
 
-Get orders
+Get open orders
 
-List your current open orders.
+Get last execution reports for open orders across all or single exchange.
 
 ### Example
 
 ```javascript
-import OmsRestApi from 'oms_rest_api';
+import OemlRestApi from 'oeml_rest_api';
 
-let apiInstance = new OmsRestApi.OrdersApi();
+let apiInstance = new OemlRestApi.OrdersApi();
 let opts = {
-  'exchangeId': KRAKEN // String | Exchange name
+  'exchangeId': KRAKEN // String | Filter the open orders to the specific exchange.
 };
 apiInstance.v1OrdersGet(opts, (error, data, response) => {
   if (error) {
@@ -132,11 +133,11 @@ apiInstance.v1OrdersGet(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Exchange name | [optional] 
+ **exchangeId** | **String**| Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
 
-[**[Order]**](Order.md)
+[**[OrderExecutionReport]**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -145,25 +146,25 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 
 ## v1OrdersPost
 
-> OrderLive v1OrdersPost(newOrder)
+> OrderExecutionReport v1OrdersPost(orderNewSingleRequest)
 
-Create new order
+Send new order
 
-You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
+This request creating new order for the specific exchange.
 
 ### Example
 
 ```javascript
-import OmsRestApi from 'oms_rest_api';
+import OemlRestApi from 'oeml_rest_api';
 
-let apiInstance = new OmsRestApi.OrdersApi();
-let newOrder = new OmsRestApi.NewOrder(); // NewOrder | 
-apiInstance.v1OrdersPost(newOrder, (error, data, response) => {
+let apiInstance = new OemlRestApi.OrdersApi();
+let orderNewSingleRequest = new OemlRestApi.OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
+apiInstance.v1OrdersPost(orderNewSingleRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -177,11 +178,11 @@ apiInstance.v1OrdersPost(newOrder, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newOrder** | [**NewOrder**](NewOrder.md)|  | 
+ **orderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
 
 ### Return type
 
-[**OrderLive**](OrderLive.md)
+[**OrderExecutionReport**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -191,4 +192,49 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, appliction/json
+
+
+## v1OrdersStatusClientOrderIdGet
+
+> OrderExecutionReport v1OrdersStatusClientOrderIdGet(clientOrderId)
+
+Get order execution report
+
+Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+
+### Example
+
+```javascript
+import OemlRestApi from 'oeml_rest_api';
+
+let apiInstance = new OemlRestApi.OrdersApi();
+let clientOrderId = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b; // String | The unique identifier of the order assigned by the client.
+apiInstance.v1OrdersStatusClientOrderIdGet(clientOrderId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientOrderId** | **String**| The unique identifier of the order assigned by the client. | 
+
+### Return type
+
+[**OrderExecutionReport**](OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

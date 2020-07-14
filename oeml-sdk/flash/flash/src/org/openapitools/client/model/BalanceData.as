@@ -3,37 +3,37 @@ package org.openapitools.client.model {
 
     [XmlRootNode(name="BalanceData")]
     public class BalanceData {
-        /* symbol_exchange */
-        [XmlElement(name="id")]
-        public var id: String = null;
-        /* Currency code. */
-        [XmlElement(name="symbol_exchange")]
-        public var symbolExchange: String = null;
+        /* Exchange currency code. */
+        [XmlElement(name="asset_id_exchange")]
+        public var assetIdExchange: String = null;
         /* CoinAPI currency code. */
-        [XmlElement(name="symbol_coinapi")]
-        public var symbolCoinapi: String = null;
-        /* The current balance. */
+        [XmlElement(name="asset_id_coinapi")]
+        public var assetIdCoinapi: String = null;
+        /* Value of the current total currency balance on the exchange. */
         [XmlElement(name="balance")]
         public var balance: Number = 0.0;
-        /* The amount that is available to trade. */
+        /* Value of the current available currency balance on the exchange that can be used as collateral. */
         [XmlElement(name="available")]
         public var available: Number = 0.0;
-        /* Blocked funds. */
+        /* Value of the current locked currency balance by the exchange. */
         [XmlElement(name="locked")]
         public var locked: Number = 0.0;
-        /* Source of last modification.  */
-        [XmlElement(name="update_origin")]
-        public var updateOrigin: String = null;
+        /* Source of the last modification.  */
+        [XmlElement(name="last_updated_by")]
+        public var lastUpdatedBy: String = null;
+        /* Current exchange rate to the USD for the single unit of the currency.  */
+        [XmlElement(name="rate_usd")]
+        public var rateUsd: Number = 0.0;
 
     public function toString(): String {
         var str: String = "BalanceData: ";
-        str += " (id: " + id + ")";
-        str += " (symbolExchange: " + symbolExchange + ")";
-        str += " (symbolCoinapi: " + symbolCoinapi + ")";
+        str += " (assetIdExchange: " + assetIdExchange + ")";
+        str += " (assetIdCoinapi: " + assetIdCoinapi + ")";
         str += " (balance: " + balance + ")";
         str += " (available: " + available + ")";
         str += " (locked: " + locked + ")";
-        str += " (updateOrigin: " + updateOrigin + ")";
+        str += " (lastUpdatedBy: " + lastUpdatedBy + ")";
+        str += " (rateUsd: " + rateUsd + ")";
         return str;
     }
 

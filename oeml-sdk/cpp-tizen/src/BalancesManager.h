@@ -6,6 +6,7 @@
 #include <list>
 #include <glib.h>
 #include "Balance.h"
+#include "Message.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -26,8 +27,8 @@ public:
 
 /*! \brief Get balances. *Synchronous*
  *
- * Returns all of your balances, including available balance.
- * \param exchangeId Exchange name
+ * Get current currency balance from all or single exchange.
+ * \param exchangeId Filter the balances to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -39,8 +40,8 @@ bool v1BalancesGetSync(char * accessToken,
 
 /*! \brief Get balances. *Asynchronous*
  *
- * Returns all of your balances, including available balance.
- * \param exchangeId Exchange name
+ * Get current currency balance from all or single exchange.
+ * \param exchangeId Filter the balances to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -54,7 +55,7 @@ bool v1BalancesGetAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "http://localhost:3001";
+		return "http://localhost:8080";
 	}
 };
 /** @}*/

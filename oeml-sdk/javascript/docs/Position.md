@@ -1,11 +1,10 @@
-# OmsRestApi.Position
+# OemlRestApi.Position
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Result type. | [optional] 
-**exchangeName** | **String** | Name of exchange. | [optional] 
+**exchangeId** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
 **data** | [**[PositionData]**](PositionData.md) |  | [optional] 
 
 

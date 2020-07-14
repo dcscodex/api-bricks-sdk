@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | symbol_exchange | [optional] 
-**symbol_exchange** | **String** | Currency code. | [optional] 
-**symbol_coinapi** | **String** | CoinAPI currency code. | [optional] 
-**balance** | **Float** | The current balance. | [optional] 
-**available** | **Float** | The amount that is available to trade. | [optional] 
-**locked** | **Float** | Blocked funds. | [optional] 
-**update_origin** | **String** | Source of last modification.  | [optional] 
+**asset_id_exchange** | **String** | Exchange currency code. | [optional] 
+**asset_id_coinapi** | **String** | CoinAPI currency code. | [optional] 
+**balance** | **Float** | Value of the current total currency balance on the exchange. | [optional] 
+**available** | **Float** | Value of the current available currency balance on the exchange that can be used as collateral. | [optional] 
+**locked** | **Float** | Value of the current locked currency balance by the exchange. | [optional] 
+**last_updated_by** | **String** | Source of the last modification.  | [optional] 
+**rate_usd** | **Float** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
 
 ## Code Sample
 
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::BalanceData.new(id: BTC,
-                                 symbol_exchange: BTC,
-                                 symbol_coinapi: BTC,
+instance = OpenapiClient::BalanceData.new(asset_id_exchange: XBT,
+                                 asset_id_coinapi: BTC,
                                  balance: 0.00134444,
                                  available: 0.00134444,
                                  locked: 0.0,
-                                 update_origin: EXCHANGE)
+                                 last_updated_by: EXCHANGE,
+                                 rate_usd: 1355.12)
 ```
 
 

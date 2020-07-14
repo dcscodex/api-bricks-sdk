@@ -5,35 +5,35 @@ part 'balance_data.g.dart';
 
 abstract class BalanceData implements Built<BalanceData, BalanceDataBuilder> {
 
-    /* symbol_exchange */
+    /* Exchange currency code. */
         @nullable
-    @BuiltValueField(wireName: r'id')
-    String get id;
-    /* Currency code. */
-        @nullable
-    @BuiltValueField(wireName: r'symbol_exchange')
-    String get symbolExchange;
+    @BuiltValueField(wireName: r'asset_id_exchange')
+    String get assetIdExchange;
     /* CoinAPI currency code. */
         @nullable
-    @BuiltValueField(wireName: r'symbol_coinapi')
-    String get symbolCoinapi;
-    /* The current balance. */
+    @BuiltValueField(wireName: r'asset_id_coinapi')
+    String get assetIdCoinapi;
+    /* Value of the current total currency balance on the exchange. */
         @nullable
     @BuiltValueField(wireName: r'balance')
     double get balance;
-    /* The amount that is available to trade. */
+    /* Value of the current available currency balance on the exchange that can be used as collateral. */
         @nullable
     @BuiltValueField(wireName: r'available')
     double get available;
-    /* Blocked funds. */
+    /* Value of the current locked currency balance by the exchange. */
         @nullable
     @BuiltValueField(wireName: r'locked')
     double get locked;
-    /* Source of last modification.  */
+    /* Source of the last modification.  */
         @nullable
-    @BuiltValueField(wireName: r'update_origin')
-    String get updateOrigin;
-        //enum updateOriginEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  };
+    @BuiltValueField(wireName: r'last_updated_by')
+    String get lastUpdatedBy;
+        //enum lastUpdatedByEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  };
+    /* Current exchange rate to the USD for the single unit of the currency.  */
+        @nullable
+    @BuiltValueField(wireName: r'rate_usd')
+    double get rateUsd;
 
     // Boilerplate code needed to wire-up generated code
     BalanceData._();

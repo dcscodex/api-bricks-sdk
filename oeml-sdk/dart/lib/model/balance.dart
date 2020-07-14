@@ -1,23 +1,20 @@
 part of openapi.api;
 
 class Balance {
-  /* Result type. */
-  String type = null;
-  /* Exchange name. */
-  String exchangeName = null;
+  /* Exchange identifier used to identify the routing destination. */
+  String exchangeId = null;
   
   List<BalanceData> data = [];
   Balance();
 
   @override
   String toString() {
-    return 'Balance[type=$type, exchangeName=$exchangeName, data=$data, ]';
+    return 'Balance[exchangeId=$exchangeId, data=$data, ]';
   }
 
   Balance.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    type = json['type'];
-    exchangeName = json['exchange_name'];
+    exchangeId = json['exchange_id'];
     data = (json['data'] == null) ?
       null :
       BalanceData.listFromJson(json['data']);
@@ -25,10 +22,8 @@ class Balance {
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (type != null)
-      json['type'] = type;
-    if (exchangeName != null)
-      json['exchange_name'] = exchangeName;
+    if (exchangeId != null)
+      json['exchange_id'] = exchangeId;
     if (data != null)
       json['data'] = data;
     return json;

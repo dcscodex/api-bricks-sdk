@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Result type. | [optional] 
-**ExchangeName** | **string** | Exchange name. | [optional] 
+**ExchangeId** | **string** | Exchange identifier used to identify the routing destination. | [optional] 
 **Data** | [**List&lt;BalanceData&gt;**](BalanceData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)

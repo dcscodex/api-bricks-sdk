@@ -1,48 +1,47 @@
 package org.openapitools.client.model {
 
+import org.openapitools.client.model.Object;
+import org.openapitools.client.model.OrdSide;
 
     [XmlRootNode(name="PositionData")]
     public class PositionData {
-        /* Unique position ID */
-        [XmlElement(name="id")]
-        public var id: String = null;
-        /* The contract for this position. */
-        [XmlElement(name="symbol_exchange")]
-        public var symbolExchange: String = null;
-        /* The coinapi contract for this position. */
-        [XmlElement(name="symbol_coinapi")]
-        public var symbolCoinapi: String = null;
-                [XmlElement(name="avg_entry_price")]
+        /* Exchange symbol. */
+        [XmlElement(name="symbol_id_exchange")]
+        public var symbolIdExchange: String = null;
+        /* CoinAPI symbol. */
+        [XmlElement(name="symbol_id_coinapi")]
+        public var symbolIdCoinapi: String = null;
+        /* Calculated average price of all fills on this position. */
+        [XmlElement(name="avg_entry_price")]
         public var avgEntryPrice: Number = 0.0;
-        /* The current position amount in contracts. */
+        /* The current position quantity. */
         [XmlElement(name="quantity")]
         public var quantity: Number = 0.0;
-                [XmlElement(name="is_buy")]
-        public var isBuy: Boolean = false;
-        /* Unrealised PNL is all the unrealised profit or loss coming from your portfolio&#39;s open positions. */
-        [XmlElement(name="unrealised_pn_l")]
-        public var unrealisedPnL: Number = 0.0;
-        /* 1 / initMarginReq. */
+                [XmlElement(name="side")]
+        public var side: OrdSide = NaN;
+        /* Unrealised profit or loss (PNL) of this position. */
+        [XmlElement(name="unrealized_pnl")]
+        public var unrealizedPnl: Number = 0.0;
+        /* Leverage for this position reported by the exchange. */
         [XmlElement(name="leverage")]
         public var leverage: Number = 0.0;
-        /* True/false depending on whether you set cross margin on this position. */
+        /* Is cross margin mode enable for this position? */
         [XmlElement(name="cross_margin")]
         public var crossMargin: Boolean = false;
-        /* Once markPrice reaches this price, this position will be liquidated. */
+        /* Liquidation price. If mark price will reach this value, the position will be liquidated. */
         [XmlElement(name="liquidation_price")]
         public var liquidationPrice: Number = 0.0;
                 [XmlElement(name="raw_data")]
-        public var rawData: String = null;
+        public var rawData: Object = NaN;
 
     public function toString(): String {
         var str: String = "PositionData: ";
-        str += " (id: " + id + ")";
-        str += " (symbolExchange: " + symbolExchange + ")";
-        str += " (symbolCoinapi: " + symbolCoinapi + ")";
+        str += " (symbolIdExchange: " + symbolIdExchange + ")";
+        str += " (symbolIdCoinapi: " + symbolIdCoinapi + ")";
         str += " (avgEntryPrice: " + avgEntryPrice + ")";
         str += " (quantity: " + quantity + ")";
-        str += " (isBuy: " + isBuy + ")";
-        str += " (unrealisedPnL: " + unrealisedPnL + ")";
+        str += " (side: " + side + ")";
+        str += " (unrealizedPnl: " + unrealizedPnl + ")";
         str += " (leverage: " + leverage + ")";
         str += " (crossMargin: " + crossMargin + ")";
         str += " (liquidationPrice: " + liquidationPrice + ")";

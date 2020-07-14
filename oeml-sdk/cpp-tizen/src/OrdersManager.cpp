@@ -51,14 +51,14 @@ static gpointer __OrdersManagerthreadFunc(gpointer data)
 static bool v1OrdersCancelAllPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(MessagesOk, Error, void* )
-	= reinterpret_cast<void(*)(MessagesOk, Error, void* )> (voidHandler);
+	void(* handler)(Message, Error, void* )
+	= reinterpret_cast<void(*)(Message, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	MessagesOk out;
+	Message out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,28 @@ static bool v1OrdersCancelAllPostProcessor(MemoryStruct_s p_chunk, long code, ch
 
 
 
-		if (isprimitive("MessagesOk")) {
+		if (isprimitive("Message")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "MessagesOk", "MessagesOk");
+			jsonToValue(&out, pJson, "Message", "Message");
 			json_node_free(pJson);
 
-			if ("MessagesOk" == "std::string") {
+			if ("Message" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -104,8 +114,8 @@ static bool v1OrdersCancelAllPostProcessor(MemoryStruct_s p_chunk, long code, ch
 }
 
 static bool v1OrdersCancelAllPostHelper(char * accessToken,
-	CancelAllOrder cancelAllOrder, 
-	void(* handler)(MessagesOk, Error, void* )
+	OrderCancelAllRequest orderCancelAllRequest, 
+	void(* handler)(Message, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -125,11 +135,11 @@ static bool v1OrdersCancelAllPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CancelAllOrder")) {
-		node = converttoJson(&cancelAllOrder, "CancelAllOrder", "");
+	if (isprimitive("OrderCancelAllRequest")) {
+		node = converttoJson(&orderCancelAllRequest, "OrderCancelAllRequest", "");
 	}
 	
-	char *jsonStr =  cancelAllOrder.toJson();
+	char *jsonStr =  orderCancelAllRequest.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -188,36 +198,36 @@ static bool v1OrdersCancelAllPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersCancelAllPostAsync(char * accessToken,
-	CancelAllOrder cancelAllOrder, 
-	void(* handler)(MessagesOk, Error, void* )
+	OrderCancelAllRequest orderCancelAllRequest, 
+	void(* handler)(Message, Error, void* )
 	, void* userData)
 {
 	return v1OrdersCancelAllPostHelper(accessToken,
-	cancelAllOrder, 
+	orderCancelAllRequest, 
 	handler, userData, true);
 }
 
 bool OrdersManager::v1OrdersCancelAllPostSync(char * accessToken,
-	CancelAllOrder cancelAllOrder, 
-	void(* handler)(MessagesOk, Error, void* )
+	OrderCancelAllRequest orderCancelAllRequest, 
+	void(* handler)(Message, Error, void* )
 	, void* userData)
 {
 	return v1OrdersCancelAllPostHelper(accessToken,
-	cancelAllOrder, 
+	orderCancelAllRequest, 
 	handler, userData, false);
 }
 
 static bool v1OrdersCancelPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(OrderLive, Error, void* )
-	= reinterpret_cast<void(*)(OrderLive, Error, void* )> (voidHandler);
+	void(* handler)(OrderExecutionReport, Error, void* )
+	= reinterpret_cast<void(*)(OrderExecutionReport, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	OrderLive out;
+	OrderExecutionReport out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -225,12 +235,12 @@ static bool v1OrdersCancelPostProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("OrderLive")) {
+		if (isprimitive("OrderExecutionReport")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "OrderLive", "OrderLive");
+			jsonToValue(&out, pJson, "OrderExecutionReport", "OrderExecutionReport");
 			json_node_free(pJson);
 
-			if ("OrderLive" == "std::string") {
+			if ("OrderExecutionReport" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -273,8 +283,8 @@ static bool v1OrdersCancelPostProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool v1OrdersCancelPostHelper(char * accessToken,
-	CancelOrder cancelOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderCancelSingleRequest orderCancelSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -294,11 +304,11 @@ static bool v1OrdersCancelPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CancelOrder")) {
-		node = converttoJson(&cancelOrder, "CancelOrder", "");
+	if (isprimitive("OrderCancelSingleRequest")) {
+		node = converttoJson(&orderCancelSingleRequest, "OrderCancelSingleRequest", "");
 	}
 	
-	char *jsonStr =  cancelOrder.toJson();
+	char *jsonStr =  orderCancelSingleRequest.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -357,35 +367,35 @@ static bool v1OrdersCancelPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersCancelPostAsync(char * accessToken,
-	CancelOrder cancelOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderCancelSingleRequest orderCancelSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
 	return v1OrdersCancelPostHelper(accessToken,
-	cancelOrder, 
+	orderCancelSingleRequest, 
 	handler, userData, true);
 }
 
 bool OrdersManager::v1OrdersCancelPostSync(char * accessToken,
-	CancelOrder cancelOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderCancelSingleRequest orderCancelSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
 	return v1OrdersCancelPostHelper(accessToken,
-	cancelOrder, 
+	orderCancelSingleRequest, 
 	handler, userData, false);
 }
 
 static bool v1OrdersGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<Order>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<Order>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<OrderExecutionReport>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<Order> out;
+	std::list<OrderExecutionReport> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -399,7 +409,7 @@ static bool v1OrdersGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			Order singlemodel;
+			OrderExecutionReport singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -425,7 +435,7 @@ static bool v1OrdersGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 
 static bool v1OrdersGetHelper(char * accessToken,
 	std::string exchangeId, 
-	void(* handler)(std::list<Order>, Error, void* )
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -503,7 +513,7 @@ static bool v1OrdersGetHelper(char * accessToken,
 
 bool OrdersManager::v1OrdersGetAsync(char * accessToken,
 	std::string exchangeId, 
-	void(* handler)(std::list<Order>, Error, void* )
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
 	, void* userData)
 {
 	return v1OrdersGetHelper(accessToken,
@@ -513,7 +523,7 @@ bool OrdersManager::v1OrdersGetAsync(char * accessToken,
 
 bool OrdersManager::v1OrdersGetSync(char * accessToken,
 	std::string exchangeId, 
-	void(* handler)(std::list<Order>, Error, void* )
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
 	, void* userData)
 {
 	return v1OrdersGetHelper(accessToken,
@@ -524,14 +534,14 @@ bool OrdersManager::v1OrdersGetSync(char * accessToken,
 static bool v1OrdersPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(OrderLive, Error, void* )
-	= reinterpret_cast<void(*)(OrderLive, Error, void* )> (voidHandler);
+	void(* handler)(OrderExecutionReport, Error, void* )
+	= reinterpret_cast<void(*)(OrderExecutionReport, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	OrderLive out;
+	OrderExecutionReport out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -539,18 +549,23 @@ static bool v1OrdersPostProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("OrderLive")) {
+		if (isprimitive("OrderExecutionReport")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "OrderLive", "OrderLive");
+			jsonToValue(&out, pJson, "OrderExecutionReport", "OrderExecutionReport");
 			json_node_free(pJson);
 
-			if ("OrderLive" == "std::string") {
+			if ("OrderExecutionReport" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -587,8 +602,8 @@ static bool v1OrdersPostProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool v1OrdersPostHelper(char * accessToken,
-	NewOrder newOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderNewSingleRequest orderNewSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -608,11 +623,11 @@ static bool v1OrdersPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("NewOrder")) {
-		node = converttoJson(&newOrder, "NewOrder", "");
+	if (isprimitive("OrderNewSingleRequest")) {
+		node = converttoJson(&orderNewSingleRequest, "OrderNewSingleRequest", "");
 	}
 	
-	char *jsonStr =  newOrder.toJson();
+	char *jsonStr =  orderNewSingleRequest.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -671,22 +686,179 @@ static bool v1OrdersPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersPostAsync(char * accessToken,
-	NewOrder newOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderNewSingleRequest orderNewSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
 	return v1OrdersPostHelper(accessToken,
-	newOrder, 
+	orderNewSingleRequest, 
 	handler, userData, true);
 }
 
 bool OrdersManager::v1OrdersPostSync(char * accessToken,
-	NewOrder newOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderNewSingleRequest orderNewSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
 	return v1OrdersPostHelper(accessToken,
-	newOrder, 
+	orderNewSingleRequest, 
+	handler, userData, false);
+}
+
+static bool v1OrdersStatusClientOrderIdGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(OrderExecutionReport, Error, void* )
+	= reinterpret_cast<void(*)(OrderExecutionReport, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	OrderExecutionReport out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("OrderExecutionReport")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "OrderExecutionReport", "OrderExecutionReport");
+			json_node_free(pJson);
+
+			if ("OrderExecutionReport" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool v1OrdersStatusClientOrderIdGetHelper(char * accessToken,
+	std::string clientOrderId, 
+	void(* handler)(OrderExecutionReport, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/v1/orders/status/{client_order_id}");
+	int pos;
+
+	string s_clientOrderId("{");
+	s_clientOrderId.append("client_order_id");
+	s_clientOrderId.append("}");
+	pos = url.find(s_clientOrderId);
+	url.erase(pos, s_clientOrderId.length());
+	url.insert(pos, stringify(&clientOrderId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(OrdersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = v1OrdersStatusClientOrderIdGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (OrdersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), v1OrdersStatusClientOrderIdGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __OrdersManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool OrdersManager::v1OrdersStatusClientOrderIdGetAsync(char * accessToken,
+	std::string clientOrderId, 
+	void(* handler)(OrderExecutionReport, Error, void* )
+	, void* userData)
+{
+	return v1OrdersStatusClientOrderIdGetHelper(accessToken,
+	clientOrderId, 
+	handler, userData, true);
+}
+
+bool OrdersManager::v1OrdersStatusClientOrderIdGetSync(char * accessToken,
+	std::string clientOrderId, 
+	void(* handler)(OrderExecutionReport, Error, void* )
+	, void* userData)
+{
+	return v1OrdersStatusClientOrderIdGetHelper(accessToken,
+	clientOrderId, 
 	handler, userData, false);
 }
 

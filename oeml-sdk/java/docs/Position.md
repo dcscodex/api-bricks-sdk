@@ -6,8 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Result type. |  [optional]
-**exchangeName** | **String** | Name of exchange. |  [optional]
+**exchangeId** | **String** | Exchange identifier used to identify the routing destination. |  [optional]
 **data** | [**List&lt;PositionData&gt;**](PositionData.md) |  |  [optional]
 
 

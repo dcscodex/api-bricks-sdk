@@ -73,15 +73,13 @@ private class OASBalanceTest {
     private static void maintainRenamedProperties() {
         OASBalance balance = new OASBalance();
         Map<String, String> propertyMappings = balance.getPropertyMappings();
-        System.assertEquals('r_type', propertyMappings.get('type'));
-        System.assertEquals('exchangeName', propertyMappings.get('exchange_name'));
+        System.assertEquals('exchangeId', propertyMappings.get('exchange_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASBalance balance = new OASBalance();
         System.assertEquals(new List<OASBalanceData>(), balance.data);
-        System.assertEquals(null, balance.r_type);
-        System.assertEquals(null, balance.exchangeName);
+        System.assertEquals(null, balance.exchangeId);
     }
 }

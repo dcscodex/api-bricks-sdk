@@ -6,16 +6,14 @@
 
 
 balance_t *balance_create(
-    char *type,
-    char *exchange_name,
+    char *exchange_id,
     list_t *data
     ) {
     balance_t *balance_local_var = malloc(sizeof(balance_t));
     if (!balance_local_var) {
         return NULL;
     }
-    balance_local_var->type = type;
-    balance_local_var->exchange_name = exchange_name;
+    balance_local_var->exchange_id = exchange_id;
     balance_local_var->data = data;
 
     return balance_local_var;
@@ -27,8 +25,7 @@ void balance_free(balance_t *balance) {
         return ;
     }
     listEntry_t *listEntry;
-    free(balance->type);
-    free(balance->exchange_name);
+    free(balance->exchange_id);
     list_ForEach(listEntry, balance->data) {
         balance_data_free(listEntry->data);
     }
@@ -39,17 +36,9 @@ void balance_free(balance_t *balance) {
 cJSON *balance_convertToJSON(balance_t *balance) {
     cJSON *item = cJSON_CreateObject();
 
-    // balance->type
-    if(balance->type) { 
-    if(cJSON_AddStringToObject(item, "type", balance->type) == NULL) {
-    goto fail; //String
-    }
-     } 
-
-
-    // balance->exchange_name
-    if(balance->exchange_name) { 
-    if(cJSON_AddStringToObject(item, "exchange_name", balance->exchange_name) == NULL) {
+    // balance->exchange_id
+    if(balance->exchange_id) { 
+    if(cJSON_AddStringToObject(item, "exchange_id", balance->exchange_id) == NULL) {
     goto fail; //String
     }
      } 
@@ -86,19 +75,10 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
 
     balance_t *balance_local_var = NULL;
 
-    // balance->type
-    cJSON *type = cJSON_GetObjectItemCaseSensitive(balanceJSON, "type");
-    if (type) { 
-    if(!cJSON_IsString(type))
-    {
-    goto end; //String
-    }
-    }
-
-    // balance->exchange_name
-    cJSON *exchange_name = cJSON_GetObjectItemCaseSensitive(balanceJSON, "exchange_name");
-    if (exchange_name) { 
-    if(!cJSON_IsString(exchange_name))
+    // balance->exchange_id
+    cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(balanceJSON, "exchange_id");
+    if (exchange_id) { 
+    if(!cJSON_IsString(exchange_id))
     {
     goto end; //String
     }
@@ -128,8 +108,7 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
 
 
     balance_local_var = balance_create (
-        type ? strdup(type->valuestring) : NULL,
-        exchange_name ? strdup(exchange_name->valuestring) : NULL,
+        exchange_id ? strdup(exchange_id->valuestring) : NULL,
         data ? dataList : NULL
         );
 

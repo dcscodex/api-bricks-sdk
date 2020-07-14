@@ -5,38 +5,35 @@
 -export_type([openapi_position_data/0]).
 
 -type openapi_position_data() ::
-    #{ 'id' => binary(),
-       'symbol_exchange' => binary(),
-       'symbol_coinapi' => binary(),
+    #{ 'symbol_id_exchange' => binary(),
+       'symbol_id_coinapi' => binary(),
        'avg_entry_price' => integer(),
        'quantity' => integer(),
-       'is_buy' => boolean(),
-       'unrealised_pn_l' => integer(),
+       'side' => openapi_ord_side:openapi_ord_side(),
+       'unrealized_pnl' => integer(),
        'leverage' => integer(),
        'cross_margin' => boolean(),
        'liquidation_price' => integer(),
-       'raw_data' => binary()
+       'raw_data' => maps:map()
      }.
 
-encode(#{ 'id' := Id,
-          'symbol_exchange' := SymbolExchange,
-          'symbol_coinapi' := SymbolCoinapi,
+encode(#{ 'symbol_id_exchange' := SymbolIdExchange,
+          'symbol_id_coinapi' := SymbolIdCoinapi,
           'avg_entry_price' := AvgEntryPrice,
           'quantity' := Quantity,
-          'is_buy' := IsBuy,
-          'unrealised_pn_l' := UnrealisedPnL,
+          'side' := Side,
+          'unrealized_pnl' := UnrealizedPnl,
           'leverage' := Leverage,
           'cross_margin' := CrossMargin,
           'liquidation_price' := LiquidationPrice,
           'raw_data' := RawData
         }) ->
-    #{ 'id' => Id,
-       'symbol_exchange' => SymbolExchange,
-       'symbol_coinapi' => SymbolCoinapi,
+    #{ 'symbol_id_exchange' => SymbolIdExchange,
+       'symbol_id_coinapi' => SymbolIdCoinapi,
        'avg_entry_price' => AvgEntryPrice,
        'quantity' => Quantity,
-       'is_buy' => IsBuy,
-       'unrealised_pn_l' => UnrealisedPnL,
+       'side' => Side,
+       'unrealized_pnl' => UnrealizedPnl,
        'leverage' => Leverage,
        'cross_margin' => CrossMargin,
        'liquidation_price' => LiquidationPrice,

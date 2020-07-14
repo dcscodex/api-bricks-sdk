@@ -5,12 +5,13 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/message.h"
 #include "../model/position.h"
 
 
-// Get positions
+// Get open positions
 //
-// Returns all of your positions.
+// Get current open positions across all or single exchange.
 //
 list_t*
 PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id );

@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Result type. | [optional] 
-**exchange_name** | **String** | Name of exchange. | [optional] 
+**exchange_id** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
 **data** | [**Array&lt;PositionData&gt;**](PositionData.md) |  | [optional] 
 
 ## Code Sample
@@ -13,8 +12,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::Position.new(type: snapshotPositions,
-                                 exchange_name: KRAKEN,
+instance = OpenapiClient::Position.new(exchange_id: KRAKEN,
                                  data: null)
 ```
 

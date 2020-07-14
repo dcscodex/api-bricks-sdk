@@ -5,45 +5,51 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/cancel_all_order.h"
-#include "../model/cancel_order.h"
-#include "../model/create_order400.h"
-#include "../model/messages.h"
-#include "../model/messages_ok.h"
-#include "../model/new_order.h"
-#include "../model/order.h"
-#include "../model/order_live.h"
+#include "../model/message.h"
+#include "../model/order_cancel_all_request.h"
+#include "../model/order_cancel_single_request.h"
+#include "../model/order_execution_report.h"
+#include "../model/order_new_single_request.h"
+#include "../model/validation_error.h"
 
 
-// Cancel all order
+// Cancel all orders request
 //
-// Cancel all existing order.
+// This request cancels all open orders on single specified exchange.
 //
-messages_ok_t*
-OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, cancel_all_order_t * cancel_all_order );
+message_t*
+OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, order_cancel_all_request_t * order_cancel_all_request );
 
 
-// Cancel order
+// Cancel order request
 //
-// Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
+// Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 //
-order_live_t*
-OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, cancel_order_t * cancel_order );
+order_execution_report_t*
+OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, order_cancel_single_request_t * order_cancel_single_request );
 
 
-// Get orders
+// Get open orders
 //
-// List your current open orders.
+// Get last execution reports for open orders across all or single exchange.
 //
 list_t*
 OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id );
 
 
-// Create new order
+// Send new order
 //
-// You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
+// This request creating new order for the specific exchange.
 //
-order_live_t*
-OrdersAPI_v1OrdersPost(apiClient_t *apiClient, new_order_t * new_order );
+order_execution_report_t*
+OrdersAPI_v1OrdersPost(apiClient_t *apiClient, order_new_single_request_t * order_new_single_request );
+
+
+// Get order execution report
+//
+// Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+//
+order_execution_report_t*
+OrdersAPI_v1OrdersStatusClientOrderIdGet(apiClient_t *apiClient, char * client_order_id );
 
 

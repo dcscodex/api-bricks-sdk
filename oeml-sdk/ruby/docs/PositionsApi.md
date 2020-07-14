@@ -1,10 +1,10 @@
 # OpenapiClient::PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_positions_get**](PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get positions
+[**v1_positions_get**](PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get open positions
 
 
 
@@ -12,9 +12,9 @@ Method | HTTP request | Description
 
 > Array&lt;Position&gt; v1_positions_get(opts)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
@@ -24,11 +24,11 @@ require 'openapi_client'
 
 api_instance = OpenapiClient::PositionsApi.new
 opts = {
-  exchange_id: 'KRAKEN' # String | Exchange name
+  exchange_id: 'KRAKEN' # String | Filter the balances to the specific exchange.
 }
 
 begin
-  #Get positions
+  #Get open positions
   result = api_instance.v1_positions_get(opts)
   p result
 rescue OpenapiClient::ApiError => e
@@ -41,7 +41,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **String**| Exchange name | [optional] 
+ **exchange_id** | **String**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -54,5 +54,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 

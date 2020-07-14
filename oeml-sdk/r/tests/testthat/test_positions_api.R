@@ -7,10 +7,10 @@ api.instance <- PositionsApi$new()
 
 test_that("V1PositionsGet", {
   # tests for V1PositionsGet
-  # base path: http://localhost:3001
-  # Get positions
-  # Returns all of your positions.
-  # @param character  exchange.id  Exchange name  (optional)
+  # base path: http://localhost:8080
+  # Get open positions
+  # Get current open positions across all or single exchange.
+  # @param character  exchange.id  Filter the balances to the specific exchange.  (optional)
   # @return [array[Position]]
 
   # uncomment below to test the operation

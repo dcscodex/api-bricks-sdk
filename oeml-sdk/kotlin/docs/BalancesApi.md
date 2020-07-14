@@ -1,6 +1,6 @@
 # BalancesApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get balances
 
-Returns all of your balances, including available balance.
+Get current currency balance from all or single exchange.
 
 ### Example
 ```kotlin
@@ -22,7 +22,7 @@ Returns all of your balances, including available balance.
 //import org.openapitools.client.models.*
 
 val apiInstance = BalancesApi()
-val exchangeId : kotlin.String = KRAKEN // kotlin.String | Exchange name
+val exchangeId : kotlin.String = KRAKEN // kotlin.String | Filter the balances to the specific exchange.
 try {
     val result : kotlin.Array<Balance> = apiInstance.v1BalancesGet(exchangeId)
     println(result)
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **kotlin.String**| Exchange name | [optional]
+ **exchangeId** | **kotlin.String**| Filter the balances to the specific exchange. | [optional]
 
 ### Return type
 
@@ -52,5 +52,5 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 

@@ -14,40 +14,40 @@ import 'package:openapi/api/positions_api.dart';
 
 import 'package:openapi/model/balance.dart';
 import 'package:openapi/model/balance_data.dart';
-import 'package:openapi/model/cancel_all_order.dart';
-import 'package:openapi/model/cancel_order.dart';
-import 'package:openapi/model/create_order400.dart';
-import 'package:openapi/model/messages.dart';
-import 'package:openapi/model/messages_info.dart';
-import 'package:openapi/model/messages_ok.dart';
-import 'package:openapi/model/new_order.dart';
-import 'package:openapi/model/order.dart';
-import 'package:openapi/model/order_data.dart';
-import 'package:openapi/model/order_live.dart';
-import 'package:openapi/model/order_status.dart';
+import 'package:openapi/model/message.dart';
+import 'package:openapi/model/ord_side.dart';
+import 'package:openapi/model/ord_status.dart';
+import 'package:openapi/model/ord_type.dart';
+import 'package:openapi/model/order_cancel_all_request.dart';
+import 'package:openapi/model/order_cancel_single_request.dart';
+import 'package:openapi/model/order_execution_report.dart';
+import 'package:openapi/model/order_execution_report_all_of.dart';
+import 'package:openapi/model/order_new_single_request.dart';
 import 'package:openapi/model/position.dart';
 import 'package:openapi/model/position_data.dart';
+import 'package:openapi/model/severity.dart';
 import 'package:openapi/model/time_in_force.dart';
+import 'package:openapi/model/validation_error.dart';
 
 
 
 final _jsonJaguarRepo = JsonRepo()
 ..add(BalanceSerializer())
 ..add(BalanceDataSerializer())
-..add(CancelAllOrderSerializer())
-..add(CancelOrderSerializer())
-..add(CreateOrder400Serializer())
-..add(MessagesSerializer())
-..add(MessagesInfoSerializer())
-..add(MessagesOkSerializer())
-..add(NewOrderSerializer())
-..add(OrderSerializer())
-..add(OrderDataSerializer())
-..add(OrderLiveSerializer())
+..add(MessageSerializer())
 
+
+
+..add(OrderCancelAllRequestSerializer())
+..add(OrderCancelSingleRequestSerializer())
+..add(OrderExecutionReportSerializer())
+..add(OrderExecutionReportAllOfSerializer())
+..add(OrderNewSingleRequestSerializer())
 ..add(PositionSerializer())
 ..add(PositionDataSerializer())
 
+
+..add(ValidationErrorSerializer())
 ;
 final Map<String, CodecRepo> defaultConverters = {
     MimeTypes.json: _jsonJaguarRepo,
@@ -59,7 +59,7 @@ final _defaultInterceptors = [OAuthInterceptor(), BasicAuthInterceptor(), ApiKey
 
 class Openapi {
     List<Interceptor> interceptors;
-    String basePath = "http://localhost:3001";
+    String basePath = "http://localhost:8080";
     Route _baseRoute;
     final Duration timeout;
 

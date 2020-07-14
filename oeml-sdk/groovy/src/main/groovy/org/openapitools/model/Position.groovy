@@ -9,10 +9,8 @@ import org.openapitools.model.PositionData;
 
 @Canonical
 class Position {
-    /* Result type. */
-    String type
-    /* Name of exchange. */
-    String exchangeName
+    /* Exchange identifier used to identify the routing destination. */
+    String exchangeId
     
     List<PositionData> data = new ArrayList<PositionData>()
 }

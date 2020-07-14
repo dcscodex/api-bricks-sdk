@@ -1,4 +1,4 @@
-# timeInForce
+# TimeInForce
 
 ## Properties
 Name | Type | Description | Notes

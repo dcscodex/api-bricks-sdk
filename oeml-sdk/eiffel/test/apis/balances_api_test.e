@@ -16,7 +16,7 @@ feature -- Test routines
     test_v1_balances_get
             -- Get balances
             -- 
-            -- Returns all of your balances, including available balance. 
+            -- Get current currency balance from all or single exchange. 
         local
             l_response: LIST [BALANCE]
             l_exchange_id: STRING_32

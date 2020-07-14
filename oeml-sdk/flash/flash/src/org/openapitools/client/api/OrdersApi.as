@@ -6,14 +6,12 @@ import org.openapitools.exception.ApiError;
 import org.openapitools.common.ApiUserCredentials;
 import org.openapitools.event.Response;
 import org.openapitools.common.OpenApi;
-import org.openapitools.client.model.CancelAllOrder;
-import org.openapitools.client.model.CancelOrder;
-import org.openapitools.client.model.CreateOrder400;
-import org.openapitools.client.model.Messages;
-import org.openapitools.client.model.MessagesOk;
-import org.openapitools.client.model.NewOrder;
-import org.openapitools.client.model.Order;
-import org.openapitools.client.model.OrderLive;
+import org.openapitools.client.model.Message;
+import org.openapitools.client.model.OrderCancelAllRequest;
+import org.openapitools.client.model.OrderCancelSingleRequest;
+import org.openapitools.client.model.OrderExecutionReport;
+import org.openapitools.client.model.OrderNewSingleRequest;
+import org.openapitools.client.model.ValidationError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -34,12 +32,13 @@ public class OrdersApi extends OpenApi {
         public static const event_v1_orders_cancel_post: String = "v1_orders_cancel_post";
         public static const event_v1_orders_get: String = "v1_orders_get";
         public static const event_v1_orders_post: String = "v1_orders_post";
+        public static const event_v1_orders_status_client_order_id_get: String = "v1_orders_status_client_order_id_get";
 
 
     /*
-     * Returns MessagesOk 
+     * Returns Message 
      */
-    public function v1_orders_cancel_all_post (cancelAllOrder: CancelAllOrder): String {
+    public function v1_orders_cancel_all_post (orderCancelAllRequest: OrderCancelAllRequest): String {
         // create path and map variables
         var path: String = "/v1/orders/cancel/all".replace(/{format}/g,"xml");
 
@@ -54,22 +53,22 @@ public class OrdersApi extends OpenApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, cancelAllOrder, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, orderCancelAllRequest, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
         token.completionEventType = "v1_orders_cancel_all_post";
 
-        token.returnType = MessagesOk;
+        token.returnType = Message;
         return requestId;
 
     }
 
     /*
-     * Returns OrderLive 
+     * Returns OrderExecutionReport 
      */
-    public function v1_orders_cancel_post (cancelOrder: CancelOrder): String {
+    public function v1_orders_cancel_post (orderCancelSingleRequest: OrderCancelSingleRequest): String {
         // create path and map variables
         var path: String = "/v1/orders/cancel".replace(/{format}/g,"xml");
 
@@ -84,14 +83,14 @@ public class OrdersApi extends OpenApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, cancelOrder, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, orderCancelSingleRequest, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
         token.completionEventType = "v1_orders_cancel_post";
 
-        token.returnType = OrderLive;
+        token.returnType = OrderExecutionReport;
         return requestId;
 
     }
@@ -129,9 +128,9 @@ public class OrdersApi extends OpenApi {
     }
 
     /*
-     * Returns OrderLive 
+     * Returns OrderExecutionReport 
      */
-    public function v1_orders_post (newOrder: NewOrder): String {
+    public function v1_orders_post (orderNewSingleRequest: OrderNewSingleRequest): String {
         // create path and map variables
         var path: String = "/v1/orders".replace(/{format}/g,"xml");
 
@@ -146,14 +145,44 @@ public class OrdersApi extends OpenApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, newOrder, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, orderNewSingleRequest, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
         token.completionEventType = "v1_orders_post";
 
-        token.returnType = OrderLive;
+        token.returnType = OrderExecutionReport;
+        return requestId;
+
+    }
+
+    /*
+     * Returns OrderExecutionReport 
+     */
+    public function v1_orders_status_client_order_id_get (clientOrderId: String): String {
+        // create path and map variables
+        var path: String = "/v1/orders/status/{client_order_id}".replace(/{format}/g,"xml").replace("{" + "client_order_id" + "}", getApiInvoker().escapeString(clientOrderId));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "v1_orders_status_client_order_id_get";
+
+        token.returnType = OrderExecutionReport;
         return requestId;
 
     }

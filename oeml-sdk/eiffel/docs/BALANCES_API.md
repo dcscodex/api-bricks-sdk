@@ -1,6 +1,6 @@
 # BALANCES_API
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Feature | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,18 +13,18 @@ Feature | HTTP request | Description
 
 Get balances
 
-Returns all of your balances, including available balance.
+Get current currency balance from all or single exchange.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **STRING_32**| Exchange name | [optional] [default to null]
+ **exchange_id** | **STRING_32**| Filter the balances to the specific exchange. | [optional] [default to null]
 
 ### Return type
 
-[**LIST [BALANCE]**](balance.md)
+[**LIST [BALANCE]**](Balance.md)
 
 ### Authorization
 
@@ -33,7 +33,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

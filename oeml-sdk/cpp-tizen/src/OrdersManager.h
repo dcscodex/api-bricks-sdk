@@ -5,14 +5,12 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "CancelAllOrder.h"
-#include "CancelOrder.h"
-#include "CreateOrder400.h"
-#include "Messages.h"
-#include "MessagesOk.h"
-#include "NewOrder.h"
-#include "Order.h"
-#include "OrderLive.h"
+#include "Message.h"
+#include "OrderCancelAllRequest.h"
+#include "OrderCancelSingleRequest.h"
+#include "OrderExecutionReport.h"
+#include "OrderNewSingleRequest.h"
+#include "ValidationError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -31,118 +29,145 @@ public:
 	OrdersManager();
 	virtual ~OrdersManager();
 
-/*! \brief Cancel all order. *Synchronous*
+/*! \brief Cancel all orders request. *Synchronous*
  *
- * Cancel all existing order.
- * \param cancelAllOrder  *Required*
+ * This request cancels all open orders on single specified exchange.
+ * \param orderCancelAllRequest OrderCancelAllRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelAllPostSync(char * accessToken,
-	CancelAllOrder cancelAllOrder, 
-	void(* handler)(MessagesOk, Error, void* )
+	OrderCancelAllRequest orderCancelAllRequest, 
+	void(* handler)(Message, Error, void* )
 	, void* userData);
 
-/*! \brief Cancel all order. *Asynchronous*
+/*! \brief Cancel all orders request. *Asynchronous*
  *
- * Cancel all existing order.
- * \param cancelAllOrder  *Required*
+ * This request cancels all open orders on single specified exchange.
+ * \param orderCancelAllRequest OrderCancelAllRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelAllPostAsync(char * accessToken,
-	CancelAllOrder cancelAllOrder, 
-	void(* handler)(MessagesOk, Error, void* )
+	OrderCancelAllRequest orderCancelAllRequest, 
+	void(* handler)(Message, Error, void* )
 	, void* userData);
 
 
-/*! \brief Cancel order. *Synchronous*
+/*! \brief Cancel order request. *Synchronous*
  *
- * Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
- * \param cancelOrder  *Required*
+ * Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
+ * \param orderCancelSingleRequest OrderCancelSingleRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelPostSync(char * accessToken,
-	CancelOrder cancelOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderCancelSingleRequest orderCancelSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
-/*! \brief Cancel order. *Asynchronous*
+/*! \brief Cancel order request. *Asynchronous*
  *
- * Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
- * \param cancelOrder  *Required*
+ * Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
+ * \param orderCancelSingleRequest OrderCancelSingleRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelPostAsync(char * accessToken,
-	CancelOrder cancelOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderCancelSingleRequest orderCancelSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
 
-/*! \brief Get orders. *Synchronous*
+/*! \brief Get open orders. *Synchronous*
  *
- * List your current open orders.
- * \param exchangeId Exchange name
+ * Get last execution reports for open orders across all or single exchange.
+ * \param exchangeId Filter the open orders to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersGetSync(char * accessToken,
 	std::string exchangeId, 
-	void(* handler)(std::list<Order>, Error, void* )
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
 	, void* userData);
 
-/*! \brief Get orders. *Asynchronous*
+/*! \brief Get open orders. *Asynchronous*
  *
- * List your current open orders.
- * \param exchangeId Exchange name
+ * Get last execution reports for open orders across all or single exchange.
+ * \param exchangeId Filter the open orders to the specific exchange.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersGetAsync(char * accessToken,
 	std::string exchangeId, 
-	void(* handler)(std::list<Order>, Error, void* )
+	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
 	, void* userData);
 
 
-/*! \brief Create new order. *Synchronous*
+/*! \brief Send new order. *Synchronous*
  *
- * You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
- * \param newOrder  *Required*
+ * This request creating new order for the specific exchange.
+ * \param orderNewSingleRequest OrderNewSingleRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersPostSync(char * accessToken,
-	NewOrder newOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderNewSingleRequest orderNewSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
-/*! \brief Create new order. *Asynchronous*
+/*! \brief Send new order. *Asynchronous*
  *
- * You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
- * \param newOrder  *Required*
+ * This request creating new order for the specific exchange.
+ * \param orderNewSingleRequest OrderNewSingleRequest object. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersPostAsync(char * accessToken,
-	NewOrder newOrder, 
-	void(* handler)(OrderLive, Error, void* )
+	OrderNewSingleRequest orderNewSingleRequest, 
+	void(* handler)(OrderExecutionReport, Error, void* )
+	, void* userData);
+
+
+/*! \brief Get order execution report. *Synchronous*
+ *
+ * Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+ * \param clientOrderId The unique identifier of the order assigned by the client. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool v1OrdersStatusClientOrderIdGetSync(char * accessToken,
+	std::string clientOrderId, 
+	void(* handler)(OrderExecutionReport, Error, void* )
+	, void* userData);
+
+/*! \brief Get order execution report. *Asynchronous*
+ *
+ * Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+ * \param clientOrderId The unique identifier of the order assigned by the client. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool v1OrdersStatusClientOrderIdGetAsync(char * accessToken,
+	std::string clientOrderId, 
+	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
 
 
 	static std::string getBasePath()
 	{
-		return "http://localhost:3001";
+		return "http://localhost:8080";
 	}
 };
 /** @}*/

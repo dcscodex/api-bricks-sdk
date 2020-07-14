@@ -3,25 +3,25 @@ function New-BalanceData {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${id},
+        ${assetUnderscoreidUnderscoreexchange},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${symbolUnderscoreexchange},
+        ${assetUnderscoreidUnderscorecoinapi},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${symbolUnderscorecoinapi},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Double]]
         ${balance},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Double]]
         ${available},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Double]]
         ${locked},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${updateUnderscoreorigin}
+        ${lastUnderscoreupdatedUnderscoreby},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Double]]
+        ${rateUnderscoreusd}
     )
 
     Process {
@@ -29,13 +29,13 @@ function New-BalanceData {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         New-Object -TypeName Org.OpenAPITools.Model.BalanceData -ArgumentList @(
-            ${id},
-            ${symbolUnderscoreexchange},
-            ${symbolUnderscorecoinapi},
+            ${assetUnderscoreidUnderscoreexchange},
+            ${assetUnderscoreidUnderscorecoinapi},
             ${balance},
             ${available},
             ${locked},
-            ${updateUnderscoreorigin}
+            ${lastUnderscoreupdatedUnderscoreby},
+            ${rateUnderscoreusd}
         )
     }
 }

@@ -9,7 +9,7 @@ class BalancesApi {
 
   /// Get balances with HTTP info returned
   ///
-  /// Returns all of your balances, including available balance.
+  /// Get current currency balance from all or single exchange.
   Future<Response> v1BalancesGetWithHttpInfo({ String exchangeId }) async {
     Object postBody;
 
@@ -53,7 +53,7 @@ class BalancesApi {
 
   /// Get balances
   ///
-  /// Returns all of your balances, including available balance.
+  /// Get current currency balance from all or single exchange.
   Future<List<Balance>> v1BalancesGet({ String exchangeId }) async {
     Response response = await v1BalancesGetWithHttpInfo( exchangeId: exchangeId );
     if(response.statusCode >= 400) {

@@ -1,8 +1,8 @@
 {
-  "name": "oms_rest_api",
+  "name": "oeml_rest_api",
   "version": "v1",
-  "description": "OMS_Project",
-  "license": "Apache 2.0",
+  "description": "This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_",
+  "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",

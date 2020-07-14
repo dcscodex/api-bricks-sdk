@@ -1,6 +1,6 @@
 # OpenapiClient::BalancesApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get balances
 
-Returns all of your balances, including available balance.
+Get current currency balance from all or single exchange.
 
 ### Example
 
@@ -24,7 +24,7 @@ require 'openapi_client'
 
 api_instance = OpenapiClient::BalancesApi.new
 opts = {
-  exchange_id: 'KRAKEN' # String | Exchange name
+  exchange_id: 'KRAKEN' # String | Filter the balances to the specific exchange.
 }
 
 begin
@@ -41,7 +41,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **String**| Exchange name | [optional] 
+ **exchange_id** | **String**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -54,5 +54,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 

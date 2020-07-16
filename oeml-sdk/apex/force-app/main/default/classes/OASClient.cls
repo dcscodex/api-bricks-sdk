@@ -1,6 +1,6 @@
 public class OASClient extends OAS.ApiClient {
     public OASClient() {
-        basePath = 'http://localhost:3001';
-        calloutName = 'OMS__REST_API';
+        basePath = 'http://localhost:8080';
+        calloutName = 'OEML__REST_API';
     }
 }

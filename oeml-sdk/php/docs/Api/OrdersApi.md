@@ -1,23 +1,24 @@
 # OpenAPI\Client\OrdersApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all order
-[**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order
-[**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get orders
-[**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Create new order
+[**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+[**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+[**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+[**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
 
 
 ## v1OrdersCancelAllPost
 
-> \OpenAPI\Client\Model\MessagesOk v1OrdersCancelAllPost($cancel_all_order)
+> \OpenAPI\Client\Model\Message v1OrdersCancelAllPost($order_cancel_all_request)
 
-Cancel all order
+Cancel all orders request
 
-Cancel all existing order.
+This request cancels all open orders on single specified exchange.
 
 ### Example
 
@@ -31,10 +32,10 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$cancel_all_order = new \OpenAPI\Client\Model\CancelAllOrder(); // \OpenAPI\Client\Model\CancelAllOrder | 
+$order_cancel_all_request = new \OpenAPI\Client\Model\OrderCancelAllRequest(); // \OpenAPI\Client\Model\OrderCancelAllRequest | OrderCancelAllRequest object.
 
 try {
-    $result = $apiInstance->v1OrdersCancelAllPost($cancel_all_order);
+    $result = $apiInstance->v1OrdersCancelAllPost($order_cancel_all_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->v1OrdersCancelAllPost: ', $e->getMessage(), PHP_EOL;
@@ -47,11 +48,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancel_all_order** | [**\OpenAPI\Client\Model\CancelAllOrder**](../Model/CancelAllOrder.md)|  |
+ **order_cancel_all_request** | [**\OpenAPI\Client\Model\OrderCancelAllRequest**](../Model/OrderCancelAllRequest.md)| OrderCancelAllRequest object. |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\MessagesOk**](../Model/MessagesOk.md)
+[**\OpenAPI\Client\Model\Message**](../Model/Message.md)
 
 ### Authorization
 
@@ -60,7 +61,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -69,11 +70,11 @@ No authorization required
 
 ## v1OrdersCancelPost
 
-> \OpenAPI\Client\Model\OrderLive v1OrdersCancelPost($cancel_order)
+> \OpenAPI\Client\Model\OrderExecutionReport v1OrdersCancelPost($order_cancel_single_request)
 
-Cancel order
+Cancel order request
 
-Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
+Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 
 ### Example
 
@@ -87,10 +88,10 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$cancel_order = new \OpenAPI\Client\Model\CancelOrder(); // \OpenAPI\Client\Model\CancelOrder | 
+$order_cancel_single_request = new \OpenAPI\Client\Model\OrderCancelSingleRequest(); // \OpenAPI\Client\Model\OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
 try {
-    $result = $apiInstance->v1OrdersCancelPost($cancel_order);
+    $result = $apiInstance->v1OrdersCancelPost($order_cancel_single_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->v1OrdersCancelPost: ', $e->getMessage(), PHP_EOL;
@@ -103,11 +104,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancel_order** | [**\OpenAPI\Client\Model\CancelOrder**](../Model/CancelOrder.md)|  |
+ **order_cancel_single_request** | [**\OpenAPI\Client\Model\OrderCancelSingleRequest**](../Model/OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\OrderLive**](../Model/OrderLive.md)
+[**\OpenAPI\Client\Model\OrderExecutionReport**](../Model/OrderExecutionReport.md)
 
 ### Authorization
 
@@ -125,11 +126,11 @@ No authorization required
 
 ## v1OrdersGet
 
-> \OpenAPI\Client\Model\Order[] v1OrdersGet($exchange_id)
+> \OpenAPI\Client\Model\OrderExecutionReport[] v1OrdersGet($exchange_id)
 
-Get orders
+Get open orders
 
-List your current open orders.
+Get last execution reports for open orders across all or single exchange.
 
 ### Example
 
@@ -143,7 +144,7 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$exchange_id = KRAKEN; // string | Exchange name
+$exchange_id = KRAKEN; // string | Filter the open orders to the specific exchange.
 
 try {
     $result = $apiInstance->v1OrdersGet($exchange_id);
@@ -159,11 +160,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **string**| Exchange name | [optional]
+ **exchange_id** | **string**| Filter the open orders to the specific exchange. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Order[]**](../Model/Order.md)
+[**\OpenAPI\Client\Model\OrderExecutionReport[]**](../Model/OrderExecutionReport.md)
 
 ### Authorization
 
@@ -172,7 +173,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -181,11 +182,11 @@ No authorization required
 
 ## v1OrdersPost
 
-> \OpenAPI\Client\Model\OrderLive v1OrdersPost($new_order)
+> \OpenAPI\Client\Model\OrderExecutionReport v1OrdersPost($order_new_single_request)
 
-Create new order
+Send new order
 
-You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
+This request creating new order for the specific exchange.
 
 ### Example
 
@@ -199,10 +200,10 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$new_order = new \OpenAPI\Client\Model\NewOrder(); // \OpenAPI\Client\Model\NewOrder | 
+$order_new_single_request = new \OpenAPI\Client\Model\OrderNewSingleRequest(); // \OpenAPI\Client\Model\OrderNewSingleRequest | OrderNewSingleRequest object.
 
 try {
-    $result = $apiInstance->v1OrdersPost($new_order);
+    $result = $apiInstance->v1OrdersPost($order_new_single_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->v1OrdersPost: ', $e->getMessage(), PHP_EOL;
@@ -215,11 +216,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **new_order** | [**\OpenAPI\Client\Model\NewOrder**](../Model/NewOrder.md)|  |
+ **order_new_single_request** | [**\OpenAPI\Client\Model\OrderNewSingleRequest**](../Model/OrderNewSingleRequest.md)| OrderNewSingleRequest object. |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\OrderLive**](../Model/OrderLive.md)
+[**\OpenAPI\Client\Model\OrderExecutionReport**](../Model/OrderExecutionReport.md)
 
 ### Authorization
 
@@ -229,6 +230,62 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, appliction/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## v1OrdersStatusClientOrderIdGet
+
+> \OpenAPI\Client\Model\OrderExecutionReport v1OrdersStatusClientOrderIdGet($client_order_id)
+
+Get order execution report
+
+Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$client_order_id = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b; // string | The unique identifier of the order assigned by the client.
+
+try {
+    $result = $apiInstance->v1OrdersStatusClientOrderIdGet($client_order_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->v1OrdersStatusClientOrderIdGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **client_order_id** | **string**| The unique identifier of the order assigned by the client. |
+
+### Return type
+
+[**\OpenAPI\Client\Model\OrderExecutionReport**](../Model/OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

@@ -20,15 +20,13 @@ typedef struct position_t position_t;
 
 
 typedef struct position_t {
-    char *type; // string
-    char *exchange_name; // string
+    char *exchange_id; // string
     list_t *data; //nonprimitive container
 
 } position_t;
 
 position_t *position_create(
-    char *type,
-    char *exchange_name,
+    char *exchange_id,
     list_t *data
 );
 

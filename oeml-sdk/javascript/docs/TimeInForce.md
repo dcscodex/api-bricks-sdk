@@ -1,4 +1,4 @@
-# OmsRestApi.TimeInForce
+# OemlRestApi.TimeInForce
 
 ## Enum
 
@@ -12,9 +12,5 @@
 * `FILL_OR_KILL` (value: `"FILL_OR_KILL"`)
 
 * `IMMEDIATE_OR_CANCEL` (value: `"IMMEDIATE_OR_CANCEL"`)
-
-* `AUCTION_ONLY` (value: `"AUCTION_ONLY"`)
-
-* `INDICATION_OF_INTEREST` (value: `"INDICATION_OF_INTEREST"`)
 
 

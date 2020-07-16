@@ -73,8 +73,9 @@ private class OASBalanceDataTest {
     private static void maintainRenamedProperties() {
         OASBalanceData balanceData = new OASBalanceData();
         Map<String, String> propertyMappings = balanceData.getPropertyMappings();
-        System.assertEquals('symbolExchange', propertyMappings.get('symbol_exchange'));
-        System.assertEquals('symbolCoinapi', propertyMappings.get('symbol_coinapi'));
-        System.assertEquals('updateOrigin', propertyMappings.get('update_origin'));
+        System.assertEquals('assetIdExchange', propertyMappings.get('asset_id_exchange'));
+        System.assertEquals('assetIdCoinapi', propertyMappings.get('asset_id_coinapi'));
+        System.assertEquals('lastUpdatedBy', propertyMappings.get('last_updated_by'));
+        System.assertEquals('rateUsd', propertyMappings.get('rate_usd'));
     }
 }

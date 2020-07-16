@@ -1,6 +1,6 @@
 {
     "name": "GIT_USER_ID/GIT_REPO_ID",
-    "description": "OMS Project",
+    "description": "This section will provide necessary information about the `CoinAPI OEML REST API` protocol.",
     "keywords": [
         "openapitools",
         "openapi-generator",

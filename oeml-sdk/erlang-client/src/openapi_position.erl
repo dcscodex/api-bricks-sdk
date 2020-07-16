@@ -5,16 +5,13 @@
 -export_type([openapi_position/0]).
 
 -type openapi_position() ::
-    #{ 'type' => binary(),
-       'exchange_name' => binary(),
+    #{ 'exchange_id' => binary(),
        'data' => list()
      }.
 
-encode(#{ 'type' := Type,
-          'exchange_name' := ExchangeName,
+encode(#{ 'exchange_id' := ExchangeId,
           'data' := Data
         }) ->
-    #{ 'type' => Type,
-       'exchange_name' => ExchangeName,
+    #{ 'exchange_id' => ExchangeId,
        'data' => Data
      }.

@@ -1,7 +1,7 @@
-# OMS - REST API API Client
+# OEML - REST API API Client
 
 
-OMS Project
+This section will provide necessary information about the `CoinAPI OEML REST API` protocol.\n
 
 ## Requirements
 
@@ -59,36 +59,37 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *OASBalancesApi* | [**v1BalancesGet**](OASBalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
-*OASOrdersApi* | [**v1OrdersCancelAllPost**](OASOrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all order
-*OASOrdersApi* | [**v1OrdersCancelPost**](OASOrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order
-*OASOrdersApi* | [**v1OrdersGet**](OASOrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get orders
-*OASOrdersApi* | [**v1OrdersPost**](OASOrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Create new order
-*OASPositionsApi* | [**v1PositionsGet**](OASPositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+*OASOrdersApi* | [**v1OrdersCancelAllPost**](OASOrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OASOrdersApi* | [**v1OrdersCancelPost**](OASOrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*OASOrdersApi* | [**v1OrdersGet**](OASOrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OASOrdersApi* | [**v1OrdersPost**](OASOrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+*OASOrdersApi* | [**v1OrdersStatusClientOrderIdGet**](OASOrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*OASPositionsApi* | [**v1PositionsGet**](OASPositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
  - [OASBalance](OASBalance.md)
  - [OASBalanceData](OASBalanceData.md)
- - [OASCancelAllOrder](OASCancelAllOrder.md)
- - [OASCancelOrder](OASCancelOrder.md)
- - [OASCreateOrder400](OASCreateOrder400.md)
- - [OASMessages](OASMessages.md)
- - [OASMessagesInfo](OASMessagesInfo.md)
- - [OASMessagesOk](OASMessagesOk.md)
- - [OASNewOrder](OASNewOrder.md)
- - [OASOrder](OASOrder.md)
- - [OASOrderData](OASOrderData.md)
- - [OASOrderLive](OASOrderLive.md)
- - [OASOrderStatus](OASOrderStatus.md)
+ - [OASMessage](OASMessage.md)
+ - [OASOrdSide](OASOrdSide.md)
+ - [OASOrdStatus](OASOrdStatus.md)
+ - [OASOrdType](OASOrdType.md)
+ - [OASOrderCancelAllRequest](OASOrderCancelAllRequest.md)
+ - [OASOrderCancelSingleRequest](OASOrderCancelSingleRequest.md)
+ - [OASOrderExecutionReport](OASOrderExecutionReport.md)
+ - [OASOrderExecutionReportAllOf](OASOrderExecutionReportAllOf.md)
+ - [OASOrderNewSingleRequest](OASOrderNewSingleRequest.md)
  - [OASPosition](OASPosition.md)
  - [OASPositionData](OASPositionData.md)
+ - [OASSeverity](OASSeverity.md)
  - [OASTimeInForce](OASTimeInForce.md)
+ - [OASValidationError](OASValidationError.md)
 
 
 ## Documentation for Authorization
@@ -98,5 +99,5 @@ Authentication schemes defined for the API:
 
 ## Author
 
-
+support@coinapi.io
 

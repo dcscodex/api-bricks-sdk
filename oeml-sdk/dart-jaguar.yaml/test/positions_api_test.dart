@@ -7,9 +7,9 @@ void main() {
   var instance = new PositionsApi();
 
   group('tests for PositionsApi', () {
-    // Get positions
+    // Get open positions
     //
-    // Returns all of your positions.
+    // Get current open positions across all or single exchange.
     //
     //Future<List<Position>> v1PositionsGet({ String exchangeId }) async 
     test('test v1PositionsGet', () async {

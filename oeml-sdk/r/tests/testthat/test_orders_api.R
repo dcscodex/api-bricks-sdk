@@ -7,11 +7,11 @@ api.instance <- OrdersApi$new()
 
 test_that("V1OrdersCancelAllPost", {
   # tests for V1OrdersCancelAllPost
-  # base path: http://localhost:3001
-  # Cancel all order
-  # Cancel all existing order.
-  # @param CancelAllOrder  cancel.all.order   
-  # @return [MessagesOk]
+  # base path: http://localhost:8080
+  # Cancel all orders request
+  # This request cancels all open orders on single specified exchange.
+  # @param OrderCancelAllRequest  order.cancel.all.request  OrderCancelAllRequest object. 
+  # @return [Message]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -19,11 +19,11 @@ test_that("V1OrdersCancelAllPost", {
 
 test_that("V1OrdersCancelPost", {
   # tests for V1OrdersCancelPost
-  # base path: http://localhost:3001
-  # Cancel order
-  # Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
-  # @param CancelOrder  cancel.order   
-  # @return [OrderLive]
+  # base path: http://localhost:8080
+  # Cancel order request
+  # Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+  # @param OrderCancelSingleRequest  order.cancel.single.request  OrderCancelSingleRequest object. 
+  # @return [OrderExecutionReport]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -31,11 +31,11 @@ test_that("V1OrdersCancelPost", {
 
 test_that("V1OrdersGet", {
   # tests for V1OrdersGet
-  # base path: http://localhost:3001
-  # Get orders
-  # List your current open orders.
-  # @param character  exchange.id  Exchange name  (optional)
-  # @return [array[Order]]
+  # base path: http://localhost:8080
+  # Get open orders
+  # Get last execution reports for open orders across all or single exchange.
+  # @param character  exchange.id  Filter the open orders to the specific exchange.  (optional)
+  # @return [array[OrderExecutionReport]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -43,11 +43,23 @@ test_that("V1OrdersGet", {
 
 test_that("V1OrdersPost", {
   # tests for V1OrdersPost
-  # base path: http://localhost:3001
-  # Create new order
-  # You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
-  # @param NewOrder  new.order   
-  # @return [OrderLive]
+  # base path: http://localhost:8080
+  # Send new order
+  # This request creating new order for the specific exchange.
+  # @param OrderNewSingleRequest  order.new.single.request  OrderNewSingleRequest object. 
+  # @return [OrderExecutionReport]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("V1OrdersStatusClientOrderIdGet", {
+  # tests for V1OrdersStatusClientOrderIdGet
+  # base path: http://localhost:8080
+  # Get order execution report
+  # Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+  # @param character  client.order.id  The unique identifier of the order assigned by the client. 
+  # @return [OrderExecutionReport]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

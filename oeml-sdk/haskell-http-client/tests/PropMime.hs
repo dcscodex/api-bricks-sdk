@@ -15,7 +15,7 @@ import Test.QuickCheck
 import Test.QuickCheck.Property
 import Test.Hspec.QuickCheck (prop)
 
-import OMS-REST.MimeTypes
+import OEML-REST.MimeTypes
 
 import ApproxEq
 

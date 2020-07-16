@@ -1,55 +1,55 @@
 part of openapi.api;
 
 class BalanceData {
-  /* symbol_exchange */
-  String id = null;
-  /* Currency code. */
-  String symbolExchange = null;
+  /* Exchange currency code. */
+  String assetIdExchange = null;
   /* CoinAPI currency code. */
-  String symbolCoinapi = null;
-  /* The current balance. */
+  String assetIdCoinapi = null;
+  /* Value of the current total currency balance on the exchange. */
   double balance = null;
-  /* The amount that is available to trade. */
+  /* Value of the current available currency balance on the exchange that can be used as collateral. */
   double available = null;
-  /* Blocked funds. */
+  /* Value of the current locked currency balance by the exchange. */
   double locked = null;
-  /* Source of last modification.  */
-  String updateOrigin = null;
-  //enum updateOriginEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  };{
+  /* Source of the last modification.  */
+  String lastUpdatedBy = null;
+  //enum lastUpdatedByEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  };{
+  /* Current exchange rate to the USD for the single unit of the currency.  */
+  double rateUsd = null;
   BalanceData();
 
   @override
   String toString() {
-    return 'BalanceData[id=$id, symbolExchange=$symbolExchange, symbolCoinapi=$symbolCoinapi, balance=$balance, available=$available, locked=$locked, updateOrigin=$updateOrigin, ]';
+    return 'BalanceData[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, ]';
   }
 
   BalanceData.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    id = json['id'];
-    symbolExchange = json['symbol_exchange'];
-    symbolCoinapi = json['symbol_coinapi'];
+    assetIdExchange = json['asset_id_exchange'];
+    assetIdCoinapi = json['asset_id_coinapi'];
     balance = json['balance'];
     available = json['available'];
     locked = json['locked'];
-    updateOrigin = json['update_origin'];
+    lastUpdatedBy = json['last_updated_by'];
+    rateUsd = json['rate_usd'];
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (id != null)
-      json['id'] = id;
-    if (symbolExchange != null)
-      json['symbol_exchange'] = symbolExchange;
-    if (symbolCoinapi != null)
-      json['symbol_coinapi'] = symbolCoinapi;
+    if (assetIdExchange != null)
+      json['asset_id_exchange'] = assetIdExchange;
+    if (assetIdCoinapi != null)
+      json['asset_id_coinapi'] = assetIdCoinapi;
     if (balance != null)
       json['balance'] = balance;
     if (available != null)
       json['available'] = available;
     if (locked != null)
       json['locked'] = locked;
-    if (updateOrigin != null)
-      json['update_origin'] = updateOrigin;
+    if (lastUpdatedBy != null)
+      json['last_updated_by'] = lastUpdatedBy;
+    if (rateUsd != null)
+      json['rate_usd'] = rateUsd;
     return json;
   }
 

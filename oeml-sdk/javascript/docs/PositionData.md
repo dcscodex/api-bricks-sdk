@@ -1,19 +1,18 @@
-# OmsRestApi.PositionData
+# OemlRestApi.PositionData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique position ID | [optional] 
-**symbolExchange** | **String** | The contract for this position. | [optional] 
-**symbolCoinapi** | **String** | The coinapi contract for this position. | [optional] 
-**avgEntryPrice** | **Number** |  | [optional] 
-**quantity** | **Number** | The current position amount in contracts. | [optional] 
-**isBuy** | **Boolean** |  | [optional] 
-**unrealisedPnL** | **Number** | Unrealised PNL is all the unrealised profit or loss coming from your portfolio&#39;s open positions. | [optional] 
-**leverage** | **Number** | 1 / initMarginReq. | [optional] 
-**crossMargin** | **Boolean** | True/false depending on whether you set cross margin on this position. | [optional] 
-**liquidationPrice** | **Number** | Once markPrice reaches this price, this position will be liquidated. | [optional] 
-**rawData** | **String** |  | [optional] 
+**symbolIdExchange** | **String** | Exchange symbol. | [optional] 
+**symbolIdCoinapi** | **String** | CoinAPI symbol. | [optional] 
+**avgEntryPrice** | **Number** | Calculated average price of all fills on this position. | [optional] 
+**quantity** | **Number** | The current position quantity. | [optional] 
+**side** | [**OrdSide**](OrdSide.md) |  | [optional] 
+**unrealizedPnl** | **Number** | Unrealised profit or loss (PNL) of this position. | [optional] 
+**leverage** | **Number** | Leverage for this position reported by the exchange. | [optional] 
+**crossMargin** | **Boolean** | Is cross margin mode enable for this position? | [optional] 
+**liquidationPrice** | **Number** | Liquidation price. If mark price will reach this value, the position will be liquidated. | [optional] 
+**rawData** | [**Object**](.md) |  | [optional] 
 
 

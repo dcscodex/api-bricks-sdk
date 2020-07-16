@@ -1,6 +1,6 @@
 # \BalancesApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get balances
 
-Returns all of your balances, including available balance.
+Get current currency balance from all or single exchange.
 
 ### Required Parameters
 
@@ -31,11 +31,11 @@ Optional parameters are passed through a pointer to a V1BalancesGetOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **optional.String**| Exchange name | 
+ **exchangeId** | **optional.String**| Filter the balances to the specific exchange. | 
 
 ### Return type
 
-[**[]Balance**](balance.md)
+[**[]Balance**](Balance.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

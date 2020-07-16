@@ -1,23 +1,20 @@
 part of openapi.api;
 
 class Position {
-  /* Result type. */
-  String type = null;
-  /* Name of exchange. */
-  String exchangeName = null;
+  /* Exchange identifier used to identify the routing destination. */
+  String exchangeId = null;
   
   List<PositionData> data = [];
   Position();
 
   @override
   String toString() {
-    return 'Position[type=$type, exchangeName=$exchangeName, data=$data, ]';
+    return 'Position[exchangeId=$exchangeId, data=$data, ]';
   }
 
   Position.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    type = json['type'];
-    exchangeName = json['exchange_name'];
+    exchangeId = json['exchange_id'];
     data = (json['data'] == null) ?
       null :
       PositionData.listFromJson(json['data']);
@@ -25,10 +22,8 @@ class Position {
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (type != null)
-      json['type'] = type;
-    if (exchangeName != null)
-      json['exchange_name'] = exchangeName;
+    if (exchangeId != null)
+      json['exchange_id'] = exchangeId;
     if (data != null)
       json['data'] = data;
     return json;

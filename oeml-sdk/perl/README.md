@@ -1,8 +1,9 @@
 # NAME
 
-WWW::OpenAPIClient::Role - a Moose role for the OMS - REST API
+WWW::OpenAPIClient::Role - a Moose role for the OEML - REST API
 
-OMS Project
+This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+
 
 # VERSION
 
@@ -232,20 +233,20 @@ To load the models:
 ```perl
 use WWW::OpenAPIClient::Object::Balance;
 use WWW::OpenAPIClient::Object::BalanceData;
-use WWW::OpenAPIClient::Object::CancelAllOrder;
-use WWW::OpenAPIClient::Object::CancelOrder;
-use WWW::OpenAPIClient::Object::CreateOrder400;
-use WWW::OpenAPIClient::Object::Messages;
-use WWW::OpenAPIClient::Object::MessagesInfo;
-use WWW::OpenAPIClient::Object::MessagesOk;
-use WWW::OpenAPIClient::Object::NewOrder;
-use WWW::OpenAPIClient::Object::Order;
-use WWW::OpenAPIClient::Object::OrderData;
-use WWW::OpenAPIClient::Object::OrderLive;
-use WWW::OpenAPIClient::Object::OrderStatus;
+use WWW::OpenAPIClient::Object::Message;
+use WWW::OpenAPIClient::Object::OrdSide;
+use WWW::OpenAPIClient::Object::OrdStatus;
+use WWW::OpenAPIClient::Object::OrdType;
+use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
+use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
+use WWW::OpenAPIClient::Object::OrderExecutionReport;
+use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
 use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::Severity;
 use WWW::OpenAPIClient::Object::TimeInForce;
+use WWW::OpenAPIClient::Object::ValidationError;
 
 ````
 
@@ -264,20 +265,20 @@ use WWW::OpenAPIClient::PositionsApi;
 # load the models
 use WWW::OpenAPIClient::Object::Balance;
 use WWW::OpenAPIClient::Object::BalanceData;
-use WWW::OpenAPIClient::Object::CancelAllOrder;
-use WWW::OpenAPIClient::Object::CancelOrder;
-use WWW::OpenAPIClient::Object::CreateOrder400;
-use WWW::OpenAPIClient::Object::Messages;
-use WWW::OpenAPIClient::Object::MessagesInfo;
-use WWW::OpenAPIClient::Object::MessagesOk;
-use WWW::OpenAPIClient::Object::NewOrder;
-use WWW::OpenAPIClient::Object::Order;
-use WWW::OpenAPIClient::Object::OrderData;
-use WWW::OpenAPIClient::Object::OrderLive;
-use WWW::OpenAPIClient::Object::OrderStatus;
+use WWW::OpenAPIClient::Object::Message;
+use WWW::OpenAPIClient::Object::OrdSide;
+use WWW::OpenAPIClient::Object::OrdStatus;
+use WWW::OpenAPIClient::Object::OrdType;
+use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
+use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
+use WWW::OpenAPIClient::Object::OrderExecutionReport;
+use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
 use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::Severity;
 use WWW::OpenAPIClient::Object::TimeInForce;
+use WWW::OpenAPIClient::Object::ValidationError;
 
 # for displaying the API response data
 use Data::Dumper;
@@ -286,7 +287,7 @@ use WWW::OpenAPIClient::;
 my $api_instance = WWW::OpenAPIClient::->new(
 );
 
-my $exchange_id = KRAKEN; # string | Exchange name
+my $exchange_id = KRAKEN; # string | Filter the balances to the specific exchange.
 
 eval {
     my $result = $api_instance->v1_balances_get(exchange_id => $exchange_id);
@@ -300,35 +301,36 @@ if ($@) {
 
 # DOCUMENTATION FOR API ENDPOINTS
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalancesApi* | [**v1_balances_get**](docs/BalancesApi.md#v1_balances_get) | **GET** /v1/balances | Get balances
-*OrdersApi* | [**v1_orders_cancel_all_post**](docs/OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all order
-*OrdersApi* | [**v1_orders_cancel_post**](docs/OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order
-*OrdersApi* | [**v1_orders_get**](docs/OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get orders
-*OrdersApi* | [**v1_orders_post**](docs/OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Create new order
-*PositionsApi* | [**v1_positions_get**](docs/PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get positions
+*OrdersApi* | [**v1_orders_cancel_all_post**](docs/OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1_orders_cancel_post**](docs/OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1_orders_get**](docs/OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1_orders_post**](docs/OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1_orders_status_client_order_id_get**](docs/OrdersApi.md#v1_orders_status_client_order_id_get) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1_positions_get**](docs/PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get open positions
 
 
 # DOCUMENTATION FOR MODELS
  - [WWW::OpenAPIClient::Object::Balance](docs/Balance.md)
  - [WWW::OpenAPIClient::Object::BalanceData](docs/BalanceData.md)
- - [WWW::OpenAPIClient::Object::CancelAllOrder](docs/CancelAllOrder.md)
- - [WWW::OpenAPIClient::Object::CancelOrder](docs/CancelOrder.md)
- - [WWW::OpenAPIClient::Object::CreateOrder400](docs/CreateOrder400.md)
- - [WWW::OpenAPIClient::Object::Messages](docs/Messages.md)
- - [WWW::OpenAPIClient::Object::MessagesInfo](docs/MessagesInfo.md)
- - [WWW::OpenAPIClient::Object::MessagesOk](docs/MessagesOk.md)
- - [WWW::OpenAPIClient::Object::NewOrder](docs/NewOrder.md)
- - [WWW::OpenAPIClient::Object::Order](docs/Order.md)
- - [WWW::OpenAPIClient::Object::OrderData](docs/OrderData.md)
- - [WWW::OpenAPIClient::Object::OrderLive](docs/OrderLive.md)
- - [WWW::OpenAPIClient::Object::OrderStatus](docs/OrderStatus.md)
+ - [WWW::OpenAPIClient::Object::Message](docs/Message.md)
+ - [WWW::OpenAPIClient::Object::OrdSide](docs/OrdSide.md)
+ - [WWW::OpenAPIClient::Object::OrdStatus](docs/OrdStatus.md)
+ - [WWW::OpenAPIClient::Object::OrdType](docs/OrdType.md)
+ - [WWW::OpenAPIClient::Object::OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [WWW::OpenAPIClient::Object::OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [WWW::OpenAPIClient::Object::OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [WWW::OpenAPIClient::Object::OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [WWW::OpenAPIClient::Object::OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [WWW::OpenAPIClient::Object::Position](docs/Position.md)
  - [WWW::OpenAPIClient::Object::PositionData](docs/PositionData.md)
+ - [WWW::OpenAPIClient::Object::Severity](docs/Severity.md)
  - [WWW::OpenAPIClient::Object::TimeInForce](docs/TimeInForce.md)
+ - [WWW::OpenAPIClient::Object::ValidationError](docs/ValidationError.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION

@@ -1,11 +1,10 @@
-# OmsRestApi.Balance
+# OemlRestApi.Balance
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Result type. | [optional] 
-**exchangeName** | **String** | Exchange name. | [optional] 
+**exchangeId** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
 **data** | [**[BalanceData]**](BalanceData.md) |  | [optional] 
 
 

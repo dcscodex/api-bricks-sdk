@@ -1,38 +1,38 @@
 export * from './balance';
 export * from './balanceData';
-export * from './cancelAllOrder';
-export * from './cancelOrder';
-export * from './createOrder400';
-export * from './messages';
-export * from './messagesInfo';
-export * from './messagesOk';
-export * from './newOrder';
-export * from './order';
-export * from './orderData';
-export * from './orderLive';
-export * from './orderStatus';
+export * from './message';
+export * from './ordSide';
+export * from './ordStatus';
+export * from './ordType';
+export * from './orderCancelAllRequest';
+export * from './orderCancelSingleRequest';
+export * from './orderExecutionReport';
+export * from './orderExecutionReportAllOf';
+export * from './orderNewSingleRequest';
 export * from './position';
 export * from './positionData';
+export * from './severity';
 export * from './timeInForce';
+export * from './validationError';
 
 import localVarRequest = require('request');
 
 import { Balance } from './balance';
 import { BalanceData } from './balanceData';
-import { CancelAllOrder } from './cancelAllOrder';
-import { CancelOrder } from './cancelOrder';
-import { CreateOrder400 } from './createOrder400';
-import { Messages } from './messages';
-import { MessagesInfo } from './messagesInfo';
-import { MessagesOk } from './messagesOk';
-import { NewOrder } from './newOrder';
-import { Order } from './order';
-import { OrderData } from './orderData';
-import { OrderLive } from './orderLive';
-import { OrderStatus } from './orderStatus';
+import { Message } from './message';
+import { OrdSide } from './ordSide';
+import { OrdStatus } from './ordStatus';
+import { OrdType } from './ordType';
+import { OrderCancelAllRequest } from './orderCancelAllRequest';
+import { OrderCancelSingleRequest } from './orderCancelSingleRequest';
+import { OrderExecutionReport } from './orderExecutionReport';
+import { OrderExecutionReportAllOf } from './orderExecutionReportAllOf';
+import { OrderNewSingleRequest } from './orderNewSingleRequest';
 import { Position } from './position';
 import { PositionData } from './positionData';
+import { Severity } from './severity';
 import { TimeInForce } from './timeInForce';
+import { ValidationError } from './validationError';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -47,35 +47,28 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
-        "BalanceData.UpdateOriginEnum": BalanceData.UpdateOriginEnum,
-        "NewOrder.SideEnum": NewOrder.SideEnum,
-        "NewOrder.OrderTypeEnum": NewOrder.OrderTypeEnum,
-        "NewOrder.ExecInstEnum": NewOrder.ExecInstEnum,
-        "OrderData.SideEnum": OrderData.SideEnum,
-        "OrderData.OrderTypeEnum": OrderData.OrderTypeEnum,
-        "OrderData.ExecInstEnum": OrderData.ExecInstEnum,
-        "OrderLive.SideEnum": OrderLive.SideEnum,
-        "OrderLive.OrderTypeEnum": OrderLive.OrderTypeEnum,
-        "OrderLive.ExecInstEnum": OrderLive.ExecInstEnum,
-        "OrderStatus": OrderStatus,
+        "BalanceData.LastUpdatedByEnum": BalanceData.LastUpdatedByEnum,
+        "OrdSide": OrdSide,
+        "OrdStatus": OrdStatus,
+        "OrdType": OrdType,
+        "OrderExecutionReport.ExecInstEnum": OrderExecutionReport.ExecInstEnum,
+        "OrderNewSingleRequest.ExecInstEnum": OrderNewSingleRequest.ExecInstEnum,
+        "Severity": Severity,
         "TimeInForce": TimeInForce,
 }
 
 let typeMap: {[index: string]: any} = {
     "Balance": Balance,
     "BalanceData": BalanceData,
-    "CancelAllOrder": CancelAllOrder,
-    "CancelOrder": CancelOrder,
-    "CreateOrder400": CreateOrder400,
-    "Messages": Messages,
-    "MessagesInfo": MessagesInfo,
-    "MessagesOk": MessagesOk,
-    "NewOrder": NewOrder,
-    "Order": Order,
-    "OrderData": OrderData,
-    "OrderLive": OrderLive,
+    "Message": Message,
+    "OrderCancelAllRequest": OrderCancelAllRequest,
+    "OrderCancelSingleRequest": OrderCancelSingleRequest,
+    "OrderExecutionReport": OrderExecutionReport,
+    "OrderExecutionReportAllOf": OrderExecutionReportAllOf,
+    "OrderNewSingleRequest": OrderNewSingleRequest,
     "Position": Position,
     "PositionData": PositionData,
+    "ValidationError": ValidationError,
 }
 
 export class ObjectSerializer {

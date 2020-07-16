@@ -1,19 +1,19 @@
 # PositionsApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 <a name="v1PositionsGet"></a>
 # **v1PositionsGet**
 > kotlin.Array&lt;Position&gt; v1PositionsGet(exchangeId)
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 ```kotlin
@@ -22,7 +22,7 @@ Returns all of your positions.
 //import org.openapitools.client.models.*
 
 val apiInstance = PositionsApi()
-val exchangeId : kotlin.String = KRAKEN // kotlin.String | Exchange name
+val exchangeId : kotlin.String = KRAKEN // kotlin.String | Filter the balances to the specific exchange.
 try {
     val result : kotlin.Array<Position> = apiInstance.v1PositionsGet(exchangeId)
     println(result)
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **kotlin.String**| Exchange name | [optional]
+ **exchangeId** | **kotlin.String**| Filter the balances to the specific exchange. | [optional]
 
 ### Return type
 
@@ -52,5 +52,5 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 

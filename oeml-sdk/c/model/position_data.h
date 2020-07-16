@@ -1,7 +1,7 @@
 /*
  * position_data.h
  *
- * 
+ * The Position object.
  */
 
 #ifndef _position_data_H_
@@ -15,36 +15,42 @@
 
 typedef struct position_data_t position_data_t;
 
+#include "object.h"
+#include "ord_side.h"
+
+// Enum  for position_data
+
+typedef enum  { oeml___rest_api_position_data__NULL = 0, oeml___rest_api_position_data__BUY, oeml___rest_api_position_data__SELL } oeml___rest_api_position_data__e;
+
+char* position_data_side_ToString(oeml___rest_api_position_data__e side);
+
+oeml___rest_api_position_data__e position_data_side_FromString(char* side);
 
 
 
 typedef struct position_data_t {
-    char *id; // string
-    char *symbol_exchange; // string
-    char *symbol_coinapi; // string
+    char *symbol_id_exchange; // string
+    char *symbol_id_coinapi; // string
     double avg_entry_price; //numeric
     double quantity; //numeric
-    int is_buy; //boolean
-    double unrealised_pn_l; //numeric
+    double unrealized_pnl; //numeric
     double leverage; //numeric
     int cross_margin; //boolean
     double liquidation_price; //numeric
-    char *raw_data; // string
+    object_t *raw_data; //object
 
 } position_data_t;
 
 position_data_t *position_data_create(
-    char *id,
-    char *symbol_exchange,
-    char *symbol_coinapi,
+    char *symbol_id_exchange,
+    char *symbol_id_coinapi,
     double avg_entry_price,
     double quantity,
-    int is_buy,
-    double unrealised_pn_l,
+    double unrealized_pnl,
     double leverage,
     int cross_margin,
     double liquidation_price,
-    char *raw_data
+    object_t *raw_data
 );
 
 void position_data_free(position_data_t *position_data);

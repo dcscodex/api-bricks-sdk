@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **character** | Result type. | [optional] 
-**exchange_name** | **character** | Name of exchange. | [optional] 
-**data** | [**array[PositionData]**](position_data.md) |  | [optional] 
+**exchange_id** | **character** | Exchange identifier used to identify the routing destination. | [optional] 
+**data** | [**array[PositionData]**](Position_data.md) |  | [optional] 
 
 

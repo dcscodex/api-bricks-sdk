@@ -296,10 +296,11 @@ case $state in
   ops)
     # Operations
     _values "Operations" \
-            "v1BalancesGet[Get balances]"             "v1OrdersCancelAllPost[Cancel all order]" \
-            "v1OrdersCancelPost[Cancel order]" \
-            "v1OrdersGet[Get orders]" \
-            "v1OrdersPost[Create new order]"             "v1PositionsGet[Get positions]" 
+            "v1BalancesGet[Get balances]"             "v1OrdersCancelAllPost[Cancel all orders request]" \
+            "v1OrdersCancelPost[Cancel order request]" \
+            "v1OrdersGet[Get open orders]" \
+            "v1OrdersPost[Send new order]" \
+            "v1OrdersStatusClientOrderIdGet[Get order execution report]"             "v1PositionsGet[Get open positions]" 
     _arguments "(--help)--help[Print information about operation]"
 
     ret=0
@@ -309,7 +310,7 @@ case $state in
       v1BalancesGet)
         local -a _op_arguments
         _op_arguments=(
-                    "exchange_id=:[QUERY] Exchange name"
+                    "exchange_id=:[QUERY] Filter the balances to the specific exchange."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -328,7 +329,7 @@ case $state in
       v1OrdersGet)
         local -a _op_arguments
         _op_arguments=(
-                    "exchange_id=:[QUERY] Exchange name"
+                    "exchange_id=:[QUERY] Filter the open orders to the specific exchange."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -338,10 +339,17 @@ case $state in
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      v1OrdersStatusClientOrderIdGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "client_order_id=:[PATH] The unique identifier of the order assigned by the client."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       v1PositionsGet)
         local -a _op_arguments
         _op_arguments=(
-                    "exchange_id=:[QUERY] Exchange name"
+                    "exchange_id=:[QUERY] Filter the balances to the specific exchange."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;

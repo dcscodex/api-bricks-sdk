@@ -17,7 +17,7 @@
     <licenses>
         <license>
             <name>Unlicense</name>
-            <url>https://github.com/OAI/OpenAPI-Specification/blob/master/https://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <url>https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>

@@ -6,15 +6,9 @@ void main() {
     var instance = new Position();
 
   group('test Position', () {
-    // Result type.
-    // String type (default value: null)
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // Name of exchange.
-    // String exchangeName (default value: null)
-    test('to test the property `exchangeName`', () async {
+    // Exchange identifier used to identify the routing destination.
+    // String exchangeId (default value: null)
+    test('to test the property `exchangeId`', () async {
       // TODO
     });
 

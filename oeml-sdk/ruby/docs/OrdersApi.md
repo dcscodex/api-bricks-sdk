@@ -1,23 +1,24 @@
 # OpenapiClient::OrdersApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_orders_cancel_all_post**](OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all order
-[**v1_orders_cancel_post**](OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order
-[**v1_orders_get**](OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get orders
-[**v1_orders_post**](OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Create new order
+[**v1_orders_cancel_all_post**](OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all orders request
+[**v1_orders_cancel_post**](OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order request
+[**v1_orders_get**](OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get open orders
+[**v1_orders_post**](OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Send new order
+[**v1_orders_status_client_order_id_get**](OrdersApi.md#v1_orders_status_client_order_id_get) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
 
 
 ## v1_orders_cancel_all_post
 
-> MessagesOk v1_orders_cancel_all_post(cancel_all_order)
+> Message v1_orders_cancel_all_post(order_cancel_all_request)
 
-Cancel all order
+Cancel all orders request
 
-Cancel all existing order.
+This request cancels all open orders on single specified exchange.
 
 ### Example
 
@@ -26,11 +27,11 @@ Cancel all existing order.
 require 'openapi_client'
 
 api_instance = OpenapiClient::OrdersApi.new
-cancel_all_order = OpenapiClient::CancelAllOrder.new # CancelAllOrder | 
+order_cancel_all_request = OpenapiClient::OrderCancelAllRequest.new # OrderCancelAllRequest | OrderCancelAllRequest object.
 
 begin
-  #Cancel all order
-  result = api_instance.v1_orders_cancel_all_post(cancel_all_order)
+  #Cancel all orders request
+  result = api_instance.v1_orders_cancel_all_post(order_cancel_all_request)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling OrdersApi->v1_orders_cancel_all_post: #{e}"
@@ -42,11 +43,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancel_all_order** | [**CancelAllOrder**](CancelAllOrder.md)|  | 
+ **order_cancel_all_request** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
 
 ### Return type
 
-[**MessagesOk**](MessagesOk.md)
+[**Message**](Message.md)
 
 ### Authorization
 
@@ -55,16 +56,16 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 
 ## v1_orders_cancel_post
 
-> OrderLive v1_orders_cancel_post(cancel_order)
+> OrderExecutionReport v1_orders_cancel_post(order_cancel_single_request)
 
-Cancel order
+Cancel order request
 
-Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
+Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 
 ### Example
 
@@ -73,11 +74,11 @@ Cancel an existing order, can be used to cancel margin, exchange, and derivative
 require 'openapi_client'
 
 api_instance = OpenapiClient::OrdersApi.new
-cancel_order = OpenapiClient::CancelOrder.new # CancelOrder | 
+order_cancel_single_request = OpenapiClient::OrderCancelSingleRequest.new # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
 begin
-  #Cancel order
-  result = api_instance.v1_orders_cancel_post(cancel_order)
+  #Cancel order request
+  result = api_instance.v1_orders_cancel_post(order_cancel_single_request)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling OrdersApi->v1_orders_cancel_post: #{e}"
@@ -89,11 +90,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancel_order** | [**CancelOrder**](CancelOrder.md)|  | 
+ **order_cancel_single_request** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
 
 ### Return type
 
-[**OrderLive**](OrderLive.md)
+[**OrderExecutionReport**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -107,11 +108,11 @@ No authorization required
 
 ## v1_orders_get
 
-> Array&lt;Order&gt; v1_orders_get(opts)
+> Array&lt;OrderExecutionReport&gt; v1_orders_get(opts)
 
-Get orders
+Get open orders
 
-List your current open orders.
+Get last execution reports for open orders across all or single exchange.
 
 ### Example
 
@@ -121,11 +122,11 @@ require 'openapi_client'
 
 api_instance = OpenapiClient::OrdersApi.new
 opts = {
-  exchange_id: 'KRAKEN' # String | Exchange name
+  exchange_id: 'KRAKEN' # String | Filter the open orders to the specific exchange.
 }
 
 begin
-  #Get orders
+  #Get open orders
   result = api_instance.v1_orders_get(opts)
   p result
 rescue OpenapiClient::ApiError => e
@@ -138,11 +139,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_id** | **String**| Exchange name | [optional] 
+ **exchange_id** | **String**| Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
 
-[**Array&lt;Order&gt;**](Order.md)
+[**Array&lt;OrderExecutionReport&gt;**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -151,16 +152,16 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 
 ## v1_orders_post
 
-> OrderLive v1_orders_post(new_order)
+> OrderExecutionReport v1_orders_post(order_new_single_request)
 
-Create new order
+Send new order
 
-You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
+This request creating new order for the specific exchange.
 
 ### Example
 
@@ -169,11 +170,11 @@ You can place two types of orders: limit and market. Orders can only be placed i
 require 'openapi_client'
 
 api_instance = OpenapiClient::OrdersApi.new
-new_order = OpenapiClient::NewOrder.new # NewOrder | 
+order_new_single_request = OpenapiClient::OrderNewSingleRequest.new # OrderNewSingleRequest | OrderNewSingleRequest object.
 
 begin
-  #Create new order
-  result = api_instance.v1_orders_post(new_order)
+  #Send new order
+  result = api_instance.v1_orders_post(order_new_single_request)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling OrdersApi->v1_orders_post: #{e}"
@@ -185,11 +186,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **new_order** | [**NewOrder**](NewOrder.md)|  | 
+ **order_new_single_request** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
 
 ### Return type
 
-[**OrderLive**](OrderLive.md)
+[**OrderExecutionReport**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -199,4 +200,51 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, appliction/json
+
+
+## v1_orders_status_client_order_id_get
+
+> OrderExecutionReport v1_orders_status_client_order_id_get(client_order_id)
+
+Get order execution report
+
+Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+
+### Example
+
+```ruby
+# load the gem
+require 'openapi_client'
+
+api_instance = OpenapiClient::OrdersApi.new
+client_order_id = '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # String | The unique identifier of the order assigned by the client.
+
+begin
+  #Get order execution report
+  result = api_instance.v1_orders_status_client_order_id_get(client_order_id)
+  p result
+rescue OpenapiClient::ApiError => e
+  puts "Exception when calling OrdersApi->v1_orders_status_client_order_id_get: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **client_order_id** | **String**| The unique identifier of the order assigned by the client. | 
+
+### Return type
+
+[**OrderExecutionReport**](OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

@@ -45,64 +45,64 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get symbol_exchange
+	/*! \brief Get Exchange currency code.
 	 */
-	std::string getId();
+	std::string getAssetIdExchange();
 
-	/*! \brief Set symbol_exchange
+	/*! \brief Set Exchange currency code.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get Currency code.
-	 */
-	std::string getSymbolExchange();
-
-	/*! \brief Set Currency code.
-	 */
-	void setSymbolExchange(std::string  symbol_exchange);
+	void setAssetIdExchange(std::string  asset_id_exchange);
 	/*! \brief Get CoinAPI currency code.
 	 */
-	std::string getSymbolCoinapi();
+	std::string getAssetIdCoinapi();
 
 	/*! \brief Set CoinAPI currency code.
 	 */
-	void setSymbolCoinapi(std::string  symbol_coinapi);
-	/*! \brief Get The current balance.
+	void setAssetIdCoinapi(std::string  asset_id_coinapi);
+	/*! \brief Get Value of the current total currency balance on the exchange.
 	 */
 	float getBalance();
 
-	/*! \brief Set The current balance.
+	/*! \brief Set Value of the current total currency balance on the exchange.
 	 */
 	void setBalance(float  balance);
-	/*! \brief Get The amount that is available to trade.
+	/*! \brief Get Value of the current available currency balance on the exchange that can be used as collateral.
 	 */
 	float getAvailable();
 
-	/*! \brief Set The amount that is available to trade.
+	/*! \brief Set Value of the current available currency balance on the exchange that can be used as collateral.
 	 */
 	void setAvailable(float  available);
-	/*! \brief Get Blocked funds.
+	/*! \brief Get Value of the current locked currency balance by the exchange.
 	 */
 	float getLocked();
 
-	/*! \brief Set Blocked funds.
+	/*! \brief Set Value of the current locked currency balance by the exchange.
 	 */
 	void setLocked(float  locked);
-	/*! \brief Get Source of last modification. 
+	/*! \brief Get Source of the last modification. 
 	 */
-	std::string getUpdateOrigin();
+	std::string getLastUpdatedBy();
 
-	/*! \brief Set Source of last modification. 
+	/*! \brief Set Source of the last modification. 
 	 */
-	void setUpdateOrigin(std::string  update_origin);
+	void setLastUpdatedBy(std::string  last_updated_by);
+	/*! \brief Get Current exchange rate to the USD for the single unit of the currency. 
+	 */
+	float getRateUsd();
+
+	/*! \brief Set Current exchange rate to the USD for the single unit of the currency. 
+	 */
+	void setRateUsd(float  rate_usd);
 
 private:
-	std::string id;
-	std::string symbol_exchange;
-	std::string symbol_coinapi;
+	std::string asset_id_exchange;
+	std::string asset_id_coinapi;
 	float balance;
 	float available;
 	float locked;
-	std::string update_origin;
+	std::string last_updated_by;
+	float rate_usd;
 	void __init();
 	void __cleanup();
 

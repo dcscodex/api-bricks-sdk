@@ -7,9 +7,9 @@ class PositionsApi {
 
   PositionsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Get positions with HTTP info returned
+  /// Get open positions with HTTP info returned
   ///
-  /// Returns all of your positions.
+  /// Get current open positions across all or single exchange.
   Future<Response> v1PositionsGetWithHttpInfo({ String exchangeId }) async {
     Object postBody;
 
@@ -51,9 +51,9 @@ class PositionsApi {
     return response;
   }
 
-  /// Get positions
+  /// Get open positions
   ///
-  /// Returns all of your positions.
+  /// Get current open positions across all or single exchange.
   Future<List<Position>> v1PositionsGet({ String exchangeId }) async {
     Response response = await v1PositionsGetWithHttpInfo( exchangeId: exchangeId );
     if(response.statusCode >= 400) {

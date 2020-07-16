@@ -5,20 +5,12 @@ context("Test Balance")
 
 model.instance <- Balance$new()
 
-test_that("type", {
-  # tests for the property `type` (character)
-  # Result type.
+test_that("exchange_id", {
+  # tests for the property `exchange_id` (character)
+  # Exchange identifier used to identify the routing destination.
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
-})
-
-test_that("exchange_name", {
-  # tests for the property `exchange_name` (character)
-  # Exchange name.
-
-  # uncomment below to test the property 
-  #expect_equal(model.instance$`exchange_name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`exchange_id`, "EXPECTED_RESULT")
 })
 
 test_that("data", {

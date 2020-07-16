@@ -18,7 +18,7 @@ class ApiClient {
   final _regList = RegExp(r'^List<(.*)>$');
   final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-  ApiClient({this.basePath = "http://localhost:3001"}) {
+  ApiClient({this.basePath = "http://localhost:8080"}) {
   }
 
   void addDefaultHeader(String key, String value) {
@@ -40,34 +40,34 @@ class ApiClient {
           return Balance.fromJson(value);
         case 'BalanceData':
           return BalanceData.fromJson(value);
-        case 'CancelAllOrder':
-          return CancelAllOrder.fromJson(value);
-        case 'CancelOrder':
-          return CancelOrder.fromJson(value);
-        case 'CreateOrder400':
-          return CreateOrder400.fromJson(value);
-        case 'Messages':
-          return Messages.fromJson(value);
-        case 'MessagesInfo':
-          return MessagesInfo.fromJson(value);
-        case 'MessagesOk':
-          return MessagesOk.fromJson(value);
-        case 'NewOrder':
-          return NewOrder.fromJson(value);
-        case 'Order':
-          return Order.fromJson(value);
-        case 'OrderData':
-          return OrderData.fromJson(value);
-        case 'OrderLive':
-          return OrderLive.fromJson(value);
-        case 'OrderStatus':
-          return new OrderStatusTypeTransformer().decode(value);
+        case 'Message':
+          return Message.fromJson(value);
+        case 'OrdSide':
+          return new OrdSideTypeTransformer().decode(value);
+        case 'OrdStatus':
+          return new OrdStatusTypeTransformer().decode(value);
+        case 'OrdType':
+          return new OrdTypeTypeTransformer().decode(value);
+        case 'OrderCancelAllRequest':
+          return OrderCancelAllRequest.fromJson(value);
+        case 'OrderCancelSingleRequest':
+          return OrderCancelSingleRequest.fromJson(value);
+        case 'OrderExecutionReport':
+          return OrderExecutionReport.fromJson(value);
+        case 'OrderExecutionReportAllOf':
+          return OrderExecutionReportAllOf.fromJson(value);
+        case 'OrderNewSingleRequest':
+          return OrderNewSingleRequest.fromJson(value);
         case 'Position':
           return Position.fromJson(value);
         case 'PositionData':
           return PositionData.fromJson(value);
+        case 'Severity':
+          return new SeverityTypeTransformer().decode(value);
         case 'TimeInForce':
           return new TimeInForceTypeTransformer().decode(value);
+        case 'ValidationError':
+          return ValidationError.fromJson(value);
         default:
           {
             Match match;

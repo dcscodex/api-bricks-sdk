@@ -1,31 +1,32 @@
 # OrdersApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1OrdersCancelAllPost**](OrdersApi.md#V1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all order
-[**V1OrdersCancelPost**](OrdersApi.md#V1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order
-[**V1OrdersGet**](OrdersApi.md#V1OrdersGet) | **GET** /v1/orders | Get orders
-[**V1OrdersPost**](OrdersApi.md#V1OrdersPost) | **POST** /v1/orders | Create new order
+[**V1OrdersCancelAllPost**](OrdersApi.md#V1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+[**V1OrdersCancelPost**](OrdersApi.md#V1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+[**V1OrdersGet**](OrdersApi.md#V1OrdersGet) | **GET** /v1/orders | Get open orders
+[**V1OrdersPost**](OrdersApi.md#V1OrdersPost) | **POST** /v1/orders | Send new order
+[**V1OrdersStatusClientOrderIdGet**](OrdersApi.md#V1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
 
 # **V1OrdersCancelAllPost**
-> MessagesOk V1OrdersCancelAllPost(cancel.all.order)
+> Message V1OrdersCancelAllPost(order.cancel.all.request)
 
-Cancel all order
+Cancel all orders request
 
-Cancel all existing order.
+This request cancels all open orders on single specified exchange.
 
 ### Example
 ```R
 library(openapi)
 
-var.cancel.all.order <- cancelAllOrder$new("exchange_id_example") # CancelAllOrder | 
+var.order.cancel.all.request <- OrderCancelAllRequest$new("exchange_id_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
 
-#Cancel all order
+#Cancel all orders request
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelAllPost(var.cancel.all.order)
+result <- api.instance$V1OrdersCancelAllPost(var.order.cancel.all.request)
 dput(result)
 ```
 
@@ -33,54 +34,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancel.all.order** | [**CancelAllOrder**](CancelAllOrder.md)|  | 
+ **order.cancel.all.request** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
 
 ### Return type
 
-[**MessagesOk**](messagesOk.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Result |  -  |
-
-# **V1OrdersCancelPost**
-> OrderLive V1OrdersCancelPost(cancel.order)
-
-Cancel order
-
-Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
-
-### Example
-```R
-library(openapi)
-
-var.cancel.order <- cancelOrder$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # CancelOrder | 
-
-#Cancel order
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelPost(var.cancel.order)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cancel.order** | [**CancelOrder**](CancelOrder.md)|  | 
-
-### Return type
-
-[**OrderLive**](orderLive.md)
+[**Message**](Message.md)
 
 ### Authorization
 
@@ -94,24 +52,69 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Canceled order |  -  |
-| **400** | Validation errors |  -  |
-| **490** | Exchange not registered |  -  |
+| **200** | Result |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 
-# **V1OrdersGet**
-> array[Order] V1OrdersGet(exchange.id=var.exchange.id)
+# **V1OrdersCancelPost**
+> OrderExecutionReport V1OrdersCancelPost(order.cancel.single.request)
 
-Get orders
+Cancel order request
 
-List your current open orders.
+Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 
 ### Example
 ```R
 library(openapi)
 
-var.exchange.id <- 'KRAKEN' # character | Exchange name
+var.order.cancel.single.request <- OrderCancelSingleRequest$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
-#Get orders
+#Cancel order request
+api.instance <- OrdersApi$new()
+result <- api.instance$V1OrdersCancelPost(var.order.cancel.single.request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order.cancel.single.request** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
+
+### Return type
+
+[**OrderExecutionReport**](OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, appliction/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report for the order for which cancelation was requested. |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
+
+# **V1OrdersGet**
+> array[OrderExecutionReport] V1OrdersGet(exchange.id=var.exchange.id)
+
+Get open orders
+
+Get last execution reports for open orders across all or single exchange.
+
+### Example
+```R
+library(openapi)
+
+var.exchange.id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
+
+#Get open orders
 api.instance <- OrdersApi$new()
 result <- api.instance$V1OrdersGet(exchange.id=var.exchange.id)
 dput(result)
@@ -121,11 +124,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange.id** | **character**| Exchange name | [optional] 
+ **exchange.id** | **character**| Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
 
-[**array[Order]**](order.md)
+[**array[OrderExecutionReport]**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -134,29 +137,30 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Ok |  -  |
+| **200** | Collection of order execution reports. |  -  |
+| **490** | Filtered exchange is unreachable. |  -  |
 
 # **V1OrdersPost**
-> OrderLive V1OrdersPost(new.order)
+> OrderExecutionReport V1OrdersPost(order.new.single.request)
 
-Create new order
+Send new order
 
-You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
+This request creating new order for the specific exchange.
 
 ### Example
 ```R
 library(openapi)
 
-var.new.order <- newOrder$new("exchange_id_example", "client_order_id_example", "symbol_exchange_example", "symbol_coinapi_example", 123, 123, "side_example", "order_type_example", timeInForce$new(), "expire_time_example", list("exec_inst_example")) # NewOrder | 
+var.order.new.single.request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", "symbol_id_exchange_example", "symbol_id_coinapi_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "expire_time_example", list("exec_inst_example")) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
-#Create new order
+#Send new order
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersPost(var.new.order)
+result <- api.instance$V1OrdersPost(var.order.new.single.request)
 dput(result)
 ```
 
@@ -164,11 +168,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **new.order** | [**NewOrder**](NewOrder.md)|  | 
+ **order.new.single.request** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
 
 ### Return type
 
-[**OrderLive**](orderLive.md)
+[**OrderExecutionReport**](OrderExecutionReport.md)
 
 ### Authorization
 
@@ -183,6 +187,51 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Created |  -  |
-| **400** | Validation errors |  -  |
-| **490** | Exchange not registered |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
+| **504** | Exchange didn&#39;t responded in the defined timeout. |  -  |
+
+# **V1OrdersStatusClientOrderIdGet**
+> OrderExecutionReport V1OrdersStatusClientOrderIdGet(client.order.id)
+
+Get order execution report
+
+Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+
+### Example
+```R
+library(openapi)
+
+var.client.order.id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
+
+#Get order execution report
+api.instance <- OrdersApi$new()
+result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client.order.id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **client.order.id** | **character**| The unique identifier of the order assigned by the client. | 
+
+### Return type
+
+[**OrderExecutionReport**](OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report of the requested order. |  -  |
+| **404** | The requested order was not found. |  -  |
 

@@ -6,16 +6,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | symbol_exchange |  [optional]
-**symbolExchange** | **String** | Currency code. |  [optional]
-**symbolCoinapi** | **String** | CoinAPI currency code. |  [optional]
-**balance** | **Float** | The current balance. |  [optional]
-**available** | **Float** | The amount that is available to trade. |  [optional]
-**locked** | **Float** | Blocked funds. |  [optional]
-**updateOrigin** | [**UpdateOriginEnum**](#UpdateOriginEnum) | Source of last modification.  |  [optional]
+**assetIdExchange** | **String** | Exchange currency code. |  [optional]
+**assetIdCoinapi** | **String** | CoinAPI currency code. |  [optional]
+**balance** | **Float** | Value of the current total currency balance on the exchange. |  [optional]
+**available** | **Float** | Value of the current available currency balance on the exchange that can be used as collateral. |  [optional]
+**locked** | **Float** | Value of the current locked currency balance by the exchange. |  [optional]
+**lastUpdatedBy** | [**LastUpdatedByEnum**](#LastUpdatedByEnum) | Source of the last modification.  |  [optional]
+**rateUsd** | **Float** | Current exchange rate to the USD for the single unit of the currency.  |  [optional]
 
 
-## Enum: UpdateOriginEnum
+## Enum: LastUpdatedByEnum
 
 Name | Value
 ---- | -----

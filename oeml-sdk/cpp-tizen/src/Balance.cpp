@@ -23,23 +23,17 @@ Balance::~Balance()
 void
 Balance::__init()
 {
-	//type = std::string();
-	//exchange_name = std::string();
+	//exchange_id = std::string();
 	//new std::list()std::list> data;
 }
 
 void
 Balance::__cleanup()
 {
-	//if(type != NULL) {
+	//if(exchange_id != NULL) {
 	//
-	//delete type;
-	//type = NULL;
-	//}
-	//if(exchange_name != NULL) {
-	//
-	//delete exchange_name;
-	//exchange_name = NULL;
+	//delete exchange_id;
+	//exchange_id = NULL;
 	//}
 	//if(data != NULL) {
 	//data.RemoveAll(true);
@@ -54,24 +48,13 @@ Balance::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
+	const gchar *exchange_idKey = "exchange_id";
+	node = json_object_get_member(pJsonObject, exchange_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *exchange_nameKey = "exchange_name";
-	node = json_object_get_member(pJsonObject, exchange_nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&exchange_name, node, "std::string", "");
+			jsonToValue(&exchange_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -113,23 +96,14 @@ Balance::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getType();
+		std::string obj = getExchangeId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getExchangeName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *exchange_nameKey = "exchange_name";
-	json_object_set_member(pJsonObject, exchange_nameKey, node);
+	const gchar *exchange_idKey = "exchange_id";
+	json_object_set_member(pJsonObject, exchange_idKey, node);
 	if (isprimitive("Balance_data")) {
 		list<Balance_data> new_list = static_cast<list <Balance_data> > (getData());
 		node = converttoJson(&new_list, "Balance_data", "array");
@@ -164,27 +138,15 @@ Balance::toJson()
 }
 
 std::string
-Balance::getType()
+Balance::getExchangeId()
 {
-	return type;
+	return exchange_id;
 }
 
 void
-Balance::setType(std::string  type)
+Balance::setExchangeId(std::string  exchange_id)
 {
-	this->type = type;
-}
-
-std::string
-Balance::getExchangeName()
-{
-	return exchange_name;
-}
-
-void
-Balance::setExchangeName(std::string  exchange_name)
-{
-	this->exchange_name = exchange_name;
+	this->exchange_id = exchange_id;
 }
 
 std::list<Balance_data>

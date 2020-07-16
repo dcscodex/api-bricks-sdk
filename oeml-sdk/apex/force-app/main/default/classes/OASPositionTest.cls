@@ -73,15 +73,13 @@ private class OASPositionTest {
     private static void maintainRenamedProperties() {
         OASPosition position = new OASPosition();
         Map<String, String> propertyMappings = position.getPropertyMappings();
-        System.assertEquals('r_type', propertyMappings.get('type'));
-        System.assertEquals('exchangeName', propertyMappings.get('exchange_name'));
+        System.assertEquals('exchangeId', propertyMappings.get('exchange_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASPosition position = new OASPosition();
         System.assertEquals(new List<OASPositionData>(), position.data);
-        System.assertEquals(null, position.r_type);
-        System.assertEquals(null, position.exchangeName);
+        System.assertEquals(null, position.exchangeId);
     }
 }

@@ -4,15 +4,15 @@ All URIs are relative to **
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 
 ## v1PositionsGet
 
-Get positions
+Get open positions
 
-Returns all of your positions.
+Get current open positions across all or single exchange.
 
 ### Example
 
@@ -25,7 +25,7 @@ Returns all of your positions.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchangeId** | **string** | Exchange name | [optional] [default to null]
+ **exchangeId** | **string** | Filter the balances to the specific exchange. | [optional] [default to null]
 
 ### Return type
 
@@ -38,7 +38,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not Applicable
-- **Accept**: application/json
+- **Accept**: application/json, appliction/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

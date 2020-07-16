@@ -6,12 +6,9 @@ import 'package:openapi/model/position_data.dart';
 part 'position.jser.dart';
 
 class Position {
-   /* Result type. */
-  @Alias('type', isNullable: false,  )
-  final String type;
-   /* Name of exchange. */
-  @Alias('exchange_name', isNullable: false,  )
-  final String exchangeName;
+   /* Exchange identifier used to identify the routing destination. */
+  @Alias('exchange_id', isNullable: false,  )
+  final String exchangeId;
   
   @Alias('data', isNullable: false,  )
   final List<PositionData> data;
@@ -21,8 +18,7 @@ class Position {
       
 
 {
-     this.type = null,  
-     this.exchangeName = null,  
+     this.exchangeId = null,  
      this.data = const [] 
     
     }
@@ -30,7 +26,7 @@ class Position {
 
   @override
   String toString() {
-    return 'Position[type=$type, exchangeName=$exchangeName, data=$data, ]';
+    return 'Position[exchangeId=$exchangeId, data=$data, ]';
   }
 }
 

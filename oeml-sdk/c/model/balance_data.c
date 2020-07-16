@@ -4,17 +4,17 @@
 #include "balance_data.h"
 
 
-char* update_originbalance_data_ToString(oms___rest_api_balance_data_UPDATEORIGIN_e update_origin) {
-    char* update_originArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
-	return update_originArray[update_origin];
+char* last_updated_bybalance_data_ToString(oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by) {
+    char* last_updated_byArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
+	return last_updated_byArray[last_updated_by];
 }
 
-oms___rest_api_balance_data_UPDATEORIGIN_e update_originbalance_data_FromString(char* update_origin){
+oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_bybalance_data_FromString(char* last_updated_by){
     int stringToReturn = 0;
-    char *update_originArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
-    size_t sizeofArray = sizeof(update_originArray) / sizeof(update_originArray[0]);
+    char *last_updated_byArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
+    size_t sizeofArray = sizeof(last_updated_byArray) / sizeof(last_updated_byArray[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(update_origin, update_originArray[stringToReturn]) == 0) {
+        if(strcmp(last_updated_by, last_updated_byArray[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -23,25 +23,25 @@ oms___rest_api_balance_data_UPDATEORIGIN_e update_originbalance_data_FromString(
 }
 
 balance_data_t *balance_data_create(
-    char *id,
-    char *symbol_exchange,
-    char *symbol_coinapi,
+    char *asset_id_exchange,
+    char *asset_id_coinapi,
     float balance,
     float available,
     float locked,
-    oms___rest_api_balance_data_UPDATEORIGIN_e update_origin
+    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
+    float rate_usd
     ) {
     balance_data_t *balance_data_local_var = malloc(sizeof(balance_data_t));
     if (!balance_data_local_var) {
         return NULL;
     }
-    balance_data_local_var->id = id;
-    balance_data_local_var->symbol_exchange = symbol_exchange;
-    balance_data_local_var->symbol_coinapi = symbol_coinapi;
+    balance_data_local_var->asset_id_exchange = asset_id_exchange;
+    balance_data_local_var->asset_id_coinapi = asset_id_coinapi;
     balance_data_local_var->balance = balance;
     balance_data_local_var->available = available;
     balance_data_local_var->locked = locked;
-    balance_data_local_var->update_origin = update_origin;
+    balance_data_local_var->last_updated_by = last_updated_by;
+    balance_data_local_var->rate_usd = rate_usd;
 
     return balance_data_local_var;
 }
@@ -52,34 +52,25 @@ void balance_data_free(balance_data_t *balance_data) {
         return ;
     }
     listEntry_t *listEntry;
-    free(balance_data->id);
-    free(balance_data->symbol_exchange);
-    free(balance_data->symbol_coinapi);
+    free(balance_data->asset_id_exchange);
+    free(balance_data->asset_id_coinapi);
     free(balance_data);
 }
 
 cJSON *balance_data_convertToJSON(balance_data_t *balance_data) {
     cJSON *item = cJSON_CreateObject();
 
-    // balance_data->id
-    if(balance_data->id) { 
-    if(cJSON_AddStringToObject(item, "id", balance_data->id) == NULL) {
+    // balance_data->asset_id_exchange
+    if(balance_data->asset_id_exchange) { 
+    if(cJSON_AddStringToObject(item, "asset_id_exchange", balance_data->asset_id_exchange) == NULL) {
     goto fail; //String
     }
      } 
 
 
-    // balance_data->symbol_exchange
-    if(balance_data->symbol_exchange) { 
-    if(cJSON_AddStringToObject(item, "symbol_exchange", balance_data->symbol_exchange) == NULL) {
-    goto fail; //String
-    }
-     } 
-
-
-    // balance_data->symbol_coinapi
-    if(balance_data->symbol_coinapi) { 
-    if(cJSON_AddStringToObject(item, "symbol_coinapi", balance_data->symbol_coinapi) == NULL) {
+    // balance_data->asset_id_coinapi
+    if(balance_data->asset_id_coinapi) { 
+    if(cJSON_AddStringToObject(item, "asset_id_coinapi", balance_data->asset_id_coinapi) == NULL) {
     goto fail; //String
     }
      } 
@@ -109,13 +100,21 @@ cJSON *balance_data_convertToJSON(balance_data_t *balance_data) {
      } 
 
 
-    // balance_data->update_origin
+    // balance_data->last_updated_by
     
-    if(cJSON_AddStringToObject(item, "update_origin", update_originbalance_data_ToString(balance_data->update_origin)) == NULL)
+    if(cJSON_AddStringToObject(item, "last_updated_by", last_updated_bybalance_data_ToString(balance_data->last_updated_by)) == NULL)
     {
     goto fail; //Enum
     }
     
+
+
+    // balance_data->rate_usd
+    if(balance_data->rate_usd) { 
+    if(cJSON_AddNumberToObject(item, "rate_usd", balance_data->rate_usd) == NULL) {
+    goto fail; //Numeric
+    }
+     } 
 
     return item;
 fail:
@@ -129,28 +128,19 @@ balance_data_t *balance_data_parseFromJSON(cJSON *balance_dataJSON){
 
     balance_data_t *balance_data_local_var = NULL;
 
-    // balance_data->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id))
+    // balance_data->asset_id_exchange
+    cJSON *asset_id_exchange = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "asset_id_exchange");
+    if (asset_id_exchange) { 
+    if(!cJSON_IsString(asset_id_exchange))
     {
     goto end; //String
     }
     }
 
-    // balance_data->symbol_exchange
-    cJSON *symbol_exchange = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "symbol_exchange");
-    if (symbol_exchange) { 
-    if(!cJSON_IsString(symbol_exchange))
-    {
-    goto end; //String
-    }
-    }
-
-    // balance_data->symbol_coinapi
-    cJSON *symbol_coinapi = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "symbol_coinapi");
-    if (symbol_coinapi) { 
-    if(!cJSON_IsString(symbol_coinapi))
+    // balance_data->asset_id_coinapi
+    cJSON *asset_id_coinapi = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "asset_id_coinapi");
+    if (asset_id_coinapi) { 
+    if(!cJSON_IsString(asset_id_coinapi))
     {
     goto end; //String
     }
@@ -183,26 +173,35 @@ balance_data_t *balance_data_parseFromJSON(cJSON *balance_dataJSON){
     }
     }
 
-    // balance_data->update_origin
-    cJSON *update_origin = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "update_origin");
-    oms___rest_api_balance_data_UPDATEORIGIN_e update_originVariable;
-    if (update_origin) { 
-    if(!cJSON_IsString(update_origin))
+    // balance_data->last_updated_by
+    cJSON *last_updated_by = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "last_updated_by");
+    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_byVariable;
+    if (last_updated_by) { 
+    if(!cJSON_IsString(last_updated_by))
     {
     goto end; //Enum
     }
-    update_originVariable = update_originbalance_data_FromString(update_origin->valuestring);
+    last_updated_byVariable = last_updated_bybalance_data_FromString(last_updated_by->valuestring);
+    }
+
+    // balance_data->rate_usd
+    cJSON *rate_usd = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "rate_usd");
+    if (rate_usd) { 
+    if(!cJSON_IsNumber(rate_usd))
+    {
+    goto end; //Numeric
+    }
     }
 
 
     balance_data_local_var = balance_data_create (
-        id ? strdup(id->valuestring) : NULL,
-        symbol_exchange ? strdup(symbol_exchange->valuestring) : NULL,
-        symbol_coinapi ? strdup(symbol_coinapi->valuestring) : NULL,
+        asset_id_exchange ? strdup(asset_id_exchange->valuestring) : NULL,
+        asset_id_coinapi ? strdup(asset_id_coinapi->valuestring) : NULL,
         balance ? balance->valuedouble : 0,
         available ? available->valuedouble : 0,
         locked ? locked->valuedouble : 0,
-        update_origin ? update_originVariable : -1
+        last_updated_by ? last_updated_byVariable : -1,
+        rate_usd ? rate_usd->valuedouble : 0
         );
 
     return balance_data_local_var;

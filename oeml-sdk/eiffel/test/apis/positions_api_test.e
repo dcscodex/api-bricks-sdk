@@ -14,9 +14,9 @@ feature -- Test routines
 
     
     test_v1_positions_get
-            -- Get positions
+            -- Get open positions
             -- 
-            -- Returns all of your positions. 
+            -- Get current open positions across all or single exchange. 
         local
             l_response: LIST [POSITION]
             l_exchange_id: STRING_32

@@ -3,7 +3,7 @@ private class OASBalancesApiTest {
     /**
      * Get balances
      *
-     * Returns all of your balances, including available balance.
+     * Get current currency balance from all or single exchange.
      */
     @isTest
     private static void v1BalancesGetTest() {

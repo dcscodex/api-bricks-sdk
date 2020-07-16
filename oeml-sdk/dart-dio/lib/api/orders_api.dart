@@ -5,14 +5,12 @@ import 'package:dio/dio.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:openapi/model/cancel_all_order.dart';
-import 'package:openapi/model/messages.dart';
-import 'package:openapi/model/create_order400.dart';
-import 'package:openapi/model/messages_ok.dart';
-import 'package:openapi/model/cancel_order.dart';
-import 'package:openapi/model/new_order.dart';
-import 'package:openapi/model/order_live.dart';
-import 'package:openapi/model/order.dart';
+import 'package:openapi/model/order_cancel_all_request.dart';
+import 'package:openapi/model/validation_error.dart';
+import 'package:openapi/model/order_cancel_single_request.dart';
+import 'package:openapi/model/order_execution_report.dart';
+import 'package:openapi/model/message.dart';
+import 'package:openapi/model/order_new_single_request.dart';
 
 class OrdersApi {
     final Dio _dio;
@@ -20,10 +18,10 @@ class OrdersApi {
 
     OrdersApi(this._dio, this._serializers);
 
-        /// Cancel all order
+        /// Cancel all orders request
         ///
-        /// Cancel all existing order.
-        Future<Response<MessagesOk>>v1OrdersCancelAllPost(CancelAllOrder cancelAllOrder,{ CancelToken cancelToken, Map<String, String> headers,}) async {
+        /// This request cancels all open orders on single specified exchange.
+        Future<Response<Message>>v1OrdersCancelAllPost(OrderCancelAllRequest orderCancelAllRequest,{ CancelToken cancelToken, Map<String, String> headers,}) async {
 
         String _path = "/v1/orders/cancel/all";
 
@@ -37,9 +35,9 @@ class OrdersApi {
         List<String> contentTypes = ["application/json"];
 
 
-            var serializedBody = _serializers.serialize(cancelAllOrder);
-            var jsoncancelAllOrder = json.encode(serializedBody);
-            bodyData = jsoncancelAllOrder;
+            var serializedBody = _serializers.serialize(orderCancelAllRequest);
+            var jsonorderCancelAllRequest = json.encode(serializedBody);
+            bodyData = jsonorderCancelAllRequest;
 
             return _dio.request(
             _path,
@@ -56,10 +54,10 @@ class OrdersApi {
             cancelToken: cancelToken,
             ).then((response) {
 
-        var serializer = _serializers.serializerForType(MessagesOk);
-        var data = _serializers.deserializeWith<MessagesOk>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+        var serializer = _serializers.serializerForType(Message);
+        var data = _serializers.deserializeWith<Message>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
 
-            return Response<MessagesOk>(
+            return Response<Message>(
                 data: data,
                 headers: response.headers,
                 request: response.request,
@@ -70,10 +68,10 @@ class OrdersApi {
             );
             });
             }
-        /// Cancel order
+        /// Cancel order request
         ///
-        /// Cancel an existing order, can be used to cancel margin, exchange, and derivative orders. You can cancel the order by the internal order ID or exchange order ID.
-        Future<Response<OrderLive>>v1OrdersCancelPost(CancelOrder cancelOrder,{ CancelToken cancelToken, Map<String, String> headers,}) async {
+        /// Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        Future<Response<OrderExecutionReport>>v1OrdersCancelPost(OrderCancelSingleRequest orderCancelSingleRequest,{ CancelToken cancelToken, Map<String, String> headers,}) async {
 
         String _path = "/v1/orders/cancel";
 
@@ -87,9 +85,9 @@ class OrdersApi {
         List<String> contentTypes = ["application/json"];
 
 
-            var serializedBody = _serializers.serialize(cancelOrder);
-            var jsoncancelOrder = json.encode(serializedBody);
-            bodyData = jsoncancelOrder;
+            var serializedBody = _serializers.serialize(orderCancelSingleRequest);
+            var jsonorderCancelSingleRequest = json.encode(serializedBody);
+            bodyData = jsonorderCancelSingleRequest;
 
             return _dio.request(
             _path,
@@ -106,10 +104,10 @@ class OrdersApi {
             cancelToken: cancelToken,
             ).then((response) {
 
-        var serializer = _serializers.serializerForType(OrderLive);
-        var data = _serializers.deserializeWith<OrderLive>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+        var serializer = _serializers.serializerForType(OrderExecutionReport);
+        var data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
 
-            return Response<OrderLive>(
+            return Response<OrderExecutionReport>(
                 data: data,
                 headers: response.headers,
                 request: response.request,
@@ -120,10 +118,10 @@ class OrdersApi {
             );
             });
             }
-        /// Get orders
+        /// Get open orders
         ///
-        /// List your current open orders.
-        Future<Response<List<Order>>>v1OrdersGet({ String exchangeId,CancelToken cancelToken, Map<String, String> headers,}) async {
+        /// Get last execution reports for open orders across all or single exchange.
+        Future<Response<List<OrderExecutionReport>>>v1OrdersGet({ String exchangeId,CancelToken cancelToken, Map<String, String> headers,}) async {
 
         String _path = "/v1/orders";
 
@@ -154,11 +152,11 @@ class OrdersApi {
             cancelToken: cancelToken,
             ).then((response) {
 
-                final FullType type = const FullType(BuiltList, const [const FullType(Order)]);
-                BuiltList<Order> dataList = _serializers.deserialize(response.data is String ? jsonDecode(response.data) : response.data, specifiedType: type);
+                final FullType type = const FullType(BuiltList, const [const FullType(OrderExecutionReport)]);
+                BuiltList<OrderExecutionReport> dataList = _serializers.deserialize(response.data is String ? jsonDecode(response.data) : response.data, specifiedType: type);
                 var data = dataList.toList();
 
-            return Response<List<Order>>(
+            return Response<List<OrderExecutionReport>>(
                 data: data,
                 headers: response.headers,
                 request: response.request,
@@ -169,10 +167,10 @@ class OrdersApi {
             );
             });
             }
-        /// Create new order
+        /// Send new order
         ///
-        /// You can place two types of orders: limit and market. Orders can only be placed if your account has sufficient funds.
-        Future<Response<OrderLive>>v1OrdersPost(NewOrder newOrder,{ CancelToken cancelToken, Map<String, String> headers,}) async {
+        /// This request creating new order for the specific exchange.
+        Future<Response<OrderExecutionReport>>v1OrdersPost(OrderNewSingleRequest orderNewSingleRequest,{ CancelToken cancelToken, Map<String, String> headers,}) async {
 
         String _path = "/v1/orders";
 
@@ -186,9 +184,9 @@ class OrdersApi {
         List<String> contentTypes = ["application/json"];
 
 
-            var serializedBody = _serializers.serialize(newOrder);
-            var jsonnewOrder = json.encode(serializedBody);
-            bodyData = jsonnewOrder;
+            var serializedBody = _serializers.serialize(orderNewSingleRequest);
+            var jsonorderNewSingleRequest = json.encode(serializedBody);
+            bodyData = jsonorderNewSingleRequest;
 
             return _dio.request(
             _path,
@@ -205,10 +203,57 @@ class OrdersApi {
             cancelToken: cancelToken,
             ).then((response) {
 
-        var serializer = _serializers.serializerForType(OrderLive);
-        var data = _serializers.deserializeWith<OrderLive>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+        var serializer = _serializers.serializerForType(OrderExecutionReport);
+        var data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
 
-            return Response<OrderLive>(
+            return Response<OrderExecutionReport>(
+                data: data,
+                headers: response.headers,
+                request: response.request,
+                redirects: response.redirects,
+                statusCode: response.statusCode,
+                statusMessage: response.statusMessage,
+                extra: response.extra,
+            );
+            });
+            }
+        /// Get order execution report
+        ///
+        /// Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+        Future<Response<OrderExecutionReport>>v1OrdersStatusClientOrderIdGet(String clientOrderId,{ CancelToken cancelToken, Map<String, String> headers,}) async {
+
+        String _path = "/v1/orders/status/{client_order_id}".replaceAll("{" r'client_order_id' "}", clientOrderId.toString());
+
+        Map<String, dynamic> queryParams = {};
+        Map<String, String> headerParams = Map.from(headers ?? {});
+        dynamic bodyData;
+
+        queryParams.removeWhere((key, value) => value == null);
+        headerParams.removeWhere((key, value) => value == null);
+
+        List<String> contentTypes = [];
+
+
+
+            return _dio.request(
+            _path,
+            queryParameters: queryParams,
+            data: bodyData,
+            options: Options(
+            method: 'get'.toUpperCase(),
+            headers: headerParams,
+            extra: {
+                'secure': [],
+            },
+            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
+            ),
+            cancelToken: cancelToken,
+            ).then((response) {
+
+        var serializer = _serializers.serializerForType(OrderExecutionReport);
+        var data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+
+            return Response<OrderExecutionReport>(
                 data: data,
                 headers: response.headers,
                 request: response.request,

@@ -1,4 +1,4 @@
-goog.provide('API.Client.balance_data');
+goog.provide('API.Client.Balance_data');
 
 /**
  * @record
@@ -6,56 +6,56 @@ goog.provide('API.Client.balance_data');
 API.Client.BalanceData = function() {}
 
 /**
- * symbol_exchange
+ * Exchange currency code.
  * @type {!string}
  * @export
  */
-API.Client.BalanceData.prototype.id;
-
-/**
- * Currency code.
- * @type {!string}
- * @export
- */
-API.Client.BalanceData.prototype.symbolExchange;
+API.Client.BalanceData.prototype.assetIdExchange;
 
 /**
  * CoinAPI currency code.
  * @type {!string}
  * @export
  */
-API.Client.BalanceData.prototype.symbolCoinapi;
+API.Client.BalanceData.prototype.assetIdCoinapi;
 
 /**
- * The current balance.
+ * Value of the current total currency balance on the exchange.
  * @type {!number}
  * @export
  */
 API.Client.BalanceData.prototype.balance;
 
 /**
- * The amount that is available to trade.
+ * Value of the current available currency balance on the exchange that can be used as collateral.
  * @type {!number}
  * @export
  */
 API.Client.BalanceData.prototype.available;
 
 /**
- * Blocked funds.
+ * Value of the current locked currency balance by the exchange.
  * @type {!number}
  * @export
  */
 API.Client.BalanceData.prototype.locked;
 
 /**
- * Source of last modification. 
+ * Source of the last modification. 
  * @type {!string}
  * @export
  */
-API.Client.BalanceData.prototype.updateOrigin;
+API.Client.BalanceData.prototype.lastUpdatedBy;
+
+/**
+ * Current exchange rate to the USD for the single unit of the currency. 
+ * @type {!number}
+ * @export
+ */
+API.Client.BalanceData.prototype.rateUsd;
 
 /** @enum {string} */
-API.Client.BalanceData.UpdateOriginEnum = { 
+API.Client.BalanceData.LastUpdatedByEnum = { 
   INITIALIZATION: 'INITIALIZATION',
   BALANCE_MANAGER: 'BALANCE_MANAGER',
   EXCHANGE: 'EXCHANGE',

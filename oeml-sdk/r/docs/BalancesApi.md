@@ -1,6 +1,6 @@
 # BalancesApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,13 +12,13 @@ Method | HTTP request | Description
 
 Get balances
 
-Returns all of your balances, including available balance.
+Get current currency balance from all or single exchange.
 
 ### Example
 ```R
 library(openapi)
 
-var.exchange.id <- 'KRAKEN' # character | Exchange name
+var.exchange.id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
 
 #Get balances
 api.instance <- BalancesApi$new()
@@ -30,11 +30,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange.id** | **character**| Exchange name | [optional] 
+ **exchange.id** | **character**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 
-[**array[Balance]**](balance.md)
+[**array[Balance]**](Balance.md)
 
 ### Authorization
 
@@ -43,10 +43,11 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, appliction/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Result |  -  |
+| **200** | Collection of balances. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 

@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **character** | Result type. | [optional] 
-**exchange_name** | **character** | Exchange name. | [optional] 
-**data** | [**array[BalanceData]**](balance_data.md) |  | [optional] 
+**exchange_id** | **character** | Exchange identifier used to identify the routing destination. | [optional] 
+**data** | [**array[BalanceData]**](Balance_data.md) |  | [optional] 
 
 

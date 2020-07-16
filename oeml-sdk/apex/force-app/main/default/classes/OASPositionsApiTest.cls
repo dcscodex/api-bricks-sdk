@@ -1,9 +1,9 @@
 @isTest
 private class OASPositionsApiTest {
     /**
-     * Get positions
+     * Get open positions
      *
-     * Returns all of your positions.
+     * Get current open positions across all or single exchange.
      */
     @isTest
     private static void v1PositionsGetTest() {

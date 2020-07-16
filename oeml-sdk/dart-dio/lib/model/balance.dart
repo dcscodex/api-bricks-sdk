@@ -7,14 +7,10 @@ part 'balance.g.dart';
 
 abstract class Balance implements Built<Balance, BalanceBuilder> {
 
-    /* Result type. */
+    /* Exchange identifier used to identify the routing destination. */
         @nullable
-    @BuiltValueField(wireName: r'type')
-    String get type;
-    /* Exchange name. */
-        @nullable
-    @BuiltValueField(wireName: r'exchange_name')
-    String get exchangeName;
+    @BuiltValueField(wireName: r'exchange_id')
+    String get exchangeId;
     
         @nullable
     @BuiltValueField(wireName: r'data')

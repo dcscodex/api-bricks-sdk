@@ -12,8 +12,8 @@ import Test.Hspec.QuickCheck
 import PropMime
 import Instances ()
 
-import OMS-REST.Model
-import OMS-REST.MimeTypes
+import OEML-REST.Model
+import OEML-REST.MimeTypes
 
 main :: IO ()
 main =
@@ -22,18 +22,18 @@ main =
       pure ()
       propMimeEq MimeJSON (Proxy :: Proxy Balance)
       propMimeEq MimeJSON (Proxy :: Proxy BalanceData)
-      propMimeEq MimeJSON (Proxy :: Proxy CancelAllOrder)
-      propMimeEq MimeJSON (Proxy :: Proxy CancelOrder)
-      propMimeEq MimeJSON (Proxy :: Proxy CreateOrder400)
-      propMimeEq MimeJSON (Proxy :: Proxy Messages)
-      propMimeEq MimeJSON (Proxy :: Proxy MessagesInfo)
-      propMimeEq MimeJSON (Proxy :: Proxy MessagesOk)
-      propMimeEq MimeJSON (Proxy :: Proxy NewOrder)
-      propMimeEq MimeJSON (Proxy :: Proxy Order)
-      propMimeEq MimeJSON (Proxy :: Proxy OrderData)
-      propMimeEq MimeJSON (Proxy :: Proxy OrderLive)
-      propMimeEq MimeJSON (Proxy :: Proxy OrderStatus)
+      propMimeEq MimeJSON (Proxy :: Proxy Message)
+      propMimeEq MimeJSON (Proxy :: Proxy OrdSide)
+      propMimeEq MimeJSON (Proxy :: Proxy OrdStatus)
+      propMimeEq MimeJSON (Proxy :: Proxy OrdType)
+      propMimeEq MimeJSON (Proxy :: Proxy OrderCancelAllRequest)
+      propMimeEq MimeJSON (Proxy :: Proxy OrderCancelSingleRequest)
+      propMimeEq MimeJSON (Proxy :: Proxy OrderExecutionReport)
+      propMimeEq MimeJSON (Proxy :: Proxy OrderExecutionReportAllOf)
+      propMimeEq MimeJSON (Proxy :: Proxy OrderNewSingleRequest)
       propMimeEq MimeJSON (Proxy :: Proxy Position)
       propMimeEq MimeJSON (Proxy :: Proxy PositionData)
+      propMimeEq MimeJSON (Proxy :: Proxy Severity)
       propMimeEq MimeJSON (Proxy :: Proxy TimeInForce)
+      propMimeEq MimeJSON (Proxy :: Proxy ValidationError)
       

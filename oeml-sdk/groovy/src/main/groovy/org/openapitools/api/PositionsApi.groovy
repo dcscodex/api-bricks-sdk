@@ -1,10 +1,11 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.Message
 import org.openapitools.model.Position
 
 class PositionsApi {
-    String basePath = "http://localhost:3001"
+    String basePath = "http://localhost:8080"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 

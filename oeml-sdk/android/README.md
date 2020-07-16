@@ -64,7 +64,7 @@ public class BalancesApiExample {
 
     public static void main(String[] args) {
         BalancesApi apiInstance = new BalancesApi();
-        String exchangeId = KRAKEN; // String | Exchange name
+        String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
         try {
             List<Balance> result = apiInstance.v1BalancesGet(exchangeId);
             System.out.println(result);
@@ -79,36 +79,37 @@ public class BalancesApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
-*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all order
-*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order
-*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get orders
-*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Create new order
-*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get positions
+*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
  - [Balance](docs/Balance.md)
  - [BalanceData](docs/BalanceData.md)
- - [CancelAllOrder](docs/CancelAllOrder.md)
- - [CancelOrder](docs/CancelOrder.md)
- - [CreateOrder400](docs/CreateOrder400.md)
- - [Messages](docs/Messages.md)
- - [MessagesInfo](docs/MessagesInfo.md)
- - [MessagesOk](docs/MessagesOk.md)
- - [NewOrder](docs/NewOrder.md)
- - [Order](docs/Order.md)
- - [OrderData](docs/OrderData.md)
- - [OrderLive](docs/OrderLive.md)
- - [OrderStatus](docs/OrderStatus.md)
+ - [Message](docs/Message.md)
+ - [OrdSide](docs/OrdSide.md)
+ - [OrdStatus](docs/OrdStatus.md)
+ - [OrdType](docs/OrdType.md)
+ - [OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [Position](docs/Position.md)
  - [PositionData](docs/PositionData.md)
+ - [Severity](docs/Severity.md)
  - [TimeInForce](docs/TimeInForce.md)
+ - [ValidationError](docs/ValidationError.md)
 
 
 ## Documentation for Authorization
@@ -122,5 +123,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-
+support@coinapi.io
 

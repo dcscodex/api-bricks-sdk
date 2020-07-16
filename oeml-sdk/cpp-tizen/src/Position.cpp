@@ -23,23 +23,17 @@ Position::~Position()
 void
 Position::__init()
 {
-	//type = std::string();
-	//exchange_name = std::string();
+	//exchange_id = std::string();
 	//new std::list()std::list> data;
 }
 
 void
 Position::__cleanup()
 {
-	//if(type != NULL) {
+	//if(exchange_id != NULL) {
 	//
-	//delete type;
-	//type = NULL;
-	//}
-	//if(exchange_name != NULL) {
-	//
-	//delete exchange_name;
-	//exchange_name = NULL;
+	//delete exchange_id;
+	//exchange_id = NULL;
 	//}
 	//if(data != NULL) {
 	//data.RemoveAll(true);
@@ -54,24 +48,13 @@ Position::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
+	const gchar *exchange_idKey = "exchange_id";
+	node = json_object_get_member(pJsonObject, exchange_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *exchange_nameKey = "exchange_name";
-	node = json_object_get_member(pJsonObject, exchange_nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&exchange_name, node, "std::string", "");
+			jsonToValue(&exchange_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -113,23 +96,14 @@ Position::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getType();
+		std::string obj = getExchangeId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getExchangeName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *exchange_nameKey = "exchange_name";
-	json_object_set_member(pJsonObject, exchange_nameKey, node);
+	const gchar *exchange_idKey = "exchange_id";
+	json_object_set_member(pJsonObject, exchange_idKey, node);
 	if (isprimitive("Position_data")) {
 		list<Position_data> new_list = static_cast<list <Position_data> > (getData());
 		node = converttoJson(&new_list, "Position_data", "array");
@@ -164,27 +138,15 @@ Position::toJson()
 }
 
 std::string
-Position::getType()
+Position::getExchangeId()
 {
-	return type;
+	return exchange_id;
 }
 
 void
-Position::setType(std::string  type)
+Position::setExchangeId(std::string  exchange_id)
 {
-	this->type = type;
-}
-
-std::string
-Position::getExchangeName()
-{
-	return exchange_name;
-}
-
-void
-Position::setExchangeName(std::string  exchange_name)
-{
-	this->exchange_name = exchange_name;
+	this->exchange_id = exchange_id;
 }
 
 std::list<Position_data>

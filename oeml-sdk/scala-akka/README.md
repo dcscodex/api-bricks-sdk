@@ -1,9 +1,10 @@
 # openapi-client
 
-OMS - REST API
+OEML - REST API
 - API version: v1
 
-OMS Project
+This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+
 
   For more information, please visit [https://www.coinapi.io](https://www.coinapi.io)
 
@@ -62,36 +63,37 @@ libraryDependencies += "org.openapitools" % "openapi-client" % "1.0.0"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalancesApi* | **v1BalancesGet** | **GET** /v1/balances | Get balances
-*OrdersApi* | **v1OrdersCancelAllPost** | **POST** /v1/orders/cancel/all | Cancel all order
-*OrdersApi* | **v1OrdersCancelPost** | **POST** /v1/orders/cancel | Cancel order
-*OrdersApi* | **v1OrdersGet** | **GET** /v1/orders | Get orders
-*OrdersApi* | **v1OrdersPost** | **POST** /v1/orders | Create new order
-*PositionsApi* | **v1PositionsGet** | **GET** /v1/positions | Get positions
+*OrdersApi* | **v1OrdersCancelAllPost** | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | **v1OrdersCancelPost** | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | **v1OrdersGet** | **GET** /v1/orders | Get open orders
+*OrdersApi* | **v1OrdersPost** | **POST** /v1/orders | Send new order
+*OrdersApi* | **v1OrdersStatusClientOrderIdGet** | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | **v1PositionsGet** | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
  - [Balance](Balance.md)
  - [BalanceData](BalanceData.md)
- - [CancelAllOrder](CancelAllOrder.md)
- - [CancelOrder](CancelOrder.md)
- - [CreateOrder400](CreateOrder400.md)
- - [Messages](Messages.md)
- - [MessagesInfo](MessagesInfo.md)
- - [MessagesOk](MessagesOk.md)
- - [NewOrder](NewOrder.md)
- - [Order](Order.md)
- - [OrderData](OrderData.md)
- - [OrderLive](OrderLive.md)
- - [OrderStatus](OrderStatus.md)
+ - [Message](Message.md)
+ - [OrdSide](OrdSide.md)
+ - [OrdStatus](OrdStatus.md)
+ - [OrdType](OrdType.md)
+ - [OrderCancelAllRequest](OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](OrderNewSingleRequest.md)
  - [Position](Position.md)
  - [PositionData](PositionData.md)
+ - [Severity](Severity.md)
  - [TimeInForce](TimeInForce.md)
+ - [ValidationError](ValidationError.md)
 
 
 ## Documentation for Authorization
@@ -101,5 +103,5 @@ Authentication schemes defined for the API:
 
 ## Author
 
-
+support@coinapi.io
 

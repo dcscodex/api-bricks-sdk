@@ -6,16 +6,14 @@
 
 
 position_t *position_create(
-    char *type,
-    char *exchange_name,
+    char *exchange_id,
     list_t *data
     ) {
     position_t *position_local_var = malloc(sizeof(position_t));
     if (!position_local_var) {
         return NULL;
     }
-    position_local_var->type = type;
-    position_local_var->exchange_name = exchange_name;
+    position_local_var->exchange_id = exchange_id;
     position_local_var->data = data;
 
     return position_local_var;
@@ -27,8 +25,7 @@ void position_free(position_t *position) {
         return ;
     }
     listEntry_t *listEntry;
-    free(position->type);
-    free(position->exchange_name);
+    free(position->exchange_id);
     list_ForEach(listEntry, position->data) {
         position_data_free(listEntry->data);
     }
@@ -39,17 +36,9 @@ void position_free(position_t *position) {
 cJSON *position_convertToJSON(position_t *position) {
     cJSON *item = cJSON_CreateObject();
 
-    // position->type
-    if(position->type) { 
-    if(cJSON_AddStringToObject(item, "type", position->type) == NULL) {
-    goto fail; //String
-    }
-     } 
-
-
-    // position->exchange_name
-    if(position->exchange_name) { 
-    if(cJSON_AddStringToObject(item, "exchange_name", position->exchange_name) == NULL) {
+    // position->exchange_id
+    if(position->exchange_id) { 
+    if(cJSON_AddStringToObject(item, "exchange_id", position->exchange_id) == NULL) {
     goto fail; //String
     }
      } 
@@ -86,19 +75,10 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
 
     position_t *position_local_var = NULL;
 
-    // position->type
-    cJSON *type = cJSON_GetObjectItemCaseSensitive(positionJSON, "type");
-    if (type) { 
-    if(!cJSON_IsString(type))
-    {
-    goto end; //String
-    }
-    }
-
-    // position->exchange_name
-    cJSON *exchange_name = cJSON_GetObjectItemCaseSensitive(positionJSON, "exchange_name");
-    if (exchange_name) { 
-    if(!cJSON_IsString(exchange_name))
+    // position->exchange_id
+    cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(positionJSON, "exchange_id");
+    if (exchange_id) { 
+    if(!cJSON_IsString(exchange_id))
     {
     goto end; //String
     }
@@ -128,8 +108,7 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
 
 
     position_local_var = position_create (
-        type ? strdup(type->valuestring) : NULL,
-        exchange_name ? strdup(exchange_name->valuestring) : NULL,
+        exchange_id ? strdup(exchange_id->valuestring) : NULL,
         data ? dataList : NULL
         );
 

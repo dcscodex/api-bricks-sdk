@@ -4,17 +4,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **kotlin.String** | Unique position ID |  [optional]
-**symbolExchange** | **kotlin.String** | The contract for this position. |  [optional]
-**symbolCoinapi** | **kotlin.String** | The coinapi contract for this position. |  [optional]
-**avgEntryPrice** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
-**quantity** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | The current position amount in contracts. |  [optional]
-**isBuy** | **kotlin.Boolean** |  |  [optional]
-**unrealisedPnL** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Unrealised PNL is all the unrealised profit or loss coming from your portfolio&#39;s open positions. |  [optional]
-**leverage** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | 1 / initMarginReq. |  [optional]
-**crossMargin** | **kotlin.Boolean** | True/false depending on whether you set cross margin on this position. |  [optional]
-**liquidationPrice** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Once markPrice reaches this price, this position will be liquidated. |  [optional]
-**rawData** | **kotlin.String** |  |  [optional]
+**symbolIdExchange** | **kotlin.String** | Exchange symbol. |  [optional]
+**symbolIdCoinapi** | **kotlin.String** | CoinAPI symbol. |  [optional]
+**avgEntryPrice** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Calculated average price of all fills on this position. |  [optional]
+**quantity** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | The current position quantity. |  [optional]
+**side** | [**OrdSide**](OrdSide.md) |  |  [optional]
+**unrealizedPnl** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Unrealised profit or loss (PNL) of this position. |  [optional]
+**leverage** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Leverage for this position reported by the exchange. |  [optional]
+**crossMargin** | **kotlin.Boolean** | Is cross margin mode enable for this position? |  [optional]
+**liquidationPrice** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Liquidation price. If mark price will reach this value, the position will be liquidated. |  [optional]
+**rawData** | [**kotlin.Any**](.md) |  |  [optional]
 
 
 

@@ -20,15 +20,13 @@ typedef struct balance_t balance_t;
 
 
 typedef struct balance_t {
-    char *type; // string
-    char *exchange_name; // string
+    char *exchange_id; // string
     list_t *data; //nonprimitive container
 
 } balance_t;
 
 balance_t *balance_create(
-    char *type,
-    char *exchange_name,
+    char *exchange_id,
     list_t *data
 );
 

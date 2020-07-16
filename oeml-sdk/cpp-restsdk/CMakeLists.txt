@@ -1,6 +1,6 @@
 #
-# OMS - REST API
-# OMS Project
+# OEML - REST API
+# This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
 #
 # The version of the OpenAPI document: 1.0.0
 #

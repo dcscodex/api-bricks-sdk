@@ -14,7 +14,7 @@
 
 // Get balances
 //
-// Returns all of your balances, including available balance.
+// Get current currency balance from all or single exchange.
 //
 list_t*
 BalancesAPI_v1BalancesGet(apiClient_t *apiClient, char * exchange_id )
@@ -46,6 +46,7 @@ BalancesAPI_v1BalancesGet(apiClient_t *apiClient, char * exchange_id )
         list_addElement(localVarQueryParameters,keyPairQuery_exchange_id);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"appliction/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -57,7 +58,10 @@ BalancesAPI_v1BalancesGet(apiClient_t *apiClient, char * exchange_id )
                     "GET");
 
     if (apiClient->response_code == 200) {
-        printf("%s\n","Result");
+        printf("%s\n","Collection of balances.");
+    }
+    if (apiClient->response_code == 490) {
+        printf("%s\n","Exchange is unreachable.");
     }
     cJSON *BalancesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     if(!cJSON_IsArray(BalancesAPIlocalVarJSON)) {

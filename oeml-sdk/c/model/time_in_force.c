@@ -4,14 +4,14 @@
 #include "time_in_force.h"
 
 
-char* time_in_force_time_in_force_ToString(oms___rest_api_time_in_force__e time_in_force) {
-    char *time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL", "AUCTION_ONLY", "INDICATION_OF_INTEREST" };
+char* time_in_force_time_in_force_ToString(oeml___rest_api_time_in_force__e time_in_force) {
+    char *time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL" };
     return time_in_forceArray[time_in_force];
 }
 
-oms___rest_api_time_in_force__e time_in_force_time_in_force_FromString(char* time_in_force) {
+oeml___rest_api_time_in_force__e time_in_force_time_in_force_FromString(char* time_in_force) {
     int stringToReturn = 0;
-    char *time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL", "AUCTION_ONLY", "INDICATION_OF_INTEREST" };
+    char *time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL" };
     size_t sizeofArray = sizeof(time_in_forceArray) / sizeof(time_in_forceArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(time_in_force, time_in_forceArray[stringToReturn]) == 0) {
@@ -22,7 +22,7 @@ oms___rest_api_time_in_force__e time_in_force_time_in_force_FromString(char* tim
     return 0;
 }
 
-cJSON *time_in_force_time_in_force_convertToJSON(oms___rest_api_time_in_force__e time_in_force) {
+cJSON *time_in_force_time_in_force_convertToJSON(oeml___rest_api_time_in_force__e time_in_force) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "time_in_force", time_in_force_time_in_force_ToString(time_in_force)) == NULL) {
         goto fail;

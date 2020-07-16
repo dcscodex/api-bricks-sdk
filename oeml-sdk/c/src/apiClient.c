@@ -9,7 +9,7 @@ size_t writeDataCallback(void *buffer, size_t size, size_t nmemb, void *userp);
 apiClient_t *apiClient_create() {
     curl_global_init(CURL_GLOBAL_ALL);
     apiClient_t *apiClient = malloc(sizeof(apiClient_t));
-    apiClient->basePath = strdup("http://localhost:3001");
+    apiClient->basePath = strdup("http://localhost:8080");
     apiClient->sslConfig = NULL;
     apiClient->dataReceived = NULL;
     apiClient->dataReceivedLen = 0;
@@ -26,7 +26,7 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     if(basePath){
         apiClient->basePath = strdup(basePath);
     }else{
-        apiClient->basePath = strdup("http://localhost:3001");
+        apiClient->basePath = strdup("http://localhost:8080");
     }
 
     if(sslConfig){

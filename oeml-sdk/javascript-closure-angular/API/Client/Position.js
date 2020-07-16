@@ -1,4 +1,4 @@
-goog.provide('API.Client.position');
+goog.provide('API.Client.Position');
 
 /**
  * @record
@@ -6,21 +6,14 @@ goog.provide('API.Client.position');
 API.Client.Position = function() {}
 
 /**
- * Result type.
+ * Exchange identifier used to identify the routing destination.
  * @type {!string}
  * @export
  */
-API.Client.Position.prototype.type;
+API.Client.Position.prototype.exchangeId;
 
 /**
- * Name of exchange.
- * @type {!string}
- * @export
- */
-API.Client.Position.prototype.exchangeName;
-
-/**
- * @type {!Array<!API.Client.position_data>}
+ * @type {!Array<!API.Client.Position_data>}
  * @export
  */
 API.Client.Position.prototype.data;

@@ -2,21 +2,21 @@
 
 # PositionData
 
+The Position object.
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Unique position ID |  [optional]
-**symbolExchange** | **String** | The contract for this position. |  [optional]
-**symbolCoinapi** | **String** | The coinapi contract for this position. |  [optional]
-**avgEntryPrice** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**quantity** | [**BigDecimal**](BigDecimal.md) | The current position amount in contracts. |  [optional]
-**isBuy** | **Boolean** |  |  [optional]
-**unrealisedPnL** | [**BigDecimal**](BigDecimal.md) | Unrealised PNL is all the unrealised profit or loss coming from your portfolio&#39;s open positions. |  [optional]
-**leverage** | [**BigDecimal**](BigDecimal.md) | 1 / initMarginReq. |  [optional]
-**crossMargin** | **Boolean** | True/false depending on whether you set cross margin on this position. |  [optional]
-**liquidationPrice** | [**BigDecimal**](BigDecimal.md) | Once markPrice reaches this price, this position will be liquidated. |  [optional]
-**rawData** | **String** |  |  [optional]
+**symbolIdExchange** | **String** | Exchange symbol. |  [optional]
+**symbolIdCoinapi** | **String** | CoinAPI symbol. |  [optional]
+**avgEntryPrice** | [**BigDecimal**](BigDecimal.md) | Calculated average price of all fills on this position. |  [optional]
+**quantity** | [**BigDecimal**](BigDecimal.md) | The current position quantity. |  [optional]
+**side** | [**OrdSide**](OrdSide.md) |  |  [optional]
+**unrealizedPnl** | [**BigDecimal**](BigDecimal.md) | Unrealised profit or loss (PNL) of this position. |  [optional]
+**leverage** | [**BigDecimal**](BigDecimal.md) | Leverage for this position reported by the exchange. |  [optional]
+**crossMargin** | **Boolean** | Is cross margin mode enable for this position? |  [optional]
+**liquidationPrice** | [**BigDecimal**](BigDecimal.md) | Liquidation price. If mark price will reach this value, the position will be liquidated. |  [optional]
+**rawData** | [**Object**](.md) |  |  [optional]
 
 
 

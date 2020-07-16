@@ -3,11 +3,8 @@ function New-Position {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${type},
+        ${exchangeUnderscoreid},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${exchangeUnderscorename},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [Org.OpenAPITools.Model.PositionData[]]
         ${data}
     )
@@ -17,8 +14,7 @@ function New-Position {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         New-Object -TypeName Org.OpenAPITools.Model.Position -ArgumentList @(
-            ${type},
-            ${exchangeUnderscorename},
+            ${exchangeUnderscoreid},
             ${data}
         )
     }

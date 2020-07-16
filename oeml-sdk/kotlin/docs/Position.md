@@ -4,8 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **kotlin.String** | Result type. |  [optional]
-**exchangeName** | **kotlin.String** | Name of exchange. |  [optional]
+**exchangeId** | **kotlin.String** | Exchange identifier used to identify the routing destination. |  [optional]
 **data** | [**kotlin.Array&lt;PositionData&gt;**](PositionData.md) |  |  [optional]
 
 

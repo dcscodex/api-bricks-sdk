@@ -8,20 +8,20 @@ import 'package:built_value/standard_json_plugin.dart';
 
 import 'package:openapi/model/balance.dart';
 import 'package:openapi/model/balance_data.dart';
-import 'package:openapi/model/cancel_all_order.dart';
-import 'package:openapi/model/cancel_order.dart';
-import 'package:openapi/model/create_order400.dart';
-import 'package:openapi/model/messages.dart';
-import 'package:openapi/model/messages_info.dart';
-import 'package:openapi/model/messages_ok.dart';
-import 'package:openapi/model/new_order.dart';
-import 'package:openapi/model/order.dart';
-import 'package:openapi/model/order_data.dart';
-import 'package:openapi/model/order_live.dart';
-import 'package:openapi/model/order_status.dart';
+import 'package:openapi/model/message.dart';
+import 'package:openapi/model/ord_side.dart';
+import 'package:openapi/model/ord_status.dart';
+import 'package:openapi/model/ord_type.dart';
+import 'package:openapi/model/order_cancel_all_request.dart';
+import 'package:openapi/model/order_cancel_single_request.dart';
+import 'package:openapi/model/order_execution_report.dart';
+import 'package:openapi/model/order_execution_report_all_of.dart';
+import 'package:openapi/model/order_new_single_request.dart';
 import 'package:openapi/model/position.dart';
 import 'package:openapi/model/position_data.dart';
+import 'package:openapi/model/severity.dart';
 import 'package:openapi/model/time_in_force.dart';
+import 'package:openapi/model/validation_error.dart';
 
 
 part 'serializers.g.dart';
@@ -29,20 +29,20 @@ part 'serializers.g.dart';
 @SerializersFor(const [
 Balance,
 BalanceData,
-CancelAllOrder,
-CancelOrder,
-CreateOrder400,
-Messages,
-MessagesInfo,
-MessagesOk,
-NewOrder,
-Order,
-OrderData,
-OrderLive,
-OrderStatus,
+Message,
+OrdSide,
+OrdStatus,
+OrdType,
+OrderCancelAllRequest,
+OrderCancelSingleRequest,
+OrderExecutionReport,
+OrderExecutionReportAllOf,
+OrderNewSingleRequest,
 Position,
 PositionData,
+Severity,
 TimeInForce,
+ValidationError,
 
 ])
 
@@ -55,38 +55,32 @@ const FullType(BuiltList, const [const FullType(Balance)]),
 const FullType(BuiltList, const [const FullType(BalanceData)]),
 () => new ListBuilder<BalanceData>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(CancelAllOrder)]),
-() => new ListBuilder<CancelAllOrder>())
+const FullType(BuiltList, const [const FullType(Message)]),
+() => new ListBuilder<Message>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(CancelOrder)]),
-() => new ListBuilder<CancelOrder>())
+const FullType(BuiltList, const [const FullType(OrdSide)]),
+() => new ListBuilder<OrdSide>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(CreateOrder400)]),
-() => new ListBuilder<CreateOrder400>())
+const FullType(BuiltList, const [const FullType(OrdStatus)]),
+() => new ListBuilder<OrdStatus>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(Messages)]),
-() => new ListBuilder<Messages>())
+const FullType(BuiltList, const [const FullType(OrdType)]),
+() => new ListBuilder<OrdType>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(MessagesInfo)]),
-() => new ListBuilder<MessagesInfo>())
+const FullType(BuiltList, const [const FullType(OrderCancelAllRequest)]),
+() => new ListBuilder<OrderCancelAllRequest>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(MessagesOk)]),
-() => new ListBuilder<MessagesOk>())
+const FullType(BuiltList, const [const FullType(OrderCancelSingleRequest)]),
+() => new ListBuilder<OrderCancelSingleRequest>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(NewOrder)]),
-() => new ListBuilder<NewOrder>())
+const FullType(BuiltList, const [const FullType(OrderExecutionReport)]),
+() => new ListBuilder<OrderExecutionReport>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(Order)]),
-() => new ListBuilder<Order>())
+const FullType(BuiltList, const [const FullType(OrderExecutionReportAllOf)]),
+() => new ListBuilder<OrderExecutionReportAllOf>())
 ..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(OrderData)]),
-() => new ListBuilder<OrderData>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(OrderLive)]),
-() => new ListBuilder<OrderLive>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(OrderStatus)]),
-() => new ListBuilder<OrderStatus>())
+const FullType(BuiltList, const [const FullType(OrderNewSingleRequest)]),
+() => new ListBuilder<OrderNewSingleRequest>())
 ..addBuilderFactory(
 const FullType(BuiltList, const [const FullType(Position)]),
 () => new ListBuilder<Position>())
@@ -94,8 +88,14 @@ const FullType(BuiltList, const [const FullType(Position)]),
 const FullType(BuiltList, const [const FullType(PositionData)]),
 () => new ListBuilder<PositionData>())
 ..addBuilderFactory(
+const FullType(BuiltList, const [const FullType(Severity)]),
+() => new ListBuilder<Severity>())
+..addBuilderFactory(
 const FullType(BuiltList, const [const FullType(TimeInForce)]),
 () => new ListBuilder<TimeInForce>())
+..addBuilderFactory(
+const FullType(BuiltList, const [const FullType(ValidationError)]),
+() => new ListBuilder<ValidationError>())
 
 ..add(Iso8601DateTimeSerializer())
 ).build();

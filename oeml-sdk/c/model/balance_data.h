@@ -16,35 +16,35 @@
 typedef struct balance_data_t balance_data_t;
 
 
-// Enum UPDATEORIGIN for balance_data
+// Enum LASTUPDATEDBY for balance_data
 
-typedef enum  { oms___rest_api_balance_data_UPDATEORIGIN_NULL = 0, oms___rest_api_balance_data_UPDATEORIGIN_INITIALIZATION, oms___rest_api_balance_data_UPDATEORIGIN_BALANCE_MANAGER, oms___rest_api_balance_data_UPDATEORIGIN_EXCHANGE } oms___rest_api_balance_data_UPDATEORIGIN_e;
+typedef enum  { oeml___rest_api_balance_data_LASTUPDATEDBY_NULL = 0, oeml___rest_api_balance_data_LASTUPDATEDBY_INITIALIZATION, oeml___rest_api_balance_data_LASTUPDATEDBY_BALANCE_MANAGER, oeml___rest_api_balance_data_LASTUPDATEDBY_EXCHANGE } oeml___rest_api_balance_data_LASTUPDATEDBY_e;
 
-char* balance_data_update_origin_ToString(oms___rest_api_balance_data_UPDATEORIGIN_e update_origin);
+char* balance_data_last_updated_by_ToString(oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by);
 
-oms___rest_api_balance_data_UPDATEORIGIN_e balance_data_update_origin_FromString(char* update_origin);
+oeml___rest_api_balance_data_LASTUPDATEDBY_e balance_data_last_updated_by_FromString(char* last_updated_by);
 
 
 
 typedef struct balance_data_t {
-    char *id; // string
-    char *symbol_exchange; // string
-    char *symbol_coinapi; // string
+    char *asset_id_exchange; // string
+    char *asset_id_coinapi; // string
     float balance; //numeric
     float available; //numeric
     float locked; //numeric
-    oms___rest_api_balance_data_UPDATEORIGIN_e update_origin; //enum
+    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by; //enum
+    float rate_usd; //numeric
 
 } balance_data_t;
 
 balance_data_t *balance_data_create(
-    char *id,
-    char *symbol_exchange,
-    char *symbol_coinapi,
+    char *asset_id_exchange,
+    char *asset_id_coinapi,
     float balance,
     float available,
     float locked,
-    oms___rest_api_balance_data_UPDATEORIGIN_e update_origin
+    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
+    float rate_usd
 );
 
 void balance_data_free(balance_data_t *balance_data);

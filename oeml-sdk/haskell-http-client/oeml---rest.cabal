@@ -4,9 +4,9 @@ synopsis:       Auto-generated oeml---rest API Client
 description:    .
                 Client library for calling the OEML - REST API API based on http-client.
                 .
-                host: localhost
+                host: 13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
                 .
-                base path: http://localhost:8080
+                base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
                 .
                 OEML - REST API API version: v1
                 .

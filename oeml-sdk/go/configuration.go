@@ -1,7 +1,7 @@
 /*
  * OEML - REST API
  *
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * API version: v1
  * Contact: support@coinapi.io
@@ -83,13 +83,13 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		BasePath:      "http://localhost:8080",
+		BasePath:      "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io",
 		DefaultHeader: make(map[string]string),
 		UserAgent:     "OpenAPI-Generator/1.0.0/go",
 		Debug:         false,
 		Servers:       []ServerConfiguration{
 			{
-				Url: "http://localhost:8080",
+				Url: "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io",
 				Description: "No description provided",
 			},
 		},

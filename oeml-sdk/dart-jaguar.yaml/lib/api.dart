@@ -59,7 +59,7 @@ final _defaultInterceptors = [OAuthInterceptor(), BasicAuthInterceptor(), ApiKey
 
 class Openapi {
     List<Interceptor> interceptors;
-    String basePath = "http://localhost:8080";
+    String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
     Route _baseRoute;
     final Duration timeout;
 

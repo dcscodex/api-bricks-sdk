@@ -1,6 +1,6 @@
 /**
 * OEML - REST API
-* This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+* This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 *
 * The version of the OpenAPI document: v1
 * Contact: support@coinapi.io
@@ -34,7 +34,7 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty("org.openapitools.client.baseUrl", "http://localhost:8080")
+            System.getProperties().getProperty("org.openapitools.client.baseUrl", "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
         }
     }
 

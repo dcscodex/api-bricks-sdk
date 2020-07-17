@@ -4,8 +4,10 @@ info:
     email: support@coinapi.io
     name: COINAPI LTD
     url: https://www.coinapi.io
-  description: |
-    This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+  description: "This section will provide necessary information about the `CoinAPI\
+    \ OEML REST API` protocol.\nThis API is also available in the Postman application:\
+    \ <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>\
+    \      \n"
   license:
     name: MIT
     url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
@@ -13,7 +15,7 @@ info:
   title: OEML - REST API
   version: v1
 servers:
-- url: http://localhost:8080
+- url: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
 tags:
 - description: |
     Order statuses and the lifecycle are documented in the separate section: <a href="#oeml-order-lifecycle">OEML / Starter Guide / Order Lifecycle</a>

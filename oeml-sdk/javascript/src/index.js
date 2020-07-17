@@ -1,6 +1,6 @@
 /**
  * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -35,7 +35,7 @@ import PositionsApi from './api/PositionsApi';
 
 
 /**
-* This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_.<br>
+* This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a______.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

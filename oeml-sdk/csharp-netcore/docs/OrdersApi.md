@@ -1,6 +1,6 @@
 # CoinAPI.OMS.API.SDK.Api.OrdersApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,7 +34,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new OrdersApi(config);
             var orderCancelAllRequest = new OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
 
@@ -106,7 +106,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new OrdersApi(config);
             var orderCancelSingleRequest = new OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
@@ -178,7 +178,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new OrdersApi(config);
             var exchangeId = KRAKEN;  // string | Filter the open orders to the specific exchange. (optional) 
 
@@ -249,7 +249,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new OrdersApi(config);
             var orderNewSingleRequest = new OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
 
@@ -322,7 +322,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new OrdersApi(config);
             var clientOrderId = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b;  // string | The unique identifier of the order assigned by the client.
 

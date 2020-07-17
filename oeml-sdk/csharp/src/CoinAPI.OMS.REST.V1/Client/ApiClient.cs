@@ -1,7 +1,7 @@
 /* 
  * OEML - REST API
  *
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -53,12 +53,12 @@ namespace CoinAPI.OMS.REST.V1.Client
         public ApiClient()
         {
             Configuration = CoinAPI.OMS.REST.V1.Client.Configuration.Default;
-            RestClient = new RestClient("http://localhost:8080");
+            RestClient = new RestClient("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (http://localhost:8080).
+        /// with default base path (https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -73,7 +73,7 @@ namespace CoinAPI.OMS.REST.V1.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "http://localhost:8080")
+        public ApiClient(String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

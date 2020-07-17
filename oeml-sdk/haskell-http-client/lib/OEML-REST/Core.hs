@@ -1,7 +1,7 @@
 {-
    OEML - REST API
 
-   This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+   This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 
    OpenAPI Version: 3.0.0
    OEML - REST API API version: v1
@@ -92,7 +92,7 @@ instance P.Show OEML-RESTConfig where
 --
 -- configHost:
 --
--- @http://localhost:8080@
+-- @https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io@
 --
 -- configUserAgent:
 --
@@ -102,7 +102,7 @@ newConfig :: IO OEML-RESTConfig
 newConfig = do
     logCxt <- initLogContext
     return $ OEML-RESTConfig
-        { configHost = "http://localhost:8080"
+        { configHost = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
         , configUserAgent = "oeml---rest/0.1.0.0"
         , configLogExecWithContext = runDefaultLogExecWithContext
         , configLogContext = logCxt

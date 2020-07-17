@@ -1,6 +1,6 @@
 # OrdersApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ import org.openapitools.client.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrderCancelAllRequest orderCancelAllRequest = new OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
@@ -95,7 +95,7 @@ import org.openapitools.client.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrderCancelSingleRequest orderCancelSingleRequest = new OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
@@ -159,7 +159,7 @@ import org.openapitools.client.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     String exchangeId = KRAKEN; // String | Filter the open orders to the specific exchange.
@@ -222,7 +222,7 @@ import org.openapitools.client.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrderNewSingleRequest orderNewSingleRequest = new OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
@@ -287,7 +287,7 @@ import org.openapitools.client.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     String clientOrderId = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b; // String | The unique identifier of the order assigned by the client.

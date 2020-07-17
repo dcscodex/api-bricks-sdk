@@ -7,7 +7,7 @@ api.instance <- BalancesApi$new()
 
 test_that("V1BalancesGet", {
   # tests for V1BalancesGet
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Get balances
   # Get current currency balance from all or single exchange.
   # @param character  exchange.id  Filter the balances to the specific exchange.  (optional)

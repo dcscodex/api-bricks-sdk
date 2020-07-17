@@ -7,7 +7,7 @@ api.instance <- OrdersApi$new()
 
 test_that("V1OrdersCancelAllPost", {
   # tests for V1OrdersCancelAllPost
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Cancel all orders request
   # This request cancels all open orders on single specified exchange.
   # @param OrderCancelAllRequest  order.cancel.all.request  OrderCancelAllRequest object. 
@@ -19,7 +19,7 @@ test_that("V1OrdersCancelAllPost", {
 
 test_that("V1OrdersCancelPost", {
   # tests for V1OrdersCancelPost
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Cancel order request
   # Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
   # @param OrderCancelSingleRequest  order.cancel.single.request  OrderCancelSingleRequest object. 
@@ -31,7 +31,7 @@ test_that("V1OrdersCancelPost", {
 
 test_that("V1OrdersGet", {
   # tests for V1OrdersGet
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Get open orders
   # Get last execution reports for open orders across all or single exchange.
   # @param character  exchange.id  Filter the open orders to the specific exchange.  (optional)
@@ -43,7 +43,7 @@ test_that("V1OrdersGet", {
 
 test_that("V1OrdersPost", {
   # tests for V1OrdersPost
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Send new order
   # This request creating new order for the specific exchange.
   # @param OrderNewSingleRequest  order.new.single.request  OrderNewSingleRequest object. 
@@ -55,7 +55,7 @@ test_that("V1OrdersPost", {
 
 test_that("V1OrdersStatusClientOrderIdGet", {
   # tests for V1OrdersStatusClientOrderIdGet
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Get order execution report
   # Get the last order execution report for the specified order. The requested order does not need to be active or opened.
   # @param character  client.order.id  The unique identifier of the order assigned by the client. 

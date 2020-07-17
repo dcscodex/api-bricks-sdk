@@ -1,6 +1,6 @@
 # CoinAPI.OMS.API.SDK.Api.BalancesApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             var apiInstance = new BalancesApi(config);
             var exchangeId = KRAKEN;  // string | Filter the balances to the specific exchange. (optional) 
 

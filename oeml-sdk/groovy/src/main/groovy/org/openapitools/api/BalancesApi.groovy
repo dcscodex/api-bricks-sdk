@@ -5,7 +5,7 @@ import org.openapitools.model.Balance
 import org.openapitools.model.Message
 
 class BalancesApi {
-    String basePath = "http://localhost:8080"
+    String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 

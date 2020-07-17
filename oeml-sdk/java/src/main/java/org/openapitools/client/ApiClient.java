@@ -1,6 +1,6 @@
 /*
  * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -54,7 +54,7 @@ import org.openapitools.client.auth.ApiKeyAuth;
 
 public class ApiClient {
 
-    private String basePath = "http://localhost:8080";
+    private String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -125,7 +125,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://localhost:8080
+     * @param basePath Base path of the URL (e.g https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

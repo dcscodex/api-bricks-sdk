@@ -1,7 +1,7 @@
 /* 
  * OEML - REST API
  *
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -101,7 +101,7 @@ namespace CoinAPI.OMS.API.SDK.Client
         public Configuration()
         {
             UserAgent = "OpenAPI-Generator/1.0.0/csharp";
-            BasePath = "http://localhost:8080";
+            BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -118,7 +118,7 @@ namespace CoinAPI.OMS.API.SDK.Client
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "http://localhost:8080") : this()
+            string basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

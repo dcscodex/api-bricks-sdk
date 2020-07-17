@@ -1,5 +1,6 @@
 (defproject oeml-rest-api "v1"
-  :description "This section will provide necessary information about the `CoinAPI OEML REST API` protocol."
+  :description "This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>"
   :url "https://www.coinapi.io"
   :license {:name "MIT"
             :url "https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE"}

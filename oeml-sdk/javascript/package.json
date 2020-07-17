@@ -1,7 +1,7 @@
 {
   "name": "oeml_rest_api",
   "version": "v1",
-  "description": "This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_",
+  "description": "This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a______",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {

@@ -16,7 +16,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Company>COINAPI LTD</Company>
     <Copyright>COINAPI LTD or its affiliates</Copyright>
-    <Version>1.4.8</Version>
+    <Version>1.4.9</Version>
   </PropertyGroup>
 
   <ItemGroup>

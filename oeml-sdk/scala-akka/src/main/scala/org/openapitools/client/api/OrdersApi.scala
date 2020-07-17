@@ -1,6 +1,6 @@
 /**
  * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -23,7 +23,7 @@ import org.openapitools.client.core.ApiKeyLocations._
 
 object OrdersApi {
 
-  def apply(baseUrl: String = "http://localhost:8080") = new OrdersApi(baseUrl)
+  def apply(baseUrl: String = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io") = new OrdersApi(baseUrl)
 }
 
 class OrdersApi(baseUrl: String) {

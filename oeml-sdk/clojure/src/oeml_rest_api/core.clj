@@ -12,7 +12,7 @@
 
 (def default-api-context
   "Default API context."
-  {:base-url        "http://localhost:8080"
+  {:base-url        "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
    :date-format     "yyyy-MM-dd"
    :datetime-format "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
    :decode-models   false

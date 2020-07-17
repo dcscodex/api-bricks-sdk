@@ -12,7 +12,7 @@
 /**
  * OEML - REST API
  *
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'http://localhost:8080';
+    protected $host = 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -436,7 +436,7 @@ class Configuration
     {
         return array(
           array(
-            "url" => "http://localhost:8080",
+            "url" => "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io",
             "description" => "No description provided",
           )
         );

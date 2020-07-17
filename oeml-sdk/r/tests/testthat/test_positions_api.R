@@ -7,7 +7,7 @@ api.instance <- PositionsApi$new()
 
 test_that("V1PositionsGet", {
   # tests for V1PositionsGet
-  # base path: http://localhost:8080
+  # base path: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
   # Get open positions
   # Get current open positions across all or single exchange.
   # @param character  exchange.id  Filter the balances to the specific exchange.  (optional)

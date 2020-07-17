@@ -4,7 +4,7 @@
 """
     OEML - REST API
 
-    This section will provide necessary information about the `CoinAPI OEML REST API` protocol.   # noqa: E501
+    This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>         # noqa: E501
 
     The version of the OpenAPI document: v1
     Contact: support@coinapi.io

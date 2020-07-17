@@ -1,7 +1,7 @@
 =begin
 #OEML - REST API
 
-#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 
 The version of the OpenAPI document: v1
 Contact: support@coinapi.io
@@ -126,8 +126,8 @@ module OpenapiClient
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'http'
-      @host = 'localhost'
+      @scheme = 'https'
+      @host = '13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io'
       @base_path = ''
       @api_key = {}
       @api_key_prefix = {}
@@ -200,7 +200,7 @@ module OpenapiClient
     def server_settings
       [
         {
-          url: "http://localhost:8080",
+          url: "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io",
           description: "No description provided",
         }
       ]

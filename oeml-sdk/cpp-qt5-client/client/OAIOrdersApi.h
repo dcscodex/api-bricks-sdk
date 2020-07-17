@@ -1,6 +1,6 @@
 /**
  * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -31,7 +31,7 @@ class OAIOrdersApi : public QObject {
     Q_OBJECT
 
 public:
-    OAIOrdersApi(const QString &scheme = "http", const QString &host = "localhost", int port = 8080, const QString &basePath = "", const int timeOut = 0);
+    OAIOrdersApi(const QString &scheme = "https", const QString &host = "13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io", int port = 0, const QString &basePath = "", const int timeOut = 0);
     ~OAIOrdersApi();
 
     void setScheme(const QString &scheme);

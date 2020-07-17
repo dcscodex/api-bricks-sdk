@@ -1,7 +1,7 @@
 {-
    OEML - REST API
 
-   This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+   This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 
    OpenAPI Version: 3.0.0
    OEML - REST API API version: v1

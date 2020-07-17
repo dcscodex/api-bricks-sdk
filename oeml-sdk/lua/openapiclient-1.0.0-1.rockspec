@@ -7,7 +7,7 @@ source = {
 description = {
 	summary = "API client genreated by OpenAPI Generator",
 	detailed = [[
-This section will provide necessary information about the `CoinAPI OEML REST API` protocol. ]],
+This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       ]],
 	homepage = "https://openapi-generator.tech",
 	license = "Unlicense",
 	maintainer = "OpenAPI Generator contributors",

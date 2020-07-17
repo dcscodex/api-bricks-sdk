@@ -1,5 +1,5 @@
 {application, openapi,
- [{description, "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. "},
+ [{description, "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       "},
   {vsn, "0.1.0"},
   {registered, []},
   {applications,
@@ -9,7 +9,7 @@
      hackney,
      ctx
     ]},
-  {env, [{host, "localhost"}]},
+  {env, [{host, "13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"}]},
   {modules, []},
 
   {maintainers, []},

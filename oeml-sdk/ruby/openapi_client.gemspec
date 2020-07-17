@@ -3,7 +3,7 @@
 =begin
 #OEML - REST API
 
-#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 
 The version of the OpenAPI document: v1
 Contact: support@coinapi.io
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@coinapi.io"]
   s.homepage    = "https://openapi-generator.tech"
   s.summary     = "OEML - REST API Ruby Gem"
-  s.description = "This section will provide necessary information about the `CoinAPI OEML REST API` protocol. "
+  s.description = "This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       "
   s.license     = "Unlicense"
   s.required_ruby_version = ">= 1.9"
 

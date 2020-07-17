@@ -4,6 +4,7 @@ OEML - REST API
 - API version: v1
 
 This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
 
 
   For more information, please visit [https://www.coinapi.io](https://www.coinapi.io)
@@ -63,7 +64,7 @@ libraryDependencies += "org.openapitools" % "openapi-client" % "1.0.0"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

@@ -1,7 +1,7 @@
 =begin
 #OEML - REST API
 
-#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
 
 The version of the OpenAPI document: v1
 Contact: support@coinapi.io
@@ -18,7 +18,7 @@ describe OpenapiClient::Configuration do
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
-    # uri = URI.parse("http://localhost:8080")
+    # uri = URI.parse("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
     # OpenapiClient.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
@@ -28,14 +28,14 @@ describe OpenapiClient::Configuration do
   describe '#base_url' do
     it 'should have the default value' do
       # uncomment below to test default value of the base path
-      # expect(config.base_url).to eq("http://localhost:8080")
+      # expect(config.base_url).to eq("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
     end
 
     it 'should remove trailing slashes' do
       [nil, '', '/', '//'].each do |base_path|
         config.base_path = base_path
         # uncomment below to test trailing slashes
-        # expect(config.base_url).to eq("http://localhost:8080")
+        # expect(config.base_url).to eq("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
       end
     end
   end

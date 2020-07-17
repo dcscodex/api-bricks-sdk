@@ -1,7 +1,7 @@
 note
  description:"[
 		OEML - REST API
- 		This section will provide necessary information about the `CoinAPI OEML REST API` protocol. 
+ 		This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
   		The version of the OpenAPI document: v1
  	    Contact: support@coinapi.io
 
@@ -34,7 +34,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	default_base_path: STRING = "http://localhost:8080"
+	default_base_path: STRING = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
 			-- default base path.
 
 	base_path: STRING

@@ -36,7 +36,7 @@ Doxygen is the de facto standard tool for generating/extracting documentation fr
 Check out [Doxygen](https://www.doxygen.org/) for additional information about the Doxygen project.
 
 ## I Don't want to run Doxygen. What are the API files for accessing the REST endpoints?
-All URIs are relative to http://localhosthttp://localhost:8080
+All URIs are relative to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.iohttps://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
 
 ### BalancesManager
 Method | HTTP request | Description

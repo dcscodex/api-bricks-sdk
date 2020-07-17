@@ -515,7 +515,7 @@ echo "  $ops" | column -t -s ';'
     echo -e "  -V,--version\\t\\t\\t\\tPrint API version"
     echo -e "  --about\\t\\t\\t\\tPrint the information about service"
     echo -e "  --host ${CYAN}<url>${OFF}\\t\\t\\t\\tSpecify the host URL "
-echo -e "              \\t\\t\\t\\t(e.g. 'https://localhost')"
+echo -e "              \\t\\t\\t\\t(e.g. 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io')"
 
     echo -e "  --force\\t\\t\\t\\tForce command invocation in spite of missing"
     echo -e "         \\t\\t\\t\\trequired parameters or wrong content type"
@@ -544,6 +544,7 @@ print_about() {
 read -r -d '' appdescription <<EOF
 
 This section will provide necessary information about the 'CoinAPI OEML REST API' protocol.
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>
 EOF
 echo "$appdescription" | paste -sd' ' | fold -sw 80
 }

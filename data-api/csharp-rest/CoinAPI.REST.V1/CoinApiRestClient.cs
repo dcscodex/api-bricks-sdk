@@ -9,7 +9,8 @@ using CoinAPI.REST.V1.DataModels;
 using System.Diagnostics;
 using System.Linq;
 
-namespace CoinAPI.REST.V1 {
+namespace CoinAPI.REST.V1 
+{
     public class CoinApiRestClient
     {
         private string apikey;
@@ -23,6 +24,7 @@ namespace CoinAPI.REST.V1 {
 			{
 				WebUrl = "https://rest-sandbox.coinapi.io";
 			}
+            this.WebUrl = WebUrl.TrimEnd('/');
         }
 
         public CoinApiRestClient(string apikey, string url)

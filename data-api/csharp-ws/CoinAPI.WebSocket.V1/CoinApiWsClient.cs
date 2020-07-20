@@ -100,6 +100,9 @@ namespace CoinAPI.WebSocket.V1
                 case MessageType.ticker:
                     HandleTickerItem(sender, item);
                     break;
+                case MessageType.error:
+                    HandleErrorItem(sender, item);
+                    break;
             }
         }
 
@@ -143,6 +146,12 @@ namespace CoinAPI.WebSocket.V1
         {
             var data = JsonSerializer.Deserialize<Ticker>(item.Data);
             TickerEvent?.Invoke(sender, data);
+        }
+
+        private void HandleErrorItem(object sender, MessageData item)
+        {
+            var data = JsonSerializer.Deserialize<Error>(item.Data);
+            OnError(new CoinAPIException(data));
         }
 
         private async Task Connect()

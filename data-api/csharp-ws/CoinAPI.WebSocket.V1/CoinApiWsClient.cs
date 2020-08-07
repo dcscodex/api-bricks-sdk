@@ -20,6 +20,7 @@ namespace CoinAPI.WebSocket.V1
 
         private readonly TimeSpan _hbTimeout = TimeSpan.FromSeconds(10);
         private readonly TimeSpan _hbTimeoutCheckInterval = TimeSpan.FromSeconds(1);
+        private readonly TimeSpan _reconnectInterval = TimeSpan.FromSeconds(1);
         private DateTime _hbLastAction = DateTime.MinValue;
 
         // client reference is leaked here only for testing purposes (forcing reconnects)
@@ -164,6 +165,8 @@ namespace CoinAPI.WebSocket.V1
                     ConnectedTime = null;
                     connectionCts.Cancel();
                 }
+                
+                await Task.Delay(_reconnectInterval);
             }
         }
 

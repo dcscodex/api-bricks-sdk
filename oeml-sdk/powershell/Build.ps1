@@ -58,7 +58,7 @@ $Manifest = @{
     Description = 'Org.OpenAPITools - the PowerShell module for OEML - REST API'
 
     RootModule = 'Org.OpenAPITools.psm1'
-    Guid = '{EA89B8C5-C805-4618-ADC6-3A8F58541BF7}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{FFE63D51-1F19-43E3-B7E3-859A3C6ED1EA}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '3.0'
 

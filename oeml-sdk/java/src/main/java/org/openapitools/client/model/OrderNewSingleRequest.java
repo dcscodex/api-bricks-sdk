@@ -35,7 +35,7 @@ import org.threeten.bp.LocalDate;
  * The new order message.
  */
 @ApiModel(description = "The new order message.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-10T10:57:08.054Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-11T11:46:53.652Z[Etc/UTC]")
 public class OrderNewSingleRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)

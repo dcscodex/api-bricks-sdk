@@ -40,7 +40,8 @@ class BalanceData(object):
         'available': 'float',
         'locked': 'float',
         'last_updated_by': 'str',
-        'rate_usd': 'float'
+        'rate_usd': 'float',
+        'traded': 'float'
     }
 
     attribute_map = {
@@ -50,10 +51,11 @@ class BalanceData(object):
         'available': 'available',
         'locked': 'locked',
         'last_updated_by': 'last_updated_by',
-        'rate_usd': 'rate_usd'
+        'rate_usd': 'rate_usd',
+        'traded': 'traded'
     }
 
-    def __init__(self, asset_id_exchange=None, asset_id_coinapi=None, balance=None, available=None, locked=None, last_updated_by=None, rate_usd=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, asset_id_exchange=None, asset_id_coinapi=None, balance=None, available=None, locked=None, last_updated_by=None, rate_usd=None, traded=None, local_vars_configuration=None):  # noqa: E501
         """BalanceData - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -66,6 +68,7 @@ class BalanceData(object):
         self._locked = None
         self._last_updated_by = None
         self._rate_usd = None
+        self._traded = None
         self.discriminator = None
 
         if asset_id_exchange is not None:
@@ -82,6 +85,8 @@ class BalanceData(object):
             self.last_updated_by = last_updated_by
         if rate_usd is not None:
             self.rate_usd = rate_usd
+        if traded is not None:
+            self.traded = traded
 
     @property
     def asset_id_exchange(self):
@@ -249,6 +254,29 @@ class BalanceData(object):
         """
 
         self._rate_usd = rate_usd
+
+    @property
+    def traded(self):
+        """Gets the traded of this BalanceData.  # noqa: E501
+
+        Value of the current total traded.  # noqa: E501
+
+        :return: The traded of this BalanceData.  # noqa: E501
+        :rtype: float
+        """
+        return self._traded
+
+    @traded.setter
+    def traded(self, traded):
+        """Sets the traded of this BalanceData.
+
+        Value of the current total traded.  # noqa: E501
+
+        :param traded: The traded of this BalanceData.  # noqa: E501
+        :type: float
+        """
+
+        self._traded = traded
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property traded (base name: "traded")', function() {
+      // uncomment below and update the code to test the property traded
+      //var instane = new OemlRestApi.BalanceData();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

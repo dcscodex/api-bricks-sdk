@@ -14,6 +14,7 @@
    (ds/opt :locked) float?
    (ds/opt :last_updated_by) string?
    (ds/opt :rate_usd) float?
+   (ds/opt :traded) float?
    })
 
 (def balance-data-spec

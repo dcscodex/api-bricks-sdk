@@ -38,6 +38,8 @@ feature --Access
       -- Source of the last modification. 
     rate_usd: REAL_32 
       -- Current exchange rate to the USD for the single unit of the currency. 
+    traded: REAL_32 
+      -- Value of the current total traded.
 
 feature -- Change Element  
  
@@ -97,6 +99,14 @@ feature -- Change Element
         rate_usd_set: rate_usd = a_name		
       end
 
+    set_traded (a_name: like traded)
+        -- Set 'traded' with 'a_name'.
+      do
+        traded := a_name
+      ensure
+        traded_set: traded = a_name		
+      end
+
 
  feature -- Status Report
 
@@ -138,6 +148,11 @@ feature -- Change Element
         if attached rate_usd as l_rate_usd then
           Result.append ("%Nrate_usd:")
           Result.append (l_rate_usd.out)
+          Result.append ("%N")    
+        end  
+        if attached traded as l_traded then
+          Result.append ("%Ntraded:")
+          Result.append (l_traded.out)
           Result.append ("%N")    
         end  
       end

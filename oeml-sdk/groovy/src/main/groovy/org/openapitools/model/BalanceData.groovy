@@ -20,4 +20,6 @@ class BalanceData {
     String lastUpdatedBy
     /* Current exchange rate to the USD for the single unit of the currency.  */
     Float rateUsd
+    /* Value of the current total traded. */
+    Float traded
 }

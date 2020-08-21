@@ -61,3 +61,11 @@ test_that("rate_usd", {
   #expect_equal(model.instance$`rate_usd`, "EXPECTED_RESULT")
 })
 
+test_that("traded", {
+  # tests for the property `traded` (numeric)
+  # Value of the current total traded.
+
+  # uncomment below to test the property 
+  #expect_equal(model.instance$`traded`, "EXPECTED_RESULT")
+})
+

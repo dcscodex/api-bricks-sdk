@@ -29,7 +29,8 @@ balance_data_t *balance_data_create(
     float available,
     float locked,
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
-    float rate_usd
+    float rate_usd,
+    float traded
     ) {
     balance_data_t *balance_data_local_var = malloc(sizeof(balance_data_t));
     if (!balance_data_local_var) {
@@ -42,6 +43,7 @@ balance_data_t *balance_data_create(
     balance_data_local_var->locked = locked;
     balance_data_local_var->last_updated_by = last_updated_by;
     balance_data_local_var->rate_usd = rate_usd;
+    balance_data_local_var->traded = traded;
 
     return balance_data_local_var;
 }
@@ -112,6 +114,14 @@ cJSON *balance_data_convertToJSON(balance_data_t *balance_data) {
     // balance_data->rate_usd
     if(balance_data->rate_usd) { 
     if(cJSON_AddNumberToObject(item, "rate_usd", balance_data->rate_usd) == NULL) {
+    goto fail; //Numeric
+    }
+     } 
+
+
+    // balance_data->traded
+    if(balance_data->traded) { 
+    if(cJSON_AddNumberToObject(item, "traded", balance_data->traded) == NULL) {
     goto fail; //Numeric
     }
      } 
@@ -193,6 +203,15 @@ balance_data_t *balance_data_parseFromJSON(cJSON *balance_dataJSON){
     }
     }
 
+    // balance_data->traded
+    cJSON *traded = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "traded");
+    if (traded) { 
+    if(!cJSON_IsNumber(traded))
+    {
+    goto end; //Numeric
+    }
+    }
+
 
     balance_data_local_var = balance_data_create (
         asset_id_exchange ? strdup(asset_id_exchange->valuestring) : NULL,
@@ -201,7 +220,8 @@ balance_data_t *balance_data_parseFromJSON(cJSON *balance_dataJSON){
         available ? available->valuedouble : 0,
         locked ? locked->valuedouble : 0,
         last_updated_by ? last_updated_byVariable : -1,
-        rate_usd ? rate_usd->valuedouble : 0
+        rate_usd ? rate_usd->valuedouble : 0,
+        traded ? traded->valuedouble : 0
         );
 
     return balance_data_local_var;

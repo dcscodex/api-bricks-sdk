@@ -118,6 +118,7 @@ data BalanceData = BalanceData
   , balanceDataLocked :: !(Maybe Float) -- ^ "locked" - Value of the current locked currency balance by the exchange.
   , balanceDataLastUpdatedBy :: !(Maybe E'LastUpdatedBy) -- ^ "last_updated_by" - Source of the last modification. 
   , balanceDataRateUsd :: !(Maybe Float) -- ^ "rate_usd" - Current exchange rate to the USD for the single unit of the currency. 
+  , balanceDataTraded :: !(Maybe Float) -- ^ "traded" - Value of the current total traded.
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON BalanceData
@@ -131,6 +132,7 @@ instance A.FromJSON BalanceData where
       <*> (o .:? "locked")
       <*> (o .:? "last_updated_by")
       <*> (o .:? "rate_usd")
+      <*> (o .:? "traded")
 
 -- | ToJSON BalanceData
 instance A.ToJSON BalanceData where
@@ -143,6 +145,7 @@ instance A.ToJSON BalanceData where
       , "locked" .= balanceDataLocked
       , "last_updated_by" .= balanceDataLastUpdatedBy
       , "rate_usd" .= balanceDataRateUsd
+      , "traded" .= balanceDataTraded
       ]
 
 
@@ -158,6 +161,7 @@ mkBalanceData =
   , balanceDataLocked = Nothing
   , balanceDataLastUpdatedBy = Nothing
   , balanceDataRateUsd = Nothing
+  , balanceDataTraded = Nothing
   }
 
 -- ** Message

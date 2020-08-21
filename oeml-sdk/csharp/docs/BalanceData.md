@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Locked** | **float** | Value of the current locked currency balance by the exchange. | [optional] 
 **LastUpdatedBy** | **string** | Source of the last modification.  | [optional] 
 **RateUsd** | **float** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
+**Traded** | **float** | Value of the current total traded. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

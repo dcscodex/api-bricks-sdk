@@ -21,7 +21,10 @@ function New-BalanceData {
         ${lastUnderscoreupdatedUnderscoreby},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Double]]
-        ${rateUnderscoreusd}
+        ${rateUnderscoreusd},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Double]]
+        ${traded}
     )
 
     Process {
@@ -35,7 +38,8 @@ function New-BalanceData {
             ${available},
             ${locked},
             ${lastUnderscoreupdatedUnderscoreby},
-            ${rateUnderscoreusd}
+            ${rateUnderscoreusd},
+            ${traded}
         )
     }
 }

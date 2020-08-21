@@ -22,6 +22,7 @@ import com.squareup.moshi.Json
  * @param locked Value of the current locked currency balance by the exchange.
  * @param lastUpdatedBy Source of the last modification. 
  * @param rateUsd Current exchange rate to the USD for the single unit of the currency. 
+ * @param traded Value of the current total traded.
  */
 
 data class BalanceData (
@@ -45,7 +46,10 @@ data class BalanceData (
     val lastUpdatedBy: BalanceData.LastUpdatedBy? = null,
     /* Current exchange rate to the USD for the single unit of the currency.  */
     @Json(name = "rate_usd")
-    val rateUsd: kotlin.Float? = null
+    val rateUsd: kotlin.Float? = null,
+    /* Value of the current total traded. */
+    @Json(name = "traded")
+    val traded: kotlin.Float? = null
 ) {
 
     /**

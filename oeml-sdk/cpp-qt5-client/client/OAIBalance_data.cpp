@@ -54,6 +54,9 @@ void OAIBalance_data::initializeModel() {
 
     m_rate_usd_isSet = false;
     m_rate_usd_isValid = false;
+
+    m_traded_isSet = false;
+    m_traded_isValid = false;
 }
 
 void OAIBalance_data::fromJson(QString jsonString) {
@@ -85,6 +88,9 @@ void OAIBalance_data::fromJsonObject(QJsonObject json) {
 
     m_rate_usd_isValid = ::OpenAPI::fromJsonValue(rate_usd, json[QString("rate_usd")]);
     m_rate_usd_isSet = !json[QString("rate_usd")].isNull() && m_rate_usd_isValid;
+
+    m_traded_isValid = ::OpenAPI::fromJsonValue(traded, json[QString("traded")]);
+    m_traded_isSet = !json[QString("traded")].isNull() && m_traded_isValid;
 }
 
 QString OAIBalance_data::asJson() const {
@@ -116,6 +122,9 @@ QJsonObject OAIBalance_data::asJsonObject() const {
     }
     if (m_rate_usd_isSet) {
         obj.insert(QString("rate_usd"), ::OpenAPI::toJsonValue(rate_usd));
+    }
+    if (m_traded_isSet) {
+        obj.insert(QString("traded"), ::OpenAPI::toJsonValue(traded));
     }
     return obj;
 }
@@ -232,6 +241,22 @@ bool OAIBalance_data::is_rate_usd_Valid() const{
     return m_rate_usd_isValid;
 }
 
+float OAIBalance_data::getTraded() const {
+    return traded;
+}
+void OAIBalance_data::setTraded(const float &traded) {
+    this->traded = traded;
+    this->m_traded_isSet = true;
+}
+
+bool OAIBalance_data::is_traded_Set() const{
+    return m_traded_isSet;
+}
+
+bool OAIBalance_data::is_traded_Valid() const{
+    return m_traded_isValid;
+}
+
 bool OAIBalance_data::isSet() const {
     bool isObjectUpdated = false;
     do {
@@ -266,6 +291,11 @@ bool OAIBalance_data::isSet() const {
         }
 
         if (m_rate_usd_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_traded_isSet) {
             isObjectUpdated = true;
             break;
         }

@@ -395,6 +395,7 @@ package body .Models is
       Into.Write_Entity ("locked", Value.Locked);
       Into.Write_Entity ("last_updated_by", Value.Last_Updated_By);
       Into.Write_Entity ("rate_usd", Value.Rate_Usd);
+      Into.Write_Entity ("traded", Value.Traded);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -422,6 +423,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "locked", Value.Locked);
       Swagger.Streams.Deserialize (Object, "last_updated_by", Value.Last_Updated_By);
       Swagger.Streams.Deserialize (Object, "rate_usd", Value.Rate_Usd);
+      Swagger.Streams.Deserialize (Object, "traded", Value.Traded);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;

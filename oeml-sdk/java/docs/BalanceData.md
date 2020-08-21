@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **locked** | **Float** | Value of the current locked currency balance by the exchange. |  [optional]
 **lastUpdatedBy** | [**LastUpdatedByEnum**](#LastUpdatedByEnum) | Source of the last modification.  |  [optional]
 **rateUsd** | **Float** | Current exchange rate to the USD for the single unit of the currency.  |  [optional]
+**traded** | **Float** | Value of the current total traded. |  [optional]
 
 
 

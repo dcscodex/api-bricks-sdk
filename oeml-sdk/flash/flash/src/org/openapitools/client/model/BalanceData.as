@@ -24,6 +24,9 @@ package org.openapitools.client.model {
         /* Current exchange rate to the USD for the single unit of the currency.  */
         [XmlElement(name="rate_usd")]
         public var rateUsd: Number = 0.0;
+        /* Value of the current total traded. */
+        [XmlElement(name="traded")]
+        public var traded: Number = 0.0;
 
     public function toString(): String {
         var str: String = "BalanceData: ";
@@ -34,6 +37,7 @@ package org.openapitools.client.model {
         str += " (locked: " + locked + ")";
         str += " (lastUpdatedBy: " + lastUpdatedBy + ")";
         str += " (rateUsd: " + rateUsd + ")";
+        str += " (traded: " + traded + ")";
         return str;
     }
 

@@ -27,6 +27,7 @@ type alias BalanceData =
     , locked : Maybe (Float)
     , lastUpdatedBy : Maybe (LastUpdatedBy)
     , rateUsd : Maybe (Float)
+    , traded : Maybe (Float)
     }
 
 
@@ -47,6 +48,7 @@ decoder =
         |> optional "locked" (Decode.nullable Decode.float) Nothing
         |> optional "last_updated_by" (Decode.nullable lastUpdatedByDecoder) Nothing
         |> optional "rate_usd" (Decode.nullable Decode.float) Nothing
+        |> optional "traded" (Decode.nullable Decode.float) Nothing
 
 
 
@@ -69,6 +71,7 @@ encodePairs model =
     , ( "locked", Maybe.withDefault Encode.null (Maybe.map Encode.float model.locked) )
     , ( "last_updated_by", Maybe.withDefault Encode.null (Maybe.map encodeLastUpdatedBy model.lastUpdatedBy) )
     , ( "rate_usd", Maybe.withDefault Encode.null (Maybe.map Encode.float model.rateUsd) )
+    , ( "traded", Maybe.withDefault Encode.null (Maybe.map Encode.float model.traded) )
     ]
 
 

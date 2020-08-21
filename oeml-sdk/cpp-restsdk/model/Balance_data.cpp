@@ -38,6 +38,8 @@ Balance_data::Balance_data()
     m_Last_updated_byIsSet = false;
     m_Rate_usd = 0.0f;
     m_Rate_usdIsSet = false;
+    m_Traded = 0.0f;
+    m_TradedIsSet = false;
 }
 
 Balance_data::~Balance_data()
@@ -81,6 +83,10 @@ web::json::value Balance_data::toJson() const
     if(m_Rate_usdIsSet)
     {
         val[utility::conversions::to_string_t("rate_usd")] = ModelBase::toJson(m_Rate_usd);
+    }
+    if(m_TradedIsSet)
+    {
+        val[utility::conversions::to_string_t("traded")] = ModelBase::toJson(m_Traded);
     }
 
     return val;
@@ -160,6 +166,16 @@ bool Balance_data::fromJson(const web::json::value& val)
             setRateUsd(refVal_rate_usd);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("traded")))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("traded"));
+        if(!fieldValue.is_null())
+        {
+            float refVal_traded;
+            ok &= ModelBase::fromJson(fieldValue, refVal_traded);
+            setTraded(refVal_traded);
+        }
+    }
     return ok;
 }
 
@@ -197,6 +213,10 @@ void Balance_data::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     if(m_Rate_usdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("rate_usd"), m_Rate_usd));
+    }
+    if(m_TradedIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("traded"), m_Traded));
     }
 }
 
@@ -250,6 +270,12 @@ bool Balance_data::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         float refVal_rate_usd;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("rate_usd")), refVal_rate_usd );
         setRateUsd(refVal_rate_usd);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t("traded")))
+    {
+        float refVal_traded;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("traded")), refVal_traded );
+        setTraded(refVal_traded);
     }
     return ok;
 }
@@ -393,6 +419,26 @@ bool Balance_data::rateUsdIsSet() const
 void Balance_data::unsetRate_usd()
 {
     m_Rate_usdIsSet = false;
+}
+float Balance_data::getTraded() const
+{
+    return m_Traded;
+}
+
+void Balance_data::setTraded(float value)
+{
+    m_Traded = value;
+    m_TradedIsSet = true;
+}
+
+bool Balance_data::tradedIsSet() const
+{
+    return m_TradedIsSet;
+}
+
+void Balance_data::unsetTraded()
+{
+    m_TradedIsSet = false;
 }
 }
 }

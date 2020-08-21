@@ -68,6 +68,9 @@ class BalanceData {
             if (data.hasOwnProperty('rate_usd')) {
                 obj['rate_usd'] = ApiClient.convertToType(data['rate_usd'], 'Number');
             }
+            if (data.hasOwnProperty('traded')) {
+                obj['traded'] = ApiClient.convertToType(data['traded'], 'Number');
+            }
         }
         return obj;
     }
@@ -116,6 +119,12 @@ BalanceData.prototype['last_updated_by'] = undefined;
  * @member {Number} rate_usd
  */
 BalanceData.prototype['rate_usd'] = undefined;
+
+/**
+ * Value of the current total traded.
+ * @member {Number} traded
+ */
+BalanceData.prototype['traded'] = undefined;
 
 
 

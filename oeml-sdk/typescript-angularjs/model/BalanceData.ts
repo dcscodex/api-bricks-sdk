@@ -41,6 +41,10 @@ export interface BalanceData {
      * Current exchange rate to the USD for the single unit of the currency. 
      */
     "rate_usd"?: number;
+    /**
+     * Value of the current total traded.
+     */
+    "traded"?: number;
 }
 
 export namespace BalanceData {

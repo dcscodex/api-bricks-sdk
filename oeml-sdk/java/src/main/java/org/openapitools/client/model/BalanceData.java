@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * BalanceData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-17T16:53:33.583Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-08-21T11:20:04.664Z[Etc/UTC]")
 public class BalanceData {
   public static final String SERIALIZED_NAME_ASSET_ID_EXCHANGE = "asset_id_exchange";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_EXCHANGE)
@@ -105,6 +105,10 @@ public class BalanceData {
   public static final String SERIALIZED_NAME_RATE_USD = "rate_usd";
   @SerializedName(SERIALIZED_NAME_RATE_USD)
   private Float rateUsd;
+
+  public static final String SERIALIZED_NAME_TRADED = "traded";
+  @SerializedName(SERIALIZED_NAME_TRADED)
+  private Float traded;
 
 
   public BalanceData assetIdExchange(String assetIdExchange) {
@@ -268,6 +272,29 @@ public class BalanceData {
   }
 
 
+  public BalanceData traded(Float traded) {
+    
+    this.traded = traded;
+    return this;
+  }
+
+   /**
+   * Value of the current total traded.
+   * @return traded
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "0.007", value = "Value of the current total traded.")
+
+  public Float getTraded() {
+    return traded;
+  }
+
+
+  public void setTraded(Float traded) {
+    this.traded = traded;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -283,12 +310,13 @@ public class BalanceData {
         Objects.equals(this.available, balanceData.available) &&
         Objects.equals(this.locked, balanceData.locked) &&
         Objects.equals(this.lastUpdatedBy, balanceData.lastUpdatedBy) &&
-        Objects.equals(this.rateUsd, balanceData.rateUsd);
+        Objects.equals(this.rateUsd, balanceData.rateUsd) &&
+        Objects.equals(this.traded, balanceData.traded);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetIdExchange, assetIdCoinapi, balance, available, locked, lastUpdatedBy, rateUsd);
+    return Objects.hash(assetIdExchange, assetIdCoinapi, balance, available, locked, lastUpdatedBy, rateUsd, traded);
   }
 
 
@@ -303,6 +331,7 @@ public class BalanceData {
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
     sb.append("    rateUsd: ").append(toIndentedString(rateUsd)).append("\n");
+    sb.append("    traded: ").append(toIndentedString(traded)).append("\n");
     sb.append("}");
     return sb.toString();
   }

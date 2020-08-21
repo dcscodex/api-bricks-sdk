@@ -126,4 +126,11 @@ class BalanceDataTest extends TestCase
     public function testPropertyRateUsd()
     {
     }
+
+    /**
+     * Test attribute "traded"
+     */
+    public function testPropertyTraded()
+    {
+    }
 }

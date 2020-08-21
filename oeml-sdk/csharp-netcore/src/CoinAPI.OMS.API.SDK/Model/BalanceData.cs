@@ -74,7 +74,8 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <param name="locked">Value of the current locked currency balance by the exchange..</param>
         /// <param name="lastUpdatedBy">Source of the last modification. .</param>
         /// <param name="rateUsd">Current exchange rate to the USD for the single unit of the currency. .</param>
-        public BalanceData(string assetIdExchange = default(string), string assetIdCoinapi = default(string), float balance = default(float), float available = default(float), float locked = default(float), LastUpdatedByEnum? lastUpdatedBy = default(LastUpdatedByEnum?), float rateUsd = default(float))
+        /// <param name="traded">Value of the current total traded..</param>
+        public BalanceData(string assetIdExchange = default(string), string assetIdCoinapi = default(string), float balance = default(float), float available = default(float), float locked = default(float), LastUpdatedByEnum? lastUpdatedBy = default(LastUpdatedByEnum?), float rateUsd = default(float), float traded = default(float))
         {
             this.AssetIdExchange = assetIdExchange;
             this.AssetIdCoinapi = assetIdCoinapi;
@@ -83,6 +84,7 @@ namespace CoinAPI.OMS.API.SDK.Model
             this.Locked = locked;
             this.LastUpdatedBy = lastUpdatedBy;
             this.RateUsd = rateUsd;
+            this.Traded = traded;
         }
         
         /// <summary>
@@ -128,6 +130,13 @@ namespace CoinAPI.OMS.API.SDK.Model
         public float RateUsd { get; set; }
 
         /// <summary>
+        /// Value of the current total traded.
+        /// </summary>
+        /// <value>Value of the current total traded.</value>
+        [DataMember(Name="traded", EmitDefaultValue=false)]
+        public float Traded { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -142,6 +151,7 @@ namespace CoinAPI.OMS.API.SDK.Model
             sb.Append("  Locked: ").Append(Locked).Append("\n");
             sb.Append("  LastUpdatedBy: ").Append(LastUpdatedBy).Append("\n");
             sb.Append("  RateUsd: ").Append(RateUsd).Append("\n");
+            sb.Append("  Traded: ").Append(Traded).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +215,10 @@ namespace CoinAPI.OMS.API.SDK.Model
                 (
                     this.RateUsd == input.RateUsd ||
                     this.RateUsd.Equals(input.RateUsd)
+                ) && 
+                (
+                    this.Traded == input.Traded ||
+                    this.Traded.Equals(input.Traded)
                 );
         }
 
@@ -226,6 +240,7 @@ namespace CoinAPI.OMS.API.SDK.Model
                 hashCode = hashCode * 59 + this.Locked.GetHashCode();
                 hashCode = hashCode * 59 + this.LastUpdatedBy.GetHashCode();
                 hashCode = hashCode * 59 + this.RateUsd.GetHashCode();
+                hashCode = hashCode * 59 + this.Traded.GetHashCode();
                 return hashCode;
             }
         }

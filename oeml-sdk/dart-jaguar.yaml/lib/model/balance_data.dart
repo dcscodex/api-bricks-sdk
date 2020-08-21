@@ -27,6 +27,9 @@ class BalanceData {
   //enum lastUpdatedByEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  }; /* Current exchange rate to the USD for the single unit of the currency.  */
   @Alias('rate_usd', isNullable: false,  )
   final double rateUsd;
+   /* Value of the current total traded. */
+  @Alias('traded', isNullable: false,  )
+  final double traded;
   
 
   BalanceData(
@@ -39,14 +42,15 @@ class BalanceData {
      this.available = null,  
      this.locked = null,  
      this.lastUpdatedBy = null,  
-     this.rateUsd = null 
+     this.rateUsd = null,  
+     this.traded = null 
     
     }
   );
 
   @override
   String toString() {
-    return 'BalanceData[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, ]';
+    return 'BalanceData[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, traded=$traded, ]';
   }
 }
 

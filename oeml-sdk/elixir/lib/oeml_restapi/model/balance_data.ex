@@ -15,7 +15,8 @@ defmodule OEML-RESTAPI.Model.BalanceData do
     :"available",
     :"locked",
     :"last_updated_by",
-    :"rate_usd"
+    :"rate_usd",
+    :"traded"
   ]
 
   @type t :: %__MODULE__{
@@ -25,7 +26,8 @@ defmodule OEML-RESTAPI.Model.BalanceData do
     :"available" => float() | nil,
     :"locked" => float() | nil,
     :"last_updated_by" => String.t | nil,
-    :"rate_usd" => float() | nil
+    :"rate_usd" => float() | nil,
+    :"traded" => float() | nil
   }
 end
 

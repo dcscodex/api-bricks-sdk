@@ -30,6 +30,7 @@ Balance_data::__init()
 	//locked = float(0);
 	//last_updated_by = std::string();
 	//rate_usd = float(0);
+	//traded = float(0);
 }
 
 void
@@ -69,6 +70,11 @@ Balance_data::__cleanup()
 	//
 	//delete rate_usd;
 	//rate_usd = NULL;
+	//}
+	//if(traded != NULL) {
+	//
+	//delete traded;
+	//traded = NULL;
 	//}
 	//
 }
@@ -155,6 +161,17 @@ Balance_data::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *tradedKey = "traded";
+	node = json_object_get_member(pJsonObject, tradedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("float")) {
+			jsonToValue(&traded, node, "float", "");
+		} else {
+			
+		}
+	}
 }
 
 Balance_data::Balance_data(char* json)
@@ -230,6 +247,15 @@ Balance_data::toJson()
 	}
 	const gchar *rate_usdKey = "rate_usd";
 	json_object_set_member(pJsonObject, rate_usdKey, node);
+	if (isprimitive("float")) {
+		float obj = getTraded();
+		node = converttoJson(&obj, "float", "");
+	}
+	else {
+		
+	}
+	const gchar *tradedKey = "traded";
+	json_object_set_member(pJsonObject, tradedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -320,6 +346,18 @@ void
 Balance_data::setRateUsd(float  rate_usd)
 {
 	this->rate_usd = rate_usd;
+}
+
+float
+Balance_data::getTraded()
+{
+	return traded;
+}
+
+void
+Balance_data::setTraded(float  traded)
+{
+	this->traded = traded;
 }
 
 

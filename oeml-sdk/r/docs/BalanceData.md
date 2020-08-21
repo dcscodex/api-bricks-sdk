@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **locked** | **numeric** | Value of the current locked currency balance by the exchange. | [optional] 
 **last_updated_by** | **character** | Source of the last modification.  | [optional] 
 **rate_usd** | **numeric** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
+**traded** | **numeric** | Value of the current total traded. | [optional] 
 
 

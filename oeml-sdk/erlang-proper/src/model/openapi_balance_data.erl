@@ -16,6 +16,7 @@
   | {'locked', integer() }
   | {'last_updated_by', binary() }
   | {'rate_usd', integer() }
+  | {'traded', integer() }
   ].
 
 
@@ -30,6 +31,7 @@ openapi_balance_data(Fields) ->
             , {'locked', integer() }
             , {'last_updated_by', elements([<<"INITIALIZATION">>, <<"BALANCE_MANAGER">>, <<"EXCHANGE">>]) }
             , {'rate_usd', integer() }
+            , {'traded', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

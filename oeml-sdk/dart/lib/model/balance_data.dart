@@ -16,11 +16,13 @@ class BalanceData {
   //enum lastUpdatedByEnum {  INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE,  };{
   /* Current exchange rate to the USD for the single unit of the currency.  */
   double rateUsd = null;
+  /* Value of the current total traded. */
+  double traded = null;
   BalanceData();
 
   @override
   String toString() {
-    return 'BalanceData[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, ]';
+    return 'BalanceData[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, traded=$traded, ]';
   }
 
   BalanceData.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class BalanceData {
     locked = json['locked'];
     lastUpdatedBy = json['last_updated_by'];
     rateUsd = json['rate_usd'];
+    traded = json['traded'];
   }
 
   Map<String, dynamic> toJson() {
@@ -50,6 +53,8 @@ class BalanceData {
       json['last_updated_by'] = lastUpdatedBy;
     if (rateUsd != null)
       json['rate_usd'] = rateUsd;
+    if (traded != null)
+      json['traded'] = traded;
     return json;
   }
 

@@ -139,6 +139,12 @@ export type BalanceData = {
      * @memberof BalanceData
      */
     rate_usd?: number;
+    /**
+     * Value of the current total traded.
+     * @type {number}
+     * @memberof BalanceData
+     */
+    traded?: number;
 }
 
 

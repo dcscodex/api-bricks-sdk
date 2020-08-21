@@ -65,4 +65,11 @@ describe("balance_data", function()
     end)
   end)
 
+  -- unit tests for the property 'traded'
+  describe("property traded test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
 end)

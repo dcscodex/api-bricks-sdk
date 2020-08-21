@@ -65,6 +65,12 @@ public class OASBalanceData implements OAS.MappedProperties {
      */
     public Double rateUsd { get; set; }
 
+    /**
+     * Value of the current total traded.
+     * @return traded
+     */
+    public Double traded { get; set; }
+
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'asset_id_exchange' => 'assetIdExchange',
         'asset_id_coinapi' => 'assetIdCoinapi',
@@ -85,6 +91,7 @@ public class OASBalanceData implements OAS.MappedProperties {
           balanceData.locked = 0.0;
           balanceData.lastUpdatedBy = LastUpdatedByEnum.EXCHANGE;
           balanceData.rateUsd = 1355.12;
+          balanceData.traded = 0.007;
         return balanceData;
     }
 
@@ -97,7 +104,8 @@ public class OASBalanceData implements OAS.MappedProperties {
                 && this.available == balanceData.available
                 && this.locked == balanceData.locked
                 && this.lastUpdatedBy == balanceData.lastUpdatedBy
-                && this.rateUsd == balanceData.rateUsd;
+                && this.rateUsd == balanceData.rateUsd
+                && this.traded == balanceData.traded;
         }
         return false;
     }
@@ -111,6 +119,7 @@ public class OASBalanceData implements OAS.MappedProperties {
         hashCode = (17 * hashCode) + (locked == null ? 0 : System.hashCode(locked));
         hashCode = (17 * hashCode) + (lastUpdatedBy == null ? 0 : System.hashCode(lastUpdatedBy));
         hashCode = (17 * hashCode) + (rateUsd == null ? 0 : System.hashCode(rateUsd));
+        hashCode = (17 * hashCode) + (traded == null ? 0 : System.hashCode(traded));
         return hashCode;
     }
 }

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **locked** | **Float** | Value of the current locked currency balance by the exchange. | [optional] 
 **last_updated_by** | **String** | Source of the last modification.  | [optional] 
 **rate_usd** | **Float** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
+**traded** | **Float** | Value of the current total traded. | [optional] 
 
 ## Code Sample
 
@@ -23,7 +24,8 @@ instance = OpenapiClient::BalanceData.new(asset_id_exchange: XBT,
                                  available: 0.00134444,
                                  locked: 0.0,
                                  last_updated_by: EXCHANGE,
-                                 rate_usd: 1355.12)
+                                 rate_usd: 1355.12,
+                                 traded: 0.007)
 ```
 
 

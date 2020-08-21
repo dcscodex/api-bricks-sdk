@@ -63,7 +63,8 @@ class BalanceData implements ModelInterface, ArrayAccess
         'available' => 'float',
         'locked' => 'float',
         'last_updated_by' => 'string',
-        'rate_usd' => 'float'
+        'rate_usd' => 'float',
+        'traded' => 'float'
     ];
 
     /**
@@ -78,7 +79,8 @@ class BalanceData implements ModelInterface, ArrayAccess
         'available' => 'float',
         'locked' => 'float',
         'last_updated_by' => null,
-        'rate_usd' => 'float'
+        'rate_usd' => 'float',
+        'traded' => 'float'
     ];
 
     /**
@@ -114,7 +116,8 @@ class BalanceData implements ModelInterface, ArrayAccess
         'available' => 'available',
         'locked' => 'locked',
         'last_updated_by' => 'last_updated_by',
-        'rate_usd' => 'rate_usd'
+        'rate_usd' => 'rate_usd',
+        'traded' => 'traded'
     ];
 
     /**
@@ -129,7 +132,8 @@ class BalanceData implements ModelInterface, ArrayAccess
         'available' => 'setAvailable',
         'locked' => 'setLocked',
         'last_updated_by' => 'setLastUpdatedBy',
-        'rate_usd' => 'setRateUsd'
+        'rate_usd' => 'setRateUsd',
+        'traded' => 'setTraded'
     ];
 
     /**
@@ -144,7 +148,8 @@ class BalanceData implements ModelInterface, ArrayAccess
         'available' => 'getAvailable',
         'locked' => 'getLocked',
         'last_updated_by' => 'getLastUpdatedBy',
-        'rate_usd' => 'getRateUsd'
+        'rate_usd' => 'getRateUsd',
+        'traded' => 'getTraded'
     ];
 
     /**
@@ -231,6 +236,7 @@ class BalanceData implements ModelInterface, ArrayAccess
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
         $this->container['last_updated_by'] = isset($data['last_updated_by']) ? $data['last_updated_by'] : null;
         $this->container['rate_usd'] = isset($data['rate_usd']) ? $data['rate_usd'] : null;
+        $this->container['traded'] = isset($data['traded']) ? $data['traded'] : null;
     }
 
     /**
@@ -438,6 +444,30 @@ class BalanceData implements ModelInterface, ArrayAccess
     public function setRateUsd($rate_usd)
     {
         $this->container['rate_usd'] = $rate_usd;
+
+        return $this;
+    }
+
+    /**
+     * Gets traded
+     *
+     * @return float|null
+     */
+    public function getTraded()
+    {
+        return $this->container['traded'];
+    }
+
+    /**
+     * Sets traded
+     *
+     * @param float|null $traded Value of the current total traded.
+     *
+     * @return $this
+     */
+    public function setTraded($traded)
+    {
+        $this->container['traded'] = $traded;
 
         return $this;
     }

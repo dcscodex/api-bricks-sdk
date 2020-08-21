@@ -74,6 +74,11 @@ public:
     bool is_rate_usd_Set() const;
     bool is_rate_usd_Valid() const;
 
+    float getTraded() const;
+    void setTraded(const float &traded);
+    bool is_traded_Set() const;
+    bool is_traded_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
@@ -107,6 +112,10 @@ private:
     float rate_usd;
     bool m_rate_usd_isSet;
     bool m_rate_usd_isValid;
+
+    float traded;
+    bool m_traded_isSet;
+    bool m_traded_isValid;
 };
 
 } // namespace OpenAPI

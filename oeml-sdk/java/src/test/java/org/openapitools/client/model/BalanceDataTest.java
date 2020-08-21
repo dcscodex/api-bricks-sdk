@@ -96,4 +96,12 @@ public class BalanceDataTest {
         // TODO: test rateUsd
     }
 
+    /**
+     * Test the property 'traded'
+     */
+    @Test
+    public void tradedTest() {
+        // TODO: test traded
+    }
+
 }

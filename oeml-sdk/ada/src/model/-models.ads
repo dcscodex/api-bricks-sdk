@@ -249,6 +249,7 @@ package .Models is
        Locked : float;
        Last_Updated_By : Swagger.Nullable_UString;
        Rate_Usd : float;
+       Traded : float;
      end record;
 
    package BalanceData_Type_Vectors is

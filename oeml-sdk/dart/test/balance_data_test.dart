@@ -48,6 +48,12 @@ void main() {
       // TODO
     });
 
+    // Value of the current total traded.
+    // double traded (default value: null)
+    test('to test the property `traded`', () async {
+      // TODO
+    });
+
 
   });
 

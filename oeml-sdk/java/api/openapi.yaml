@@ -391,6 +391,7 @@ components:
         - last_updated_by: EXCHANGE
           asset_id_exchange: XBT
           balance: 0.00134444
+          traded: 0.007
           rate_usd: 1355.12
           available: 0.00134444
           asset_id_coinapi: BTC
@@ -398,6 +399,7 @@ components:
         - last_updated_by: EXCHANGE
           asset_id_exchange: XBT
           balance: 0.00134444
+          traded: 0.007
           rate_usd: 1355.12
           available: 0.00134444
           asset_id_coinapi: BTC
@@ -602,6 +604,7 @@ components:
         last_updated_by: EXCHANGE
         asset_id_exchange: XBT
         balance: 0.00134444
+        traded: 0.007
         rate_usd: 1355.12
         available: 0.00134444
         asset_id_coinapi: BTC
@@ -644,6 +647,11 @@ components:
           description: |
             Current exchange rate to the USD for the single unit of the currency.
           example: 1355.12
+          format: float
+          type: number
+        traded:
+          description: Value of the current total traded.
+          example: 0.007
           format: float
           type: number
     Position_data:

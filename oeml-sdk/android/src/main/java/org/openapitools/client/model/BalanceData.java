@@ -35,6 +35,8 @@ public class BalanceData {
   private LastUpdatedByEnum lastUpdatedBy = null;
   @SerializedName("rate_usd")
   private Float rateUsd = null;
+  @SerializedName("traded")
+  private Float traded = null;
 
   /**
    * Exchange currency code.
@@ -113,6 +115,17 @@ public class BalanceData {
     this.rateUsd = rateUsd;
   }
 
+  /**
+   * Value of the current total traded.
+   **/
+  @ApiModelProperty(value = "Value of the current total traded.")
+  public Float getTraded() {
+    return traded;
+  }
+  public void setTraded(Float traded) {
+    this.traded = traded;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,7 +142,8 @@ public class BalanceData {
         (this.available == null ? balanceData.available == null : this.available.equals(balanceData.available)) &&
         (this.locked == null ? balanceData.locked == null : this.locked.equals(balanceData.locked)) &&
         (this.lastUpdatedBy == null ? balanceData.lastUpdatedBy == null : this.lastUpdatedBy.equals(balanceData.lastUpdatedBy)) &&
-        (this.rateUsd == null ? balanceData.rateUsd == null : this.rateUsd.equals(balanceData.rateUsd));
+        (this.rateUsd == null ? balanceData.rateUsd == null : this.rateUsd.equals(balanceData.rateUsd)) &&
+        (this.traded == null ? balanceData.traded == null : this.traded.equals(balanceData.traded));
   }
 
   @Override
@@ -142,6 +156,7 @@ public class BalanceData {
     result = 31 * result + (this.locked == null ? 0: this.locked.hashCode());
     result = 31 * result + (this.lastUpdatedBy == null ? 0: this.lastUpdatedBy.hashCode());
     result = 31 * result + (this.rateUsd == null ? 0: this.rateUsd.hashCode());
+    result = 31 * result + (this.traded == null ? 0: this.traded.hashCode());
     return result;
   }
 
@@ -157,6 +172,7 @@ public class BalanceData {
     sb.append("  locked: ").append(locked).append("\n");
     sb.append("  lastUpdatedBy: ").append(lastUpdatedBy).append("\n");
     sb.append("  rateUsd: ").append(rateUsd).append("\n");
+    sb.append("  traded: ").append(traded).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -94,6 +94,13 @@ public:
 	/*! \brief Set Current exchange rate to the USD for the single unit of the currency. 
 	 */
 	void setRateUsd(float  rate_usd);
+	/*! \brief Get Value of the current total traded.
+	 */
+	float getTraded();
+
+	/*! \brief Set Value of the current total traded.
+	 */
+	void setTraded(float  traded);
 
 private:
 	std::string asset_id_exchange;
@@ -103,6 +110,7 @@ private:
 	float locked;
 	std::string last_updated_by;
 	float rate_usd;
+	float traded;
 	void __init();
 	void __cleanup();
 

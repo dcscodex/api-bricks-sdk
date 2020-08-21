@@ -117,6 +117,15 @@ public:
 
     void setRateUsd(float value);
 
+    /// <summary>
+    /// Value of the current total traded.
+    /// </summary>
+    float getTraded() const;
+    bool tradedIsSet() const;
+    void unsetTraded();
+
+    void setTraded(float value);
+
 
 protected:
     utility::string_t m_Asset_id_exchange;
@@ -133,6 +142,8 @@ protected:
     bool m_Last_updated_byIsSet;
     float m_Rate_usd;
     bool m_Rate_usdIsSet;
+    float m_Traded;
+    bool m_TradedIsSet;
 };
 
 

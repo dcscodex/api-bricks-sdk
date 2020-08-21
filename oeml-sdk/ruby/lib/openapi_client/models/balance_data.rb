@@ -35,6 +35,9 @@ module OpenapiClient
     # Current exchange rate to the USD for the single unit of the currency. 
     attr_accessor :rate_usd
 
+    # Value of the current total traded.
+    attr_accessor :traded
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -66,7 +69,8 @@ module OpenapiClient
         :'available' => :'available',
         :'locked' => :'locked',
         :'last_updated_by' => :'last_updated_by',
-        :'rate_usd' => :'rate_usd'
+        :'rate_usd' => :'rate_usd',
+        :'traded' => :'traded'
       }
     end
 
@@ -79,7 +83,8 @@ module OpenapiClient
         :'available' => :'Float',
         :'locked' => :'Float',
         :'last_updated_by' => :'String',
-        :'rate_usd' => :'Float'
+        :'rate_usd' => :'Float',
+        :'traded' => :'Float'
       }
     end
 
@@ -131,6 +136,10 @@ module OpenapiClient
       if attributes.key?(:'rate_usd')
         self.rate_usd = attributes[:'rate_usd']
       end
+
+      if attributes.key?(:'traded')
+        self.traded = attributes[:'traded']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -169,7 +178,8 @@ module OpenapiClient
           available == o.available &&
           locked == o.locked &&
           last_updated_by == o.last_updated_by &&
-          rate_usd == o.rate_usd
+          rate_usd == o.rate_usd &&
+          traded == o.traded
     end
 
     # @see the `==` method
@@ -181,7 +191,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [asset_id_exchange, asset_id_coinapi, balance, available, locked, last_updated_by, rate_usd].hash
+      [asset_id_exchange, asset_id_coinapi, balance, available, locked, last_updated_by, rate_usd, traded].hash
     end
 
     # Builds the object from hash

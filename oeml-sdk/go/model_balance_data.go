@@ -25,4 +25,6 @@ type BalanceData struct {
 	LastUpdatedBy string `json:"last_updated_by,omitempty"`
 	// Current exchange rate to the USD for the single unit of the currency. 
 	RateUsd float32 `json:"rate_usd,omitempty"`
+	// Value of the current total traded.
+	Traded float32 `json:"traded,omitempty"`
 }

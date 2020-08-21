@@ -210,6 +210,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'traded' => {
+        datatype => 'double',
+        base_name => 'traded',
+        description => 'Value of the current total traded.',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -219,7 +226,8 @@ __PACKAGE__->openapi_types( {
     'available' => 'double',
     'locked' => 'double',
     'last_updated_by' => 'string',
-    'rate_usd' => 'double'
+    'rate_usd' => 'double',
+    'traded' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -229,7 +237,8 @@ __PACKAGE__->attribute_map( {
     'available' => 'available',
     'locked' => 'locked',
     'last_updated_by' => 'last_updated_by',
-    'rate_usd' => 'rate_usd'
+    'rate_usd' => 'rate_usd',
+    'traded' => 'traded'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -54,6 +54,13 @@ API.Client.BalanceData.prototype.lastUpdatedBy;
  */
 API.Client.BalanceData.prototype.rateUsd;
 
+/**
+ * Value of the current total traded.
+ * @type {!number}
+ * @export
+ */
+API.Client.BalanceData.prototype.traded;
+
 /** @enum {string} */
 API.Client.BalanceData.LastUpdatedByEnum = { 
   INITIALIZATION: 'INITIALIZATION',

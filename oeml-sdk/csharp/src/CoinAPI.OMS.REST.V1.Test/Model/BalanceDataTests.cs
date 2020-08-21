@@ -121,6 +121,14 @@ namespace CoinAPI.OMS.REST.V1.Test
         {
             // TODO unit test for the property 'RateUsd'
         }
+        /// <summary>
+        /// Test the property 'Traded'
+        /// </summary>
+        [Test]
+        public void TradedTest()
+        {
+            // TODO unit test for the property 'Traded'
+        }
 
     }
 

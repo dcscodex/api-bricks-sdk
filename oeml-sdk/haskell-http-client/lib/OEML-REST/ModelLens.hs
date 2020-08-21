@@ -88,6 +88,11 @@ balanceDataRateUsdL :: Lens_' BalanceData (Maybe Float)
 balanceDataRateUsdL f BalanceData{..} = (\balanceDataRateUsd -> BalanceData { balanceDataRateUsd, ..} ) <$> f balanceDataRateUsd
 {-# INLINE balanceDataRateUsdL #-}
 
+-- | 'balanceDataTraded' Lens
+balanceDataTradedL :: Lens_' BalanceData (Maybe Float)
+balanceDataTradedL f BalanceData{..} = (\balanceDataTraded -> BalanceData { balanceDataTraded, ..} ) <$> f balanceDataTraded
+{-# INLINE balanceDataTradedL #-}
+
 
 
 -- * Message

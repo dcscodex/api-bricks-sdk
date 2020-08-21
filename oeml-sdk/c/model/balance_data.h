@@ -34,6 +34,7 @@ typedef struct balance_data_t {
     float locked; //numeric
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by; //enum
     float rate_usd; //numeric
+    float traded; //numeric
 
 } balance_data_t;
 
@@ -44,7 +45,8 @@ balance_data_t *balance_data_create(
     float available,
     float locked,
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
-    float rate_usd
+    float rate_usd,
+    float traded
 );
 
 void balance_data_free(balance_data_t *balance_data);

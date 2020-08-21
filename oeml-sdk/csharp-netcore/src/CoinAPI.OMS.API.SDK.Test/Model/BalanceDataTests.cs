@@ -113,6 +113,14 @@ namespace CoinAPI.OMS.API.SDK.Test
         {
             // TODO unit test for the property 'RateUsd'
         }
+        /// <summary>
+        /// Test the property 'Traded'
+        /// </summary>
+        [Fact]
+        public void TradedTest()
+        {
+            // TODO unit test for the property 'Traded'
+        }
 
     }
 

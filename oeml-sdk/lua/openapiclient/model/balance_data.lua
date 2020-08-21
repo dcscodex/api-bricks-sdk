@@ -19,7 +19,7 @@ local function cast_balance_data(t)
 	return setmetatable(t, balance_data_mt)
 end
 
-local function new_balance_data(asset_id_exchange, asset_id_coinapi, balance, available, locked, last_updated_by, rate_usd)
+local function new_balance_data(asset_id_exchange, asset_id_coinapi, balance, available, locked, last_updated_by, rate_usd, traded)
 	return cast_balance_data({
 		["asset_id_exchange"] = asset_id_exchange;
 		["asset_id_coinapi"] = asset_id_coinapi;
@@ -28,6 +28,7 @@ local function new_balance_data(asset_id_exchange, asset_id_coinapi, balance, av
 		["locked"] = locked;
 		["last_updated_by"] = last_updated_by;
 		["rate_usd"] = rate_usd;
+		["traded"] = traded;
 	})
 end
 

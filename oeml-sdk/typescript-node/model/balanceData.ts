@@ -41,6 +41,10 @@ export class BalanceData {
     * Current exchange rate to the USD for the single unit of the currency. 
     */
     'rateUsd'?: number;
+    /**
+    * Value of the current total traded.
+    */
+    'traded'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -78,6 +82,11 @@ export class BalanceData {
         {
             "name": "rateUsd",
             "baseName": "rate_usd",
+            "type": "number"
+        },
+        {
+            "name": "traded",
+            "baseName": "traded",
             "type": "number"
         }    ];
 

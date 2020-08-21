@@ -34,6 +34,10 @@ abstract class BalanceData implements Built<BalanceData, BalanceDataBuilder> {
         @nullable
     @BuiltValueField(wireName: r'rate_usd')
     double get rateUsd;
+    /* Value of the current total traded. */
+        @nullable
+    @BuiltValueField(wireName: r'traded')
+    double get traded;
 
     // Boilerplate code needed to wire-up generated code
     BalanceData._();

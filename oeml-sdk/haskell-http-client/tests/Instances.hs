@@ -126,6 +126,7 @@ genBalanceData n =
     <*> arbitraryReducedMaybe n -- balanceDataLocked :: Maybe Float
     <*> arbitraryReducedMaybe n -- balanceDataLastUpdatedBy :: Maybe E'LastUpdatedBy
     <*> arbitraryReducedMaybe n -- balanceDataRateUsd :: Maybe Float
+    <*> arbitraryReducedMaybe n -- balanceDataTraded :: Maybe Float
   
 instance Arbitrary Message where
   arbitrary = sized genMessage

@@ -11,7 +11,8 @@
        'available' => integer(),
        'locked' => integer(),
        'last_updated_by' => binary(),
-       'rate_usd' => integer()
+       'rate_usd' => integer(),
+       'traded' => integer()
      }.
 
 encode(#{ 'asset_id_exchange' := AssetIdExchange,
@@ -20,7 +21,8 @@ encode(#{ 'asset_id_exchange' := AssetIdExchange,
           'available' := Available,
           'locked' := Locked,
           'last_updated_by' := LastUpdatedBy,
-          'rate_usd' := RateUsd
+          'rate_usd' := RateUsd,
+          'traded' := Traded
         }) ->
     #{ 'asset_id_exchange' => AssetIdExchange,
        'asset_id_coinapi' => AssetIdCoinapi,
@@ -28,5 +30,6 @@ encode(#{ 'asset_id_exchange' := AssetIdExchange,
        'available' => Available,
        'locked' => Locked,
        'last_updated_by' => LastUpdatedBy,
-       'rate_usd' => RateUsd
+       'rate_usd' => RateUsd,
+       'traded' => Traded
      }.

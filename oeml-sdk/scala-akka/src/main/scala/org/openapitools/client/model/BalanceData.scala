@@ -27,7 +27,9 @@ case class BalanceData (
   /* Source of the last modification.  */
   lastUpdatedBy: Option[BalanceDataEnums.LastUpdatedBy] = None,
   /* Current exchange rate to the USD for the single unit of the currency.  */
-  rateUsd: Option[Float] = None
+  rateUsd: Option[Float] = None,
+  /* Value of the current total traded. */
+  traded: Option[Float] = None
 ) extends ApiModel
 
 object BalanceDataEnums {

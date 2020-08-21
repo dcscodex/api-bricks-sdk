@@ -24,6 +24,8 @@
 #'
 #' @field rate_usd  numeric [optional]
 #'
+#' @field traded  numeric [optional]
+#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -38,7 +40,8 @@ BalanceData <- R6::R6Class(
     `locked` = NULL,
     `last_updated_by` = NULL,
     `rate_usd` = NULL,
-    initialize = function(`asset_id_exchange`=NULL, `asset_id_coinapi`=NULL, `balance`=NULL, `available`=NULL, `locked`=NULL, `last_updated_by`=NULL, `rate_usd`=NULL, ...){
+    `traded` = NULL,
+    initialize = function(`asset_id_exchange`=NULL, `asset_id_coinapi`=NULL, `balance`=NULL, `available`=NULL, `locked`=NULL, `last_updated_by`=NULL, `rate_usd`=NULL, `traded`=NULL, ...){
       local.optional.var <- list(...)
       if (!is.null(`asset_id_exchange`)) {
         stopifnot(is.character(`asset_id_exchange`), length(`asset_id_exchange`) == 1)
@@ -67,6 +70,10 @@ BalanceData <- R6::R6Class(
       if (!is.null(`rate_usd`)) {
         stopifnot(is.numeric(`rate_usd`), length(`rate_usd`) == 1)
         self$`rate_usd` <- `rate_usd`
+      }
+      if (!is.null(`traded`)) {
+        stopifnot(is.numeric(`traded`), length(`traded`) == 1)
+        self$`traded` <- `traded`
       }
     },
     toJSON = function() {
@@ -99,6 +106,10 @@ BalanceData <- R6::R6Class(
         BalanceDataObject[['rate_usd']] <-
           self$`rate_usd`
       }
+      if (!is.null(self$`traded`)) {
+        BalanceDataObject[['traded']] <-
+          self$`traded`
+      }
 
       BalanceDataObject
     },
@@ -124,6 +135,9 @@ BalanceData <- R6::R6Class(
       }
       if (!is.null(BalanceDataObject$`rate_usd`)) {
         self$`rate_usd` <- BalanceDataObject$`rate_usd`
+      }
+      if (!is.null(BalanceDataObject$`traded`)) {
+        self$`traded` <- BalanceDataObject$`traded`
       }
     },
     toJSONString = function() {
@@ -176,6 +190,13 @@ BalanceData <- R6::R6Class(
           %d
                 ',
         self$`rate_usd`
+        )},
+        if (!is.null(self$`traded`)) {
+        sprintf(
+        '"traded":
+          %d
+                ',
+        self$`traded`
         )}
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
@@ -190,6 +211,7 @@ BalanceData <- R6::R6Class(
       self$`locked` <- BalanceDataObject$`locked`
       self$`last_updated_by` <- BalanceDataObject$`last_updated_by`
       self$`rate_usd` <- BalanceDataObject$`rate_usd`
+      self$`traded` <- BalanceDataObject$`traded`
       self
     }
   )

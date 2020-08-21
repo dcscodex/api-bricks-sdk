@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **locked** | **double** | Value of the current locked currency balance by the exchange. | [optional] 
 **last_updated_by** | **string** | Source of the last modification.  | [optional] 
 **rate_usd** | **double** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
+**traded** | **double** | Value of the current total traded. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

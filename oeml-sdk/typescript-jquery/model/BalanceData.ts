@@ -48,6 +48,11 @@ export interface BalanceData {
      */
     rate_usd?: number;
 
+    /**
+     * Value of the current total traded.
+     */
+    traded?: number;
+
 }
 export namespace BalanceData {
     export enum LastUpdatedByEnum {

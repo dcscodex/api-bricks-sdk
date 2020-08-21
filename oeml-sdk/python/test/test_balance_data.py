@@ -43,7 +43,8 @@ class TestBalanceData(unittest.TestCase):
                 available = 0.00134444, 
                 locked = 0.0, 
                 last_updated_by = 'EXCHANGE', 
-                rate_usd = 1355.12
+                rate_usd = 1355.12, 
+                traded = 0.007
             )
         else :
             return BalanceData(

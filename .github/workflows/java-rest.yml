@@ -23,7 +23,7 @@ jobs:
           server-password: MAVEN_PASSWORD
           
       - name: Maven clean install
-        run: clean install -DskipTests
+        run: mvn clean install -DskipTests -Dmaven.test.failure.ignore=true
         
       - name: Publish to the Maven Central Repository
         run: mvn -B deploy -Dmaven.test.failure.ignore=true

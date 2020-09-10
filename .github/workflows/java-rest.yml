@@ -22,6 +22,9 @@ jobs:
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
           
+      - name: Maven clean install
+        run: clean install -DskipTests
+        
       - name: Publish to the Maven Central Repository
         run: mvn -B deploy -Dmaven.test.failure.ignore=true
         env:

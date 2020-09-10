@@ -8,11 +8,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-api/java-rest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: cd
-        run: cd data-api\java-rest
         
       - name: Set up Java for publishing to Maven Central Repository
         uses: actions/setup-java@v1

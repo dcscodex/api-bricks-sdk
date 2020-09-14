@@ -20,10 +20,10 @@ jobs:
           dotnet-version: 3.1.101
           
       - name: Dotnet restore
-        run: dotnet restore CoinAPI.REST.sln
+        run: dotnet restore 
       
       - name: Dotnet build
-        run: dotnet build CoinAPI.REST.sln
+        run: dotnet build 
         
       - name: Publish
-        run: dotnet nuget push CoinAPI.REST.V1/bin/Debug/*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0
+        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0

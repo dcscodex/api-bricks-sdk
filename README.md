@@ -18,8 +18,8 @@ Language | Package manager | Protocol | Package name | Version/Link |
 --- | --- | --- | --- | --- |
 C# | NuGet | REST | CoinAPI.REST.V1 | ![Nuget](https://img.shields.io/nuget/v/CoinAPI.REST.v1) |
 C# | NuGet | WebSocket | CoinAPI.WebSocket.V1 | ![Nuget](https://img.shields.io/nuget/v/CoinAPI.WebSocket.v1) |
-Java | Maven | REST | io.coinapi.rest.v1 | https://github.com/coinapi/coinapi-sdk/packages/397337 |
-Java | Maven | WebSocket | io.coinapi.websocket.v1 | https://github.com/coinapi/coinapi-sdk/packages/397352 |
+Java | Maven (GitHub Packages) | REST | io.coinapi.rest.v1 | https://github.com/coinapi/coinapi-sdk/packages/397337 |
+Java | Maven (GitHub Packages) | WebSocket | io.coinapi.websocket.v1 | https://github.com/coinapi/coinapi-sdk/packages/397352 |
 Python3 | PyPI | REST | coinapi.rest.v1 | ![PyPI](https://img.shields.io/pypi/v/coinapi.rest.v1) |
 
 ## Language coverage

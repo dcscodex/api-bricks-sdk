@@ -26,4 +26,4 @@ jobs:
         run: dotnet build CoinAPI.REST.sln
         
       - name: Publish
-        run: dotnet nuget push CoinAPI.REST.V1\bin\Debug\*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} -Source https://api.nuget.org/v3/index.json || exit 0
+        run: dotnet nuget push CoinAPI.REST.V1\bin\Debug\*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0

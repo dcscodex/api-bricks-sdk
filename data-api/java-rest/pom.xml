@@ -5,10 +5,10 @@
 
     <groupId>io.coinapi.rest</groupId>
     <artifactId>v1</artifactId>
-    <version>1.12-SNAPSHOT</version>
+    <version>1.13</version>
 
     <organization>
-        <name>MARMOT SOLUTIONS LTD</name>
+        <name>COINAPI LTD</name>
         <url>https://www.CoinAPI.io</url>
     </organization>
 

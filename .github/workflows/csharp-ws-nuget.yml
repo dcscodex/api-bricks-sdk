@@ -1,4 +1,4 @@
-name: Publish csharp-rest package
+name: Publish csharp-ws package
 on:
   release:
     types: [created]
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: data-api/csharp-rest
+        working-directory: data-api/csharp-ws
     steps:
       - uses: actions/checkout@v2
         
@@ -27,6 +27,3 @@ jobs:
         
       - name: Publish Nuget
         run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0
-
-      - name: Publish GitHub Packages
-        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/coinapi/coinapi-sdk/index.json || exit 0

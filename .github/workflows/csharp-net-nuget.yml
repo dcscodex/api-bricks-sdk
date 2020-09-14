@@ -1,4 +1,4 @@
-name: Publish csharp-rest package to the Nuget
+name: Publish csharp-rest package
 on:
   release:
     types: [created]
@@ -25,5 +25,8 @@ jobs:
       - name: Dotnet build
         run: dotnet build 
         
-      - name: Publish
+      - name: Publish Nuget
         run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0
+
+      - name: Publish GitHub Packages
+        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/coinapi/index.json || exit 0

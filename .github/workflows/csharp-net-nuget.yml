@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.101
+          dotnet-version: '3.1.x'
           
       - name: Dotnet restore
         run: dotnet restore 
@@ -29,4 +29,4 @@ jobs:
         run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json || exit 0
 
       - name: Publish GitHub Packages
-        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/coinapi/index.json || exit 0
+        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/coinapi/coinapi-sdk/index.json || exit 0

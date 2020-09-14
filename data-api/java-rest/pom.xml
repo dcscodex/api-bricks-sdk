@@ -19,6 +19,14 @@
         <tag>HEAD</tag>
     </scm>
 
+<distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>CoinAPI Java Rest API</name>
+      <url>https://maven.pkg.github.com/coinapi/coinapi-sdk</url>
+    </repository>
+</distributionManagement>
+	
     <licenses>
         <license>
             <name>MIT License</name>

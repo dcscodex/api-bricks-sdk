@@ -1,4 +1,4 @@
-name: Publish python-rest package to the GitHub Packages
+name: Publish python-rest package to the PyPi 
 on:
   release:
     types: [created]
@@ -26,5 +26,5 @@ jobs:
         run: python setup.py sdist bdist_wheel
         
       - name: deploy
-        run: python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }}
+        run: python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} || exit 0
         

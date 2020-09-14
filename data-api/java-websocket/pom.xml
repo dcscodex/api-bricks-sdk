@@ -11,19 +11,20 @@
         <url>https://www.CoinAPI.io</url>
     </organization>
 
-    <scm>
-        <connection>scm:git:git@github.com:coinapi/coinapi-sdk.git</connection>
-        <developerConnection>scm:git:git@github.com:coinapi/coinapi-sdk.git</developerConnection>
-        <url>https://github.com/coinapi/coinapi-sdk</url>
-        <tag>HEAD</tag>
-  </scm>
-
     <licenses>
         <license>
             <name>MIT License</name>
             <comments>MIT License</comments>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>coinapi.websocket.v1</name>
+            <url>https://maven.pkg.github.com/coinapi/coinapi-sdk</url>
+        </repository>
+    </distributionManagement>
 
     <name>coinapi.websocket.v1</name>
     <url>https://docs.coinapi.io</url>
@@ -117,50 +118,6 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <localCheckout>true</localCheckout>
-                        <pushChanges>false</pushChanges>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
-                        <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-                        <arguments>-DskipTests</arguments>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <releaseProfiles>release</releaseProfiles>
-                        <goals>deploy</goals>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven.scm</groupId>
-                            <artifactId>maven-scm-provider-gitexe</artifactId>
-                            <version>1.9.5</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.7</version>
-<!--                    <extensions>true</extensions>-->
-                    <executions>
-                        <execution>
-                            <id>deploy</id>
-                            <phase>deploy</phase>
-                            <goals>
-                                <goal>deploy</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <serverId>ossrh</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-<!--                        <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
-                        <skipStaging>true</skipStaging>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.1.1</version>
                     <configuration>
@@ -222,20 +179,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -269,15 +212,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>

@@ -1,0 +1,29 @@
+name: Publish csharp-rest package to the Nuget
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-api/csharp-rest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+          
+      - name: Dotnet restore
+        run: dotnet restore CoinAPI.REST.sln
+      
+      - name: Dotnet build
+        run: dotnet build CoinAPI.REST.sln
+        
+      - name: Publish
+        run: dotnet nuget push CoinAPI.REST.V1\bin\Debug\*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} -Source https://api.nuget.org/v3/index.json || exit 0

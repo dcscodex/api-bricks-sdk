@@ -11,10 +11,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoinAPI.REST.V1 {
-        public class CoinApiRestClient
-    {
+    public class CoinApiRestClient
+    {              
         private string apikey;
-        private string dateFormat = "yyyy-MM-ddTHH:mm:ss.fff";
+        public string DateFormat =>
         private string WebUrl = "https://rest.coinapi.io";
 
         public CoinApiRestClient(string apikey, bool sandbox = false)
@@ -129,7 +129,7 @@ namespace CoinAPI.REST.V1 {
 
         public Task<Exchangerate> Exchange_rates_get_specific_rateAsync(string baseId, string quoteId, DateTime time)
         {
-            var url = CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId, time.ToString(dateFormat));
+            var url = CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId, time.ToString(DateFormat));
             return GetData<Exchangerate>(url);
         }
         public Task<Exchangerate> Exchange_rates_get_specific_rateAsync(string baseId, string quoteId)
@@ -170,22 +170,22 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start, DateTime end, int limit)
         {
-            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(dateFormat), end.ToString(dateFormat), limit);
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat), end.ToString(DateFormat), limit);
             return GetData<List<OHLCV>>(url);
         }
         public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start, DateTime end)
         {
-            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(dateFormat), end.ToString(dateFormat));
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat), end.ToString(DateFormat));
             return GetData<List<OHLCV>>(url);
         }
         public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start, int limit)
         {
-            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(dateFormat), limit);
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat), limit);
             return GetData<List<OHLCV>>(url);
         }
         public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start)
         {
-            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(dateFormat));
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat));
             return GetData<List<OHLCV>>(url);
         }
 
@@ -214,23 +214,21 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<Trade>> Trades_historical_dataAsync(string symbolId, DateTime start, DateTime end, int limit)
         {
-            var url = CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(dateFormat), end.ToString(dateFormat), limit));
-            return GetData<List<Trade>>(url);
+
+            return GetData<List<Trade>>(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat), limit));
         }
         public Task<List<Trade>> Trades_historical_dataAsync(string symbolId, DateTime start)
         {
-            var url = CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(dateFormat))
-            return GetData<List<Trade>>(url);
+            return GetData<List<Trade>>(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat)));
         }
         public Task<List<Trade>> Trades_historical_dataAsync(string symbolId, DateTime start, DateTime end)
         {
-            var url = CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(dateFormat), end.ToString(dateFormat));
-            return GetData<List<Trade>>(url);
+
+            return GetData<List<Trade>>(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat)));
         }
         public Task<List<Trade>> Trades_historical_dataAsync(string symbolId, DateTime start, int limit)
         {
-            var url = CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(dateFormat), limit);
-            return GetData<List<Trade>>(url);
+            return GetData<List<Trade>>(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat), limit));
         }
 
         public Task<List<Quote>> Quotes_current_data_allAsync()
@@ -247,8 +245,7 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<Quote>> Quotes_latest_data_allAsync()
         {
-            var url = CoinApiEndpointUrls.Quotes_Latest();
-            return GetData<List<Quote>>(url);
+            return GetData<List<Quote>>(CoinApiEndpointUrls.Quotes_Latest());
         }
         public Task<List<Quote>> Quotes_latest_data_allAsync(int limit)
         {
@@ -269,24 +266,19 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<Quote>> Quotes_historical_dataAsync(string symbolId, DateTime start, DateTime end, int limit)
         {
-            var url = string.Format("/v1/quotes/{0}/history?time_start={1}&time_end={2}&limit={3}", symbolId, start.ToString(dateFormat), end.ToString(dateFormat), limit);
-            return GetData<List<Quote>>(url);
-
+            return GetData<List<Quote>>(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat), limit));
         }
         public Task<List<Quote>> Quotes_historical_dataAsync(string symbolId, DateTime start)
         {
-            var url = CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(dateFormat)));
-            return GetData<List<Quote>>(url);
+            return GetData<List<Quote>>(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat)));
         }
         public Task<List<Quote>> Quotes_historical_dataAsync(string symbolId, DateTime start, DateTime end)
         {
-            var url = CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(dateFormat), end.ToString(dateFormat))
-            return GetData<List<Quote>>(url);
+            return GetData<List<Quote>>(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat)));
         }
         public Task<List<Quote>> Quotes_historical_dataAsync(string symbolId, DateTime start, int limit)
         {
-            var url = CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(dateFormat), limit);
-            return GetData<List<Quote>>(url);
+            return GetData<List<Quote>>(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat), limit));
 
         }
         public Task<List<Orderbook>> Orderbooks_current_data_all_filtered_bitstampAsync()
@@ -314,23 +306,19 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<Orderbook>> Orderbooks_historical_dataAsync(string symbolId, DateTime start, DateTime end, int limit)
         {
-            var url = CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(dateFormat), end.ToString(dateFormat), limit);
-            return GetData<List<Orderbook>>(url);
+            return GetData<List<Orderbook>>(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat), limit));
         }
         public Task<List<Orderbook>> Orderbooks_historical_dataAsync(string symbolId, DateTime start)
         {
-            var url = CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(dateFormat));
-            return GetData<List<Orderbook>>(url);
+            return GetData<List<Orderbook>>(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat)));
         }
         public Task<List<Orderbook>> Orderbooks_historical_dataAsync(string symbolId, DateTime start, DateTime end)
         {
-            var url = CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(dateFormat), end.ToString(dateFormat));
-            return GetData<List<Orderbook>>(url);
+            return GetData<List<Orderbook>>(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat), end.ToString(DateFormat)));
         }
         public Task<List<Orderbook>> Orderbooks_historical_dataAsync(string symbolId, DateTime start, int limit)
         {
-            var url = CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(dateFormat), limit);
-            return GetData<List<Orderbook>>(url);
+            return GetData<List<Orderbook>>(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat), limit));
         }
 
         public Task<List<Orderbook3>> Orderbooks3_current_data_all_filtered_bitstamp()

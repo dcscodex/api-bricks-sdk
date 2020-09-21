@@ -10,7 +10,7 @@ namespace CoinAPI.REST.V1.Example
     class Program
     {
         static void Main(string[] args)
-        {
+        {            
             var coinApiEndpointTester = new CoinApiRestEndpointsTester("4FAB4B58-9D8F-4CFF-9FB3-83833109584E")
             {
                 Log = s => Console.WriteLine(s)
@@ -22,7 +22,7 @@ namespace CoinAPI.REST.V1.Example
             {
                 Console.WriteLine($"asset id = {assetIcon.asset_id} iconUrl = {assetIcon.url}");
             }
-
+                        
             Console.WriteLine("Exchanges with icons");
             var exhcangesIcons =  coinApiEndpointTester.Metadata_list_exchanges_iconsAsync(32).GetAwaiter().GetResult();
             foreach (var exchaingeIcon in exhcangesIcons.Data)

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace CoinAPI.REST.V1
 {
     public class CoinApiRestClient
-    {
+    {              
         private string apikey;
         public string DateFormat => "yyyy-MM-ddTHH:mm:ss.fff";
         private string WebUrl = "https://rest.coinapi.io";

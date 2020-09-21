@@ -60,7 +60,7 @@ namespace CoinAPI.REST.V1.Example
 
         public Task<EndpointCheckResult<List<Period>>> Ohlcv_list_all_periodsAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Ohlcv_Periods(), _coinApi.Ohlcv_list_all_periodsAsync (); ;
+            return HandleCheck(CoinApiEndpointUrls.Ohlcv_Periods(), _coinApi.Ohlcv_list_all_periodsAsync());
         }
 
         public Task<EndpointCheckResult<List<OHLCV>>> Ohlcv_latest_dataAsync(string symbolId, string periodId)

@@ -112,7 +112,7 @@ namespace CoinAPI.REST.V1
             return GetData<List<Symbol>>(CoinApiEndpointUrls.Symbols(exchangeId));
         }
 
-        public async Task<List<Icon>> Metadata_list_assets_iconsAsync(int iconSize)
+        public Task<List<Icon>> Metadata_list_assets_iconsAsync(int iconSize)
         {
             return GetData<List<Icon>>(CoinApiEndpointUrls.Assests_Icons(iconSize));
         }

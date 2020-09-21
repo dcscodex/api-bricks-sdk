@@ -17,10 +17,12 @@
     <Company>COINAPI LTD</Company>
     <Copyright>COINAPI LTD or its affiliates</Copyright>
     <Version>2.0.0</Version>
+    <UserSecretsId>17704ec2-7050-452e-99b5-0eddf76dea5d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>

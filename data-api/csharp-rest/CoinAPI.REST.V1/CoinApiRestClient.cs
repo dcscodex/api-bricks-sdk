@@ -10,20 +10,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoinAPI.REST.V1 {
+namespace CoinAPI.REST.V1
+{
     public class CoinApiRestClient
-    {              
+    {
         private string apikey;
-        public string DateFormat =>
+        public string DateFormat => "yyyy-MM-ddTHH:mm:ss.fff";
         private string WebUrl = "https://rest.coinapi.io";
 
         public CoinApiRestClient(string apikey, bool sandbox = false)
         {
             this.apikey = apikey;
-			if (sandbox)
-			{
-				WebUrl = "https://rest-sandbox.coinapi.io";
-			}
+            if (sandbox)
+            {
+                WebUrl = "https://rest-sandbox.coinapi.io";
+            }
             this.WebUrl = WebUrl.TrimEnd('/');
         }
 
@@ -46,7 +47,7 @@ namespace CoinAPI.REST.V1 {
 
                         HttpResponseMessage response = await client.GetAsync(WebUrl + url);
 
-                        if (!response.IsSuccessStatusCode) 
+                        if (!response.IsSuccessStatusCode)
                             await RaiseError(response);
 
                         return await Deserialize<T>(response);
@@ -67,7 +68,7 @@ namespace CoinAPI.REST.V1 {
         {
             var message = (await Deserialize<ErrorMessage>(response)).message;
 
-            switch ((int) response.StatusCode)
+            switch ((int)response.StatusCode)
             {
                 case 400:
                     throw new BadRequestException(message);
@@ -103,7 +104,7 @@ namespace CoinAPI.REST.V1 {
 
         public Task<List<Symbol>> Metadata_list_symbolsAsync()
         {
-            return GetData<List<Symbol>> CoinApiEndpointUrls.Symbols());
+            return GetData<List<Symbol>>(CoinApiEndpointUrls.Symbols());
         }
 
         public Task<List<Symbol>> Metadata_list_symbols_exchangeAsync(string exchangeId)
@@ -111,7 +112,7 @@ namespace CoinAPI.REST.V1 {
             return GetData<List<Symbol>>(CoinApiEndpointUrls.Symbols(exchangeId));
         }
 
-        public Task<List<Icon>> Metadata_list_assets_iconsAsync(int iconSize)
+        public async Task<List<Icon>> Metadata_list_assets_iconsAsync(int iconSize)
         {
             return GetData<List<Icon>>(CoinApiEndpointUrls.Assests_Icons(iconSize));
         }
@@ -321,15 +322,6 @@ namespace CoinAPI.REST.V1 {
             return GetData<List<Orderbook>>(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat), limit));
         }
 
-        public Task<List<Orderbook3>> Orderbooks3_current_data_all_filtered_bitstamp()
-        {
-            return GetData<List<Orderbook3>>(CoinApiEndpointUrls.Orderbooks3_CurrentFilteredBitstamp());
-        }
-
-        public Task<Orderbook3> Orderbooks3_current_data_symbol(string symbolId)
-        {
-            return GetData<Orderbook3>(CoinApiEndpointUrls.Orderbooks3_Current(symbolId));
-        }
     }
 
 }

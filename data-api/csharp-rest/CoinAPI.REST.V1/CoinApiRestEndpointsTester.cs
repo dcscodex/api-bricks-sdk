@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CoinAPI.REST.V1.Example
 {
@@ -22,240 +23,131 @@ namespace CoinAPI.REST.V1.Example
             _coinApi = new CoinApiRestClient(apikey, url);
         }
 
-        public EndpointCheckResult<List<Icon>> Metadata_list_assets_icons(int iconSize)
+        public Task<EndpointCheckResult<List<Icon>>> Metadata_list_assets_iconsAsync(int iconSize)
         {
-            return HandleCheck(CoinApiEndpointUrls.Assests_Icons(iconSize), () =>
-           {
-               var assetsIcons = _coinApi.Metadata_list_assets_icons(iconSize);
-               return (CheckDataAndSetStatus<Icon>(assetsIcons), assetsIcons);
-           });
+            return HandleCheck(CoinApiEndpointUrls.Assests_Icons(iconSize), _coinApi.Metadata_list_assets_iconsAsync(iconSize));
         }
 
-        public EndpointCheckResult<List<Icon>> Metadata_list_exchanges_icons(int iconSize)
+        public Task<EndpointCheckResult<List<Icon>>> Metadata_list_exchanges_iconsAsync(int iconSize)
         {
-            return HandleCheck(CoinApiEndpointUrls.Exchanges_Icons(iconSize), () =>
-             {
-                 var exhcangesIcons = _coinApi.Metadata_list_exchanges_icons(iconSize);
-                 return (CheckDataAndSetStatus<Icon>(exhcangesIcons), exhcangesIcons);
-             });
+            return HandleCheck(CoinApiEndpointUrls.Exchanges_Icons(iconSize), _coinApi.Metadata_list_exchanges_iconsAsync(iconSize));
         }
 
-        public EndpointCheckResult<List<Exchange>> Metadata_list_exchanges()
+        public Task<EndpointCheckResult<List<Exchange>>> Metadata_list_exchangesAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Exchanges(), () =>
-            {
-                var exchanges = _coinApi.Metadata_list_exchanges();
-                return (CheckDataAndSetStatus<Exchange>(exchanges), exchanges);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Exchanges(), _coinApi.Metadata_list_exchanges());
         }
 
-        public EndpointCheckResult<List<Asset>> Metadata_list_assets()
+        public Task<EndpointCheckResult<List<Asset>>> Metadata_list_assetsAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Assets(), () =>
-            {
-                var assets = _coinApi.Metadata_list_assets();
-                return (CheckDataAndSetStatus<Asset>(assets), assets);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Assets(), _coinApi.Metadata_list_assetsAsync());
         }
 
-        public EndpointCheckResult<Exchangerate> Exchange_rates_get_specific_rate(string baseId, string quoteId)
+        public Task<EndpointCheckResult<Exchangerate>> Exchange_rates_get_specific_rateAsync(string baseId, string quoteId)
         {
-            return HandleCheck(CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId), () =>
-            {
-                var exchange_rate = _coinApi.Exchange_rates_get_specific_rate(baseId, quoteId);
-                return (CheckDataAndSetStatus<Exchangerate>(exchange_rate), exchange_rate);
-            });
+            return HandleCheck(CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId), _coinApi.Exchange_rates_get_specific_rateAsync(baseId, quoteId));
         }
 
-        public EndpointCheckResult<Exchangerate> Exchange_rates_get_specific_rate(string baseId, string quoteId, DateTime time)
+        public Task<EndpointCheckResult<Exchangerate>> Exchange_rates_get_specific_rateAsync(string baseId, string quoteId, DateTime time)
         {
-            return HandleCheck(CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId, time.ToString(DateFormat)), () =>
-            {
-                var exchange_rate = _coinApi.Exchange_rates_get_specific_rate(baseId, quoteId, time);
-                return (CheckDataAndSetStatus<Exchangerate>(exchange_rate), exchange_rate);
-            });
+            return HandleCheck(CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId, time.ToString(DateFormat)), _coinApi.Exchange_rates_get_specific_rateAsync(baseId, quoteId, time));
         }
 
-        public EndpointCheckResult<ExchangeCurrentrate> Exchange_rates_get_all_current_rates(string baseId, bool invert = false)
+        public Task<EndpointCheckResult<ExchangeCurrentrate>> Exchange_rates_get_all_current_ratesAsync(string baseId, bool invert = false)
         {
-            return HandleCheck(CoinApiEndpointUrls.ExchangeRate(baseId, invert), () =>
-            {
-                var current_rates = _coinApi.Exchange_rates_get_all_current_rates(baseId, invert);
-                return (CheckDataAndSetStatus<ExchangeCurrentrate>(current_rates), current_rates);
-            });
+            return HandleCheck(CoinApiEndpointUrls.ExchangeRate(baseId, invert), _coinApi.Exchange_rates_get_all_current_ratesAsync (baseId, invert));
         }
 
-        public EndpointCheckResult<List<Period>> Ohlcv_list_all_periods()
+        public Task<EndpointCheckResult<List<Period>>> Ohlcv_list_all_periodsAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Ohlcv_Periods(), () =>
-            {
-                var periods = _coinApi.Ohlcv_list_all_periods();
-                return (CheckDataAndSetStatus<Period>(periods), periods);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Ohlcv_Periods(), _coinApi.Ohlcv_list_all_periodsAsync (); ;
         }
 
-        public EndpointCheckResult<List<OHLCV>> Ohlcv_latest_data(string symbolId, string periodId)
+        public Task<EndpointCheckResult<List<OHLCV>>> Ohlcv_latest_dataAsync(string symbolId, string periodId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Ohlcv_LatestData(symbolId, periodId), () =>
-                {
-                    var ohlcv = _coinApi.Ohlcv_latest_data(symbolId, periodId);
-                    return (CheckDataAndSetStatus<OHLCV>(ohlcv), ohlcv);
-                });
+            return HandleCheck(CoinApiEndpointUrls.Ohlcv_LatestData(symbolId, periodId), _coinApi.Ohlcv_latest_dataAsync(symbolId, periodId));
         }
 
-        public EndpointCheckResult<List<OHLCV>> Ohlcv_historical_data(string symbolId, string periodId, DateTime start)
+        public Task<EndpointCheckResult<List<OHLCV>>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start)
         {
-            return HandleCheck(CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat)), () =>
-            {
-                var ohlcv_latest = _coinApi.Ohlcv_historical_data(symbolId, periodId, start);
-                return (CheckDataAndSetStatus<OHLCV>(ohlcv_latest), ohlcv_latest);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat)), _coinApi.Ohlcv_historical_dataAsync (symbolId, periodId, start));
         }
-        public EndpointCheckResult<List<Trade>> Trades_latest_data_all()
+        public Task<EndpointCheckResult<List<Trade>>> Trades_latest_data_allAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Trades_Latest(), () =>
-            {
-                var latest_trades = _coinApi.Trades_latest_data_all();
-                return (CheckDataAndSetStatus<Trade>(latest_trades), latest_trades);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Trades_Latest(), _coinApi.Trades_latest_data_allAsync());
         }
 
-        public EndpointCheckResult<List<Trade>> Trades_historical_data(string symbolId, DateTime start)
+        public Task<EndpointCheckResult<List<Trade>>> Trades_historical_dataAsync(string symbolId, DateTime start)
         {
-            return HandleCheck(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat)), () =>
-            {
-                var historical_trades = _coinApi.Trades_historical_data(symbolId, start);
-                return (CheckDataAndSetStatus<Trade>(historical_trades), historical_trades);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Trades_HistoricalData(symbolId, start.ToString(DateFormat)), _coinApi.Trades_historical_dataAsync(symbolId, start));
         }
 
-        public EndpointCheckResult<List<Trade>> Trades_latest_data_symbol(string symbolId)
+        public Task<EndpointCheckResult<List<Trade>>> Trades_latest_data_symbolAsync(string symbolId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Trades_LatestSymbol(symbolId), () =>
-            {
-                var latest_trades = _coinApi.Trades_latest_data_symbol(symbolId);
-                return (CheckDataAndSetStatus<Trade>(latest_trades), latest_trades);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Trades_LatestSymbol(symbolId), _coinApi.Trades_latest_data_symbolAsync(symbolId));
         }
 
-        public EndpointCheckResult<List<Quote>> Quotes_current_data_all()
+        public Task<EndpointCheckResult<List<Quote>>> Quotes_current_data_allAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Quotes_Current(), () =>
-            {
-                var current_quotes = _coinApi.Quotes_current_data_all();
-                return (CheckDataAndSetStatus<Quote>(current_quotes), current_quotes);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Quotes_Current(), _coinApi.Quotes_current_data_allAsync());
         }
 
-        public EndpointCheckResult<Quote> Quotes_current_data_symbol(string symbolId)
+        public Task<EndpointCheckResult<Quote>> Quotes_current_data_symbolAsync(string symbolId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Quotes_CurrentSymbol(symbolId), () =>
-            {
-                var current_quote = _coinApi.Quotes_current_data_symbol(symbolId);
-                return (CheckDataAndSetStatus<Quote>(current_quote), current_quote);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Quotes_CurrentSymbol(symbolId), _coinApi.Quotes_current_data_symbolAsync(symbolId));
         }
 
-        public EndpointCheckResult<List<Quote>> Quotes_latest_data_all()
+        public Task<EndpointCheckResult<List<Quote>>> Quotes_latest_data_allAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Quotes_Latest(), () =>
-            {
-                var quotes_latest_data = _coinApi.Quotes_latest_data_all();
-                return (CheckDataAndSetStatus<Quote>(quotes_latest_data), quotes_latest_data);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Quotes_Latest(), _coinApi.Quotes_latest_data_allAsync());
         }
 
-        public EndpointCheckResult<List<Quote>> Quotes_latest_data_symbol(string symbolId)
+        public Task<EndpointCheckResult<List<Quote>>> Quotes_latest_data_symbolAsync(string symbolId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Quotes_LatestSymbol(symbolId), () =>
-            {
-                var quotes_latest_data_btc_usd = _coinApi.Quotes_latest_data_symbol(symbolId);
-                return (CheckDataAndSetStatus<Quote>(quotes_latest_data_btc_usd), quotes_latest_data_btc_usd);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Quotes_LatestSymbol(symbolId), _coinApi.Quotes_latest_data_symbolAsync(symbolId));
         }
 
-        public EndpointCheckResult<List<Quote>> Quotes_historical_data(string symbolId, DateTime start)
+        public Task<EndpointCheckResult<List<Quote>>> Quotes_historical_dataAsync(string symbolId, DateTime start)
         {
-            return HandleCheck(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat)), () =>
-            {
-                var quotes_historical_data = _coinApi.Quotes_historical_data(symbolId, start);
-                return (CheckDataAndSetStatus<Quote>(quotes_historical_data), quotes_historical_data);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Quotes_HistoricalData(symbolId, start.ToString(DateFormat)), _coinApi.Quotes_historical_dataAsync(symbolId, start));
         }
 
-        public EndpointCheckResult<List<Orderbook>> Orderbooks_current_data_all_filtered_bitstamp()
+        public Task<EndpointCheckResult<List<Orderbook>>> Orderbooks_current_data_all_filtered_bitstampAsync()
         {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentFilteredBitstamp(), () =>
-            {
-                var orderbooks_current_data = _coinApi.Orderbooks_current_data_all_filtered_bitstamp();
-                return (CheckDataAndSetStatus<Orderbook>(orderbooks_current_data), orderbooks_current_data);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentFilteredBitstamp(), _coinApi.Orderbooks_current_data_all_filtered_bitstampAsync());
         }
 
-        public EndpointCheckResult<Orderbook> Orderbooks_current_data_symbol(string symbolId)
+        public Task<EndpointCheckResult<Orderbook>> Orderbooks_current_data_symbolAsync(string symbolId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId), () =>
-            {
-                var orderbooks_current_data_btc_usd = _coinApi.Orderbooks_current_data_symbol(symbolId);
-                return (CheckDataAndSetStatus<Orderbook>(orderbooks_current_data_btc_usd), orderbooks_current_data_btc_usd);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId), _coinApi.Orderbooks_current_data_symbolAsync(symbolId));
         }
 
-        public EndpointCheckResult<List<Orderbook>> Orderbooks_last_data(string symbolId)
+        public Task<EndpointCheckResult<List<Orderbook>>> Orderbooks_last_dataAsync(string symbolId)
         {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks_LatestData(symbolId), () =>
-            {
-                var orderbooks_latest_data_btc_usd = _coinApi.Orderbooks_last_data(symbolId);
-                return (CheckDataAndSetStatus<Orderbook>(orderbooks_latest_data_btc_usd), orderbooks_latest_data_btc_usd);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Orderbooks_LatestData(symbolId), _coinApi.Orderbooks_last_dataAsync(symbolId));
         }
 
-        public EndpointCheckResult<List<Orderbook>> Orderbooks_historical_data(string symbolId, DateTime start)
+        public Task<EndpointCheckResult<List<Orderbook>>> Orderbooks_historical_dataAsync(string symbolId, DateTime start)
         {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat)), () =>
-            {
-                var orderbooks_historical_data_btc_usd = _coinApi.Orderbooks_historical_data(symbolId, start);
-                return (CheckDataAndSetStatus<Orderbook>(orderbooks_historical_data_btc_usd), orderbooks_historical_data_btc_usd);
-            });
+            return HandleCheck(CoinApiEndpointUrls.Orderbooks_HistoricalData(symbolId, start.ToString(DateFormat)), _coinApi.Orderbooks_historical_dataAsync(symbolId, start));
         }
 
-        public EndpointCheckResult<List<Orderbook3>> Orderbooks3_current_data_all_filtered_bitstamp()
-        {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks3_CurrentFilteredBitstamp(), () =>
-            {
-                var orderbooks3_current_data = _coinApi.Orderbooks3_current_data_all_filtered_bitstamp();
-                return (CheckDataAndSetStatus<Orderbook3>(orderbooks3_current_data), orderbooks3_current_data);
-            });
-        }
-        public EndpointCheckResult<Orderbook3> Orderbooks3_current_data_symbol(string symbolId)
-        {
-            return HandleCheck(CoinApiEndpointUrls.Orderbooks3_Current(symbolId), () =>
-            {
-                var orderbooks3_current_data_btc_usd = _coinApi.Orderbooks3_current_data_symbol(symbolId);
-                return (CheckDataAndSetStatus<Orderbook3>(orderbooks3_current_data_btc_usd), orderbooks3_current_data_btc_usd);
-            });
-        }
-
-        private CoinApiCheckStatusCode CheckDataAndSetStatus<T>(object data)
-        {
-            if (data == null)
-                return CoinApiCheckStatusCode.BadData;
-
-            if (data is IEnumerable<T> list && !list.Any())
-                return CoinApiCheckStatusCode.BadData;
-
-            return CoinApiCheckStatusCode.GoodResponse;
-        }
+  
 
 
-        private EndpointCheckResult<T> HandleCheck<T>(string endpoint, Func<(CoinApiCheckStatusCode, T)> check)
+        private async Task<EndpointCheckResult<T>> HandleCheck<T>(string endpoint, Task<T> data)
         {
             var result = new EndpointCheckResult<T> { Endpoint = endpoint };
             try
             {
-                (CoinApiCheckStatusCode status, T data) = check();
-                result.StatusCode = status;
-                result.Data = data;
+                result.Data = await data;
+                result.StatusCode = CoinApiCheckStatusCode.GoodResponse;
+
+                if (data == null)
+                    result.StatusCode = CoinApiCheckStatusCode.BadData;
+
+                if (data is IEnumerable<T> list && !list.Any())
+                    result.StatusCode = CoinApiCheckStatusCode.BadData;
             }
             catch (Exception exception)
             {

@@ -38,9 +38,11 @@ class OrderExecutionReportAllOf(object):
         'exchange_order_id': 'str',
         'amount_open': 'float',
         'amount_filled': 'float',
+        'avg_px': 'float',
         'status': 'OrdStatus',
-        'time_order': 'list[list[str]]',
-        'error_message': 'str'
+        'status_history': 'list[list[str]]',
+        'error_message': 'str',
+        'fills': 'list[Fills]'
     }
 
     attribute_map = {
@@ -48,12 +50,14 @@ class OrderExecutionReportAllOf(object):
         'exchange_order_id': 'exchange_order_id',
         'amount_open': 'amount_open',
         'amount_filled': 'amount_filled',
+        'avg_px': 'avg_px',
         'status': 'status',
-        'time_order': 'time_order',
-        'error_message': 'error_message'
+        'status_history': 'status_history',
+        'error_message': 'error_message',
+        'fills': 'fills'
     }
 
-    def __init__(self, client_order_id_format_exchange=None, exchange_order_id=None, amount_open=None, amount_filled=None, status=None, time_order=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, client_order_id_format_exchange=None, exchange_order_id=None, amount_open=None, amount_filled=None, avg_px=None, status=None, status_history=None, error_message=None, fills=None, local_vars_configuration=None):  # noqa: E501
         """OrderExecutionReportAllOf - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,9 +67,11 @@ class OrderExecutionReportAllOf(object):
         self._exchange_order_id = None
         self._amount_open = None
         self._amount_filled = None
+        self._avg_px = None
         self._status = None
-        self._time_order = None
+        self._status_history = None
         self._error_message = None
+        self._fills = None
         self.discriminator = None
 
         self.client_order_id_format_exchange = client_order_id_format_exchange
@@ -73,10 +79,15 @@ class OrderExecutionReportAllOf(object):
             self.exchange_order_id = exchange_order_id
         self.amount_open = amount_open
         self.amount_filled = amount_filled
+        if avg_px is not None:
+            self.avg_px = avg_px
         self.status = status
-        self.time_order = time_order
+        if status_history is not None:
+            self.status_history = status_history
         if error_message is not None:
             self.error_message = error_message
+        if fills is not None:
+            self.fills = fills
 
     @property
     def client_order_id_format_exchange(self):
@@ -177,6 +188,29 @@ class OrderExecutionReportAllOf(object):
         self._amount_filled = amount_filled
 
     @property
+    def avg_px(self):
+        """Gets the avg_px of this OrderExecutionReportAllOf.  # noqa: E501
+
+        Calculated average price of all fills on this order.  # noqa: E501
+
+        :return: The avg_px of this OrderExecutionReportAllOf.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_px
+
+    @avg_px.setter
+    def avg_px(self, avg_px):
+        """Sets the avg_px of this OrderExecutionReportAllOf.
+
+        Calculated average price of all fills on this order.  # noqa: E501
+
+        :param avg_px: The avg_px of this OrderExecutionReportAllOf.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_px = avg_px
+
+    @property
     def status(self):
         """Gets the status of this OrderExecutionReportAllOf.  # noqa: E501
 
@@ -200,35 +234,33 @@ class OrderExecutionReportAllOf(object):
         self._status = status
 
     @property
-    def time_order(self):
-        """Gets the time_order of this OrderExecutionReportAllOf.  # noqa: E501
+    def status_history(self):
+        """Gets the status_history of this OrderExecutionReportAllOf.  # noqa: E501
 
         Timestamped history of order status changes.  # noqa: E501
 
-        :return: The time_order of this OrderExecutionReportAllOf.  # noqa: E501
+        :return: The status_history of this OrderExecutionReportAllOf.  # noqa: E501
         :rtype: list[list[str]]
         """
-        return self._time_order
+        return self._status_history
 
-    @time_order.setter
-    def time_order(self, time_order):
-        """Sets the time_order of this OrderExecutionReportAllOf.
+    @status_history.setter
+    def status_history(self, status_history):
+        """Sets the status_history of this OrderExecutionReportAllOf.
 
         Timestamped history of order status changes.  # noqa: E501
 
-        :param time_order: The time_order of this OrderExecutionReportAllOf.  # noqa: E501
+        :param status_history: The status_history of this OrderExecutionReportAllOf.  # noqa: E501
         :type: list[list[str]]
         """
-        if self.local_vars_configuration.client_side_validation and time_order is None:  # noqa: E501
-            raise ValueError("Invalid value for `time_order`, must not be `None`")  # noqa: E501
 
-        self._time_order = time_order
+        self._status_history = status_history
 
     @property
     def error_message(self):
         """Gets the error_message of this OrderExecutionReportAllOf.  # noqa: E501
 
-        Error message  # noqa: E501
+        Error message.  # noqa: E501
 
         :return: The error_message of this OrderExecutionReportAllOf.  # noqa: E501
         :rtype: str
@@ -239,13 +271,36 @@ class OrderExecutionReportAllOf(object):
     def error_message(self, error_message):
         """Sets the error_message of this OrderExecutionReportAllOf.
 
-        Error message  # noqa: E501
+        Error message.  # noqa: E501
 
         :param error_message: The error_message of this OrderExecutionReportAllOf.  # noqa: E501
         :type: str
         """
 
         self._error_message = error_message
+
+    @property
+    def fills(self):
+        """Gets the fills of this OrderExecutionReportAllOf.  # noqa: E501
+
+        Relay fill information on working orders.  # noqa: E501
+
+        :return: The fills of this OrderExecutionReportAllOf.  # noqa: E501
+        :rtype: list[Fills]
+        """
+        return self._fills
+
+    @fills.setter
+    def fills(self, fills):
+        """Sets the fills of this OrderExecutionReportAllOf.
+
+        Relay fill information on working orders.  # noqa: E501
+
+        :param fills: The fills of this OrderExecutionReportAllOf.  # noqa: E501
+        :type: list[Fills]
+        """
+
+        self._fills = fills
 
     def to_dict(self):
         """Returns the model properties as a dict"""

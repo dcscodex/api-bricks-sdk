@@ -40,6 +40,8 @@ class ApiClient {
           return Balance.fromJson(value);
         case 'BalanceData':
           return BalanceData.fromJson(value);
+        case 'Fills':
+          return Fills.fromJson(value);
         case 'Message':
           return Message.fromJson(value);
         case 'OrdSide':

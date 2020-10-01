@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 
  - [Balance](docs/Model/Balance.md)
  - [BalanceData](docs/Model/BalanceData.md)
+ - [Fills](docs/Model/Fills.md)
  - [Message](docs/Model/Message.md)
  - [OrdSide](docs/Model/OrdSide.md)
  - [OrdStatus](docs/Model/OrdStatus.md)

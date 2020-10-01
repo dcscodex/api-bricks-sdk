@@ -11,6 +11,7 @@
 */
 package org.openapitools.client.models
 
+import org.openapitools.client.models.Fills
 import org.openapitools.client.models.OrdSide
 import org.openapitools.client.models.OrdStatus
 import org.openapitools.client.models.OrdType
@@ -32,13 +33,15 @@ import com.squareup.moshi.Json
  * @param amountOpen Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
  * @param amountFilled Total quantity filled.
  * @param status 
- * @param timeOrder Timestamped history of order status changes.
  * @param symbolIdExchange Exchange symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
  * @param symbolIdCoinapi CoinAPI symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
  * @param expireTime Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
  * @param execInst Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
  * @param exchangeOrderId Unique identifier of the order assigned by the exchange or executing system.
- * @param errorMessage Error message
+ * @param avgPx Calculated average price of all fills on this order.
+ * @param statusHistory Timestamped history of order status changes.
+ * @param errorMessage Error message.
+ * @param fills Relay fill information on working orders.
  */
 
 data class OrderExecutionReport (
@@ -71,9 +74,6 @@ data class OrderExecutionReport (
     val amountFilled: java.math.BigDecimal,
     @Json(name = "status")
     val status: OrdStatus,
-    /* Timestamped history of order status changes. */
-    @Json(name = "time_order")
-    val timeOrder: kotlin.Array<kotlin.Array<kotlin.String>>,
     /* Exchange symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order. */
     @Json(name = "symbol_id_exchange")
     val symbolIdExchange: kotlin.String? = null,
@@ -89,9 +89,18 @@ data class OrderExecutionReport (
     /* Unique identifier of the order assigned by the exchange or executing system. */
     @Json(name = "exchange_order_id")
     val exchangeOrderId: kotlin.String? = null,
-    /* Error message */
+    /* Calculated average price of all fills on this order. */
+    @Json(name = "avg_px")
+    val avgPx: java.math.BigDecimal? = null,
+    /* Timestamped history of order status changes. */
+    @Json(name = "status_history")
+    val statusHistory: kotlin.Array<kotlin.Array<kotlin.String>>? = null,
+    /* Error message. */
     @Json(name = "error_message")
-    val errorMessage: kotlin.String? = null
+    val errorMessage: kotlin.String? = null,
+    /* Relay fill information on working orders. */
+    @Json(name = "fills")
+    val fills: kotlin.Array<Fills>? = null
 ) {
 
     /**

@@ -41,13 +41,20 @@ class TestOrderExecutionReportAllOf(unittest.TestCase):
                 exchange_order_id = '3456456754', 
                 amount_open = 0.22, 
                 amount_filled = 0.0, 
+                avg_px = 0.0783, 
                 status = 'RECEIVED', 
-                time_order = [
+                status_history = [
                     [
                         '[["RECEIVED","2020-05-27T11:16:20.1677709Z"],["REJECTED","2020-05-27T11:16:20.1677710Z"]]'
                         ]
                     ], 
-                error_message = '{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol 'BTCUSD' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}'
+                error_message = '{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol 'BTCUSD' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}', 
+                fills = [
+                    openapi_client.models.relay_fill_information_on_working_orders/.Relay fill information on working orders.(
+                        time = 2020-01-01T10:45:20.1677709Z, 
+                        price = 10799.2, 
+                        amount = 0.002, )
+                    ]
             )
         else :
             return OrderExecutionReportAllOf(
@@ -55,11 +62,6 @@ class TestOrderExecutionReportAllOf(unittest.TestCase):
                 amount_open = 0.22,
                 amount_filled = 0.0,
                 status = 'RECEIVED',
-                time_order = [
-                    [
-                        '[["RECEIVED","2020-05-27T11:16:20.1677709Z"],["REJECTED","2020-05-27T11:16:20.1677710Z"]]'
-                        ]
-                    ],
         )
 
     def testOrderExecutionReportAllOf(self):

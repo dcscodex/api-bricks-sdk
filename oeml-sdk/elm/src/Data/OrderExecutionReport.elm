@@ -18,6 +18,7 @@ import Data.OrdType as OrdType exposing (OrdType)
 import Data.TimeInForce as TimeInForce exposing (TimeInForce)
 import DateOnly exposing (DateOnly)
 import Data.OrdStatus as OrdStatus exposing (OrdStatus)
+import Data.Fills as Fills exposing (Fills)
 import Dict exposing (Dict)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline exposing (optional, required)
@@ -42,9 +43,11 @@ type alias OrderExecutionReport =
     , exchangeOrderId : Maybe (String)
     , amountOpen : Float
     , amountFilled : Float
+    , avgPx : Maybe (Float)
     , status : OrdStatus
-    , timeOrder : (List (List String))
+    , statusHistory : Maybe ((List (List String)))
     , errorMessage : Maybe (String)
+    , fills : Maybe ((List Fills))
     }
 
 
@@ -73,9 +76,11 @@ decoder =
         |> optional "exchange_order_id" (Decode.nullable Decode.string) Nothing
         |> required "amount_open" Decode.float
         |> required "amount_filled" Decode.float
+        |> optional "avg_px" (Decode.nullable Decode.float) Nothing
         |> required "status" OrdStatus.decoder
-        |> required "time_order" (Decode.list (Decode.list Decode.string))
+        |> optional "status_history" (Decode.nullable (Decode.list (Decode.list Decode.string))) Nothing
         |> optional "error_message" (Decode.nullable Decode.string) Nothing
+        |> optional "fills" (Decode.nullable (Decode.list Fills.decoder)) Nothing
 
 
 
@@ -106,9 +111,11 @@ encodePairs model =
     , ( "exchange_order_id", Maybe.withDefault Encode.null (Maybe.map Encode.string model.exchangeOrderId) )
     , ( "amount_open", Encode.float model.amountOpen )
     , ( "amount_filled", Encode.float model.amountFilled )
+    , ( "avg_px", Maybe.withDefault Encode.null (Maybe.map Encode.float model.avgPx) )
     , ( "status", OrdStatus.encode model.status )
-    , ( "time_order", (Encode.list (Encode.list Encode.string)) model.timeOrder )
+    , ( "status_history", Maybe.withDefault Encode.null (Maybe.map (Encode.list (Encode.list Encode.string)) model.statusHistory) )
     , ( "error_message", Maybe.withDefault Encode.null (Maybe.map Encode.string model.errorMessage) )
+    , ( "fills", Maybe.withDefault Encode.null (Maybe.map (Encode.list Fills.encode) model.fills) )
     ]
 
 

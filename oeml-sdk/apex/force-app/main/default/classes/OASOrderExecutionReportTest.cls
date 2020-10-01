@@ -86,7 +86,8 @@ private class OASOrderExecutionReportTest {
         System.assertEquals('exchangeOrderId', propertyMappings.get('exchange_order_id'));
         System.assertEquals('amountOpen', propertyMappings.get('amount_open'));
         System.assertEquals('amountFilled', propertyMappings.get('amount_filled'));
-        System.assertEquals('timeOrder', propertyMappings.get('time_order'));
+        System.assertEquals('avgPx', propertyMappings.get('avg_px'));
+        System.assertEquals('statusHistory', propertyMappings.get('status_history'));
         System.assertEquals('errorMessage', propertyMappings.get('error_message'));
     }
 
@@ -94,7 +95,8 @@ private class OASOrderExecutionReportTest {
     private static void defaultValuesPopulated() {
         OASOrderExecutionReport orderExecutionReport = new OASOrderExecutionReport();
         System.assertEquals(new List<ExecInstEnum>(), orderExecutionReport.execInst);
-        System.assertEquals(new List<List<String>>(), orderExecutionReport.timeOrder);
+        System.assertEquals(new List<List<String>>(), orderExecutionReport.statusHistory);
+        System.assertEquals(new List<OASFills>(), orderExecutionReport.fills);
         System.assertEquals(null, orderExecutionReport.exchangeId);
         System.assertEquals(null, orderExecutionReport.clientOrderId);
         System.assertEquals(null, orderExecutionReport.symbolIdExchange);
@@ -109,6 +111,7 @@ private class OASOrderExecutionReportTest {
         System.assertEquals(null, orderExecutionReport.exchangeOrderId);
         System.assertEquals(null, orderExecutionReport.amountOpen);
         System.assertEquals(null, orderExecutionReport.amountFilled);
+        System.assertEquals(null, orderExecutionReport.avgPx);
         System.assertEquals(null, orderExecutionReport.status);
         System.assertEquals(null, orderExecutionReport.errorMessage);
     }

@@ -19,9 +19,11 @@ Name | Type | Description | Notes
 **exchange_order_id** | **String** | Unique identifier of the order assigned by the exchange or executing system. | [optional] 
 **amount_open** | **Float** | Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60; | 
 **amount_filled** | **Float** | Total quantity filled. | 
+**avg_px** | **Float** | Calculated average price of all fills on this order. | [optional] 
 **status** | [**OrdStatus**](OrdStatus.md) |  | 
-**time_order** | **Array&lt;Array&lt;String&gt;&gt;** | Timestamped history of order status changes. | 
-**error_message** | **String** | Error message | [optional] 
+**status_history** | **Array&lt;Array&lt;String&gt;&gt;** | Timestamped history of order status changes. | [optional] 
+**error_message** | **String** | Error message. | [optional] 
+**fills** | [**Array&lt;Fills&gt;**](Fills.md) | Relay fill information on working orders. | [optional] 
 
 ## Code Sample
 
@@ -43,9 +45,11 @@ instance = OpenapiClient::OrderExecutionReport.new(exchange_id: KRAKEN,
                                  exchange_order_id: 3456456754,
                                  amount_open: 0.22,
                                  amount_filled: 0.0,
+                                 avg_px: 0.0783,
                                  status: null,
-                                 time_order: null,
-                                 error_message: {&quot;result&quot;:&quot;error&quot;,&quot;reason&quot;:&quot;InsufficientFunds&quot;,&quot;message&quot;:&quot;Failed to place buy order on symbol &#39;BTCUSD&#39; for price $7,000.00 and quantity 0.22 BTC due to insufficient funds&quot;})
+                                 status_history: null,
+                                 error_message: {&quot;result&quot;:&quot;error&quot;,&quot;reason&quot;:&quot;InsufficientFunds&quot;,&quot;message&quot;:&quot;Failed to place buy order on symbol &#39;BTCUSD&#39; for price $7,000.00 and quantity 0.22 BTC due to insufficient funds&quot;},
+                                 fills: null)
 ```
 
 

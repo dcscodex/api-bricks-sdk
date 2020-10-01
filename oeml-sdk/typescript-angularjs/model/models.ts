@@ -1,5 +1,6 @@
 export * from './Balance';
 export * from './BalanceData';
+export * from './Fills';
 export * from './Message';
 export * from './OrdSide';
 export * from './OrdStatus';

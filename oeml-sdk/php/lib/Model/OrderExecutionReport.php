@@ -73,9 +73,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         'exchange_order_id' => 'string',
         'amount_open' => 'float',
         'amount_filled' => 'float',
+        'avg_px' => 'float',
         'status' => '\OpenAPI\Client\Model\OrdStatus',
-        'time_order' => 'string[][]',
-        'error_message' => 'string'
+        'status_history' => 'string[][]',
+        'error_message' => 'string',
+        'fills' => '\OpenAPI\Client\Model\Fills[]'
     ];
 
     /**
@@ -99,9 +101,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         'exchange_order_id' => null,
         'amount_open' => null,
         'amount_filled' => null,
+        'avg_px' => null,
         'status' => null,
-        'time_order' => null,
-        'error_message' => null
+        'status_history' => null,
+        'error_message' => null,
+        'fills' => null
     ];
 
     /**
@@ -146,9 +150,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         'exchange_order_id' => 'exchange_order_id',
         'amount_open' => 'amount_open',
         'amount_filled' => 'amount_filled',
+        'avg_px' => 'avg_px',
         'status' => 'status',
-        'time_order' => 'time_order',
-        'error_message' => 'error_message'
+        'status_history' => 'status_history',
+        'error_message' => 'error_message',
+        'fills' => 'fills'
     ];
 
     /**
@@ -172,9 +178,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         'exchange_order_id' => 'setExchangeOrderId',
         'amount_open' => 'setAmountOpen',
         'amount_filled' => 'setAmountFilled',
+        'avg_px' => 'setAvgPx',
         'status' => 'setStatus',
-        'time_order' => 'setTimeOrder',
-        'error_message' => 'setErrorMessage'
+        'status_history' => 'setStatusHistory',
+        'error_message' => 'setErrorMessage',
+        'fills' => 'setFills'
     ];
 
     /**
@@ -198,9 +206,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         'exchange_order_id' => 'getExchangeOrderId',
         'amount_open' => 'getAmountOpen',
         'amount_filled' => 'getAmountFilled',
+        'avg_px' => 'getAvgPx',
         'status' => 'getStatus',
-        'time_order' => 'getTimeOrder',
-        'error_message' => 'getErrorMessage'
+        'status_history' => 'getStatusHistory',
+        'error_message' => 'getErrorMessage',
+        'fills' => 'getFills'
     ];
 
     /**
@@ -295,9 +305,11 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         $this->container['exchange_order_id'] = isset($data['exchange_order_id']) ? $data['exchange_order_id'] : null;
         $this->container['amount_open'] = isset($data['amount_open']) ? $data['amount_open'] : null;
         $this->container['amount_filled'] = isset($data['amount_filled']) ? $data['amount_filled'] : null;
+        $this->container['avg_px'] = isset($data['avg_px']) ? $data['avg_px'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['time_order'] = isset($data['time_order']) ? $data['time_order'] : null;
+        $this->container['status_history'] = isset($data['status_history']) ? $data['status_history'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
+        $this->container['fills'] = isset($data['fills']) ? $data['fills'] : null;
     }
 
     /**
@@ -341,9 +353,6 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['time_order'] === null) {
-            $invalidProperties[] = "'time_order' can't be null";
         }
         return $invalidProperties;
     }
@@ -730,6 +739,30 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets avg_px
+     *
+     * @return float|null
+     */
+    public function getAvgPx()
+    {
+        return $this->container['avg_px'];
+    }
+
+    /**
+     * Sets avg_px
+     *
+     * @param float|null $avg_px Calculated average price of all fills on this order.
+     *
+     * @return $this
+     */
+    public function setAvgPx($avg_px)
+    {
+        $this->container['avg_px'] = $avg_px;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return \OpenAPI\Client\Model\OrdStatus
@@ -754,25 +787,25 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets time_order
+     * Gets status_history
      *
-     * @return string[][]
+     * @return string[][]|null
      */
-    public function getTimeOrder()
+    public function getStatusHistory()
     {
-        return $this->container['time_order'];
+        return $this->container['status_history'];
     }
 
     /**
-     * Sets time_order
+     * Sets status_history
      *
-     * @param string[][] $time_order Timestamped history of order status changes.
+     * @param string[][]|null $status_history Timestamped history of order status changes.
      *
      * @return $this
      */
-    public function setTimeOrder($time_order)
+    public function setStatusHistory($status_history)
     {
-        $this->container['time_order'] = $time_order;
+        $this->container['status_history'] = $status_history;
 
         return $this;
     }
@@ -790,13 +823,37 @@ class OrderExecutionReport implements ModelInterface, ArrayAccess
     /**
      * Sets error_message
      *
-     * @param string|null $error_message Error message
+     * @param string|null $error_message Error message.
      *
      * @return $this
      */
     public function setErrorMessage($error_message)
     {
         $this->container['error_message'] = $error_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets fills
+     *
+     * @return \OpenAPI\Client\Model\Fills[]|null
+     */
+    public function getFills()
+    {
+        return $this->container['fills'];
+    }
+
+    /**
+     * Sets fills
+     *
+     * @param \OpenAPI\Client\Model\Fills[]|null $fills Relay fill information on working orders.
+     *
+     * @return $this
+     */
+    public function setFills($fills)
+    {
+        $this->container['fills'] = $fills;
 
         return $this;
     }

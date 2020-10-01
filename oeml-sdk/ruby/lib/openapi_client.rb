@@ -19,6 +19,7 @@ require 'openapi_client/configuration'
 # Models
 require 'openapi_client/models/balance'
 require 'openapi_client/models/balance_data'
+require 'openapi_client/models/fills'
 require 'openapi_client/models/message'
 require 'openapi_client/models/ord_side'
 require 'openapi_client/models/ord_status'

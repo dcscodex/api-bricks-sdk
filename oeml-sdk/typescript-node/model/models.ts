@@ -1,5 +1,6 @@
 export * from './balance';
 export * from './balanceData';
+export * from './fills';
 export * from './message';
 export * from './ordSide';
 export * from './ordStatus';
@@ -19,6 +20,7 @@ import localVarRequest = require('request');
 
 import { Balance } from './balance';
 import { BalanceData } from './balanceData';
+import { Fills } from './fills';
 import { Message } from './message';
 import { OrdSide } from './ordSide';
 import { OrdStatus } from './ordStatus';
@@ -60,6 +62,7 @@ let enumsMap: {[index: string]: any} = {
 let typeMap: {[index: string]: any} = {
     "Balance": Balance,
     "BalanceData": BalanceData,
+    "Fills": Fills,
     "Message": Message,
     "OrderCancelAllRequest": OrderCancelAllRequest,
     "OrderCancelSingleRequest": OrderCancelSingleRequest,

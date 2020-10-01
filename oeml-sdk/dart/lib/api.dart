@@ -19,6 +19,7 @@ part 'api/positions_api.dart';
 
 part 'model/balance.dart';
 part 'model/balance_data.dart';
+part 'model/fills.dart';
 part 'model/message.dart';
 part 'model/ord_side.dart';
 part 'model/ord_status.dart';

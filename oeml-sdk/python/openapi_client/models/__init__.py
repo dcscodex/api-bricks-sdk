@@ -17,6 +17,7 @@ from __future__ import absolute_import
 # import models into model package
 from openapi_client.models.balance import Balance
 from openapi_client.models.balance_data import BalanceData
+from openapi_client.models.fills import Fills
 from openapi_client.models.message import Message
 from openapi_client.models.ord_side import OrdSide
 from openapi_client.models.ord_status import OrdStatus

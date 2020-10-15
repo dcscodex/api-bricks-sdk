@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoinAPI.REST.V1.Example
+namespace CoinAPI.REST.V1
 {
     public class CoinApiRestEndpointsTester
     {

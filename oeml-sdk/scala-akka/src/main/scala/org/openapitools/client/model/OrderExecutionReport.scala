@@ -42,11 +42,15 @@ case class OrderExecutionReport (
   amountOpen: Double,
   /* Total quantity filled. */
   amountFilled: Double,
+  /* Calculated average price of all fills on this order. */
+  avgPx: Option[Double] = None,
   status: OrdStatus,
   /* Timestamped history of order status changes. */
-  timeOrder: Seq[Seq[String]],
-  /* Error message */
-  errorMessage: Option[String] = None
+  statusHistory: Option[Seq[Seq[String]]] = None,
+  /* Error message. */
+  errorMessage: Option[String] = None,
+  /* Relay fill information on working orders. */
+  fills: Option[Seq[Fills]] = None
 ) extends ApiModel
 
 object OrderExecutionReportEnums {

@@ -4,6 +4,7 @@ HEADERS += \
 # Models
     $${PWD}/OAIBalance.h \
     $${PWD}/OAIBalance_data.h \
+    $${PWD}/OAIFills.h \
     $${PWD}/OAIMessage.h \
     $${PWD}/OAIOrdSide.h \
     $${PWD}/OAIOrdStatus.h \
@@ -33,6 +34,7 @@ SOURCES += \
 # Models
     $${PWD}/OAIBalance.cpp \
     $${PWD}/OAIBalance_data.cpp \
+    $${PWD}/OAIFills.cpp \
     $${PWD}/OAIMessage.cpp \
     $${PWD}/OAIOrdSide.cpp \
     $${PWD}/OAIOrdStatus.cpp \

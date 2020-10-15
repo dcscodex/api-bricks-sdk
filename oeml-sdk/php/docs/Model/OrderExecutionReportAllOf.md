@@ -8,9 +8,11 @@ Name | Type | Description | Notes
 **exchange_order_id** | **string** | Unique identifier of the order assigned by the exchange or executing system. | [optional] 
 **amount_open** | **float** | Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60; | 
 **amount_filled** | **float** | Total quantity filled. | 
+**avg_px** | **float** | Calculated average price of all fills on this order. | [optional] 
 **status** | [**\OpenAPI\Client\Model\OrdStatus**](OrdStatus.md) |  | 
-**time_order** | [**string[][]**](array.md) | Timestamped history of order status changes. | 
-**error_message** | **string** | Error message | [optional] 
+**status_history** | [**string[][]**](array.md) | Timestamped history of order status changes. | [optional] 
+**error_message** | **string** | Error message. | [optional] 
+**fills** | [**\OpenAPI\Client\Model\Fills[]**](Fills.md) | Relay fill information on working orders. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

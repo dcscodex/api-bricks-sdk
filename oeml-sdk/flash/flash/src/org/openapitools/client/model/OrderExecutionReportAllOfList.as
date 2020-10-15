@@ -1,6 +1,7 @@
 package org.openapitools.client.model {
 
 import org.openapitools.common.ListWrapper;
+import org.openapitools.client.model.Fills;
 import org.openapitools.client.model.OrdStatus;
 
     public class OrderExecutionReportAllOfList implements ListWrapper {

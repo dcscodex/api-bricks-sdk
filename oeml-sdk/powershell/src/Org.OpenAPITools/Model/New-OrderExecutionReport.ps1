@@ -46,15 +46,21 @@ function New-OrderExecutionReport {
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [Decimal]
         ${amountUnderscorefilled},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${avgUnderscorepx},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [Org.OpenAPITools.Model.OrdStatus]
         ${status},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [String[][]]
-        ${timeUnderscoreorder},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [String[][]]
+        ${statusUnderscorehistory},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${errorUnderscoremessage}
+        ${errorUnderscoremessage},
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
+        [Org.OpenAPITools.Model.Fills[]]
+        ${fills}
     )
 
     Process {
@@ -77,9 +83,11 @@ function New-OrderExecutionReport {
             ${exchangeUnderscoreorderUnderscoreid},
             ${amountUnderscoreopen},
             ${amountUnderscorefilled},
+            ${avgUnderscorepx},
             ${status},
-            ${timeUnderscoreorder},
-            ${errorUnderscoremessage}
+            ${statusUnderscorehistory},
+            ${errorUnderscoremessage},
+            ${fills}
         )
     }
 }

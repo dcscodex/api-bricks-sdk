@@ -27,13 +27,19 @@ module OpenapiClient
     # Total quantity filled.
     attr_accessor :amount_filled
 
+    # Calculated average price of all fills on this order.
+    attr_accessor :avg_px
+
     attr_accessor :status
 
     # Timestamped history of order status changes.
-    attr_accessor :time_order
+    attr_accessor :status_history
 
-    # Error message
+    # Error message.
     attr_accessor :error_message
+
+    # Relay fill information on working orders.
+    attr_accessor :fills
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -42,9 +48,11 @@ module OpenapiClient
         :'exchange_order_id' => :'exchange_order_id',
         :'amount_open' => :'amount_open',
         :'amount_filled' => :'amount_filled',
+        :'avg_px' => :'avg_px',
         :'status' => :'status',
-        :'time_order' => :'time_order',
-        :'error_message' => :'error_message'
+        :'status_history' => :'status_history',
+        :'error_message' => :'error_message',
+        :'fills' => :'fills'
       }
     end
 
@@ -55,9 +63,11 @@ module OpenapiClient
         :'exchange_order_id' => :'String',
         :'amount_open' => :'Float',
         :'amount_filled' => :'Float',
+        :'avg_px' => :'Float',
         :'status' => :'OrdStatus',
-        :'time_order' => :'Array<Array<String>>',
-        :'error_message' => :'String'
+        :'status_history' => :'Array<Array<String>>',
+        :'error_message' => :'String',
+        :'fills' => :'Array<Fills>'
       }
     end
 
@@ -98,18 +108,28 @@ module OpenapiClient
         self.amount_filled = attributes[:'amount_filled']
       end
 
+      if attributes.key?(:'avg_px')
+        self.avg_px = attributes[:'avg_px']
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'time_order')
-        if (value = attributes[:'time_order']).is_a?(Array)
-          self.time_order = value
+      if attributes.key?(:'status_history')
+        if (value = attributes[:'status_history']).is_a?(Array)
+          self.status_history = value
         end
       end
 
       if attributes.key?(:'error_message')
         self.error_message = attributes[:'error_message']
+      end
+
+      if attributes.key?(:'fills')
+        if (value = attributes[:'fills']).is_a?(Array)
+          self.fills = value
+        end
       end
     end
 
@@ -133,10 +153,6 @@ module OpenapiClient
         invalid_properties.push('invalid value for "status", status cannot be nil.')
       end
 
-      if @time_order.nil?
-        invalid_properties.push('invalid value for "time_order", time_order cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -147,7 +163,6 @@ module OpenapiClient
       return false if @amount_open.nil?
       return false if @amount_filled.nil?
       return false if @status.nil?
-      return false if @time_order.nil?
       true
     end
 
@@ -160,9 +175,11 @@ module OpenapiClient
           exchange_order_id == o.exchange_order_id &&
           amount_open == o.amount_open &&
           amount_filled == o.amount_filled &&
+          avg_px == o.avg_px &&
           status == o.status &&
-          time_order == o.time_order &&
-          error_message == o.error_message
+          status_history == o.status_history &&
+          error_message == o.error_message &&
+          fills == o.fills
     end
 
     # @see the `==` method
@@ -174,7 +191,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [client_order_id_format_exchange, exchange_order_id, amount_open, amount_filled, status, time_order, error_message].hash
+      [client_order_id_format_exchange, exchange_order_id, amount_open, amount_filled, avg_px, status, status_history, error_message, fills].hash
     end
 
     # Builds the object from hash

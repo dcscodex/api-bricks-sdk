@@ -152,6 +152,32 @@ export type BalanceData = {
  * 
  * @export
  */
+export type Fills = {
+    /**
+     * Execution time.
+     * @type {Date}
+     * @memberof Fills
+     */
+    time?: Date;
+    /**
+     * Execution price.
+     * @type {number}
+     * @memberof Fills
+     */
+    price?: number;
+    /**
+     * Executed quantity.
+     * @type {number}
+     * @memberof Fills
+     */
+    amount?: number;
+}
+
+
+/**
+ * 
+ * @export
+ */
 export type Message = {
     /**
      * Type of message.
@@ -339,6 +365,12 @@ export type OrderExecutionReport = {
      */
     amount_filled: number;
     /**
+     * Calculated average price of all fills on this order.
+     * @type {number}
+     * @memberof OrderExecutionReport
+     */
+    avg_px?: number;
+    /**
      * 
      * @type {OrdStatus}
      * @memberof OrderExecutionReport
@@ -349,13 +381,19 @@ export type OrderExecutionReport = {
      * @type {Array<Array<string>>}
      * @memberof OrderExecutionReport
      */
-    time_order: Array<Array<string>>;
+    status_history?: Array<Array<string>>;
     /**
-     * Error message
+     * Error message.
      * @type {string}
      * @memberof OrderExecutionReport
      */
     error_message?: string;
+    /**
+     * Relay fill information on working orders.
+     * @type {Array<Fills>}
+     * @memberof OrderExecutionReport
+     */
+    fills?: Array<Fills>;
 }
 
 
@@ -389,6 +427,12 @@ export type OrderExecutionReportAllOf = {
      */
     amount_filled: number;
     /**
+     * Calculated average price of all fills on this order.
+     * @type {number}
+     * @memberof OrderExecutionReportAllOf
+     */
+    avg_px?: number;
+    /**
      * 
      * @type {OrdStatus}
      * @memberof OrderExecutionReportAllOf
@@ -399,13 +443,19 @@ export type OrderExecutionReportAllOf = {
      * @type {Array<Array<string>>}
      * @memberof OrderExecutionReportAllOf
      */
-    time_order: Array<Array<string>>;
+    status_history?: Array<Array<string>>;
     /**
-     * Error message
+     * Error message.
      * @type {string}
      * @memberof OrderExecutionReportAllOf
      */
     error_message?: string;
+    /**
+     * Relay fill information on working orders.
+     * @type {Array<Fills>}
+     * @memberof OrderExecutionReportAllOf
+     */
+    fills?: Array<Fills>;
 }
 
 

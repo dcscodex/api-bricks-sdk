@@ -107,6 +107,13 @@ class OrderExecutionReportAllOfTest extends TestCase
     }
 
     /**
+     * Test attribute "avg_px"
+     */
+    public function testPropertyAvgPx()
+    {
+    }
+
+    /**
      * Test attribute "status"
      */
     public function testPropertyStatus()
@@ -114,9 +121,9 @@ class OrderExecutionReportAllOfTest extends TestCase
     }
 
     /**
-     * Test attribute "time_order"
+     * Test attribute "status_history"
      */
-    public function testPropertyTimeOrder()
+    public function testPropertyStatusHistory()
     {
     }
 
@@ -124,6 +131,13 @@ class OrderExecutionReportAllOfTest extends TestCase
      * Test attribute "error_message"
      */
     public function testPropertyErrorMessage()
+    {
+    }
+
+    /**
+     * Test attribute "fills"
+     */
+    public function testPropertyFills()
     {
     }
 }

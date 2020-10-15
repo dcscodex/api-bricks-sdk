@@ -9,18 +9,22 @@ class OrderExecutionReportAllOf {
   num amountOpen = null;
   /* Total quantity filled. */
   num amountFilled = null;
+  /* Calculated average price of all fills on this order. */
+  num avgPx = null;
   
   OrdStatus status = null;
   //enum statusEnum {  RECEIVED,  ROUTING,  ROUTED,  NEW,  PENDING_CANCEL,  PARTIALLY_FILLED,  FILLED,  CANCELED,  REJECTED,  };{
   /* Timestamped history of order status changes. */
-  List<List<String>> timeOrder = [];
-  /* Error message */
+  List<List<String>> statusHistory = [];
+  /* Error message. */
   String errorMessage = null;
+  /* Relay fill information on working orders. */
+  List<Fills> fills = [];
   OrderExecutionReportAllOf();
 
   @override
   String toString() {
-    return 'OrderExecutionReportAllOf[clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, status=$status, timeOrder=$timeOrder, errorMessage=$errorMessage, ]';
+    return 'OrderExecutionReportAllOf[clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, avgPx=$avgPx, status=$status, statusHistory=$statusHistory, errorMessage=$errorMessage, fills=$fills, ]';
   }
 
   OrderExecutionReportAllOf.fromJson(Map<String, dynamic> json) {
@@ -29,13 +33,17 @@ class OrderExecutionReportAllOf {
     exchangeOrderId = json['exchange_order_id'];
     amountOpen = json['amount_open'];
     amountFilled = json['amount_filled'];
+    avgPx = json['avg_px'];
     status = (json['status'] == null) ?
       null :
       OrdStatus.fromJson(json['status']);
-    timeOrder = (json['time_order'] == null) ?
+    statusHistory = (json['status_history'] == null) ?
       null :
-      List.listFromJson(json['time_order']);
+      List.listFromJson(json['status_history']);
     errorMessage = json['error_message'];
+    fills = (json['fills'] == null) ?
+      null :
+      Fills.listFromJson(json['fills']);
   }
 
   Map<String, dynamic> toJson() {
@@ -48,12 +56,16 @@ class OrderExecutionReportAllOf {
       json['amount_open'] = amountOpen;
     if (amountFilled != null)
       json['amount_filled'] = amountFilled;
+    if (avgPx != null)
+      json['avg_px'] = avgPx;
     if (status != null)
       json['status'] = status;
-    if (timeOrder != null)
-      json['time_order'] = timeOrder;
+    if (statusHistory != null)
+      json['status_history'] = statusHistory;
     if (errorMessage != null)
       json['error_message'] = errorMessage;
+    if (fills != null)
+      json['fills'] = fills;
     return json;
   }
 

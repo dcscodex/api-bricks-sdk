@@ -1,4 +1,5 @@
             import 'package:openapi/model/ord_side.dart';
+            import 'package:openapi/model/fills.dart';
             import 'package:openapi/model/ord_status.dart';
             import 'package:built_collection/built_collection.dart';
             import 'package:openapi/model/time_in_force.dart';
@@ -76,6 +77,10 @@ abstract class OrderExecutionReport implements Built<OrderExecutionReport, Order
         @nullable
     @BuiltValueField(wireName: r'amount_filled')
     num get amountFilled;
+    /* Calculated average price of all fills on this order. */
+        @nullable
+    @BuiltValueField(wireName: r'avg_px')
+    num get avgPx;
     
         @nullable
     @BuiltValueField(wireName: r'status')
@@ -83,12 +88,16 @@ abstract class OrderExecutionReport implements Built<OrderExecutionReport, Order
         //enum statusEnum {  RECEIVED,  ROUTING,  ROUTED,  NEW,  PENDING_CANCEL,  PARTIALLY_FILLED,  FILLED,  CANCELED,  REJECTED,  };
     /* Timestamped history of order status changes. */
         @nullable
-    @BuiltValueField(wireName: r'time_order')
-    BuiltList<BuiltList<String>> get timeOrder;
-    /* Error message */
+    @BuiltValueField(wireName: r'status_history')
+    BuiltList<BuiltList<String>> get statusHistory;
+    /* Error message. */
         @nullable
     @BuiltValueField(wireName: r'error_message')
     String get errorMessage;
+    /* Relay fill information on working orders. */
+        @nullable
+    @BuiltValueField(wireName: r'fills')
+    BuiltList<Fills> get fills;
 
     // Boilerplate code needed to wire-up generated code
     OrderExecutionReport._();

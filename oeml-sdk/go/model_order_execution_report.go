@@ -38,9 +38,13 @@ type OrderExecutionReport struct {
 	AmountOpen float32 `json:"amount_open"`
 	// Total quantity filled.
 	AmountFilled float32 `json:"amount_filled"`
+	// Calculated average price of all fills on this order.
+	AvgPx float32 `json:"avg_px,omitempty"`
 	Status OrdStatus `json:"status"`
 	// Timestamped history of order status changes.
-	TimeOrder [][]string `json:"time_order"`
-	// Error message
+	StatusHistory [][]string `json:"status_history,omitempty"`
+	// Error message.
 	ErrorMessage string `json:"error_message,omitempty"`
+	// Relay fill information on working orders.
+	Fills []Fills `json:"fills,omitempty"`
 }

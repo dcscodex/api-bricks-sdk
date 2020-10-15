@@ -78,20 +78,32 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avgPx (base name: "avg_px")', function() {
+      // uncomment below and update the code to test the property avgPx
+      //var instane = new OemlRestApi.OrderExecutionReportAllOf();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
       //var instane = new OemlRestApi.OrderExecutionReportAllOf();
       //expect(instance).to.be();
     });
 
-    it('should have the property timeOrder (base name: "time_order")', function() {
-      // uncomment below and update the code to test the property timeOrder
+    it('should have the property statusHistory (base name: "status_history")', function() {
+      // uncomment below and update the code to test the property statusHistory
       //var instane = new OemlRestApi.OrderExecutionReportAllOf();
       //expect(instance).to.be();
     });
 
     it('should have the property errorMessage (base name: "error_message")', function() {
       // uncomment below and update the code to test the property errorMessage
+      //var instane = new OemlRestApi.OrderExecutionReportAllOf();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fills (base name: "fills")', function() {
+      // uncomment below and update the code to test the property fills
       //var instane = new OemlRestApi.OrderExecutionReportAllOf();
       //expect(instance).to.be();
     });

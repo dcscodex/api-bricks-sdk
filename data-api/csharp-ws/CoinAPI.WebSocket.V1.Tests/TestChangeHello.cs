@@ -21,7 +21,7 @@ namespace CoinAPI.WebSocket.V1.Tests
                 subscribe_filter_exchange_id = new string[] { "BITSTAMP" }
             };
 
-            using(var wsClient = new CoinApiWsClient(false))
+            using(var wsClient = new CoinApiWsClient(true))
             {
                 var mre_bs = new ManualResetEvent(false);
                 var mre_cb = new ManualResetEvent(false);

@@ -90,7 +90,7 @@ namespace CoinAPI.REST.V1
             return data;
         }
 
-        public Task<List<Exchange>> Metadata_list_exchanges()
+        public Task<List<Exchange>> Metadata_list_exchangesAsync()
         {
             return GetData<List<Exchange>>(CoinApiEndpointUrls.Exchanges());
         }

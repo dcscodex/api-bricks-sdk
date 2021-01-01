@@ -7,7 +7,7 @@ import io.coinapi.websocket.model.*;
 import io.coinapi.websocket.model.Error;
 import org.glassfish.tyrus.client.ClientManager;
 
-import javax.websocket.*;
+import jakarta.websocket.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -113,8 +113,7 @@ public class CoinAPIWebSocketImpl implements CoinAPIWebSocket {
 
             final ClientEndpointConfig cec = ClientEndpointConfig.Builder.create().build();
 
-            connection = Optional.ofNullable(client.connectToServer(new Endpoint() {
-
+            Endpoint endpoint = new Endpoint() {
                 @Override
                 public void onOpen(Session session, EndpointConfig config) {
                     try {
@@ -136,7 +135,9 @@ public class CoinAPIWebSocketImpl implements CoinAPIWebSocket {
                 public void onClose(Session session, CloseReason closeReason) {
                     super.onClose(session, closeReason);
                 }
-            }, cec, new URI(isSandbox ? sandboxUrl : noSandboxUrl)));
+            };
+
+            connection = Optional.ofNullable(client.connectToServer(endpoint, cec, new URI(isSandbox ? sandboxUrl : noSandboxUrl)));
             latch.await(100, TimeUnit.SECONDS);
         } catch (Exception e) {
             e.printStackTrace();

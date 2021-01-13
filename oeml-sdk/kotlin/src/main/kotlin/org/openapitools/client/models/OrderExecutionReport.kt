@@ -20,6 +20,7 @@ import org.openapitools.client.models.OrderNewSingleRequest
 import org.openapitools.client.models.TimeInForce
 
 import com.squareup.moshi.Json
+
 /**
  * The order execution report object.
  * @param exchangeId Exchange identifier used to identify the routing destination.
@@ -85,7 +86,7 @@ data class OrderExecutionReport (
     val expireTime: java.time.LocalDate? = null,
     /* Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a>  */
     @Json(name = "exec_inst")
-    val execInst: kotlin.Array<OrderExecutionReport.ExecInst>? = null,
+    val execInst: kotlin.collections.List<OrderExecutionReport.ExecInst>? = null,
     /* Unique identifier of the order assigned by the exchange or executing system. */
     @Json(name = "exchange_order_id")
     val exchangeOrderId: kotlin.String? = null,
@@ -94,13 +95,13 @@ data class OrderExecutionReport (
     val avgPx: java.math.BigDecimal? = null,
     /* Timestamped history of order status changes. */
     @Json(name = "status_history")
-    val statusHistory: kotlin.Array<kotlin.Array<kotlin.String>>? = null,
+    val statusHistory: kotlin.collections.List<kotlin.collections.List<kotlin.String>>? = null,
     /* Error message. */
     @Json(name = "error_message")
     val errorMessage: kotlin.String? = null,
     /* Relay fill information on working orders. */
     @Json(name = "fills")
-    val fills: kotlin.Array<Fills>? = null
+    val fills: kotlin.collections.List<Fills>? = null
 ) {
 
     /**

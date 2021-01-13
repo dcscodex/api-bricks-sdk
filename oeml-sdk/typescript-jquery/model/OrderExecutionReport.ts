@@ -107,8 +107,8 @@ export interface OrderExecutionReport {
 }
 export namespace OrderExecutionReport {
     export enum ExecInstEnum {
-        MAKERORCANCEL = <any> 'MAKER_OR_CANCEL',
-        AUCTIONONLY = <any> 'AUCTION_ONLY',
-        INDICATIONOFINTEREST = <any> 'INDICATION_OF_INTEREST'
+        MakerOrCancel = <any> 'MAKER_OR_CANCEL',
+        AuctionOnly = <any> 'AUCTION_ONLY',
+        IndicationOfInterest = <any> 'INDICATION_OF_INTEREST'
     }
 }

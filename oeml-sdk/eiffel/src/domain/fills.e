@@ -14,22 +14,17 @@ note
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
 class FILLS 
 
-inherit
 
-  ANY
-      redefine
-          out 
-      end
 
 
 feature --Access
 
     time: detachable DATE 
       -- Execution time.
-    price: REAL_32 
-      -- Execution price.
-    amount: REAL_32 
-      -- Executed quantity.
+ 	price: REAL_32 
+    	 -- Execution price.
+ 	amount: REAL_32 
+    	 -- Executed quantity.
 
 feature -- Change Element  
  
@@ -60,7 +55,7 @@ feature -- Change Element
 
  feature -- Status Report
 
-    out: STRING
+    output: STRING
           -- <Precursor>
       do
         create Result.make_empty

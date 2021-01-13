@@ -749,7 +749,7 @@ toE'ExecInst = \case
 
 -- ** E'LastUpdatedBy
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Source of the last modification. 
 data E'LastUpdatedBy
   = E'LastUpdatedBy'INITIALIZATION -- ^ @"INITIALIZATION"@
@@ -781,7 +781,7 @@ toE'LastUpdatedBy = \case
 
 -- ** OrdSide
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Side of order. 
 data OrdSide
   = OrdSide'BUY -- ^ @"BUY"@
@@ -810,7 +810,7 @@ toOrdSide = \case
 
 -- ** OrdStatus
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Order statuses and the lifecycle are documented in the separate section: <a href=\"#oeml-order-lifecycle\">OEML / Starter Guide / Order Lifecycle</a> 
 data OrdStatus
   = OrdStatus'RECEIVED -- ^ @"RECEIVED"@
@@ -860,7 +860,7 @@ toOrdStatus = \case
 
 -- ** OrdType
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Order types are documented in the separate section: <a href=\"#oeml-order-params-type\">OEML / Starter Guide / Order parameters / Order type</a> 
 data OrdType
   = OrdType'LIMIT -- ^ @"LIMIT"@
@@ -886,7 +886,7 @@ toOrdType = \case
 
 -- ** Severity
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Severity of the message.
 data Severity
   = Severity'INFO -- ^ @"INFO"@
@@ -918,7 +918,7 @@ toSeverity = \case
 
 -- ** TimeInForce
 
--- | Enum of 'Text' . 
+-- | Enum of 'Text' .
 -- Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
 data TimeInForce
   = TimeInForce'GOOD_TILL_CANCEL -- ^ @"GOOD_TILL_CANCEL"@

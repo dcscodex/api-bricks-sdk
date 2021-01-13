@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title Fills
+#'
 #' @description Fills Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field time  character [optional]
 #'
 #' @field price  numeric [optional]
 #'
 #' @field amount  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ Fills <- R6::R6Class(
     `time` = NULL,
     `price` = NULL,
     `amount` = NULL,
-    initialize = function(`time`=NULL, `price`=NULL, `amount`=NULL, ...){
+    initialize = function(
+        `time`=NULL, `price`=NULL, `amount`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`time`)) {
         self$`time` <- `time`
@@ -66,6 +70,7 @@ Fills <- R6::R6Class(
       if (!is.null(FillsObject$`amount`)) {
         self$`amount` <- FillsObject$`amount`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -103,3 +108,4 @@ Fills <- R6::R6Class(
     }
   )
 )
+

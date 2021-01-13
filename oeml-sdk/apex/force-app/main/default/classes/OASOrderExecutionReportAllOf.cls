@@ -82,6 +82,90 @@ public class OASOrderExecutionReportAllOf implements OAS.MappedProperties {
         return propertyMappings;
     }
 
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'client_order_id_format_exchange' => 'clientOrderIdFormatExchange',
+        'exchange_order_id' => 'exchangeOrderId',
+        'amount_open' => 'amountOpen',
+        'amount_filled' => 'amountFilled',
+        'avg_px' => 'avgPx',
+        'status_history' => 'statusHistory',
+        'error_message' => 'errorMessage'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
     public OASOrderExecutionReportAllOf() {
         statusHistory = new List<List<String>>();
         fills = new List<OASFills>();
@@ -96,7 +180,7 @@ public class OASOrderExecutionReportAllOf implements OAS.MappedProperties {
           orderExecutionReportAllOf.avgPx = 0.0783;
           orderExecutionReportAllOf.status = OASOrdStatus.getExample();
           orderExecutionReportAllOf.statusHistory = new List<List<String>>{new List<String>{'[["RECEIVED","2020-05-27T11:16:20.1677709Z"],["REJECTED","2020-05-27T11:16:20.1677710Z"]]'}};
-          orderExecutionReportAllOf.errorMessage = '{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol \\\'BTCUSD\\\' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}';
+          orderExecutionReportAllOf.errorMessage = '{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol \'BTCUSD\' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}';
           orderExecutionReportAllOf.fills = new List<OASFills>{OASFills.getExample()};
         return orderExecutionReportAllOf;
     }

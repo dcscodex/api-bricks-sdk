@@ -56,19 +56,19 @@
 
     it('should have the property time (base name: "time")', function() {
       // uncomment below and update the code to test the property time
-      //var instane = new OemlRestApi.Fills();
+      //var instance = new OemlRestApi.Fills();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instane = new OemlRestApi.Fills();
+      //var instance = new OemlRestApi.Fills();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instane = new OemlRestApi.Fills();
+      //var instance = new OemlRestApi.Fills();
       //expect(instance).to.be();
     });
 

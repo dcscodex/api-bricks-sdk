@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { RequestFile } from '../api';
+import { RequestFile } from './models';
 import { Fills } from './fills';
 import { OrdSide } from './ordSide';
 import { OrdStatus } from './ordStatus';
@@ -203,8 +203,8 @@ export class OrderExecutionReport {
 
 export namespace OrderExecutionReport {
     export enum ExecInstEnum {
-        MAKERORCANCEL = <any> 'MAKER_OR_CANCEL',
-        AUCTIONONLY = <any> 'AUCTION_ONLY',
-        INDICATIONOFINTEREST = <any> 'INDICATION_OF_INTEREST'
+        MakerOrCancel = <any> 'MAKER_OR_CANCEL',
+        AuctionOnly = <any> 'AUCTION_ONLY',
+        IndicationOfInterest = <any> 'INDICATION_OF_INTEREST'
     }
 }

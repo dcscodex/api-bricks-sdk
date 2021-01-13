@@ -28,8 +28,10 @@ HEADERS += \
     $${PWD}/OAIHttpRequest.h \
     $${PWD}/OAIObject.h \
     $${PWD}/OAIEnum.h \
-    $${PWD}/OAIHttpFileElement.h
-
+    $${PWD}/OAIHttpFileElement.h \
+    $${PWD}/OAIServerConfiguration.h \
+    $${PWD}/OAIServerVariable.h 
+    
 SOURCES += \
 # Models
     $${PWD}/OAIBalance.cpp \

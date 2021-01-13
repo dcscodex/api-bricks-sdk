@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = CoinAPI.OMS.API.SDK.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace CoinAPI.OMS.API.SDK.Model
     /// <summary>
     /// Fills
     /// </summary>
-    [DataContract]
-    public partial class Fills :  IEquatable<Fills>, IValidatableObject
+    [DataContract(Name = "Fills")]
+    public partial class Fills : IEquatable<Fills>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Fills" /> class.
@@ -43,26 +44,26 @@ namespace CoinAPI.OMS.API.SDK.Model
             this.Price = price;
             this.Amount = amount;
         }
-        
+
         /// <summary>
         /// Execution time.
         /// </summary>
         /// <value>Execution time.</value>
-        [DataMember(Name="time", EmitDefaultValue=false)]
+        [DataMember(Name = "time", EmitDefaultValue = false)]
         public DateTime Time { get; set; }
 
         /// <summary>
         /// Execution price.
         /// </summary>
         /// <value>Execution price.</value>
-        [DataMember(Name="price", EmitDefaultValue=false)]
+        [DataMember(Name = "price", EmitDefaultValue = false)]
         public decimal Price { get; set; }
 
         /// <summary>
         /// Executed quantity.
         /// </summary>
         /// <value>Executed quantity.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal Amount { get; set; }
 
         /// <summary>
@@ -79,14 +80,14 @@ namespace CoinAPI.OMS.API.SDK.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

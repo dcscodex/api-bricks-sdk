@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = CoinAPI.OMS.API.SDK.Client.OpenAPIDateConverter;
 
@@ -28,13 +29,13 @@ namespace CoinAPI.OMS.API.SDK.Model
     /// <summary>
     /// The order execution report message.
     /// </summary>
-    [DataContract]
-    public partial class OrderExecutionReportAllOf :  IEquatable<OrderExecutionReportAllOf>, IValidatableObject
+    [DataContract(Name = "OrderExecutionReport_allOf")]
+    public partial class OrderExecutionReportAllOf : IEquatable<OrderExecutionReportAllOf>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
         public OrdStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderExecutionReportAllOf" /> class.
@@ -66,61 +67,61 @@ namespace CoinAPI.OMS.API.SDK.Model
             this.ErrorMessage = errorMessage;
             this.Fills = fills;
         }
-        
+
         /// <summary>
         /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
         /// </summary>
         /// <value>The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.</value>
-        [DataMember(Name="client_order_id_format_exchange", EmitDefaultValue=false)]
+        [DataMember(Name = "client_order_id_format_exchange", IsRequired = true, EmitDefaultValue = false)]
         public string ClientOrderIdFormatExchange { get; set; }
 
         /// <summary>
         /// Unique identifier of the order assigned by the exchange or executing system.
         /// </summary>
         /// <value>Unique identifier of the order assigned by the exchange or executing system.</value>
-        [DataMember(Name="exchange_order_id", EmitDefaultValue=false)]
+        [DataMember(Name = "exchange_order_id", EmitDefaultValue = false)]
         public string ExchangeOrderId { get; set; }
 
         /// <summary>
         /// Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;
         /// </summary>
         /// <value>Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;</value>
-        [DataMember(Name="amount_open", EmitDefaultValue=false)]
+        [DataMember(Name = "amount_open", IsRequired = true, EmitDefaultValue = false)]
         public decimal AmountOpen { get; set; }
 
         /// <summary>
         /// Total quantity filled.
         /// </summary>
         /// <value>Total quantity filled.</value>
-        [DataMember(Name="amount_filled", EmitDefaultValue=false)]
+        [DataMember(Name = "amount_filled", IsRequired = true, EmitDefaultValue = false)]
         public decimal AmountFilled { get; set; }
 
         /// <summary>
         /// Calculated average price of all fills on this order.
         /// </summary>
         /// <value>Calculated average price of all fills on this order.</value>
-        [DataMember(Name="avg_px", EmitDefaultValue=false)]
+        [DataMember(Name = "avg_px", EmitDefaultValue = false)]
         public decimal AvgPx { get; set; }
 
         /// <summary>
         /// Timestamped history of order status changes.
         /// </summary>
         /// <value>Timestamped history of order status changes.</value>
-        [DataMember(Name="status_history", EmitDefaultValue=false)]
+        [DataMember(Name = "status_history", EmitDefaultValue = false)]
         public List<List<string>> StatusHistory { get; set; }
 
         /// <summary>
         /// Error message.
         /// </summary>
         /// <value>Error message.</value>
-        [DataMember(Name="error_message", EmitDefaultValue=false)]
+        [DataMember(Name = "error_message", EmitDefaultValue = false)]
         public string ErrorMessage { get; set; }
 
         /// <summary>
         /// Relay fill information on working orders.
         /// </summary>
         /// <value>Relay fill information on working orders.</value>
-        [DataMember(Name="fills", EmitDefaultValue=false)]
+        [DataMember(Name = "fills", EmitDefaultValue = false)]
         public List<Fills> Fills { get; set; }
 
         /// <summary>
@@ -143,14 +144,14 @@ namespace CoinAPI.OMS.API.SDK.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

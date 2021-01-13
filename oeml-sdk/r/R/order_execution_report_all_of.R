@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title OrderExecutionReportAllOf
+#'
 #' @description OrderExecutionReportAllOf Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field client_order_id_format_exchange  character 
 #'
 #' @field exchange_order_id  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field fills  list( \link{Fills} ) [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ OrderExecutionReportAllOf <- R6::R6Class(
     `status_history` = NULL,
     `error_message` = NULL,
     `fills` = NULL,
-    initialize = function(`client_order_id_format_exchange`, `amount_open`, `amount_filled`, `status`, `exchange_order_id`=NULL, `avg_px`=NULL, `status_history`=NULL, `error_message`=NULL, `fills`=NULL, ...){
+    initialize = function(
+        `client_order_id_format_exchange`, `amount_open`, `amount_filled`, `status`, `exchange_order_id`=NULL, `avg_px`=NULL, `status_history`=NULL, `error_message`=NULL, `fills`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!missing(`client_order_id_format_exchange`)) {
         stopifnot(is.character(`client_order_id_format_exchange`), length(`client_order_id_format_exchange`) == 1)
@@ -154,6 +158,7 @@ OrderExecutionReportAllOf <- R6::R6Class(
       if (!is.null(OrderExecutionReportAllOfObject$`fills`)) {
         self$`fills` <- ApiClient$new()$deserializeObj(OrderExecutionReportAllOfObject$`fills`, "array[Fills]", loadNamespace("openapi"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -239,3 +244,4 @@ OrderExecutionReportAllOf <- R6::R6Class(
     }
   )
 )
+

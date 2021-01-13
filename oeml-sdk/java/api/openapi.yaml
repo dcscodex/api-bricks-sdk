@@ -624,6 +624,7 @@ components:
       - client_order_id_format_exchange
       - status
       - time_order
+      type: object
     Balance_data:
       example:
         last_updated_by: EXCHANGE
@@ -679,6 +680,7 @@ components:
           example: 0.007
           format: float
           type: number
+      type: object
     Position_data:
       description: The Position object.
       example:
@@ -731,4 +733,5 @@ components:
         raw_data:
           example: Other information provided by the exchange on this position.
           type: object
+      type: object
 

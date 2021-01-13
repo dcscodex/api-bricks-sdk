@@ -141,25 +141,55 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
         return ;
     }
     listEntry_t *listEntry;
-    free(order_execution_report->exchange_id);
-    free(order_execution_report->client_order_id);
-    free(order_execution_report->symbol_id_exchange);
-    free(order_execution_report->symbol_id_coinapi);
-    list_ForEach(listEntry, order_execution_report->exec_inst) {
-        free(listEntry->data);
+    if (order_execution_report->exchange_id) {
+        free(order_execution_report->exchange_id);
+        order_execution_report->exchange_id = NULL;
     }
-    list_free(order_execution_report->exec_inst);
-    free(order_execution_report->client_order_id_format_exchange);
-    free(order_execution_report->exchange_order_id);
-    list_ForEach(listEntry, order_execution_report->status_history) {
-        free(listEntry->data);
+    if (order_execution_report->client_order_id) {
+        free(order_execution_report->client_order_id);
+        order_execution_report->client_order_id = NULL;
     }
-    list_free(order_execution_report->status_history);
-    free(order_execution_report->error_message);
-    list_ForEach(listEntry, order_execution_report->fills) {
-        fills_free(listEntry->data);
+    if (order_execution_report->symbol_id_exchange) {
+        free(order_execution_report->symbol_id_exchange);
+        order_execution_report->symbol_id_exchange = NULL;
     }
-    list_free(order_execution_report->fills);
+    if (order_execution_report->symbol_id_coinapi) {
+        free(order_execution_report->symbol_id_coinapi);
+        order_execution_report->symbol_id_coinapi = NULL;
+    }
+    if (order_execution_report->exec_inst) {
+        list_ForEach(listEntry, order_execution_report->exec_inst) {
+            free(listEntry->data);
+        }
+        list_free(order_execution_report->exec_inst);
+        order_execution_report->exec_inst = NULL;
+    }
+    if (order_execution_report->client_order_id_format_exchange) {
+        free(order_execution_report->client_order_id_format_exchange);
+        order_execution_report->client_order_id_format_exchange = NULL;
+    }
+    if (order_execution_report->exchange_order_id) {
+        free(order_execution_report->exchange_order_id);
+        order_execution_report->exchange_order_id = NULL;
+    }
+    if (order_execution_report->status_history) {
+        list_ForEach(listEntry, order_execution_report->status_history) {
+            free(listEntry->data);
+        }
+        list_free(order_execution_report->status_history);
+        order_execution_report->status_history = NULL;
+    }
+    if (order_execution_report->error_message) {
+        free(order_execution_report->error_message);
+        order_execution_report->error_message = NULL;
+    }
+    if (order_execution_report->fills) {
+        list_ForEach(listEntry, order_execution_report->fills) {
+            fills_free(listEntry->data);
+        }
+        list_free(order_execution_report->fills);
+        order_execution_report->fills = NULL;
+    }
     free(order_execution_report);
 }
 

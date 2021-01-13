@@ -2,7 +2,7 @@
 
 OEML - REST API
 - API version: v1
-  - Build date: 2020-11-21T01:01:05.032Z[Etc/UTC]
+  - Build date: 2021-01-13T14:22:29.891Z[Etc/UTC]
 
 This section will provide necessary information about the `CoinAPI OEML REST API` protocol.
 This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
@@ -88,7 +88,7 @@ public class Example {
     defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
 
     BalancesApi apiInstance = new BalancesApi(defaultClient);
-    String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
+    String exchangeId = "KRAKEN"; // String | Filter the balances to the specific exchange.
     try {
       List<Balance> result = apiInstance.v1BalancesGet(exchangeId);
       System.out.println(result);

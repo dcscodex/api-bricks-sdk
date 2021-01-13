@@ -18,9 +18,9 @@ case class Fills (
   /* Execution time. */
   time: Option[LocalDate] = None,
   /* Execution price. */
-  price: Option[Double] = None,
+  price: Option[BigDecimal] = None,
   /* Executed quantity. */
-  amount: Option[Double] = None
+  amount: Option[BigDecimal] = None
 ) extends ApiModel
 
 

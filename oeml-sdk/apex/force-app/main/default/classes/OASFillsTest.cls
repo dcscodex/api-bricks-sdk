@@ -72,7 +72,7 @@ private class OASFillsTest {
     @isTest
     private static void maintainRenamedProperties() {
         OASFills fills = new OASFills();
-        Map<String, String> propertyMappings = fills.getPropertyMappings();
-        System.assertEquals('r_time', propertyMappings.get('time'));
+        Map<String, String> x-property-mappings = fills.getx-property-mappings();
+        System.assertEquals('r_time', x-property-mappings.get('time'));
     }
 }

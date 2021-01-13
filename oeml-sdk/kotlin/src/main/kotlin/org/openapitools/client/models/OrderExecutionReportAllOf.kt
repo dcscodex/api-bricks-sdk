@@ -15,6 +15,7 @@ import org.openapitools.client.models.Fills
 import org.openapitools.client.models.OrdStatus
 
 import com.squareup.moshi.Json
+
 /**
  * The order execution report message.
  * @param clientOrderIdFormatExchange The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
@@ -48,12 +49,12 @@ data class OrderExecutionReportAllOf (
     val avgPx: java.math.BigDecimal? = null,
     /* Timestamped history of order status changes. */
     @Json(name = "status_history")
-    val statusHistory: kotlin.Array<kotlin.Array<kotlin.String>>? = null,
+    val statusHistory: kotlin.collections.List<kotlin.collections.List<kotlin.String>>? = null,
     /* Error message. */
     @Json(name = "error_message")
     val errorMessage: kotlin.String? = null,
     /* Relay fill information on working orders. */
     @Json(name = "fills")
-    val fills: kotlin.Array<Fills>? = null
+    val fills: kotlin.collections.List<Fills>? = null
 )
 

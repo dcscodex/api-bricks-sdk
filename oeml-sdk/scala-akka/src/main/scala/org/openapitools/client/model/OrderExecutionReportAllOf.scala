@@ -19,11 +19,11 @@ case class OrderExecutionReportAllOf (
   /* Unique identifier of the order assigned by the exchange or executing system. */
   exchangeOrderId: Option[String] = None,
   /* Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled` */
-  amountOpen: Double,
+  amountOpen: BigDecimal,
   /* Total quantity filled. */
-  amountFilled: Double,
+  amountFilled: BigDecimal,
   /* Calculated average price of all fills on this order. */
-  avgPx: Option[Double] = None,
+  avgPx: Option[BigDecimal] = None,
   status: OrdStatus,
   /* Timestamped history of order status changes. */
   statusHistory: Option[Seq[Seq[String]]] = None,

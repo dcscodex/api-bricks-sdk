@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **status** | [**OrdStatus**](OrdStatus.md) |  | 
 **exchangeOrderId** | **kotlin.String** | Unique identifier of the order assigned by the exchange or executing system. |  [optional]
 **avgPx** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Calculated average price of all fills on this order. |  [optional]
-**statusHistory** | **kotlin.Array&lt;kotlin.Array&lt;kotlin.String&gt;&gt;** | Timestamped history of order status changes. |  [optional]
+**statusHistory** | **kotlin.collections.List&lt;kotlin.collections.List&lt;kotlin.String&gt;&gt;** | Timestamped history of order status changes. |  [optional]
 **errorMessage** | **kotlin.String** | Error message. |  [optional]
-**fills** | [**kotlin.Array&lt;Fills&gt;**](Fills.md) | Relay fill information on working orders. |  [optional]
+**fills** | [**kotlin.collections.List&lt;Fills&gt;**](Fills.md) | Relay fill information on working orders. |  [optional]
 
 
 

@@ -55,17 +55,32 @@ void order_execution_report_all_of_free(order_execution_report_all_of_t *order_e
         return ;
     }
     listEntry_t *listEntry;
-    free(order_execution_report_all_of->client_order_id_format_exchange);
-    free(order_execution_report_all_of->exchange_order_id);
-    list_ForEach(listEntry, order_execution_report_all_of->status_history) {
-        free(listEntry->data);
+    if (order_execution_report_all_of->client_order_id_format_exchange) {
+        free(order_execution_report_all_of->client_order_id_format_exchange);
+        order_execution_report_all_of->client_order_id_format_exchange = NULL;
     }
-    list_free(order_execution_report_all_of->status_history);
-    free(order_execution_report_all_of->error_message);
-    list_ForEach(listEntry, order_execution_report_all_of->fills) {
-        fills_free(listEntry->data);
+    if (order_execution_report_all_of->exchange_order_id) {
+        free(order_execution_report_all_of->exchange_order_id);
+        order_execution_report_all_of->exchange_order_id = NULL;
     }
-    list_free(order_execution_report_all_of->fills);
+    if (order_execution_report_all_of->status_history) {
+        list_ForEach(listEntry, order_execution_report_all_of->status_history) {
+            free(listEntry->data);
+        }
+        list_free(order_execution_report_all_of->status_history);
+        order_execution_report_all_of->status_history = NULL;
+    }
+    if (order_execution_report_all_of->error_message) {
+        free(order_execution_report_all_of->error_message);
+        order_execution_report_all_of->error_message = NULL;
+    }
+    if (order_execution_report_all_of->fills) {
+        list_ForEach(listEntry, order_execution_report_all_of->fills) {
+            fills_free(listEntry->data);
+        }
+        list_free(order_execution_report_all_of->fills);
+        order_execution_report_all_of->fills = NULL;
+    }
     free(order_execution_report_all_of);
 }
 

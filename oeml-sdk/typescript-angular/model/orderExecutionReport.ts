@@ -94,9 +94,9 @@ export interface OrderExecutionReport {
 export namespace OrderExecutionReport {
     export type ExecInstEnum = 'MAKER_OR_CANCEL' | 'AUCTION_ONLY' | 'INDICATION_OF_INTEREST';
     export const ExecInstEnum = {
-        MAKERORCANCEL: 'MAKER_OR_CANCEL' as ExecInstEnum,
-        AUCTIONONLY: 'AUCTION_ONLY' as ExecInstEnum,
-        INDICATIONOFINTEREST: 'INDICATION_OF_INTEREST' as ExecInstEnum
+        MakerOrCancel: 'MAKER_OR_CANCEL' as ExecInstEnum,
+        AuctionOnly: 'AUCTION_ONLY' as ExecInstEnum,
+        IndicationOfInterest: 'INDICATION_OF_INTEREST' as ExecInstEnum
     };
 }
 

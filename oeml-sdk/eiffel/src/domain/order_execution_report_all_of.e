@@ -14,12 +14,7 @@ note
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
 class ORDER_EXECUTION_REPORT_ALL_OF 
 
-inherit
 
-  ANY
-      redefine
-          out 
-      end
 
 
 feature --Access
@@ -28,12 +23,12 @@ feature --Access
       -- The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
     exchange_order_id: detachable STRING_32 
       -- Unique identifier of the order assigned by the exchange or executing system.
-    amount_open: REAL_32 
-      -- Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
-    amount_filled: REAL_32 
-      -- Total quantity filled.
-    avg_px: REAL_32 
-      -- Calculated average price of all fills on this order.
+ 	amount_open: REAL_32 
+    	 -- Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
+ 	amount_filled: REAL_32 
+    	 -- Total quantity filled.
+ 	avg_px: REAL_32 
+    	 -- Calculated average price of all fills on this order.
     status: detachable ORD_STATUS 
       
     status_history: detachable LIST [LIST [STRING_32]] 
@@ -120,7 +115,7 @@ feature -- Change Element
 
  feature -- Status Report
 
-    out: STRING
+    output: STRING
           -- <Precursor>
       do
         create Result.make_empty

@@ -121,7 +121,6 @@ namespace CoinAPI.WebSocket.V1
         private void HandleBookL3Item(object sender, MessageData item)
         {
             var data = JsonSerializer.Deserialize<OrderBookL3>(item.Data);
-            Debug.WriteLine(JsonSerializer.ToJsonString(data));
             OrderBookL3Event?.Invoke(sender, data);
         }
 

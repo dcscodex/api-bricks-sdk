@@ -1,7 +1,19 @@
-Requirements:
+**Requirements:**
  * Python >= 3
 
-To run examples:
+**Install using:**
+
+```bash
+pip install --upgrade coinapi_rest_v1
+```
+
+**Import this way**
+
+```python
+from coinapi_rest_v1.restapi import CoinAPIv1
+```
+
+**To run examples:**
 
 ```bash
 git clone https://github.com/coinapi/coinapi-sdk/

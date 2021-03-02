@@ -17,7 +17,6 @@ namespace CoinAPI.REST.V1 {
         public DateTime future_delivery_time { get; set; }
         public string asset_id_base { get; set; }
         public string asset_id_quote { get; set; }
-
         public decimal? volume_1hrs { get; set; }
         public decimal? volume_1hrs_usd { get; set; }
         public decimal? volume_1day { get; set; }
@@ -25,6 +24,11 @@ namespace CoinAPI.REST.V1 {
         public decimal? volume_1mth { get; set; }
         public decimal? volume_1mth_usd { get; set; }
         public decimal? price { get; set; }
+        public string symbol_id_exchange { get; set; }
+        public string asset_id_base_exchange { get; set; }
+        public string asset_id_quote_exchange { get; set; }
+        public decimal? price_precision { get; set; }
+        public decimal? size_precision { get; set; }
 
     }
 }

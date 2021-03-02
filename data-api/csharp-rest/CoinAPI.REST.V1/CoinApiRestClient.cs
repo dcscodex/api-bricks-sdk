@@ -119,13 +119,6 @@ namespace CoinAPI.REST.V1
         {
             return GetData<List<Icon>>(CoinApiEndpointUrls.Exchanges_Icons(iconSize));
         }
-
-        public Task<List<SymbolMapping>> Metadata_symbol_mappingAsync(string idExchange)
-        {
-            var url = CoinApiEndpointUrls.Symbols_Map(idExchange);
-            return GetData<List<SymbolMapping>>(url);
-        }
-
         public Task<Exchangerate> Exchange_rates_get_specific_rateAsync(string baseId, string quoteId, DateTime time)
         {
             var url = CoinApiEndpointUrls.ExchangeRateSpecific(baseId, quoteId, time.ToString(DateFormat));

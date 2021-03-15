@@ -29,9 +29,9 @@ defmodule OEML-RESTAPI.Model.OrderNewSingleRequest do
     :"symbol_id_coinapi" => String.t | nil,
     :"amount_order" => float(),
     :"price" => float(),
-    :"side" => OrdSide,
-    :"order_type" => OrdType,
-    :"time_in_force" => TimeInForce,
+    :"side" => OEML-RESTAPI.Model.OrdSide.t,
+    :"order_type" => OEML-RESTAPI.Model.OrdType.t,
+    :"time_in_force" => OEML-RESTAPI.Model.TimeInForce.t,
     :"expire_time" => DateTime | nil,
     :"exec_inst" => [String.t] | nil
   }
@@ -44,7 +44,7 @@ defimpl Poison.Decoder, for: OEML-RESTAPI.Model.OrderNewSingleRequest do
     |> deserialize(:"side", :struct, OEML-RESTAPI.Model.OrdSide, options)
     |> deserialize(:"order_type", :struct, OEML-RESTAPI.Model.OrdType, options)
     |> deserialize(:"time_in_force", :struct, OEML-RESTAPI.Model.TimeInForce, options)
-    |> deserialize(:"expire_time", :struct, OEML-RESTAPI.Model.DateTime, options)
+    |> deserialize(:"expire_time", :struct, OEML-RESTAPI.Model.Date, options)
   end
 end
 

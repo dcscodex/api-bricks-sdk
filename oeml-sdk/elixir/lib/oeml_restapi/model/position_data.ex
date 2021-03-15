@@ -26,12 +26,12 @@ defmodule OEML-RESTAPI.Model.PositionData do
     :"symbol_id_coinapi" => String.t | nil,
     :"avg_entry_price" => float() | nil,
     :"quantity" => float() | nil,
-    :"side" => OrdSide | nil,
+    :"side" => OEML-RESTAPI.Model.OrdSide.t | nil,
     :"unrealized_pnl" => float() | nil,
     :"leverage" => float() | nil,
     :"cross_margin" => boolean() | nil,
     :"liquidation_price" => float() | nil,
-    :"raw_data" => Map | nil
+    :"raw_data" => map() | nil
   }
 end
 

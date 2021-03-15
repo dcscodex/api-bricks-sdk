@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,7 +22,7 @@ abstract class OrderCancelAllRequest implements Built<OrderCancelAllRequest, Ord
 
     static void _initializeBuilder(OrderCancelAllRequestBuilder b) => b;
 
-    factory OrderCancelAllRequest([updates(OrderCancelAllRequestBuilder b)]) = _$OrderCancelAllRequest;
+    factory OrderCancelAllRequest([void updates(OrderCancelAllRequestBuilder b)]) = _$OrderCancelAllRequest;
     static Serializer<OrderCancelAllRequest> get serializer => _$orderCancelAllRequestSerializer;
 }
 

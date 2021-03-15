@@ -74,19 +74,19 @@ function Initialize-OrderExecutionReportAllOf {
         'Creating PSCustomObject: PSOpenAPITools => OrderExecutionReportAllOf' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if (!$ClientOrderIdFormatExchange) {
+        if ($ClientOrderIdFormatExchange -eq $null) {
             throw "invalid value for 'ClientOrderIdFormatExchange', 'ClientOrderIdFormatExchange' cannot be null."
         }
 
-        if (!$AmountOpen) {
+        if ($AmountOpen -eq $null) {
             throw "invalid value for 'AmountOpen', 'AmountOpen' cannot be null."
         }
 
-        if (!$AmountFilled) {
+        if ($AmountFilled -eq $null) {
             throw "invalid value for 'AmountFilled', 'AmountFilled' cannot be null."
         }
 
-        if (!$Status) {
+        if ($Status -eq $null) {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 
@@ -146,29 +146,29 @@ function ConvertFrom-JsonToOrderExecutionReportAllOf {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property `client_order_id_format_exchange` missing."
+            throw "Error! Empty JSON cannot be serialized due to the required property 'client_order_id_format_exchange' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "client_order_id_format_exchange"))) {
-            throw "Error! JSON cannot be serialized due to the required property `client_order_id_format_exchange` missing."
+            throw "Error! JSON cannot be serialized due to the required property 'client_order_id_format_exchange' missing."
         } else {
             $ClientOrderIdFormatExchange = $JsonParameters.PSobject.Properties["client_order_id_format_exchange"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "amount_open"))) {
-            throw "Error! JSON cannot be serialized due to the required property `amount_open` missing."
+            throw "Error! JSON cannot be serialized due to the required property 'amount_open' missing."
         } else {
             $AmountOpen = $JsonParameters.PSobject.Properties["amount_open"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "amount_filled"))) {
-            throw "Error! JSON cannot be serialized due to the required property `amount_filled` missing."
+            throw "Error! JSON cannot be serialized due to the required property 'amount_filled' missing."
         } else {
             $AmountFilled = $JsonParameters.PSobject.Properties["amount_filled"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
-            throw "Error! JSON cannot be serialized due to the required property `status` missing."
+            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
         } else {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }

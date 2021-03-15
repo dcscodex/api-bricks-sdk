@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -25,7 +32,7 @@ abstract class Fills implements Built<Fills, FillsBuilder> {
 
     static void _initializeBuilder(FillsBuilder b) => b;
 
-    factory Fills([updates(FillsBuilder b)]) = _$Fills;
+    factory Fills([void updates(FillsBuilder b)]) = _$Fills;
     static Serializer<Fills> get serializer => _$fillsSerializer;
 }
 

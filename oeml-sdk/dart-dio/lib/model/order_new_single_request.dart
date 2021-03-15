@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/ord_side.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/model/time_in_force.dart';
@@ -70,7 +77,7 @@ abstract class OrderNewSingleRequest implements Built<OrderNewSingleRequest, Ord
 
     static void _initializeBuilder(OrderNewSingleRequestBuilder b) => b;
 
-    factory OrderNewSingleRequest([updates(OrderNewSingleRequestBuilder b)]) = _$OrderNewSingleRequest;
+    factory OrderNewSingleRequest([void updates(OrderNewSingleRequestBuilder b)]) = _$OrderNewSingleRequest;
     static Serializer<OrderNewSingleRequest> get serializer => _$orderNewSingleRequestSerializer;
 }
 

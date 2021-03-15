@@ -86,7 +86,7 @@ class BalancesApi {
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
       return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Balance>') as List)
-        .map((item) => item as Balance)
+        .cast<Balance>()
         .toList(growable: false);
     }
     return null;

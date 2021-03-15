@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/fills.dart';
 import 'package:openapi/model/ord_status.dart';
 import 'package:built_collection/built_collection.dart';
@@ -58,7 +65,7 @@ abstract class OrderExecutionReportAllOf implements Built<OrderExecutionReportAl
 
     static void _initializeBuilder(OrderExecutionReportAllOfBuilder b) => b;
 
-    factory OrderExecutionReportAllOf([updates(OrderExecutionReportAllOfBuilder b)]) = _$OrderExecutionReportAllOf;
+    factory OrderExecutionReportAllOf([void updates(OrderExecutionReportAllOfBuilder b)]) = _$OrderExecutionReportAllOf;
     static Serializer<OrderExecutionReportAllOf> get serializer => _$orderExecutionReportAllOfSerializer;
 }
 

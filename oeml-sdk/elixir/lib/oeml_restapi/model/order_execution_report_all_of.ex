@@ -26,10 +26,10 @@ defmodule OEML-RESTAPI.Model.OrderExecutionReportAllOf do
     :"amount_open" => float(),
     :"amount_filled" => float(),
     :"avg_px" => float() | nil,
-    :"status" => OrdStatus,
+    :"status" => OEML-RESTAPI.Model.OrdStatus.t,
     :"status_history" => [[String.t]] | nil,
     :"error_message" => String.t | nil,
-    :"fills" => [Fills] | nil
+    :"fills" => [OEML-RESTAPI.Model.Fills.t] | nil
   }
 end
 

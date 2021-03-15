@@ -15,7 +15,7 @@ defmodule OEML-RESTAPI.Model.Position do
 
   @type t :: %__MODULE__{
     :"exchange_id" => String.t | nil,
-    :"data" => [PositionData] | nil
+    :"data" => [OEML-RESTAPI.Model.PositionData.t] | nil
   }
 end
 

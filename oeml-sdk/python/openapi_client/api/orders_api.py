@@ -12,7 +12,7 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from openapi_client.api_client import ApiClient, Endpoint
+from openapi_client.api_client import ApiClient, Endpoint as _Endpoint
 from openapi_client.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -109,7 +109,7 @@ class OrdersApi(object):
                 order_cancel_all_request
             return self.call_with_http_info(**kwargs)
 
-        self.v1_orders_cancel_all_post = Endpoint(
+        self.v1_orders_cancel_all_post = _Endpoint(
             settings={
                 'response_type': (Message,),
                 'auth': [],
@@ -228,7 +228,7 @@ class OrdersApi(object):
                 order_cancel_single_request
             return self.call_with_http_info(**kwargs)
 
-        self.v1_orders_cancel_post = Endpoint(
+        self.v1_orders_cancel_post = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],
@@ -343,7 +343,7 @@ class OrdersApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             return self.call_with_http_info(**kwargs)
 
-        self.v1_orders_get = Endpoint(
+        self.v1_orders_get = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReports,),
                 'auth': [],
@@ -459,7 +459,7 @@ class OrdersApi(object):
                 order_new_single_request
             return self.call_with_http_info(**kwargs)
 
-        self.v1_orders_post = Endpoint(
+        self.v1_orders_post = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],
@@ -578,7 +578,7 @@ class OrdersApi(object):
                 client_order_id
             return self.call_with_http_info(**kwargs)
 
-        self.v1_orders_status_client_order_id_get = Endpoint(
+        self.v1_orders_status_client_order_id_get = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],

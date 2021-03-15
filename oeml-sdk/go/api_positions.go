@@ -38,7 +38,7 @@ func (r ApiV1PositionsGetRequest) ExchangeId(exchangeId string) ApiV1PositionsGe
 	return r
 }
 
-func (r ApiV1PositionsGetRequest) Execute() ([]Position, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1PositionsGetRequest) Execute() ([]Position, *_nethttp.Response, error) {
 	return r.ApiService.V1PositionsGetExecute(r)
 }
 
@@ -59,21 +59,19 @@ func (a *PositionsApiService) V1PositionsGet(ctx _context.Context) ApiV1Position
  * Execute executes the request
  * @return []Position
  */
-func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) ([]Position, *_nethttp.Response, GenericOpenAPIError) {
+func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) ([]Position, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  []Position
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PositionsApiService.V1PositionsGet")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/positions"
@@ -104,22 +102,19 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -148,5 +143,5 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

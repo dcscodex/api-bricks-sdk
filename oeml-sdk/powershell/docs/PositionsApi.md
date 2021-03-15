@@ -18,8 +18,6 @@ Get current open positions across all or single exchange.
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
 $ExchangeId = "ExchangeId_example" # String | Filter the balances to the specific exchange. (optional)
 
 # Get open positions

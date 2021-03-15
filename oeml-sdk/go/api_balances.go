@@ -38,7 +38,7 @@ func (r ApiV1BalancesGetRequest) ExchangeId(exchangeId string) ApiV1BalancesGetR
 	return r
 }
 
-func (r ApiV1BalancesGetRequest) Execute() ([]Balance, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1BalancesGetRequest) Execute() ([]Balance, *_nethttp.Response, error) {
 	return r.ApiService.V1BalancesGetExecute(r)
 }
 
@@ -59,21 +59,19 @@ func (a *BalancesApiService) V1BalancesGet(ctx _context.Context) ApiV1BalancesGe
  * Execute executes the request
  * @return []Balance
  */
-func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]Balance, *_nethttp.Response, GenericOpenAPIError) {
+func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]Balance, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  []Balance
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalancesApiService.V1BalancesGet")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/balances"
@@ -104,22 +102,19 @@ func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -148,5 +143,5 @@ func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

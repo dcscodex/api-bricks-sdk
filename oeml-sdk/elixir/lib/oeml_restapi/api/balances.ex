@@ -23,7 +23,7 @@ defmodule OEML-RESTAPI.Api.Balances do
   ## Returns
 
   {:ok, [%Balance{}, ...]} on success
-  {:error, info} on failure
+  {:error, Tesla.Env.t} on failure
   """
   @spec v1_balances_get(Tesla.Env.client, keyword()) :: {:ok, list(OEML-RESTAPI.Model.Balance.t)} | {:ok, OEML-RESTAPI.Model.Message.t} | {:error, Tesla.Env.t}
   def v1_balances_get(connection, opts \\ []) do

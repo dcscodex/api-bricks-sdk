@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * BalanceData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-13T14:55:50.104Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-15T22:18:23.800198Z[Etc/UTC]")
 public class BalanceData {
   public static final String SERIALIZED_NAME_ASSET_ID_EXCHANGE = "asset_id_exchange";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_EXCHANGE)
@@ -318,7 +318,6 @@ public class BalanceData {
   public int hashCode() {
     return Objects.hash(assetIdExchange, assetIdCoinapi, balance, available, locked, lastUpdatedBy, rateUsd, traded);
   }
-
 
   @Override
   public String toString() {

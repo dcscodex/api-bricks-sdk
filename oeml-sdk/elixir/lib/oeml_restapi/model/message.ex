@@ -17,7 +17,7 @@ defmodule OEML-RESTAPI.Model.Message do
 
   @type t :: %__MODULE__{
     :"type" => String.t | nil,
-    :"severity" => Severity | nil,
+    :"severity" => OEML-RESTAPI.Model.Severity.t | nil,
     :"exchange_id" => String.t | nil,
     :"message" => String.t | nil
   }

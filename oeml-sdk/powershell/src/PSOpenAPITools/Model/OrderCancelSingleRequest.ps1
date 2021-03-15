@@ -44,7 +44,7 @@ function Initialize-OrderCancelSingleRequest {
         'Creating PSCustomObject: PSOpenAPITools => OrderCancelSingleRequest' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if (!$ExchangeId) {
+        if ($ExchangeId -eq $null) {
             throw "invalid value for 'ExchangeId', 'ExchangeId' cannot be null."
         }
 
@@ -98,11 +98,11 @@ function ConvertFrom-JsonToOrderCancelSingleRequest {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property `exchange_id` missing."
+            throw "Error! Empty JSON cannot be serialized due to the required property 'exchange_id' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "exchange_id"))) {
-            throw "Error! JSON cannot be serialized due to the required property `exchange_id` missing."
+            throw "Error! JSON cannot be serialized due to the required property 'exchange_id' missing."
         } else {
             $ExchangeId = $JsonParameters.PSobject.Properties["exchange_id"].value
         }

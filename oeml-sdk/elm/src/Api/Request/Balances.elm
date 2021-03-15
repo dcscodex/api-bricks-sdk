@@ -29,7 +29,7 @@ import Json.Encode
 
 {-| Get current currency balance from all or single exchange.
 -}
-v1BalancesGet : Maybe String -> Api.Request (List Api.Data.Api.Data.Balance)
+v1BalancesGet : Maybe String -> Api.Request (List Api.Data.Balance)
 v1BalancesGet exchangeId_query =
     Api.request
         "GET"
@@ -38,4 +38,4 @@ v1BalancesGet exchangeId_query =
         [ ( "exchange_id", Maybe.map identity exchangeId_query ) ]
         []
         Nothing
-        (Json.Decode.list Api.Data.balanceDecoderApi.Data.balanceDecoder)
+        (Json.Decode.list Api.Data.balanceDecoder)

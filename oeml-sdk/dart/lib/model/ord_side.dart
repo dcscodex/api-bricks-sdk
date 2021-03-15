@@ -18,13 +18,6 @@ class OrdSide {
   final String value;
 
   @override
-  bool operator ==(Object other) => identical(this, other) ||
-      other is OrdSide && other.value == value;
-
-  @override
-  int get hashCode => toString().hashCode;
-
-  @override
   String toString() => value;
 
   String toJson() => value;

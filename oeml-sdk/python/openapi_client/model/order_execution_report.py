@@ -12,8 +12,6 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-import nulltype  # noqa: F401
-
 from openapi_client.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
@@ -265,11 +263,6 @@ class OrderExecutionReport(ModelComposed):
             'amount_filled': amount_filled,
             'status': status,
         }
-        # remove args whose value is Null because they are unset
-        required_arg_names = list(required_args.keys())
-        for required_arg_name in required_arg_names:
-            if required_args[required_arg_name] is nulltype.Null:
-                del required_args[required_arg_name]
         model_args = {}
         model_args.update(required_args)
         model_args.update(kwargs)

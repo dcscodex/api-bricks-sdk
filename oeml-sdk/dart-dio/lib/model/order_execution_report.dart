@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/ord_side.dart';
 import 'package:openapi/model/fills.dart';
 import 'package:openapi/model/ord_status.dart';
@@ -119,7 +126,7 @@ abstract class OrderExecutionReport implements Built<OrderExecutionReport, Order
 
     static void _initializeBuilder(OrderExecutionReportBuilder b) => b;
 
-    factory OrderExecutionReport([updates(OrderExecutionReportBuilder b)]) = _$OrderExecutionReport;
+    factory OrderExecutionReport([void updates(OrderExecutionReportBuilder b)]) = _$OrderExecutionReport;
     static Serializer<OrderExecutionReport> get serializer => _$orderExecutionReportSerializer;
 }
 

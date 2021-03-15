@@ -18,6 +18,7 @@
 #include <QString>
 #include <QMap>
 #include <QRegularExpression>
+#include <stdexcept>
 #include "OAIServerVariable.h"
 
 namespace OpenAPI {

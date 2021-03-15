@@ -156,7 +156,7 @@ This request creating new order for the specific exchange.
 ```R
 library(openapi)
 
-var.order.new.single.request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", "symbol_id_exchange_example", "symbol_id_coinapi_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "expire_time_example", list("exec_inst_example")) # OrderNewSingleRequest | OrderNewSingleRequest object.
+var.order.new.single.request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "symbol_id_exchange_example", "symbol_id_coinapi_example", "expire_time_example", list("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
 #Send new order
 api.instance <- OrdersApi$new()

@@ -23,7 +23,7 @@ defmodule OEML-RESTAPI.Api.Positions do
   ## Returns
 
   {:ok, [%Position{}, ...]} on success
-  {:error, info} on failure
+  {:error, Tesla.Env.t} on failure
   """
   @spec v1_positions_get(Tesla.Env.client, keyword()) :: {:ok, list(OEML-RESTAPI.Model.Position.t)} | {:ok, OEML-RESTAPI.Model.Message.t} | {:error, Tesla.Env.t}
   def v1_positions_get(connection, opts \\ []) do

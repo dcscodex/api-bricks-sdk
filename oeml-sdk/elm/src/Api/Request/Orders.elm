@@ -63,7 +63,7 @@ v1OrdersCancelPost orderCancelSingleRequest_body =
 
 {-| Get last execution reports for open orders across all or single exchange.
 -}
-v1OrdersGet : Maybe String -> Api.Request (List Api.Data.Api.Data.OrderExecutionReport)
+v1OrdersGet : Maybe String -> Api.Request (List Api.Data.OrderExecutionReport)
 v1OrdersGet exchangeId_query =
     Api.request
         "GET"
@@ -72,7 +72,7 @@ v1OrdersGet exchangeId_query =
         [ ( "exchange_id", Maybe.map identity exchangeId_query ) ]
         []
         Nothing
-        (Json.Decode.list Api.Data.orderExecutionReportDecoderApi.Data.orderExecutionReportDecoder)
+        (Json.Decode.list Api.Data.orderExecutionReportDecoder)
 
 
 

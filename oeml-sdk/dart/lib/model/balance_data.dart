@@ -149,13 +149,6 @@ class BalanceDataLastUpdatedByEnum {
   final String value;
 
   @override
-  bool operator ==(Object other) => identical(this, other) ||
-      other is BalanceDataLastUpdatedByEnum && other.value == value;
-
-  @override
-  int get hashCode => toString().hashCode;
-
-  @override
   String toString() => value;
 
   String toJson() => value;

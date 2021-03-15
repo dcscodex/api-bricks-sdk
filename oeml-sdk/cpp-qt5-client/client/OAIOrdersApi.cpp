@@ -146,7 +146,7 @@ void OAIOrdersApi::v1OrdersCancelAllPost(const OAIOrderCancelAllRequest &oai_ord
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QString output = oai_order_cancel_all_request.asJson();
+    QByteArray output = oai_order_cancel_all_request.asJson().toUtf8();
     input.request_body.append(output);
 
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
@@ -188,7 +188,7 @@ void OAIOrdersApi::v1OrdersCancelPost(const OAIOrderCancelSingleRequest &oai_ord
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QString output = oai_order_cancel_single_request.asJson();
+    QByteArray output = oai_order_cancel_single_request.asJson().toUtf8();
     input.request_body.append(output);
 
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
@@ -284,7 +284,7 @@ void OAIOrdersApi::v1OrdersPost(const OAIOrderNewSingleRequest &oai_order_new_si
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QString output = oai_order_new_single_request.asJson();
+    QByteArray output = oai_order_new_single_request.asJson().toUtf8();
     input.request_body.append(output);
 
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }

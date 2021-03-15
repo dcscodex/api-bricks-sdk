@@ -39,7 +39,7 @@ func (r ApiV1OrdersCancelAllPostRequest) OrderCancelAllRequest(orderCancelAllReq
 	return r
 }
 
-func (r ApiV1OrdersCancelAllPostRequest) Execute() (Message, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1OrdersCancelAllPostRequest) Execute() (Message, *_nethttp.Response, error) {
 	return r.ApiService.V1OrdersCancelAllPostExecute(r)
 }
 
@@ -60,21 +60,19 @@ func (a *OrdersApiService) V1OrdersCancelAllPost(ctx _context.Context) ApiV1Orde
  * Execute executes the request
  * @return Message
  */
-func (a *OrdersApiService) V1OrdersCancelAllPostExecute(r ApiV1OrdersCancelAllPostRequest) (Message, *_nethttp.Response, GenericOpenAPIError) {
+func (a *OrdersApiService) V1OrdersCancelAllPostExecute(r ApiV1OrdersCancelAllPostRequest) (Message, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  Message
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrdersApiService.V1OrdersCancelAllPost")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/orders/cancel/all"
@@ -83,8 +81,7 @@ func (a *OrdersApiService) V1OrdersCancelAllPostExecute(r ApiV1OrdersCancelAllPo
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.orderCancelAllRequest == nil {
-		executionError.error = "orderCancelAllRequest is required and must be specified"
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, reportError("orderCancelAllRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -108,22 +105,19 @@ func (a *OrdersApiService) V1OrdersCancelAllPostExecute(r ApiV1OrdersCancelAllPo
 	localVarPostBody = r.orderCancelAllRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -162,7 +156,7 @@ func (a *OrdersApiService) V1OrdersCancelAllPostExecute(r ApiV1OrdersCancelAllPo
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiV1OrdersCancelPostRequest struct {
@@ -176,7 +170,7 @@ func (r ApiV1OrdersCancelPostRequest) OrderCancelSingleRequest(orderCancelSingle
 	return r
 }
 
-func (r ApiV1OrdersCancelPostRequest) Execute() (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1OrdersCancelPostRequest) Execute() (OrderExecutionReport, *_nethttp.Response, error) {
 	return r.ApiService.V1OrdersCancelPostExecute(r)
 }
 
@@ -197,21 +191,19 @@ func (a *OrdersApiService) V1OrdersCancelPost(ctx _context.Context) ApiV1OrdersC
  * Execute executes the request
  * @return OrderExecutionReport
  */
-func (a *OrdersApiService) V1OrdersCancelPostExecute(r ApiV1OrdersCancelPostRequest) (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (a *OrdersApiService) V1OrdersCancelPostExecute(r ApiV1OrdersCancelPostRequest) (OrderExecutionReport, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  OrderExecutionReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrdersApiService.V1OrdersCancelPost")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/orders/cancel"
@@ -220,8 +212,7 @@ func (a *OrdersApiService) V1OrdersCancelPostExecute(r ApiV1OrdersCancelPostRequ
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.orderCancelSingleRequest == nil {
-		executionError.error = "orderCancelSingleRequest is required and must be specified"
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, reportError("orderCancelSingleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -245,22 +236,19 @@ func (a *OrdersApiService) V1OrdersCancelPostExecute(r ApiV1OrdersCancelPostRequ
 	localVarPostBody = r.orderCancelSingleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -299,7 +287,7 @@ func (a *OrdersApiService) V1OrdersCancelPostExecute(r ApiV1OrdersCancelPostRequ
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiV1OrdersGetRequest struct {
@@ -313,7 +301,7 @@ func (r ApiV1OrdersGetRequest) ExchangeId(exchangeId string) ApiV1OrdersGetReque
 	return r
 }
 
-func (r ApiV1OrdersGetRequest) Execute() ([]OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1OrdersGetRequest) Execute() ([]OrderExecutionReport, *_nethttp.Response, error) {
 	return r.ApiService.V1OrdersGetExecute(r)
 }
 
@@ -334,21 +322,19 @@ func (a *OrdersApiService) V1OrdersGet(ctx _context.Context) ApiV1OrdersGetReque
  * Execute executes the request
  * @return []OrderExecutionReport
  */
-func (a *OrdersApiService) V1OrdersGetExecute(r ApiV1OrdersGetRequest) ([]OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (a *OrdersApiService) V1OrdersGetExecute(r ApiV1OrdersGetRequest) ([]OrderExecutionReport, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  []OrderExecutionReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrdersApiService.V1OrdersGet")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/orders"
@@ -379,22 +365,19 @@ func (a *OrdersApiService) V1OrdersGetExecute(r ApiV1OrdersGetRequest) ([]OrderE
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -423,7 +406,7 @@ func (a *OrdersApiService) V1OrdersGetExecute(r ApiV1OrdersGetRequest) ([]OrderE
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiV1OrdersPostRequest struct {
@@ -437,7 +420,7 @@ func (r ApiV1OrdersPostRequest) OrderNewSingleRequest(orderNewSingleRequest Orde
 	return r
 }
 
-func (r ApiV1OrdersPostRequest) Execute() (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1OrdersPostRequest) Execute() (OrderExecutionReport, *_nethttp.Response, error) {
 	return r.ApiService.V1OrdersPostExecute(r)
 }
 
@@ -458,21 +441,19 @@ func (a *OrdersApiService) V1OrdersPost(ctx _context.Context) ApiV1OrdersPostReq
  * Execute executes the request
  * @return OrderExecutionReport
  */
-func (a *OrdersApiService) V1OrdersPostExecute(r ApiV1OrdersPostRequest) (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (a *OrdersApiService) V1OrdersPostExecute(r ApiV1OrdersPostRequest) (OrderExecutionReport, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  OrderExecutionReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrdersApiService.V1OrdersPost")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/orders"
@@ -481,8 +462,7 @@ func (a *OrdersApiService) V1OrdersPostExecute(r ApiV1OrdersPostRequest) (OrderE
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.orderNewSingleRequest == nil {
-		executionError.error = "orderNewSingleRequest is required and must be specified"
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, reportError("orderNewSingleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -506,22 +486,19 @@ func (a *OrdersApiService) V1OrdersPostExecute(r ApiV1OrdersPostRequest) (OrderE
 	localVarPostBody = r.orderNewSingleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -570,7 +547,7 @@ func (a *OrdersApiService) V1OrdersPostExecute(r ApiV1OrdersPostRequest) (OrderE
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiV1OrdersStatusClientOrderIdGetRequest struct {
@@ -580,7 +557,7 @@ type ApiV1OrdersStatusClientOrderIdGetRequest struct {
 }
 
 
-func (r ApiV1OrdersStatusClientOrderIdGetRequest) Execute() (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (r ApiV1OrdersStatusClientOrderIdGetRequest) Execute() (OrderExecutionReport, *_nethttp.Response, error) {
 	return r.ApiService.V1OrdersStatusClientOrderIdGetExecute(r)
 }
 
@@ -603,21 +580,19 @@ func (a *OrdersApiService) V1OrdersStatusClientOrderIdGet(ctx _context.Context, 
  * Execute executes the request
  * @return OrderExecutionReport
  */
-func (a *OrdersApiService) V1OrdersStatusClientOrderIdGetExecute(r ApiV1OrdersStatusClientOrderIdGetRequest) (OrderExecutionReport, *_nethttp.Response, GenericOpenAPIError) {
+func (a *OrdersApiService) V1OrdersStatusClientOrderIdGetExecute(r ApiV1OrdersStatusClientOrderIdGetRequest) (OrderExecutionReport, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		executionError       GenericOpenAPIError
 		localVarReturnValue  OrderExecutionReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrdersApiService.V1OrdersStatusClientOrderIdGet")
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/orders/status/{client_order_id}"
@@ -646,22 +621,19 @@ func (a *OrdersApiService) V1OrdersStatusClientOrderIdGetExecute(r ApiV1OrdersSt
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, nil, executionError
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		executionError.error = err.Error()
-		return localVarReturnValue, localVarHTTPResponse, executionError
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -690,5 +662,5 @@ func (a *OrdersApiService) V1OrdersStatusClientOrderIdGetExecute(r ApiV1OrdersSt
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, executionError
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

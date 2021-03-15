@@ -22,9 +22,7 @@ This request cancels all open orders on single specified exchange.
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
-$OrderCancelAllRequest = (Initialize-OrderCancelAllRequest-ExchangeId "ExchangeId_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
+$OrderCancelAllRequest = (Initialize-OrderCancelAllRequest -ExchangeId "ExchangeId_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
 
 # Cancel all orders request
 try {
@@ -67,9 +65,7 @@ Request cancel for an existing order. The order can be canceled using the `clien
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
-$OrderCancelSingleRequest = (Initialize-OrderCancelSingleRequest-ExchangeId "ExchangeId_example" -ExchangeOrderId "ExchangeOrderId_example" -ClientOrderId "ClientOrderId_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
+$OrderCancelSingleRequest = (Initialize-OrderCancelSingleRequest -ExchangeId "ExchangeId_example" -ExchangeOrderId "ExchangeOrderId_example" -ClientOrderId "ClientOrderId_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
 # Cancel order request
 try {
@@ -112,8 +108,6 @@ Get last execution reports for open orders across all or single exchange.
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
 $ExchangeId = "ExchangeId_example" # String | Filter the open orders to the specific exchange. (optional)
 
 # Get open orders
@@ -157,9 +151,7 @@ This request creating new order for the specific exchange.
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
-$OrderNewSingleRequest = (Initialize-OrderNewSingleRequest-ExchangeId "ExchangeId_example" -ClientOrderId "ClientOrderId_example" -SymbolIdExchange "SymbolIdExchange_example" -SymbolIdCoinapi "SymbolIdCoinapi_example" -AmountOrder 123 -Price 123 -Side (Initialize-OrdSide) -OrderType (Initialize-OrdType) -TimeInForce (Initialize-TimeInForce) -ExpireTime Get-Date -ExecInst @("ExecInst_example")) # OrderNewSingleRequest | OrderNewSingleRequest object.
+$OrderNewSingleRequest = (Initialize-OrderNewSingleRequest -ExchangeId "ExchangeId_example" -ClientOrderId "ClientOrderId_example" -SymbolIdExchange "SymbolIdExchange_example" -SymbolIdCoinapi "SymbolIdCoinapi_example" -AmountOrder 123 -Price 123 -Side (Initialize-OrdSide ) -OrderType (Initialize-OrdType ) -TimeInForce (Initialize-TimeInForce ) -ExpireTime Get-Date -ExecInst @("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
 # Send new order
 try {
@@ -202,8 +194,6 @@ Get the last order execution report for the specified order. The requested order
 
 ### Example
 ```powershell
-Import-Module -Name PSOpenAPITools
-
 $ClientOrderId = "ClientOrderId_example" # String | The unique identifier of the order assigned by the client.
 
 # Get order execution report

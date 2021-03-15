@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -52,7 +59,7 @@ abstract class BalanceData implements Built<BalanceData, BalanceDataBuilder> {
 
     static void _initializeBuilder(BalanceDataBuilder b) => b;
 
-    factory BalanceData([updates(BalanceDataBuilder b)]) = _$BalanceData;
+    factory BalanceData([void updates(BalanceDataBuilder b)]) = _$BalanceData;
     static Serializer<BalanceData> get serializer => _$balanceDataSerializer;
 }
 

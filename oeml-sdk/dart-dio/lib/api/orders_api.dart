@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
@@ -12,10 +19,12 @@ import 'package:openapi/model/order_new_single_request.dart';
 import 'package:built_collection/built_collection.dart';
 
 class OrdersApi {
-    final Dio _dio;
-    Serializers _serializers;
 
-    OrdersApi(this._dio, this._serializers);
+    final Dio _dio;
+
+    final Serializers _serializers;
+
+    const OrdersApi(this._dio, this._serializers);
 
     /// Cancel all orders request
     ///
@@ -31,32 +40,33 @@ class OrdersApi {
     }) async {
         final String _path = '/v1/orders/cancel/all';
 
-        final Map<String, dynamic> queryParams = {};
-        final Map<String, dynamic> headerParams = {
+        final queryParams = <String, dynamic>{};
+        final headerParams = <String, dynamic>{ 
             if (headers != null) ...headers,
         };
         dynamic bodyData;
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+        queryParams.removeWhere((key, dynamic value) => value == null);
+        headerParams.removeWhere((key, dynamic value) => value == null);
 
-        final List<String> contentTypes = [
+        final contentTypes = <String>[
             'application/json',
         ];
 
-        final serializedBody = _serializers.serialize(orderCancelAllRequest);
+        final bodySerializer = _serializers.serializerForType(OrderCancelAllRequest) as Serializer<OrderCancelAllRequest>;
+        final serializedBody = _serializers.serializeWith(bodySerializer, orderCancelAllRequest);
         final jsonorderCancelAllRequest = json.encode(serializedBody);
         bodyData = jsonorderCancelAllRequest;
 
-        return _dio.request(
+        return _dio.request<dynamic>(
             _path,
             queryParameters: queryParams,
             data: bodyData,
             options: Options(
                 method: 'post'.toUpperCase(),
                 headers: headerParams,
-                extra: {
-                    'secure': [],
+                extra: <String, dynamic>{
+                    'secure': <Map<String, String>>[],
                     if (extra != null) ...extra,
                 },
                 validateStatus: validateStatus,
@@ -66,12 +76,16 @@ class OrdersApi {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
         ).then((response) {
-            final serializer = _serializers.serializerForType(Message);
-            final data = _serializers.deserializeWith<Message>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+            final serializer = _serializers.serializerForType(Message) as Serializer<Message>;
+            final data = _serializers.deserializeWith<Message>(
+                serializer,
+                response.data is String ? jsonDecode(response.data as String) : response.data,
+            );
 
             return Response<Message>(
                 data: data,
                 headers: response.headers,
+                isRedirect: response.isRedirect,
                 request: response.request,
                 redirects: response.redirects,
                 statusCode: response.statusCode,
@@ -95,32 +109,33 @@ class OrdersApi {
     }) async {
         final String _path = '/v1/orders/cancel';
 
-        final Map<String, dynamic> queryParams = {};
-        final Map<String, dynamic> headerParams = {
+        final queryParams = <String, dynamic>{};
+        final headerParams = <String, dynamic>{ 
             if (headers != null) ...headers,
         };
         dynamic bodyData;
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+        queryParams.removeWhere((key, dynamic value) => value == null);
+        headerParams.removeWhere((key, dynamic value) => value == null);
 
-        final List<String> contentTypes = [
+        final contentTypes = <String>[
             'application/json',
         ];
 
-        final serializedBody = _serializers.serialize(orderCancelSingleRequest);
+        final bodySerializer = _serializers.serializerForType(OrderCancelSingleRequest) as Serializer<OrderCancelSingleRequest>;
+        final serializedBody = _serializers.serializeWith(bodySerializer, orderCancelSingleRequest);
         final jsonorderCancelSingleRequest = json.encode(serializedBody);
         bodyData = jsonorderCancelSingleRequest;
 
-        return _dio.request(
+        return _dio.request<dynamic>(
             _path,
             queryParameters: queryParams,
             data: bodyData,
             options: Options(
                 method: 'post'.toUpperCase(),
                 headers: headerParams,
-                extra: {
-                    'secure': [],
+                extra: <String, dynamic>{
+                    'secure': <Map<String, String>>[],
                     if (extra != null) ...extra,
                 },
                 validateStatus: validateStatus,
@@ -130,12 +145,16 @@ class OrdersApi {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
         ).then((response) {
-            final serializer = _serializers.serializerForType(OrderExecutionReport);
-            final data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+            final serializer = _serializers.serializerForType(OrderExecutionReport) as Serializer<OrderExecutionReport>;
+            final data = _serializers.deserializeWith<OrderExecutionReport>(
+                serializer,
+                response.data is String ? jsonDecode(response.data as String) : response.data,
+            );
 
             return Response<OrderExecutionReport>(
                 data: data,
                 headers: response.headers,
+                isRedirect: response.isRedirect,
                 request: response.request,
                 redirects: response.redirects,
                 statusCode: response.statusCode,
@@ -159,27 +178,27 @@ class OrdersApi {
     }) async {
         final String _path = '/v1/orders';
 
-        final Map<String, dynamic> queryParams = {};
-        final Map<String, dynamic> headerParams = {
+        final queryParams = <String, dynamic>{};
+        final headerParams = <String, dynamic>{ 
             if (headers != null) ...headers,
         };
         dynamic bodyData;
 
         queryParams[r'exchange_id'] = exchangeId;
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+        queryParams.removeWhere((key, dynamic value) => value == null);
+        headerParams.removeWhere((key, dynamic value) => value == null);
 
-        final List<String> contentTypes = [];
+        final contentTypes = <String>[];
 
-        return _dio.request(
+        return _dio.request<dynamic>(
             _path,
             queryParameters: queryParams,
             data: bodyData,
             options: Options(
                 method: 'get'.toUpperCase(),
                 headers: headerParams,
-                extra: {
-                    'secure': [],
+                extra: <String, dynamic>{
+                    'secure': <Map<String, String>>[],
                     if (extra != null) ...extra,
                 },
                 validateStatus: validateStatus,
@@ -189,13 +208,18 @@ class OrdersApi {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
         ).then((response) {
-            const collectionType = BuiltList;
-            const type = FullType(collectionType, [FullType(OrderExecutionReport)]);
-            final BuiltList<OrderExecutionReport> data = _serializers.deserialize(response.data is String ? jsonDecode(response.data) : response.data, specifiedType: type);
+            const type = FullType(BuiltList, [FullType(OrderExecutionReport)]);
+            final data = _serializers.deserialize(
+                response.data is String
+                ? jsonDecode(response.data as String)
+                : response.data,
+                specifiedType: type,
+            ) as BuiltList<OrderExecutionReport>;
 
             return Response<BuiltList<OrderExecutionReport>>(
                 data: data,
                 headers: response.headers,
+                isRedirect: response.isRedirect,
                 request: response.request,
                 redirects: response.redirects,
                 statusCode: response.statusCode,
@@ -219,32 +243,33 @@ class OrdersApi {
     }) async {
         final String _path = '/v1/orders';
 
-        final Map<String, dynamic> queryParams = {};
-        final Map<String, dynamic> headerParams = {
+        final queryParams = <String, dynamic>{};
+        final headerParams = <String, dynamic>{ 
             if (headers != null) ...headers,
         };
         dynamic bodyData;
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+        queryParams.removeWhere((key, dynamic value) => value == null);
+        headerParams.removeWhere((key, dynamic value) => value == null);
 
-        final List<String> contentTypes = [
+        final contentTypes = <String>[
             'application/json',
         ];
 
-        final serializedBody = _serializers.serialize(orderNewSingleRequest);
+        final bodySerializer = _serializers.serializerForType(OrderNewSingleRequest) as Serializer<OrderNewSingleRequest>;
+        final serializedBody = _serializers.serializeWith(bodySerializer, orderNewSingleRequest);
         final jsonorderNewSingleRequest = json.encode(serializedBody);
         bodyData = jsonorderNewSingleRequest;
 
-        return _dio.request(
+        return _dio.request<dynamic>(
             _path,
             queryParameters: queryParams,
             data: bodyData,
             options: Options(
                 method: 'post'.toUpperCase(),
                 headers: headerParams,
-                extra: {
-                    'secure': [],
+                extra: <String, dynamic>{
+                    'secure': <Map<String, String>>[],
                     if (extra != null) ...extra,
                 },
                 validateStatus: validateStatus,
@@ -254,12 +279,16 @@ class OrdersApi {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
         ).then((response) {
-            final serializer = _serializers.serializerForType(OrderExecutionReport);
-            final data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+            final serializer = _serializers.serializerForType(OrderExecutionReport) as Serializer<OrderExecutionReport>;
+            final data = _serializers.deserializeWith<OrderExecutionReport>(
+                serializer,
+                response.data is String ? jsonDecode(response.data as String) : response.data,
+            );
 
             return Response<OrderExecutionReport>(
                 data: data,
                 headers: response.headers,
+                isRedirect: response.isRedirect,
                 request: response.request,
                 redirects: response.redirects,
                 statusCode: response.statusCode,
@@ -283,26 +312,26 @@ class OrdersApi {
     }) async {
         final String _path = '/v1/orders/status/{client_order_id}'.replaceAll('{' r'client_order_id' '}', clientOrderId.toString());
 
-        final Map<String, dynamic> queryParams = {};
-        final Map<String, dynamic> headerParams = {
+        final queryParams = <String, dynamic>{};
+        final headerParams = <String, dynamic>{ 
             if (headers != null) ...headers,
         };
         dynamic bodyData;
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+        queryParams.removeWhere((key, dynamic value) => value == null);
+        headerParams.removeWhere((key, dynamic value) => value == null);
 
-        final List<String> contentTypes = [];
+        final contentTypes = <String>[];
 
-        return _dio.request(
+        return _dio.request<dynamic>(
             _path,
             queryParameters: queryParams,
             data: bodyData,
             options: Options(
                 method: 'get'.toUpperCase(),
                 headers: headerParams,
-                extra: {
-                    'secure': [],
+                extra: <String, dynamic>{
+                    'secure': <Map<String, String>>[],
                     if (extra != null) ...extra,
                 },
                 validateStatus: validateStatus,
@@ -312,12 +341,16 @@ class OrdersApi {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
         ).then((response) {
-            final serializer = _serializers.serializerForType(OrderExecutionReport);
-            final data = _serializers.deserializeWith<OrderExecutionReport>(serializer, response.data is String ? jsonDecode(response.data) : response.data);
+            final serializer = _serializers.serializerForType(OrderExecutionReport) as Serializer<OrderExecutionReport>;
+            final data = _serializers.deserializeWith<OrderExecutionReport>(
+                serializer,
+                response.data is String ? jsonDecode(response.data as String) : response.data,
+            );
 
             return Response<OrderExecutionReport>(
                 data: data,
                 headers: response.headers,
+                isRedirect: response.isRedirect,
                 request: response.request,
                 redirects: response.redirects,
                 statusCode: response.statusCode,

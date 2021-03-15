@@ -234,7 +234,7 @@ class OrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
       return (apiClient.deserialize(_decodeBodyBytes(response), 'List<OrderExecutionReport>') as List)
-        .map((item) => item as OrderExecutionReport)
+        .cast<OrderExecutionReport>()
         .toList(growable: false);
     }
     return null;

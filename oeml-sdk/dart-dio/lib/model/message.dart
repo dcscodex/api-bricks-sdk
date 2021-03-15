@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/severity.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -31,7 +38,7 @@ abstract class Message implements Built<Message, MessageBuilder> {
 
     static void _initializeBuilder(MessageBuilder b) => b;
 
-    factory Message([updates(MessageBuilder b)]) = _$Message;
+    factory Message([void updates(MessageBuilder b)]) = _$Message;
     static Serializer<Message> get serializer => _$messageSerializer;
 }
 

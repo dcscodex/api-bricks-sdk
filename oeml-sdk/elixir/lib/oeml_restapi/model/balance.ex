@@ -15,7 +15,7 @@ defmodule OEML-RESTAPI.Model.Balance do
 
   @type t :: %__MODULE__{
     :"exchange_id" => String.t | nil,
-    :"data" => [BalanceData] | nil
+    :"data" => [OEML-RESTAPI.Model.BalanceData.t] | nil
   }
 end
 

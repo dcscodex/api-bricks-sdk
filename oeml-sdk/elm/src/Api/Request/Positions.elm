@@ -29,7 +29,7 @@ import Json.Encode
 
 {-| Get current open positions across all or single exchange.
 -}
-v1PositionsGet : Maybe String -> Api.Request (List Api.Data.Api.Data.Position)
+v1PositionsGet : Maybe String -> Api.Request (List Api.Data.Position)
 v1PositionsGet exchangeId_query =
     Api.request
         "GET"
@@ -38,4 +38,4 @@ v1PositionsGet exchangeId_query =
         [ ( "exchange_id", Maybe.map identity exchangeId_query ) ]
         []
         Nothing
-        (Json.Decode.list Api.Data.positionDecoderApi.Data.positionDecoder)
+        (Json.Decode.list Api.Data.positionDecoder)

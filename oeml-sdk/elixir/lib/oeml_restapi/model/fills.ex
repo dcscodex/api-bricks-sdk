@@ -25,7 +25,7 @@ defimpl Poison.Decoder, for: OEML-RESTAPI.Model.Fills do
   import OEML-RESTAPI.Deserializer
   def decode(value, options) do
     value
-    |> deserialize(:"time", :struct, OEML-RESTAPI.Model.DateTime, options)
+    |> deserialize(:"time", :struct, OEML-RESTAPI.Model.Date, options)
   end
 end
 

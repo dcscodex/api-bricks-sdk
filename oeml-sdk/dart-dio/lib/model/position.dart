@@ -1,3 +1,10 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.6
+
+// ignore_for_file: unused_import
+
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/model/position_data.dart';
 import 'package:built_value/built_value.dart';
@@ -21,7 +28,7 @@ abstract class Position implements Built<Position, PositionBuilder> {
 
     static void _initializeBuilder(PositionBuilder b) => b;
 
-    factory Position([updates(PositionBuilder b)]) = _$Position;
+    factory Position([void updates(PositionBuilder b)]) = _$Position;
     static Serializer<Position> get serializer => _$positionSerializer;
 }
 

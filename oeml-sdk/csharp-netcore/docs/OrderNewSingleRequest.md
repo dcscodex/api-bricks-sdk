@@ -1,5 +1,6 @@
 # CoinAPI.OMS.API.SDK.Model.OrderNewSingleRequest
 The new order message.
+
 ## Properties
 
 Name | Type | Description | Notes

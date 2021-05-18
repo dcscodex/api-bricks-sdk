@@ -59,6 +59,46 @@ Once compiled, you can run it with ``` ./main ```
 
 Note: You don't need to specify includes for models and include folder seperately as they are path linked. You just have to import the api.h file in your code, the include linking will work.
 
+## Documentation for API Endpoints
+
+All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+
+Category | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*BalancesAPI* | [**BalancesAPI_v1BalancesGet**](docs/BalancesAPI.md#BalancesAPI_v1BalancesGet) | **GET** /v1/balances | Get balances
+*OrdersAPI* | [**OrdersAPI_v1OrdersCancelAllPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersAPI* | [**OrdersAPI_v1OrdersCancelPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersAPI* | [**OrdersAPI_v1OrdersGet**](docs/OrdersAPI.md#OrdersAPI_v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersAPI* | [**OrdersAPI_v1OrdersPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersPost) | **POST** /v1/orders | Send new order
+*OrdersAPI* | [**OrdersAPI_v1OrdersStatusClientOrderIdGet**](docs/OrdersAPI.md#OrdersAPI_v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsAPI* | [**PositionsAPI_v1PositionsGet**](docs/PositionsAPI.md#PositionsAPI_v1PositionsGet) | **GET** /v1/positions | Get open positions
+
+
+## Documentation for Models
+
+ - [balance_t](docs/balance.md)
+ - [balance_data_t](docs/balance_data.md)
+ - [fills_t](docs/fills.md)
+ - [message_t](docs/message.md)
+ - [ord_side_t](docs/ord_side.md)
+ - [ord_status_t](docs/ord_status.md)
+ - [ord_type_t](docs/ord_type.md)
+ - [order_cancel_all_request_t](docs/order_cancel_all_request.md)
+ - [order_cancel_single_request_t](docs/order_cancel_single_request.md)
+ - [order_execution_report_t](docs/order_execution_report.md)
+ - [order_execution_report_all_of_t](docs/order_execution_report_all_of.md)
+ - [order_new_single_request_t](docs/order_new_single_request.md)
+ - [position_t](docs/position.md)
+ - [position_data_t](docs/position_data.md)
+ - [severity_t](docs/severity.md)
+ - [time_in_force_t](docs/time_in_force.md)
+ - [validation_error_t](docs/validation_error.md)
+
+
+## Documentation for Authorization
+
+All endpoints do not require authorization.
+
 ## Author
 
 support@coinapi.io

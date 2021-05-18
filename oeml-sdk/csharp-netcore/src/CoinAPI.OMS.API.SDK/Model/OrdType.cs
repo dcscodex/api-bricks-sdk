@@ -30,9 +30,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     /// Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-type\&quot;&gt;OEML / Starter Guide / Order parameters / Order type&lt;/a&gt; 
     /// </summary>
     /// <value>Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-type\&quot;&gt;OEML / Starter Guide / Order parameters / Order type&lt;/a&gt; </value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum OrdType
     {
         /// <summary>

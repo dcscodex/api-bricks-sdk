@@ -59,6 +59,7 @@ namespace CoinAPI.OMS.API.SDK.Model
 
         }
 
+
         /// <summary>
         /// Source of the last modification. 
         /// </summary>

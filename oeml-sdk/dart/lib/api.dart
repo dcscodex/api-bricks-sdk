@@ -48,6 +48,7 @@ part 'model/severity.dart';
 part 'model/time_in_force.dart';
 part 'model/validation_error.dart';
 
+
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
 final _dateFormatter = DateFormat('yyyy-MM-dd');

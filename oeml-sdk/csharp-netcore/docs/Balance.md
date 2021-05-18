@@ -1,4 +1,5 @@
 # CoinAPI.OMS.API.SDK.Model.Balance
+
 ## Properties
 
 Name | Type | Description | Notes

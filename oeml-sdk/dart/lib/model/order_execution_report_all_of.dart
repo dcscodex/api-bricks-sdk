@@ -78,24 +78,16 @@ class OrderExecutionReportAllOf {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (clientOrderIdFormatExchange != null) {
       json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
-    }
     if (exchangeOrderId != null) {
       json[r'exchange_order_id'] = exchangeOrderId;
     }
-    if (amountOpen != null) {
       json[r'amount_open'] = amountOpen;
-    }
-    if (amountFilled != null) {
       json[r'amount_filled'] = amountFilled;
-    }
     if (avgPx != null) {
       json[r'avg_px'] = avgPx;
     }
-    if (status != null) {
       json[r'status'] = status;
-    }
     if (statusHistory != null) {
       json[r'status_history'] = statusHistory;
     }

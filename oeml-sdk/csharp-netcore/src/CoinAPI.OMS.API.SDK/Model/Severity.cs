@@ -30,9 +30,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     /// Severity of the message.
     /// </summary>
     /// <value>Severity of the message.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum Severity
     {
         /// <summary>

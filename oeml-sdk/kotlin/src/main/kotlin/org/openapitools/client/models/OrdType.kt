@@ -19,12 +19,11 @@ import com.squareup.moshi.Json
 * Values: lIMIT
 */
 
-enum class OrdType(val value: kotlin.String){
+enum class OrdType(val value: kotlin.String) {
 
 
     @Json(name = "LIMIT")
     lIMIT("LIMIT");
-
 
 
     /**
@@ -34,6 +33,5 @@ enum class OrdType(val value: kotlin.String){
     override fun toString(): String {
         return value
     }
-
 }
 

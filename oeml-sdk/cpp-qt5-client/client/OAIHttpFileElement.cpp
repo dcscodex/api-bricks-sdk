@@ -66,13 +66,13 @@ QJsonValue OAIHttpFileElement::asJsonValue() const {
     if (!result) {
         qDebug() << "Error opening file " << local_filename;
     }
-#if QT_VERSION >= 0x051500
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
     return QJsonDocument::fromJson(bArray.data()).object();
 #else
-    return QJsonDocument::fromBinaryData(bArray.data()).object(); 
+    return QJsonDocument::fromBinaryData(bArray.data()).object();
 #endif
 }
-    
+
 bool OAIHttpFileElement::fromStringValue(const QString &instr) {
     QFile file(local_filename);
     bool result = false;
@@ -95,7 +95,7 @@ bool OAIHttpFileElement::fromJsonValue(const QJsonValue &jval) {
         file.remove();
     }
     result = file.open(QIODevice::WriteOnly);
-#if QT_VERSION >= 0x051500
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
     file.write(QJsonDocument(jval.toObject()).toJson());
 #else
     file.write(QJsonDocument(jval.toObject()).toBinaryData());

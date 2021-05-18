@@ -42,7 +42,7 @@ type OrderNewSingleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderNewSingleRequest(exchangeId string, clientOrderId string, amountOrder float32, price float32, side OrdSide, orderType OrdType, timeInForce TimeInForce, ) *OrderNewSingleRequest {
+func NewOrderNewSingleRequest(exchangeId string, clientOrderId string, amountOrder float32, price float32, side OrdSide, orderType OrdType, timeInForce TimeInForce) *OrderNewSingleRequest {
 	this := OrderNewSingleRequest{}
 	this.ExchangeId = exchangeId
 	this.ClientOrderId = clientOrderId
@@ -64,7 +64,7 @@ func NewOrderNewSingleRequestWithDefaults() *OrderNewSingleRequest {
 
 // GetExchangeId returns the ExchangeId field value
 func (o *OrderNewSingleRequest) GetExchangeId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *OrderNewSingleRequest) SetExchangeId(v string) {
 
 // GetClientOrderId returns the ClientOrderId field value
 func (o *OrderNewSingleRequest) GetClientOrderId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o *OrderNewSingleRequest) SetSymbolIdCoinapi(v string) {
 
 // GetAmountOrder returns the AmountOrder field value
 func (o *OrderNewSingleRequest) GetAmountOrder() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *OrderNewSingleRequest) SetAmountOrder(v float32) {
 
 // GetPrice returns the Price field value
 func (o *OrderNewSingleRequest) GetPrice() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -224,7 +224,7 @@ func (o *OrderNewSingleRequest) SetPrice(v float32) {
 
 // GetSide returns the Side field value
 func (o *OrderNewSingleRequest) GetSide() OrdSide {
-	if o == nil  {
+	if o == nil {
 		var ret OrdSide
 		return ret
 	}
@@ -248,7 +248,7 @@ func (o *OrderNewSingleRequest) SetSide(v OrdSide) {
 
 // GetOrderType returns the OrderType field value
 func (o *OrderNewSingleRequest) GetOrderType() OrdType {
-	if o == nil  {
+	if o == nil {
 		var ret OrdType
 		return ret
 	}
@@ -272,7 +272,7 @@ func (o *OrderNewSingleRequest) SetOrderType(v OrdType) {
 
 // GetTimeInForce returns the TimeInForce field value
 func (o *OrderNewSingleRequest) GetTimeInForce() TimeInForce {
-	if o == nil  {
+	if o == nil {
 		var ret TimeInForce
 		return ret
 	}

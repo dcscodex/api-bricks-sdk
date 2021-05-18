@@ -11,59 +11,47 @@
  */
 
 #include "OAIOrdersApi.h"
-#include "OAIHelpers.h"
 #include "OAIServerConfiguration.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 
 namespace OpenAPI {
 
-OAIOrdersApi::OAIOrdersApi(const QString &scheme, const QString &host, int port, const QString &basePath, const int timeOut)
-    : _scheme(scheme),
-      _host(host),
-      _port(port),
-      _basePath(basePath),
-      _timeOut(timeOut),
+OAIOrdersApi::OAIOrdersApi(const int timeOut)
+    : _timeOut(timeOut),
       _manager(nullptr),
       isResponseCompressionEnabled(false),
       isRequestCompressionEnabled(false) {
-      initializeServerConfigs();
-      }
+    initializeServerConfigs();
+}
 
 OAIOrdersApi::~OAIOrdersApi() {
 }
 
 void OAIOrdersApi::initializeServerConfigs(){
-
-//Default server
-QList<OAIServerConfiguration> defaultConf = QList<OAIServerConfiguration>();
-//varying endpoint server 
-QList<OAIServerConfiguration> serverConf = QList<OAIServerConfiguration>();
-defaultConf.append(OAIServerConfiguration(
-    "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io",
+    //Default server
+    QList<OAIServerConfiguration> defaultConf = QList<OAIServerConfiguration>();
+    //varying endpoint server
+    QList<OAIServerConfiguration> serverConf = QList<OAIServerConfiguration>();
+    defaultConf.append(OAIServerConfiguration(
+    QUrl("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"),
     "No description provided",
     QMap<QString, OAIServerVariable>()));
-_serverConfigs.insert("v1OrdersCancelAllPost",defaultConf);
-_serverIndices.insert("v1OrdersCancelAllPost",0);
-
-_serverConfigs.insert("v1OrdersCancelPost",defaultConf);
-_serverIndices.insert("v1OrdersCancelPost",0);
-
-_serverConfigs.insert("v1OrdersGet",defaultConf);
-_serverIndices.insert("v1OrdersGet",0);
-
-_serverConfigs.insert("v1OrdersPost",defaultConf);
-_serverIndices.insert("v1OrdersPost",0);
-
-_serverConfigs.insert("v1OrdersStatusClientOrderIdGet",defaultConf);
-_serverIndices.insert("v1OrdersStatusClientOrderIdGet",0);
-
-
+    _serverConfigs.insert("v1OrdersCancelAllPost", defaultConf);
+    _serverIndices.insert("v1OrdersCancelAllPost", 0);
+    _serverConfigs.insert("v1OrdersCancelPost", defaultConf);
+    _serverIndices.insert("v1OrdersCancelPost", 0);
+    _serverConfigs.insert("v1OrdersGet", defaultConf);
+    _serverIndices.insert("v1OrdersGet", 0);
+    _serverConfigs.insert("v1OrdersPost", defaultConf);
+    _serverIndices.insert("v1OrdersPost", 0);
+    _serverConfigs.insert("v1OrdersStatusClientOrderIdGet", defaultConf);
+    _serverIndices.insert("v1OrdersStatusClientOrderIdGet", 0);
 }
 
 /**
 * returns 0 on success and -1, -2 or -3 on failure.
-* -1 when the variable does not exist and -2 if the value is not defined in the enum and -3 if the operation or server index is not found 
+* -1 when the variable does not exist and -2 if the value is not defined in the enum and -3 if the operation or server index is not found
 */
 int OAIOrdersApi::setDefaultServerValue(int serverIndex, const QString &operation, const QString &variable, const QString &value){
     auto it = _serverConfigs.find(operation);
@@ -75,18 +63,6 @@ int OAIOrdersApi::setDefaultServerValue(int serverIndex, const QString &operatio
 void OAIOrdersApi::setServerIndex(const QString &operation, int serverIndex){
     if(_serverIndices.contains(operation) && serverIndex < _serverConfigs.find(operation).value().size() )
         _serverIndices[operation] = serverIndex;
-}
-
-void OAIOrdersApi::setScheme(const QString &scheme) {
-    _scheme = scheme;
-}
-
-void OAIOrdersApi::setHost(const QString &host) {
-    _host = host;
-}
-
-void OAIOrdersApi::setPort(int port) {
-    _port = port;
 }
 
 void OAIOrdersApi::setApiKey(const QString &apiKeyName, const QString &apiKey){
@@ -105,9 +81,6 @@ void OAIOrdersApi::setPassword(const QString &password) {
     _password = password;
 }
 
-void OAIOrdersApi::setBasePath(const QString &basePath) {
-    _basePath = basePath;
-}
 
 void OAIOrdersApi::setTimeOut(const int timeOut) {
     _timeOut = timeOut;
@@ -118,7 +91,49 @@ void OAIOrdersApi::setWorkingDirectory(const QString &path) {
 }
 
 void OAIOrdersApi::setNetworkAccessManager(QNetworkAccessManager* manager) {
-    _manager = manager;  
+    _manager = manager;
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for a specific operation.
+    * @param operation The id to the target operation.
+    * @param url A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    * returns the index of the new server config on success and -1 if the operation is not found
+    */
+int OAIOrdersApi::addServerConfiguration(const QString &operation, const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables){
+    if(_serverConfigs.contains(operation)){
+        _serverConfigs[operation].append(OAIServerConfiguration(
+                    url,
+                    description,
+                    variables));
+        return _serverConfigs[operation].size()-1;
+    }else{
+        return -1;
+    }
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for a all operations and sets the index to that server.
+    * @param url A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    */
+void OAIOrdersApi::setNewServerForAllOperations(const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables){
+    for(auto e : _serverIndices.keys()){
+        setServerIndex(e, addServerConfiguration(e, url, description, variables));
+    }
+}
+
+/**
+    * Appends a new ServerConfiguration to the config map for an operations and sets the index to that server.
+    * @param URL A string that contains the URL of the server
+    * @param description A String that describes the server
+    * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+    */
+void OAIOrdersApi::setNewServer(const QString &operation, const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables){
+    setServerIndex(operation, addServerConfiguration(operation, url, description, variables));
 }
 
 void OAIOrdersApi::addHeaders(const QString &key, const QString &value) {
@@ -137,22 +152,92 @@ void OAIOrdersApi::abortRequests(){
     emit abortRequestsSignal();
 }
 
+QString OAIOrdersApi::getParamStylePrefix(QString style){
+    if(style == "matrix"){
+        return ";";
+    }else if(style == "label"){
+        return ".";
+    }else if(style == "form"){
+        return "&";
+    }else if(style == "simple"){
+        return "";
+    }else if(style == "spaceDelimited"){
+        return "&";
+    }else if(style == "pipeDelimited"){
+        return "&";
+    }else{
+        return "none";
+    }
+}
+
+QString OAIOrdersApi::getParamStyleSuffix(QString style){
+    if(style == "matrix"){
+        return "=";
+    }else if(style == "label"){
+        return "";
+    }else if(style == "form"){
+        return "=";
+    }else if(style == "simple"){
+        return "";
+    }else if(style == "spaceDelimited"){
+        return "=";
+    }else if(style == "pipeDelimited"){
+        return "=";
+    }else{
+        return "none";
+    }
+}
+
+QString OAIOrdersApi::getParamStyleDelimiter(QString style, QString name, bool isExplode){
+
+    if(style == "matrix"){
+        return (isExplode) ? ";" + name + "=" : ",";
+
+    }else if(style == "label"){
+        return (isExplode) ? "." : ",";
+
+    }else if(style == "form"){
+        return (isExplode) ? "&" + name + "=" : ",";
+
+    }else if(style == "simple"){
+        return ",";
+    }else if(style == "spaceDelimited"){
+        return (isExplode) ? "&" + name + "=" : " ";
+
+    }else if(style == "pipeDelimited"){
+        return (isExplode) ? "&" + name + "=" : "|";
+
+    }else if(style == "deepObject"){
+        return (isExplode) ? "&" : "none";
+
+    }else {
+        return "none";
+    }
+}
+
 void OAIOrdersApi::v1OrdersCancelAllPost(const OAIOrderCancelAllRequest &oai_order_cancel_all_request) {
     QString fullPath = QString(_serverConfigs["v1OrdersCancelAllPost"][_serverIndices.value("v1OrdersCancelAllPost")].URL()+"/v1/orders/cancel/all");
-
-
+    
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QByteArray output = oai_order_cancel_all_request.asJson().toUtf8();
-    input.request_body.append(output);
+    {
 
+        QByteArray output = oai_order_cancel_all_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOrdersApi::v1OrdersCancelAllPostCallback);
-    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater); 
+    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, [this](){
+        if(findChildren<OAIHttpRequestWorker*>().count() == 0){
+            emit allPendingRequestsCompleted();
+        }
+    });
+
     worker->execute(&input);
 }
 
@@ -181,20 +266,27 @@ void OAIOrdersApi::v1OrdersCancelAllPostCallback(OAIHttpRequestWorker *worker) {
 
 void OAIOrdersApi::v1OrdersCancelPost(const OAIOrderCancelSingleRequest &oai_order_cancel_single_request) {
     QString fullPath = QString(_serverConfigs["v1OrdersCancelPost"][_serverIndices.value("v1OrdersCancelPost")].URL()+"/v1/orders/cancel");
-
-
+    
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QByteArray output = oai_order_cancel_single_request.asJson().toUtf8();
-    input.request_body.append(output);
+    {
 
+        QByteArray output = oai_order_cancel_single_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOrdersApi::v1OrdersCancelPostCallback);
-    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater); 
+    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, [this](){
+        if(findChildren<OAIHttpRequestWorker*>().count() == 0){
+            emit allPendingRequestsCompleted();
+        }
+    });
+
     worker->execute(&input);
 }
 
@@ -221,25 +313,41 @@ void OAIOrdersApi::v1OrdersCancelPostCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIOrdersApi::v1OrdersGet(const QString &exchange_id) {
+void OAIOrdersApi::v1OrdersGet(const ::OpenAPI::OptionalParam<QString> &exchange_id) {
     QString fullPath = QString(_serverConfigs["v1OrdersGet"][_serverIndices.value("v1OrdersGet")].URL()+"/v1/orders");
+    
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    if(exchange_id.hasValue())
+    {
+        queryStyle = "form";
+        if(queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "exchange_id", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
 
-
-    if (fullPath.indexOf("?") > 0)
-        fullPath.append("&");
-    else
-        fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("exchange_id")).append("=").append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exchange_id)));
-
+        fullPath.append(QUrl::toPercentEncoding("exchange_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(exchange_id.value())));
+    }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "GET");
 
+
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOrdersApi::v1OrdersGetCallback);
-    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater); 
+    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, [this](){
+        if(findChildren<OAIHttpRequestWorker*>().count() == 0){
+            emit allPendingRequestsCompleted();
+        }
+    });
+
     worker->execute(&input);
 }
 
@@ -277,20 +385,27 @@ void OAIOrdersApi::v1OrdersGetCallback(OAIHttpRequestWorker *worker) {
 
 void OAIOrdersApi::v1OrdersPost(const OAIOrderNewSingleRequest &oai_order_new_single_request) {
     QString fullPath = QString(_serverConfigs["v1OrdersPost"][_serverIndices.value("v1OrdersPost")].URL()+"/v1/orders");
-
-
+    
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
-    QByteArray output = oai_order_new_single_request.asJson().toUtf8();
-    input.request_body.append(output);
+    {
 
+        QByteArray output = oai_order_new_single_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOrdersApi::v1OrdersPostCallback);
-    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater); 
+    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, [this](){
+        if(findChildren<OAIHttpRequestWorker*>().count() == 0){
+            emit allPendingRequestsCompleted();
+        }
+    });
+
     worker->execute(&input);
 }
 
@@ -319,20 +434,37 @@ void OAIOrdersApi::v1OrdersPostCallback(OAIHttpRequestWorker *worker) {
 
 void OAIOrdersApi::v1OrdersStatusClientOrderIdGet(const QString &client_order_id) {
     QString fullPath = QString(_serverConfigs["v1OrdersStatusClientOrderIdGet"][_serverIndices.value("v1OrdersStatusClientOrderIdGet")].URL()+"/v1/orders/status/{client_order_id}");
-    QString client_order_idPathParam("{");
-    client_order_idPathParam.append("client_order_id").append("}");
-    fullPath.replace(client_order_idPathParam, QUrl::toPercentEncoding(::OpenAPI::toStringValue(client_order_id)));
     
-
+    
+    {
+        QString client_order_idPathParam("{");
+        client_order_idPathParam.append("client_order_id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if(pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "client_order_id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"client_order_id"+pathSuffix : pathPrefix;
+        fullPath.replace(client_order_idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(client_order_id)));
+    }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "GET");
 
+
     foreach (QString key, this->defaultHeaders.keys()) { input.headers.insert(key, this->defaultHeaders.value(key)); }
 
     connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIOrdersApi::v1OrdersStatusClientOrderIdGetCallback);
-    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater); 
+    connect(this, &OAIOrdersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, [this](){
+        if(findChildren<OAIHttpRequestWorker*>().count() == 0){
+            emit allPendingRequestsCompleted();
+        }
+    });
+
     worker->execute(&input);
 }
 

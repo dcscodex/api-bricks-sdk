@@ -28,7 +28,7 @@ class BalancesApi {
   Future<Response> v1BalancesGetWithHttpInfo({ String exchangeId }) async {
     // Verify required params are set.
 
-    final path = '/v1/balances'.replaceAll('{format}', 'json');
+    final path = r'/v1/balances';
 
     Object postBody;
 
@@ -79,16 +79,16 @@ class BalancesApi {
   Future<List<Balance>> v1BalancesGet({ String exchangeId }) async {
     final response = await v1BalancesGetWithHttpInfo( exchangeId: exchangeId );
     if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Balance>') as List)
+      return (await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'List<Balance>') as List)
         .cast<Balance>()
         .toList(growable: false);
     }
-    return null;
+    return Future<List<Balance>>.value(null);
   }
 }

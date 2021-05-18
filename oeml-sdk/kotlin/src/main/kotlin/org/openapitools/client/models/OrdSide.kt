@@ -19,16 +19,14 @@ import com.squareup.moshi.Json
 * Values: bUY,sELL
 */
 
-enum class OrdSide(val value: kotlin.String){
+enum class OrdSide(val value: kotlin.String) {
 
 
     @Json(name = "BUY")
     bUY("BUY"),
 
-
     @Json(name = "SELL")
     sELL("SELL");
-
 
 
     /**
@@ -38,6 +36,5 @@ enum class OrdSide(val value: kotlin.String){
     override fun toString(): String {
         return value
     }
-
 }
 

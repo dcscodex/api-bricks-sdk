@@ -46,23 +46,10 @@ class PositionsApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePa
     @Suppress("UNCHECKED_CAST")
     @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1PositionsGet(exchangeId: kotlin.String?) : kotlin.collections.List<Position> {
-        val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, List<kotlin.String>>()
-            .apply {
-                if (exchangeId != null) {
-                    put("exchange_id", listOf(exchangeId.toString()))
-                }
-            }
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        val localVariableConfig = RequestConfig(
-            RequestMethod.GET,
-            "/v1/positions",
-            query = localVariableQuery,
-            headers = localVariableHeaders
-        )
+        val localVariableConfig = v1PositionsGetRequestConfig(exchangeId = exchangeId)
+
         val localVarResponse = request<kotlin.collections.List<Position>>(
-            localVariableConfig,
-            localVariableBody
+            localVariableConfig
         )
 
         return when (localVarResponse.responseType) {
@@ -78,6 +65,33 @@ class PositionsApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePa
                 throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
             }
         }
+    }
+
+    /**
+    * To obtain the request config of the operation v1PositionsGet
+    *
+    * @param exchangeId Filter the balances to the specific exchange. (optional)
+    * @return RequestConfig
+    */
+    fun v1PositionsGetRequestConfig(exchangeId: kotlin.String?) : RequestConfig {
+        val localVariableBody: kotlin.Any? = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, List<kotlin.String>>()
+            .apply {
+                if (exchangeId != null) {
+                    put("exchange_id", listOf(exchangeId.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        
+        val localVariableConfig = RequestConfig(
+            method = RequestMethod.GET,
+            path = "/v1/positions",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            body = localVariableBody
+        )
+
+        return localVariableConfig
     }
 
 }

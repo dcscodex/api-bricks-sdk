@@ -59,7 +59,7 @@ type OrderExecutionReport struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderExecutionReport(exchangeId string, clientOrderId string, amountOrder float32, price float32, side OrdSide, orderType OrdType, timeInForce TimeInForce, clientOrderIdFormatExchange string, amountOpen float32, amountFilled float32, status OrdStatus, ) *OrderExecutionReport {
+func NewOrderExecutionReport(exchangeId string, clientOrderId string, amountOrder float32, price float32, side OrdSide, orderType OrdType, timeInForce TimeInForce, clientOrderIdFormatExchange string, amountOpen float32, amountFilled float32, status OrdStatus) *OrderExecutionReport {
 	this := OrderExecutionReport{}
 	this.ExchangeId = exchangeId
 	this.ClientOrderId = clientOrderId
@@ -85,7 +85,7 @@ func NewOrderExecutionReportWithDefaults() *OrderExecutionReport {
 
 // GetExchangeId returns the ExchangeId field value
 func (o *OrderExecutionReport) GetExchangeId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *OrderExecutionReport) SetExchangeId(v string) {
 
 // GetClientOrderId returns the ClientOrderId field value
 func (o *OrderExecutionReport) GetClientOrderId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *OrderExecutionReport) SetSymbolIdCoinapi(v string) {
 
 // GetAmountOrder returns the AmountOrder field value
 func (o *OrderExecutionReport) GetAmountOrder() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *OrderExecutionReport) SetAmountOrder(v float32) {
 
 // GetPrice returns the Price field value
 func (o *OrderExecutionReport) GetPrice() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *OrderExecutionReport) SetPrice(v float32) {
 
 // GetSide returns the Side field value
 func (o *OrderExecutionReport) GetSide() OrdSide {
-	if o == nil  {
+	if o == nil {
 		var ret OrdSide
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *OrderExecutionReport) SetSide(v OrdSide) {
 
 // GetOrderType returns the OrderType field value
 func (o *OrderExecutionReport) GetOrderType() OrdType {
-	if o == nil  {
+	if o == nil {
 		var ret OrdType
 		return ret
 	}
@@ -293,7 +293,7 @@ func (o *OrderExecutionReport) SetOrderType(v OrdType) {
 
 // GetTimeInForce returns the TimeInForce field value
 func (o *OrderExecutionReport) GetTimeInForce() TimeInForce {
-	if o == nil  {
+	if o == nil {
 		var ret TimeInForce
 		return ret
 	}
@@ -381,7 +381,7 @@ func (o *OrderExecutionReport) SetExecInst(v []string) {
 
 // GetClientOrderIdFormatExchange returns the ClientOrderIdFormatExchange field value
 func (o *OrderExecutionReport) GetClientOrderIdFormatExchange() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -437,7 +437,7 @@ func (o *OrderExecutionReport) SetExchangeOrderId(v string) {
 
 // GetAmountOpen returns the AmountOpen field value
 func (o *OrderExecutionReport) GetAmountOpen() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -461,7 +461,7 @@ func (o *OrderExecutionReport) SetAmountOpen(v float32) {
 
 // GetAmountFilled returns the AmountFilled field value
 func (o *OrderExecutionReport) GetAmountFilled() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -517,7 +517,7 @@ func (o *OrderExecutionReport) SetAvgPx(v float32) {
 
 // GetStatus returns the Status field value
 func (o *OrderExecutionReport) GetStatus() OrdStatus {
-	if o == nil  {
+	if o == nil {
 		var ret OrdStatus
 		return ret
 	}

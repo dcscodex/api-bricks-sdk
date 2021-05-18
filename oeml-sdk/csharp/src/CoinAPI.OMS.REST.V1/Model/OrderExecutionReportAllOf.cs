@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -63,7 +63,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange;
             }
-            
+
             // to ensure "amountOpen" is required (not null)
             if (amountOpen == null)
             {
@@ -73,7 +73,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.AmountOpen = amountOpen;
             }
-            
+
             // to ensure "amountFilled" is required (not null)
             if (amountFilled == null)
             {
@@ -83,7 +83,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.AmountFilled = amountFilled;
             }
-            
+
             // to ensure "status" is required (not null)
             if (status == null)
             {
@@ -93,14 +93,14 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.Status = status;
             }
-            
+
             this.ExchangeOrderId = exchangeOrderId;
             this.AvgPx = avgPx;
             this.StatusHistory = statusHistory;
             this.ErrorMessage = errorMessage;
             this.Fills = fills;
         }
-        
+
         /// <summary>
         /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
         /// </summary>
@@ -178,7 +178,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

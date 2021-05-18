@@ -25,7 +25,7 @@ type OrderCancelAllRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCancelAllRequest(exchangeId string, ) *OrderCancelAllRequest {
+func NewOrderCancelAllRequest(exchangeId string) *OrderCancelAllRequest {
 	this := OrderCancelAllRequest{}
 	this.ExchangeId = exchangeId
 	return &this
@@ -41,7 +41,7 @@ func NewOrderCancelAllRequestWithDefaults() *OrderCancelAllRequest {
 
 // GetExchangeId returns the ExchangeId field value
 func (o *OrderCancelAllRequest) GetExchangeId() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}

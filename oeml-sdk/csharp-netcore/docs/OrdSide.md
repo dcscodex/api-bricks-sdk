@@ -1,5 +1,6 @@
 # CoinAPI.OMS.API.SDK.Model.OrdSide
 Side of order. 
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -88,33 +88,19 @@ class OrderNewSingleRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (exchangeId != null) {
       json[r'exchange_id'] = exchangeId;
-    }
-    if (clientOrderId != null) {
       json[r'client_order_id'] = clientOrderId;
-    }
     if (symbolIdExchange != null) {
       json[r'symbol_id_exchange'] = symbolIdExchange;
     }
     if (symbolIdCoinapi != null) {
       json[r'symbol_id_coinapi'] = symbolIdCoinapi;
     }
-    if (amountOrder != null) {
       json[r'amount_order'] = amountOrder;
-    }
-    if (price != null) {
       json[r'price'] = price;
-    }
-    if (side != null) {
       json[r'side'] = side;
-    }
-    if (orderType != null) {
       json[r'order_type'] = orderType;
-    }
-    if (timeInForce != null) {
       json[r'time_in_force'] = timeInForce;
-    }
     if (expireTime != null) {
       json[r'expire_time'] = expireTime;
     }
@@ -143,7 +129,7 @@ class OrderNewSingleRequest {
         orderType: OrdType.fromJson(json[r'order_type']),
         timeInForce: TimeInForce.fromJson(json[r'time_in_force']),
         expireTime: DateTime.fromJson(json[r'expire_time']),
-        execInst: OrderNewSingleRequestExecInstEnum.listFromJson(json[r'exec_inst']),
+        execInst: OrderExecutionReportExecInstEnum.listFromJson(json[r'exec_inst']),
     );
 
   static List<OrderNewSingleRequest> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
@@ -172,9 +158,9 @@ class OrderNewSingleRequest {
 }
 
 
-class OrderNewSingleRequestExecInstEnum {
+class OrderExecutionReportExecInstEnum {
   /// Instantiate a new enum with the provided [value].
-  const OrderNewSingleRequestExecInstEnum._(this.value);
+  const OrderExecutionReportExecInstEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -184,38 +170,38 @@ class OrderNewSingleRequestExecInstEnum {
 
   String toJson() => value;
 
-  static const MAKER_OR_CANCEL = OrderNewSingleRequestExecInstEnum._(r'MAKER_OR_CANCEL');
-  static const AUCTION_ONLY = OrderNewSingleRequestExecInstEnum._(r'AUCTION_ONLY');
-  static const INDICATION_OF_INTEREST = OrderNewSingleRequestExecInstEnum._(r'INDICATION_OF_INTEREST');
+  static const MAKER_OR_CANCEL = OrderExecutionReportExecInstEnum._(r'MAKER_OR_CANCEL');
+  static const AUCTION_ONLY = OrderExecutionReportExecInstEnum._(r'AUCTION_ONLY');
+  static const INDICATION_OF_INTEREST = OrderExecutionReportExecInstEnum._(r'INDICATION_OF_INTEREST');
 
-  /// List of all possible values in this [enum][OrderNewSingleRequestExecInstEnum].
-  static const values = <OrderNewSingleRequestExecInstEnum>[
+  /// List of all possible values in this [enum][OrderExecutionReportExecInstEnum].
+  static const values = <OrderExecutionReportExecInstEnum>[
     MAKER_OR_CANCEL,
     AUCTION_ONLY,
     INDICATION_OF_INTEREST,
   ];
 
-  static OrderNewSingleRequestExecInstEnum fromJson(dynamic value) =>
-    OrderNewSingleRequestExecInstEnumTypeTransformer().decode(value);
+  static OrderExecutionReportExecInstEnum fromJson(dynamic value) =>
+    OrderExecutionReportExecInstEnumTypeTransformer().decode(value);
 
-  static List<OrderNewSingleRequestExecInstEnum> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
+  static List<OrderExecutionReportExecInstEnum> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
     json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrderNewSingleRequestExecInstEnum>[]
+      ? true == emptyIsNull ? null : <OrderExecutionReportExecInstEnum>[]
       : json
-          .map((value) => OrderNewSingleRequestExecInstEnum.fromJson(value))
+          .map((value) => OrderExecutionReportExecInstEnum.fromJson(value))
           .toList(growable: true == growable);
 }
 
-/// Transformation class that can [encode] an instance of [OrderNewSingleRequestExecInstEnum] to String,
-/// and [decode] dynamic data back to [OrderNewSingleRequestExecInstEnum].
-class OrderNewSingleRequestExecInstEnumTypeTransformer {
-  const OrderNewSingleRequestExecInstEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [OrderExecutionReportExecInstEnum] to String,
+/// and [decode] dynamic data back to [OrderExecutionReportExecInstEnum].
+class OrderExecutionReportExecInstEnumTypeTransformer {
+  const OrderExecutionReportExecInstEnumTypeTransformer._();
 
-  factory OrderNewSingleRequestExecInstEnumTypeTransformer() => _instance ??= OrderNewSingleRequestExecInstEnumTypeTransformer._();
+  factory OrderExecutionReportExecInstEnumTypeTransformer() => _instance ??= OrderExecutionReportExecInstEnumTypeTransformer._();
 
-  String encode(OrderNewSingleRequestExecInstEnum data) => data.value;
+  String encode(OrderExecutionReportExecInstEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a OrderNewSingleRequestExecInstEnum.
+  /// Decodes a [dynamic value][data] to a OrderExecutionReportExecInstEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -223,11 +209,11 @@ class OrderNewSingleRequestExecInstEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  OrderNewSingleRequestExecInstEnum decode(dynamic data, {bool allowNull}) {
+  OrderExecutionReportExecInstEnum decode(dynamic data, {bool allowNull}) {
     switch (data) {
-      case r'MAKER_OR_CANCEL': return OrderNewSingleRequestExecInstEnum.MAKER_OR_CANCEL;
-      case r'AUCTION_ONLY': return OrderNewSingleRequestExecInstEnum.AUCTION_ONLY;
-      case r'INDICATION_OF_INTEREST': return OrderNewSingleRequestExecInstEnum.INDICATION_OF_INTEREST;
+      case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
+      case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
+      case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;
       default:
         if (allowNull == false) {
           throw ArgumentError('Unknown enum value to decode: $data');
@@ -236,7 +222,7 @@ class OrderNewSingleRequestExecInstEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [OrderNewSingleRequestExecInstEnumTypeTransformer] instance.
-  static OrderNewSingleRequestExecInstEnumTypeTransformer _instance;
+  /// Singleton [OrderExecutionReportExecInstEnumTypeTransformer] instance.
+  static OrderExecutionReportExecInstEnumTypeTransformer _instance;
 }
 

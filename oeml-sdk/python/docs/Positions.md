@@ -1,6 +1,7 @@
 # Positions
 
 Collection of the positions.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

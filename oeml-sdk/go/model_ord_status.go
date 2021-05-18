@@ -32,6 +32,18 @@ const (
 	REJECTED OrdStatus = "REJECTED"
 )
 
+var allowedOrdStatusEnumValues = []OrdStatus{
+	"RECEIVED",
+	"ROUTING",
+	"ROUTED",
+	"NEW",
+	"PENDING_CANCEL",
+	"PARTIALLY_FILLED",
+	"FILLED",
+	"CANCELED",
+	"REJECTED",
+}
+
 func (v *OrdStatus) UnmarshalJSON(src []byte) error {
 	var value string
 	err := json.Unmarshal(src, &value)
@@ -39,7 +51,7 @@ func (v *OrdStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdStatus(value)
-	for _, existing := range []OrdStatus{ "RECEIVED", "ROUTING", "ROUTED", "NEW", "PENDING_CANCEL", "PARTIALLY_FILLED", "FILLED", "CANCELED", "REJECTED",   } {
+	for _, existing := range allowedOrdStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -47,6 +59,27 @@ func (v *OrdStatus) UnmarshalJSON(src []byte) error {
 	}
 
 	return fmt.Errorf("%+v is not a valid OrdStatus", value)
+}
+
+// NewOrdStatusFromValue returns a pointer to a valid OrdStatus
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewOrdStatusFromValue(v string) (*OrdStatus, error) {
+	ev := OrdStatus(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for OrdStatus: valid values are %v", v, allowedOrdStatusEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v OrdStatus) IsValid() bool {
+	for _, existing := range allowedOrdStatusEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
 }
 
 // Ptr returns reference to OrdStatus value

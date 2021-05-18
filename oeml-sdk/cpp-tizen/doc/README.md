@@ -38,11 +38,13 @@ Check out [Doxygen](https://www.doxygen.org/) for additional information about t
 ## I Don't want to run Doxygen. What are the API files for accessing the REST endpoints?
 All URIs are relative to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.iohttps://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
 
+
 ### BalancesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *v1BalancesGetSync* | *GET* /v1/balances | Get balances.
 *v1BalancesGetASync* | *GET* /v1/balances | Get balances.
+
 
 ### OrdersManager
 Method | HTTP request | Description
@@ -57,6 +59,7 @@ Method | HTTP request | Description
 *v1OrdersPostASync* | *POST* /v1/orders | Send new order.
 *v1OrdersStatusClientOrderIdGetSync* | *GET* /v1/orders/status/{client_order_id} | Get order execution report.
 *v1OrdersStatusClientOrderIdGetASync* | *GET* /v1/orders/status/{client_order_id} | Get order execution report.
+
 
 ### PositionsManager
 Method | HTTP request | Description

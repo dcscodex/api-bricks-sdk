@@ -28,6 +28,14 @@ const (
 	IMMEDIATE_OR_CANCEL TimeInForce = "IMMEDIATE_OR_CANCEL"
 )
 
+var allowedTimeInForceEnumValues = []TimeInForce{
+	"GOOD_TILL_CANCEL",
+	"GOOD_TILL_TIME_EXCHANGE",
+	"GOOD_TILL_TIME_OMS",
+	"FILL_OR_KILL",
+	"IMMEDIATE_OR_CANCEL",
+}
+
 func (v *TimeInForce) UnmarshalJSON(src []byte) error {
 	var value string
 	err := json.Unmarshal(src, &value)
@@ -35,7 +43,7 @@ func (v *TimeInForce) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := TimeInForce(value)
-	for _, existing := range []TimeInForce{ "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL",   } {
+	for _, existing := range allowedTimeInForceEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -43,6 +51,27 @@ func (v *TimeInForce) UnmarshalJSON(src []byte) error {
 	}
 
 	return fmt.Errorf("%+v is not a valid TimeInForce", value)
+}
+
+// NewTimeInForceFromValue returns a pointer to a valid TimeInForce
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewTimeInForceFromValue(v string) (*TimeInForce, error) {
+	ev := TimeInForce(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for TimeInForce: valid values are %v", v, allowedTimeInForceEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v TimeInForce) IsValid() bool {
+	for _, existing := range allowedTimeInForceEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
 }
 
 // Ptr returns reference to TimeInForce value

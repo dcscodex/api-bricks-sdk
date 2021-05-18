@@ -30,8 +30,8 @@ HEADERS += \
     $${PWD}/OAIEnum.h \
     $${PWD}/OAIHttpFileElement.h \
     $${PWD}/OAIServerConfiguration.h \
-    $${PWD}/OAIServerVariable.h 
-    
+    $${PWD}/OAIServerVariable.h
+
 SOURCES += \
 # Models
     $${PWD}/OAIBalance.cpp \

@@ -26,9 +26,9 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharp;
 using RestSharp.Deserializers;
-using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharpMethod = RestSharp.Method;
 using Polly;
 
@@ -97,7 +97,6 @@ namespace CoinAPI.OMS.API.SDK.Client
         /// <returns>Object representation of the JSON string.</returns>
         internal object Deserialize(IRestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
@@ -106,24 +105,25 @@ namespace CoinAPI.OMS.API.SDK.Client
             // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
             if (type == typeof(Stream))
             {
-                if (headers != null)
+                var bytes = response.RawBytes;
+                if (response.Headers != null)
                 {
                     var filePath = String.IsNullOrEmpty(_configuration.TempFolderPath)
                         ? Path.GetTempPath()
                         : _configuration.TempFolderPath;
                     var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in headers)
+                    foreach (var header in response.Headers)
                     {
                         var match = regex.Match(header.ToString());
                         if (match.Success)
                         {
                             string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, response.RawBytes);
+                            File.WriteAllBytes(fileName, bytes);
                             return new FileStream(fileName, FileMode.Open);
                         }
                     }
                 }
-                var stream = new MemoryStream(response.RawBytes);
+                var stream = new MemoryStream(bytes);
                 return stream;
             }
 
@@ -167,7 +167,7 @@ namespace CoinAPI.OMS.API.SDK.Client
         private readonly String _baseUrl;
 
         /// <summary>
-        /// Specifies the settings on a <see cref="JsonSerializer" /> object. 
+        /// Specifies the settings on a <see cref="JsonSerializer" /> object.
         /// These settings can be adjusted to accomodate custom serialization rules.
         /// </summary>
         public JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
@@ -332,25 +332,40 @@ namespace CoinAPI.OMS.API.SDK.Client
 
             if (options.Data != null)
             {
-                if (options.HeaderParameters != null)
+                if (options.Data is Stream stream)
                 {
-                    var contentTypes = options.HeaderParameters["Content-Type"];
-                    if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
+                    var contentType = "application/octet-stream";
+                    if (options.HeaderParameters != null)
                     {
-                        request.RequestFormat = DataFormat.Json;
+                        var contentTypes = options.HeaderParameters["Content-Type"];
+                        contentType = contentTypes[0];
                     }
-                    else
-                    {
-                        // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
-                    }
+
+                    var bytes = ClientUtils.ReadAsBytes(stream);
+                    request.AddParameter(contentType, bytes, ParameterType.RequestBody);
                 }
                 else
                 {
-                    // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
-                    request.RequestFormat = DataFormat.Json;
-                }
+                    if (options.HeaderParameters != null)
+                    {
+                        var contentTypes = options.HeaderParameters["Content-Type"];
+                        if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
+                        {
+                            request.RequestFormat = DataFormat.Json;
+                        }
+                        else
+                        {
+                            // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
+                        }
+                    }
+                    else
+                    {
+                        // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
+                        request.RequestFormat = DataFormat.Json;
+                    }
 
-                request.AddJsonBody(options.Data);
+                    request.AddJsonBody(options.Data);
+                }
             }
 
             if (options.FileParameters != null)
@@ -481,10 +496,7 @@ namespace CoinAPI.OMS.API.SDK.Client
             // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
             if (typeof(CoinAPI.OMS.API.SDK.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
             {
-                T instance = (T)Activator.CreateInstance(typeof(T));
-                MethodInfo method = typeof(T).GetMethod("FromJson");
-                method.Invoke(instance, new object[] { response.Content });
-                response.Data = instance;
+                response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
             }
             else if (typeof(T).Name == "Stream") // for binary response
             {
@@ -596,10 +608,7 @@ namespace CoinAPI.OMS.API.SDK.Client
             // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
             if (typeof(CoinAPI.OMS.API.SDK.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
             {
-                T instance = (T)Activator.CreateInstance(typeof(T));
-                MethodInfo method = typeof(T).GetMethod("FromJson");
-                method.Invoke(instance, new object[] { response.Content });
-                response.Data = instance;
+                response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
             }
             else if (typeof(T).Name == "Stream") // for binary response
             {

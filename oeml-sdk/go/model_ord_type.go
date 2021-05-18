@@ -24,6 +24,10 @@ const (
 	LIMIT OrdType = "LIMIT"
 )
 
+var allowedOrdTypeEnumValues = []OrdType{
+	"LIMIT",
+}
+
 func (v *OrdType) UnmarshalJSON(src []byte) error {
 	var value string
 	err := json.Unmarshal(src, &value)
@@ -31,7 +35,7 @@ func (v *OrdType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdType(value)
-	for _, existing := range []OrdType{ "LIMIT",   } {
+	for _, existing := range allowedOrdTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -39,6 +43,27 @@ func (v *OrdType) UnmarshalJSON(src []byte) error {
 	}
 
 	return fmt.Errorf("%+v is not a valid OrdType", value)
+}
+
+// NewOrdTypeFromValue returns a pointer to a valid OrdType
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewOrdTypeFromValue(v string) (*OrdType, error) {
+	ev := OrdType(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for OrdType: valid values are %v", v, allowedOrdTypeEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v OrdType) IsValid() bool {
+	for _, existing := range allowedOrdTypeEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
 }
 
 // Ptr returns reference to OrdType value

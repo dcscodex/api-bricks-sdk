@@ -29,17 +29,17 @@ function Get-FunctionsToExport {
             throw $ParserErr
         } else {
             foreach ($name in 'Begin', 'Process', 'End') {
-	            foreach ($Statement in $Ast."${name}Block".Statements) {
-		            if (
+                foreach ($Statement in $Ast."${name}Block".Statements) {
+                    if (
                         [String]::IsNullOrWhiteSpace($Statement.Name) -or
                         $Statement.Extent.ToString() -notmatch
                         ('function\W+{0}' -f $Statement.Name)
                     ) {
-			            continue
-		            }
+                        continue
+                    }
 
-		            $Statement.Name
-	            }
+                    $Statement.Name
+                }
             }
         }
     }
@@ -58,7 +58,7 @@ $Manifest = @{
     ModuleVersion = '0.1.2'
 
     RootModule = 'PSOpenAPITools.psm1'
-    Guid = '{644AD0C8-ED0E-4644-A768-2F09FF81AD67}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{2854B9F8-C420-4B14-940C-874692D70BDA}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 

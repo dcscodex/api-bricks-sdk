@@ -32,10 +32,7 @@ isa_ok($api, 'WWW::OpenAPIClient::BalancesApi');
 #
 # v1_balances_get test
 #
-{
-    my $exchange_id = undef; # replace NULL with a proper value
-    my $result = $api->v1_balances_get(exchange_id => $exchange_id);
-}
+# uncomment below and update the test
+#my $v1_balances_get_exchange_id = undef; # replace NULL with a proper value
+#my $v1_balances_get_result = $api->v1_balances_get(exchange_id => $v1_balances_get_exchange_id);
 
-
-1;

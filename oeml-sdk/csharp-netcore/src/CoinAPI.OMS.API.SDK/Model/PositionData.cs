@@ -32,6 +32,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     [DataContract(Name = "Position_data")]
     public partial class PositionData : IEquatable<PositionData>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Side
         /// </summary>
@@ -110,7 +111,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// Is cross margin mode enable for this position?
         /// </summary>
         /// <value>Is cross margin mode enable for this position?</value>
-        [DataMember(Name = "cross_margin", EmitDefaultValue = false)]
+        [DataMember(Name = "cross_margin", EmitDefaultValue = true)]
         public bool CrossMargin { get; set; }
 
         /// <summary>

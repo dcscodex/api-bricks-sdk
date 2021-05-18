@@ -32,6 +32,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     [DataContract(Name = "OrderExecutionReport_allOf")]
     public partial class OrderExecutionReportAllOf : IEquatable<OrderExecutionReportAllOf>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Status
         /// </summary>

@@ -32,42 +32,35 @@ isa_ok($api, 'WWW::OpenAPIClient::OrdersApi');
 #
 # v1_orders_cancel_all_post test
 #
-{
-    my $order_cancel_all_request = undef; # replace NULL with a proper value
-    my $result = $api->v1_orders_cancel_all_post(order_cancel_all_request => $order_cancel_all_request);
-}
+# uncomment below and update the test
+#my $v1_orders_cancel_all_post_order_cancel_all_request = undef; # replace NULL with a proper value
+#my $v1_orders_cancel_all_post_result = $api->v1_orders_cancel_all_post(order_cancel_all_request => $v1_orders_cancel_all_post_order_cancel_all_request);
 
 #
 # v1_orders_cancel_post test
 #
-{
-    my $order_cancel_single_request = undef; # replace NULL with a proper value
-    my $result = $api->v1_orders_cancel_post(order_cancel_single_request => $order_cancel_single_request);
-}
+# uncomment below and update the test
+#my $v1_orders_cancel_post_order_cancel_single_request = undef; # replace NULL with a proper value
+#my $v1_orders_cancel_post_result = $api->v1_orders_cancel_post(order_cancel_single_request => $v1_orders_cancel_post_order_cancel_single_request);
 
 #
 # v1_orders_get test
 #
-{
-    my $exchange_id = undef; # replace NULL with a proper value
-    my $result = $api->v1_orders_get(exchange_id => $exchange_id);
-}
+# uncomment below and update the test
+#my $v1_orders_get_exchange_id = undef; # replace NULL with a proper value
+#my $v1_orders_get_result = $api->v1_orders_get(exchange_id => $v1_orders_get_exchange_id);
 
 #
 # v1_orders_post test
 #
-{
-    my $order_new_single_request = undef; # replace NULL with a proper value
-    my $result = $api->v1_orders_post(order_new_single_request => $order_new_single_request);
-}
+# uncomment below and update the test
+#my $v1_orders_post_order_new_single_request = undef; # replace NULL with a proper value
+#my $v1_orders_post_result = $api->v1_orders_post(order_new_single_request => $v1_orders_post_order_new_single_request);
 
 #
 # v1_orders_status_client_order_id_get test
 #
-{
-    my $client_order_id = undef; # replace NULL with a proper value
-    my $result = $api->v1_orders_status_client_order_id_get(client_order_id => $client_order_id);
-}
+# uncomment below and update the test
+#my $v1_orders_status_client_order_id_get_client_order_id = undef; # replace NULL with a proper value
+#my $v1_orders_status_client_order_id_get_result = $api->v1_orders_status_client_order_id_get(client_order_id => $v1_orders_status_client_order_id_get_client_order_id);
 
-
-1;

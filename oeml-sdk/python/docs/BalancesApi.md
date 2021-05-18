@@ -46,6 +46,7 @@ with openapi_client.ApiClient() as api_client:
         print("Exception when calling BalancesApi->v1_balances_get: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -64,6 +65,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, appliction/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

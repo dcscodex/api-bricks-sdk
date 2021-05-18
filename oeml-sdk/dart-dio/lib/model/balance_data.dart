@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.6
+// @dart=2.7
 
 // ignore_for_file: unused_import
 
@@ -54,13 +54,125 @@ abstract class BalanceData implements Built<BalanceData, BalanceDataBuilder> {
     @BuiltValueField(wireName: r'traded')
     double get traded;
 
-    // Boilerplate code needed to wire-up generated code
     BalanceData._();
 
     static void _initializeBuilder(BalanceDataBuilder b) => b;
 
     factory BalanceData([void updates(BalanceDataBuilder b)]) = _$BalanceData;
-    static Serializer<BalanceData> get serializer => _$balanceDataSerializer;
+
+    @BuiltValueSerializer(custom: true)
+    static Serializer<BalanceData> get serializer => _$BalanceDataSerializer();
+}
+
+class _$BalanceDataSerializer implements StructuredSerializer<BalanceData> {
+
+    @override
+    final Iterable<Type> types = const [BalanceData, _$BalanceData];
+    @override
+    final String wireName = r'BalanceData';
+
+    @override
+    Iterable<Object> serialize(Serializers serializers, BalanceData object,
+        {FullType specifiedType = FullType.unspecified}) {
+        final result = <Object>[];
+        if (object.assetIdExchange != null) {
+            result
+                ..add(r'asset_id_exchange')
+                ..add(serializers.serialize(object.assetIdExchange,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.assetIdCoinapi != null) {
+            result
+                ..add(r'asset_id_coinapi')
+                ..add(serializers.serialize(object.assetIdCoinapi,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.balance != null) {
+            result
+                ..add(r'balance')
+                ..add(serializers.serialize(object.balance,
+                    specifiedType: const FullType(double)));
+        }
+        if (object.available != null) {
+            result
+                ..add(r'available')
+                ..add(serializers.serialize(object.available,
+                    specifiedType: const FullType(double)));
+        }
+        if (object.locked != null) {
+            result
+                ..add(r'locked')
+                ..add(serializers.serialize(object.locked,
+                    specifiedType: const FullType(double)));
+        }
+        if (object.lastUpdatedBy != null) {
+            result
+                ..add(r'last_updated_by')
+                ..add(serializers.serialize(object.lastUpdatedBy,
+                    specifiedType: const FullType(BalanceDataLastUpdatedByEnum)));
+        }
+        if (object.rateUsd != null) {
+            result
+                ..add(r'rate_usd')
+                ..add(serializers.serialize(object.rateUsd,
+                    specifiedType: const FullType(double)));
+        }
+        if (object.traded != null) {
+            result
+                ..add(r'traded')
+                ..add(serializers.serialize(object.traded,
+                    specifiedType: const FullType(double)));
+        }
+        return result;
+    }
+
+    @override
+    BalanceData deserialize(Serializers serializers, Iterable<Object> serialized,
+        {FullType specifiedType = FullType.unspecified}) {
+        final result = BalanceDataBuilder();
+
+        final iterator = serialized.iterator;
+        while (iterator.moveNext()) {
+            final key = iterator.current as String;
+            iterator.moveNext();
+            final dynamic value = iterator.current;
+            switch (key) {
+                case r'asset_id_exchange':
+                    result.assetIdExchange = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'asset_id_coinapi':
+                    result.assetIdCoinapi = serializers.deserialize(value,
+                        specifiedType: const FullType(String)) as String;
+                    break;
+                case r'balance':
+                    result.balance = serializers.deserialize(value,
+                        specifiedType: const FullType(double)) as double;
+                    break;
+                case r'available':
+                    result.available = serializers.deserialize(value,
+                        specifiedType: const FullType(double)) as double;
+                    break;
+                case r'locked':
+                    result.locked = serializers.deserialize(value,
+                        specifiedType: const FullType(double)) as double;
+                    break;
+                case r'last_updated_by':
+                    result.lastUpdatedBy = serializers.deserialize(value,
+                        specifiedType: const FullType(BalanceDataLastUpdatedByEnum)) as BalanceDataLastUpdatedByEnum;
+                    break;
+                case r'rate_usd':
+                    result.rateUsd = serializers.deserialize(value,
+                        specifiedType: const FullType(double)) as double;
+                    break;
+                case r'traded':
+                    result.traded = serializers.deserialize(value,
+                        specifiedType: const FullType(double)) as double;
+                    break;
+            }
+        }
+        return result.build();
+    }
 }
 
 class BalanceDataLastUpdatedByEnum extends EnumClass {

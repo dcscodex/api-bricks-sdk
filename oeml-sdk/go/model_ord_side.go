@@ -25,6 +25,11 @@ const (
 	SELL OrdSide = "SELL"
 )
 
+var allowedOrdSideEnumValues = []OrdSide{
+	"BUY",
+	"SELL",
+}
+
 func (v *OrdSide) UnmarshalJSON(src []byte) error {
 	var value string
 	err := json.Unmarshal(src, &value)
@@ -32,7 +37,7 @@ func (v *OrdSide) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdSide(value)
-	for _, existing := range []OrdSide{ "BUY", "SELL",   } {
+	for _, existing := range allowedOrdSideEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -40,6 +45,27 @@ func (v *OrdSide) UnmarshalJSON(src []byte) error {
 	}
 
 	return fmt.Errorf("%+v is not a valid OrdSide", value)
+}
+
+// NewOrdSideFromValue returns a pointer to a valid OrdSide
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewOrdSideFromValue(v string) (*OrdSide, error) {
+	ev := OrdSide(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for OrdSide: valid values are %v", v, allowedOrdSideEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v OrdSide) IsValid() bool {
+	for _, existing := range allowedOrdSideEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
 }
 
 // Ptr returns reference to OrdSide value

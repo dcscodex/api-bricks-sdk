@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -108,7 +108,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.ExchangeId = exchangeId;
             }
-            
+
             // to ensure "clientOrderId" is required (not null)
             if (clientOrderId == null)
             {
@@ -118,7 +118,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.ClientOrderId = clientOrderId;
             }
-            
+
             // to ensure "amountOrder" is required (not null)
             if (amountOrder == null)
             {
@@ -128,7 +128,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.AmountOrder = amountOrder;
             }
-            
+
             // to ensure "price" is required (not null)
             if (price == null)
             {
@@ -138,7 +138,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.Price = price;
             }
-            
+
             // to ensure "side" is required (not null)
             if (side == null)
             {
@@ -148,7 +148,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.Side = side;
             }
-            
+
             // to ensure "orderType" is required (not null)
             if (orderType == null)
             {
@@ -158,7 +158,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.OrderType = orderType;
             }
-            
+
             // to ensure "timeInForce" is required (not null)
             if (timeInForce == null)
             {
@@ -168,13 +168,13 @@ namespace CoinAPI.OMS.REST.V1.Model
             {
                 this.TimeInForce = timeInForce;
             }
-            
+
             this.SymbolIdExchange = symbolIdExchange;
             this.SymbolIdCoinapi = symbolIdCoinapi;
             this.ExpireTime = expireTime;
             this.ExecInst = execInst;
         }
-        
+
         /// <summary>
         /// Exchange identifier used to identify the routing destination.
         /// </summary>
@@ -250,7 +250,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

@@ -30,9 +30,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     /// Side of order. 
     /// </summary>
     /// <value>Side of order. </value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum OrdSide
     {
         /// <summary>

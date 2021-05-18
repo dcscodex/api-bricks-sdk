@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::Position');
 
-my $instance = WWW::OpenAPIClient::Object::Position->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::Position');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::Position->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::Position');
 

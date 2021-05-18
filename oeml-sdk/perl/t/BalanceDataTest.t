@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::BalanceData');
 
-my $instance = WWW::OpenAPIClient::Object::BalanceData->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::BalanceData');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::BalanceData->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::BalanceData');
 

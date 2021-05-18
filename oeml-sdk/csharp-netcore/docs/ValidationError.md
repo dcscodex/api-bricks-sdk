@@ -1,4 +1,5 @@
 # CoinAPI.OMS.API.SDK.Model.ValidationError
+
 ## Properties
 
 Name | Type | Description | Notes

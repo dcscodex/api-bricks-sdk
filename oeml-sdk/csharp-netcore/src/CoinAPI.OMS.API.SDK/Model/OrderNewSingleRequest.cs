@@ -32,16 +32,19 @@ namespace CoinAPI.OMS.API.SDK.Model
     [DataContract(Name = "OrderNewSingleRequest")]
     public partial class OrderNewSingleRequest : IEquatable<OrderNewSingleRequest>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Side
         /// </summary>
         [DataMember(Name = "side", IsRequired = true, EmitDefaultValue = false)]
         public OrdSide Side { get; set; }
+
         /// <summary>
         /// Gets or Sets OrderType
         /// </summary>
         [DataMember(Name = "order_type", IsRequired = true, EmitDefaultValue = false)]
         public OrdType OrderType { get; set; }
+
         /// <summary>
         /// Gets or Sets TimeInForce
         /// </summary>
@@ -72,6 +75,7 @@ namespace CoinAPI.OMS.API.SDK.Model
             INDICATIONOFINTEREST = 3
 
         }
+
 
 
         /// <summary>

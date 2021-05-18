@@ -26,14 +26,14 @@ namespace OpenAPI {
 class OAIServerConfiguration {
 public:
     /**
-     * @param URL A URL to the target host.
+     * @param url A URL to the target host.
      * @param description A description of the host designated by the URL.
      * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
      */
-    OAIServerConfiguration(const QString& URL, const QString& description, const QMap<QString, OAIServerVariable>& variables)
+    OAIServerConfiguration(const QUrl &url, const QString &description, const QMap<QString, OAIServerVariable> &variables)
     : _description(description),
       _variables(variables),
-      _URL(URL){}
+      _url(url){}
     OAIServerConfiguration(){}
     ~OAIServerConfiguration(){}
 
@@ -44,7 +44,7 @@ public:
      * @return Formatted URL.
      */
     QString URL() {
-        QString url = _URL;
+        QString url = _url.toString();
         if(!_variables.empty()){
             // go through variables and replace placeholders
             for (auto const& v : _variables.keys()) {
@@ -64,7 +64,7 @@ public:
         return url;
     }
 
-    int setDefaultValue(const QString& variable,const QString& value){
+    int setDefaultValue(const QString &variable,const QString &value){
       if(_variables.contains(variable))
         return _variables[variable].setDefaultValue(value);
       return -1;
@@ -72,7 +72,7 @@ public:
 
     QString _description;
     QMap<QString, OAIServerVariable> _variables;
-    QString _URL;
+    QUrl _url;
 
 };
 

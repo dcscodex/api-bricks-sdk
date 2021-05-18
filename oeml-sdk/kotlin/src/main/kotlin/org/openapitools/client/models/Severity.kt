@@ -19,20 +19,17 @@ import com.squareup.moshi.Json
 * Values: iNFO,wARNING,eRROR
 */
 
-enum class Severity(val value: kotlin.String){
+enum class Severity(val value: kotlin.String) {
 
 
     @Json(name = "INFO")
     iNFO("INFO"),
 
-
     @Json(name = "WARNING")
     wARNING("WARNING"),
 
-
     @Json(name = "ERROR")
     eRROR("ERROR");
-
 
 
     /**
@@ -42,6 +39,5 @@ enum class Severity(val value: kotlin.String){
     override fun toString(): String {
         return value
     }
-
 }
 

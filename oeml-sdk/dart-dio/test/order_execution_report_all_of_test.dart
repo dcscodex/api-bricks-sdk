@@ -1,9 +1,17 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/order_execution_report_all_of.dart';
 import 'package:test/test.dart';
 
 // tests for OrderExecutionReportAllOf
 void main() {
-  final instance = OrderExecutionReportAllOf();
+  final instance = OrderExecutionReportAllOfBuilder();
+  // TODO add properties to the builder and call build()
 
   group(OrderExecutionReportAllOf, () {
     // The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.

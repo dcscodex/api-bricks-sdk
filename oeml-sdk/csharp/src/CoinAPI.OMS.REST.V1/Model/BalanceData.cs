@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -85,7 +85,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             this.RateUsd = rateUsd;
             this.Traded = traded;
         }
-        
+
         /// <summary>
         /// Exchange currency code.
         /// </summary>
@@ -155,7 +155,7 @@ namespace CoinAPI.OMS.REST.V1.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>

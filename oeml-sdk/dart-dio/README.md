@@ -11,7 +11,7 @@ For more information, please visit [https://www.coinapi.io](https://www.coinapi.
 
 ## Requirements
 
-Dart 1.20.0 or later OR Flutter 0.0.20 or later
+Dart 2.7.0 or later OR Flutter 1.12 or later
 
 ## Installation & Usage
 
@@ -43,12 +43,12 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:openapi/api.dart';
 
 
-var api_instance = new BalancesApi();
-var exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
+final api = BalancesApi();
+final exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 
 try {
-    var result = api_instance.v1BalancesGet(exchangeId);
-    print(result);
+    final response = await api.v1BalancesGet(exchangeId);
+    print(response);
 } catch (e) {
     print("Exception when calling BalancesApi->v1BalancesGet: $e\n");
 }
@@ -61,34 +61,34 @@ All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstm
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BalancesApi* | [**v1BalancesGet**](doc//BalancesApi.md#v1balancesget) | **get** /v1/balances | Get balances
-*OrdersApi* | [**v1OrdersCancelAllPost**](doc//OrdersApi.md#v1orderscancelallpost) | **post** /v1/orders/cancel/all | Cancel all orders request
-*OrdersApi* | [**v1OrdersCancelPost**](doc//OrdersApi.md#v1orderscancelpost) | **post** /v1/orders/cancel | Cancel order request
-*OrdersApi* | [**v1OrdersGet**](doc//OrdersApi.md#v1ordersget) | **get** /v1/orders | Get open orders
-*OrdersApi* | [**v1OrdersPost**](doc//OrdersApi.md#v1orderspost) | **post** /v1/orders | Send new order
-*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](doc//OrdersApi.md#v1ordersstatusclientorderidget) | **get** /v1/orders/status/{client_order_id} | Get order execution report
-*PositionsApi* | [**v1PositionsGet**](doc//PositionsApi.md#v1positionsget) | **get** /v1/positions | Get open positions
+*BalancesApi* | [**v1BalancesGet**](doc/BalancesApi.md#v1balancesget) | **get** /v1/balances | Get balances
+*OrdersApi* | [**v1OrdersCancelAllPost**](doc/OrdersApi.md#v1orderscancelallpost) | **post** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1OrdersCancelPost**](doc/OrdersApi.md#v1orderscancelpost) | **post** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1OrdersGet**](doc/OrdersApi.md#v1ordersget) | **get** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersPost**](doc/OrdersApi.md#v1orderspost) | **post** /v1/orders | Send new order
+*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](doc/OrdersApi.md#v1ordersstatusclientorderidget) | **get** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1PositionsGet**](doc/PositionsApi.md#v1positionsget) | **get** /v1/positions | Get open positions
 
 
 ## Documentation For Models
 
- - [Balance](doc//Balance.md)
- - [BalanceData](doc//BalanceData.md)
- - [Fills](doc//Fills.md)
- - [Message](doc//Message.md)
- - [OrdSide](doc//OrdSide.md)
- - [OrdStatus](doc//OrdStatus.md)
- - [OrdType](doc//OrdType.md)
- - [OrderCancelAllRequest](doc//OrderCancelAllRequest.md)
- - [OrderCancelSingleRequest](doc//OrderCancelSingleRequest.md)
- - [OrderExecutionReport](doc//OrderExecutionReport.md)
- - [OrderExecutionReportAllOf](doc//OrderExecutionReportAllOf.md)
- - [OrderNewSingleRequest](doc//OrderNewSingleRequest.md)
- - [Position](doc//Position.md)
- - [PositionData](doc//PositionData.md)
- - [Severity](doc//Severity.md)
- - [TimeInForce](doc//TimeInForce.md)
- - [ValidationError](doc//ValidationError.md)
+ - [Balance](doc/Balance.md)
+ - [BalanceData](doc/BalanceData.md)
+ - [Fills](doc/Fills.md)
+ - [Message](doc/Message.md)
+ - [OrdSide](doc/OrdSide.md)
+ - [OrdStatus](doc/OrdStatus.md)
+ - [OrdType](doc/OrdType.md)
+ - [OrderCancelAllRequest](doc/OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](doc/OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](doc/OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](doc/OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](doc/OrderNewSingleRequest.md)
+ - [Position](doc/Position.md)
+ - [PositionData](doc/PositionData.md)
+ - [Severity](doc/Severity.md)
+ - [TimeInForce](doc/TimeInForce.md)
+ - [ValidationError](doc/ValidationError.md)
 
 
 ## Documentation For Authorization

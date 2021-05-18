@@ -1,6 +1,7 @@
 # Balances
 
 Collection of the balances.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

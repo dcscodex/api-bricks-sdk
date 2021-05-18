@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::OrderExecutionReportAllOf');
 
-my $instance = WWW::OpenAPIClient::Object::OrderExecutionReportAllOf->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::OrderExecutionReportAllOf');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::OrderExecutionReportAllOf->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::OrderExecutionReportAllOf');
 

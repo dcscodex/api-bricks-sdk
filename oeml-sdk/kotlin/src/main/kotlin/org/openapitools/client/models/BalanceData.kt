@@ -54,11 +54,10 @@ data class BalanceData (
 ) {
 
     /**
-    * Source of the last modification. 
-    * Values: iNITIALIZATION,bALANCEMANAGER,eXCHANGE
-    */
-    
-    enum class LastUpdatedBy(val value: kotlin.String){
+     * Source of the last modification. 
+     * Values: iNITIALIZATION,bALANCEMANAGER,eXCHANGE
+     */
+    enum class LastUpdatedBy(val value: kotlin.String) {
         @Json(name = "INITIALIZATION") iNITIALIZATION("INITIALIZATION"),
         @Json(name = "BALANCE_MANAGER") bALANCEMANAGER("BALANCE_MANAGER"),
         @Json(name = "EXCHANGE") eXCHANGE("EXCHANGE");

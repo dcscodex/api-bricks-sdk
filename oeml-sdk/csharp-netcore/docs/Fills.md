@@ -1,4 +1,5 @@
 # CoinAPI.OMS.API.SDK.Model.Fills
+
 ## Properties
 
 Name | Type | Description | Notes

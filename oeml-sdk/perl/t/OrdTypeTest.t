@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::OrdType');
 
-my $instance = WWW::OpenAPIClient::Object::OrdType->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::OrdType');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::OrdType->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::OrdType');
 

@@ -32,6 +32,7 @@ namespace CoinAPI.OMS.API.SDK.Model
     [DataContract(Name = "Message")]
     public partial class Message : IEquatable<Message>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Severity
         /// </summary>

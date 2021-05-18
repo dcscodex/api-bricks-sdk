@@ -1,5 +1,6 @@
 # CoinAPI.OMS.API.SDK.Model.OrderExecutionReportAllOf
 The order execution report message.
+
 ## Properties
 
 Name | Type | Description | Notes

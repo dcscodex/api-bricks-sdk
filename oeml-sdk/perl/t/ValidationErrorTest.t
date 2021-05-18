@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::ValidationError');
 
-my $instance = WWW::OpenAPIClient::Object::ValidationError->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::ValidationError');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::ValidationError->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::ValidationError');
 

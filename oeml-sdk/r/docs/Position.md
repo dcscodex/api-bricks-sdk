@@ -1,5 +1,6 @@
 # openapi::Position
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

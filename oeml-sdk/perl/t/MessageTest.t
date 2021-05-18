@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::Message');
 
-my $instance = WWW::OpenAPIClient::Object::Message->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::Message');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::Message->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::Message');
 

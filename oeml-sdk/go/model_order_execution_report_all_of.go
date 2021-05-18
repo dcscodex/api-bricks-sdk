@@ -40,7 +40,7 @@ type OrderExecutionReportAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderExecutionReportAllOf(clientOrderIdFormatExchange string, amountOpen float32, amountFilled float32, status OrdStatus, ) *OrderExecutionReportAllOf {
+func NewOrderExecutionReportAllOf(clientOrderIdFormatExchange string, amountOpen float32, amountFilled float32, status OrdStatus) *OrderExecutionReportAllOf {
 	this := OrderExecutionReportAllOf{}
 	this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange
 	this.AmountOpen = amountOpen
@@ -59,7 +59,7 @@ func NewOrderExecutionReportAllOfWithDefaults() *OrderExecutionReportAllOf {
 
 // GetClientOrderIdFormatExchange returns the ClientOrderIdFormatExchange field value
 func (o *OrderExecutionReportAllOf) GetClientOrderIdFormatExchange() string {
-	if o == nil  {
+	if o == nil {
 		var ret string
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *OrderExecutionReportAllOf) SetExchangeOrderId(v string) {
 
 // GetAmountOpen returns the AmountOpen field value
 func (o *OrderExecutionReportAllOf) GetAmountOpen() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -139,7 +139,7 @@ func (o *OrderExecutionReportAllOf) SetAmountOpen(v float32) {
 
 // GetAmountFilled returns the AmountFilled field value
 func (o *OrderExecutionReportAllOf) GetAmountFilled() float32 {
-	if o == nil  {
+	if o == nil {
 		var ret float32
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *OrderExecutionReportAllOf) SetAvgPx(v float32) {
 
 // GetStatus returns the Status field value
 func (o *OrderExecutionReportAllOf) GetStatus() OrdStatus {
-	if o == nil  {
+	if o == nil {
 		var ret OrdStatus
 		return ret
 	}

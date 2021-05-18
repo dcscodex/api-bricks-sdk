@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::OrderCancelSingleRequest');
 
-my $instance = WWW::OpenAPIClient::Object::OrderCancelSingleRequest->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::OrderCancelSingleRequest');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::OrderCancelSingleRequest->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::OrderCancelSingleRequest');
 

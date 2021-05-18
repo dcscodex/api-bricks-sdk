@@ -1,9 +1,17 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/balance_data.dart';
 import 'package:test/test.dart';
 
 // tests for BalanceData
 void main() {
-  final instance = BalanceData();
+  final instance = BalanceDataBuilder();
+  // TODO add properties to the builder and call build()
 
   group(BalanceData, () {
     // Exchange currency code.

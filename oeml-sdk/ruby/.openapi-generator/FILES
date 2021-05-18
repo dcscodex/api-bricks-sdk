@@ -34,7 +34,6 @@ lib/openapi_client/api/positions_api.rb
 lib/openapi_client/api_client.rb
 lib/openapi_client/api_error.rb
 lib/openapi_client/configuration.rb
-lib/openapi_client/configuration.rb
 lib/openapi_client/models/balance.rb
 lib/openapi_client/models/balance_data.rb
 lib/openapi_client/models/fills.rb

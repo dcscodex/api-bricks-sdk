@@ -14,12 +14,36 @@ endif ()
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Network REQUIRED)
 
-file(GLOB SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+add_library(${PROJECT_NAME}
+    OAIBalance.cpp
+    OAIBalance_data.cpp
+    OAIFills.cpp
+    OAIMessage.cpp
+    OAIOrdSide.cpp
+    OAIOrdStatus.cpp
+    OAIOrdType.cpp
+    OAIOrderCancelAllRequest.cpp
+    OAIOrderCancelSingleRequest.cpp
+    OAIOrderExecutionReport.cpp
+    OAIOrderExecutionReport_allOf.cpp
+    OAIOrderNewSingleRequest.cpp
+    OAIPosition.cpp
+    OAIPosition_data.cpp
+    OAISeverity.cpp
+    OAITimeInForce.cpp
+    OAIValidationError.cpp
+    OAIBalancesApi.cpp
+    OAIOrdersApi.cpp
+    OAIPositionsApi.cpp
+    OAIHelpers.cpp
+    OAIHttpRequest.cpp
+    OAIHttpFileElement.cpp
 )
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Network )
 
-add_library(${PROJECT_NAME} ${SRCS})
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Network ssl crypto)
+if(NOT APPLE)
+  target_link_libraries(${PROJECT_NAME} PRIVATE ssl crypto)
+endif()
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)

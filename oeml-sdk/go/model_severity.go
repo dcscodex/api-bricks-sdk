@@ -26,6 +26,12 @@ const (
 	ERROR Severity = "ERROR"
 )
 
+var allowedSeverityEnumValues = []Severity{
+	"INFO",
+	"WARNING",
+	"ERROR",
+}
+
 func (v *Severity) UnmarshalJSON(src []byte) error {
 	var value string
 	err := json.Unmarshal(src, &value)
@@ -33,7 +39,7 @@ func (v *Severity) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := Severity(value)
-	for _, existing := range []Severity{ "INFO", "WARNING", "ERROR",   } {
+	for _, existing := range allowedSeverityEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -41,6 +47,27 @@ func (v *Severity) UnmarshalJSON(src []byte) error {
 	}
 
 	return fmt.Errorf("%+v is not a valid Severity", value)
+}
+
+// NewSeverityFromValue returns a pointer to a valid Severity
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewSeverityFromValue(v string) (*Severity, error) {
+	ev := Severity(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for Severity: valid values are %v", v, allowedSeverityEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v Severity) IsValid() bool {
+	for _, existing := range allowedSeverityEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
 }
 
 // Ptr returns reference to Severity value

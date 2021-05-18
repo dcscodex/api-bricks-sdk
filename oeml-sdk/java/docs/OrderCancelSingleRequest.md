@@ -3,6 +3,7 @@
 # OrderCancelSingleRequest
 
 Cancel single order request object.
+
 ## Properties
 
 Name | Type | Description | Notes

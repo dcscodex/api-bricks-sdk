@@ -36,8 +36,8 @@ Name | Type | Description  | Notes
  **ExchangeId** | **String**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**Position[]**](Position.md)
+
+[**Position[]**](Position.md) (PSCustomObject)
 
 ### Authorization
 

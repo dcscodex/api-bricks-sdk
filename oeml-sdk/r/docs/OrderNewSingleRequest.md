@@ -1,6 +1,7 @@
 # openapi::OrderNewSingleRequest
 
 The new order message.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

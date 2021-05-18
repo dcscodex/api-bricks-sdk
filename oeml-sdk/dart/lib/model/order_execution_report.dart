@@ -62,7 +62,7 @@ class OrderExecutionReport {
   DateTime expireTime;
 
   /// Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
-  List<OrderExecutionReportExecInstEnum> execInst;
+  List<ExecInstEnum> execInst;
 
   /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
   String clientOrderIdFormatExchange;
@@ -141,57 +141,35 @@ class OrderExecutionReport {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (exchangeId != null) {
       json[r'exchange_id'] = exchangeId;
-    }
-    if (clientOrderId != null) {
       json[r'client_order_id'] = clientOrderId;
-    }
     if (symbolIdExchange != null) {
       json[r'symbol_id_exchange'] = symbolIdExchange;
     }
     if (symbolIdCoinapi != null) {
       json[r'symbol_id_coinapi'] = symbolIdCoinapi;
     }
-    if (amountOrder != null) {
       json[r'amount_order'] = amountOrder;
-    }
-    if (price != null) {
       json[r'price'] = price;
-    }
-    if (side != null) {
       json[r'side'] = side;
-    }
-    if (orderType != null) {
       json[r'order_type'] = orderType;
-    }
-    if (timeInForce != null) {
       json[r'time_in_force'] = timeInForce;
-    }
     if (expireTime != null) {
       json[r'expire_time'] = expireTime;
     }
     if (execInst != null) {
       json[r'exec_inst'] = execInst;
     }
-    if (clientOrderIdFormatExchange != null) {
       json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
-    }
     if (exchangeOrderId != null) {
       json[r'exchange_order_id'] = exchangeOrderId;
     }
-    if (amountOpen != null) {
       json[r'amount_open'] = amountOpen;
-    }
-    if (amountFilled != null) {
       json[r'amount_filled'] = amountFilled;
-    }
     if (avgPx != null) {
       json[r'avg_px'] = avgPx;
     }
-    if (status != null) {
       json[r'status'] = status;
-    }
     if (statusHistory != null) {
       json[r'status_history'] = statusHistory;
     }

@@ -13,6 +13,7 @@
 #ifndef OAI_OAIOrdersApi_H
 #define OAI_OAIOrdersApi_H
 
+#include "OAIHelpers.h"
 #include "OAIHttpRequest.h"
 #include "OAIServerConfiguration.h"
 
@@ -26,7 +27,7 @@
 
 #include <QObject>
 #include <QByteArray>
-#include <QStringList> 
+#include <QStringList>
 #include <QList>
 #include <QNetworkAccessManager>
 
@@ -36,38 +37,57 @@ class OAIOrdersApi : public QObject {
     Q_OBJECT
 
 public:
-    OAIOrdersApi(const QString &scheme = "https", const QString &host = "13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io", int port = 0, const QString &basePath = "", const int timeOut = 0);
+    OAIOrdersApi(const int timeOut = 0);
     ~OAIOrdersApi();
 
     void initializeServerConfigs();
     int setDefaultServerValue(int serverIndex,const QString &operation, const QString &variable,const QString &val);
     void setServerIndex(const QString &operation, int serverIndex);
-    void setScheme(const QString &scheme);
-    void setHost(const QString &host);
-    void setPort(int port);
     void setApiKey(const QString &apiKeyName, const QString &apiKey);
     void setBearerToken(const QString &token);
     void setUsername(const QString &username);
     void setPassword(const QString &password);
-    void setBasePath(const QString &basePath);
     void setTimeOut(const int timeOut);
     void setWorkingDirectory(const QString &path);
     void setNetworkAccessManager(QNetworkAccessManager* manager);
+    int addServerConfiguration(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables = QMap<QString, OAIServerVariable>());
+    void setNewServerForAllOperations(const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
+    void setNewServer(const QString &operation, const QUrl &url, const QString &description = "", const QMap<QString, OAIServerVariable> &variables =  QMap<QString, OAIServerVariable>());
     void addHeaders(const QString &key, const QString &value);
     void enableRequestCompression();
     void enableResponseCompression();
     void abortRequests();
+    QString getParamStylePrefix(QString style);
+    QString getParamStyleSuffix(QString style);
+    QString getParamStyleDelimiter(QString style, QString name, bool isExplode);
 
+    /**
+    * @param[in]  oai_order_cancel_all_request OAIOrderCancelAllRequest [required]
+    */
     void v1OrdersCancelAllPost(const OAIOrderCancelAllRequest &oai_order_cancel_all_request);
+
+    /**
+    * @param[in]  oai_order_cancel_single_request OAIOrderCancelSingleRequest [required]
+    */
     void v1OrdersCancelPost(const OAIOrderCancelSingleRequest &oai_order_cancel_single_request);
-    void v1OrdersGet(const QString &exchange_id);
+
+    /**
+    * @param[in]  exchange_id QString [optional]
+    */
+    void v1OrdersGet(const ::OpenAPI::OptionalParam<QString> &exchange_id = ::OpenAPI::OptionalParam<QString>());
+
+    /**
+    * @param[in]  oai_order_new_single_request OAIOrderNewSingleRequest [required]
+    */
     void v1OrdersPost(const OAIOrderNewSingleRequest &oai_order_new_single_request);
+
+    /**
+    * @param[in]  client_order_id QString [required]
+    */
     void v1OrdersStatusClientOrderIdGet(const QString &client_order_id);
 
+
 private:
-    QString _scheme, _host;
-    int _port;
-    QString _basePath;
     QMap<QString,int> _serverIndices;
     QMap<QString,QList<OAIServerConfiguration>> _serverConfigs;
     QMap<QString, QString> _apiKeys;
@@ -113,7 +133,8 @@ signals:
     void v1OrdersPostSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
     void v1OrdersStatusClientOrderIdGetSignalEFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, QString error_str);
 
-    void abortRequestsSignal(); 
+    void abortRequestsSignal();
+    void allPendingRequestsCompleted();
 };
 
 } // namespace OpenAPI

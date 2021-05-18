@@ -40,8 +40,8 @@ Name | Type | Description  | Notes
  **OrderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**Message**](Message.md)
+
+[**Message**](Message.md) (PSCustomObject)
 
 ### Authorization
 
@@ -83,8 +83,8 @@ Name | Type | Description  | Notes
  **OrderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**OrderExecutionReport**](OrderExecutionReport.md)
+
+[**OrderExecutionReport**](OrderExecutionReport.md) (PSCustomObject)
 
 ### Authorization
 
@@ -126,8 +126,8 @@ Name | Type | Description  | Notes
  **ExchangeId** | **String**| Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**OrderExecutionReport[]**](OrderExecutionReport.md)
+
+[**OrderExecutionReport[]**](OrderExecutionReport.md) (PSCustomObject)
 
 ### Authorization
 
@@ -169,8 +169,8 @@ Name | Type | Description  | Notes
  **OrderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**OrderExecutionReport**](OrderExecutionReport.md)
+
+[**OrderExecutionReport**](OrderExecutionReport.md) (PSCustomObject)
 
 ### Authorization
 
@@ -212,8 +212,8 @@ Name | Type | Description  | Notes
  **ClientOrderId** | **String**| The unique identifier of the order assigned by the client. | 
 
 ### Return type
-# cmdlet returns PSCustomObject, the return object contains the properties of below type
-[**OrderExecutionReport**](OrderExecutionReport.md)
+
+[**OrderExecutionReport**](OrderExecutionReport.md) (PSCustomObject)
 
 ### Authorization
 

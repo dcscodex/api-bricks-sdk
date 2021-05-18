@@ -31,9 +31,7 @@ class OrderCancelAllRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (exchangeId != null) {
       json[r'exchange_id'] = exchangeId;
-    }
     return json;
   }
 

@@ -1,4 +1,4 @@
-/* 
+/*
  * OEML - REST API
  *
  * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
@@ -499,7 +499,7 @@ namespace CoinAPI.OMS.REST.V1.Client
         }
 
         /// <summary>
-        /// Convert params to key/value pairs. 
+        /// Convert params to key/value pairs.
         /// Use collectionFormat to properly format lists and collections.
         /// </summary>
         /// <param name="collectionFormat">Collection format.</param>

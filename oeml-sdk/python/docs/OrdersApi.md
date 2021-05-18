@@ -52,6 +52,7 @@ with openapi_client.ApiClient() as api_client:
         print("Exception when calling OrdersApi->v1_orders_cancel_all_post: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -70,6 +71,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json, appliction/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -124,6 +126,7 @@ with openapi_client.ApiClient() as api_client:
         print("Exception when calling OrdersApi->v1_orders_cancel_post: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -142,6 +145,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json, appliction/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -191,6 +195,7 @@ with openapi_client.ApiClient() as api_client:
         print("Exception when calling OrdersApi->v1_orders_get: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -209,6 +214,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, appliction/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -258,7 +264,7 @@ with openapi_client.ApiClient() as api_client:
         order_type=OrdType("LIMIT"),
         time_in_force=TimeInForce("GOOD_TILL_CANCEL"),
 2020-01-01T10:45:20.1677709Z,
-        exec_inst=ExecInst(["MAKER_OR_CANCEL"],
+        exec_inst=ExecInst(["MAKER_OR_CANCEL"]),
     ) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
     # example passing only required values which don't have defaults set
@@ -269,6 +275,7 @@ with openapi_client.ApiClient() as api_client:
     except openapi_client.ApiException as e:
         print("Exception when calling OrdersApi->v1_orders_post: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -288,6 +295,7 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json, appliction/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -337,6 +345,7 @@ with openapi_client.ApiClient() as api_client:
         print("Exception when calling OrdersApi->v1_orders_status_client_order_id_get: %s\n" % e)
 ```
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -355,6 +364,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -19,44 +19,35 @@ import com.squareup.moshi.Json
 * Values: rECEIVED,rOUTING,rOUTED,nEW,pENDINGCANCEL,pARTIALLYFILLED,fILLED,cANCELED,rEJECTED
 */
 
-enum class OrdStatus(val value: kotlin.String){
+enum class OrdStatus(val value: kotlin.String) {
 
 
     @Json(name = "RECEIVED")
     rECEIVED("RECEIVED"),
 
-
     @Json(name = "ROUTING")
     rOUTING("ROUTING"),
-
 
     @Json(name = "ROUTED")
     rOUTED("ROUTED"),
 
-
     @Json(name = "NEW")
     nEW("NEW"),
-
 
     @Json(name = "PENDING_CANCEL")
     pENDINGCANCEL("PENDING_CANCEL"),
 
-
     @Json(name = "PARTIALLY_FILLED")
     pARTIALLYFILLED("PARTIALLY_FILLED"),
-
 
     @Json(name = "FILLED")
     fILLED("FILLED"),
 
-
     @Json(name = "CANCELED")
     cANCELED("CANCELED"),
 
-
     @Json(name = "REJECTED")
     rEJECTED("REJECTED");
-
 
 
     /**
@@ -66,6 +57,5 @@ enum class OrdStatus(val value: kotlin.String){
     override fun toString(): String {
         return value
     }
-
 }
 

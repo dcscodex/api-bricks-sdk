@@ -32,16 +32,19 @@ namespace CoinAPI.OMS.API.SDK.Model
     [DataContract(Name = "OrderExecutionReport")]
     public partial class OrderExecutionReport : IEquatable<OrderExecutionReport>, IValidatableObject
     {
+
         /// <summary>
         /// Gets or Sets Side
         /// </summary>
         [DataMember(Name = "side", IsRequired = true, EmitDefaultValue = false)]
         public OrdSide Side { get; set; }
+
         /// <summary>
         /// Gets or Sets OrderType
         /// </summary>
         [DataMember(Name = "order_type", IsRequired = true, EmitDefaultValue = false)]
         public OrdType OrderType { get; set; }
+
         /// <summary>
         /// Gets or Sets TimeInForce
         /// </summary>
@@ -74,12 +77,14 @@ namespace CoinAPI.OMS.API.SDK.Model
         }
 
 
+
         /// <summary>
         /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
         /// </summary>
         /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
         [DataMember(Name = "exec_inst", EmitDefaultValue = false)]
         public List<ExecInstEnum> ExecInst { get; set; }
+
         /// <summary>
         /// Gets or Sets Status
         /// </summary>

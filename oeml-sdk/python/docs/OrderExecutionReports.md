@@ -1,6 +1,7 @@
 # OrderExecutionReports
 
 Collection of order execution reports for currently opened orders.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

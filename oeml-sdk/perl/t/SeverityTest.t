@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::Severity');
 
-my $instance = WWW::OpenAPIClient::Object::Severity->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::Severity');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::Severity->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::Severity');
 

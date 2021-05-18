@@ -129,15 +129,15 @@ export class OrdersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.post<Message>(`${this.configuration.basePath}/v1/orders/cancel/all`,
             orderCancelAllRequest,
             {
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -186,15 +186,15 @@ export class OrdersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/cancel`,
             orderCancelSingleRequest,
             {
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -237,15 +237,15 @@ export class OrdersService {
         }
 
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.get<Array<OrderExecutionReport>>(`${this.configuration.basePath}/v1/orders`,
             {
                 params: queryParameters,
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -294,15 +294,15 @@ export class OrdersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders`,
             orderNewSingleRequest,
             {
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -341,14 +341,14 @@ export class OrdersService {
         }
 
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.get<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/status/${encodeURIComponent(String(clientOrderId))}`,
             {
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

@@ -19,28 +19,23 @@ import com.squareup.moshi.Json
 * Values: gOODTILLCANCEL,gOODTILLTIMEEXCHANGE,gOODTILLTIMEOMS,fILLORKILL,iMMEDIATEORCANCEL
 */
 
-enum class TimeInForce(val value: kotlin.String){
+enum class TimeInForce(val value: kotlin.String) {
 
 
     @Json(name = "GOOD_TILL_CANCEL")
     gOODTILLCANCEL("GOOD_TILL_CANCEL"),
 
-
     @Json(name = "GOOD_TILL_TIME_EXCHANGE")
     gOODTILLTIMEEXCHANGE("GOOD_TILL_TIME_EXCHANGE"),
-
 
     @Json(name = "GOOD_TILL_TIME_OMS")
     gOODTILLTIMEOMS("GOOD_TILL_TIME_OMS"),
 
-
     @Json(name = "FILL_OR_KILL")
     fILLORKILL("FILL_OR_KILL"),
 
-
     @Json(name = "IMMEDIATE_OR_CANCEL")
     iMMEDIATEORCANCEL("IMMEDIATE_OR_CANCEL");
-
 
 
     /**
@@ -50,6 +45,5 @@ enum class TimeInForce(val value: kotlin.String){
     override fun toString(): String {
         return value
     }
-
 }
 

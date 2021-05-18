@@ -1,4 +1,5 @@
 # CoinAPI.OMS.API.SDK.Model.Message
+
 ## Properties
 
 Name | Type | Description | Notes

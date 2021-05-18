@@ -1,9 +1,17 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'package:openapi/model/order_cancel_single_request.dart';
 import 'package:test/test.dart';
 
 // tests for OrderCancelSingleRequest
 void main() {
-  final instance = OrderCancelSingleRequest();
+  final instance = OrderCancelSingleRequestBuilder();
+  // TODO add properties to the builder and call build()
 
   group(OrderCancelSingleRequest, () {
     // Exchange identifier used to identify the routing destination.

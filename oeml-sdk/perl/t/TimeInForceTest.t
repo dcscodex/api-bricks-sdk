@@ -27,7 +27,8 @@ use warnings;
 
 use_ok('WWW::OpenAPIClient::Object::TimeInForce');
 
-my $instance = WWW::OpenAPIClient::Object::TimeInForce->new();
-
-isa_ok($instance, 'WWW::OpenAPIClient::Object::TimeInForce');
+# uncomment below and update the test
+#my $instance = WWW::OpenAPIClient::Object::TimeInForce->new();
+#
+#isa_ok($instance, 'WWW::OpenAPIClient::Object::TimeInForce');
 

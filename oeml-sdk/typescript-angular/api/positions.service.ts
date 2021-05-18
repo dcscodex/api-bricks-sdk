@@ -119,15 +119,15 @@ export class PositionsService {
         }
 
 
-        let responseType: 'text' | 'json' = 'json';
+        let responseType_: 'text' | 'json' = 'json';
         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
-            responseType = 'text';
+            responseType_ = 'text';
         }
 
         return this.httpClient.get<Array<Position>>(`${this.configuration.basePath}/v1/positions`,
             {
                 params: queryParameters,
-                responseType: <any>responseType,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

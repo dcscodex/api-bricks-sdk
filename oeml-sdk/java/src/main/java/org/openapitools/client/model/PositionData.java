@@ -30,7 +30,7 @@ import org.openapitools.client.model.OrdSide;
  * The Position object.
  */
 @ApiModel(description = "The Position object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-25T12:20:47.036916Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-25T12:35:45.573775Z[Etc/UTC]")
 public class PositionData {
   public static final String SERIALIZED_NAME_SYMBOL_ID_EXCHANGE = "symbol_id_exchange";
   @SerializedName(SERIALIZED_NAME_SYMBOL_ID_EXCHANGE)

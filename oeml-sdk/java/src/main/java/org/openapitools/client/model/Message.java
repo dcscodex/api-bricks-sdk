@@ -28,7 +28,7 @@ import org.openapitools.client.model.Severity;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-25T12:20:47.036916Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-25T12:35:45.573775Z[Etc/UTC]")
 public class Message {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

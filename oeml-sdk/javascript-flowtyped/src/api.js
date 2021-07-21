@@ -47,7 +47,6 @@ export type FetchArgs = {
     options: {};
 }
 
-
 /**
  *
  * @export
@@ -741,6 +740,7 @@ export const BalancesApi = function(configuration?: Configuration, fetch: FetchA
     }
 };
 
+
 /**
  * OrdersApi - fetch parameter creator
  * @export
@@ -990,6 +990,7 @@ export const OrdersApi = function(configuration?: Configuration, fetch: FetchAPI
     }
 };
 
+
 /**
  * PositionsApi - fetch parameter creator
  * @export
@@ -1053,6 +1054,7 @@ export const PositionsApi = function(configuration?: Configuration, fetch: Fetch
         },
     }
 };
+
 
 export type ApiTypes = { 
     BalancesApi: BalancesApiType,

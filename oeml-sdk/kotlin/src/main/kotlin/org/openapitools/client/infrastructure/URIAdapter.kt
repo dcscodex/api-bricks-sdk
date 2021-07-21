@@ -2,12 +2,12 @@ package org.openapitools.client.infrastructure
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
-import java.util.UUID
+import java.net.URI
 
-class UUIDAdapter {
+class URIAdapter {
     @ToJson
-    fun toJson(uuid: UUID) = uuid.toString()
+    fun toJson(uri: URI) = uri.toString()
 
     @FromJson
-    fun fromJson(s: String): UUID = UUID.fromString(s)
+    fun fromJson(s: String): URI = URI.create(s)
 }

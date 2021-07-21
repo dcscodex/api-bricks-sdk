@@ -412,7 +412,7 @@ function Invoke-V1OrdersStatusClientOrderIdGet {
         if (!$ClientOrderId) {
             throw "Error! The required parameter `ClientOrderId` missing when calling v1OrdersStatusClientOrderIdGet."
         }
-        $LocalVarUri = $LocalVarUri.replace('{client_order_id}', $ClientOrderId)
+        $LocalVarUri = $LocalVarUri.replace('{client_order_id}', [System.Web.HTTPUtility]::UrlEncode($ClientOrderId))
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `

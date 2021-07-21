@@ -6,7 +6,7 @@
          v1_orders_post/2, v1_orders_post/3,
          v1_orders_status_client_order_id_get/2, v1_orders_status_client_order_id_get/3]).
 
--define(BASE_URL, "").
+-define(BASE_URL, <<"">>).
 
 %% @doc Cancel all orders request
 %% This request cancels all open orders on single specified exchange.
@@ -20,7 +20,7 @@ v1_orders_cancel_all_post(Ctx, OpenapiOrderCancelAllRequest, Optional) ->
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = post,
-    Path = ["/v1/orders/cancel/all"],
+    Path = [<<"/v1/orders/cancel/all">>],
     QS = [],
     Headers = [],
     Body1 = OpenapiOrderCancelAllRequest,
@@ -41,7 +41,7 @@ v1_orders_cancel_post(Ctx, OpenapiOrderCancelSingleRequest, Optional) ->
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = post,
-    Path = ["/v1/orders/cancel"],
+    Path = [<<"/v1/orders/cancel">>],
     QS = [],
     Headers = [],
     Body1 = OpenapiOrderCancelSingleRequest,
@@ -62,7 +62,7 @@ v1_orders_get(Ctx, Optional) ->
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = get,
-    Path = ["/v1/orders"],
+    Path = [<<"/v1/orders">>],
     QS = lists:flatten([])++openapi_utils:optional_params(['exchange_id'], _OptionalParams),
     Headers = [],
     Body1 = [],
@@ -83,7 +83,7 @@ v1_orders_post(Ctx, OpenapiOrderNewSingleRequest, Optional) ->
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = post,
-    Path = ["/v1/orders"],
+    Path = [<<"/v1/orders">>],
     QS = [],
     Headers = [],
     Body1 = OpenapiOrderNewSingleRequest,
@@ -104,7 +104,7 @@ v1_orders_status_client_order_id_get(Ctx, ClientOrderId, Optional) ->
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = get,
-    Path = ["/v1/orders/status/", ClientOrderId, ""],
+    Path = [<<"/v1/orders/status/", ClientOrderId, "">>],
     QS = [],
     Headers = [],
     Body1 = [],

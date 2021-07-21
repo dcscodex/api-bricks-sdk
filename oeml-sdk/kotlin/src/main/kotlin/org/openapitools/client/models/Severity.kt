@@ -19,6 +19,7 @@ import com.squareup.moshi.Json
 * Values: iNFO,wARNING,eRROR
 */
 
+
 enum class Severity(val value: kotlin.String) {
 
 

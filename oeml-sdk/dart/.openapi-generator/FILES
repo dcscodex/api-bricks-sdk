@@ -2,6 +2,7 @@
 .openapi-generator-ignore
 .travis.yml
 README.md
+analysis_options.yaml
 doc/Balance.md
 doc/BalanceData.md
 doc/BalancesApi.md

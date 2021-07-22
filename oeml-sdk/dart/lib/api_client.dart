@@ -196,8 +196,8 @@ class ApiClient {
           return BalanceData.fromJson(value);
         case 'Fills':
           return Fills.fromJson(value);
-        case 'Message':
-          return Message.fromJson(value);
+        case 'MessageReject':
+          return MessageReject.fromJson(value);
         case 'OrdSide':
           return OrdSideTypeTransformer().decode(value);
           
@@ -221,8 +221,8 @@ class ApiClient {
           return Position.fromJson(value);
         case 'PositionData':
           return PositionData.fromJson(value);
-        case 'Severity':
-          return SeverityTypeTransformer().decode(value);
+        case 'RejectReason':
+          return RejectReasonTypeTransformer().decode(value);
           
         case 'TimeInForce':
           return TimeInForceTypeTransformer().decode(value);

@@ -22,7 +22,7 @@
 
 #include "../ApiClient.h"
 
-#include "Message.h"
+#include "MessageReject.h"
 #include "OrderCancelAllRequest.h"
 #include "OrderCancelSingleRequest.h"
 #include "OrderExecutionReport.h"
@@ -57,7 +57,7 @@ public:
     /// This request cancels all open orders on single specified exchange.
     /// </remarks>
     /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
-    pplx::task<std::shared_ptr<Message>> v1OrdersCancelAllPost(
+    pplx::task<std::shared_ptr<MessageReject>> v1OrdersCancelAllPost(
         std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest
     ) const;
     /// <summary>

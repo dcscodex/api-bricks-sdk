@@ -10,11 +10,11 @@
 
 %% @doc Cancel all orders request
 %% This request cancels all open orders on single specified exchange.
--spec v1_orders_cancel_all_post(ctx:ctx(), openapi_order_cancel_all_request:openapi_order_cancel_all_request()) -> {ok, openapi_message:openapi_message(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec v1_orders_cancel_all_post(ctx:ctx(), openapi_order_cancel_all_request:openapi_order_cancel_all_request()) -> {ok, openapi_message_reject:openapi_message_reject(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_orders_cancel_all_post(Ctx, OpenapiOrderCancelAllRequest) ->
     v1_orders_cancel_all_post(Ctx, OpenapiOrderCancelAllRequest, #{}).
 
--spec v1_orders_cancel_all_post(ctx:ctx(), openapi_order_cancel_all_request:openapi_order_cancel_all_request(), maps:map()) -> {ok, openapi_message:openapi_message(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec v1_orders_cancel_all_post(ctx:ctx(), openapi_order_cancel_all_request:openapi_order_cancel_all_request(), maps:map()) -> {ok, openapi_message_reject:openapi_message_reject(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_orders_cancel_all_post(Ctx, OpenapiOrderCancelAllRequest, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

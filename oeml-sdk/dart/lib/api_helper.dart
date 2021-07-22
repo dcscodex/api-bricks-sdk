@@ -67,8 +67,8 @@ String parameterToString(dynamic value) {
   if (value is OrdType) {
     return OrdTypeTypeTransformer().encode(value).toString();
   }
-  if (value is Severity) {
-    return SeverityTypeTransformer().encode(value).toString();
+  if (value is RejectReason) {
+    return RejectReasonTypeTransformer().encode(value).toString();
   }
   if (value is TimeInForce) {
     return TimeInForceTypeTransformer().encode(value).toString();

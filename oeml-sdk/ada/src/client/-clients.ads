@@ -27,7 +27,7 @@ package .Clients is
    procedure V_1Orders_Cancel_All_Post
       (Client : in out Client_Type;
        Order_Cancel_All_Request_Type : in .Models.OrderCancelAllRequest_Type;
-       Result : out .Models.Message_Type);
+       Result : out .Models.MessageReject_Type);
 
    --  Cancel order request
    --  Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.

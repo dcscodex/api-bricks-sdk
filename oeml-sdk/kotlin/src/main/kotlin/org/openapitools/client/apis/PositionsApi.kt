@@ -11,7 +11,7 @@
 */
 package org.openapitools.client.apis
 
-import org.openapitools.client.models.Message
+import org.openapitools.client.models.MessageReject
 import org.openapitools.client.models.Position
 
 import org.openapitools.client.infrastructure.ApiClient

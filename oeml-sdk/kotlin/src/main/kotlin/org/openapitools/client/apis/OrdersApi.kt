@@ -11,7 +11,7 @@
 */
 package org.openapitools.client.apis
 
-import org.openapitools.client.models.Message
+import org.openapitools.client.models.MessageReject
 import org.openapitools.client.models.OrderCancelAllRequest
 import org.openapitools.client.models.OrderCancelSingleRequest
 import org.openapitools.client.models.OrderExecutionReport
@@ -42,22 +42,22 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * Cancel all orders request
     * This request cancels all open orders on single specified exchange.
     * @param orderCancelAllRequest OrderCancelAllRequest object. 
-    * @return Message
+    * @return MessageReject
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
     @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest) : Message {
+    fun v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest) : MessageReject {
         val localVariableConfig = v1OrdersCancelAllPostRequestConfig(orderCancelAllRequest = orderCancelAllRequest)
 
-        val localVarResponse = request<OrderCancelAllRequest, Message>(
+        val localVarResponse = request<OrderCancelAllRequest, MessageReject>(
             localVariableConfig
         )
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Message
+            ResponseType.Success -> (localVarResponse as Success<*>).data as MessageReject
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {

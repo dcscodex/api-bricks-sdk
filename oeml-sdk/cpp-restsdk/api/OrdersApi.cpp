@@ -36,7 +36,7 @@ OrdersApi::~OrdersApi()
 {
 }
 
-pplx::task<std::shared_ptr<Message>> OrdersApi::v1OrdersCancelAllPost(std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest) const
+pplx::task<std::shared_ptr<MessageReject>> OrdersApi::v1OrdersCancelAllPost(std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest) const
 {
 
     // verify the required parameter 'orderCancelAllRequest' is set
@@ -161,7 +161,7 @@ pplx::task<std::shared_ptr<Message>> OrdersApi::v1OrdersCancelAllPost(std::share
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<Message> localVarResult(new Message());
+        std::shared_ptr<MessageReject> localVarResult(new MessageReject());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

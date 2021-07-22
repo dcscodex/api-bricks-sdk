@@ -12,7 +12,7 @@
 package org.openapitools.client.apis
 
 import org.openapitools.client.models.Balance
-import org.openapitools.client.models.Message
+import org.openapitools.client.models.MessageReject
 
 import org.openapitools.client.infrastructure.ApiClient
 import org.openapitools.client.infrastructure.ClientException

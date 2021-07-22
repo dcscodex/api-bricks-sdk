@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="Invoke-V1OrdersCancelAllPost"></a>
 # **Invoke-V1OrdersCancelAllPost**
-> Message Invoke-V1OrdersCancelAllPost<br>
+> MessageReject Invoke-V1OrdersCancelAllPost<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OrderCancelAllRequest] <PSCustomObject><br>
 
 Cancel all orders request
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Message**](Message.md) (PSCustomObject)
+[**MessageReject**](MessageReject.md) (PSCustomObject)
 
 ### Authorization
 

@@ -5,7 +5,7 @@ docs/Balance.md
 docs/BalanceData.md
 docs/BalancesApi.md
 docs/Fills.md
-docs/Message.md
+docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
 docs/OrdType.md
@@ -18,7 +18,7 @@ docs/OrdersApi.md
 docs/Position.md
 docs/PositionData.md
 docs/PositionsApi.md
-docs/Severity.md
+docs/RejectReason.md
 docs/TimeInForce.md
 docs/ValidationError.md
 gradle/wrapper/gradle-wrapper.jar
@@ -48,7 +48,7 @@ src/main/kotlin/org/openapitools/client/infrastructure/UUIDAdapter.kt
 src/main/kotlin/org/openapitools/client/models/Balance.kt
 src/main/kotlin/org/openapitools/client/models/BalanceData.kt
 src/main/kotlin/org/openapitools/client/models/Fills.kt
-src/main/kotlin/org/openapitools/client/models/Message.kt
+src/main/kotlin/org/openapitools/client/models/MessageReject.kt
 src/main/kotlin/org/openapitools/client/models/OrdSide.kt
 src/main/kotlin/org/openapitools/client/models/OrdStatus.kt
 src/main/kotlin/org/openapitools/client/models/OrdType.kt
@@ -59,6 +59,6 @@ src/main/kotlin/org/openapitools/client/models/OrderExecutionReportAllOf.kt
 src/main/kotlin/org/openapitools/client/models/OrderNewSingleRequest.kt
 src/main/kotlin/org/openapitools/client/models/Position.kt
 src/main/kotlin/org/openapitools/client/models/PositionData.kt
-src/main/kotlin/org/openapitools/client/models/Severity.kt
+src/main/kotlin/org/openapitools/client/models/RejectReason.kt
 src/main/kotlin/org/openapitools/client/models/TimeInForce.kt
 src/main/kotlin/org/openapitools/client/models/ValidationError.kt

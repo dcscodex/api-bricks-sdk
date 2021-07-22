@@ -23,7 +23,7 @@
 #include "../ApiClient.h"
 
 #include "Balance.h"
-#include "Message.h"
+#include "MessageReject.h"
 #include <cpprest/details/basic_types.h>
 
 

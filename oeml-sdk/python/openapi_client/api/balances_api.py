@@ -23,7 +23,7 @@ from openapi_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from openapi_client.model.balances import Balances
-from openapi_client.model.message import Message
+from openapi_client.model.message_reject import MessageReject
 
 
 class BalancesApi(object):

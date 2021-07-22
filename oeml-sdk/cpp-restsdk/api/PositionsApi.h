@@ -22,7 +22,7 @@
 
 #include "../ApiClient.h"
 
-#include "Message.h"
+#include "MessageReject.h"
 #include "Position.h"
 #include <cpprest/details/basic_types.h>
 

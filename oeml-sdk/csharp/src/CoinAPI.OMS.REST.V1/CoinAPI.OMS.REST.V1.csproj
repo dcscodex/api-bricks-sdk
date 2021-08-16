@@ -12,7 +12,7 @@ Contact: support@coinapi.io
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8AE674A3-B3E6-471D-9718-35E9DC4F5BBF}</ProjectGuid>
+    <ProjectGuid>{D162FD35-ED1C-47AF-BC4B-12A8DECEF517}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CoinAPI.OMS.REST.V1</RootNamespace>

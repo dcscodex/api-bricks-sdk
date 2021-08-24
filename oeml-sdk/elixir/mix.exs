@@ -7,6 +7,8 @@ defmodule OEML-RESTAPI.Mixfile do
      elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
+     description: "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       ",
      deps: deps()]
   end
 
@@ -31,6 +33,14 @@ defmodule OEML-RESTAPI.Mixfile do
     [
       {:tesla, "~> 1.2"},
       {:poison, "~> 3.0"}
+    ]
+  end
+
+   defp package() do
+    [
+      name: "oeml_restapi",
+      files: ~w(lib mix.exs README* LICENSE*),
+      licenses: [""]
     ]
   end
 end

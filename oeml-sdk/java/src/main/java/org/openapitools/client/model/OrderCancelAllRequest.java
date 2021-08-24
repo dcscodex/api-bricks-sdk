@@ -28,7 +28,7 @@ import java.io.IOException;
  * Cancel all orders request object.
  */
 @ApiModel(description = "Cancel all orders request object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-16T13:17:30.465437Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-24T23:47:44.494336Z[Etc/UTC]")
 public class OrderCancelAllRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -45,6 +45,7 @@ public class OrderCancelAllRequest {
    * Identifier of the exchange from which active orders should be canceled.
    * @return exchangeId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "KRAKEN", required = true, value = "Identifier of the exchange from which active orders should be canceled.")
 
   public String getExchangeId() {

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exchangeId** | **kotlin.String** | Exchange identifier used to identify the routing destination. |  [optional]
-**data** | [**kotlin.collections.List&lt;PositionData&gt;**](PositionData.md) |  |  [optional]
+**&#x60;data&#x60;** | [**kotlin.collections.List&lt;PositionData&gt;**](PositionData.md) |  |  [optional]
 
 
 

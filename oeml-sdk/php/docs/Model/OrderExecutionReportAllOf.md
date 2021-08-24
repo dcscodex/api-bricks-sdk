@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **amount_filled** | **float** | Total quantity filled. |
 **avg_px** | **float** | Calculated average price of all fills on this order. | [optional]
 **status** | [**\OpenAPI\Client\Model\OrdStatus**](OrdStatus.md) |  |
-**status_history** | [**string[][]**](array.md) | Timestamped history of order status changes. | [optional]
+**status_history** | **string[][]** | Timestamped history of order status changes. | [optional]
 **error_message** | **string** | Error message. | [optional]
 **fills** | [**\OpenAPI\Client\Model\Fills[]**](Fills.md) | Relay fill information on working orders. | [optional]
 

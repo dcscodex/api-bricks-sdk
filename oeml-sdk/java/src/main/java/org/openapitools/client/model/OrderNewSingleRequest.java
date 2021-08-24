@@ -35,7 +35,7 @@ import org.threeten.bp.LocalDate;
  * The new order message.
  */
 @ApiModel(description = "The new order message.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-16T13:17:30.465437Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-24T23:47:44.494336Z[Etc/UTC]")
 public class OrderNewSingleRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -141,6 +141,7 @@ public class OrderNewSingleRequest {
    * Exchange identifier used to identify the routing destination.
    * @return exchangeId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "KRAKEN", required = true, value = "Exchange identifier used to identify the routing destination.")
 
   public String getExchangeId() {
@@ -163,6 +164,7 @@ public class OrderNewSingleRequest {
    * The unique identifier of the order assigned by the client.
    * @return clientOrderId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b", required = true, value = "The unique identifier of the order assigned by the client.")
 
   public String getClientOrderId() {
@@ -231,6 +233,7 @@ public class OrderNewSingleRequest {
    * Order quantity.
    * @return amountOrder
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.045", required = true, value = "Order quantity.")
 
   public BigDecimal getAmountOrder() {
@@ -253,6 +256,7 @@ public class OrderNewSingleRequest {
    * Order price.
    * @return price
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.0783", required = true, value = "Order price.")
 
   public BigDecimal getPrice() {
@@ -275,6 +279,7 @@ public class OrderNewSingleRequest {
    * Get side
    * @return side
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public OrdSide getSide() {
@@ -297,6 +302,7 @@ public class OrderNewSingleRequest {
    * Get orderType
    * @return orderType
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public OrdType getOrderType() {
@@ -319,6 +325,7 @@ public class OrderNewSingleRequest {
    * Get timeInForce
    * @return timeInForce
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public TimeInForce getTimeInForce() {

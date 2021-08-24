@@ -39,7 +39,7 @@ import org.threeten.bp.LocalDate;
  * The order execution report object.
  */
 @ApiModel(description = "The order execution report object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-16T13:17:30.465437Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-24T23:47:44.494336Z[Etc/UTC]")
 public class OrderExecutionReport {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -181,6 +181,7 @@ public class OrderExecutionReport {
    * Exchange identifier used to identify the routing destination.
    * @return exchangeId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "KRAKEN", required = true, value = "Exchange identifier used to identify the routing destination.")
 
   public String getExchangeId() {
@@ -203,6 +204,7 @@ public class OrderExecutionReport {
    * The unique identifier of the order assigned by the client.
    * @return clientOrderId
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b", required = true, value = "The unique identifier of the order assigned by the client.")
 
   public String getClientOrderId() {
@@ -271,6 +273,7 @@ public class OrderExecutionReport {
    * Order quantity.
    * @return amountOrder
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.045", required = true, value = "Order quantity.")
 
   public BigDecimal getAmountOrder() {
@@ -293,6 +296,7 @@ public class OrderExecutionReport {
    * Order price.
    * @return price
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.0783", required = true, value = "Order price.")
 
   public BigDecimal getPrice() {
@@ -315,6 +319,7 @@ public class OrderExecutionReport {
    * Get side
    * @return side
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public OrdSide getSide() {
@@ -337,6 +342,7 @@ public class OrderExecutionReport {
    * Get orderType
    * @return orderType
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public OrdType getOrderType() {
@@ -359,6 +365,7 @@ public class OrderExecutionReport {
    * Get timeInForce
    * @return timeInForce
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public TimeInForce getTimeInForce() {
@@ -435,6 +442,7 @@ public class OrderExecutionReport {
    * The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
    * @return clientOrderIdFormatExchange
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "f81211e2-27c4-b86a-8143-01088ba9222c", required = true, value = "The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.")
 
   public String getClientOrderIdFormatExchange() {
@@ -480,6 +488,7 @@ public class OrderExecutionReport {
    * Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;
    * @return amountOpen
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.22", required = true, value = "Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`")
 
   public BigDecimal getAmountOpen() {
@@ -502,6 +511,7 @@ public class OrderExecutionReport {
    * Total quantity filled.
    * @return amountFilled
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(example = "0.0", required = true, value = "Total quantity filled.")
 
   public BigDecimal getAmountFilled() {
@@ -547,6 +557,7 @@ public class OrderExecutionReport {
    * Get status
    * @return status
   **/
+  @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
   public OrdStatus getStatus() {

@@ -28,17 +28,17 @@ Balance_data::Balance_data()
     m_Asset_id_exchangeIsSet = false;
     m_Asset_id_coinapi = utility::conversions::to_string_t("");
     m_Asset_id_coinapiIsSet = false;
-    m_Balance = 0.0f;
+    m_Balance = 0.0;
     m_BalanceIsSet = false;
-    m_Available = 0.0f;
+    m_Available = 0.0;
     m_AvailableIsSet = false;
-    m_Locked = 0.0f;
+    m_Locked = 0.0;
     m_LockedIsSet = false;
     m_Last_updated_by = utility::conversions::to_string_t("");
     m_Last_updated_byIsSet = false;
-    m_Rate_usd = 0.0f;
+    m_Rate_usd = 0.0;
     m_Rate_usdIsSet = false;
-    m_Traded = 0.0f;
+    m_Traded = 0.0;
     m_TradedIsSet = false;
 }
 
@@ -121,7 +121,7 @@ bool Balance_data::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("balance"));
         if(!fieldValue.is_null())
         {
-            float refVal_balance;
+            double refVal_balance;
             ok &= ModelBase::fromJson(fieldValue, refVal_balance);
             setBalance(refVal_balance);
         }
@@ -131,7 +131,7 @@ bool Balance_data::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("available"));
         if(!fieldValue.is_null())
         {
-            float refVal_available;
+            double refVal_available;
             ok &= ModelBase::fromJson(fieldValue, refVal_available);
             setAvailable(refVal_available);
         }
@@ -141,7 +141,7 @@ bool Balance_data::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("locked"));
         if(!fieldValue.is_null())
         {
-            float refVal_locked;
+            double refVal_locked;
             ok &= ModelBase::fromJson(fieldValue, refVal_locked);
             setLocked(refVal_locked);
         }
@@ -161,7 +161,7 @@ bool Balance_data::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("rate_usd"));
         if(!fieldValue.is_null())
         {
-            float refVal_rate_usd;
+            double refVal_rate_usd;
             ok &= ModelBase::fromJson(fieldValue, refVal_rate_usd);
             setRateUsd(refVal_rate_usd);
         }
@@ -171,7 +171,7 @@ bool Balance_data::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("traded"));
         if(!fieldValue.is_null())
         {
-            float refVal_traded;
+            double refVal_traded;
             ok &= ModelBase::fromJson(fieldValue, refVal_traded);
             setTraded(refVal_traded);
         }
@@ -243,19 +243,19 @@ bool Balance_data::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
     }
     if(multipart->hasContent(utility::conversions::to_string_t("balance")))
     {
-        float refVal_balance;
+        double refVal_balance;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("balance")), refVal_balance );
         setBalance(refVal_balance);
     }
     if(multipart->hasContent(utility::conversions::to_string_t("available")))
     {
-        float refVal_available;
+        double refVal_available;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("available")), refVal_available );
         setAvailable(refVal_available);
     }
     if(multipart->hasContent(utility::conversions::to_string_t("locked")))
     {
-        float refVal_locked;
+        double refVal_locked;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("locked")), refVal_locked );
         setLocked(refVal_locked);
     }
@@ -267,13 +267,13 @@ bool Balance_data::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
     }
     if(multipart->hasContent(utility::conversions::to_string_t("rate_usd")))
     {
-        float refVal_rate_usd;
+        double refVal_rate_usd;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("rate_usd")), refVal_rate_usd );
         setRateUsd(refVal_rate_usd);
     }
     if(multipart->hasContent(utility::conversions::to_string_t("traded")))
     {
-        float refVal_traded;
+        double refVal_traded;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("traded")), refVal_traded );
         setTraded(refVal_traded);
     }
@@ -320,12 +320,12 @@ void Balance_data::unsetAsset_id_coinapi()
 {
     m_Asset_id_coinapiIsSet = false;
 }
-float Balance_data::getBalance() const
+double Balance_data::getBalance() const
 {
     return m_Balance;
 }
 
-void Balance_data::setBalance(float value)
+void Balance_data::setBalance(double value)
 {
     m_Balance = value;
     m_BalanceIsSet = true;
@@ -340,12 +340,12 @@ void Balance_data::unsetBalance()
 {
     m_BalanceIsSet = false;
 }
-float Balance_data::getAvailable() const
+double Balance_data::getAvailable() const
 {
     return m_Available;
 }
 
-void Balance_data::setAvailable(float value)
+void Balance_data::setAvailable(double value)
 {
     m_Available = value;
     m_AvailableIsSet = true;
@@ -360,12 +360,12 @@ void Balance_data::unsetAvailable()
 {
     m_AvailableIsSet = false;
 }
-float Balance_data::getLocked() const
+double Balance_data::getLocked() const
 {
     return m_Locked;
 }
 
-void Balance_data::setLocked(float value)
+void Balance_data::setLocked(double value)
 {
     m_Locked = value;
     m_LockedIsSet = true;
@@ -400,12 +400,12 @@ void Balance_data::unsetLast_updated_by()
 {
     m_Last_updated_byIsSet = false;
 }
-float Balance_data::getRateUsd() const
+double Balance_data::getRateUsd() const
 {
     return m_Rate_usd;
 }
 
-void Balance_data::setRateUsd(float value)
+void Balance_data::setRateUsd(double value)
 {
     m_Rate_usd = value;
     m_Rate_usdIsSet = true;
@@ -420,12 +420,12 @@ void Balance_data::unsetRate_usd()
 {
     m_Rate_usdIsSet = false;
 }
-float Balance_data::getTraded() const
+double Balance_data::getTraded() const
 {
     return m_Traded;
 }
 
-void Balance_data::setTraded(float value)
+void Balance_data::setTraded(double value)
 {
     m_Traded = value;
     m_TradedIsSet = true;

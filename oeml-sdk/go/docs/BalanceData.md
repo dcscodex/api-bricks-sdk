@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetIdExchange** | Pointer to **string** | Exchange currency code. | [optional] 
 **AssetIdCoinapi** | Pointer to **string** | CoinAPI currency code. | [optional] 
-**Balance** | Pointer to **float32** | Value of the current total currency balance on the exchange. | [optional] 
-**Available** | Pointer to **float32** | Value of the current available currency balance on the exchange that can be used as collateral. | [optional] 
-**Locked** | Pointer to **float32** | Value of the current locked currency balance by the exchange. | [optional] 
+**Balance** | Pointer to **float64** | Value of the current total currency balance on the exchange. | [optional] 
+**Available** | Pointer to **float64** | Value of the current available currency balance on the exchange that can be used as collateral. | [optional] 
+**Locked** | Pointer to **float64** | Value of the current locked currency balance by the exchange. | [optional] 
 **LastUpdatedBy** | Pointer to **string** | Source of the last modification.  | [optional] 
-**RateUsd** | Pointer to **float32** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
-**Traded** | Pointer to **float32** | Value of the current total traded. | [optional] 
+**RateUsd** | Pointer to **float64** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
+**Traded** | Pointer to **float64** | Value of the current total traded. | [optional] 
 
 ## Methods
 
@@ -84,20 +84,20 @@ HasAssetIdCoinapi returns a boolean if a field has been set.
 
 ### GetBalance
 
-`func (o *BalanceData) GetBalance() float32`
+`func (o *BalanceData) GetBalance() float64`
 
 GetBalance returns the Balance field if non-nil, zero value otherwise.
 
 ### GetBalanceOk
 
-`func (o *BalanceData) GetBalanceOk() (*float32, bool)`
+`func (o *BalanceData) GetBalanceOk() (*float64, bool)`
 
 GetBalanceOk returns a tuple with the Balance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBalance
 
-`func (o *BalanceData) SetBalance(v float32)`
+`func (o *BalanceData) SetBalance(v float64)`
 
 SetBalance sets Balance field to given value.
 
@@ -109,20 +109,20 @@ HasBalance returns a boolean if a field has been set.
 
 ### GetAvailable
 
-`func (o *BalanceData) GetAvailable() float32`
+`func (o *BalanceData) GetAvailable() float64`
 
 GetAvailable returns the Available field if non-nil, zero value otherwise.
 
 ### GetAvailableOk
 
-`func (o *BalanceData) GetAvailableOk() (*float32, bool)`
+`func (o *BalanceData) GetAvailableOk() (*float64, bool)`
 
 GetAvailableOk returns a tuple with the Available field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailable
 
-`func (o *BalanceData) SetAvailable(v float32)`
+`func (o *BalanceData) SetAvailable(v float64)`
 
 SetAvailable sets Available field to given value.
 
@@ -134,20 +134,20 @@ HasAvailable returns a boolean if a field has been set.
 
 ### GetLocked
 
-`func (o *BalanceData) GetLocked() float32`
+`func (o *BalanceData) GetLocked() float64`
 
 GetLocked returns the Locked field if non-nil, zero value otherwise.
 
 ### GetLockedOk
 
-`func (o *BalanceData) GetLockedOk() (*float32, bool)`
+`func (o *BalanceData) GetLockedOk() (*float64, bool)`
 
 GetLockedOk returns a tuple with the Locked field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocked
 
-`func (o *BalanceData) SetLocked(v float32)`
+`func (o *BalanceData) SetLocked(v float64)`
 
 SetLocked sets Locked field to given value.
 
@@ -184,20 +184,20 @@ HasLastUpdatedBy returns a boolean if a field has been set.
 
 ### GetRateUsd
 
-`func (o *BalanceData) GetRateUsd() float32`
+`func (o *BalanceData) GetRateUsd() float64`
 
 GetRateUsd returns the RateUsd field if non-nil, zero value otherwise.
 
 ### GetRateUsdOk
 
-`func (o *BalanceData) GetRateUsdOk() (*float32, bool)`
+`func (o *BalanceData) GetRateUsdOk() (*float64, bool)`
 
 GetRateUsdOk returns a tuple with the RateUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRateUsd
 
-`func (o *BalanceData) SetRateUsd(v float32)`
+`func (o *BalanceData) SetRateUsd(v float64)`
 
 SetRateUsd sets RateUsd field to given value.
 
@@ -209,20 +209,20 @@ HasRateUsd returns a boolean if a field has been set.
 
 ### GetTraded
 
-`func (o *BalanceData) GetTraded() float32`
+`func (o *BalanceData) GetTraded() float64`
 
 GetTraded returns the Traded field if non-nil, zero value otherwise.
 
 ### GetTradedOk
 
-`func (o *BalanceData) GetTradedOk() (*float32, bool)`
+`func (o *BalanceData) GetTradedOk() (*float64, bool)`
 
 GetTradedOk returns a tuple with the Traded field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraded
 
-`func (o *BalanceData) SetTraded(v float32)`
+`func (o *BalanceData) SetTraded(v float64)`
 
 SetTraded sets Traded field to given value.
 

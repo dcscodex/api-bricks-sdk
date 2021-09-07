@@ -75,29 +75,29 @@ public:
     /// <summary>
     /// Value of the current total currency balance on the exchange.
     /// </summary>
-    float getBalance() const;
+    double getBalance() const;
     bool balanceIsSet() const;
     void unsetBalance();
 
-    void setBalance(float value);
+    void setBalance(double value);
 
     /// <summary>
     /// Value of the current available currency balance on the exchange that can be used as collateral.
     /// </summary>
-    float getAvailable() const;
+    double getAvailable() const;
     bool availableIsSet() const;
     void unsetAvailable();
 
-    void setAvailable(float value);
+    void setAvailable(double value);
 
     /// <summary>
     /// Value of the current locked currency balance by the exchange.
     /// </summary>
-    float getLocked() const;
+    double getLocked() const;
     bool lockedIsSet() const;
     void unsetLocked();
 
-    void setLocked(float value);
+    void setLocked(double value);
 
     /// <summary>
     /// Source of the last modification. 
@@ -111,20 +111,20 @@ public:
     /// <summary>
     /// Current exchange rate to the USD for the single unit of the currency. 
     /// </summary>
-    float getRateUsd() const;
+    double getRateUsd() const;
     bool rateUsdIsSet() const;
     void unsetRate_usd();
 
-    void setRateUsd(float value);
+    void setRateUsd(double value);
 
     /// <summary>
     /// Value of the current total traded.
     /// </summary>
-    float getTraded() const;
+    double getTraded() const;
     bool tradedIsSet() const;
     void unsetTraded();
 
-    void setTraded(float value);
+    void setTraded(double value);
 
 
 protected:
@@ -132,17 +132,17 @@ protected:
     bool m_Asset_id_exchangeIsSet;
     utility::string_t m_Asset_id_coinapi;
     bool m_Asset_id_coinapiIsSet;
-    float m_Balance;
+    double m_Balance;
     bool m_BalanceIsSet;
-    float m_Available;
+    double m_Available;
     bool m_AvailableIsSet;
-    float m_Locked;
+    double m_Locked;
     bool m_LockedIsSet;
     utility::string_t m_Last_updated_by;
     bool m_Last_updated_byIsSet;
-    float m_Rate_usd;
+    double m_Rate_usd;
     bool m_Rate_usdIsSet;
-    float m_Traded;
+    double m_Traded;
     bool m_TradedIsSet;
 };
 

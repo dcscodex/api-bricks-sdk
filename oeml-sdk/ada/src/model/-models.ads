@@ -433,12 +433,12 @@ package .Models is
      record
        Asset_Id_Exchange : Swagger.Nullable_UString;
        Asset_Id_Coinapi : Swagger.Nullable_UString;
-       Balance : float;
-       Available : float;
-       Locked : float;
+       Balance : double;
+       Available : double;
+       Locked : double;
        Last_Updated_By : Swagger.Nullable_UString;
-       Rate_Usd : float;
-       Traded : float;
+       Rate_Usd : double;
+       Traded : double;
      end record;
 
    package BalanceData_Type_Vectors is

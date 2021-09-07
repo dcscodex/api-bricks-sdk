@@ -29,24 +29,24 @@ oeml___rest_api_balance_data_LASTUPDATEDBY_e balance_data_last_updated_by_FromSt
 typedef struct balance_data_t {
     char *asset_id_exchange; // string
     char *asset_id_coinapi; // string
-    float balance; //numeric
-    float available; //numeric
-    float locked; //numeric
+    double balance; //numeric
+    double available; //numeric
+    double locked; //numeric
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by; //enum
-    float rate_usd; //numeric
-    float traded; //numeric
+    double rate_usd; //numeric
+    double traded; //numeric
 
 } balance_data_t;
 
 balance_data_t *balance_data_create(
     char *asset_id_exchange,
     char *asset_id_coinapi,
-    float balance,
-    float available,
-    float locked,
+    double balance,
+    double available,
+    double locked,
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
-    float rate_usd,
-    float traded
+    double rate_usd,
+    double traded
 );
 
 void balance_data_free(balance_data_t *balance_data);

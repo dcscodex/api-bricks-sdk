@@ -22,17 +22,17 @@ type BalanceData struct {
 	// CoinAPI currency code.
 	AssetIdCoinapi *string `json:"asset_id_coinapi,omitempty"`
 	// Value of the current total currency balance on the exchange.
-	Balance *float32 `json:"balance,omitempty"`
+	Balance *float64 `json:"balance,omitempty"`
 	// Value of the current available currency balance on the exchange that can be used as collateral.
-	Available *float32 `json:"available,omitempty"`
+	Available *float64 `json:"available,omitempty"`
 	// Value of the current locked currency balance by the exchange.
-	Locked *float32 `json:"locked,omitempty"`
+	Locked *float64 `json:"locked,omitempty"`
 	// Source of the last modification. 
 	LastUpdatedBy *string `json:"last_updated_by,omitempty"`
 	// Current exchange rate to the USD for the single unit of the currency. 
-	RateUsd *float32 `json:"rate_usd,omitempty"`
+	RateUsd *float64 `json:"rate_usd,omitempty"`
 	// Value of the current total traded.
-	Traded *float32 `json:"traded,omitempty"`
+	Traded *float64 `json:"traded,omitempty"`
 }
 
 // NewBalanceData instantiates a new BalanceData object
@@ -117,9 +117,9 @@ func (o *BalanceData) SetAssetIdCoinapi(v string) {
 }
 
 // GetBalance returns the Balance field value if set, zero value otherwise.
-func (o *BalanceData) GetBalance() float32 {
+func (o *BalanceData) GetBalance() float64 {
 	if o == nil || o.Balance == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Balance
@@ -127,7 +127,7 @@ func (o *BalanceData) GetBalance() float32 {
 
 // GetBalanceOk returns a tuple with the Balance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BalanceData) GetBalanceOk() (*float32, bool) {
+func (o *BalanceData) GetBalanceOk() (*float64, bool) {
 	if o == nil || o.Balance == nil {
 		return nil, false
 	}
@@ -143,15 +143,15 @@ func (o *BalanceData) HasBalance() bool {
 	return false
 }
 
-// SetBalance gets a reference to the given float32 and assigns it to the Balance field.
-func (o *BalanceData) SetBalance(v float32) {
+// SetBalance gets a reference to the given float64 and assigns it to the Balance field.
+func (o *BalanceData) SetBalance(v float64) {
 	o.Balance = &v
 }
 
 // GetAvailable returns the Available field value if set, zero value otherwise.
-func (o *BalanceData) GetAvailable() float32 {
+func (o *BalanceData) GetAvailable() float64 {
 	if o == nil || o.Available == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Available
@@ -159,7 +159,7 @@ func (o *BalanceData) GetAvailable() float32 {
 
 // GetAvailableOk returns a tuple with the Available field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BalanceData) GetAvailableOk() (*float32, bool) {
+func (o *BalanceData) GetAvailableOk() (*float64, bool) {
 	if o == nil || o.Available == nil {
 		return nil, false
 	}
@@ -175,15 +175,15 @@ func (o *BalanceData) HasAvailable() bool {
 	return false
 }
 
-// SetAvailable gets a reference to the given float32 and assigns it to the Available field.
-func (o *BalanceData) SetAvailable(v float32) {
+// SetAvailable gets a reference to the given float64 and assigns it to the Available field.
+func (o *BalanceData) SetAvailable(v float64) {
 	o.Available = &v
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
-func (o *BalanceData) GetLocked() float32 {
+func (o *BalanceData) GetLocked() float64 {
 	if o == nil || o.Locked == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Locked
@@ -191,7 +191,7 @@ func (o *BalanceData) GetLocked() float32 {
 
 // GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BalanceData) GetLockedOk() (*float32, bool) {
+func (o *BalanceData) GetLockedOk() (*float64, bool) {
 	if o == nil || o.Locked == nil {
 		return nil, false
 	}
@@ -207,8 +207,8 @@ func (o *BalanceData) HasLocked() bool {
 	return false
 }
 
-// SetLocked gets a reference to the given float32 and assigns it to the Locked field.
-func (o *BalanceData) SetLocked(v float32) {
+// SetLocked gets a reference to the given float64 and assigns it to the Locked field.
+func (o *BalanceData) SetLocked(v float64) {
 	o.Locked = &v
 }
 
@@ -245,9 +245,9 @@ func (o *BalanceData) SetLastUpdatedBy(v string) {
 }
 
 // GetRateUsd returns the RateUsd field value if set, zero value otherwise.
-func (o *BalanceData) GetRateUsd() float32 {
+func (o *BalanceData) GetRateUsd() float64 {
 	if o == nil || o.RateUsd == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.RateUsd
@@ -255,7 +255,7 @@ func (o *BalanceData) GetRateUsd() float32 {
 
 // GetRateUsdOk returns a tuple with the RateUsd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BalanceData) GetRateUsdOk() (*float32, bool) {
+func (o *BalanceData) GetRateUsdOk() (*float64, bool) {
 	if o == nil || o.RateUsd == nil {
 		return nil, false
 	}
@@ -271,15 +271,15 @@ func (o *BalanceData) HasRateUsd() bool {
 	return false
 }
 
-// SetRateUsd gets a reference to the given float32 and assigns it to the RateUsd field.
-func (o *BalanceData) SetRateUsd(v float32) {
+// SetRateUsd gets a reference to the given float64 and assigns it to the RateUsd field.
+func (o *BalanceData) SetRateUsd(v float64) {
 	o.RateUsd = &v
 }
 
 // GetTraded returns the Traded field value if set, zero value otherwise.
-func (o *BalanceData) GetTraded() float32 {
+func (o *BalanceData) GetTraded() float64 {
 	if o == nil || o.Traded == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Traded
@@ -287,7 +287,7 @@ func (o *BalanceData) GetTraded() float32 {
 
 // GetTradedOk returns a tuple with the Traded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BalanceData) GetTradedOk() (*float32, bool) {
+func (o *BalanceData) GetTradedOk() (*float64, bool) {
 	if o == nil || o.Traded == nil {
 		return nil, false
 	}
@@ -303,8 +303,8 @@ func (o *BalanceData) HasTraded() bool {
 	return false
 }
 
-// SetTraded gets a reference to the given float32 and assigns it to the Traded field.
-func (o *BalanceData) SetTraded(v float32) {
+// SetTraded gets a reference to the given float64 and assigns it to the Traded field.
+func (o *BalanceData) SetTraded(v float64) {
 	o.Traded = &v
 }
 

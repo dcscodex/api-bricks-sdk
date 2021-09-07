@@ -23,17 +23,17 @@ feature --Access
       -- Exchange currency code.
     asset_id_coinapi: detachable STRING_32 
       -- CoinAPI currency code.
- 	balance: REAL_32 
+ 	balance: REAL_64 
     	 -- Value of the current total currency balance on the exchange.
- 	available: REAL_32 
+ 	available: REAL_64 
     	 -- Value of the current available currency balance on the exchange that can be used as collateral.
- 	locked: REAL_32 
+ 	locked: REAL_64 
     	 -- Value of the current locked currency balance by the exchange.
     last_updated_by: detachable STRING_32 
       -- Source of the last modification. 
- 	rate_usd: REAL_32 
+ 	rate_usd: REAL_64 
     	 -- Current exchange rate to the USD for the single unit of the currency. 
- 	traded: REAL_32 
+ 	traded: REAL_64 
     	 -- Value of the current total traded.
 
 feature -- Change Element  

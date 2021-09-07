@@ -25,12 +25,12 @@ oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_bybalance_data_FromStr
 balance_data_t *balance_data_create(
     char *asset_id_exchange,
     char *asset_id_coinapi,
-    float balance,
-    float available,
-    float locked,
+    double balance,
+    double available,
+    double locked,
     oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
-    float rate_usd,
-    float traded
+    double rate_usd,
+    double traded
     ) {
     balance_data_t *balance_data_local_var = malloc(sizeof(balance_data_t));
     if (!balance_data_local_var) {

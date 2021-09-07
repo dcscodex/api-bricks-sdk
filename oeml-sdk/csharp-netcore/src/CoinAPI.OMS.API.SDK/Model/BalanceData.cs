@@ -77,7 +77,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <param name="lastUpdatedBy">Source of the last modification. .</param>
         /// <param name="rateUsd">Current exchange rate to the USD for the single unit of the currency. .</param>
         /// <param name="traded">Value of the current total traded..</param>
-        public BalanceData(string assetIdExchange = default(string), string assetIdCoinapi = default(string), float balance = default(float), float available = default(float), float locked = default(float), LastUpdatedByEnum? lastUpdatedBy = default(LastUpdatedByEnum?), float rateUsd = default(float), float traded = default(float))
+        public BalanceData(string assetIdExchange = default(string), string assetIdCoinapi = default(string), double balance = default(double), double available = default(double), double locked = default(double), LastUpdatedByEnum? lastUpdatedBy = default(LastUpdatedByEnum?), double rateUsd = default(double), double traded = default(double))
         {
             this.AssetIdExchange = assetIdExchange;
             this.AssetIdCoinapi = assetIdCoinapi;
@@ -108,35 +108,35 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// </summary>
         /// <value>Value of the current total currency balance on the exchange.</value>
         [DataMember(Name = "balance", EmitDefaultValue = false)]
-        public float Balance { get; set; }
+        public double Balance { get; set; }
 
         /// <summary>
         /// Value of the current available currency balance on the exchange that can be used as collateral.
         /// </summary>
         /// <value>Value of the current available currency balance on the exchange that can be used as collateral.</value>
         [DataMember(Name = "available", EmitDefaultValue = false)]
-        public float Available { get; set; }
+        public double Available { get; set; }
 
         /// <summary>
         /// Value of the current locked currency balance by the exchange.
         /// </summary>
         /// <value>Value of the current locked currency balance by the exchange.</value>
         [DataMember(Name = "locked", EmitDefaultValue = false)]
-        public float Locked { get; set; }
+        public double Locked { get; set; }
 
         /// <summary>
         /// Current exchange rate to the USD for the single unit of the currency. 
         /// </summary>
         /// <value>Current exchange rate to the USD for the single unit of the currency. </value>
         [DataMember(Name = "rate_usd", EmitDefaultValue = false)]
-        public float RateUsd { get; set; }
+        public double RateUsd { get; set; }
 
         /// <summary>
         /// Value of the current total traded.
         /// </summary>
         /// <value>Value of the current total traded.</value>
         [DataMember(Name = "traded", EmitDefaultValue = false)]
-        public float Traded { get; set; }
+        public double Traded { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

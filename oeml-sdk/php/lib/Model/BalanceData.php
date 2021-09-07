@@ -62,12 +62,12 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'asset_id_exchange' => 'string',
         'asset_id_coinapi' => 'string',
-        'balance' => 'float',
-        'available' => 'float',
-        'locked' => 'float',
+        'balance' => 'double',
+        'available' => 'double',
+        'locked' => 'double',
         'last_updated_by' => 'string',
-        'rate_usd' => 'float',
-        'traded' => 'float'
+        'rate_usd' => 'double',
+        'traded' => 'double'
     ];
 
     /**
@@ -80,12 +80,12 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'asset_id_exchange' => null,
         'asset_id_coinapi' => null,
-        'balance' => 'float',
-        'available' => 'float',
-        'locked' => 'float',
+        'balance' => 'double',
+        'available' => 'double',
+        'locked' => 'double',
         'last_updated_by' => null,
-        'rate_usd' => 'float',
-        'traded' => 'float'
+        'rate_usd' => 'double',
+        'traded' => 'double'
     ];
 
     /**
@@ -325,7 +325,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets balance
      *
-     * @return float|null
+     * @return double|null
      */
     public function getBalance()
     {
@@ -335,7 +335,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets balance
      *
-     * @param float|null $balance Value of the current total currency balance on the exchange.
+     * @param double|null $balance Value of the current total currency balance on the exchange.
      *
      * @return self
      */
@@ -349,7 +349,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available
      *
-     * @return float|null
+     * @return double|null
      */
     public function getAvailable()
     {
@@ -359,7 +359,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available
      *
-     * @param float|null $available Value of the current available currency balance on the exchange that can be used as collateral.
+     * @param double|null $available Value of the current available currency balance on the exchange that can be used as collateral.
      *
      * @return self
      */
@@ -373,7 +373,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets locked
      *
-     * @return float|null
+     * @return double|null
      */
     public function getLocked()
     {
@@ -383,7 +383,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets locked
      *
-     * @param float|null $locked Value of the current locked currency balance by the exchange.
+     * @param double|null $locked Value of the current locked currency balance by the exchange.
      *
      * @return self
      */
@@ -431,7 +431,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate_usd
      *
-     * @return float|null
+     * @return double|null
      */
     public function getRateUsd()
     {
@@ -441,7 +441,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate_usd
      *
-     * @param float|null $rate_usd Current exchange rate to the USD for the single unit of the currency.
+     * @param double|null $rate_usd Current exchange rate to the USD for the single unit of the currency.
      *
      * @return self
      */
@@ -455,7 +455,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets traded
      *
-     * @return float|null
+     * @return double|null
      */
     public function getTraded()
     {
@@ -465,7 +465,7 @@ class BalanceData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets traded
      *
-     * @param float|null $traded Value of the current total traded.
+     * @param double|null $traded Value of the current total traded.
      *
      * @return self
      */

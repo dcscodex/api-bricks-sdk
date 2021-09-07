@@ -48,15 +48,15 @@ data class BalanceData (
 
     /* Value of the current total currency balance on the exchange. */
     @Json(name = "balance")
-    val balance: kotlin.Float? = null,
+    val balance: kotlin.Double? = null,
 
     /* Value of the current available currency balance on the exchange that can be used as collateral. */
     @Json(name = "available")
-    val available: kotlin.Float? = null,
+    val available: kotlin.Double? = null,
 
     /* Value of the current locked currency balance by the exchange. */
     @Json(name = "locked")
-    val locked: kotlin.Float? = null,
+    val locked: kotlin.Double? = null,
 
     /* Source of the last modification.  */
     @Json(name = "last_updated_by")
@@ -64,11 +64,11 @@ data class BalanceData (
 
     /* Current exchange rate to the USD for the single unit of the currency.  */
     @Json(name = "rate_usd")
-    val rateUsd: kotlin.Float? = null,
+    val rateUsd: kotlin.Double? = null,
 
     /* Value of the current total traded. */
     @Json(name = "traded")
-    val traded: kotlin.Float? = null
+    val traded: kotlin.Double? = null
 
 ) {
 

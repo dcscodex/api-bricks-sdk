@@ -61,25 +61,25 @@ public:
 	void setAssetIdCoinapi(std::string  asset_id_coinapi);
 	/*! \brief Get Value of the current total currency balance on the exchange.
 	 */
-	float getBalance();
+	double getBalance();
 
 	/*! \brief Set Value of the current total currency balance on the exchange.
 	 */
-	void setBalance(float  balance);
+	void setBalance(double  balance);
 	/*! \brief Get Value of the current available currency balance on the exchange that can be used as collateral.
 	 */
-	float getAvailable();
+	double getAvailable();
 
 	/*! \brief Set Value of the current available currency balance on the exchange that can be used as collateral.
 	 */
-	void setAvailable(float  available);
+	void setAvailable(double  available);
 	/*! \brief Get Value of the current locked currency balance by the exchange.
 	 */
-	float getLocked();
+	double getLocked();
 
 	/*! \brief Set Value of the current locked currency balance by the exchange.
 	 */
-	void setLocked(float  locked);
+	void setLocked(double  locked);
 	/*! \brief Get Source of the last modification. 
 	 */
 	std::string getLastUpdatedBy();
@@ -89,28 +89,28 @@ public:
 	void setLastUpdatedBy(std::string  last_updated_by);
 	/*! \brief Get Current exchange rate to the USD for the single unit of the currency. 
 	 */
-	float getRateUsd();
+	double getRateUsd();
 
 	/*! \brief Set Current exchange rate to the USD for the single unit of the currency. 
 	 */
-	void setRateUsd(float  rate_usd);
+	void setRateUsd(double  rate_usd);
 	/*! \brief Get Value of the current total traded.
 	 */
-	float getTraded();
+	double getTraded();
 
 	/*! \brief Set Value of the current total traded.
 	 */
-	void setTraded(float  traded);
+	void setTraded(double  traded);
 
 private:
 	std::string asset_id_exchange;
 	std::string asset_id_coinapi;
-	float balance;
-	float available;
-	float locked;
+	double balance;
+	double available;
+	double locked;
 	std::string last_updated_by;
-	float rate_usd;
-	float traded;
+	double rate_usd;
+	double traded;
 	void __init();
 	void __cleanup();
 

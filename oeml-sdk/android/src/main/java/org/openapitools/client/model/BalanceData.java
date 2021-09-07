@@ -23,20 +23,20 @@ public class BalanceData {
   @SerializedName("asset_id_coinapi")
   private String assetIdCoinapi = null;
   @SerializedName("balance")
-  private Float balance = null;
+  private Double balance = null;
   @SerializedName("available")
-  private Float available = null;
+  private Double available = null;
   @SerializedName("locked")
-  private Float locked = null;
+  private Double locked = null;
   public enum LastUpdatedByEnum {
      INITIALIZATION,  BALANCE_MANAGER,  EXCHANGE, 
   };
   @SerializedName("last_updated_by")
   private LastUpdatedByEnum lastUpdatedBy = null;
   @SerializedName("rate_usd")
-  private Float rateUsd = null;
+  private Double rateUsd = null;
   @SerializedName("traded")
-  private Float traded = null;
+  private Double traded = null;
 
   /**
    * Exchange currency code.
@@ -64,10 +64,10 @@ public class BalanceData {
    * Value of the current total currency balance on the exchange.
    **/
   @ApiModelProperty(value = "Value of the current total currency balance on the exchange.")
-  public Float getBalance() {
+  public Double getBalance() {
     return balance;
   }
-  public void setBalance(Float balance) {
+  public void setBalance(Double balance) {
     this.balance = balance;
   }
 
@@ -75,10 +75,10 @@ public class BalanceData {
    * Value of the current available currency balance on the exchange that can be used as collateral.
    **/
   @ApiModelProperty(value = "Value of the current available currency balance on the exchange that can be used as collateral.")
-  public Float getAvailable() {
+  public Double getAvailable() {
     return available;
   }
-  public void setAvailable(Float available) {
+  public void setAvailable(Double available) {
     this.available = available;
   }
 
@@ -86,10 +86,10 @@ public class BalanceData {
    * Value of the current locked currency balance by the exchange.
    **/
   @ApiModelProperty(value = "Value of the current locked currency balance by the exchange.")
-  public Float getLocked() {
+  public Double getLocked() {
     return locked;
   }
-  public void setLocked(Float locked) {
+  public void setLocked(Double locked) {
     this.locked = locked;
   }
 
@@ -108,10 +108,10 @@ public class BalanceData {
    * Current exchange rate to the USD for the single unit of the currency. 
    **/
   @ApiModelProperty(value = "Current exchange rate to the USD for the single unit of the currency. ")
-  public Float getRateUsd() {
+  public Double getRateUsd() {
     return rateUsd;
   }
-  public void setRateUsd(Float rateUsd) {
+  public void setRateUsd(Double rateUsd) {
     this.rateUsd = rateUsd;
   }
 
@@ -119,10 +119,10 @@ public class BalanceData {
    * Value of the current total traded.
    **/
   @ApiModelProperty(value = "Value of the current total traded.")
-  public Float getTraded() {
+  public Double getTraded() {
     return traded;
   }
-  public void setTraded(Float traded) {
+  public void setTraded(Double traded) {
     this.traded = traded;
   }
 

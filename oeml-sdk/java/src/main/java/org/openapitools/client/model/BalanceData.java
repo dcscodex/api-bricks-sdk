@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * BalanceData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-01T10:12:49.556459Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-07T12:19:51.069240Z[Etc/UTC]")
 public class BalanceData {
   public static final String SERIALIZED_NAME_ASSET_ID_EXCHANGE = "asset_id_exchange";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_EXCHANGE)
@@ -39,15 +39,15 @@ public class BalanceData {
 
   public static final String SERIALIZED_NAME_BALANCE = "balance";
   @SerializedName(SERIALIZED_NAME_BALANCE)
-  private Float balance;
+  private Double balance;
 
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private Float available;
+  private Double available;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
-  private Float locked;
+  private Double locked;
 
   /**
    * Source of the last modification. 
@@ -104,11 +104,11 @@ public class BalanceData {
 
   public static final String SERIALIZED_NAME_RATE_USD = "rate_usd";
   @SerializedName(SERIALIZED_NAME_RATE_USD)
-  private Float rateUsd;
+  private Double rateUsd;
 
   public static final String SERIALIZED_NAME_TRADED = "traded";
   @SerializedName(SERIALIZED_NAME_TRADED)
-  private Float traded;
+  private Double traded;
 
 
   public BalanceData assetIdExchange(String assetIdExchange) {
@@ -157,7 +157,7 @@ public class BalanceData {
   }
 
 
-  public BalanceData balance(Float balance) {
+  public BalanceData balance(Double balance) {
     
     this.balance = balance;
     return this;
@@ -170,17 +170,17 @@ public class BalanceData {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0.00134444", value = "Value of the current total currency balance on the exchange.")
 
-  public Float getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
 
-  public void setBalance(Float balance) {
+  public void setBalance(Double balance) {
     this.balance = balance;
   }
 
 
-  public BalanceData available(Float available) {
+  public BalanceData available(Double available) {
     
     this.available = available;
     return this;
@@ -193,17 +193,17 @@ public class BalanceData {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0.00134444", value = "Value of the current available currency balance on the exchange that can be used as collateral.")
 
-  public Float getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
 
-  public void setAvailable(Float available) {
+  public void setAvailable(Double available) {
     this.available = available;
   }
 
 
-  public BalanceData locked(Float locked) {
+  public BalanceData locked(Double locked) {
     
     this.locked = locked;
     return this;
@@ -216,12 +216,12 @@ public class BalanceData {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0.0", value = "Value of the current locked currency balance by the exchange.")
 
-  public Float getLocked() {
+  public Double getLocked() {
     return locked;
   }
 
 
-  public void setLocked(Float locked) {
+  public void setLocked(Double locked) {
     this.locked = locked;
   }
 
@@ -249,7 +249,7 @@ public class BalanceData {
   }
 
 
-  public BalanceData rateUsd(Float rateUsd) {
+  public BalanceData rateUsd(Double rateUsd) {
     
     this.rateUsd = rateUsd;
     return this;
@@ -262,17 +262,17 @@ public class BalanceData {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1355.12", value = "Current exchange rate to the USD for the single unit of the currency. ")
 
-  public Float getRateUsd() {
+  public Double getRateUsd() {
     return rateUsd;
   }
 
 
-  public void setRateUsd(Float rateUsd) {
+  public void setRateUsd(Double rateUsd) {
     this.rateUsd = rateUsd;
   }
 
 
-  public BalanceData traded(Float traded) {
+  public BalanceData traded(Double traded) {
     
     this.traded = traded;
     return this;
@@ -285,12 +285,12 @@ public class BalanceData {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0.007", value = "Value of the current total traded.")
 
-  public Float getTraded() {
+  public Double getTraded() {
     return traded;
   }
 
 
-  public void setTraded(Float traded) {
+  public void setTraded(Double traded) {
     this.traded = traded;
   }
 

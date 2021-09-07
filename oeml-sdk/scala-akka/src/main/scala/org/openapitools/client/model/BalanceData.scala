@@ -19,17 +19,17 @@ case class BalanceData (
   /* CoinAPI currency code. */
   assetIdCoinapi: Option[String] = None,
   /* Value of the current total currency balance on the exchange. */
-  balance: Option[Float] = None,
+  balance: Option[Double] = None,
   /* Value of the current available currency balance on the exchange that can be used as collateral. */
-  available: Option[Float] = None,
+  available: Option[Double] = None,
   /* Value of the current locked currency balance by the exchange. */
-  locked: Option[Float] = None,
+  locked: Option[Double] = None,
   /* Source of the last modification.  */
   lastUpdatedBy: Option[BalanceDataEnums.LastUpdatedBy] = None,
   /* Current exchange rate to the USD for the single unit of the currency.  */
-  rateUsd: Option[Float] = None,
+  rateUsd: Option[Double] = None,
   /* Value of the current total traded. */
-  traded: Option[Float] = None
+  traded: Option[Double] = None
 ) extends ApiModel
 
 object BalanceDataEnums {

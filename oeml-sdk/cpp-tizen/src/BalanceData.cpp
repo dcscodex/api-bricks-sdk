@@ -25,12 +25,12 @@ Balance_data::__init()
 {
 	//asset_id_exchange = std::string();
 	//asset_id_coinapi = std::string();
-	//balance = float(0);
-	//available = float(0);
-	//locked = float(0);
+	//balance = double(0);
+	//available = double(0);
+	//locked = double(0);
 	//last_updated_by = std::string();
-	//rate_usd = float(0);
-	//traded = float(0);
+	//rate_usd = double(0);
+	//traded = double(0);
 }
 
 void
@@ -111,8 +111,8 @@ Balance_data::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("float")) {
-			jsonToValue(&balance, node, "float", "");
+		if (isprimitive("double")) {
+			jsonToValue(&balance, node, "double", "");
 		} else {
 			
 		}
@@ -122,8 +122,8 @@ Balance_data::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("float")) {
-			jsonToValue(&available, node, "float", "");
+		if (isprimitive("double")) {
+			jsonToValue(&available, node, "double", "");
 		} else {
 			
 		}
@@ -133,8 +133,8 @@ Balance_data::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("float")) {
-			jsonToValue(&locked, node, "float", "");
+		if (isprimitive("double")) {
+			jsonToValue(&locked, node, "double", "");
 		} else {
 			
 		}
@@ -155,8 +155,8 @@ Balance_data::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("float")) {
-			jsonToValue(&rate_usd, node, "float", "");
+		if (isprimitive("double")) {
+			jsonToValue(&rate_usd, node, "double", "");
 		} else {
 			
 		}
@@ -166,8 +166,8 @@ Balance_data::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("float")) {
-			jsonToValue(&traded, node, "float", "");
+		if (isprimitive("double")) {
+			jsonToValue(&traded, node, "double", "");
 		} else {
 			
 		}
@@ -202,27 +202,27 @@ Balance_data::toJson()
 	}
 	const gchar *asset_id_coinapiKey = "asset_id_coinapi";
 	json_object_set_member(pJsonObject, asset_id_coinapiKey, node);
-	if (isprimitive("float")) {
-		float obj = getBalance();
-		node = converttoJson(&obj, "float", "");
+	if (isprimitive("double")) {
+		double obj = getBalance();
+		node = converttoJson(&obj, "double", "");
 	}
 	else {
 		
 	}
 	const gchar *balanceKey = "balance";
 	json_object_set_member(pJsonObject, balanceKey, node);
-	if (isprimitive("float")) {
-		float obj = getAvailable();
-		node = converttoJson(&obj, "float", "");
+	if (isprimitive("double")) {
+		double obj = getAvailable();
+		node = converttoJson(&obj, "double", "");
 	}
 	else {
 		
 	}
 	const gchar *availableKey = "available";
 	json_object_set_member(pJsonObject, availableKey, node);
-	if (isprimitive("float")) {
-		float obj = getLocked();
-		node = converttoJson(&obj, "float", "");
+	if (isprimitive("double")) {
+		double obj = getLocked();
+		node = converttoJson(&obj, "double", "");
 	}
 	else {
 		
@@ -238,18 +238,18 @@ Balance_data::toJson()
 	}
 	const gchar *last_updated_byKey = "last_updated_by";
 	json_object_set_member(pJsonObject, last_updated_byKey, node);
-	if (isprimitive("float")) {
-		float obj = getRateUsd();
-		node = converttoJson(&obj, "float", "");
+	if (isprimitive("double")) {
+		double obj = getRateUsd();
+		node = converttoJson(&obj, "double", "");
 	}
 	else {
 		
 	}
 	const gchar *rate_usdKey = "rate_usd";
 	json_object_set_member(pJsonObject, rate_usdKey, node);
-	if (isprimitive("float")) {
-		float obj = getTraded();
-		node = converttoJson(&obj, "float", "");
+	if (isprimitive("double")) {
+		double obj = getTraded();
+		node = converttoJson(&obj, "double", "");
 	}
 	else {
 		
@@ -288,38 +288,38 @@ Balance_data::setAssetIdCoinapi(std::string  asset_id_coinapi)
 	this->asset_id_coinapi = asset_id_coinapi;
 }
 
-float
+double
 Balance_data::getBalance()
 {
 	return balance;
 }
 
 void
-Balance_data::setBalance(float  balance)
+Balance_data::setBalance(double  balance)
 {
 	this->balance = balance;
 }
 
-float
+double
 Balance_data::getAvailable()
 {
 	return available;
 }
 
 void
-Balance_data::setAvailable(float  available)
+Balance_data::setAvailable(double  available)
 {
 	this->available = available;
 }
 
-float
+double
 Balance_data::getLocked()
 {
 	return locked;
 }
 
 void
-Balance_data::setLocked(float  locked)
+Balance_data::setLocked(double  locked)
 {
 	this->locked = locked;
 }
@@ -336,26 +336,26 @@ Balance_data::setLastUpdatedBy(std::string  last_updated_by)
 	this->last_updated_by = last_updated_by;
 }
 
-float
+double
 Balance_data::getRateUsd()
 {
 	return rate_usd;
 }
 
 void
-Balance_data::setRateUsd(float  rate_usd)
+Balance_data::setRateUsd(double  rate_usd)
 {
 	this->rate_usd = rate_usd;
 }
 
-float
+double
 Balance_data::getTraded()
 {
 	return traded;
 }
 
 void
-Balance_data::setTraded(float  traded)
+Balance_data::setTraded(double  traded)
 {
 	this->traded = traded;
 }

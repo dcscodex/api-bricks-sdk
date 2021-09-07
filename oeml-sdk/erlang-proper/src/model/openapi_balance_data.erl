@@ -11,12 +11,12 @@
 -type openapi_balance_data() ::
   [ {'asset_id_exchange', binary() }
   | {'asset_id_coinapi', binary() }
-  | {'balance', integer() }
-  | {'available', integer() }
-  | {'locked', integer() }
+  | {'balance', float() }
+  | {'available', float() }
+  | {'locked', float() }
   | {'last_updated_by', binary() }
-  | {'rate_usd', integer() }
-  | {'traded', integer() }
+  | {'rate_usd', float() }
+  | {'traded', float() }
   ].
 
 
@@ -26,12 +26,12 @@ openapi_balance_data() ->
 openapi_balance_data(Fields) ->
   Default = [ {'asset_id_exchange', binary() }
             , {'asset_id_coinapi', binary() }
-            , {'balance', integer() }
-            , {'available', integer() }
-            , {'locked', integer() }
+            , {'balance', float() }
+            , {'available', float() }
+            , {'locked', float() }
             , {'last_updated_by', elements([<<"INITIALIZATION">>, <<"BALANCE_MANAGER">>, <<"EXCHANGE">>]) }
-            , {'rate_usd', integer() }
-            , {'traded', integer() }
+            , {'rate_usd', float() }
+            , {'traded', float() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

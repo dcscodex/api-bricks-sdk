@@ -113,12 +113,12 @@ mkBalance =
 data BalanceData = BalanceData
   { balanceDataAssetIdExchange :: !(Maybe Text) -- ^ "asset_id_exchange" - Exchange currency code.
   , balanceDataAssetIdCoinapi :: !(Maybe Text) -- ^ "asset_id_coinapi" - CoinAPI currency code.
-  , balanceDataBalance :: !(Maybe Float) -- ^ "balance" - Value of the current total currency balance on the exchange.
-  , balanceDataAvailable :: !(Maybe Float) -- ^ "available" - Value of the current available currency balance on the exchange that can be used as collateral.
-  , balanceDataLocked :: !(Maybe Float) -- ^ "locked" - Value of the current locked currency balance by the exchange.
+  , balanceDataBalance :: !(Maybe Double) -- ^ "balance" - Value of the current total currency balance on the exchange.
+  , balanceDataAvailable :: !(Maybe Double) -- ^ "available" - Value of the current available currency balance on the exchange that can be used as collateral.
+  , balanceDataLocked :: !(Maybe Double) -- ^ "locked" - Value of the current locked currency balance by the exchange.
   , balanceDataLastUpdatedBy :: !(Maybe E'LastUpdatedBy) -- ^ "last_updated_by" - Source of the last modification. 
-  , balanceDataRateUsd :: !(Maybe Float) -- ^ "rate_usd" - Current exchange rate to the USD for the single unit of the currency. 
-  , balanceDataTraded :: !(Maybe Float) -- ^ "traded" - Value of the current total traded.
+  , balanceDataRateUsd :: !(Maybe Double) -- ^ "rate_usd" - Current exchange rate to the USD for the single unit of the currency. 
+  , balanceDataTraded :: !(Maybe Double) -- ^ "traded" - Value of the current total traded.
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON BalanceData

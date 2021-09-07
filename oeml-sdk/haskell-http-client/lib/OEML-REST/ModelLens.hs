@@ -64,17 +64,17 @@ balanceDataAssetIdCoinapiL f BalanceData{..} = (\balanceDataAssetIdCoinapi -> Ba
 {-# INLINE balanceDataAssetIdCoinapiL #-}
 
 -- | 'balanceDataBalance' Lens
-balanceDataBalanceL :: Lens_' BalanceData (Maybe Float)
+balanceDataBalanceL :: Lens_' BalanceData (Maybe Double)
 balanceDataBalanceL f BalanceData{..} = (\balanceDataBalance -> BalanceData { balanceDataBalance, ..} ) <$> f balanceDataBalance
 {-# INLINE balanceDataBalanceL #-}
 
 -- | 'balanceDataAvailable' Lens
-balanceDataAvailableL :: Lens_' BalanceData (Maybe Float)
+balanceDataAvailableL :: Lens_' BalanceData (Maybe Double)
 balanceDataAvailableL f BalanceData{..} = (\balanceDataAvailable -> BalanceData { balanceDataAvailable, ..} ) <$> f balanceDataAvailable
 {-# INLINE balanceDataAvailableL #-}
 
 -- | 'balanceDataLocked' Lens
-balanceDataLockedL :: Lens_' BalanceData (Maybe Float)
+balanceDataLockedL :: Lens_' BalanceData (Maybe Double)
 balanceDataLockedL f BalanceData{..} = (\balanceDataLocked -> BalanceData { balanceDataLocked, ..} ) <$> f balanceDataLocked
 {-# INLINE balanceDataLockedL #-}
 
@@ -84,12 +84,12 @@ balanceDataLastUpdatedByL f BalanceData{..} = (\balanceDataLastUpdatedBy -> Bala
 {-# INLINE balanceDataLastUpdatedByL #-}
 
 -- | 'balanceDataRateUsd' Lens
-balanceDataRateUsdL :: Lens_' BalanceData (Maybe Float)
+balanceDataRateUsdL :: Lens_' BalanceData (Maybe Double)
 balanceDataRateUsdL f BalanceData{..} = (\balanceDataRateUsd -> BalanceData { balanceDataRateUsd, ..} ) <$> f balanceDataRateUsd
 {-# INLINE balanceDataRateUsdL #-}
 
 -- | 'balanceDataTraded' Lens
-balanceDataTradedL :: Lens_' BalanceData (Maybe Float)
+balanceDataTradedL :: Lens_' BalanceData (Maybe Double)
 balanceDataTradedL f BalanceData{..} = (\balanceDataTraded -> BalanceData { balanceDataTraded, ..} ) <$> f balanceDataTraded
 {-# INLINE balanceDataTradedL #-}
 

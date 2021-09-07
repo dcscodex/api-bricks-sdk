@@ -7,12 +7,12 @@
 -type openapi_balance_data() ::
     #{ 'asset_id_exchange' => binary(),
        'asset_id_coinapi' => binary(),
-       'balance' => integer(),
-       'available' => integer(),
-       'locked' => integer(),
+       'balance' => float(),
+       'available' => float(),
+       'locked' => float(),
        'last_updated_by' => binary(),
-       'rate_usd' => integer(),
-       'traded' => integer()
+       'rate_usd' => float(),
+       'traded' => float()
      }.
 
 encode(#{ 'asset_id_exchange' := AssetIdExchange,

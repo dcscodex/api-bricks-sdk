@@ -121,12 +121,12 @@ genBalanceData n =
   BalanceData
     <$> arbitraryReducedMaybe n -- balanceDataAssetIdExchange :: Maybe Text
     <*> arbitraryReducedMaybe n -- balanceDataAssetIdCoinapi :: Maybe Text
-    <*> arbitraryReducedMaybe n -- balanceDataBalance :: Maybe Float
-    <*> arbitraryReducedMaybe n -- balanceDataAvailable :: Maybe Float
-    <*> arbitraryReducedMaybe n -- balanceDataLocked :: Maybe Float
+    <*> arbitraryReducedMaybe n -- balanceDataBalance :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataAvailable :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataLocked :: Maybe Double
     <*> arbitraryReducedMaybe n -- balanceDataLastUpdatedBy :: Maybe E'LastUpdatedBy
-    <*> arbitraryReducedMaybe n -- balanceDataRateUsd :: Maybe Float
-    <*> arbitraryReducedMaybe n -- balanceDataTraded :: Maybe Float
+    <*> arbitraryReducedMaybe n -- balanceDataRateUsd :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataTraded :: Maybe Double
   
 instance Arbitrary Fills where
   arbitrary = sized genFills

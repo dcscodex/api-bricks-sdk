@@ -656,18 +656,18 @@ components:
         balance:
           description: Value of the current total currency balance on the exchange.
           example: 0.00134444
-          format: float
+          format: double
           type: number
         available:
           description: Value of the current available currency balance on the exchange
             that can be used as collateral.
           example: 0.00134444
-          format: float
+          format: double
           type: number
         locked:
           description: Value of the current locked currency balance by the exchange.
           example: 0.0
-          format: float
+          format: double
           type: number
         last_updated_by:
           description: |
@@ -682,12 +682,12 @@ components:
           description: |
             Current exchange rate to the USD for the single unit of the currency.
           example: 1355.12
-          format: float
+          format: double
           type: number
         traded:
           description: Value of the current total traded.
           example: 0.007
-          format: float
+          format: double
           type: number
       type: object
     Position_data:

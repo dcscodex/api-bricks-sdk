@@ -25,7 +25,7 @@ You can install the development version from
 ``` r
 install.packages("devtools")
 library("devtools")
-devtools::install_github("coinapi/coinapi-sdk", subdir='data-api/r-rest-2')
+devtools::install_github("coinapi/coinapi-sdk", subdir="data-api/r-rest-2")
 ```
 
 ## Setup

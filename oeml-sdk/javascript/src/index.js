@@ -1,6 +1,6 @@
 /**
  * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       
+ * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -36,7 +36,7 @@ import PositionsApi from './api/PositionsApi';
 
 
 /**
-* This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol_This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a______.<br>
+* This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol__br__This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a_______br_br__Implemented_Standards___HTTP1_0_https__datatracker_ietf_org_doc_html_rfc1945___HTTP1_1_https__datatracker_ietf_org_doc_html_rfc2616___HTTP2_0_https__datatracker_ietf_org_doc_html_rfc7540.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

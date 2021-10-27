@@ -12,26 +12,26 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class POSITION 
+class POSITION
 
 
 
 
 feature --Access
 
-    exchange_id: detachable STRING_32 
+    exchange_id: detachable STRING_32
       -- Exchange identifier used to identify the routing destination.
-    data: detachable LIST [POSITION_DATA] 
+    data: detachable LIST [POSITION_DATA]
       
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_exchange_id (a_name: like exchange_id)
         -- Set 'exchange_id' with 'a_name'.
       do
         exchange_id := a_name
       ensure
-        exchange_id_set: exchange_id = a_name		
+        exchange_id_set: exchange_id = a_name
       end
 
     set_data (a_name: like data)
@@ -39,7 +39,7 @@ feature -- Change Element
       do
         data := a_name
       ensure
-        data_set: data = a_name		
+        data_set: data = a_name
       end
 
 
@@ -53,16 +53,15 @@ feature -- Change Element
         if attached exchange_id as l_exchange_id then
           Result.append ("%Nexchange_id:")
           Result.append (l_exchange_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached data as l_data then
           across l_data as ic loop
             Result.append ("%N data:")
             Result.append (ic.item.out)
             Result.append ("%N")
           end
-        end 
+        end
       end
 end
-
 

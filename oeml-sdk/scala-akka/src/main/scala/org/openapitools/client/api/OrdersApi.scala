@@ -27,7 +27,7 @@ object OrdersApi {
 }
 
 class OrdersApi(baseUrl: String) {
-  
+
   /**
    * This request cancels all open orders on single specified exchange.
    * 

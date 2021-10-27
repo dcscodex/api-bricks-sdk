@@ -12,38 +12,38 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class BALANCE_DATA 
+class BALANCE_DATA
 
 
 
 
 feature --Access
 
-    asset_id_exchange: detachable STRING_32 
+    asset_id_exchange: detachable STRING_32
       -- Exchange currency code.
-    asset_id_coinapi: detachable STRING_32 
+    asset_id_coinapi: detachable STRING_32
       -- CoinAPI currency code.
- 	balance: REAL_64 
+ 	balance: REAL_64
     	 -- Value of the current total currency balance on the exchange.
- 	available: REAL_64 
+ 	available: REAL_64
     	 -- Value of the current available currency balance on the exchange that can be used as collateral.
- 	locked: REAL_64 
+ 	locked: REAL_64
     	 -- Value of the current locked currency balance by the exchange.
-    last_updated_by: detachable STRING_32 
+    last_updated_by: detachable STRING_32
       -- Source of the last modification. 
- 	rate_usd: REAL_64 
+ 	rate_usd: REAL_64
     	 -- Current exchange rate to the USD for the single unit of the currency. 
- 	traded: REAL_64 
+ 	traded: REAL_64
     	 -- Value of the current total traded.
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_asset_id_exchange (a_name: like asset_id_exchange)
         -- Set 'asset_id_exchange' with 'a_name'.
       do
         asset_id_exchange := a_name
       ensure
-        asset_id_exchange_set: asset_id_exchange = a_name		
+        asset_id_exchange_set: asset_id_exchange = a_name
       end
 
     set_asset_id_coinapi (a_name: like asset_id_coinapi)
@@ -51,7 +51,7 @@ feature -- Change Element
       do
         asset_id_coinapi := a_name
       ensure
-        asset_id_coinapi_set: asset_id_coinapi = a_name		
+        asset_id_coinapi_set: asset_id_coinapi = a_name
       end
 
     set_balance (a_name: like balance)
@@ -59,7 +59,7 @@ feature -- Change Element
       do
         balance := a_name
       ensure
-        balance_set: balance = a_name		
+        balance_set: balance = a_name
       end
 
     set_available (a_name: like available)
@@ -67,7 +67,7 @@ feature -- Change Element
       do
         available := a_name
       ensure
-        available_set: available = a_name		
+        available_set: available = a_name
       end
 
     set_locked (a_name: like locked)
@@ -75,7 +75,7 @@ feature -- Change Element
       do
         locked := a_name
       ensure
-        locked_set: locked = a_name		
+        locked_set: locked = a_name
       end
 
     set_last_updated_by (a_name: like last_updated_by)
@@ -83,7 +83,7 @@ feature -- Change Element
       do
         last_updated_by := a_name
       ensure
-        last_updated_by_set: last_updated_by = a_name		
+        last_updated_by_set: last_updated_by = a_name
       end
 
     set_rate_usd (a_name: like rate_usd)
@@ -91,7 +91,7 @@ feature -- Change Element
       do
         rate_usd := a_name
       ensure
-        rate_usd_set: rate_usd = a_name		
+        rate_usd_set: rate_usd = a_name
       end
 
     set_traded (a_name: like traded)
@@ -99,7 +99,7 @@ feature -- Change Element
       do
         traded := a_name
       ensure
-        traded_set: traded = a_name		
+        traded_set: traded = a_name
       end
 
 
@@ -113,44 +113,43 @@ feature -- Change Element
         if attached asset_id_exchange as l_asset_id_exchange then
           Result.append ("%Nasset_id_exchange:")
           Result.append (l_asset_id_exchange.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached asset_id_coinapi as l_asset_id_coinapi then
           Result.append ("%Nasset_id_coinapi:")
           Result.append (l_asset_id_coinapi.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached balance as l_balance then
           Result.append ("%Nbalance:")
           Result.append (l_balance.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached available as l_available then
           Result.append ("%Navailable:")
           Result.append (l_available.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached locked as l_locked then
           Result.append ("%Nlocked:")
           Result.append (l_locked.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached last_updated_by as l_last_updated_by then
           Result.append ("%Nlast_updated_by:")
           Result.append (l_last_updated_by.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached rate_usd as l_rate_usd then
           Result.append ("%Nrate_usd:")
           Result.append (l_rate_usd.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached traded as l_traded then
           Result.append ("%Ntraded:")
           Result.append (l_traded.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
       end
 end
-
 

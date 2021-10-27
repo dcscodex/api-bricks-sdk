@@ -106,9 +106,15 @@ namespace CoinAPI.OMS.API.SDK.Model
         public OrderNewSingleRequest(string exchangeId = default(string), string clientOrderId = default(string), string symbolIdExchange = default(string), string symbolIdCoinapi = default(string), decimal amountOrder = default(decimal), decimal price = default(decimal), OrdSide side = default(OrdSide), OrdType orderType = default(OrdType), TimeInForce timeInForce = default(TimeInForce), DateTime expireTime = default(DateTime), List<ExecInstEnum> execInst = default(List<ExecInstEnum>))
         {
             // to ensure "exchangeId" is required (not null)
-            this.ExchangeId = exchangeId ?? throw new ArgumentNullException("exchangeId is a required property for OrderNewSingleRequest and cannot be null");
+            if (exchangeId == null) {
+                throw new ArgumentNullException("exchangeId is a required property for OrderNewSingleRequest and cannot be null");
+            }
+            this.ExchangeId = exchangeId;
             // to ensure "clientOrderId" is required (not null)
-            this.ClientOrderId = clientOrderId ?? throw new ArgumentNullException("clientOrderId is a required property for OrderNewSingleRequest and cannot be null");
+            if (clientOrderId == null) {
+                throw new ArgumentNullException("clientOrderId is a required property for OrderNewSingleRequest and cannot be null");
+            }
+            this.ClientOrderId = clientOrderId;
             this.AmountOrder = amountOrder;
             this.Price = price;
             this.Side = side;
@@ -307,7 +313,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

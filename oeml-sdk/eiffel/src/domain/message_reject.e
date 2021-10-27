@@ -12,32 +12,32 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class MESSAGE_REJECT 
+class MESSAGE_REJECT
 
 
 
 
 feature --Access
 
-    type: detachable STRING_32 
+    type: detachable STRING_32
       -- Message type, constant.
-    reject_reason: detachable REJECT_REASON 
+    reject_reason: detachable REJECT_REASON
       
-    exchange_id: detachable STRING_32 
+    exchange_id: detachable STRING_32
       -- If the message related to exchange, then the identifier of the exchange will be provided.
-    message: detachable STRING_32 
+    message: detachable STRING_32
       -- Message text.
-    rejected_message: detachable STRING_32 
+    rejected_message: detachable STRING_32
       -- Value of rejected request, if available.
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_type (a_name: like type)
         -- Set 'type' with 'a_name'.
       do
         type := a_name
       ensure
-        type_set: type = a_name		
+        type_set: type = a_name
       end
 
     set_reject_reason (a_name: like reject_reason)
@@ -45,7 +45,7 @@ feature -- Change Element
       do
         reject_reason := a_name
       ensure
-        reject_reason_set: reject_reason = a_name		
+        reject_reason_set: reject_reason = a_name
       end
 
     set_exchange_id (a_name: like exchange_id)
@@ -53,7 +53,7 @@ feature -- Change Element
       do
         exchange_id := a_name
       ensure
-        exchange_id_set: exchange_id = a_name		
+        exchange_id_set: exchange_id = a_name
       end
 
     set_message (a_name: like message)
@@ -61,7 +61,7 @@ feature -- Change Element
       do
         message := a_name
       ensure
-        message_set: message = a_name		
+        message_set: message = a_name
       end
 
     set_rejected_message (a_name: like rejected_message)
@@ -69,7 +69,7 @@ feature -- Change Element
       do
         rejected_message := a_name
       ensure
-        rejected_message_set: rejected_message = a_name		
+        rejected_message_set: rejected_message = a_name
       end
 
 
@@ -83,29 +83,28 @@ feature -- Change Element
         if attached type as l_type then
           Result.append ("%Ntype:")
           Result.append (l_type.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached reject_reason as l_reject_reason then
           Result.append ("%Nreject_reason:")
           Result.append (l_reject_reason.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached exchange_id as l_exchange_id then
           Result.append ("%Nexchange_id:")
           Result.append (l_exchange_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached message as l_message then
           Result.append ("%Nmessage:")
           Result.append (l_message.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached rejected_message as l_rejected_message then
           Result.append ("%Nrejected_message:")
           Result.append (l_rejected_message.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
       end
 end
-
 

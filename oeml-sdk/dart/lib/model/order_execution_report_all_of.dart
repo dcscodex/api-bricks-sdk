@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -63,6 +64,7 @@ class OrderExecutionReportAllOf {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (clientOrderIdFormatExchange == null ? 0 : clientOrderIdFormatExchange.hashCode) +
     (exchangeOrderId == null ? 0 : exchangeOrderId.hashCode) +
     (amountOpen == null ? 0 : amountOpen.hashCode) +
@@ -101,51 +103,64 @@ class OrderExecutionReportAllOf {
   }
 
   /// Returns a new [OrderExecutionReportAllOf] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static OrderExecutionReportAllOf fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : OrderExecutionReportAllOf(
-        clientOrderIdFormatExchange: json[r'client_order_id_format_exchange'],
-        exchangeOrderId: json[r'exchange_order_id'],
-        amountOpen: json[r'amount_open'] == null ?
-          null :
-          json[r'amount_open'].toDouble(),
-        amountFilled: json[r'amount_filled'] == null ?
-          null :
-          json[r'amount_filled'].toDouble(),
-        avgPx: json[r'avg_px'] == null ?
-          null :
-          json[r'avg_px'].toDouble(),
-        status: OrdStatus.fromJson(json[r'status']),
-        statusHistory: json[r'status_history'] == null
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static OrderExecutionReportAllOf fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return OrderExecutionReportAllOf(
+        clientOrderIdFormatExchange: mapValueOfType<String>(json, r'client_order_id_format_exchange'),
+        exchangeOrderId: mapValueOfType<String>(json, r'exchange_order_id'),
+        amountOpen: json[r'amount_open'] == null
           ? null
-          : (json[r'status_history'] as List).map(
+          : num.parse(json[r'amount_open'].toString()),
+        amountFilled: json[r'amount_filled'] == null
+          ? null
+          : num.parse(json[r'amount_filled'].toString()),
+        avgPx: json[r'avg_px'] == null
+          ? null
+          : num.parse(json[r'avg_px'].toString()),
+        status: OrdStatus.fromJson(json[r'status']),
+        statusHistory: json[r'status_history'] is List
+          ? (json[r'status_history'] as List).map(
               (e) => e == null ? null : (e as List).cast<String>()
-            ).toList(growable: false),
-        errorMessage: json[r'error_message'],
+            ).toList(growable: false)
+          : null,
+        errorMessage: mapValueOfType<String>(json, r'error_message'),
         fills: Fills.listFromJson(json[r'fills']),
-    );
+      );
+    }
+    return null;
+  }
 
-  static List<OrderExecutionReportAllOf> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrderExecutionReportAllOf>[]
-      : json.map((dynamic value) => OrderExecutionReportAllOf.fromJson(value)).toList(growable: true == growable);
+  static List<OrderExecutionReportAllOf> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrderExecutionReportAllOf.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrderExecutionReportAllOf>[];
 
-  static Map<String, OrderExecutionReportAllOf> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, OrderExecutionReportAllOf> mapFromJson(dynamic json) {
     final map = <String, OrderExecutionReportAllOf>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = OrderExecutionReportAllOf.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = OrderExecutionReportAllOf.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of OrderExecutionReportAllOf-objects as value to a dart map
-  static Map<String, List<OrderExecutionReportAllOf>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderExecutionReportAllOf>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<OrderExecutionReportAllOf>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = OrderExecutionReportAllOf.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = OrderExecutionReportAllOf.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -28,6 +29,7 @@ class Position {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (exchangeId == null ? 0 : exchangeId.hashCode) +
     (data == null ? 0 : data.hashCode);
 
@@ -46,34 +48,47 @@ class Position {
   }
 
   /// Returns a new [Position] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static Position fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : Position(
-        exchangeId: json[r'exchange_id'],
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static Position fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return Position(
+        exchangeId: mapValueOfType<String>(json, r'exchange_id'),
         data: PositionData.listFromJson(json[r'data']),
-    );
+      );
+    }
+    return null;
+  }
 
-  static List<Position> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <Position>[]
-      : json.map((dynamic value) => Position.fromJson(value)).toList(growable: true == growable);
+  static List<Position> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(Position.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <Position>[];
 
-  static Map<String, Position> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, Position> mapFromJson(dynamic json) {
     final map = <String, Position>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = Position.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = Position.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of Position-objects as value to a dart map
-  static Map<String, List<Position>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<Position>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<Position>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = Position.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = Position.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

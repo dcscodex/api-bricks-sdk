@@ -19,7 +19,7 @@ Get balances
 
 Get current currency balance from all or single exchange.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::BalancesApi;
@@ -28,7 +28,7 @@ my $api_instance = WWW::OpenAPIClient::BalancesApi->new(
 
 my $exchange_id = KRAKEN; # string | Filter the balances to the specific exchange.
 
-eval { 
+eval {
     my $result = $api_instance->v1_balances_get(exchange_id => $exchange_id);
     print Dumper($result);
 };

@@ -116,4 +116,3 @@ Class | Method | HTTP request | Description
 
 support@coinapi.io
 
-

@@ -23,7 +23,7 @@ message_reject_t* OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, order_
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **order_cancel_all_request** | **[order_cancel_all_request_t](order_cancel_all_request.md) \*** | OrderCancelAllRequest object. | 
 
 ### Return type
@@ -54,7 +54,7 @@ order_execution_report_t* OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, o
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **order_cancel_single_request** | **[order_cancel_single_request_t](order_cancel_single_request.md) \*** | OrderCancelSingleRequest object. | 
 
 ### Return type
@@ -85,7 +85,7 @@ list_t* OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id);
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **exchange_id** | **char \*** | Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
@@ -116,7 +116,7 @@ order_execution_report_t* OrdersAPI_v1OrdersPost(apiClient_t *apiClient, order_n
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **order_new_single_request** | **[order_new_single_request_t](order_new_single_request.md) \*** | OrderNewSingleRequest object. | 
 
 ### Return type
@@ -147,7 +147,7 @@ order_execution_report_t* OrdersAPI_v1OrdersStatusClientOrderIdGet(apiClient_t *
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **client_order_id** | **char \*** | The unique identifier of the order assigned by the client. | 
 
 ### Return type

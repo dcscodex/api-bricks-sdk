@@ -9,7 +9,7 @@ test_that("exchange_id", {
   # tests for the property `exchange_id` (character)
   # Exchange identifier used to identify the routing destination.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`exchange_id`, "EXPECTED_RESULT")
 })
 
@@ -17,7 +17,7 @@ test_that("client_order_id", {
   # tests for the property `client_order_id` (character)
   # The unique identifier of the order assigned by the client.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`client_order_id`, "EXPECTED_RESULT")
 })
 
@@ -25,7 +25,7 @@ test_that("symbol_id_exchange", {
   # tests for the property `symbol_id_exchange` (character)
   # Exchange symbol. One of the properties (&#x60;symbol_id_exchange&#x60;, &#x60;symbol_id_coinapi&#x60;) is required to identify the market for the new order.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`symbol_id_exchange`, "EXPECTED_RESULT")
 })
 
@@ -33,7 +33,7 @@ test_that("symbol_id_coinapi", {
   # tests for the property `symbol_id_coinapi` (character)
   # CoinAPI symbol. One of the properties (&#x60;symbol_id_exchange&#x60;, &#x60;symbol_id_coinapi&#x60;) is required to identify the market for the new order.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`symbol_id_coinapi`, "EXPECTED_RESULT")
 })
 
@@ -41,7 +41,7 @@ test_that("amount_order", {
   # tests for the property `amount_order` (numeric)
   # Order quantity.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`amount_order`, "EXPECTED_RESULT")
 })
 
@@ -49,28 +49,28 @@ test_that("price", {
   # tests for the property `price` (numeric)
   # Order price.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`price`, "EXPECTED_RESULT")
 })
 
 test_that("side", {
   # tests for the property `side` (OrdSide)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`side`, "EXPECTED_RESULT")
 })
 
 test_that("order_type", {
   # tests for the property `order_type` (OrdType)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`order_type`, "EXPECTED_RESULT")
 })
 
 test_that("time_in_force", {
   # tests for the property `time_in_force` (TimeInForce)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`time_in_force`, "EXPECTED_RESULT")
 })
 
@@ -78,7 +78,7 @@ test_that("expire_time", {
   # tests for the property `expire_time` (character)
   # Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`expire_time`, "EXPECTED_RESULT")
 })
 
@@ -86,7 +86,7 @@ test_that("exec_inst", {
   # tests for the property `exec_inst` (array[character])
   # Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`exec_inst`, "EXPECTED_RESULT")
 })
 
@@ -94,7 +94,7 @@ test_that("client_order_id_format_exchange", {
   # tests for the property `client_order_id_format_exchange` (character)
   # The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`client_order_id_format_exchange`, "EXPECTED_RESULT")
 })
 
@@ -102,7 +102,7 @@ test_that("exchange_order_id", {
   # tests for the property `exchange_order_id` (character)
   # Unique identifier of the order assigned by the exchange or executing system.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`exchange_order_id`, "EXPECTED_RESULT")
 })
 
@@ -110,7 +110,7 @@ test_that("amount_open", {
   # tests for the property `amount_open` (numeric)
   # Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`amount_open`, "EXPECTED_RESULT")
 })
 
@@ -118,7 +118,7 @@ test_that("amount_filled", {
   # tests for the property `amount_filled` (numeric)
   # Total quantity filled.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`amount_filled`, "EXPECTED_RESULT")
 })
 
@@ -126,14 +126,14 @@ test_that("avg_px", {
   # tests for the property `avg_px` (numeric)
   # Calculated average price of all fills on this order.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`avg_px`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
   # tests for the property `status` (OrdStatus)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
@@ -141,7 +141,7 @@ test_that("status_history", {
   # tests for the property `status_history` (array[array[character]])
   # Timestamped history of order status changes.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`status_history`, "EXPECTED_RESULT")
 })
 
@@ -149,7 +149,7 @@ test_that("error_message", {
   # tests for the property `error_message` (character)
   # Error message.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`error_message`, "EXPECTED_RESULT")
 })
 
@@ -157,7 +157,7 @@ test_that("fills", {
   # tests for the property `fills` (array[Fills])
   # Relay fill information on working orders.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`fills`, "EXPECTED_RESULT")
 })
 

@@ -121,16 +121,25 @@ namespace CoinAPI.OMS.API.SDK.Model
         public OrderExecutionReport(string exchangeId = default(string), string clientOrderId = default(string), string symbolIdExchange = default(string), string symbolIdCoinapi = default(string), decimal amountOrder = default(decimal), decimal price = default(decimal), OrdSide side = default(OrdSide), OrdType orderType = default(OrdType), TimeInForce timeInForce = default(TimeInForce), DateTime expireTime = default(DateTime), List<ExecInstEnum> execInst = default(List<ExecInstEnum>), string clientOrderIdFormatExchange = default(string), string exchangeOrderId = default(string), decimal amountOpen = default(decimal), decimal amountFilled = default(decimal), decimal avgPx = default(decimal), OrdStatus status = default(OrdStatus), List<List<string>> statusHistory = default(List<List<string>>), string errorMessage = default(string), List<Fills> fills = default(List<Fills>))
         {
             // to ensure "exchangeId" is required (not null)
-            this.ExchangeId = exchangeId ?? throw new ArgumentNullException("exchangeId is a required property for OrderExecutionReport and cannot be null");
+            if (exchangeId == null) {
+                throw new ArgumentNullException("exchangeId is a required property for OrderExecutionReport and cannot be null");
+            }
+            this.ExchangeId = exchangeId;
             // to ensure "clientOrderId" is required (not null)
-            this.ClientOrderId = clientOrderId ?? throw new ArgumentNullException("clientOrderId is a required property for OrderExecutionReport and cannot be null");
+            if (clientOrderId == null) {
+                throw new ArgumentNullException("clientOrderId is a required property for OrderExecutionReport and cannot be null");
+            }
+            this.ClientOrderId = clientOrderId;
             this.AmountOrder = amountOrder;
             this.Price = price;
             this.Side = side;
             this.OrderType = orderType;
             this.TimeInForce = timeInForce;
             // to ensure "clientOrderIdFormatExchange" is required (not null)
-            this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange ?? throw new ArgumentNullException("clientOrderIdFormatExchange is a required property for OrderExecutionReport and cannot be null");
+            if (clientOrderIdFormatExchange == null) {
+                throw new ArgumentNullException("clientOrderIdFormatExchange is a required property for OrderExecutionReport and cannot be null");
+            }
+            this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange;
             this.AmountOpen = amountOpen;
             this.AmountFilled = amountFilled;
             this.Status = status;
@@ -454,7 +463,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

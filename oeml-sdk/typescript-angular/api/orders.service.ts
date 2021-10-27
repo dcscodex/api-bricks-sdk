@@ -13,7 +13,8 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec }       from '@angular/common/http';
+         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+        }       from '@angular/common/http';
 import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
@@ -96,10 +97,10 @@ export class OrdersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<MessageReject>;
-    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpResponse<MessageReject>>;
-    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpEvent<MessageReject>>;
-    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<any> {
+    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<MessageReject>;
+    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpResponse<MessageReject>>;
+    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpEvent<MessageReject>>;
+    public v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<any> {
         if (orderCancelAllRequest === null || orderCancelAllRequest === undefined) {
             throw new Error('Required parameter orderCancelAllRequest was null or undefined when calling v1OrdersCancelAllPost.');
         }
@@ -117,6 +118,11 @@ export class OrdersService {
         }
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
         }
 
 
@@ -137,9 +143,10 @@ export class OrdersService {
         return this.httpClient.post<MessageReject>(`${this.configuration.basePath}/v1/orders/cancel/all`,
             orderCancelAllRequest,
             {
+                context: localVarHttpContext,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
-                localVarHeaders: localVarHeaders,
+                headers: localVarHeaders,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -153,10 +160,10 @@ export class OrdersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<OrderExecutionReport>;
-    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpResponse<OrderExecutionReport>>;
-    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpEvent<OrderExecutionReport>>;
-    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<any> {
+    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<OrderExecutionReport>;
+    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpResponse<OrderExecutionReport>>;
+    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpEvent<OrderExecutionReport>>;
+    public v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<any> {
         if (orderCancelSingleRequest === null || orderCancelSingleRequest === undefined) {
             throw new Error('Required parameter orderCancelSingleRequest was null or undefined when calling v1OrdersCancelPost.');
         }
@@ -174,6 +181,11 @@ export class OrdersService {
         }
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
         }
 
 
@@ -194,9 +206,10 @@ export class OrdersService {
         return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/cancel`,
             orderCancelSingleRequest,
             {
+                context: localVarHttpContext,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
-                localVarHeaders: localVarHeaders,
+                headers: localVarHeaders,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -210,10 +223,10 @@ export class OrdersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1OrdersGet(exchangeId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<Array<OrderExecutionReport>>;
-    public v1OrdersGet(exchangeId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpResponse<Array<OrderExecutionReport>>>;
-    public v1OrdersGet(exchangeId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpEvent<Array<OrderExecutionReport>>>;
-    public v1OrdersGet(exchangeId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<any> {
+    public v1OrdersGet(exchangeId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<Array<OrderExecutionReport>>;
+    public v1OrdersGet(exchangeId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpResponse<Array<OrderExecutionReport>>>;
+    public v1OrdersGet(exchangeId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpEvent<Array<OrderExecutionReport>>>;
+    public v1OrdersGet(exchangeId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (exchangeId !== undefined && exchangeId !== null) {
@@ -236,6 +249,11 @@ export class OrdersService {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
 
         let responseType_: 'text' | 'json' = 'json';
         if(localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -244,10 +262,11 @@ export class OrdersService {
 
         return this.httpClient.get<Array<OrderExecutionReport>>(`${this.configuration.basePath}/v1/orders`,
             {
+                context: localVarHttpContext,
                 params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
-                localVarHeaders: localVarHeaders,
+                headers: localVarHeaders,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -261,10 +280,10 @@ export class OrdersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<OrderExecutionReport>;
-    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpResponse<OrderExecutionReport>>;
-    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<HttpEvent<OrderExecutionReport>>;
-    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json'}): Observable<any> {
+    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<OrderExecutionReport>;
+    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpResponse<OrderExecutionReport>>;
+    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<HttpEvent<OrderExecutionReport>>;
+    public v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json' | 'appliction/json', context?: HttpContext}): Observable<any> {
         if (orderNewSingleRequest === null || orderNewSingleRequest === undefined) {
             throw new Error('Required parameter orderNewSingleRequest was null or undefined when calling v1OrdersPost.');
         }
@@ -282,6 +301,11 @@ export class OrdersService {
         }
         if (localVarHttpHeaderAcceptSelected !== undefined) {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
         }
 
 
@@ -302,9 +326,10 @@ export class OrdersService {
         return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders`,
             orderNewSingleRequest,
             {
+                context: localVarHttpContext,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
-                localVarHeaders: localVarHeaders,
+                headers: localVarHeaders,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -318,10 +343,10 @@ export class OrdersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<OrderExecutionReport>;
-    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpResponse<OrderExecutionReport>>;
-    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json'}): Observable<HttpEvent<OrderExecutionReport>>;
-    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json'}): Observable<any> {
+    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<OrderExecutionReport>;
+    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<OrderExecutionReport>>;
+    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<OrderExecutionReport>>;
+    public v1OrdersStatusClientOrderIdGet(clientOrderId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (clientOrderId === null || clientOrderId === undefined) {
             throw new Error('Required parameter clientOrderId was null or undefined when calling v1OrdersStatusClientOrderIdGet.');
         }
@@ -340,6 +365,11 @@ export class OrdersService {
             localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
         }
 
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
 
         let responseType_: 'text' | 'json' = 'json';
         if(localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -348,9 +378,10 @@ export class OrdersService {
 
         return this.httpClient.get<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/status/${encodeURIComponent(String(clientOrderId))}`,
             {
+                context: localVarHttpContext,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
-                localVarHeaders: localVarHeaders,
+                headers: localVarHeaders,
                 observe: observe,
                 reportProgress: reportProgress
             }

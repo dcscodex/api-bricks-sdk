@@ -19,14 +19,14 @@ Get balances
 
 Get current currency balance from all or single exchange.
 
-### Example 
+### Example
 ```dart
 import 'package:openapi/api.dart';
 
 final api_instance = BalancesApi();
 final exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 
-try { 
+try {
     final result = api_instance.v1BalancesGet(exchangeId);
     print(result);
 } catch (e) {

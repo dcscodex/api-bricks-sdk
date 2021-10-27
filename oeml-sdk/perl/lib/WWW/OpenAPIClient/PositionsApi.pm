@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::PositionsApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,7 +52,7 @@ sub new {
 # v1_positions_get
 #
 # Get open positions
-# 
+#
 # @param string $exchange_id Filter the balances to the specific exchange. (optional)
 {
     my $params = {
@@ -62,7 +62,7 @@ sub new {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_positions_get' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_positions_get' } = {
         summary => 'Get open positions',
         params => $params,
         returns => 'ARRAY[Position]',

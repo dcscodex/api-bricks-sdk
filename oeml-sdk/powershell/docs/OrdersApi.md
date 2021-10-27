@@ -28,7 +28,7 @@ $OrderCancelAllRequest = Initialize-OrderCancelAllRequest -ExchangeId "KRAKEN" #
 try {
     $Result = Invoke-V1OrdersCancelAllPost -OrderCancelAllRequest $OrderCancelAllRequest
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1OrdersCancelAllPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersCancelAllPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -71,7 +71,7 @@ $OrderCancelSingleRequest = Initialize-OrderCancelSingleRequest -ExchangeId "KRA
 try {
     $Result = Invoke-V1OrdersCancelPost -OrderCancelSingleRequest $OrderCancelSingleRequest
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1OrdersCancelPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersCancelPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -114,7 +114,7 @@ $ExchangeId = "KRAKEN" # String | Filter the open orders to the specific exchang
 try {
     $Result = Invoke-V1OrdersGet -ExchangeId $ExchangeId
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1OrdersGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -157,7 +157,7 @@ This request creating new order for the specific exchange.
 try {
     $Result = Invoke-V1OrdersPost -OrderNewSingleRequest $OrderNewSingleRequest
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1OrdersPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -200,7 +200,7 @@ $ClientOrderId = "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b" # String | The unique id
 try {
     $Result = Invoke-V1OrdersStatusClientOrderIdGet -ClientOrderId $ClientOrderId
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1OrdersStatusClientOrderIdGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersStatusClientOrderIdGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```

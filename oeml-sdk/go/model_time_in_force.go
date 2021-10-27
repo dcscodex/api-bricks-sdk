@@ -28,7 +28,8 @@ const (
 	IMMEDIATE_OR_CANCEL TimeInForce = "IMMEDIATE_OR_CANCEL"
 )
 
-var allowedTimeInForceEnumValues = []TimeInForce{
+// All allowed values of TimeInForce enum
+var AllowedTimeInForceEnumValues = []TimeInForce{
 	"GOOD_TILL_CANCEL",
 	"GOOD_TILL_TIME_EXCHANGE",
 	"GOOD_TILL_TIME_OMS",
@@ -43,7 +44,7 @@ func (v *TimeInForce) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := TimeInForce(value)
-	for _, existing := range allowedTimeInForceEnumValues {
+	for _, existing := range AllowedTimeInForceEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +61,13 @@ func NewTimeInForceFromValue(v string) (*TimeInForce, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for TimeInForce: valid values are %v", v, allowedTimeInForceEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for TimeInForce: valid values are %v", v, AllowedTimeInForceEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v TimeInForce) IsValid() bool {
-	for _, existing := range allowedTimeInForceEnumValues {
+	for _, existing := range AllowedTimeInForceEnumValues {
 		if existing == v {
 			return true
 		}

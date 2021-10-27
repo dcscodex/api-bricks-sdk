@@ -12,42 +12,42 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class POSITION_DATA 
+class POSITION_DATA
 
 
 
 
 feature --Access
 
-    symbol_id_exchange: detachable STRING_32 
+    symbol_id_exchange: detachable STRING_32
       -- Exchange symbol.
-    symbol_id_coinapi: detachable STRING_32 
+    symbol_id_coinapi: detachable STRING_32
       -- CoinAPI symbol.
- 	avg_entry_price: REAL_32 
+ 	avg_entry_price: REAL_32
     	 -- Calculated average price of all fills on this position.
- 	quantity: REAL_32 
+ 	quantity: REAL_32
     	 -- The current position quantity.
-    side: detachable ORD_SIDE 
+    side: detachable ORD_SIDE
       
- 	unrealized_pnl: REAL_32 
+ 	unrealized_pnl: REAL_32
     	 -- Unrealised profit or loss (PNL) of this position.
- 	leverage: REAL_32 
+ 	leverage: REAL_32
     	 -- Leverage for this position reported by the exchange.
- 	cross_margin: BOOLEAN 
+ 	cross_margin: BOOLEAN
     	 -- Is cross margin mode enable for this position?
- 	liquidation_price: REAL_32 
+ 	liquidation_price: REAL_32
     	 -- Liquidation price. If mark price will reach this value, the position will be liquidated.
-    raw_data: detachable ANY 
+    raw_data: detachable ANY
       
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_symbol_id_exchange (a_name: like symbol_id_exchange)
         -- Set 'symbol_id_exchange' with 'a_name'.
       do
         symbol_id_exchange := a_name
       ensure
-        symbol_id_exchange_set: symbol_id_exchange = a_name		
+        symbol_id_exchange_set: symbol_id_exchange = a_name
       end
 
     set_symbol_id_coinapi (a_name: like symbol_id_coinapi)
@@ -55,7 +55,7 @@ feature -- Change Element
       do
         symbol_id_coinapi := a_name
       ensure
-        symbol_id_coinapi_set: symbol_id_coinapi = a_name		
+        symbol_id_coinapi_set: symbol_id_coinapi = a_name
       end
 
     set_avg_entry_price (a_name: like avg_entry_price)
@@ -63,7 +63,7 @@ feature -- Change Element
       do
         avg_entry_price := a_name
       ensure
-        avg_entry_price_set: avg_entry_price = a_name		
+        avg_entry_price_set: avg_entry_price = a_name
       end
 
     set_quantity (a_name: like quantity)
@@ -71,7 +71,7 @@ feature -- Change Element
       do
         quantity := a_name
       ensure
-        quantity_set: quantity = a_name		
+        quantity_set: quantity = a_name
       end
 
     set_side (a_name: like side)
@@ -79,7 +79,7 @@ feature -- Change Element
       do
         side := a_name
       ensure
-        side_set: side = a_name		
+        side_set: side = a_name
       end
 
     set_unrealized_pnl (a_name: like unrealized_pnl)
@@ -87,7 +87,7 @@ feature -- Change Element
       do
         unrealized_pnl := a_name
       ensure
-        unrealized_pnl_set: unrealized_pnl = a_name		
+        unrealized_pnl_set: unrealized_pnl = a_name
       end
 
     set_leverage (a_name: like leverage)
@@ -95,7 +95,7 @@ feature -- Change Element
       do
         leverage := a_name
       ensure
-        leverage_set: leverage = a_name		
+        leverage_set: leverage = a_name
       end
 
     set_cross_margin (a_name: like cross_margin)
@@ -103,7 +103,7 @@ feature -- Change Element
       do
         cross_margin := a_name
       ensure
-        cross_margin_set: cross_margin = a_name		
+        cross_margin_set: cross_margin = a_name
       end
 
     set_liquidation_price (a_name: like liquidation_price)
@@ -111,7 +111,7 @@ feature -- Change Element
       do
         liquidation_price := a_name
       ensure
-        liquidation_price_set: liquidation_price = a_name		
+        liquidation_price_set: liquidation_price = a_name
       end
 
     set_raw_data (a_name: like raw_data)
@@ -119,7 +119,7 @@ feature -- Change Element
       do
         raw_data := a_name
       ensure
-        raw_data_set: raw_data = a_name		
+        raw_data_set: raw_data = a_name
       end
 
 
@@ -133,54 +133,53 @@ feature -- Change Element
         if attached symbol_id_exchange as l_symbol_id_exchange then
           Result.append ("%Nsymbol_id_exchange:")
           Result.append (l_symbol_id_exchange.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached symbol_id_coinapi as l_symbol_id_coinapi then
           Result.append ("%Nsymbol_id_coinapi:")
           Result.append (l_symbol_id_coinapi.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached avg_entry_price as l_avg_entry_price then
           Result.append ("%Navg_entry_price:")
           Result.append (l_avg_entry_price.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached quantity as l_quantity then
           Result.append ("%Nquantity:")
           Result.append (l_quantity.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached side as l_side then
           Result.append ("%Nside:")
           Result.append (l_side.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached unrealized_pnl as l_unrealized_pnl then
           Result.append ("%Nunrealized_pnl:")
           Result.append (l_unrealized_pnl.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached leverage as l_leverage then
           Result.append ("%Nleverage:")
           Result.append (l_leverage.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached cross_margin as l_cross_margin then
           Result.append ("%Ncross_margin:")
           Result.append (l_cross_margin.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached liquidation_price as l_liquidation_price then
           Result.append ("%Nliquidation_price:")
           Result.append (l_liquidation_price.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached raw_data as l_raw_data then
           Result.append ("%Nraw_data:")
           Result.append (l_raw_data.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
       end
 end
-
 

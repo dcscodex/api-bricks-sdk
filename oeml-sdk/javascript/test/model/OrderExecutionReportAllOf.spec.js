@@ -50,7 +50,7 @@
   describe('OrderExecutionReportAllOf', function() {
     it('should create an instance of OrderExecutionReportAllOf', function() {
       // uncomment below and update the code to test OrderExecutionReportAllOf
-      //var instane = new OemlRestApi.OrderExecutionReportAllOf();
+      //var instance = new OemlRestApi.OrderExecutionReportAllOf();
       //expect(instance).to.be.a(OemlRestApi.OrderExecutionReportAllOf);
     });
 

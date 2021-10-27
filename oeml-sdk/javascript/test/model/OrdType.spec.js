@@ -49,7 +49,7 @@
   describe('OrdType', function() {
     it('should create an instance of OrdType', function() {
       // uncomment below and update the code to test OrdType
-      //var instane = new OemlRestApi.OrdType();
+      //var instance = new OemlRestApi.OrdType();
       //expect(instance).to.be.a(OemlRestApi.OrdType);
     });
 

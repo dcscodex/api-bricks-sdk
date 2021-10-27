@@ -50,7 +50,7 @@
   describe('MessageReject', function() {
     it('should create an instance of MessageReject', function() {
       // uncomment below and update the code to test MessageReject
-      //var instane = new OemlRestApi.MessageReject();
+      //var instance = new OemlRestApi.MessageReject();
       //expect(instance).to.be.a(OemlRestApi.MessageReject);
     });
 

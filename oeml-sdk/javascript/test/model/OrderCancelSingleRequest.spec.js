@@ -50,7 +50,7 @@
   describe('OrderCancelSingleRequest', function() {
     it('should create an instance of OrderCancelSingleRequest', function() {
       // uncomment below and update the code to test OrderCancelSingleRequest
-      //var instane = new OemlRestApi.OrderCancelSingleRequest();
+      //var instance = new OemlRestApi.OrderCancelSingleRequest();
       //expect(instance).to.be.a(OemlRestApi.OrderCancelSingleRequest);
     });
 

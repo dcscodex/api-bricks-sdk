@@ -50,7 +50,7 @@
   describe('OrderNewSingleRequest', function() {
     it('should create an instance of OrderNewSingleRequest', function() {
       // uncomment below and update the code to test OrderNewSingleRequest
-      //var instane = new OemlRestApi.OrderNewSingleRequest();
+      //var instance = new OemlRestApi.OrderNewSingleRequest();
       //expect(instance).to.be.a(OemlRestApi.OrderNewSingleRequest);
     });
 

@@ -19,7 +19,7 @@ list_t* PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id);
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration | 
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
 **exchange_id** | **char \*** | Filter the balances to the specific exchange. | [optional] 
 
 ### Return type

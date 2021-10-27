@@ -66,7 +66,7 @@ import qualified Prelude as P
 -- 
 -- Get current open positions across all or single exchange.
 -- 
-v1PositionsGet 
+v1PositionsGet
   :: Accept accept -- ^ request accept ('MimeType')
   -> OEML-RESTRequest V1PositionsGet MimeNoContent [Position] accept
 v1PositionsGet  _ =

@@ -25,7 +25,8 @@ const (
 	SELL OrdSide = "SELL"
 )
 
-var allowedOrdSideEnumValues = []OrdSide{
+// All allowed values of OrdSide enum
+var AllowedOrdSideEnumValues = []OrdSide{
 	"BUY",
 	"SELL",
 }
@@ -37,7 +38,7 @@ func (v *OrdSide) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdSide(value)
-	for _, existing := range allowedOrdSideEnumValues {
+	for _, existing := range AllowedOrdSideEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewOrdSideFromValue(v string) (*OrdSide, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for OrdSide: valid values are %v", v, allowedOrdSideEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for OrdSide: valid values are %v", v, AllowedOrdSideEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v OrdSide) IsValid() bool {
-	for _, existing := range allowedOrdSideEnumValues {
+	for _, existing := range AllowedOrdSideEnumValues {
 		if existing == v {
 			return true
 		}

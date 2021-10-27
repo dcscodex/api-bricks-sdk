@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -71,6 +72,7 @@ class OrderNewSingleRequest {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (exchangeId == null ? 0 : exchangeId.hashCode) +
     (clientOrderId == null ? 0 : clientOrderId.hashCode) +
     (symbolIdExchange == null ? 0 : symbolIdExchange.hashCode) +
@@ -111,47 +113,60 @@ class OrderNewSingleRequest {
   }
 
   /// Returns a new [OrderNewSingleRequest] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static OrderNewSingleRequest fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : OrderNewSingleRequest(
-        exchangeId: json[r'exchange_id'],
-        clientOrderId: json[r'client_order_id'],
-        symbolIdExchange: json[r'symbol_id_exchange'],
-        symbolIdCoinapi: json[r'symbol_id_coinapi'],
-        amountOrder: json[r'amount_order'] == null ?
-          null :
-          json[r'amount_order'].toDouble(),
-        price: json[r'price'] == null ?
-          null :
-          json[r'price'].toDouble(),
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static OrderNewSingleRequest fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return OrderNewSingleRequest(
+        exchangeId: mapValueOfType<String>(json, r'exchange_id'),
+        clientOrderId: mapValueOfType<String>(json, r'client_order_id'),
+        symbolIdExchange: mapValueOfType<String>(json, r'symbol_id_exchange'),
+        symbolIdCoinapi: mapValueOfType<String>(json, r'symbol_id_coinapi'),
+        amountOrder: json[r'amount_order'] == null
+          ? null
+          : num.parse(json[r'amount_order'].toString()),
+        price: json[r'price'] == null
+          ? null
+          : num.parse(json[r'price'].toString()),
         side: OrdSide.fromJson(json[r'side']),
         orderType: OrdType.fromJson(json[r'order_type']),
         timeInForce: TimeInForce.fromJson(json[r'time_in_force']),
         expireTime: DateTime.fromJson(json[r'expire_time']),
         execInst: OrderExecutionReportExecInstEnum.listFromJson(json[r'exec_inst']),
-    );
+      );
+    }
+    return null;
+  }
 
-  static List<OrderNewSingleRequest> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrderNewSingleRequest>[]
-      : json.map((dynamic value) => OrderNewSingleRequest.fromJson(value)).toList(growable: true == growable);
+  static List<OrderNewSingleRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrderNewSingleRequest.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrderNewSingleRequest>[];
 
-  static Map<String, OrderNewSingleRequest> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, OrderNewSingleRequest> mapFromJson(dynamic json) {
     final map = <String, OrderNewSingleRequest>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = OrderNewSingleRequest.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = OrderNewSingleRequest.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of OrderNewSingleRequest-objects as value to a dart map
-  static Map<String, List<OrderNewSingleRequest>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderNewSingleRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<OrderNewSingleRequest>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = OrderNewSingleRequest.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = OrderNewSingleRequest.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }
@@ -166,7 +181,7 @@ class OrderExecutionReportExecInstEnum {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -184,20 +199,18 @@ class OrderExecutionReportExecInstEnum {
   static OrderExecutionReportExecInstEnum fromJson(dynamic value) =>
     OrderExecutionReportExecInstEnumTypeTransformer().decode(value);
 
-  static List<OrderExecutionReportExecInstEnum> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrderExecutionReportExecInstEnum>[]
-      : json
-          .map((value) => OrderExecutionReportExecInstEnum.fromJson(value))
-          .toList(growable: true == growable);
+  static List<OrderExecutionReportExecInstEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrderExecutionReportExecInstEnum.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrderExecutionReportExecInstEnum>[];
 }
 
 /// Transformation class that can [encode] an instance of [OrderExecutionReportExecInstEnum] to String,
 /// and [decode] dynamic data back to [OrderExecutionReportExecInstEnum].
 class OrderExecutionReportExecInstEnumTypeTransformer {
-  const OrderExecutionReportExecInstEnumTypeTransformer._();
+  factory OrderExecutionReportExecInstEnumTypeTransformer() => _instance ??= const OrderExecutionReportExecInstEnumTypeTransformer._();
 
-  factory OrderExecutionReportExecInstEnumTypeTransformer() => _instance ??= OrderExecutionReportExecInstEnumTypeTransformer._();
+  const OrderExecutionReportExecInstEnumTypeTransformer._();
 
   String encode(OrderExecutionReportExecInstEnum data) => data.value;
 
@@ -210,14 +223,16 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrderExecutionReportExecInstEnum decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
-      case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
-      case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
+        case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
+        case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -225,4 +240,5 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   /// Singleton [OrderExecutionReportExecInstEnumTypeTransformer] instance.
   static OrderExecutionReportExecInstEnumTypeTransformer _instance;
 }
+
 

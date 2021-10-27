@@ -19,7 +19,7 @@ Get open positions
 
 Get current open positions across all or single exchange.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::PositionsApi;
@@ -28,7 +28,7 @@ my $api_instance = WWW::OpenAPIClient::PositionsApi->new(
 
 my $exchange_id = KRAKEN; # string | Filter the balances to the specific exchange.
 
-eval { 
+eval {
     my $result = $api_instance->v1_positions_get(exchange_id => $exchange_id);
     print Dumper($result);
 };

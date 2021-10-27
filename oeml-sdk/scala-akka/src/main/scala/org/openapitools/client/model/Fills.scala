@@ -23,4 +23,3 @@ case class Fills (
   amount: Option[BigDecimal] = None
 ) extends ApiModel
 
-

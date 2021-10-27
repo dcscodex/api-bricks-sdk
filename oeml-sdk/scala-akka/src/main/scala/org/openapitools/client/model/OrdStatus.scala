@@ -16,4 +16,3 @@ import org.openapitools.client.core.ApiModel
 case class OrdStatus (
 ) extends ApiModel
 
-

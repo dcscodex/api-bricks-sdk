@@ -50,7 +50,7 @@
   describe('Balance', function() {
     it('should create an instance of Balance', function() {
       // uncomment below and update the code to test Balance
-      //var instane = new OemlRestApi.Balance();
+      //var instance = new OemlRestApi.Balance();
       //expect(instance).to.be.a(OemlRestApi.Balance);
     });
 

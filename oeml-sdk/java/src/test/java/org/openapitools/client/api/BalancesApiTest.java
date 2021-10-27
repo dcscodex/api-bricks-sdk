@@ -44,8 +44,7 @@ public class BalancesApiTest {
     @Test
     public void v1BalancesGetTest() throws ApiException {
         String exchangeId = null;
-        List<Balance> response = api.v1BalancesGet(exchangeId);
-
+                List<Balance> response = api.v1BalancesGet(exchangeId);
         // TODO: test validations
     }
     

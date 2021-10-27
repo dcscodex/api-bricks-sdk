@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -18,7 +19,7 @@ class OrdStatus {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -48,20 +49,18 @@ class OrdStatus {
   static OrdStatus fromJson(dynamic value) =>
     OrdStatusTypeTransformer().decode(value);
 
-  static List<OrdStatus> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrdStatus>[]
-      : json
-          .map((value) => OrdStatus.fromJson(value))
-          .toList(growable: true == growable);
+  static List<OrdStatus> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrdStatus.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrdStatus>[];
 }
 
 /// Transformation class that can [encode] an instance of [OrdStatus] to String,
 /// and [decode] dynamic data back to [OrdStatus].
 class OrdStatusTypeTransformer {
-  const OrdStatusTypeTransformer._();
+  factory OrdStatusTypeTransformer() => _instance ??= const OrdStatusTypeTransformer._();
 
-  factory OrdStatusTypeTransformer() => _instance ??= OrdStatusTypeTransformer._();
+  const OrdStatusTypeTransformer._();
 
   String encode(OrdStatus data) => data.value;
 
@@ -74,20 +73,22 @@ class OrdStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrdStatus decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'RECEIVED': return OrdStatus.RECEIVED;
-      case r'ROUTING': return OrdStatus.ROUTING;
-      case r'ROUTED': return OrdStatus.ROUTED;
-      case r'NEW': return OrdStatus.NEW;
-      case r'PENDING_CANCEL': return OrdStatus.PENDING_CANCEL;
-      case r'PARTIALLY_FILLED': return OrdStatus.PARTIALLY_FILLED;
-      case r'FILLED': return OrdStatus.FILLED;
-      case r'CANCELED': return OrdStatus.CANCELED;
-      case r'REJECTED': return OrdStatus.REJECTED;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'RECEIVED': return OrdStatus.RECEIVED;
+        case r'ROUTING': return OrdStatus.ROUTING;
+        case r'ROUTED': return OrdStatus.ROUTED;
+        case r'NEW': return OrdStatus.NEW;
+        case r'PENDING_CANCEL': return OrdStatus.PENDING_CANCEL;
+        case r'PARTIALLY_FILLED': return OrdStatus.PARTIALLY_FILLED;
+        case r'FILLED': return OrdStatus.FILLED;
+        case r'CANCELED': return OrdStatus.CANCELED;
+        case r'REJECTED': return OrdStatus.REJECTED;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -95,3 +96,4 @@ class OrdStatusTypeTransformer {
   /// Singleton [OrdStatusTypeTransformer] instance.
   static OrdStatusTypeTransformer _instance;
 }
+

@@ -50,7 +50,7 @@
   describe('PositionData', function() {
     it('should create an instance of PositionData', function() {
       // uncomment below and update the code to test PositionData
-      //var instane = new OemlRestApi.PositionData();
+      //var instance = new OemlRestApi.PositionData();
       //expect(instance).to.be.a(OemlRestApi.PositionData);
     });
 

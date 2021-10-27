@@ -48,8 +48,7 @@ public class OrdersApiTest {
     @Test
     public void v1OrdersCancelAllPostTest() throws ApiException {
         OrderCancelAllRequest orderCancelAllRequest = null;
-        MessageReject response = api.v1OrdersCancelAllPost(orderCancelAllRequest);
-
+                MessageReject response = api.v1OrdersCancelAllPost(orderCancelAllRequest);
         // TODO: test validations
     }
     
@@ -64,8 +63,7 @@ public class OrdersApiTest {
     @Test
     public void v1OrdersCancelPostTest() throws ApiException {
         OrderCancelSingleRequest orderCancelSingleRequest = null;
-        OrderExecutionReport response = api.v1OrdersCancelPost(orderCancelSingleRequest);
-
+                OrderExecutionReport response = api.v1OrdersCancelPost(orderCancelSingleRequest);
         // TODO: test validations
     }
     
@@ -80,8 +78,7 @@ public class OrdersApiTest {
     @Test
     public void v1OrdersGetTest() throws ApiException {
         String exchangeId = null;
-        List<OrderExecutionReport> response = api.v1OrdersGet(exchangeId);
-
+                List<OrderExecutionReport> response = api.v1OrdersGet(exchangeId);
         // TODO: test validations
     }
     
@@ -96,8 +93,7 @@ public class OrdersApiTest {
     @Test
     public void v1OrdersPostTest() throws ApiException {
         OrderNewSingleRequest orderNewSingleRequest = null;
-        OrderExecutionReport response = api.v1OrdersPost(orderNewSingleRequest);
-
+                OrderExecutionReport response = api.v1OrdersPost(orderNewSingleRequest);
         // TODO: test validations
     }
     
@@ -112,8 +108,7 @@ public class OrdersApiTest {
     @Test
     public void v1OrdersStatusClientOrderIdGetTest() throws ApiException {
         String clientOrderId = null;
-        OrderExecutionReport response = api.v1OrdersStatusClientOrderIdGet(clientOrderId);
-
+                OrderExecutionReport response = api.v1OrdersStatusClientOrderIdGet(clientOrderId);
         // TODO: test validations
     }
     

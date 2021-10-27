@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -43,6 +44,7 @@ class MessageReject {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (type == null ? 0 : type.hashCode) +
     (rejectReason == null ? 0 : rejectReason.hashCode) +
     (exchangeId == null ? 0 : exchangeId.hashCode) +
@@ -73,37 +75,50 @@ class MessageReject {
   }
 
   /// Returns a new [MessageReject] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static MessageReject fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : MessageReject(
-        type: json[r'type'],
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static MessageReject fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return MessageReject(
+        type: mapValueOfType<String>(json, r'type'),
         rejectReason: RejectReason.fromJson(json[r'reject_reason']),
-        exchangeId: json[r'exchange_id'],
-        message: json[r'message'],
-        rejectedMessage: json[r'rejected_message'],
-    );
+        exchangeId: mapValueOfType<String>(json, r'exchange_id'),
+        message: mapValueOfType<String>(json, r'message'),
+        rejectedMessage: mapValueOfType<String>(json, r'rejected_message'),
+      );
+    }
+    return null;
+  }
 
-  static List<MessageReject> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <MessageReject>[]
-      : json.map((dynamic value) => MessageReject.fromJson(value)).toList(growable: true == growable);
+  static List<MessageReject> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(MessageReject.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <MessageReject>[];
 
-  static Map<String, MessageReject> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, MessageReject> mapFromJson(dynamic json) {
     final map = <String, MessageReject>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = MessageReject.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = MessageReject.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of MessageReject-objects as value to a dart map
-  static Map<String, List<MessageReject>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<MessageReject>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<MessageReject>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = MessageReject.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = MessageReject.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

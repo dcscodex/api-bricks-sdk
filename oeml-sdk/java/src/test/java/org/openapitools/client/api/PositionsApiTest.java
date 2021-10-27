@@ -44,8 +44,7 @@ public class PositionsApiTest {
     @Test
     public void v1PositionsGetTest() throws ApiException {
         String exchangeId = null;
-        List<Position> response = api.v1PositionsGet(exchangeId);
-
+                List<Position> response = api.v1PositionsGet(exchangeId);
         // TODO: test validations
     }
     

@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -25,11 +26,13 @@ class PositionsApi {
   ///
   /// * [String] exchangeId:
   ///   Filter the balances to the specific exchange.
-  Future<Response> v1PositionsGetWithHttpInfo({ String exchangeId }) async {
+  Future<Response> v1PositionsGetWithHttpInfo({ String exchangeId, }) async {
     // Verify required params are set.
 
+    // ignore: prefer_const_declarations
     final path = r'/v1/positions';
 
+    // ignore: prefer_final_locals
     Object postBody;
 
     final queryParams = <QueryParam>[];
@@ -40,19 +43,18 @@ class PositionsApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'exchange_id', exchangeId));
     }
 
-    final contentTypes = <String>[];
-    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>[];
+    const authNames = <String>[];
+    const contentTypes = <String>[];
 
 
-    return await apiClient.invokeAPI(
+    return apiClient.invokeAPI(
       path,
       'GET',
       queryParams,
       postBody,
       headerParams,
       formParams,
-      nullableContentType,
+      contentTypes.isEmpty ? null : contentTypes[0],
       authNames,
     );
   }
@@ -65,8 +67,8 @@ class PositionsApi {
   ///
   /// * [String] exchangeId:
   ///   Filter the balances to the specific exchange.
-  Future<List<Position>> v1PositionsGet({ String exchangeId }) async {
-    final response = await v1PositionsGetWithHttpInfo( exchangeId: exchangeId );
+  Future<List<Position>> v1PositionsGet({ String exchangeId, }) async {
+    final response = await v1PositionsGetWithHttpInfo( exchangeId: exchangeId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -74,10 +76,12 @@ class PositionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return (await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'List<Position>') as List)
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Position>') as List)
         .cast<Position>()
         .toList(growable: false);
+
     }
-    return Future<List<Position>>.value(null);
+    return Future<List<Position>>.value();
   }
 }

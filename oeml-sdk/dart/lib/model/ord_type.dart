@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -18,7 +19,7 @@ class OrdType {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -32,20 +33,18 @@ class OrdType {
   static OrdType fromJson(dynamic value) =>
     OrdTypeTypeTransformer().decode(value);
 
-  static List<OrdType> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrdType>[]
-      : json
-          .map((value) => OrdType.fromJson(value))
-          .toList(growable: true == growable);
+  static List<OrdType> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrdType.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrdType>[];
 }
 
 /// Transformation class that can [encode] an instance of [OrdType] to String,
 /// and [decode] dynamic data back to [OrdType].
 class OrdTypeTypeTransformer {
-  const OrdTypeTypeTransformer._();
+  factory OrdTypeTypeTransformer() => _instance ??= const OrdTypeTypeTransformer._();
 
-  factory OrdTypeTypeTransformer() => _instance ??= OrdTypeTypeTransformer._();
+  const OrdTypeTypeTransformer._();
 
   String encode(OrdType data) => data.value;
 
@@ -58,12 +57,14 @@ class OrdTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrdType decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'LIMIT': return OrdType.LIMIT;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'LIMIT': return OrdType.LIMIT;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -71,3 +72,4 @@ class OrdTypeTypeTransformer {
   /// Singleton [OrdTypeTypeTransformer] instance.
   static OrdTypeTypeTransformer _instance;
 }
+

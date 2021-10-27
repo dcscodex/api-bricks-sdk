@@ -50,7 +50,7 @@
   describe('Fills', function() {
     it('should create an instance of Fills', function() {
       // uncomment below and update the code to test Fills
-      //var instane = new OemlRestApi.Fills();
+      //var instance = new OemlRestApi.Fills();
       //expect(instance).to.be.a(OemlRestApi.Fills);
     });
 

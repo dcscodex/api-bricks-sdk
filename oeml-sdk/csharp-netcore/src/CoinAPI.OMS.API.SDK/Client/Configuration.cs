@@ -77,7 +77,7 @@ namespace CoinAPI.OMS.API.SDK.Client
 
         /// <summary>
         /// Gets or sets the API key based on the authentication name.
-        /// This is the key and value comprising the "secret" for acessing an API.
+        /// This is the key and value comprising the "secret" for accessing an API.
         /// </summary>
         /// <value>The API key.</value>
         private IDictionary<string, string> _apiKey;
@@ -431,7 +431,7 @@ namespace CoinAPI.OMS.API.SDK.Client
                 }
                 else
                 {
-                    // use defualt value
+                    // use default value
                     url = url.Replace("{" + variable.Key + "}", (string)serverVariables["default_value"]);
                 }
             }

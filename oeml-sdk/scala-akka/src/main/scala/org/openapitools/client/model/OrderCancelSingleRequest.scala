@@ -22,4 +22,3 @@ case class OrderCancelSingleRequest (
   clientOrderId: Option[String] = None
 ) extends ApiModel
 
-

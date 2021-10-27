@@ -66,7 +66,7 @@ import qualified Prelude as P
 -- 
 -- Get current currency balance from all or single exchange.
 -- 
-v1BalancesGet 
+v1BalancesGet
   :: Accept accept -- ^ request accept ('MimeType')
   -> OEML-RESTRequest V1BalancesGet MimeNoContent [Balance] accept
 v1BalancesGet  _ =

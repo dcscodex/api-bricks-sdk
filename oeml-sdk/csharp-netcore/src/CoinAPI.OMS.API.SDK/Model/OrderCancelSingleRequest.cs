@@ -46,7 +46,10 @@ namespace CoinAPI.OMS.API.SDK.Model
         public OrderCancelSingleRequest(string exchangeId = default(string), string exchangeOrderId = default(string), string clientOrderId = default(string))
         {
             // to ensure "exchangeId" is required (not null)
-            this.ExchangeId = exchangeId ?? throw new ArgumentNullException("exchangeId is a required property for OrderCancelSingleRequest and cannot be null");
+            if (exchangeId == null) {
+                throw new ArgumentNullException("exchangeId is a required property for OrderCancelSingleRequest and cannot be null");
+            }
+            this.ExchangeId = exchangeId;
             this.ExchangeOrderId = exchangeOrderId;
             this.ClientOrderId = clientOrderId;
         }
@@ -158,7 +161,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

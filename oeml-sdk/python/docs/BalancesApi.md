@@ -16,6 +16,7 @@ Get current currency balance from all or single exchange.
 
 ### Example
 
+
 ```python
 import time
 import openapi_client
@@ -68,6 +69,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Collection of balances. |  -  |

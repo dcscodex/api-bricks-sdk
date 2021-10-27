@@ -58,7 +58,10 @@ namespace CoinAPI.OMS.API.SDK.Model
         public OrderExecutionReportAllOf(string clientOrderIdFormatExchange = default(string), string exchangeOrderId = default(string), decimal amountOpen = default(decimal), decimal amountFilled = default(decimal), decimal avgPx = default(decimal), OrdStatus status = default(OrdStatus), List<List<string>> statusHistory = default(List<List<string>>), string errorMessage = default(string), List<Fills> fills = default(List<Fills>))
         {
             // to ensure "clientOrderIdFormatExchange" is required (not null)
-            this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange ?? throw new ArgumentNullException("clientOrderIdFormatExchange is a required property for OrderExecutionReportAllOf and cannot be null");
+            if (clientOrderIdFormatExchange == null) {
+                throw new ArgumentNullException("clientOrderIdFormatExchange is a required property for OrderExecutionReportAllOf and cannot be null");
+            }
+            this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange;
             this.AmountOpen = amountOpen;
             this.AmountFilled = amountFilled;
             this.Status = status;
@@ -253,7 +256,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

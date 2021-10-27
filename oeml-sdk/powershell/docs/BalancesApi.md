@@ -24,7 +24,7 @@ $ExchangeId = "KRAKEN" # String | Filter the balances to the specific exchange. 
 try {
     $Result = Invoke-V1BalancesGet -ExchangeId $ExchangeId
 } catch {
-    Write-Host ("Exception occured when calling Invoke-V1BalancesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-V1BalancesGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```

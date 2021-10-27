@@ -9,14 +9,14 @@ test_that("type", {
   # tests for the property `type` (character)
   # Message type, constant.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
 test_that("reject_reason", {
   # tests for the property `reject_reason` (RejectReason)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`reject_reason`, "EXPECTED_RESULT")
 })
 
@@ -24,7 +24,7 @@ test_that("exchange_id", {
   # tests for the property `exchange_id` (character)
   # If the message related to exchange, then the identifier of the exchange will be provided.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`exchange_id`, "EXPECTED_RESULT")
 })
 
@@ -32,7 +32,7 @@ test_that("message", {
   # tests for the property `message` (character)
   # Message text.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
@@ -40,7 +40,7 @@ test_that("rejected_message", {
   # tests for the property `rejected_message` (character)
   # Value of rejected request, if available.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`rejected_message`, "EXPECTED_RESULT")
 })
 

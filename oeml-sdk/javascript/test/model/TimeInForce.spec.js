@@ -49,7 +49,7 @@
   describe('TimeInForce', function() {
     it('should create an instance of TimeInForce', function() {
       // uncomment below and update the code to test TimeInForce
-      //var instane = new OemlRestApi.TimeInForce();
+      //var instance = new OemlRestApi.TimeInForce();
       //expect(instance).to.be.a(OemlRestApi.TimeInForce);
     });
 

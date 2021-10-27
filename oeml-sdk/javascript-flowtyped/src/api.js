@@ -89,7 +89,6 @@ export type Balance = {
 }
 
 
-
             export type BalanceDataLastUpdatedByEnum = 'INITIALIZATION' | 'BALANCE_MANAGER' | 'EXCHANGE';
 /**
  * 
@@ -146,7 +145,6 @@ export type BalanceData = {
     traded?: number;
 }
 
-
 /**
  * 
  * @export
@@ -171,7 +169,6 @@ export type Fills = {
      */
     amount?: number;
 }
-
 
 /**
  * 
@@ -210,7 +207,6 @@ export type MessageReject = {
     rejected_message?: string;
 }
 
-
 /**
  * Side of order. 
  * @export
@@ -245,7 +241,6 @@ export type OrderCancelAllRequest = {
     exchange_id: string;
 }
 
-
 /**
  * Cancel single order request object.
  * @export
@@ -270,7 +265,6 @@ export type OrderCancelSingleRequest = {
      */
     client_order_id?: string;
 }
-
 
 
             export type OrderExecutionReportExecInstEnum = 'MAKER_OR_CANCEL' | 'AUCTION_ONLY' | 'INDICATION_OF_INTEREST';
@@ -401,7 +395,6 @@ export type OrderExecutionReport = {
     fills?: Array<Fills>;
 }
 
-
 /**
  * The order execution report message.
  * @export
@@ -462,7 +455,6 @@ export type OrderExecutionReportAllOf = {
      */
     fills?: Array<Fills>;
 }
-
 
 
             export type OrderNewSingleRequestExecInstEnum = 'MAKER_OR_CANCEL' | 'AUCTION_ONLY' | 'INDICATION_OF_INTEREST';
@@ -539,7 +531,6 @@ export type OrderNewSingleRequest = {
     exec_inst?: Array<OrderNewSingleRequestExecInstEnum>;
 }
 
-
 /**
  * 
  * @export
@@ -558,7 +549,6 @@ export type Position = {
      */
     data?: Array<PositionData>;
 }
-
 
 /**
  * The Position object.
@@ -627,7 +617,6 @@ export type PositionData = {
     raw_data?: Object;
 }
 
-
 /**
  * Cause of rejection.
  * @export
@@ -678,7 +667,6 @@ export type ValidationError = {
      */
     errors?: string;
 }
-
 
 
 

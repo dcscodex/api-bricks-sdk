@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -59,6 +60,7 @@ class BalanceData {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (assetIdExchange == null ? 0 : assetIdExchange.hashCode) +
     (assetIdCoinapi == null ? 0 : assetIdCoinapi.hashCode) +
     (balance == null ? 0 : balance.hashCode) +
@@ -101,40 +103,53 @@ class BalanceData {
   }
 
   /// Returns a new [BalanceData] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static BalanceData fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : BalanceData(
-        assetIdExchange: json[r'asset_id_exchange'],
-        assetIdCoinapi: json[r'asset_id_coinapi'],
-        balance: json[r'balance'],
-        available: json[r'available'],
-        locked: json[r'locked'],
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static BalanceData fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return BalanceData(
+        assetIdExchange: mapValueOfType<String>(json, r'asset_id_exchange'),
+        assetIdCoinapi: mapValueOfType<String>(json, r'asset_id_coinapi'),
+        balance: mapValueOfType<double>(json, r'balance'),
+        available: mapValueOfType<double>(json, r'available'),
+        locked: mapValueOfType<double>(json, r'locked'),
         lastUpdatedBy: BalanceDataLastUpdatedByEnum.fromJson(json[r'last_updated_by']),
-        rateUsd: json[r'rate_usd'],
-        traded: json[r'traded'],
-    );
+        rateUsd: mapValueOfType<double>(json, r'rate_usd'),
+        traded: mapValueOfType<double>(json, r'traded'),
+      );
+    }
+    return null;
+  }
 
-  static List<BalanceData> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <BalanceData>[]
-      : json.map((dynamic value) => BalanceData.fromJson(value)).toList(growable: true == growable);
+  static List<BalanceData> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(BalanceData.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <BalanceData>[];
 
-  static Map<String, BalanceData> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, BalanceData> mapFromJson(dynamic json) {
     final map = <String, BalanceData>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = BalanceData.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = BalanceData.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of BalanceData-objects as value to a dart map
-  static Map<String, List<BalanceData>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<BalanceData>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<BalanceData>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = BalanceData.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = BalanceData.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }
@@ -149,7 +164,7 @@ class BalanceDataLastUpdatedByEnum {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -167,20 +182,18 @@ class BalanceDataLastUpdatedByEnum {
   static BalanceDataLastUpdatedByEnum fromJson(dynamic value) =>
     BalanceDataLastUpdatedByEnumTypeTransformer().decode(value);
 
-  static List<BalanceDataLastUpdatedByEnum> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <BalanceDataLastUpdatedByEnum>[]
-      : json
-          .map((value) => BalanceDataLastUpdatedByEnum.fromJson(value))
-          .toList(growable: true == growable);
+  static List<BalanceDataLastUpdatedByEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(BalanceDataLastUpdatedByEnum.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <BalanceDataLastUpdatedByEnum>[];
 }
 
 /// Transformation class that can [encode] an instance of [BalanceDataLastUpdatedByEnum] to String,
 /// and [decode] dynamic data back to [BalanceDataLastUpdatedByEnum].
 class BalanceDataLastUpdatedByEnumTypeTransformer {
-  const BalanceDataLastUpdatedByEnumTypeTransformer._();
+  factory BalanceDataLastUpdatedByEnumTypeTransformer() => _instance ??= const BalanceDataLastUpdatedByEnumTypeTransformer._();
 
-  factory BalanceDataLastUpdatedByEnumTypeTransformer() => _instance ??= BalanceDataLastUpdatedByEnumTypeTransformer._();
+  const BalanceDataLastUpdatedByEnumTypeTransformer._();
 
   String encode(BalanceDataLastUpdatedByEnum data) => data.value;
 
@@ -193,14 +206,16 @@ class BalanceDataLastUpdatedByEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   BalanceDataLastUpdatedByEnum decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'INITIALIZATION': return BalanceDataLastUpdatedByEnum.INITIALIZATION;
-      case r'BALANCE_MANAGER': return BalanceDataLastUpdatedByEnum.BALANCE_MANAGER;
-      case r'EXCHANGE': return BalanceDataLastUpdatedByEnum.EXCHANGE;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'INITIALIZATION': return BalanceDataLastUpdatedByEnum.INITIALIZATION;
+        case r'BALANCE_MANAGER': return BalanceDataLastUpdatedByEnum.BALANCE_MANAGER;
+        case r'EXCHANGE': return BalanceDataLastUpdatedByEnum.EXCHANGE;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -208,4 +223,5 @@ class BalanceDataLastUpdatedByEnumTypeTransformer {
   /// Singleton [BalanceDataLastUpdatedByEnumTypeTransformer] instance.
   static BalanceDataLastUpdatedByEnumTypeTransformer _instance;
 }
+
 

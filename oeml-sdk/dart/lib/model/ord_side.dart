@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -18,7 +19,7 @@ class OrdSide {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -34,20 +35,18 @@ class OrdSide {
   static OrdSide fromJson(dynamic value) =>
     OrdSideTypeTransformer().decode(value);
 
-  static List<OrdSide> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrdSide>[]
-      : json
-          .map((value) => OrdSide.fromJson(value))
-          .toList(growable: true == growable);
+  static List<OrdSide> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrdSide.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrdSide>[];
 }
 
 /// Transformation class that can [encode] an instance of [OrdSide] to String,
 /// and [decode] dynamic data back to [OrdSide].
 class OrdSideTypeTransformer {
-  const OrdSideTypeTransformer._();
+  factory OrdSideTypeTransformer() => _instance ??= const OrdSideTypeTransformer._();
 
-  factory OrdSideTypeTransformer() => _instance ??= OrdSideTypeTransformer._();
+  const OrdSideTypeTransformer._();
 
   String encode(OrdSide data) => data.value;
 
@@ -60,13 +59,15 @@ class OrdSideTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrdSide decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'BUY': return OrdSide.BUY;
-      case r'SELL': return OrdSide.SELL;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'BUY': return OrdSide.BUY;
+        case r'SELL': return OrdSide.SELL;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -74,3 +75,4 @@ class OrdSideTypeTransformer {
   /// Singleton [OrdSideTypeTransformer] instance.
   static OrdSideTypeTransformer _instance;
 }
+

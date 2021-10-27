@@ -21,4 +21,3 @@ case class ValidationError (
   errors: Option[String] = None
 ) extends ApiModel
 
-

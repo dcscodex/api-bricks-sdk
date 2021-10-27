@@ -19,14 +19,14 @@ Get open positions
 
 Get current open positions across all or single exchange.
 
-### Example 
+### Example
 ```dart
 import 'package:openapi/api.dart';
 
 final api_instance = PositionsApi();
 final exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 
-try { 
+try {
     final result = api_instance.v1PositionsGet(exchangeId);
     print(result);
 } catch (e) {

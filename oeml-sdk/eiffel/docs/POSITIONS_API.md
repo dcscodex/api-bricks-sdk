@@ -9,7 +9,7 @@ Feature | HTTP request | Description
 
 # **v1_positions_get**
 > v1_positions_get (exchange_id:  detachable STRING_32 ): detachable LIST [POSITION]
-	
+
 
 Get open positions
 

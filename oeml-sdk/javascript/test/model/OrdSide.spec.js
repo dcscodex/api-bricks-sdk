@@ -49,7 +49,7 @@
   describe('OrdSide', function() {
     it('should create an instance of OrdSide', function() {
       // uncomment below and update the code to test OrdSide
-      //var instane = new OemlRestApi.OrdSide();
+      //var instance = new OemlRestApi.OrdSide();
       //expect(instance).to.be.a(OemlRestApi.OrdSide);
     });
 

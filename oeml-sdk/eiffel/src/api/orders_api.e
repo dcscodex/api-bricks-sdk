@@ -57,7 +57,7 @@ feature -- API Access
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
-		end	
+		end
 
 	v1_orders_cancel_post (order_cancel_single_request: ORDER_CANCEL_SINGLE_REQUEST): detachable ORDER_EXECUTION_REPORT
 			-- Cancel order request
@@ -92,7 +92,7 @@ feature -- API Access
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
-		end	
+		end
 
 	v1_orders_get (exchange_id: STRING_32): detachable LIST [ORDER_EXECUTION_REPORT]
 			-- Get open orders
@@ -128,7 +128,7 @@ feature -- API Access
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
-		end	
+		end
 
 	v1_orders_post (order_new_single_request: ORDER_NEW_SINGLE_REQUEST): detachable ORDER_EXECUTION_REPORT
 			-- Send new order
@@ -163,7 +163,7 @@ feature -- API Access
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
-		end	
+		end
 
 	v1_orders_status_client_order_id_get (client_order_id: STRING_32): detachable ORDER_EXECUTION_REPORT
 			-- Get order execution report
@@ -199,7 +199,7 @@ feature -- API Access
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
-		end	
+		end
 
 
 end

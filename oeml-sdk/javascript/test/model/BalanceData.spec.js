@@ -50,7 +50,7 @@
   describe('BalanceData', function() {
     it('should create an instance of BalanceData', function() {
       // uncomment below and update the code to test BalanceData
-      //var instane = new OemlRestApi.BalanceData();
+      //var instance = new OemlRestApi.BalanceData();
       //expect(instance).to.be.a(OemlRestApi.BalanceData);
     });
 

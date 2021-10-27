@@ -19,4 +19,3 @@ case class Balance (
   data: Option[Seq[BalanceData]] = None
 ) extends ApiModel
 
-

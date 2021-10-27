@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -34,6 +35,7 @@ class OrderCancelSingleRequest {
 
   @override
   int get hashCode =>
+  // ignore: unnecessary_parenthesis
     (exchangeId == null ? 0 : exchangeId.hashCode) +
     (exchangeOrderId == null ? 0 : exchangeOrderId.hashCode) +
     (clientOrderId == null ? 0 : clientOrderId.hashCode);
@@ -54,35 +56,48 @@ class OrderCancelSingleRequest {
   }
 
   /// Returns a new [OrderCancelSingleRequest] instance and imports its values from
-  /// [json] if it's non-null, null if [json] is null.
-  static OrderCancelSingleRequest fromJson(Map<String, dynamic> json) => json == null
-    ? null
-    : OrderCancelSingleRequest(
-        exchangeId: json[r'exchange_id'],
-        exchangeOrderId: json[r'exchange_order_id'],
-        clientOrderId: json[r'client_order_id'],
-    );
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static OrderCancelSingleRequest fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return OrderCancelSingleRequest(
+        exchangeId: mapValueOfType<String>(json, r'exchange_id'),
+        exchangeOrderId: mapValueOfType<String>(json, r'exchange_order_id'),
+        clientOrderId: mapValueOfType<String>(json, r'client_order_id'),
+      );
+    }
+    return null;
+  }
 
-  static List<OrderCancelSingleRequest> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <OrderCancelSingleRequest>[]
-      : json.map((dynamic value) => OrderCancelSingleRequest.fromJson(value)).toList(growable: true == growable);
+  static List<OrderCancelSingleRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(OrderCancelSingleRequest.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <OrderCancelSingleRequest>[];
 
-  static Map<String, OrderCancelSingleRequest> mapFromJson(Map<String, dynamic> json) {
+  static Map<String, OrderCancelSingleRequest> mapFromJson(dynamic json) {
     final map = <String, OrderCancelSingleRequest>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) => map[key] = OrderCancelSingleRequest.fromJson(value));
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = OrderCancelSingleRequest.fromJson(value));
     }
     return map;
   }
 
   // maps a json object with a list of OrderCancelSingleRequest-objects as value to a dart map
-  static Map<String, List<OrderCancelSingleRequest>> mapListFromJson(Map<String, dynamic> json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderCancelSingleRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
     final map = <String, List<OrderCancelSingleRequest>>{};
-    if (json?.isNotEmpty == true) {
-      json.forEach((key, value) {
-        map[key] = OrderCancelSingleRequest.listFromJson(value, emptyIsNull: emptyIsNull, growable: growable,);
-      });
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = OrderCancelSingleRequest.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | [**\DateTime**](\DateTime.md) | Execution time. | [optional]
+**time** | **\DateTime** | Execution time. | [optional]
 **price** | **float** | Execution price. | [optional]
 **amount** | **float** | Executed quantity. | [optional]
 

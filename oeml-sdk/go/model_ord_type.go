@@ -24,7 +24,8 @@ const (
 	LIMIT OrdType = "LIMIT"
 )
 
-var allowedOrdTypeEnumValues = []OrdType{
+// All allowed values of OrdType enum
+var AllowedOrdTypeEnumValues = []OrdType{
 	"LIMIT",
 }
 
@@ -35,7 +36,7 @@ func (v *OrdType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdType(value)
-	for _, existing := range allowedOrdTypeEnumValues {
+	for _, existing := range AllowedOrdTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -52,13 +53,13 @@ func NewOrdTypeFromValue(v string) (*OrdType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for OrdType: valid values are %v", v, allowedOrdTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for OrdType: valid values are %v", v, AllowedOrdTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v OrdType) IsValid() bool {
-	for _, existing := range allowedOrdTypeEnumValues {
+	for _, existing := range AllowedOrdTypeEnumValues {
 		if existing == v {
 			return true
 		}

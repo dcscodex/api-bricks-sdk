@@ -12,62 +12,62 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class ORDER_EXECUTION_REPORT 
+class ORDER_EXECUTION_REPORT
 
 
 
 
 feature --Access
 
-    exchange_id: detachable STRING_32 
+    exchange_id: detachable STRING_32
       -- Exchange identifier used to identify the routing destination.
-    client_order_id: detachable STRING_32 
+    client_order_id: detachable STRING_32
       -- The unique identifier of the order assigned by the client.
-    symbol_id_exchange: detachable STRING_32 
+    symbol_id_exchange: detachable STRING_32
       -- Exchange symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
-    symbol_id_coinapi: detachable STRING_32 
+    symbol_id_coinapi: detachable STRING_32
       -- CoinAPI symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
- 	amount_order: REAL_32 
+ 	amount_order: REAL_32
     	 -- Order quantity.
- 	price: REAL_32 
+ 	price: REAL_32
     	 -- Order price.
-    side: detachable ORD_SIDE 
+    side: detachable ORD_SIDE
       
-    order_type: detachable ORD_TYPE 
+    order_type: detachable ORD_TYPE
       
-    time_in_force: detachable TIME_IN_FORCE 
+    time_in_force: detachable TIME_IN_FORCE
       
-    expire_time: detachable DATE 
+    expire_time: detachable DATE
       -- Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
-    exec_inst: detachable LIST [STRING_32] 
+    exec_inst: detachable LIST [STRING_32]
       -- Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
-    client_order_id_format_exchange: detachable STRING_32 
+    client_order_id_format_exchange: detachable STRING_32
       -- The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
-    exchange_order_id: detachable STRING_32 
+    exchange_order_id: detachable STRING_32
       -- Unique identifier of the order assigned by the exchange or executing system.
- 	amount_open: REAL_32 
+ 	amount_open: REAL_32
     	 -- Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
- 	amount_filled: REAL_32 
+ 	amount_filled: REAL_32
     	 -- Total quantity filled.
- 	avg_px: REAL_32 
+ 	avg_px: REAL_32
     	 -- Calculated average price of all fills on this order.
-    status: detachable ORD_STATUS 
+    status: detachable ORD_STATUS
       
-    status_history: detachable LIST [LIST [STRING_32]] 
+    status_history: detachable LIST [LIST [STRING_32]]
       -- Timestamped history of order status changes.
-    error_message: detachable STRING_32 
+    error_message: detachable STRING_32
       -- Error message.
-    fills: detachable LIST [FILLS] 
+    fills: detachable LIST [FILLS]
       -- Relay fill information on working orders.
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_exchange_id (a_name: like exchange_id)
         -- Set 'exchange_id' with 'a_name'.
       do
         exchange_id := a_name
       ensure
-        exchange_id_set: exchange_id = a_name		
+        exchange_id_set: exchange_id = a_name
       end
 
     set_client_order_id (a_name: like client_order_id)
@@ -75,7 +75,7 @@ feature -- Change Element
       do
         client_order_id := a_name
       ensure
-        client_order_id_set: client_order_id = a_name		
+        client_order_id_set: client_order_id = a_name
       end
 
     set_symbol_id_exchange (a_name: like symbol_id_exchange)
@@ -83,7 +83,7 @@ feature -- Change Element
       do
         symbol_id_exchange := a_name
       ensure
-        symbol_id_exchange_set: symbol_id_exchange = a_name		
+        symbol_id_exchange_set: symbol_id_exchange = a_name
       end
 
     set_symbol_id_coinapi (a_name: like symbol_id_coinapi)
@@ -91,7 +91,7 @@ feature -- Change Element
       do
         symbol_id_coinapi := a_name
       ensure
-        symbol_id_coinapi_set: symbol_id_coinapi = a_name		
+        symbol_id_coinapi_set: symbol_id_coinapi = a_name
       end
 
     set_amount_order (a_name: like amount_order)
@@ -99,7 +99,7 @@ feature -- Change Element
       do
         amount_order := a_name
       ensure
-        amount_order_set: amount_order = a_name		
+        amount_order_set: amount_order = a_name
       end
 
     set_price (a_name: like price)
@@ -107,7 +107,7 @@ feature -- Change Element
       do
         price := a_name
       ensure
-        price_set: price = a_name		
+        price_set: price = a_name
       end
 
     set_side (a_name: like side)
@@ -115,7 +115,7 @@ feature -- Change Element
       do
         side := a_name
       ensure
-        side_set: side = a_name		
+        side_set: side = a_name
       end
 
     set_order_type (a_name: like order_type)
@@ -123,7 +123,7 @@ feature -- Change Element
       do
         order_type := a_name
       ensure
-        order_type_set: order_type = a_name		
+        order_type_set: order_type = a_name
       end
 
     set_time_in_force (a_name: like time_in_force)
@@ -131,7 +131,7 @@ feature -- Change Element
       do
         time_in_force := a_name
       ensure
-        time_in_force_set: time_in_force = a_name		
+        time_in_force_set: time_in_force = a_name
       end
 
     set_expire_time (a_name: like expire_time)
@@ -139,7 +139,7 @@ feature -- Change Element
       do
         expire_time := a_name
       ensure
-        expire_time_set: expire_time = a_name		
+        expire_time_set: expire_time = a_name
       end
 
     set_exec_inst (a_name: like exec_inst)
@@ -147,7 +147,7 @@ feature -- Change Element
       do
         exec_inst := a_name
       ensure
-        exec_inst_set: exec_inst = a_name		
+        exec_inst_set: exec_inst = a_name
       end
 
     set_client_order_id_format_exchange (a_name: like client_order_id_format_exchange)
@@ -155,7 +155,7 @@ feature -- Change Element
       do
         client_order_id_format_exchange := a_name
       ensure
-        client_order_id_format_exchange_set: client_order_id_format_exchange = a_name		
+        client_order_id_format_exchange_set: client_order_id_format_exchange = a_name
       end
 
     set_exchange_order_id (a_name: like exchange_order_id)
@@ -163,7 +163,7 @@ feature -- Change Element
       do
         exchange_order_id := a_name
       ensure
-        exchange_order_id_set: exchange_order_id = a_name		
+        exchange_order_id_set: exchange_order_id = a_name
       end
 
     set_amount_open (a_name: like amount_open)
@@ -171,7 +171,7 @@ feature -- Change Element
       do
         amount_open := a_name
       ensure
-        amount_open_set: amount_open = a_name		
+        amount_open_set: amount_open = a_name
       end
 
     set_amount_filled (a_name: like amount_filled)
@@ -179,7 +179,7 @@ feature -- Change Element
       do
         amount_filled := a_name
       ensure
-        amount_filled_set: amount_filled = a_name		
+        amount_filled_set: amount_filled = a_name
       end
 
     set_avg_px (a_name: like avg_px)
@@ -187,7 +187,7 @@ feature -- Change Element
       do
         avg_px := a_name
       ensure
-        avg_px_set: avg_px = a_name		
+        avg_px_set: avg_px = a_name
       end
 
     set_status (a_name: like status)
@@ -195,7 +195,7 @@ feature -- Change Element
       do
         status := a_name
       ensure
-        status_set: status = a_name		
+        status_set: status = a_name
       end
 
     set_status_history (a_name: like status_history)
@@ -203,7 +203,7 @@ feature -- Change Element
       do
         status_history := a_name
       ensure
-        status_history_set: status_history = a_name		
+        status_history_set: status_history = a_name
       end
 
     set_error_message (a_name: like error_message)
@@ -211,7 +211,7 @@ feature -- Change Element
       do
         error_message := a_name
       ensure
-        error_message_set: error_message = a_name		
+        error_message_set: error_message = a_name
       end
 
     set_fills (a_name: like fills)
@@ -219,7 +219,7 @@ feature -- Change Element
       do
         fills := a_name
       ensure
-        fills_set: fills = a_name		
+        fills_set: fills = a_name
       end
 
 
@@ -233,110 +233,109 @@ feature -- Change Element
         if attached exchange_id as l_exchange_id then
           Result.append ("%Nexchange_id:")
           Result.append (l_exchange_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached client_order_id as l_client_order_id then
           Result.append ("%Nclient_order_id:")
           Result.append (l_client_order_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached symbol_id_exchange as l_symbol_id_exchange then
           Result.append ("%Nsymbol_id_exchange:")
           Result.append (l_symbol_id_exchange.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached symbol_id_coinapi as l_symbol_id_coinapi then
           Result.append ("%Nsymbol_id_coinapi:")
           Result.append (l_symbol_id_coinapi.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached amount_order as l_amount_order then
           Result.append ("%Namount_order:")
           Result.append (l_amount_order.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached price as l_price then
           Result.append ("%Nprice:")
           Result.append (l_price.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached side as l_side then
           Result.append ("%Nside:")
           Result.append (l_side.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached order_type as l_order_type then
           Result.append ("%Norder_type:")
           Result.append (l_order_type.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached time_in_force as l_time_in_force then
           Result.append ("%Ntime_in_force:")
           Result.append (l_time_in_force.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached expire_time as l_expire_time then
           Result.append ("%Nexpire_time:")
           Result.append (l_expire_time.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached exec_inst as l_exec_inst then
           across l_exec_inst as ic loop
             Result.append ("%N exec_inst:")
             Result.append (ic.item.out)
             Result.append ("%N")
           end
-        end 
+        end
         if attached client_order_id_format_exchange as l_client_order_id_format_exchange then
           Result.append ("%Nclient_order_id_format_exchange:")
           Result.append (l_client_order_id_format_exchange.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached exchange_order_id as l_exchange_order_id then
           Result.append ("%Nexchange_order_id:")
           Result.append (l_exchange_order_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached amount_open as l_amount_open then
           Result.append ("%Namount_open:")
           Result.append (l_amount_open.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached amount_filled as l_amount_filled then
           Result.append ("%Namount_filled:")
           Result.append (l_amount_filled.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached avg_px as l_avg_px then
           Result.append ("%Navg_px:")
           Result.append (l_avg_px.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached status as l_status then
           Result.append ("%Nstatus:")
           Result.append (l_status.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached status_history as l_status_history then
           across l_status_history as ic loop
             Result.append ("%N status_history:")
             Result.append (ic.item.out)
             Result.append ("%N")
           end
-        end 
+        end
         if attached error_message as l_error_message then
           Result.append ("%Nerror_message:")
           Result.append (l_error_message.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached fills as l_fills then
           across l_fills as ic loop
             Result.append ("%N fills:")
             Result.append (ic.item.out)
             Result.append ("%N")
           end
-        end 
+        end
       end
 end
-
 

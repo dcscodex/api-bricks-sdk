@@ -30,7 +30,8 @@ const (
 	JSON_ERROR RejectReason = "JSON_ERROR"
 )
 
-var allowedRejectReasonEnumValues = []RejectReason{
+// All allowed values of RejectReason enum
+var AllowedRejectReasonEnumValues = []RejectReason{
 	"OTHER",
 	"EXCHANGE_UNREACHABLE",
 	"EXCHANGE_RESPONSE_TIMEOUT",
@@ -47,7 +48,7 @@ func (v *RejectReason) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := RejectReason(value)
-	for _, existing := range allowedRejectReasonEnumValues {
+	for _, existing := range AllowedRejectReasonEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -64,13 +65,13 @@ func NewRejectReasonFromValue(v string) (*RejectReason, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RejectReason: valid values are %v", v, allowedRejectReasonEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for RejectReason: valid values are %v", v, AllowedRejectReasonEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v RejectReason) IsValid() bool {
-	for _, existing := range allowedRejectReasonEnumValues {
+	for _, existing := range AllowedRejectReasonEnumValues {
 		if existing == v {
 			return true
 		}

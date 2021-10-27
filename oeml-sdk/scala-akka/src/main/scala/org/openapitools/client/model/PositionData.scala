@@ -34,4 +34,3 @@ case class PositionData (
   rawData: Option[Any] = None
 ) extends ApiModel
 
-

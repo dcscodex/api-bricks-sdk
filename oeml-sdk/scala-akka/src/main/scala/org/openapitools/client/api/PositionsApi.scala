@@ -23,7 +23,7 @@ object PositionsApi {
 }
 
 class PositionsApi(baseUrl: String) {
-  
+
   /**
    * Get current open positions across all or single exchange.
    * 

@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -74,7 +75,7 @@ class ApiClient {
       ? '?${urlEncodedQueryParams.join('&')}'
       : '';
 
-    final Uri uri = Uri.parse('$basePath$path$queryString');
+    final uri = Uri.parse('$basePath$path$queryString');
 
     if (nullableContentType != null) {
       headerParams['Content-Type'] = nullableContentType;
@@ -92,7 +93,8 @@ class ApiClient {
         body.finalize().listen(
           request.sink.add,
           onDone: request.sink.close,
-          onError: (error, trace) => request.sink.close(),
+          // ignore: avoid_types_on_closure_parameters
+          onError: (Object error, StackTrace trace) => request.sink.close(),
           cancelOnError: true,
         );
         final response = await _client.send(request);
@@ -178,18 +180,17 @@ class ApiClient {
     try {
       switch (targetType) {
         case 'String':
-          return '$value';
+          return value is String ? value : value.toString();
         case 'int':
           return value is int ? value : int.parse('$value');
+        case 'double':
+          return value is double ? value : double.parse('$value');
         case 'bool':
           if (value is bool) {
             return value;
           }
           final valueString = '$value'.toLowerCase();
           return valueString == 'true' || valueString == '1';
-          break;
-        case 'double':
-          return value is double ? value : double.parse('$value');
         case 'Balance':
           return Balance.fromJson(value);
         case 'BalanceData':
@@ -200,13 +201,10 @@ class ApiClient {
           return MessageReject.fromJson(value);
         case 'OrdSide':
           return OrdSideTypeTransformer().decode(value);
-          
         case 'OrdStatus':
           return OrdStatusTypeTransformer().decode(value);
-          
         case 'OrdType':
           return OrdTypeTypeTransformer().decode(value);
-          
         case 'OrderCancelAllRequest':
           return OrderCancelAllRequest.fromJson(value);
         case 'OrderCancelSingleRequest':
@@ -223,10 +221,8 @@ class ApiClient {
           return PositionData.fromJson(value);
         case 'RejectReason':
           return RejectReasonTypeTransformer().decode(value);
-          
         case 'TimeInForce':
           return TimeInForceTypeTransformer().decode(value);
-          
         case 'ValidationError':
           return ValidationError.fromJson(value);
         default:
@@ -234,25 +230,24 @@ class ApiClient {
           if (value is List && (match = _regList.firstMatch(targetType)) != null) {
             targetType = match[1]; // ignore: parameter_assignments
             return value
-              .map((v) => _deserialize(v, targetType, growable: growable))
+              .map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable))
               .toList(growable: growable);
           }
           if (value is Set && (match = _regSet.firstMatch(targetType)) != null) {
             targetType = match[1]; // ignore: parameter_assignments
             return value
-              .map((v) => _deserialize(v, targetType, growable: growable))
+              .map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable))
               .toSet();
           }
           if (value is Map && (match = _regMap.firstMatch(targetType)) != null) {
             targetType = match[1]; // ignore: parameter_assignments
-            return Map.fromIterables(
-              value.keys,
-              value.values.map((v) => _deserialize(v, targetType, growable: growable)),
+            return Map<String, dynamic>.fromIterables(
+              value.keys.cast<String>(),
+              value.values.map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable)),
             );
           }
-          break;
       }
-    } catch (error, trace) {
+    } on Exception catch (error, trace) {
       throw ApiException.withInner(HttpStatus.internalServerError, 'Exception during deserialization.', error, trace,);
     }
     throw ApiException(HttpStatus.internalServerError, 'Could not find a suitable class for deserialization',);

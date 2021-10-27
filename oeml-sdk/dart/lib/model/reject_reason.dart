@@ -5,6 +5,7 @@
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
 part of openapi.api;
@@ -18,7 +19,7 @@ class RejectReason {
   final String value;
 
   @override
-  String toString() => value;
+  String toString() => value ?? '';
 
   String toJson() => value;
 
@@ -44,20 +45,18 @@ class RejectReason {
   static RejectReason fromJson(dynamic value) =>
     RejectReasonTypeTransformer().decode(value);
 
-  static List<RejectReason> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>
-    json == null || json.isEmpty
-      ? true == emptyIsNull ? null : <RejectReason>[]
-      : json
-          .map((value) => RejectReason.fromJson(value))
-          .toList(growable: true == growable);
+  static List<RejectReason> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(RejectReason.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <RejectReason>[];
 }
 
 /// Transformation class that can [encode] an instance of [RejectReason] to String,
 /// and [decode] dynamic data back to [RejectReason].
 class RejectReasonTypeTransformer {
-  const RejectReasonTypeTransformer._();
+  factory RejectReasonTypeTransformer() => _instance ??= const RejectReasonTypeTransformer._();
 
-  factory RejectReasonTypeTransformer() => _instance ??= RejectReasonTypeTransformer._();
+  const RejectReasonTypeTransformer._();
 
   String encode(RejectReason data) => data.value;
 
@@ -70,18 +69,20 @@ class RejectReasonTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   RejectReason decode(dynamic data, {bool allowNull}) {
-    switch (data) {
-      case r'OTHER': return RejectReason.OTHER;
-      case r'EXCHANGE_UNREACHABLE': return RejectReason.EXCHANGE_UNREACHABLE;
-      case r'EXCHANGE_RESPONSE_TIMEOUT': return RejectReason.EXCHANGE_RESPONSE_TIMEOUT;
-      case r'ORDER_ID_NOT_FOUND': return RejectReason.ORDER_ID_NOT_FOUND;
-      case r'INVALID_TYPE': return RejectReason.INVALID_TYPE;
-      case r'METHOD_NOT_SUPPORTED': return RejectReason.METHOD_NOT_SUPPORTED;
-      case r'JSON_ERROR': return RejectReason.JSON_ERROR;
-      default:
-        if (allowNull == false) {
-          throw ArgumentError('Unknown enum value to decode: $data');
-        }
+    if (data != null) {
+      switch (data.toString()) {
+        case r'OTHER': return RejectReason.OTHER;
+        case r'EXCHANGE_UNREACHABLE': return RejectReason.EXCHANGE_UNREACHABLE;
+        case r'EXCHANGE_RESPONSE_TIMEOUT': return RejectReason.EXCHANGE_RESPONSE_TIMEOUT;
+        case r'ORDER_ID_NOT_FOUND': return RejectReason.ORDER_ID_NOT_FOUND;
+        case r'INVALID_TYPE': return RejectReason.INVALID_TYPE;
+        case r'METHOD_NOT_SUPPORTED': return RejectReason.METHOD_NOT_SUPPORTED;
+        case r'JSON_ERROR': return RejectReason.JSON_ERROR;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
     }
     return null;
   }
@@ -89,3 +90,4 @@ class RejectReasonTypeTransformer {
   /// Singleton [RejectReasonTypeTransformer] instance.
   static RejectReasonTypeTransformer _instance;
 }
+

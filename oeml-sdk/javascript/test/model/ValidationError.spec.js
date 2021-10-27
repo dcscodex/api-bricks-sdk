@@ -50,7 +50,7 @@
   describe('ValidationError', function() {
     it('should create an instance of ValidationError', function() {
       // uncomment below and update the code to test ValidationError
-      //var instane = new OemlRestApi.ValidationError();
+      //var instance = new OemlRestApi.ValidationError();
       //expect(instance).to.be.a(OemlRestApi.ValidationError);
     });
 

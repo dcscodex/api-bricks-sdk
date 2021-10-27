@@ -9,7 +9,7 @@ test_that("time", {
   # tests for the property `time` (character)
   # Execution time.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`time`, "EXPECTED_RESULT")
 })
 
@@ -17,7 +17,7 @@ test_that("price", {
   # tests for the property `price` (numeric)
   # Execution price.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`price`, "EXPECTED_RESULT")
 })
 
@@ -25,7 +25,7 @@ test_that("amount", {
   # tests for the property `amount` (numeric)
   # Executed quantity.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`amount`, "EXPECTED_RESULT")
 })
 

@@ -381,7 +381,7 @@ encodeBalanceDataPairs model =
             , maybeEncode "balance" Json.Encode.float model.balance
             , maybeEncode "available" Json.Encode.float model.available
             , maybeEncode "locked" Json.Encode.float model.locked
-            , maybeEncode "last_updated_by"  model.lastUpdatedBy
+            , maybeEncode "last_updated_by" encodeBalanceDataLastUpdatedBy model.lastUpdatedBy
             , maybeEncode "rate_usd" Json.Encode.float model.rateUsd
             , maybeEncode "traded" Json.Encode.float model.traded
             ]
@@ -582,7 +582,7 @@ encodeOrderExecutionReportPairs model =
             , encode "order_type" encodeOrdType model.orderType
             , encode "time_in_force" encodeTimeInForce model.timeInForce
             , maybeEncode "expire_time" encodePosix model.expireTime
-            , maybeEncode "exec_inst" (Json.Encode.list ) model.execInst
+            , maybeEncode "exec_inst" (Json.Encode.list encodeOrderExecutionReportExecInst) model.execInst
             , encode "client_order_id_format_exchange" Json.Encode.string model.clientOrderIdFormatExchange
             , maybeEncode "exchange_order_id" Json.Encode.string model.exchangeOrderId
             , encode "amount_open" Json.Encode.float model.amountOpen
@@ -639,7 +639,7 @@ encodeOrderNewSingleRequestPairs model =
             , encode "order_type" encodeOrdType model.orderType
             , encode "time_in_force" encodeTimeInForce model.timeInForce
             , maybeEncode "expire_time" encodePosix model.expireTime
-            , maybeEncode "exec_inst" (Json.Encode.list ) model.execInst
+            , maybeEncode "exec_inst" (Json.Encode.list encodeOrderNewSingleRequestExecInst) model.execInst
             ]
     in
     pairs
@@ -809,7 +809,7 @@ balanceDataDecoder =
         |> maybeDecode "balance" Json.Decode.float Nothing
         |> maybeDecode "available" Json.Decode.float Nothing
         |> maybeDecode "locked" Json.Decode.float Nothing
-        |> maybeDecode "last_updated_by"  Nothing
+        |> maybeDecode "last_updated_by" balanceDataLastUpdatedByDecoder Nothing
         |> maybeDecode "rate_usd" Json.Decode.float Nothing
         |> maybeDecode "traded" Json.Decode.float Nothing
 
@@ -949,7 +949,7 @@ orderExecutionReportDecoder =
         |> decode "order_type" ordTypeDecoder 
         |> decode "time_in_force" timeInForceDecoder 
         |> maybeDecode "expire_time" posixDecoder Nothing
-        |> maybeDecode "exec_inst" (Json.Decode.list ) Nothing
+        |> maybeDecode "exec_inst" (Json.Decode.list orderExecutionReportExecInstDecoder) Nothing
         |> decode "client_order_id_format_exchange" Json.Decode.string 
         |> maybeDecode "exchange_order_id" Json.Decode.string Nothing
         |> decode "amount_open" Json.Decode.float 
@@ -995,7 +995,7 @@ orderNewSingleRequestDecoder =
         |> decode "order_type" ordTypeDecoder 
         |> decode "time_in_force" timeInForceDecoder 
         |> maybeDecode "expire_time" posixDecoder Nothing
-        |> maybeDecode "exec_inst" (Json.Decode.list ) Nothing
+        |> maybeDecode "exec_inst" (Json.Decode.list orderNewSingleRequestExecInstDecoder) Nothing
 
 
 orderNewSingleRequestExecInstDecoder : Json.Decode.Decoder OrderNewSingleRequestExecInst

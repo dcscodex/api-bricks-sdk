@@ -97,7 +97,7 @@ feature -- Deserializer
 				create err
 				err.set_description ("Deserialization is not supported by default you will need to add it by hand.")
 				err.raise
-			end	
+			end
 		end
 
 

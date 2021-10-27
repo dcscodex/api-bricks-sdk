@@ -42,74 +42,7 @@ class OrdersApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __v1_orders_cancel_all_post(
-            self,
-            order_cancel_all_request,
-            **kwargs
-        ):
-            """Cancel all orders request  # noqa: E501
-
-            This request cancels all open orders on single specified exchange.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.v1_orders_cancel_all_post(order_cancel_all_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                order_cancel_all_request (OrderCancelAllRequest): OrderCancelAllRequest object.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                MessageReject
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['order_cancel_all_request'] = \
-                order_cancel_all_request
-            return self.call_with_http_info(**kwargs)
-
-        self.v1_orders_cancel_all_post = _Endpoint(
+        self.v1_orders_cancel_all_post_endpoint = _Endpoint(
             settings={
                 'response_type': (MessageReject,),
                 'auth': [],
@@ -158,77 +91,9 @@ class OrdersApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__v1_orders_cancel_all_post
+            api_client=api_client
         )
-
-        def __v1_orders_cancel_post(
-            self,
-            order_cancel_single_request,
-            **kwargs
-        ):
-            """Cancel order request  # noqa: E501
-
-            Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.v1_orders_cancel_post(order_cancel_single_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                order_cancel_single_request (OrderCancelSingleRequest): OrderCancelSingleRequest object.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                OrderExecutionReport
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['order_cancel_single_request'] = \
-                order_cancel_single_request
-            return self.call_with_http_info(**kwargs)
-
-        self.v1_orders_cancel_post = _Endpoint(
+        self.v1_orders_cancel_post_endpoint = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],
@@ -277,73 +142,9 @@ class OrdersApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__v1_orders_cancel_post
+            api_client=api_client
         )
-
-        def __v1_orders_get(
-            self,
-            **kwargs
-        ):
-            """Get open orders  # noqa: E501
-
-            Get last execution reports for open orders across all or single exchange.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.v1_orders_get(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                exchange_id (str): Filter the open orders to the specific exchange.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                OrderExecutionReports
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.v1_orders_get = _Endpoint(
+        self.v1_orders_get_endpoint = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReports,),
                 'auth': [],
@@ -389,77 +190,9 @@ class OrdersApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__v1_orders_get
+            api_client=api_client
         )
-
-        def __v1_orders_post(
-            self,
-            order_new_single_request,
-            **kwargs
-        ):
-            """Send new order  # noqa: E501
-
-            This request creating new order for the specific exchange.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.v1_orders_post(order_new_single_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                order_new_single_request (OrderNewSingleRequest): OrderNewSingleRequest object.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                OrderExecutionReport
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['order_new_single_request'] = \
-                order_new_single_request
-            return self.call_with_http_info(**kwargs)
-
-        self.v1_orders_post = _Endpoint(
+        self.v1_orders_post_endpoint = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],
@@ -508,77 +241,9 @@ class OrdersApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__v1_orders_post
+            api_client=api_client
         )
-
-        def __v1_orders_status_client_order_id_get(
-            self,
-            client_order_id,
-            **kwargs
-        ):
-            """Get order execution report  # noqa: E501
-
-            Get the last order execution report for the specified order. The requested order does not need to be active or opened.  # noqa: E501
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.v1_orders_status_client_order_id_get(client_order_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                client_order_id (str): The unique identifier of the order assigned by the client.
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                OrderExecutionReport
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['client_order_id'] = \
-                client_order_id
-            return self.call_with_http_info(**kwargs)
-
-        self.v1_orders_status_client_order_id_get = _Endpoint(
+        self.v1_orders_status_client_order_id_get_endpoint = _Endpoint(
             settings={
                 'response_type': (OrderExecutionReport,),
                 'auth': [],
@@ -625,6 +290,332 @@ class OrdersApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__v1_orders_status_client_order_id_get
+            api_client=api_client
         )
+
+    def v1_orders_cancel_all_post(
+        self,
+        order_cancel_all_request,
+        **kwargs
+    ):
+        """Cancel all orders request  # noqa: E501
+
+        This request cancels all open orders on single specified exchange.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.v1_orders_cancel_all_post(order_cancel_all_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            order_cancel_all_request (OrderCancelAllRequest): OrderCancelAllRequest object.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            MessageReject
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['order_cancel_all_request'] = \
+            order_cancel_all_request
+        return self.v1_orders_cancel_all_post_endpoint.call_with_http_info(**kwargs)
+
+    def v1_orders_cancel_post(
+        self,
+        order_cancel_single_request,
+        **kwargs
+    ):
+        """Cancel order request  # noqa: E501
+
+        Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.v1_orders_cancel_post(order_cancel_single_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            order_cancel_single_request (OrderCancelSingleRequest): OrderCancelSingleRequest object.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            OrderExecutionReport
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['order_cancel_single_request'] = \
+            order_cancel_single_request
+        return self.v1_orders_cancel_post_endpoint.call_with_http_info(**kwargs)
+
+    def v1_orders_get(
+        self,
+        **kwargs
+    ):
+        """Get open orders  # noqa: E501
+
+        Get last execution reports for open orders across all or single exchange.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.v1_orders_get(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            exchange_id (str): Filter the open orders to the specific exchange.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            OrderExecutionReports
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.v1_orders_get_endpoint.call_with_http_info(**kwargs)
+
+    def v1_orders_post(
+        self,
+        order_new_single_request,
+        **kwargs
+    ):
+        """Send new order  # noqa: E501
+
+        This request creating new order for the specific exchange.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.v1_orders_post(order_new_single_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            order_new_single_request (OrderNewSingleRequest): OrderNewSingleRequest object.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            OrderExecutionReport
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['order_new_single_request'] = \
+            order_new_single_request
+        return self.v1_orders_post_endpoint.call_with_http_info(**kwargs)
+
+    def v1_orders_status_client_order_id_get(
+        self,
+        client_order_id,
+        **kwargs
+    ):
+        """Get order execution report  # noqa: E501
+
+        Get the last order execution report for the specified order. The requested order does not need to be active or opened.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.v1_orders_status_client_order_id_get(client_order_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            client_order_id (str): The unique identifier of the order assigned by the client.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            OrderExecutionReport
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['client_order_id'] = \
+            client_order_id
+        return self.v1_orders_status_client_order_id_get_endpoint.call_with_http_info(**kwargs)
+

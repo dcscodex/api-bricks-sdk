@@ -9,7 +9,7 @@ test_that("symbol_id_exchange", {
   # tests for the property `symbol_id_exchange` (character)
   # Exchange symbol.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`symbol_id_exchange`, "EXPECTED_RESULT")
 })
 
@@ -17,7 +17,7 @@ test_that("symbol_id_coinapi", {
   # tests for the property `symbol_id_coinapi` (character)
   # CoinAPI symbol.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`symbol_id_coinapi`, "EXPECTED_RESULT")
 })
 
@@ -25,7 +25,7 @@ test_that("avg_entry_price", {
   # tests for the property `avg_entry_price` (numeric)
   # Calculated average price of all fills on this position.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`avg_entry_price`, "EXPECTED_RESULT")
 })
 
@@ -33,14 +33,14 @@ test_that("quantity", {
   # tests for the property `quantity` (numeric)
   # The current position quantity.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`quantity`, "EXPECTED_RESULT")
 })
 
 test_that("side", {
   # tests for the property `side` (OrdSide)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`side`, "EXPECTED_RESULT")
 })
 
@@ -48,7 +48,7 @@ test_that("unrealized_pnl", {
   # tests for the property `unrealized_pnl` (numeric)
   # Unrealised profit or loss (PNL) of this position.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`unrealized_pnl`, "EXPECTED_RESULT")
 })
 
@@ -56,7 +56,7 @@ test_that("leverage", {
   # tests for the property `leverage` (numeric)
   # Leverage for this position reported by the exchange.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`leverage`, "EXPECTED_RESULT")
 })
 
@@ -64,7 +64,7 @@ test_that("cross_margin", {
   # tests for the property `cross_margin` (character)
   # Is cross margin mode enable for this position?
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`cross_margin`, "EXPECTED_RESULT")
 })
 
@@ -72,14 +72,14 @@ test_that("liquidation_price", {
   # tests for the property `liquidation_price` (numeric)
   # Liquidation price. If mark price will reach this value, the position will be liquidated.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`liquidation_price`, "EXPECTED_RESULT")
 })
 
 test_that("raw_data", {
   # tests for the property `raw_data` (object)
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`raw_data`, "EXPECTED_RESULT")
 })
 

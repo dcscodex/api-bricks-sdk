@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **side** | [**\OpenAPI\Client\Model\OrdSide**](OrdSide.md) |  |
 **order_type** | [**\OpenAPI\Client\Model\OrdType**](OrdType.md) |  |
 **time_in_force** | [**\OpenAPI\Client\Model\TimeInForce**](TimeInForce.md) |  |
-**expire_time** | [**\DateTime**](\DateTime.md) | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional]
+**expire_time** | **\DateTime** | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional]
 **exec_inst** | **string[]** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

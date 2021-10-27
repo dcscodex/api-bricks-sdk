@@ -11,7 +11,7 @@ note
  	]"
 	date: "$Date$"
 	revision: "$Revision$"
-	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"  
+	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
 
 deferred class
 	AUTHENTICATION

@@ -24,7 +24,7 @@
 # 
 #
 
-# For improved pattern matching in case statemets
+# For improved pattern matching in case statements
 shopt -s extglob
 
 ###############################################################################
@@ -65,7 +65,7 @@ declare -A header_arguments
 declare -A operation_parameters
 
 ##
-# Declare colors with autodection if output is terminal
+# Declare colors with autodetection if output is terminal
 if [ -t 1 ]; then
     RED="$(tput setaf 1)"
     GREEN="$(tput setaf 2)"
@@ -380,7 +380,7 @@ build_request_path() {
                 parameter_value+="${qparam}=${qvalue}"
             done
         #
-        # Append parameters specified as 'mutli' collections i.e. param=value1&param=value2&...
+        # Append parameters specified as 'multi' collections i.e. param=value1&param=value2&...
         #
         elif [[ "${collection_type}" == "multi" ]]; then
             local vcount=0
@@ -521,7 +521,7 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156
     echo -e "         \\t\\t\\t\\trequired parameters or wrong content type"
     echo -e "  --dry-run\\t\\t\\t\\tPrint out the cURL command without"
     echo -e "           \\t\\t\\t\\texecuting it"
-    echo -e "  -nc,--no-colors\\t\\t\\tEnforce print without colors, otherwise autodected"
+    echo -e "  -nc,--no-colors\\t\\t\\tEnforce print without colors, otherwise autodetected"
     echo -e "  -ac,--accept ${YELLOW}<mime-type>${OFF}\\t\\tSet the 'Accept' header in the request"
     echo -e "  -ct,--content-type ${YELLOW}<mime-type>${OFF}\\tSet the 'Content-type' header in "
     echo -e "                                \\tthe request"
@@ -750,9 +750,9 @@ call_v1BalancesGet() {
         basic_auth_option="-u ${basic_auth_credential}"
     fi
     if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     fi
 }
 
@@ -790,7 +790,7 @@ call_v1OrdersCancelAllPost() {
     #
     # Check if the user provided 'Content-type' headers in the
     # command line. If not try to set them based on the OpenAPI specification
-    # if values produces and consumes are defined unambigously
+    # if values produces and consumes are defined unambiguously
     #
     if [[ -z $header_content_type ]]; then
         header_content_type="application/json"
@@ -868,7 +868,7 @@ call_v1OrdersCancelPost() {
     #
     # Check if the user provided 'Content-type' headers in the
     # command line. If not try to set them based on the OpenAPI specification
-    # if values produces and consumes are defined unambigously
+    # if values produces and consumes are defined unambiguously
     #
     if [[ -z $header_content_type ]]; then
         header_content_type="application/json"
@@ -942,9 +942,9 @@ call_v1OrdersGet() {
         basic_auth_option="-u ${basic_auth_credential}"
     fi
     if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     fi
 }
 
@@ -982,7 +982,7 @@ call_v1OrdersPost() {
     #
     # Check if the user provided 'Content-type' headers in the
     # command line. If not try to set them based on the OpenAPI specification
-    # if values produces and consumes are defined unambigously
+    # if values produces and consumes are defined unambiguously
     #
     if [[ -z $header_content_type ]]; then
         header_content_type="application/json"
@@ -1056,9 +1056,9 @@ call_v1OrdersStatusClientOrderIdGet() {
         basic_auth_option="-u ${basic_auth_credential}"
     fi
     if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     fi
 }
 
@@ -1092,9 +1092,9 @@ call_v1PositionsGet() {
         basic_auth_option="-u ${basic_auth_credential}"
     fi
     if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     fi
 }
 
@@ -1226,7 +1226,7 @@ case $key in
     ;;
     *:=*)
     # Parse body arguments and convert them into top level
-    # JSON properties passed in the body content without qoutes
+    # JSON properties passed in the body content without quotes
     if [[ "$operation" ]]; then
         # ignore error about 'sep' being unused
         # shellcheck disable=SC2034

@@ -32,7 +32,8 @@ const (
 	REJECTED OrdStatus = "REJECTED"
 )
 
-var allowedOrdStatusEnumValues = []OrdStatus{
+// All allowed values of OrdStatus enum
+var AllowedOrdStatusEnumValues = []OrdStatus{
 	"RECEIVED",
 	"ROUTING",
 	"ROUTED",
@@ -51,7 +52,7 @@ func (v *OrdStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OrdStatus(value)
-	for _, existing := range allowedOrdStatusEnumValues {
+	for _, existing := range AllowedOrdStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -68,13 +69,13 @@ func NewOrdStatusFromValue(v string) (*OrdStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for OrdStatus: valid values are %v", v, allowedOrdStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for OrdStatus: valid values are %v", v, AllowedOrdStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v OrdStatus) IsValid() bool {
-	for _, existing := range allowedOrdStatusEnumValues {
+	for _, existing := range AllowedOrdStatusEnumValues {
 		if existing == v {
 			return true
 		}

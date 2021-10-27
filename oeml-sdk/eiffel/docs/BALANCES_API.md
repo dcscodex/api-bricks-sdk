@@ -9,7 +9,7 @@ Feature | HTTP request | Description
 
 # **v1_balances_get**
 > v1_balances_get (exchange_id:  detachable STRING_32 ): detachable LIST [BALANCE]
-	
+
 
 Get balances
 

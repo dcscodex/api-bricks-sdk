@@ -49,7 +49,7 @@
   describe('OrdStatus', function() {
     it('should create an instance of OrdStatus', function() {
       // uncomment below and update the code to test OrdStatus
-      //var instane = new OemlRestApi.OrdStatus();
+      //var instance = new OemlRestApi.OrdStatus();
       //expect(instance).to.be.a(OemlRestApi.OrdStatus);
     });
 

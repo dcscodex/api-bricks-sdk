@@ -12,24 +12,24 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class ORDER_CANCEL_ALL_REQUEST 
+class ORDER_CANCEL_ALL_REQUEST
 
 
 
 
 feature --Access
 
-    exchange_id: detachable STRING_32 
+    exchange_id: detachable STRING_32
       -- Identifier of the exchange from which active orders should be canceled.
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_exchange_id (a_name: like exchange_id)
         -- Set 'exchange_id' with 'a_name'.
       do
         exchange_id := a_name
       ensure
-        exchange_id_set: exchange_id = a_name		
+        exchange_id_set: exchange_id = a_name
       end
 
 
@@ -43,9 +43,8 @@ feature -- Change Element
         if attached exchange_id as l_exchange_id then
           Result.append ("%Nexchange_id:")
           Result.append (l_exchange_id.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
       end
 end
-
 

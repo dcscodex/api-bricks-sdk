@@ -49,7 +49,7 @@
   describe('RejectReason', function() {
     it('should create an instance of RejectReason', function() {
       // uncomment below and update the code to test RejectReason
-      //var instane = new OemlRestApi.RejectReason();
+      //var instance = new OemlRestApi.RejectReason();
       //expect(instance).to.be.a(OemlRestApi.RejectReason);
     });
 

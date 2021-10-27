@@ -12,28 +12,28 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 	EIS:"Eiffel openapi generator", "src=https://openapi-generator.tech", "protocol=uri"
-class FILLS 
+class FILLS
 
 
 
 
 feature --Access
 
-    time: detachable DATE 
+    time: detachable DATE
       -- Execution time.
- 	price: REAL_32 
+ 	price: REAL_32
     	 -- Execution price.
- 	amount: REAL_32 
+ 	amount: REAL_32
     	 -- Executed quantity.
 
-feature -- Change Element  
- 
+feature -- Change Element
+
     set_time (a_name: like time)
         -- Set 'time' with 'a_name'.
       do
         time := a_name
       ensure
-        time_set: time = a_name		
+        time_set: time = a_name
       end
 
     set_price (a_name: like price)
@@ -41,7 +41,7 @@ feature -- Change Element
       do
         price := a_name
       ensure
-        price_set: price = a_name		
+        price_set: price = a_name
       end
 
     set_amount (a_name: like amount)
@@ -49,7 +49,7 @@ feature -- Change Element
       do
         amount := a_name
       ensure
-        amount_set: amount = a_name		
+        amount_set: amount = a_name
       end
 
 
@@ -63,19 +63,18 @@ feature -- Change Element
         if attached time as l_time then
           Result.append ("%Ntime:")
           Result.append (l_time.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached price as l_price then
           Result.append ("%Nprice:")
           Result.append (l_price.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
         if attached amount as l_amount then
           Result.append ("%Namount:")
           Result.append (l_amount.out)
-          Result.append ("%N")    
-        end  
+          Result.append ("%N")
+        end
       end
 end
-
 

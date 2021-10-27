@@ -9,7 +9,7 @@ test_that("asset_id_exchange", {
   # tests for the property `asset_id_exchange` (character)
   # Exchange currency code.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`asset_id_exchange`, "EXPECTED_RESULT")
 })
 
@@ -17,7 +17,7 @@ test_that("asset_id_coinapi", {
   # tests for the property `asset_id_coinapi` (character)
   # CoinAPI currency code.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`asset_id_coinapi`, "EXPECTED_RESULT")
 })
 
@@ -25,7 +25,7 @@ test_that("balance", {
   # tests for the property `balance` (numeric)
   # Value of the current total currency balance on the exchange.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`balance`, "EXPECTED_RESULT")
 })
 
@@ -33,7 +33,7 @@ test_that("available", {
   # tests for the property `available` (numeric)
   # Value of the current available currency balance on the exchange that can be used as collateral.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`available`, "EXPECTED_RESULT")
 })
 
@@ -41,7 +41,7 @@ test_that("locked", {
   # tests for the property `locked` (numeric)
   # Value of the current locked currency balance by the exchange.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`locked`, "EXPECTED_RESULT")
 })
 
@@ -49,7 +49,7 @@ test_that("last_updated_by", {
   # tests for the property `last_updated_by` (character)
   # Source of the last modification. 
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`last_updated_by`, "EXPECTED_RESULT")
 })
 
@@ -57,7 +57,7 @@ test_that("rate_usd", {
   # tests for the property `rate_usd` (numeric)
   # Current exchange rate to the USD for the single unit of the currency. 
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`rate_usd`, "EXPECTED_RESULT")
 })
 
@@ -65,7 +65,7 @@ test_that("traded", {
   # tests for the property `traded` (numeric)
   # Value of the current total traded.
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`traded`, "EXPECTED_RESULT")
 })
 

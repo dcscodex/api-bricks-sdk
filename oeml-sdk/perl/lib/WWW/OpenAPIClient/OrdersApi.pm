@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::OrdersApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,7 +52,7 @@ sub new {
 # v1_orders_cancel_all_post
 #
 # Cancel all orders request
-# 
+#
 # @param OrderCancelAllRequest $order_cancel_all_request OrderCancelAllRequest object. (required)
 {
     my $params = {
@@ -62,7 +62,7 @@ sub new {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_orders_cancel_all_post' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_orders_cancel_all_post' } = {
         summary => 'Cancel all orders request',
         params => $params,
         returns => 'MessageReject',
@@ -117,7 +117,7 @@ sub v1_orders_cancel_all_post {
 # v1_orders_cancel_post
 #
 # Cancel order request
-# 
+#
 # @param OrderCancelSingleRequest $order_cancel_single_request OrderCancelSingleRequest object. (required)
 {
     my $params = {
@@ -127,7 +127,7 @@ sub v1_orders_cancel_all_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_orders_cancel_post' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_orders_cancel_post' } = {
         summary => 'Cancel order request',
         params => $params,
         returns => 'OrderExecutionReport',
@@ -182,7 +182,7 @@ sub v1_orders_cancel_post {
 # v1_orders_get
 #
 # Get open orders
-# 
+#
 # @param string $exchange_id Filter the open orders to the specific exchange. (optional)
 {
     my $params = {
@@ -192,7 +192,7 @@ sub v1_orders_cancel_post {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_orders_get' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_orders_get' } = {
         summary => 'Get open orders',
         params => $params,
         returns => 'ARRAY[OrderExecutionReport]',
@@ -242,7 +242,7 @@ sub v1_orders_get {
 # v1_orders_post
 #
 # Send new order
-# 
+#
 # @param OrderNewSingleRequest $order_new_single_request OrderNewSingleRequest object. (required)
 {
     my $params = {
@@ -252,7 +252,7 @@ sub v1_orders_get {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_orders_post' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_orders_post' } = {
         summary => 'Send new order',
         params => $params,
         returns => 'OrderExecutionReport',
@@ -307,7 +307,7 @@ sub v1_orders_post {
 # v1_orders_status_client_order_id_get
 #
 # Get order execution report
-# 
+#
 # @param string $client_order_id The unique identifier of the order assigned by the client. (required)
 {
     my $params = {
@@ -317,7 +317,7 @@ sub v1_orders_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_orders_status_client_order_id_get' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_orders_status_client_order_id_get' } = {
         summary => 'Get order execution report',
         params => $params,
         returns => 'OrderExecutionReport',

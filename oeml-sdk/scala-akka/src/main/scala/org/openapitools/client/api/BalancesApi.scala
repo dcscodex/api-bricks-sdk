@@ -23,7 +23,7 @@ object BalancesApi {
 }
 
 class BalancesApi(baseUrl: String) {
-  
+
   /**
    * Get current currency balance from all or single exchange.
    * 

@@ -19,4 +19,3 @@ case class Position (
   data: Option[Seq[PositionData]] = None
 ) extends ApiModel
 
-

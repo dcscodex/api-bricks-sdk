@@ -22,7 +22,7 @@ package WWW::OpenAPIClient::BalancesApi;
 require 5.6.0;
 use strict;
 use warnings;
-use utf8; 
+use utf8;
 use Exporter;
 use Carp qw( croak );
 use Log::Any qw($log);
@@ -52,7 +52,7 @@ sub new {
 # v1_balances_get
 #
 # Get balances
-# 
+#
 # @param string $exchange_id Filter the balances to the specific exchange. (optional)
 {
     my $params = {
@@ -62,7 +62,7 @@ sub new {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'v1_balances_get' } = { 
+    __PACKAGE__->method_documentation->{ 'v1_balances_get' } = {
         summary => 'Get balances',
         params => $params,
         returns => 'ARRAY[Balance]',

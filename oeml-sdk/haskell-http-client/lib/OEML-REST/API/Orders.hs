@@ -66,7 +66,7 @@ import qualified Prelude as P
 -- 
 -- This request cancels all open orders on single specified exchange.
 -- 
-v1OrdersCancelAllPost 
+v1OrdersCancelAllPost
   :: (Consumes V1OrdersCancelAllPost MimeJSON, MimeRender MimeJSON OrderCancelAllRequest)
   => Accept accept -- ^ request accept ('MimeType')
   -> OrderCancelAllRequest -- ^ "orderCancelAllRequest" -  OrderCancelAllRequest object.
@@ -97,7 +97,7 @@ instance Produces V1OrdersCancelAllPost MimeApplictionJson
 -- 
 -- Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 -- 
-v1OrdersCancelPost 
+v1OrdersCancelPost
   :: (Consumes V1OrdersCancelPost MimeJSON, MimeRender MimeJSON OrderCancelSingleRequest)
   => Accept accept -- ^ request accept ('MimeType')
   -> OrderCancelSingleRequest -- ^ "orderCancelSingleRequest" -  OrderCancelSingleRequest object.
@@ -128,7 +128,7 @@ instance Produces V1OrdersCancelPost MimeApplictionJson
 -- 
 -- Get last execution reports for open orders across all or single exchange.
 -- 
-v1OrdersGet 
+v1OrdersGet
   :: Accept accept -- ^ request accept ('MimeType')
   -> OEML-RESTRequest V1OrdersGet MimeNoContent [OrderExecutionReport] accept
 v1OrdersGet  _ =
@@ -154,7 +154,7 @@ instance Produces V1OrdersGet MimeApplictionJson
 -- 
 -- This request creating new order for the specific exchange.
 -- 
-v1OrdersPost 
+v1OrdersPost
   :: (Consumes V1OrdersPost MimeJSON, MimeRender MimeJSON OrderNewSingleRequest)
   => Accept accept -- ^ request accept ('MimeType')
   -> OrderNewSingleRequest -- ^ "orderNewSingleRequest" -  OrderNewSingleRequest object.
@@ -185,7 +185,7 @@ instance Produces V1OrdersPost MimeApplictionJson
 -- 
 -- Get the last order execution report for the specified order. The requested order does not need to be active or opened.
 -- 
-v1OrdersStatusClientOrderIdGet 
+v1OrdersStatusClientOrderIdGet
   :: ClientOrderId -- ^ "clientOrderId" -  The unique identifier of the order assigned by the client.
   -> OEML-RESTRequest V1OrdersStatusClientOrderIdGet MimeNoContent OrderExecutionReport MimeJSON
 v1OrdersStatusClientOrderIdGet (ClientOrderId clientOrderId) =

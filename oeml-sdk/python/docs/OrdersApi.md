@@ -20,6 +20,7 @@ This request cancels all open orders on single specified exchange.
 
 ### Example
 
+
 ```python
 import time
 import openapi_client
@@ -74,6 +75,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Result |  -  |
@@ -90,6 +92,7 @@ Cancel order request
 Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
 
 ### Example
+
 
 ```python
 import time
@@ -148,6 +151,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The last execution report for the order for which cancelation was requested. |  -  |
@@ -164,6 +168,7 @@ Get open orders
 Get last execution reports for open orders across all or single exchange.
 
 ### Example
+
 
 ```python
 import time
@@ -217,6 +222,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Collection of order execution reports. |  -  |
@@ -232,6 +238,7 @@ Send new order
 This request creating new order for the specific exchange.
 
 ### Example
+
 
 ```python
 import time
@@ -298,6 +305,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Created |  -  |
@@ -315,6 +323,7 @@ Get order execution report
 Get the last order execution report for the specified order. The requested order does not need to be active or opened.
 
 ### Example
+
 
 ```python
 import time
@@ -367,6 +376,7 @@ No authorization required
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The last execution report of the requested order. |  -  |

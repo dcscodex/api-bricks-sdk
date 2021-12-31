@@ -18,9 +18,12 @@ import { HttpClient, HttpHeaders, HttpParams,
 import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
-import { Balance } from '../model/models';
-import { MessageReject } from '../model/models';
+// @ts-ignore
+import { Balance } from '../model/balance';
+// @ts-ignore
+import { MessageReject } from '../model/messageReject';
 
+// @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 

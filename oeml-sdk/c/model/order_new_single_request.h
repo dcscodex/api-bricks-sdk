@@ -60,6 +60,9 @@ typedef struct order_new_single_request_t {
     char *symbol_id_coinapi; // string
     double amount_order; //numeric
     double price; //numeric
+    ord_side_t *side; // custom
+    ord_type_t *order_type; // custom
+    time_in_force_t *time_in_force; // custom
     list_t *exec_inst; //primitive container
 
 } order_new_single_request_t;
@@ -71,6 +74,9 @@ order_new_single_request_t *order_new_single_request_create(
     char *symbol_id_coinapi,
     double amount_order,
     double price,
+    ord_side_t *side,
+    ord_type_t *order_type,
+    time_in_force_t *time_in_force,
     list_t *exec_inst
 );
 

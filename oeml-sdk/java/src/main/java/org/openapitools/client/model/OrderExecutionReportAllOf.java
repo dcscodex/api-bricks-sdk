@@ -33,7 +33,7 @@ import org.openapitools.client.model.OrdStatus;
  * The order execution report message.
  */
 @ApiModel(description = "The order execution report message.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-27T09:02:11.685290Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-31T10:40:15.215394Z[Etc/UTC]")
 public class OrderExecutionReportAllOf {
   public static final String SERIALIZED_NAME_CLIENT_ORDER_ID_FORMAT_EXCHANGE = "client_order_id_format_exchange";
   @SerializedName(SERIALIZED_NAME_CLIENT_ORDER_ID_FORMAT_EXCHANGE)
@@ -71,6 +71,8 @@ public class OrderExecutionReportAllOf {
   @SerializedName(SERIALIZED_NAME_FILLS)
   private List<Fills> fills = null;
 
+  public OrderExecutionReportAllOf() { 
+  }
 
   public OrderExecutionReportAllOf clientOrderIdFormatExchange(String clientOrderIdFormatExchange) {
     

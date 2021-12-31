@@ -144,7 +144,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class BalanceData {\n");
             sb.Append("  AssetIdExchange: ").Append(AssetIdExchange).Append("\n");
             sb.Append("  AssetIdCoinapi: ").Append(AssetIdCoinapi).Append("\n");
@@ -185,8 +185,9 @@ namespace CoinAPI.OMS.API.SDK.Model
         public bool Equals(BalanceData input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AssetIdExchange == input.AssetIdExchange ||
@@ -234,15 +235,19 @@ namespace CoinAPI.OMS.API.SDK.Model
             {
                 int hashCode = 41;
                 if (this.AssetIdExchange != null)
-                    hashCode = hashCode * 59 + this.AssetIdExchange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssetIdExchange.GetHashCode();
+                }
                 if (this.AssetIdCoinapi != null)
-                    hashCode = hashCode * 59 + this.AssetIdCoinapi.GetHashCode();
-                hashCode = hashCode * 59 + this.Balance.GetHashCode();
-                hashCode = hashCode * 59 + this.Available.GetHashCode();
-                hashCode = hashCode * 59 + this.Locked.GetHashCode();
-                hashCode = hashCode * 59 + this.LastUpdatedBy.GetHashCode();
-                hashCode = hashCode * 59 + this.RateUsd.GetHashCode();
-                hashCode = hashCode * 59 + this.Traded.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssetIdCoinapi.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Balance.GetHashCode();
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
+                hashCode = (hashCode * 59) + this.Locked.GetHashCode();
+                hashCode = (hashCode * 59) + this.LastUpdatedBy.GetHashCode();
+                hashCode = (hashCode * 59) + this.RateUsd.GetHashCode();
+                hashCode = (hashCode * 59) + this.Traded.GetHashCode();
                 return hashCode;
             }
         }

@@ -28,6 +28,7 @@ order_execution_report_all_of_t *order_execution_report_all_of_create(
     double amount_open,
     double amount_filled,
     double avg_px,
+    ord_status_t *status,
     list_t *status_history,
     char *error_message,
     list_t *fills
@@ -62,6 +63,10 @@ void order_execution_report_all_of_free(order_execution_report_all_of_t *order_e
     if (order_execution_report_all_of->exchange_order_id) {
         free(order_execution_report_all_of->exchange_order_id);
         order_execution_report_all_of->exchange_order_id = NULL;
+    }
+    if (order_execution_report_all_of->status) {
+        ord_status_free(order_execution_report_all_of->status);
+        order_execution_report_all_of->status = NULL;
     }
     if (order_execution_report_all_of->status_history) {
         list_ForEach(listEntry, order_execution_report_all_of->status_history) {
@@ -135,6 +140,14 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
 
     // order_execution_report_all_of->status
     
+    cJSON *status_local_JSON = ord_status_convertToJSON(order_execution_report_all_of->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
 
 
     // order_execution_report_all_of->status_history
@@ -188,6 +201,9 @@ fail:
 order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJSON *order_execution_report_all_ofJSON){
 
     order_execution_report_all_of_t *order_execution_report_all_of_local_var = NULL;
+
+    // define the local variable for order_execution_report_all_of->status
+    ord_status_t *status_local_nonprim = NULL;
 
     // order_execution_report_all_of->client_order_id_format_exchange
     cJSON *client_order_id_format_exchange = cJSON_GetObjectItemCaseSensitive(order_execution_report_all_ofJSON, "client_order_id_format_exchange");
@@ -249,6 +265,8 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
         goto end;
     }
 
+    
+    status_local_nonprim = ord_status_parseFromJSON(status); //custom
 
     // order_execution_report_all_of->status_history
     cJSON *status_history = cJSON_GetObjectItemCaseSensitive(order_execution_report_all_ofJSON, "status_history");
@@ -303,6 +321,7 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
         amount_open->valuedouble,
         amount_filled->valuedouble,
         avg_px ? avg_px->valuedouble : 0,
+        status_local_nonprim,
         status_history ? status_historyList : NULL,
         error_message ? strdup(error_message->valuestring) : NULL,
         fills ? fillsList : NULL
@@ -310,6 +329,10 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
 
     return order_execution_report_all_of_local_var;
 end:
+    if (status_local_nonprim) {
+        ord_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
+    }
     return NULL;
 
 }

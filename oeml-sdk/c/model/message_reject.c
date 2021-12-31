@@ -24,6 +24,7 @@ oeml___rest_api_message_reject__e reject_reasonmessage_reject_FromString(char* r
 
 message_reject_t *message_reject_create(
     char *type,
+    reject_reason_t *reject_reason,
     char *exchange_id,
     char *message,
     char *rejected_message
@@ -50,6 +51,10 @@ void message_reject_free(message_reject_t *message_reject) {
     if (message_reject->type) {
         free(message_reject->type);
         message_reject->type = NULL;
+    }
+    if (message_reject->reject_reason) {
+        reject_reason_free(message_reject->reject_reason);
+        message_reject->reject_reason = NULL;
     }
     if (message_reject->exchange_id) {
         free(message_reject->exchange_id);
@@ -79,6 +84,14 @@ cJSON *message_reject_convertToJSON(message_reject_t *message_reject) {
 
     // message_reject->reject_reason
     
+    cJSON *reject_reason_local_JSON = reject_reason_convertToJSON(message_reject->reject_reason);
+    if(reject_reason_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "reject_reason", reject_reason_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
     
 
 
@@ -117,6 +130,9 @@ message_reject_t *message_reject_parseFromJSON(cJSON *message_rejectJSON){
 
     message_reject_t *message_reject_local_var = NULL;
 
+    // define the local variable for message_reject->reject_reason
+    reject_reason_t *reject_reason_local_nonprim = NULL;
+
     // message_reject->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(message_rejectJSON, "type");
     if (type) { 
@@ -128,6 +144,8 @@ message_reject_t *message_reject_parseFromJSON(cJSON *message_rejectJSON){
 
     // message_reject->reject_reason
     cJSON *reject_reason = cJSON_GetObjectItemCaseSensitive(message_rejectJSON, "reject_reason");
+    if (reject_reason) { 
+    reject_reason_local_nonprim = reject_reason_parseFromJSON(reject_reason); //custom
     }
 
     // message_reject->exchange_id
@@ -160,6 +178,7 @@ message_reject_t *message_reject_parseFromJSON(cJSON *message_rejectJSON){
 
     message_reject_local_var = message_reject_create (
         type ? strdup(type->valuestring) : NULL,
+        reject_reason ? reject_reason_local_nonprim : NULL,
         exchange_id ? strdup(exchange_id->valuestring) : NULL,
         message ? strdup(message->valuestring) : NULL,
         rejected_message ? strdup(rejected_message->valuestring) : NULL
@@ -167,6 +186,10 @@ message_reject_t *message_reject_parseFromJSON(cJSON *message_rejectJSON){
 
     return message_reject_local_var;
 end:
+    if (reject_reason_local_nonprim) {
+        reject_reason_free(reject_reason_local_nonprim);
+        reject_reason_local_nonprim = NULL;
+    }
     return NULL;
 
 }

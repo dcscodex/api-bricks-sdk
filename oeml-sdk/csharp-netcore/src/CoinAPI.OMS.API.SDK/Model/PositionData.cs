@@ -133,7 +133,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PositionData {\n");
             sb.Append("  SymbolIdExchange: ").Append(SymbolIdExchange).Append("\n");
             sb.Append("  SymbolIdCoinapi: ").Append(SymbolIdCoinapi).Append("\n");
@@ -176,8 +176,9 @@ namespace CoinAPI.OMS.API.SDK.Model
         public bool Equals(PositionData input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.SymbolIdExchange == input.SymbolIdExchange ||
@@ -234,18 +235,24 @@ namespace CoinAPI.OMS.API.SDK.Model
             {
                 int hashCode = 41;
                 if (this.SymbolIdExchange != null)
-                    hashCode = hashCode * 59 + this.SymbolIdExchange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SymbolIdExchange.GetHashCode();
+                }
                 if (this.SymbolIdCoinapi != null)
-                    hashCode = hashCode * 59 + this.SymbolIdCoinapi.GetHashCode();
-                hashCode = hashCode * 59 + this.AvgEntryPrice.GetHashCode();
-                hashCode = hashCode * 59 + this.Quantity.GetHashCode();
-                hashCode = hashCode * 59 + this.Side.GetHashCode();
-                hashCode = hashCode * 59 + this.UnrealizedPnl.GetHashCode();
-                hashCode = hashCode * 59 + this.Leverage.GetHashCode();
-                hashCode = hashCode * 59 + this.CrossMargin.GetHashCode();
-                hashCode = hashCode * 59 + this.LiquidationPrice.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SymbolIdCoinapi.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AvgEntryPrice.GetHashCode();
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                hashCode = (hashCode * 59) + this.Side.GetHashCode();
+                hashCode = (hashCode * 59) + this.UnrealizedPnl.GetHashCode();
+                hashCode = (hashCode * 59) + this.Leverage.GetHashCode();
+                hashCode = (hashCode * 59) + this.CrossMargin.GetHashCode();
+                hashCode = (hashCode * 59) + this.LiquidationPrice.GetHashCode();
                 if (this.RawData != null)
-                    hashCode = hashCode * 59 + this.RawData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RawData.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -265,7 +265,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class OrderExecutionReport {\n");
             sb.Append("  ExchangeId: ").Append(ExchangeId).Append("\n");
             sb.Append("  ClientOrderId: ").Append(ClientOrderId).Append("\n");
@@ -318,8 +318,9 @@ namespace CoinAPI.OMS.API.SDK.Model
         public bool Equals(OrderExecutionReport input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ExchangeId == input.ExchangeId ||
@@ -425,35 +426,55 @@ namespace CoinAPI.OMS.API.SDK.Model
             {
                 int hashCode = 41;
                 if (this.ExchangeId != null)
-                    hashCode = hashCode * 59 + this.ExchangeId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExchangeId.GetHashCode();
+                }
                 if (this.ClientOrderId != null)
-                    hashCode = hashCode * 59 + this.ClientOrderId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientOrderId.GetHashCode();
+                }
                 if (this.SymbolIdExchange != null)
-                    hashCode = hashCode * 59 + this.SymbolIdExchange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SymbolIdExchange.GetHashCode();
+                }
                 if (this.SymbolIdCoinapi != null)
-                    hashCode = hashCode * 59 + this.SymbolIdCoinapi.GetHashCode();
-                hashCode = hashCode * 59 + this.AmountOrder.GetHashCode();
-                hashCode = hashCode * 59 + this.Price.GetHashCode();
-                hashCode = hashCode * 59 + this.Side.GetHashCode();
-                hashCode = hashCode * 59 + this.OrderType.GetHashCode();
-                hashCode = hashCode * 59 + this.TimeInForce.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SymbolIdCoinapi.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AmountOrder.GetHashCode();
+                hashCode = (hashCode * 59) + this.Price.GetHashCode();
+                hashCode = (hashCode * 59) + this.Side.GetHashCode();
+                hashCode = (hashCode * 59) + this.OrderType.GetHashCode();
+                hashCode = (hashCode * 59) + this.TimeInForce.GetHashCode();
                 if (this.ExpireTime != null)
-                    hashCode = hashCode * 59 + this.ExpireTime.GetHashCode();
-                hashCode = hashCode * 59 + this.ExecInst.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExpireTime.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ExecInst.GetHashCode();
                 if (this.ClientOrderIdFormatExchange != null)
-                    hashCode = hashCode * 59 + this.ClientOrderIdFormatExchange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientOrderIdFormatExchange.GetHashCode();
+                }
                 if (this.ExchangeOrderId != null)
-                    hashCode = hashCode * 59 + this.ExchangeOrderId.GetHashCode();
-                hashCode = hashCode * 59 + this.AmountOpen.GetHashCode();
-                hashCode = hashCode * 59 + this.AmountFilled.GetHashCode();
-                hashCode = hashCode * 59 + this.AvgPx.GetHashCode();
-                hashCode = hashCode * 59 + this.Status.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExchangeOrderId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AmountOpen.GetHashCode();
+                hashCode = (hashCode * 59) + this.AmountFilled.GetHashCode();
+                hashCode = (hashCode * 59) + this.AvgPx.GetHashCode();
+                hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.StatusHistory != null)
-                    hashCode = hashCode * 59 + this.StatusHistory.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StatusHistory.GetHashCode();
+                }
                 if (this.ErrorMessage != null)
-                    hashCode = hashCode * 59 + this.ErrorMessage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ErrorMessage.GetHashCode();
+                }
                 if (this.Fills != null)
-                    hashCode = hashCode * 59 + this.Fills.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Fills.GetHashCode();
+                }
                 return hashCode;
             }
         }

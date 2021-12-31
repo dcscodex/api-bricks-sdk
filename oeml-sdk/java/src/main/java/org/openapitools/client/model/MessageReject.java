@@ -28,7 +28,7 @@ import org.openapitools.client.model.RejectReason;
 /**
  * MessageReject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-27T09:02:11.685290Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-31T10:40:15.215394Z[Etc/UTC]")
 public class MessageReject {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -50,6 +50,8 @@ public class MessageReject {
   @SerializedName(SERIALIZED_NAME_REJECTED_MESSAGE)
   private String rejectedMessage;
 
+  public MessageReject() { 
+  }
 
   public MessageReject type(String type) {
     

@@ -28,7 +28,7 @@ import java.io.IOException;
  * Cancel single order request object.
  */
 @ApiModel(description = "Cancel single order request object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-27T09:02:11.685290Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-31T10:40:15.215394Z[Etc/UTC]")
 public class OrderCancelSingleRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -42,6 +42,8 @@ public class OrderCancelSingleRequest {
   @SerializedName(SERIALIZED_NAME_CLIENT_ORDER_ID)
   private String clientOrderId;
 
+  public OrderCancelSingleRequest() { 
+  }
 
   public OrderCancelSingleRequest exchangeId(String exchangeId) {
     

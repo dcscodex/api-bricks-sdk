@@ -18,13 +18,20 @@ import { HttpClient, HttpHeaders, HttpParams,
 import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
-import { MessageReject } from '../model/models';
-import { OrderCancelAllRequest } from '../model/models';
-import { OrderCancelSingleRequest } from '../model/models';
-import { OrderExecutionReport } from '../model/models';
-import { OrderNewSingleRequest } from '../model/models';
-import { ValidationError } from '../model/models';
+// @ts-ignore
+import { MessageReject } from '../model/messageReject';
+// @ts-ignore
+import { OrderCancelAllRequest } from '../model/orderCancelAllRequest';
+// @ts-ignore
+import { OrderCancelSingleRequest } from '../model/orderCancelSingleRequest';
+// @ts-ignore
+import { OrderExecutionReport } from '../model/orderExecutionReport';
+// @ts-ignore
+import { OrderNewSingleRequest } from '../model/orderNewSingleRequest';
+// @ts-ignore
+import { ValidationError } from '../model/validationError';
 
+// @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 

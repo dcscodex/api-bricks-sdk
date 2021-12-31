@@ -65,12 +65,12 @@ enum class RejectReason(val value: kotlin.String) {
         /**
          * Converts the provided [data] to a [String] on success, null otherwise.
          */
-        fun encode(data: Any?): kotlin.String? = if (data is RejectReason) "$data" else null
+        fun encode(data: kotlin.Any?): kotlin.String? = if (data is RejectReason) "$data" else null
 
         /**
          * Returns a valid [RejectReason] for [data], null otherwise.
          */
-        fun decode(data: Any?): RejectReason? = data?.let {
+        fun decode(data: kotlin.Any?): RejectReason? = data?.let {
           val normalizedData = "$it".lowercase()
           values().firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()

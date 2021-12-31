@@ -29,6 +29,7 @@ oeml___rest_api_message_reject__e message_reject_reject_reason_FromString(char* 
 
 typedef struct message_reject_t {
     char *type; // string
+    reject_reason_t *reject_reason; // custom
     char *exchange_id; // string
     char *message; // string
     char *rejected_message; // string
@@ -37,6 +38,7 @@ typedef struct message_reject_t {
 
 message_reject_t *message_reject_create(
     char *type,
+    reject_reason_t *reject_reason,
     char *exchange_id,
     char *message,
     char *rejected_message

@@ -34,6 +34,7 @@ typedef struct order_execution_report_all_of_t {
     double amount_open; //numeric
     double amount_filled; //numeric
     double avg_px; //numeric
+    ord_status_t *status; // custom
     list_t *status_history; //primitive container
     char *error_message; // string
     list_t *fills; //nonprimitive container
@@ -46,6 +47,7 @@ order_execution_report_all_of_t *order_execution_report_all_of_create(
     double amount_open,
     double amount_filled,
     double avg_px,
+    ord_status_t *status,
     list_t *status_history,
     char *error_message,
     list_t *fills

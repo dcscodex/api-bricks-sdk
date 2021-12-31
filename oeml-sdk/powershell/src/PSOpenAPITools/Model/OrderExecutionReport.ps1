@@ -130,47 +130,47 @@ function Initialize-OrderExecutionReport {
         'Creating PSCustomObject: PSOpenAPITools => OrderExecutionReport' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($ExchangeId -eq $null) {
+        if ($null -eq $ExchangeId) {
             throw "invalid value for 'ExchangeId', 'ExchangeId' cannot be null."
         }
 
-        if ($ClientOrderId -eq $null) {
+        if ($null -eq $ClientOrderId) {
             throw "invalid value for 'ClientOrderId', 'ClientOrderId' cannot be null."
         }
 
-        if ($AmountOrder -eq $null) {
+        if ($null -eq $AmountOrder) {
             throw "invalid value for 'AmountOrder', 'AmountOrder' cannot be null."
         }
 
-        if ($Price -eq $null) {
+        if ($null -eq $Price) {
             throw "invalid value for 'Price', 'Price' cannot be null."
         }
 
-        if ($Side -eq $null) {
+        if ($null -eq $Side) {
             throw "invalid value for 'Side', 'Side' cannot be null."
         }
 
-        if ($OrderType -eq $null) {
+        if ($null -eq $OrderType) {
             throw "invalid value for 'OrderType', 'OrderType' cannot be null."
         }
 
-        if ($TimeInForce -eq $null) {
+        if ($null -eq $TimeInForce) {
             throw "invalid value for 'TimeInForce', 'TimeInForce' cannot be null."
         }
 
-        if ($ClientOrderIdFormatExchange -eq $null) {
+        if ($null -eq $ClientOrderIdFormatExchange) {
             throw "invalid value for 'ClientOrderIdFormatExchange', 'ClientOrderIdFormatExchange' cannot be null."
         }
 
-        if ($AmountOpen -eq $null) {
+        if ($null -eq $AmountOpen) {
             throw "invalid value for 'AmountOpen', 'AmountOpen' cannot be null."
         }
 
-        if ($AmountFilled -eq $null) {
+        if ($null -eq $AmountFilled) {
             throw "invalid value for 'AmountFilled', 'AmountFilled' cannot be null."
         }
 
-        if ($Status -eq $null) {
+        if ($null -eq $Status) {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 

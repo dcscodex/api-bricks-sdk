@@ -44,7 +44,7 @@ function Initialize-OrderCancelSingleRequest {
         'Creating PSCustomObject: PSOpenAPITools => OrderCancelSingleRequest' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($ExchangeId -eq $null) {
+        if ($null -eq $ExchangeId) {
             throw "invalid value for 'ExchangeId', 'ExchangeId' cannot be null."
         }
 

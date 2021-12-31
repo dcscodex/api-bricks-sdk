@@ -1,5 +1,6 @@
 .openapi-generator-ignore
 CMakeLists.txt
+Packing.cmake
 README.md
 api/BalancesAPI.c
 api/BalancesAPI.h

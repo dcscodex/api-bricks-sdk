@@ -62,7 +62,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Balance {\n");
             sb.Append("  ExchangeId: ").Append(ExchangeId).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
@@ -97,8 +97,9 @@ namespace CoinAPI.OMS.API.SDK.Model
         public bool Equals(Balance input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ExchangeId == input.ExchangeId ||
@@ -123,9 +124,13 @@ namespace CoinAPI.OMS.API.SDK.Model
             {
                 int hashCode = 41;
                 if (this.ExchangeId != null)
-                    hashCode = hashCode * 59 + this.ExchangeId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExchangeId.GetHashCode();
+                }
                 if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                }
                 return hashCode;
             }
         }

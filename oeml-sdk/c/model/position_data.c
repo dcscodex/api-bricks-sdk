@@ -27,6 +27,7 @@ position_data_t *position_data_create(
     char *symbol_id_coinapi,
     double avg_entry_price,
     double quantity,
+    ord_side_t *side,
     double unrealized_pnl,
     double leverage,
     int cross_margin,
@@ -64,6 +65,10 @@ void position_data_free(position_data_t *position_data) {
     if (position_data->symbol_id_coinapi) {
         free(position_data->symbol_id_coinapi);
         position_data->symbol_id_coinapi = NULL;
+    }
+    if (position_data->side) {
+        ord_side_free(position_data->side);
+        position_data->side = NULL;
     }
     if (position_data->raw_data) {
         object_free(position_data->raw_data);
@@ -109,6 +114,14 @@ cJSON *position_data_convertToJSON(position_data_t *position_data) {
 
     // position_data->side
     
+    cJSON *side_local_JSON = ord_side_convertToJSON(position_data->side);
+    if(side_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "side", side_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
     
 
 
@@ -168,6 +181,9 @@ position_data_t *position_data_parseFromJSON(cJSON *position_dataJSON){
 
     position_data_t *position_data_local_var = NULL;
 
+    // define the local variable for position_data->side
+    ord_side_t *side_local_nonprim = NULL;
+
     // position_data->symbol_id_exchange
     cJSON *symbol_id_exchange = cJSON_GetObjectItemCaseSensitive(position_dataJSON, "symbol_id_exchange");
     if (symbol_id_exchange) { 
@@ -206,6 +222,8 @@ position_data_t *position_data_parseFromJSON(cJSON *position_dataJSON){
 
     // position_data->side
     cJSON *side = cJSON_GetObjectItemCaseSensitive(position_dataJSON, "side");
+    if (side) { 
+    side_local_nonprim = ord_side_parseFromJSON(side); //custom
     }
 
     // position_data->unrealized_pnl
@@ -257,6 +275,7 @@ position_data_t *position_data_parseFromJSON(cJSON *position_dataJSON){
         symbol_id_coinapi ? strdup(symbol_id_coinapi->valuestring) : NULL,
         avg_entry_price ? avg_entry_price->valuedouble : 0,
         quantity ? quantity->valuedouble : 0,
+        side ? side_local_nonprim : NULL,
         unrealized_pnl ? unrealized_pnl->valuedouble : 0,
         leverage ? leverage->valuedouble : 0,
         cross_margin ? cross_margin->valueint : 0,
@@ -266,6 +285,10 @@ position_data_t *position_data_parseFromJSON(cJSON *position_dataJSON){
 
     return position_data_local_var;
 end:
+    if (side_local_nonprim) {
+        ord_side_free(side_local_nonprim);
+        side_local_nonprim = NULL;
+    }
     return NULL;
 
 }

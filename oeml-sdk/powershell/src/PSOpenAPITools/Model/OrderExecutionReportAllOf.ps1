@@ -74,19 +74,19 @@ function Initialize-OrderExecutionReportAllOf {
         'Creating PSCustomObject: PSOpenAPITools => OrderExecutionReportAllOf' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($ClientOrderIdFormatExchange -eq $null) {
+        if ($null -eq $ClientOrderIdFormatExchange) {
             throw "invalid value for 'ClientOrderIdFormatExchange', 'ClientOrderIdFormatExchange' cannot be null."
         }
 
-        if ($AmountOpen -eq $null) {
+        if ($null -eq $AmountOpen) {
             throw "invalid value for 'AmountOpen', 'AmountOpen' cannot be null."
         }
 
-        if ($AmountFilled -eq $null) {
+        if ($null -eq $AmountFilled) {
             throw "invalid value for 'AmountFilled', 'AmountFilled' cannot be null."
         }
 
-        if ($Status -eq $null) {
+        if ($null -eq $Status) {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 

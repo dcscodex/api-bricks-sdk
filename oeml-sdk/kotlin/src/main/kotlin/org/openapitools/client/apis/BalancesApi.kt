@@ -20,10 +20,15 @@
 
 package org.openapitools.client.apis
 
+import java.io.IOException
+
 import org.openapitools.client.models.Balance
 import org.openapitools.client.models.MessageReject
 
+import com.squareup.moshi.Json
+
 import org.openapitools.client.infrastructure.ApiClient
+import org.openapitools.client.infrastructure.ApiResponse
 import org.openapitools.client.infrastructure.ClientException
 import org.openapitools.client.infrastructure.ClientError
 import org.openapitools.client.infrastructure.ServerException
@@ -39,7 +44,7 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty("org.openapitools.client.baseUrl", "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
         }
     }
 
@@ -48,18 +53,16 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     * Get current currency balance from all or single exchange.
     * @param exchangeId Filter the balances to the specific exchange. (optional)
     * @return kotlin.collections.List<Balance>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1BalancesGet(exchangeId: kotlin.String?) : kotlin.collections.List<Balance> {
-        val localVariableConfig = v1BalancesGetRequestConfig(exchangeId = exchangeId)
-
-        val localVarResponse = request<Unit, kotlin.collections.List<Balance>>(
-            localVariableConfig
-        )
+        val localVarResponse = v1BalancesGetWithHttpInfo(exchangeId = exchangeId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<Balance>
@@ -77,6 +80,24 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     }
 
     /**
+    * Get balances
+    * Get current currency balance from all or single exchange.
+    * @param exchangeId Filter the balances to the specific exchange. (optional)
+    * @return ApiResponse<kotlin.collections.List<Balance>?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1BalancesGetWithHttpInfo(exchangeId: kotlin.String?) : ApiResponse<kotlin.collections.List<Balance>?> {
+        val localVariableConfig = v1BalancesGetRequestConfig(exchangeId = exchangeId)
+
+        return request<Unit, kotlin.collections.List<Balance>>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1BalancesGet
     *
     * @param exchangeId Filter the balances to the specific exchange. (optional)
@@ -84,13 +105,14 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     */
     fun v1BalancesGetRequestConfig(exchangeId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, List<kotlin.String>>()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (exchangeId != null) {
                     put("exchange_id", listOf(exchangeId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,

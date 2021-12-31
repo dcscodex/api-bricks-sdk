@@ -20,6 +20,8 @@
 
 package org.openapitools.client.apis
 
+import java.io.IOException
+
 import org.openapitools.client.models.MessageReject
 import org.openapitools.client.models.OrderCancelAllRequest
 import org.openapitools.client.models.OrderCancelSingleRequest
@@ -27,7 +29,10 @@ import org.openapitools.client.models.OrderExecutionReport
 import org.openapitools.client.models.OrderNewSingleRequest
 import org.openapitools.client.models.ValidationError
 
+import com.squareup.moshi.Json
+
 import org.openapitools.client.infrastructure.ApiClient
+import org.openapitools.client.infrastructure.ApiResponse
 import org.openapitools.client.infrastructure.ClientException
 import org.openapitools.client.infrastructure.ClientError
 import org.openapitools.client.infrastructure.ServerException
@@ -43,7 +48,7 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty("org.openapitools.client.baseUrl", "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
         }
     }
 
@@ -52,18 +57,16 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * This request cancels all open orders on single specified exchange.
     * @param orderCancelAllRequest OrderCancelAllRequest object. 
     * @return MessageReject
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1OrdersCancelAllPost(orderCancelAllRequest: OrderCancelAllRequest) : MessageReject {
-        val localVariableConfig = v1OrdersCancelAllPostRequestConfig(orderCancelAllRequest = orderCancelAllRequest)
-
-        val localVarResponse = request<OrderCancelAllRequest, MessageReject>(
-            localVariableConfig
-        )
+        val localVarResponse = v1OrdersCancelAllPostWithHttpInfo(orderCancelAllRequest = orderCancelAllRequest)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as MessageReject
@@ -81,6 +84,24 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     }
 
     /**
+    * Cancel all orders request
+    * This request cancels all open orders on single specified exchange.
+    * @param orderCancelAllRequest OrderCancelAllRequest object. 
+    * @return ApiResponse<MessageReject?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1OrdersCancelAllPostWithHttpInfo(orderCancelAllRequest: OrderCancelAllRequest) : ApiResponse<MessageReject?> {
+        val localVariableConfig = v1OrdersCancelAllPostRequestConfig(orderCancelAllRequest = orderCancelAllRequest)
+
+        return request<OrderCancelAllRequest, MessageReject>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1OrdersCancelAllPost
     *
     * @param orderCancelAllRequest OrderCancelAllRequest object. 
@@ -90,6 +111,8 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
         val localVariableBody = orderCancelAllRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.POST,
@@ -105,18 +128,16 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
     * @param orderCancelSingleRequest OrderCancelSingleRequest object. 
     * @return OrderExecutionReport
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1OrdersCancelPost(orderCancelSingleRequest: OrderCancelSingleRequest) : OrderExecutionReport {
-        val localVariableConfig = v1OrdersCancelPostRequestConfig(orderCancelSingleRequest = orderCancelSingleRequest)
-
-        val localVarResponse = request<OrderCancelSingleRequest, OrderExecutionReport>(
-            localVariableConfig
-        )
+        val localVarResponse = v1OrdersCancelPostWithHttpInfo(orderCancelSingleRequest = orderCancelSingleRequest)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as OrderExecutionReport
@@ -134,6 +155,24 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     }
 
     /**
+    * Cancel order request
+    * Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+    * @param orderCancelSingleRequest OrderCancelSingleRequest object. 
+    * @return ApiResponse<OrderExecutionReport?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1OrdersCancelPostWithHttpInfo(orderCancelSingleRequest: OrderCancelSingleRequest) : ApiResponse<OrderExecutionReport?> {
+        val localVariableConfig = v1OrdersCancelPostRequestConfig(orderCancelSingleRequest = orderCancelSingleRequest)
+
+        return request<OrderCancelSingleRequest, OrderExecutionReport>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1OrdersCancelPost
     *
     * @param orderCancelSingleRequest OrderCancelSingleRequest object. 
@@ -143,6 +182,8 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
         val localVariableBody = orderCancelSingleRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.POST,
@@ -158,18 +199,16 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * Get last execution reports for open orders across all or single exchange.
     * @param exchangeId Filter the open orders to the specific exchange. (optional)
     * @return kotlin.collections.List<OrderExecutionReport>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1OrdersGet(exchangeId: kotlin.String?) : kotlin.collections.List<OrderExecutionReport> {
-        val localVariableConfig = v1OrdersGetRequestConfig(exchangeId = exchangeId)
-
-        val localVarResponse = request<Unit, kotlin.collections.List<OrderExecutionReport>>(
-            localVariableConfig
-        )
+        val localVarResponse = v1OrdersGetWithHttpInfo(exchangeId = exchangeId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<OrderExecutionReport>
@@ -187,6 +226,24 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     }
 
     /**
+    * Get open orders
+    * Get last execution reports for open orders across all or single exchange.
+    * @param exchangeId Filter the open orders to the specific exchange. (optional)
+    * @return ApiResponse<kotlin.collections.List<OrderExecutionReport>?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1OrdersGetWithHttpInfo(exchangeId: kotlin.String?) : ApiResponse<kotlin.collections.List<OrderExecutionReport>?> {
+        val localVariableConfig = v1OrdersGetRequestConfig(exchangeId = exchangeId)
+
+        return request<Unit, kotlin.collections.List<OrderExecutionReport>>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1OrdersGet
     *
     * @param exchangeId Filter the open orders to the specific exchange. (optional)
@@ -194,13 +251,14 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     */
     fun v1OrdersGetRequestConfig(exchangeId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, List<kotlin.String>>()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (exchangeId != null) {
                     put("exchange_id", listOf(exchangeId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,
@@ -216,18 +274,16 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * This request creating new order for the specific exchange.
     * @param orderNewSingleRequest OrderNewSingleRequest object. 
     * @return OrderExecutionReport
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest) : OrderExecutionReport {
-        val localVariableConfig = v1OrdersPostRequestConfig(orderNewSingleRequest = orderNewSingleRequest)
-
-        val localVarResponse = request<OrderNewSingleRequest, OrderExecutionReport>(
-            localVariableConfig
-        )
+        val localVarResponse = v1OrdersPostWithHttpInfo(orderNewSingleRequest = orderNewSingleRequest)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as OrderExecutionReport
@@ -245,6 +301,24 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     }
 
     /**
+    * Send new order
+    * This request creating new order for the specific exchange.
+    * @param orderNewSingleRequest OrderNewSingleRequest object. 
+    * @return ApiResponse<OrderExecutionReport?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1OrdersPostWithHttpInfo(orderNewSingleRequest: OrderNewSingleRequest) : ApiResponse<OrderExecutionReport?> {
+        val localVariableConfig = v1OrdersPostRequestConfig(orderNewSingleRequest = orderNewSingleRequest)
+
+        return request<OrderNewSingleRequest, OrderExecutionReport>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1OrdersPost
     *
     * @param orderNewSingleRequest OrderNewSingleRequest object. 
@@ -254,6 +328,8 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
         val localVariableBody = orderNewSingleRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.POST,
@@ -269,18 +345,16 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     * Get the last order execution report for the specified order. The requested order does not need to be active or opened.
     * @param clientOrderId The unique identifier of the order assigned by the client. 
     * @return OrderExecutionReport
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
     * @throws UnsupportedOperationException If the API returns an informational or redirection response
     * @throws ClientException If the API returns a client error response
     * @throws ServerException If the API returns a server error response
     */
     @Suppress("UNCHECKED_CAST")
-    @Throws(UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
     fun v1OrdersStatusClientOrderIdGet(clientOrderId: kotlin.String) : OrderExecutionReport {
-        val localVariableConfig = v1OrdersStatusClientOrderIdGetRequestConfig(clientOrderId = clientOrderId)
-
-        val localVarResponse = request<Unit, OrderExecutionReport>(
-            localVariableConfig
-        )
+        val localVarResponse = v1OrdersStatusClientOrderIdGetWithHttpInfo(clientOrderId = clientOrderId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as OrderExecutionReport
@@ -298,6 +372,24 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
     }
 
     /**
+    * Get order execution report
+    * Get the last order execution report for the specified order. The requested order does not need to be active or opened.
+    * @param clientOrderId The unique identifier of the order assigned by the client. 
+    * @return ApiResponse<OrderExecutionReport?>
+    * @throws IllegalStateException If the request is not correctly configured
+    * @throws IOException Rethrows the OkHttp execute method exception
+    */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun v1OrdersStatusClientOrderIdGetWithHttpInfo(clientOrderId: kotlin.String) : ApiResponse<OrderExecutionReport?> {
+        val localVariableConfig = v1OrdersStatusClientOrderIdGetRequestConfig(clientOrderId = clientOrderId)
+
+        return request<Unit, OrderExecutionReport>(
+            localVariableConfig
+        )
+    }
+
+    /**
     * To obtain the request config of the operation v1OrdersStatusClientOrderIdGet
     *
     * @param clientOrderId The unique identifier of the order assigned by the client. 
@@ -307,6 +399,7 @@ class OrdersApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath)
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,

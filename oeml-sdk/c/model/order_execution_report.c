@@ -97,12 +97,16 @@ order_execution_report_t *order_execution_report_create(
     char *symbol_id_coinapi,
     double amount_order,
     double price,
+    ord_side_t *side,
+    ord_type_t *order_type,
+    time_in_force_t *time_in_force,
     list_t *exec_inst,
     char *client_order_id_format_exchange,
     char *exchange_order_id,
     double amount_open,
     double amount_filled,
     double avg_px,
+    ord_status_t *status,
     list_t *status_history,
     char *error_message,
     list_t *fills
@@ -157,6 +161,18 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
         free(order_execution_report->symbol_id_coinapi);
         order_execution_report->symbol_id_coinapi = NULL;
     }
+    if (order_execution_report->side) {
+        ord_side_free(order_execution_report->side);
+        order_execution_report->side = NULL;
+    }
+    if (order_execution_report->order_type) {
+        ord_type_free(order_execution_report->order_type);
+        order_execution_report->order_type = NULL;
+    }
+    if (order_execution_report->time_in_force) {
+        time_in_force_free(order_execution_report->time_in_force);
+        order_execution_report->time_in_force = NULL;
+    }
     if (order_execution_report->exec_inst) {
         list_ForEach(listEntry, order_execution_report->exec_inst) {
             free(listEntry->data);
@@ -171,6 +187,10 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
     if (order_execution_report->exchange_order_id) {
         free(order_execution_report->exchange_order_id);
         order_execution_report->exchange_order_id = NULL;
+    }
+    if (order_execution_report->status) {
+        ord_status_free(order_execution_report->status);
+        order_execution_report->status = NULL;
     }
     if (order_execution_report->status_history) {
         list_ForEach(listEntry, order_execution_report->status_history) {
@@ -254,14 +274,38 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
     // order_execution_report->side
     
+    cJSON *side_local_JSON = ord_side_convertToJSON(order_execution_report->side);
+    if(side_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "side", side_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
 
 
     // order_execution_report->order_type
     
+    cJSON *order_type_local_JSON = ord_type_convertToJSON(order_execution_report->order_type);
+    if(order_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "order_type", order_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
 
 
     // order_execution_report->time_in_force
     
+    cJSON *time_in_force_local_JSON = time_in_force_convertToJSON(order_execution_report->time_in_force);
+    if(time_in_force_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "time_in_force", time_in_force_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
 
 
     // order_execution_report->expire_time
@@ -334,6 +378,14 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
     // order_execution_report->status
     
+    cJSON *status_local_JSON = ord_status_convertToJSON(order_execution_report->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
 
 
     // order_execution_report->status_history
@@ -387,6 +439,18 @@ fail:
 order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_execution_reportJSON){
 
     order_execution_report_t *order_execution_report_local_var = NULL;
+
+    // define the local variable for order_execution_report->side
+    ord_side_t *side_local_nonprim = NULL;
+
+    // define the local variable for order_execution_report->order_type
+    ord_type_t *order_type_local_nonprim = NULL;
+
+    // define the local variable for order_execution_report->time_in_force
+    time_in_force_t *time_in_force_local_nonprim = NULL;
+
+    // define the local variable for order_execution_report->status
+    ord_status_t *status_local_nonprim = NULL;
 
     // order_execution_report->exchange_id
     cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "exchange_id");
@@ -460,6 +524,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         goto end;
     }
 
+    
+    side_local_nonprim = ord_side_parseFromJSON(side); //custom
 
     // order_execution_report->order_type
     cJSON *order_type = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "order_type");
@@ -467,6 +533,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         goto end;
     }
 
+    
+    order_type_local_nonprim = ord_type_parseFromJSON(order_type); //custom
 
     // order_execution_report->time_in_force
     cJSON *time_in_force = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "time_in_force");
@@ -474,6 +542,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         goto end;
     }
 
+    
+    time_in_force_local_nonprim = time_in_force_parseFromJSON(time_in_force); //custom
 
     // order_execution_report->expire_time
     cJSON *expire_time = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "expire_time");
@@ -559,6 +629,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         goto end;
     }
 
+    
+    status_local_nonprim = ord_status_parseFromJSON(status); //custom
 
     // order_execution_report->status_history
     cJSON *status_history = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "status_history");
@@ -614,12 +686,16 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         symbol_id_coinapi ? strdup(symbol_id_coinapi->valuestring) : NULL,
         amount_order->valuedouble,
         price->valuedouble,
+        side_local_nonprim,
+        order_type_local_nonprim,
+        time_in_force_local_nonprim,
         exec_inst ? exec_instList : NULL,
         strdup(client_order_id_format_exchange->valuestring),
         exchange_order_id ? strdup(exchange_order_id->valuestring) : NULL,
         amount_open->valuedouble,
         amount_filled->valuedouble,
         avg_px ? avg_px->valuedouble : 0,
+        status_local_nonprim,
         status_history ? status_historyList : NULL,
         error_message ? strdup(error_message->valuestring) : NULL,
         fills ? fillsList : NULL
@@ -627,6 +703,22 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
 
     return order_execution_report_local_var;
 end:
+    if (side_local_nonprim) {
+        ord_side_free(side_local_nonprim);
+        side_local_nonprim = NULL;
+    }
+    if (order_type_local_nonprim) {
+        ord_type_free(order_type_local_nonprim);
+        order_type_local_nonprim = NULL;
+    }
+    if (time_in_force_local_nonprim) {
+        time_in_force_free(time_in_force_local_nonprim);
+        time_in_force_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        ord_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
+    }
     return NULL;
 
 }

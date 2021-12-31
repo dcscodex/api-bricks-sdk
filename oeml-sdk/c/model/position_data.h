@@ -33,6 +33,7 @@ typedef struct position_data_t {
     char *symbol_id_coinapi; // string
     double avg_entry_price; //numeric
     double quantity; //numeric
+    ord_side_t *side; // custom
     double unrealized_pnl; //numeric
     double leverage; //numeric
     int cross_margin; //boolean
@@ -46,6 +47,7 @@ position_data_t *position_data_create(
     char *symbol_id_coinapi,
     double avg_entry_price,
     double quantity,
+    ord_side_t *side,
     double unrealized_pnl,
     double leverage,
     int cross_margin,

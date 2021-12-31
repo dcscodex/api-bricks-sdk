@@ -56,7 +56,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, appliction/json
+ - **Accept**: application/json
 
 <a name="v1OrdersCancelPost"></a>
 # **v1OrdersCancelPost**
@@ -103,7 +103,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, appliction/json
+ - **Accept**: application/json
 
 <a name="v1OrdersGet"></a>
 # **v1OrdersGet**
@@ -150,7 +150,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, appliction/json
+ - **Accept**: application/json
 
 <a name="v1OrdersPost"></a>
 # **v1OrdersPost**
@@ -197,7 +197,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, appliction/json
+ - **Accept**: application/json
 
 <a name="v1OrdersStatusClientOrderIdGet"></a>
 # **v1OrdersStatusClientOrderIdGet**

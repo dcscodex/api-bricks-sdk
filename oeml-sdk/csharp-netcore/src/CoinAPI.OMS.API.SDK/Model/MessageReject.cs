@@ -89,7 +89,7 @@ namespace CoinAPI.OMS.API.SDK.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MessageReject {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  RejectReason: ").Append(RejectReason).Append("\n");
@@ -127,8 +127,9 @@ namespace CoinAPI.OMS.API.SDK.Model
         public bool Equals(MessageReject input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Type == input.Type ||
@@ -166,14 +167,22 @@ namespace CoinAPI.OMS.API.SDK.Model
             {
                 int hashCode = 41;
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                hashCode = hashCode * 59 + this.RejectReason.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RejectReason.GetHashCode();
                 if (this.ExchangeId != null)
-                    hashCode = hashCode * 59 + this.ExchangeId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExchangeId.GetHashCode();
+                }
                 if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
                 if (this.RejectedMessage != null)
-                    hashCode = hashCode * 59 + this.RejectedMessage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RejectedMessage.GetHashCode();
+                }
                 return hashCode;
             }
         }

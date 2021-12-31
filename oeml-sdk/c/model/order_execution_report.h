@@ -72,12 +72,16 @@ typedef struct order_execution_report_t {
     char *symbol_id_coinapi; // string
     double amount_order; //numeric
     double price; //numeric
+    ord_side_t *side; // custom
+    ord_type_t *order_type; // custom
+    time_in_force_t *time_in_force; // custom
     list_t *exec_inst; //primitive container
     char *client_order_id_format_exchange; // string
     char *exchange_order_id; // string
     double amount_open; //numeric
     double amount_filled; //numeric
     double avg_px; //numeric
+    ord_status_t *status; // custom
     list_t *status_history; //primitive container
     char *error_message; // string
     list_t *fills; //nonprimitive container
@@ -91,12 +95,16 @@ order_execution_report_t *order_execution_report_create(
     char *symbol_id_coinapi,
     double amount_order,
     double price,
+    ord_side_t *side,
+    ord_type_t *order_type,
+    time_in_force_t *time_in_force,
     list_t *exec_inst,
     char *client_order_id_format_exchange,
     char *exchange_order_id,
     double amount_open,
     double amount_filled,
     double avg_px,
+    ord_status_t *status,
     list_t *status_history,
     char *error_message,
     list_t *fills

@@ -29,6 +29,13 @@ namespace CoinAPI.REST.V1 {
         public string asset_id_quote_exchange { get; set; }
         public decimal? price_precision { get; set; }
         public decimal? size_precision { get; set; }
-
+        public DateTime? data_start { get; set; }
+        public DateTime? data_end { get; set; }
+        public DateTime? data_quote_start { get; set; }
+        public DateTime? data_quote_end { get; set; }
+        public DateTime? data_orderbook_start { get; set; }
+        public DateTime? data_orderbook_end { get; set; }
+        public DateTime? data_trade_start { get; set; }
+        public DateTime? data_trade_end { get; set; }
     }
 }

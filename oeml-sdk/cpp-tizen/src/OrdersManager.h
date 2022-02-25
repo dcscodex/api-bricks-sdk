@@ -38,7 +38,7 @@ public:
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelAllPostSync(char * accessToken,
-	OrderCancelAllRequest orderCancelAllRequest, 
+	std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest, 
 	void(* handler)(MessageReject, Error, void* )
 	, void* userData);
 
@@ -51,7 +51,7 @@ bool v1OrdersCancelAllPostSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelAllPostAsync(char * accessToken,
-	OrderCancelAllRequest orderCancelAllRequest, 
+	std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest, 
 	void(* handler)(MessageReject, Error, void* )
 	, void* userData);
 
@@ -65,7 +65,7 @@ bool v1OrdersCancelAllPostAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelPostSync(char * accessToken,
-	OrderCancelSingleRequest orderCancelSingleRequest, 
+	std::shared_ptr<OrderCancelSingleRequest> orderCancelSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
@@ -78,7 +78,7 @@ bool v1OrdersCancelPostSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersCancelPostAsync(char * accessToken,
-	OrderCancelSingleRequest orderCancelSingleRequest, 
+	std::shared_ptr<OrderCancelSingleRequest> orderCancelSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
@@ -119,7 +119,7 @@ bool v1OrdersGetAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersPostSync(char * accessToken,
-	OrderNewSingleRequest orderNewSingleRequest, 
+	std::shared_ptr<OrderNewSingleRequest> orderNewSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 
@@ -132,7 +132,7 @@ bool v1OrdersPostSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool v1OrdersPostAsync(char * accessToken,
-	OrderNewSingleRequest orderNewSingleRequest, 
+	std::shared_ptr<OrderNewSingleRequest> orderNewSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData);
 

@@ -114,7 +114,7 @@ static bool v1OrdersCancelAllPostProcessor(MemoryStruct_s p_chunk, long code, ch
 }
 
 static bool v1OrdersCancelAllPostHelper(char * accessToken,
-	OrderCancelAllRequest orderCancelAllRequest, 
+	std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest, 
 	void(* handler)(MessageReject, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -169,7 +169,7 @@ static bool v1OrdersCancelAllPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersCancelAllPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_free_all(headerList);
+		curl_slist_freeList_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -198,7 +198,7 @@ static bool v1OrdersCancelAllPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersCancelAllPostAsync(char * accessToken,
-	OrderCancelAllRequest orderCancelAllRequest, 
+	std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest, 
 	void(* handler)(MessageReject, Error, void* )
 	, void* userData)
 {
@@ -208,7 +208,7 @@ bool OrdersManager::v1OrdersCancelAllPostAsync(char * accessToken,
 }
 
 bool OrdersManager::v1OrdersCancelAllPostSync(char * accessToken,
-	OrderCancelAllRequest orderCancelAllRequest, 
+	std::shared_ptr<OrderCancelAllRequest> orderCancelAllRequest, 
 	void(* handler)(MessageReject, Error, void* )
 	, void* userData)
 {
@@ -283,7 +283,7 @@ static bool v1OrdersCancelPostProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool v1OrdersCancelPostHelper(char * accessToken,
-	OrderCancelSingleRequest orderCancelSingleRequest, 
+	std::shared_ptr<OrderCancelSingleRequest> orderCancelSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -338,7 +338,7 @@ static bool v1OrdersCancelPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersCancelPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_free_all(headerList);
+		curl_slist_freeList_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -367,7 +367,7 @@ static bool v1OrdersCancelPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersCancelPostAsync(char * accessToken,
-	OrderCancelSingleRequest orderCancelSingleRequest, 
+	std::shared_ptr<OrderCancelSingleRequest> orderCancelSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
@@ -377,7 +377,7 @@ bool OrdersManager::v1OrdersCancelPostAsync(char * accessToken,
 }
 
 bool OrdersManager::v1OrdersCancelPostSync(char * accessToken,
-	OrderCancelSingleRequest orderCancelSingleRequest, 
+	std::shared_ptr<OrderCancelSingleRequest> orderCancelSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
@@ -483,7 +483,7 @@ static bool v1OrdersGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_free_all(headerList);
+		curl_slist_freeList_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -602,7 +602,7 @@ static bool v1OrdersPostProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool v1OrdersPostHelper(char * accessToken,
-	OrderNewSingleRequest orderNewSingleRequest, 
+	std::shared_ptr<OrderNewSingleRequest> orderNewSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -657,7 +657,7 @@ static bool v1OrdersPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_free_all(headerList);
+		curl_slist_freeList_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -686,7 +686,7 @@ static bool v1OrdersPostHelper(char * accessToken,
 
 
 bool OrdersManager::v1OrdersPostAsync(char * accessToken,
-	OrderNewSingleRequest orderNewSingleRequest, 
+	std::shared_ptr<OrderNewSingleRequest> orderNewSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
@@ -696,7 +696,7 @@ bool OrdersManager::v1OrdersPostAsync(char * accessToken,
 }
 
 bool OrdersManager::v1OrdersPostSync(char * accessToken,
-	OrderNewSingleRequest orderNewSingleRequest, 
+	std::shared_ptr<OrderNewSingleRequest> orderNewSingleRequest, 
 	void(* handler)(OrderExecutionReport, Error, void* )
 	, void* userData)
 {
@@ -814,7 +814,7 @@ static bool v1OrdersStatusClientOrderIdGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersStatusClientOrderIdGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_free_all(headerList);
+		curl_slist_freeList_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);

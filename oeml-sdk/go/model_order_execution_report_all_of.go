@@ -29,11 +29,11 @@ type OrderExecutionReportAllOf struct {
 	AvgPx *float32 `json:"avg_px,omitempty"`
 	Status OrdStatus `json:"status"`
 	// Timestamped history of order status changes.
-	StatusHistory *[][]string `json:"status_history,omitempty"`
+	StatusHistory [][]string `json:"status_history,omitempty"`
 	// Error message.
 	ErrorMessage *string `json:"error_message,omitempty"`
 	// Relay fill information on working orders.
-	Fills *[]Fills `json:"fills,omitempty"`
+	Fills []Fills `json:"fills,omitempty"`
 }
 
 // NewOrderExecutionReportAllOf instantiates a new OrderExecutionReportAllOf object
@@ -223,12 +223,12 @@ func (o *OrderExecutionReportAllOf) GetStatusHistory() [][]string {
 		var ret [][]string
 		return ret
 	}
-	return *o.StatusHistory
+	return o.StatusHistory
 }
 
 // GetStatusHistoryOk returns a tuple with the StatusHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderExecutionReportAllOf) GetStatusHistoryOk() (*[][]string, bool) {
+func (o *OrderExecutionReportAllOf) GetStatusHistoryOk() ([][]string, bool) {
 	if o == nil || o.StatusHistory == nil {
 		return nil, false
 	}
@@ -246,7 +246,7 @@ func (o *OrderExecutionReportAllOf) HasStatusHistory() bool {
 
 // SetStatusHistory gets a reference to the given [][]string and assigns it to the StatusHistory field.
 func (o *OrderExecutionReportAllOf) SetStatusHistory(v [][]string) {
-	o.StatusHistory = &v
+	o.StatusHistory = v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
@@ -287,12 +287,12 @@ func (o *OrderExecutionReportAllOf) GetFills() []Fills {
 		var ret []Fills
 		return ret
 	}
-	return *o.Fills
+	return o.Fills
 }
 
 // GetFillsOk returns a tuple with the Fills field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderExecutionReportAllOf) GetFillsOk() (*[]Fills, bool) {
+func (o *OrderExecutionReportAllOf) GetFillsOk() ([]Fills, bool) {
 	if o == nil || o.Fills == nil {
 		return nil, false
 	}
@@ -310,7 +310,7 @@ func (o *OrderExecutionReportAllOf) HasFills() bool {
 
 // SetFills gets a reference to the given []Fills and assigns it to the Fills field.
 func (o *OrderExecutionReportAllOf) SetFills(v []Fills) {
-	o.Fills = &v
+	o.Fills = v
 }
 
 func (o OrderExecutionReportAllOf) MarshalJSON() ([]byte, error) {

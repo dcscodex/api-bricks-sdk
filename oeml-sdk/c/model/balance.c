@@ -33,7 +33,7 @@ void balance_free(balance_t *balance) {
         list_ForEach(listEntry, balance->data) {
             balance_data_free(listEntry->data);
         }
-        list_free(balance->data);
+        list_freeList(balance->data);
         balance->data = NULL;
     }
     free(balance);
@@ -99,7 +99,7 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
         goto end; //nonprimitive container
     }
 
-    dataList = list_create();
+    dataList = list_createList();
 
     cJSON_ArrayForEach(data_local_nonprimitive,data )
     {

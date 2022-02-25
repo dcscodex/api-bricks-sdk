@@ -36,8 +36,8 @@ func main() {
     orderCancelAllRequest := *openapiclient.NewOrderCancelAllRequest("KRAKEN") // OrderCancelAllRequest | OrderCancelAllRequest object.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrdersApi.V1OrdersCancelAllPost(context.Background()).OrderCancelAllRequest(orderCancelAllRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrdersApi.V1OrdersCancelAllPost(context.Background()).OrderCancelAllRequest(orderCancelAllRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrdersApi.V1OrdersCancelAllPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -102,8 +102,8 @@ func main() {
     orderCancelSingleRequest := *openapiclient.NewOrderCancelSingleRequest("KRAKEN") // OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrdersApi.V1OrdersCancelPost(context.Background()).OrderCancelSingleRequest(orderCancelSingleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrdersApi.V1OrdersCancelPost(context.Background()).OrderCancelSingleRequest(orderCancelSingleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrdersApi.V1OrdersCancelPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,8 +168,8 @@ func main() {
     exchangeId := "KRAKEN" // string | Filter the open orders to the specific exchange. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrdersApi.V1OrdersGet(context.Background()).ExchangeId(exchangeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrdersApi.V1OrdersGet(context.Background()).ExchangeId(exchangeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrdersApi.V1OrdersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,8 +234,8 @@ func main() {
     orderNewSingleRequest := *openapiclient.NewOrderNewSingleRequest("KRAKEN", "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b", float32(0.045), float32(0.0783), openapiclient.OrdSide("BUY"), openapiclient.OrdType("LIMIT"), openapiclient.TimeInForce("GOOD_TILL_CANCEL")) // OrderNewSingleRequest | OrderNewSingleRequest object.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrdersApi.V1OrdersPost(context.Background()).OrderNewSingleRequest(orderNewSingleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrdersApi.V1OrdersPost(context.Background()).OrderNewSingleRequest(orderNewSingleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrdersApi.V1OrdersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -300,8 +300,8 @@ func main() {
     clientOrderId := "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b" // string | The unique identifier of the order assigned by the client.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrdersApi.V1OrdersStatusClientOrderIdGet(context.Background(), clientOrderId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrdersApi.V1OrdersStatusClientOrderIdGet(context.Background(), clientOrderId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrdersApi.V1OrdersStatusClientOrderIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

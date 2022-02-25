@@ -34,7 +34,7 @@ type PositionData struct {
 	CrossMargin *bool `json:"cross_margin,omitempty"`
 	// Liquidation price. If mark price will reach this value, the position will be liquidated.
 	LiquidationPrice *float32 `json:"liquidation_price,omitempty"`
-	RawData *map[string]interface{} `json:"raw_data,omitempty"`
+	RawData map[string]interface{} `json:"raw_data,omitempty"`
 }
 
 // NewPositionData instantiates a new PositionData object
@@ -348,12 +348,12 @@ func (o *PositionData) GetRawData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.RawData
+	return o.RawData
 }
 
 // GetRawDataOk returns a tuple with the RawData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PositionData) GetRawDataOk() (*map[string]interface{}, bool) {
+func (o *PositionData) GetRawDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.RawData == nil {
 		return nil, false
 	}
@@ -371,7 +371,7 @@ func (o *PositionData) HasRawData() bool {
 
 // SetRawData gets a reference to the given map[string]interface{} and assigns it to the RawData field.
 func (o *PositionData) SetRawData(v map[string]interface{}) {
-	o.RawData = &v
+	o.RawData = v
 }
 
 func (o PositionData) MarshalJSON() ([]byte, error) {

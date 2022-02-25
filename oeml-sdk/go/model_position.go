@@ -19,7 +19,7 @@ import (
 type Position struct {
 	// Exchange identifier used to identify the routing destination.
 	ExchangeId *string `json:"exchange_id,omitempty"`
-	Data *[]PositionData `json:"data,omitempty"`
+	Data []PositionData `json:"data,omitempty"`
 }
 
 // NewPosition instantiates a new Position object
@@ -77,12 +77,12 @@ func (o *Position) GetData() []PositionData {
 		var ret []PositionData
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Position) GetDataOk() (*[]PositionData, bool) {
+func (o *Position) GetDataOk() ([]PositionData, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *Position) HasData() bool {
 
 // SetData gets a reference to the given []PositionData and assigns it to the Data field.
 func (o *Position) SetData(v []PositionData) {
-	o.Data = &v
+	o.Data = v
 }
 
 func (o Position) MarshalJSON() ([]byte, error) {

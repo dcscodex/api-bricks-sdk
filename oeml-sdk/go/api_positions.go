@@ -13,22 +13,22 @@ package openapi
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // PositionsApiService PositionsApi service
 type PositionsApiService service
 
 type ApiV1PositionsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *PositionsApiService
 	exchangeId *string
 }
@@ -39,7 +39,7 @@ func (r ApiV1PositionsGetRequest) ExchangeId(exchangeId string) ApiV1PositionsGe
 	return r
 }
 
-func (r ApiV1PositionsGetRequest) Execute() ([]Position, *_nethttp.Response, error) {
+func (r ApiV1PositionsGetRequest) Execute() ([]Position, *http.Response, error) {
 	return r.ApiService.V1PositionsGetExecute(r)
 }
 
@@ -48,10 +48,10 @@ V1PositionsGet Get open positions
 
 Get current open positions across all or single exchange.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiV1PositionsGetRequest
 */
-func (a *PositionsApiService) V1PositionsGet(ctx _context.Context) ApiV1PositionsGetRequest {
+func (a *PositionsApiService) V1PositionsGet(ctx context.Context) ApiV1PositionsGetRequest {
 	return ApiV1PositionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,9 +60,9 @@ func (a *PositionsApiService) V1PositionsGet(ctx _context.Context) ApiV1Position
 
 // Execute executes the request
 //  @return []Position
-func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) ([]Position, *_nethttp.Response, error) {
+func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) ([]Position, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  []Position
@@ -70,14 +70,14 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PositionsApiService.V1PositionsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/positions"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.exchangeId != nil {
 		localVarQueryParams.Add("exchange_id", parameterToString(*r.exchangeId, ""))
@@ -109,15 +109,15 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

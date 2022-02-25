@@ -35,7 +35,7 @@ type OrderExecutionReport struct {
 	// Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
 	ExpireTime *string `json:"expire_time,omitempty"`
 	// Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
-	ExecInst *[]string `json:"exec_inst,omitempty"`
+	ExecInst []string `json:"exec_inst,omitempty"`
 	// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
 	ClientOrderIdFormatExchange string `json:"client_order_id_format_exchange"`
 	// Unique identifier of the order assigned by the exchange or executing system.
@@ -48,11 +48,11 @@ type OrderExecutionReport struct {
 	AvgPx *float32 `json:"avg_px,omitempty"`
 	Status OrdStatus `json:"status"`
 	// Timestamped history of order status changes.
-	StatusHistory *[][]string `json:"status_history,omitempty"`
+	StatusHistory [][]string `json:"status_history,omitempty"`
 	// Error message.
 	ErrorMessage *string `json:"error_message,omitempty"`
 	// Relay fill information on working orders.
-	Fills *[]Fills `json:"fills,omitempty"`
+	Fills []Fills `json:"fills,omitempty"`
 }
 
 // NewOrderExecutionReport instantiates a new OrderExecutionReport object
@@ -353,12 +353,12 @@ func (o *OrderExecutionReport) GetExecInst() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ExecInst
+	return o.ExecInst
 }
 
 // GetExecInstOk returns a tuple with the ExecInst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderExecutionReport) GetExecInstOk() (*[]string, bool) {
+func (o *OrderExecutionReport) GetExecInstOk() ([]string, bool) {
 	if o == nil || o.ExecInst == nil {
 		return nil, false
 	}
@@ -376,7 +376,7 @@ func (o *OrderExecutionReport) HasExecInst() bool {
 
 // SetExecInst gets a reference to the given []string and assigns it to the ExecInst field.
 func (o *OrderExecutionReport) SetExecInst(v []string) {
-	o.ExecInst = &v
+	o.ExecInst = v
 }
 
 // GetClientOrderIdFormatExchange returns the ClientOrderIdFormatExchange field value
@@ -545,12 +545,12 @@ func (o *OrderExecutionReport) GetStatusHistory() [][]string {
 		var ret [][]string
 		return ret
 	}
-	return *o.StatusHistory
+	return o.StatusHistory
 }
 
 // GetStatusHistoryOk returns a tuple with the StatusHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderExecutionReport) GetStatusHistoryOk() (*[][]string, bool) {
+func (o *OrderExecutionReport) GetStatusHistoryOk() ([][]string, bool) {
 	if o == nil || o.StatusHistory == nil {
 		return nil, false
 	}
@@ -568,7 +568,7 @@ func (o *OrderExecutionReport) HasStatusHistory() bool {
 
 // SetStatusHistory gets a reference to the given [][]string and assigns it to the StatusHistory field.
 func (o *OrderExecutionReport) SetStatusHistory(v [][]string) {
-	o.StatusHistory = &v
+	o.StatusHistory = v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
@@ -609,12 +609,12 @@ func (o *OrderExecutionReport) GetFills() []Fills {
 		var ret []Fills
 		return ret
 	}
-	return *o.Fills
+	return o.Fills
 }
 
 // GetFillsOk returns a tuple with the Fills field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderExecutionReport) GetFillsOk() (*[]Fills, bool) {
+func (o *OrderExecutionReport) GetFillsOk() ([]Fills, bool) {
 	if o == nil || o.Fills == nil {
 		return nil, false
 	}
@@ -632,7 +632,7 @@ func (o *OrderExecutionReport) HasFills() bool {
 
 // SetFills gets a reference to the given []Fills and assigns it to the Fills field.
 func (o *OrderExecutionReport) SetFills(v []Fills) {
-	o.Fills = &v
+	o.Fills = v
 }
 
 func (o OrderExecutionReport) MarshalJSON() ([]byte, error) {

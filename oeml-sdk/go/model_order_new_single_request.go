@@ -35,7 +35,7 @@ type OrderNewSingleRequest struct {
 	// Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
 	ExpireTime *string `json:"expire_time,omitempty"`
 	// Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
-	ExecInst *[]string `json:"exec_inst,omitempty"`
+	ExecInst []string `json:"exec_inst,omitempty"`
 }
 
 // NewOrderNewSingleRequest instantiates a new OrderNewSingleRequest object
@@ -332,12 +332,12 @@ func (o *OrderNewSingleRequest) GetExecInst() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ExecInst
+	return o.ExecInst
 }
 
 // GetExecInstOk returns a tuple with the ExecInst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderNewSingleRequest) GetExecInstOk() (*[]string, bool) {
+func (o *OrderNewSingleRequest) GetExecInstOk() ([]string, bool) {
 	if o == nil || o.ExecInst == nil {
 		return nil, false
 	}
@@ -355,7 +355,7 @@ func (o *OrderNewSingleRequest) HasExecInst() bool {
 
 // SetExecInst gets a reference to the given []string and assigns it to the ExecInst field.
 func (o *OrderNewSingleRequest) SetExecInst(v []string) {
-	o.ExecInst = &v
+	o.ExecInst = v
 }
 
 func (o OrderNewSingleRequest) MarshalJSON() ([]byte, error) {

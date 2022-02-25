@@ -33,7 +33,7 @@ void position_free(position_t *position) {
         list_ForEach(listEntry, position->data) {
             position_data_free(listEntry->data);
         }
-        list_free(position->data);
+        list_freeList(position->data);
         position->data = NULL;
     }
     free(position);
@@ -99,7 +99,7 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
         goto end; //nonprimitive container
     }
 
-    dataList = list_create();
+    dataList = list_createList();
 
     cJSON_ArrayForEach(data_local_nonprimitive,data )
     {

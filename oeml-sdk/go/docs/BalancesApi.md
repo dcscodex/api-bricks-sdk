@@ -32,8 +32,8 @@ func main() {
     exchangeId := "KRAKEN" // string | Filter the balances to the specific exchange. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BalancesApi.V1BalancesGet(context.Background()).ExchangeId(exchangeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BalancesApi.V1BalancesGet(context.Background()).ExchangeId(exchangeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BalancesApi.V1BalancesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

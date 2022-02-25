@@ -22,8 +22,8 @@ OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, order_cancel_all_request
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
-    list_t *localVarContentType = list_create();
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -81,8 +81,8 @@ OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, order_cancel_all_request
     
     
     
-    list_free(localVarHeaderType);
-    list_free(localVarContentType);
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (localVarSingleItemJSON_order_cancel_all_request) {
         cJSON_Delete(localVarSingleItemJSON_order_cancel_all_request);
@@ -106,8 +106,8 @@ OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, order_cancel_single_request
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
-    list_t *localVarContentType = list_create();
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -165,8 +165,8 @@ OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, order_cancel_single_request
     
     
     
-    list_free(localVarHeaderType);
-    list_free(localVarContentType);
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (localVarSingleItemJSON_order_cancel_single_request) {
         cJSON_Delete(localVarSingleItemJSON_order_cancel_single_request);
@@ -187,10 +187,10 @@ end:
 list_t*
 OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id )
 {
-    list_t    *localVarQueryParameters = list_create();
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
+    list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
 
@@ -235,7 +235,7 @@ OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id )
     if(!cJSON_IsArray(OrdersAPIlocalVarJSON)) {
         return 0;//nonprimitive container
     }
-    list_t *elementToReturn = list_create();
+    list_t *elementToReturn = list_createList();
     cJSON *VarJSON;
     cJSON_ArrayForEach(VarJSON, OrdersAPIlocalVarJSON)
     {
@@ -255,10 +255,10 @@ OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id )
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    list_free(localVarQueryParameters);
+    list_freeList(localVarQueryParameters);
     
     
-    list_free(localVarHeaderType);
+    list_freeList(localVarHeaderType);
     
     free(localVarPath);
     if(keyQuery_exchange_id){
@@ -290,8 +290,8 @@ OrdersAPI_v1OrdersPost(apiClient_t *apiClient, order_new_single_request_t * orde
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
-    list_t *localVarContentType = list_create();
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -352,8 +352,8 @@ OrdersAPI_v1OrdersPost(apiClient_t *apiClient, order_new_single_request_t * orde
     
     
     
-    list_free(localVarHeaderType);
-    list_free(localVarContentType);
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (localVarSingleItemJSON_order_new_single_request) {
         cJSON_Delete(localVarSingleItemJSON_order_new_single_request);
@@ -377,7 +377,7 @@ OrdersAPI_v1OrdersStatusClientOrderIdGet(apiClient_t *apiClient, char * client_o
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
+    list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
 
@@ -432,7 +432,7 @@ OrdersAPI_v1OrdersStatusClientOrderIdGet(apiClient_t *apiClient, char * client_o
     
     
     
-    list_free(localVarHeaderType);
+    list_freeList(localVarHeaderType);
     
     free(localVarPath);
     free(localVarToReplace_client_order_id);

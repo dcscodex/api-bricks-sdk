@@ -23,12 +23,12 @@ balance_t* instantiate_balance(int include_optional) {
   if (include_optional) {
     balance = balance_create(
       "KRAKEN",
-      list_create()
+      list_createList()
     );
   } else {
     balance = balance_create(
       "KRAKEN",
-      list_create()
+      list_createList()
     );
   }
 

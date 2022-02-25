@@ -13,22 +13,22 @@ package openapi
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // BalancesApiService BalancesApi service
 type BalancesApiService service
 
 type ApiV1BalancesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *BalancesApiService
 	exchangeId *string
 }
@@ -39,7 +39,7 @@ func (r ApiV1BalancesGetRequest) ExchangeId(exchangeId string) ApiV1BalancesGetR
 	return r
 }
 
-func (r ApiV1BalancesGetRequest) Execute() ([]Balance, *_nethttp.Response, error) {
+func (r ApiV1BalancesGetRequest) Execute() ([]Balance, *http.Response, error) {
 	return r.ApiService.V1BalancesGetExecute(r)
 }
 
@@ -48,10 +48,10 @@ V1BalancesGet Get balances
 
 Get current currency balance from all or single exchange.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiV1BalancesGetRequest
 */
-func (a *BalancesApiService) V1BalancesGet(ctx _context.Context) ApiV1BalancesGetRequest {
+func (a *BalancesApiService) V1BalancesGet(ctx context.Context) ApiV1BalancesGetRequest {
 	return ApiV1BalancesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,9 +60,9 @@ func (a *BalancesApiService) V1BalancesGet(ctx _context.Context) ApiV1BalancesGe
 
 // Execute executes the request
 //  @return []Balance
-func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]Balance, *_nethttp.Response, error) {
+func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]Balance, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  []Balance
@@ -70,14 +70,14 @@ func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalancesApiService.V1BalancesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/balances"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.exchangeId != nil {
 		localVarQueryParams.Add("exchange_id", parameterToString(*r.exchangeId, ""))
@@ -109,15 +109,15 @@ func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,7 +135,7 @@ func (a *BalancesApiService) V1BalancesGetExecute(r ApiV1BalancesGetRequest) ([]
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

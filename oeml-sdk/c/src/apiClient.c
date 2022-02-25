@@ -393,7 +393,7 @@ void apiClient_invoke(apiClient_t    *apiClient,
 
         res = curl_easy_perform(handle);
 
-        curl_slist_free_all(headers);
+        curl_slist_freeList_all(headers);
 
         free(targetUrl);
 

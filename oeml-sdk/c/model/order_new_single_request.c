@@ -142,7 +142,7 @@ void order_new_single_request_free(order_new_single_request_t *order_new_single_
         list_ForEach(listEntry, order_new_single_request->exec_inst) {
             free(listEntry->data);
         }
-        list_free(order_new_single_request->exec_inst);
+        list_freeList(order_new_single_request->exec_inst);
         order_new_single_request->exec_inst = NULL;
     }
     free(order_new_single_request);
@@ -390,7 +390,7 @@ order_new_single_request_t *order_new_single_request_parseFromJSON(cJSON *order_
     if(!cJSON_IsArray(exec_inst)) {
         goto end;//primitive container
     }
-    exec_instList = list_create();
+    exec_instList = list_createList();
 
     cJSON_ArrayForEach(exec_inst_local, exec_inst)
     {

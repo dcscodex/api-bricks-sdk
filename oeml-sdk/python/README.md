@@ -15,7 +15,7 @@ For more information, please visit [https://www.coinapi.io](https://www.coinapi.
 
 ## Requirements.
 
-Python >= 3.6
+Python >=3.6
 
 ## Installation & Usage
 ### pip install

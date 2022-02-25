@@ -177,7 +177,7 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
         list_ForEach(listEntry, order_execution_report->exec_inst) {
             free(listEntry->data);
         }
-        list_free(order_execution_report->exec_inst);
+        list_freeList(order_execution_report->exec_inst);
         order_execution_report->exec_inst = NULL;
     }
     if (order_execution_report->client_order_id_format_exchange) {
@@ -196,7 +196,7 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
         list_ForEach(listEntry, order_execution_report->status_history) {
             free(listEntry->data);
         }
-        list_free(order_execution_report->status_history);
+        list_freeList(order_execution_report->status_history);
         order_execution_report->status_history = NULL;
     }
     if (order_execution_report->error_message) {
@@ -207,7 +207,7 @@ void order_execution_report_free(order_execution_report_t *order_execution_repor
         list_ForEach(listEntry, order_execution_report->fills) {
             fills_free(listEntry->data);
         }
-        list_free(order_execution_report->fills);
+        list_freeList(order_execution_report->fills);
         order_execution_report->fills = NULL;
     }
     free(order_execution_report);
@@ -557,7 +557,7 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
     if(!cJSON_IsArray(exec_inst)) {
         goto end;//primitive container
     }
-    exec_instList = list_create();
+    exec_instList = list_createList();
 
     cJSON_ArrayForEach(exec_inst_local, exec_inst)
     {
@@ -640,7 +640,7 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
     if(!cJSON_IsArray(status_history)) {
         goto end;//primitive container
     }
-    status_historyList = list_create();
+    status_historyList = list_createList();
 
     cJSON_ArrayForEach(status_history_local, status_history)
     {
@@ -665,7 +665,7 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
         goto end; //nonprimitive container
     }
 
-    fillsList = list_create();
+    fillsList = list_createList();
 
     cJSON_ArrayForEach(fills_local_nonprimitive,fills )
     {

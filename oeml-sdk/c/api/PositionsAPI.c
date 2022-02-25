@@ -19,10 +19,10 @@
 list_t*
 PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id )
 {
-    list_t    *localVarQueryParameters = list_create();
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
+    list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
 
@@ -67,7 +67,7 @@ PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id )
     if(!cJSON_IsArray(PositionsAPIlocalVarJSON)) {
         return 0;//nonprimitive container
     }
-    list_t *elementToReturn = list_create();
+    list_t *elementToReturn = list_createList();
     cJSON *VarJSON;
     cJSON_ArrayForEach(VarJSON, PositionsAPIlocalVarJSON)
     {
@@ -87,10 +87,10 @@ PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id )
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    list_free(localVarQueryParameters);
+    list_freeList(localVarQueryParameters);
     
     
-    list_free(localVarHeaderType);
+    list_freeList(localVarHeaderType);
     
     free(localVarPath);
     if(keyQuery_exchange_id){

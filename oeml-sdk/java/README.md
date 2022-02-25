@@ -2,7 +2,7 @@
 
 OEML - REST API
 - API version: v1
-  - Build date: 2022-02-25T14:56:13.787825Z[Etc/UTC]
+  - Build date: 2022-02-25T17:36:46.097184Z[Etc/UTC]
 
 This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
 

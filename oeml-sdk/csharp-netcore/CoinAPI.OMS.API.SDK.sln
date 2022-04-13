@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinAPI.OMS.API.SDK", "src\CoinAPI.OMS.API.SDK\CoinAPI.OMS.API.SDK.csproj", "{9BECCC94-4BE9-4942-AC24-48056ED62F14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinAPI.OMS.API.SDK", "src\CoinAPI.OMS.API.SDK\CoinAPI.OMS.API.SDK.csproj", "{52CC9935-349D-4400-9D90-3562042E7D17}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinAPI.OMS.API.SDK.Test", "src\CoinAPI.OMS.API.SDK.Test\CoinAPI.OMS.API.SDK.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9BECCC94-4BE9-4942-AC24-48056ED62F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BECCC94-4BE9-4942-AC24-48056ED62F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BECCC94-4BE9-4942-AC24-48056ED62F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BECCC94-4BE9-4942-AC24-48056ED62F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52CC9935-349D-4400-9D90-3562042E7D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52CC9935-349D-4400-9D90-3562042E7D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52CC9935-349D-4400-9D90-3562042E7D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52CC9935-349D-4400-9D90-3562042E7D17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,7 +1,7 @@
 =begin
-#OEML - REST API
+#EMS - REST API
 
-#This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+#This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
 
 The version of the OpenAPI document: v1
 Contact: support@coinapi.io
@@ -18,7 +18,7 @@ describe OpenapiClient::Configuration do
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
-    # uri = URI.parse("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+    # uri = URI.parse("https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
     # OpenapiClient.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
@@ -28,14 +28,14 @@ describe OpenapiClient::Configuration do
   describe '#base_url' do
     it 'should have the default value' do
       # uncomment below to test default value of the base path
-      # expect(config.base_url).to eq("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+      # expect(config.base_url).to eq("https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
     end
 
     it 'should remove trailing slashes' do
       [nil, '', '/', '//'].each do |base_path|
         config.base_path = base_path
         # uncomment below to test trailing slashes
-        # expect(config.base_url).to eq("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+        # expect(config.base_url).to eq("https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
       end
     end
   end

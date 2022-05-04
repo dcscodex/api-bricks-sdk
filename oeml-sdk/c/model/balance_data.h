@@ -18,11 +18,11 @@ typedef struct balance_data_t balance_data_t;
 
 // Enum LASTUPDATEDBY for balance_data
 
-typedef enum  { oeml___rest_api_balance_data_LASTUPDATEDBY_NULL = 0, oeml___rest_api_balance_data_LASTUPDATEDBY_INITIALIZATION, oeml___rest_api_balance_data_LASTUPDATEDBY_BALANCE_MANAGER, oeml___rest_api_balance_data_LASTUPDATEDBY_EXCHANGE } oeml___rest_api_balance_data_LASTUPDATEDBY_e;
+typedef enum  { ems___rest_api_balance_data_LASTUPDATEDBY_NULL = 0, ems___rest_api_balance_data_LASTUPDATEDBY_INITIALIZATION, ems___rest_api_balance_data_LASTUPDATEDBY_BALANCE_MANAGER, ems___rest_api_balance_data_LASTUPDATEDBY_EXCHANGE } ems___rest_api_balance_data_LASTUPDATEDBY_e;
 
-char* balance_data_last_updated_by_ToString(oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by);
+char* balance_data_last_updated_by_ToString(ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by);
 
-oeml___rest_api_balance_data_LASTUPDATEDBY_e balance_data_last_updated_by_FromString(char* last_updated_by);
+ems___rest_api_balance_data_LASTUPDATEDBY_e balance_data_last_updated_by_FromString(char* last_updated_by);
 
 
 
@@ -32,7 +32,7 @@ typedef struct balance_data_t {
     double balance; //numeric
     double available; //numeric
     double locked; //numeric
-    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by; //enum
+    ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by; //enum
     double rate_usd; //numeric
     double traded; //numeric
 
@@ -44,7 +44,7 @@ balance_data_t *balance_data_create(
     double balance,
     double available,
     double locked,
-    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
+    ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
     double rate_usd,
     double traded
 );

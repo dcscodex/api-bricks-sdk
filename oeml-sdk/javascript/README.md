@@ -1,7 +1,7 @@
-# oeml_rest_api
+# ems_rest_api
 
-OemlRestApi - JavaScript client for oeml_rest_api
-This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
+EmsRestApi - JavaScript client for ems_rest_api
+This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
 
  * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
@@ -25,7 +25,7 @@ To publish the library as a [npm](https://www.npmjs.com/), please follow the pro
 Then install it via:
 
 ```shell
-npm install oeml_rest_api --save
+npm install ems_rest_api --save
 ```
 
 Finally, you need to build the module:
@@ -48,7 +48,7 @@ Next, [link](https://docs.npmjs.com/cli/link) it globally in npm with the follow
 npm link
 ```
 
-To use the link you just defined in your project, switch to the directory you want to use your oeml_rest_api from, and run:
+To use the link you just defined in your project, switch to the directory you want to use your ems_rest_api from, and run:
 
 ```shell
 npm link /path/to/<JAVASCRIPT_CLIENT_DIR>
@@ -104,10 +104,10 @@ module: {
 Please follow the [installation](#installation) instruction and execute the following JS code:
 
 ```javascript
-var OemlRestApi = require('oeml_rest_api');
+var EmsRestApi = require('ems_rest_api');
 
 
-var api = new OemlRestApi.BalancesApi()
+var api = new EmsRestApi.BalancesApi()
 var opts = {
   'exchangeId': KRAKEN // {String} Filter the balances to the specific exchange.
 };
@@ -124,38 +124,38 @@ api.v1BalancesGet(opts, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OemlRestApi.BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
-*OemlRestApi.OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
-*OemlRestApi.OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
-*OemlRestApi.OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
-*OemlRestApi.OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
-*OemlRestApi.OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
-*OemlRestApi.PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
+*EmsRestApi.BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
+*EmsRestApi.OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*EmsRestApi.OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*EmsRestApi.OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*EmsRestApi.OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+*EmsRestApi.OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*EmsRestApi.PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
- - [OemlRestApi.Balance](docs/Balance.md)
- - [OemlRestApi.BalanceData](docs/BalanceData.md)
- - [OemlRestApi.Fills](docs/Fills.md)
- - [OemlRestApi.MessageReject](docs/MessageReject.md)
- - [OemlRestApi.OrdSide](docs/OrdSide.md)
- - [OemlRestApi.OrdStatus](docs/OrdStatus.md)
- - [OemlRestApi.OrdType](docs/OrdType.md)
- - [OemlRestApi.OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
- - [OemlRestApi.OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
- - [OemlRestApi.OrderExecutionReport](docs/OrderExecutionReport.md)
- - [OemlRestApi.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
- - [OemlRestApi.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
- - [OemlRestApi.Position](docs/Position.md)
- - [OemlRestApi.PositionData](docs/PositionData.md)
- - [OemlRestApi.RejectReason](docs/RejectReason.md)
- - [OemlRestApi.TimeInForce](docs/TimeInForce.md)
- - [OemlRestApi.ValidationError](docs/ValidationError.md)
+ - [EmsRestApi.Balance](docs/Balance.md)
+ - [EmsRestApi.BalanceData](docs/BalanceData.md)
+ - [EmsRestApi.Fills](docs/Fills.md)
+ - [EmsRestApi.MessageReject](docs/MessageReject.md)
+ - [EmsRestApi.OrdSide](docs/OrdSide.md)
+ - [EmsRestApi.OrdStatus](docs/OrdStatus.md)
+ - [EmsRestApi.OrdType](docs/OrdType.md)
+ - [EmsRestApi.OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [EmsRestApi.OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [EmsRestApi.OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [EmsRestApi.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [EmsRestApi.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
+ - [EmsRestApi.Position](docs/Position.md)
+ - [EmsRestApi.PositionData](docs/PositionData.md)
+ - [EmsRestApi.RejectReason](docs/RejectReason.md)
+ - [EmsRestApi.TimeInForce](docs/TimeInForce.md)
+ - [EmsRestApi.ValidationError](docs/ValidationError.md)
 
 
 ## Documentation for Authorization

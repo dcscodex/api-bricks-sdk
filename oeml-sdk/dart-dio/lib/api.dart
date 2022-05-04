@@ -26,7 +26,7 @@ final _defaultInterceptors = [
 
 class Openapi {
 
-    static const String basePath = r'https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io';
+    static const String basePath = r'https://ems-gateway-aws-eu-central-1-dev.coinapi.io';
 
     final Dio dio;
 

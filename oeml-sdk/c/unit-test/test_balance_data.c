@@ -27,7 +27,7 @@ balance_data_t* instantiate_balance_data(int include_optional) {
       0.00134444,
       0.00134444,
       0.0,
-      oeml___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
+      ems___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
       1355.12,
       0.007
     );
@@ -38,7 +38,7 @@ balance_data_t* instantiate_balance_data(int include_optional) {
       0.00134444,
       0.00134444,
       0.0,
-      oeml___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
+      ems___rest_api_balance_data_LASTUPDATEDBY_"EXCHANGE",
       1355.12,
       0.007
     );

@@ -18,15 +18,15 @@ typedef struct ord_side_t ord_side_t;
 
 // Enum  for ord_side
 
-typedef enum { oeml___rest_api_ord_side__NULL = 0, oeml___rest_api_ord_side__BUY, oeml___rest_api_ord_side__SELL } oeml___rest_api_ord_side__e;
+typedef enum { ems___rest_api_ord_side__NULL = 0, ems___rest_api_ord_side__BUY, ems___rest_api_ord_side__SELL } ems___rest_api_ord_side__e;
 
-char* ord_side_ord_side_ToString(oeml___rest_api_ord_side__e ord_side);
+char* ord_side_ord_side_ToString(ems___rest_api_ord_side__e ord_side);
 
-oeml___rest_api_ord_side__e ord_side_ord_side_FromString(char* ord_side);
+ems___rest_api_ord_side__e ord_side_ord_side_FromString(char* ord_side);
 
-//cJSON *ord_side_ord_side_convertToJSON(oeml___rest_api_ord_side__e ord_side);
+//cJSON *ord_side_ord_side_convertToJSON(ems___rest_api_ord_side__e ord_side);
 
-//oeml___rest_api_ord_side__e ord_side_ord_side_parseFromJSON(cJSON *ord_sideJSON);
+//ems___rest_api_ord_side__e ord_side_ord_side_parseFromJSON(cJSON *ord_sideJSON);
 
 #endif /* _ord_side_H_ */
 

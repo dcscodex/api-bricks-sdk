@@ -27,7 +27,7 @@ order_execution_report_all_of_t* instantiate_order_execution_report_all_of(int i
       0.22,
       0.0,
       0.0783,
-      oeml___rest_api_order_execution_report_all_of__RECEIVED,
+      ems___rest_api_order_execution_report_all_of__RECEIVED,
       list_createList(),
       "{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol 'BTCUSD' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}",
       list_createList()
@@ -39,7 +39,7 @@ order_execution_report_all_of_t* instantiate_order_execution_report_all_of(int i
       0.22,
       0.0,
       0.0783,
-      oeml___rest_api_order_execution_report_all_of__RECEIVED,
+      ems___rest_api_order_execution_report_all_of__RECEIVED,
       list_createList(),
       "{"result":"error","reason":"InsufficientFunds","message":"Failed to place buy order on symbol 'BTCUSD' for price $7,000.00 and quantity 0.22 BTC due to insufficient funds"}",
       list_createList()

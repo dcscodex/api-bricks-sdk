@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **orderType** | [**OrdType**](OrdType.md) |  | 
 **timeInForce** | [**TimeInForce**](TimeInForce.md) |  | 
 **expireTime** | [**DateTime**](DateTime.md) | Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`. | [optional] 
-**execInst** | **BuiltList<String>** | Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a>  | [optional] 
+**execInst** | **BuiltList<String>** | Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a>  | [optional] 
 **clientOrderIdFormatExchange** | **String** | The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it. | 
 **exchangeOrderId** | **String** | Unique identifier of the order assigned by the exchange or executing system. | [optional] 
 **amountOpen** | **num** | Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled` | 

@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io'}) {
+  ApiClient({this.basePath = 'https://ems-gateway-aws-eu-central-1-dev.coinapi.io'}) {
   }
 
   final String basePath;

@@ -10,7 +10,7 @@
 
 part of openapi.api;
 
-/// Order statuses and the lifecycle are documented in the separate section: <a href=\"#oeml-order-lifecycle\">OEML / Starter Guide / Order Lifecycle</a> 
+/// Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
 class OrdStatus {
   /// Instantiate a new enum with the provided [value].
   const OrdStatus._(this.value);

@@ -4,12 +4,12 @@
 #include "position_data.h"
 
 
-char* sideposition_data_ToString(oeml___rest_api_position_data__e side) {
+char* sideposition_data_ToString(ems___rest_api_position_data__e side) {
     char* sideArray[] =  { "NULL", "BUY", "SELL" };
 	return sideArray[side];
 }
 
-oeml___rest_api_position_data__e sideposition_data_FromString(char* side){
+ems___rest_api_position_data__e sideposition_data_FromString(char* side){
     int stringToReturn = 0;
     char *sideArray[] =  { "NULL", "BUY", "SELL" };
     size_t sizeofArray = sizeof(sideArray) / sizeof(sideArray[0]);

@@ -1,14 +1,14 @@
-defmodule OEML-RESTAPI.Mixfile do
+defmodule EMS-RESTAPI.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :oeml_restapi,
+    [app: :ems_restapi,
      version: "v1",
      elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
-     description: "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. &lt;br/&gt; This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       &lt;br/&gt;&lt;br/&gt; Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) ",
+     description: "This section will provide necessary information about the &#x60;CoinAPI EMS REST API&#x60; protocol. &lt;br/&gt; This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       &lt;br/&gt;&lt;br/&gt; Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) ",
      deps: deps()]
   end
 
@@ -38,7 +38,7 @@ defmodule OEML-RESTAPI.Mixfile do
 
    defp package() do
     [
-      name: "oeml_restapi",
+      name: "ems_restapi",
       files: ~w(lib mix.exs README* LICENSE*),
       licenses: [""]
     ]

@@ -1,4 +1,4 @@
-# OemlRestApi.MessageReject
+# EmsRestApi.MessageReject
 
 ## Properties
 

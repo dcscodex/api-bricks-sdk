@@ -1,8 +1,8 @@
 // @flow
 /* eslint-disable no-use-before-define */
 /**
- * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+ * EMS - REST API
+ * This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -17,7 +17,7 @@ import * as url from "url";
 import * as portableFetch from "portable-fetch";
 import { Configuration } from "./configuration";
 
-const BASE_PATH: string = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io".replace(/\/+$/, "");
+const BASE_PATH: string = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io".replace(/\/+$/, "");
 
 /**
  *
@@ -215,14 +215,14 @@ export type MessageReject = {
 export type OrdSide = 'BUY' | 'SELL';
 
 /**
- * Order statuses and the lifecycle are documented in the separate section: <a href=\"#oeml-order-lifecycle\">OEML / Starter Guide / Order Lifecycle</a> 
+ * Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
  * @export
  * @enum {string}
  */
 export type OrdStatus = 'RECEIVED' | 'ROUTING' | 'ROUTED' | 'NEW' | 'PENDING_CANCEL' | 'PARTIALLY_FILLED' | 'FILLED' | 'CANCELED' | 'REJECTED';
 
 /**
- * Order types are documented in the separate section: <a href=\"#oeml-order-params-type\">OEML / Starter Guide / Order parameters / Order type</a> 
+ * Order types are documented in the separate section: <a href=\"#ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a> 
  * @export
  * @enum {string}
  */
@@ -334,7 +334,7 @@ export type OrderExecutionReport = {
      */
     expire_time?: Date;
     /**
-     * Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
+     * Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a> 
      * @type {Array<string>}
      * @memberof OrderExecutionReport
      */
@@ -524,7 +524,7 @@ export type OrderNewSingleRequest = {
      */
     expire_time?: Date;
     /**
-     * Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
+     * Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a> 
      * @type {Array<string>}
      * @memberof OrderNewSingleRequest
      */
@@ -625,7 +625,7 @@ export type PositionData = {
 export type RejectReason = 'OTHER' | 'EXCHANGE_UNREACHABLE' | 'EXCHANGE_RESPONSE_TIMEOUT' | 'ORDER_ID_NOT_FOUND' | 'INVALID_TYPE' | 'METHOD_NOT_SUPPORTED' | 'JSON_ERROR';
 
 /**
- * Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+ * Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
  * @export
  * @enum {string}
  */

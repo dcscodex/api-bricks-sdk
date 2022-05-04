@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **orderType** | [**OrdType**](OrdType.md) |  | 
 **timeInForce** | [**TimeInForce**](TimeInForce.md) |  | 
 **expireTime** | [**DateTime**](DateTime.md) | Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`. | [optional] 
-**execInst** | **List<String>** | Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a>  | [optional] [default to const []]
+**execInst** | **List<String>** | Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a>  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

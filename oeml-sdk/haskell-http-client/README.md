@@ -1,6 +1,6 @@
-## OpenAPI Auto-Generated [http-client](https://www.stackage.org/lts-10.0/package/http-client-0.5.7.1) Bindings to `OEML - REST API`
+## OpenAPI Auto-Generated [http-client](https://www.stackage.org/lts-10.0/package/http-client-0.5.7.1) Bindings to `EMS - REST API`
 
-The library in `lib` provides auto-generated-from-OpenAPI [http-client](https://www.stackage.org/lts-10.0/package/http-client-0.5.7.1) bindings to the OEML - REST API API.
+The library in `lib` provides auto-generated-from-OpenAPI [http-client](https://www.stackage.org/lts-10.0/package/http-client-0.5.7.1) bindings to the EMS - REST API API.
 
 OpenApi Version: 3.0.0
 
@@ -59,11 +59,11 @@ These options allow some customization of the code generation process.
 | allowFromJsonNulls              | allow JSON Null during model decoding from JSON                                                                               | true     | true              |
 | allowNonUniqueOperationIds      | allow *different* API modules to contain the same operationId. Each API must be imported qualified                            | false    | false    |
 | allowToJsonNulls                | allow emitting JSON Null during model encoding to JSON                                                                        | false    | false                |
-| baseModule                      | Set the base module namespace                                                                                                 |          | OEML-REST                      |
-| cabalPackage                    | Set the cabal package name, which consists of one or more alphanumeric words separated by hyphens                             |          | oeml---rest                    |
+| baseModule                      | Set the base module namespace                                                                                                 |          | EMS-REST                      |
+| cabalPackage                    | Set the cabal package name, which consists of one or more alphanumeric words separated by hyphens                             |          | ems---rest                    |
 | cabalVersion                    | Set the cabal version number, consisting of a sequence of one or more integers separated by dots                              | 0.1.0.0  | 0.1.0.0                    |
 | customTestInstanceModule        | test module used to provide typeclass instances for types not known by the generator                                          |          |         |
-| configType                      | Set the name of the type used for configuration                                                                               |          | OEML-RESTConfig                      |
+| configType                      | Set the name of the type used for configuration                                                                               |          | EMS-RESTConfig                      |
 | dateFormat                      | format string used to parse/render a date                                                                                     | %Y-%m-%d | %Y-%m-%d                      |
 | dateTimeFormat                  | format string used to parse/render a datetime. (Defaults to [formatISO8601Millis][1] when not provided)                       |          |                   |
 | dateTimeParseFormat             | overrides the format string used to parse a datetime                                                                          |          |              |
@@ -73,7 +73,7 @@ These options allow some customization of the code generation process.
 | generateModelConstructors       | Generate smart constructors (only supply required fields) for models                                                          | true     | true       |
 | inlineMimeTypes                 | Inline (hardcode) the content-type and accept parameters on operations, when there is only 1 option                           | true     | true                 |
 | modelDeriving                   | Additional classes to include in the deriving() clause of Models                                                              |          |                    |
-| requestType                     | Set the name of the type used to generate requests                                                                            |          | OEML-RESTRequest                     |
+| requestType                     | Set the name of the type used to generate requests                                                                            |          | EMS-RESTRequest                     |
 | strictFields                    | Add strictness annotations to all model fields                                                                                | true     | true                  |
 | useKatip                        | Sets the default value for the UseKatip cabal flag. If true, the katip package provides logging instead of monad-logger       | true     | true                      |
 | queryExtraUnreserved            | Configures additional querystring characters which must not be URI encoded, e.g. '+' or ':'                                   |          |           |
@@ -112,13 +112,13 @@ This library is intended to be imported qualified.
 
 | MODULE              | NOTES                                               |
 | ------------------- | --------------------------------------------------- |
-| OEML-REST.Client    | use the "dispatch" functions to send requests       |
-| OEML-REST.Core      | core functions, config and request types            |
-| OEML-REST.API       | construct api requests                              |
-| OEML-REST.Model     | describes api models                                |
-| OEML-REST.MimeTypes | encoding/decoding MIME types (content-types/accept) |
-| OEML-REST.ModelLens | lenses for model fields                             |
-| OEML-REST.Logging   | logging functions and utils                         |
+| EMS-REST.Client    | use the "dispatch" functions to send requests       |
+| EMS-REST.Core      | core functions, config and request types            |
+| EMS-REST.API       | construct api requests                              |
+| EMS-REST.Model     | describes api models                                |
+| EMS-REST.MimeTypes | encoding/decoding MIME types (content-types/accept) |
+| EMS-REST.ModelLens | lenses for model fields                             |
+| EMS-REST.Logging   | logging functions and utils                         |
 
 
 ### MimeTypes

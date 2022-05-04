@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **balance** | **double** | Value of the current total currency balance on the exchange. | [optional] 
 **available** | **double** | Value of the current available currency balance on the exchange that can be used as collateral. | [optional] 
 **locked** | **double** | Value of the current locked currency balance by the exchange. | [optional] 
-**last_updated_by** | **oeml___rest_api_balance_data_LASTUPDATEDBY_e** | Source of the last modification.  | [optional] 
+**last_updated_by** | **ems___rest_api_balance_data_LASTUPDATEDBY_e** | Source of the last modification.  | [optional] 
 **rate_usd** | **double** | Current exchange rate to the USD for the single unit of the currency.  | [optional] 
 **traded** | **double** | Value of the current total traded. | [optional] 
 

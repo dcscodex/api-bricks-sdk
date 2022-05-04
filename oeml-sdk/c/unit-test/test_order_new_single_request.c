@@ -28,9 +28,9 @@ order_new_single_request_t* instantiate_order_new_single_request(int include_opt
       "KRAKEN_SPOT_BTC_USDT",
       0.045,
       0.0783,
-      oeml___rest_api_order_new_single_request__"BUY",
-      oeml___rest_api_order_new_single_request__"LIMIT",
-      oeml___rest_api_order_new_single_request__"GOOD_TILL_CANCEL",
+      ems___rest_api_order_new_single_request__"BUY",
+      ems___rest_api_order_new_single_request__"LIMIT",
+      ems___rest_api_order_new_single_request__"GOOD_TILL_CANCEL",
       2020-01-01T10:45:20.1677709Z,
       ["MAKER_OR_CANCEL"]
     );
@@ -42,9 +42,9 @@ order_new_single_request_t* instantiate_order_new_single_request(int include_opt
       "KRAKEN_SPOT_BTC_USDT",
       0.045,
       0.0783,
-      oeml___rest_api_order_new_single_request__"BUY",
-      oeml___rest_api_order_new_single_request__"LIMIT",
-      oeml___rest_api_order_new_single_request__"GOOD_TILL_CANCEL",
+      ems___rest_api_order_new_single_request__"BUY",
+      ems___rest_api_order_new_single_request__"LIMIT",
+      ems___rest_api_order_new_single_request__"GOOD_TILL_CANCEL",
       2020-01-01T10:45:20.1677709Z,
       ["MAKER_OR_CANCEL"]
     );

@@ -1,8 +1,8 @@
-# OEML - REST API Bash client
+# EMS - REST API Bash client
 
 ## Overview
 
-This is a Bash client script for accessing OEML - REST API service.
+This is a Bash client script for accessing EMS - REST API service.
 
 The script uses cURL underneath for making all REST calls.
 

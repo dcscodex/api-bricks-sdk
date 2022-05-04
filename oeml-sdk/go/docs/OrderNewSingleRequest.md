@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **OrderType** | [**OrdType**](OrdType.md) |  | 
 **TimeInForce** | [**TimeInForce**](TimeInForce.md) |  | 
 **ExpireTime** | Pointer to **string** | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional] 
-**ExecInst** | Pointer to **[]string** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] 
+**ExecInst** | Pointer to **[]string** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] 
 
 ## Methods
 

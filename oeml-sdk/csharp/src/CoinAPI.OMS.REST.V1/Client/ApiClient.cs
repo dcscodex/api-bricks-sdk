@@ -1,7 +1,7 @@
 /*
- * OEML - REST API
+ * EMS - REST API
  *
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+ * This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -54,12 +54,12 @@ namespace CoinAPI.OMS.REST.V1.Client
         public ApiClient()
         {
             Configuration = CoinAPI.OMS.REST.V1.Client.Configuration.Default;
-            RestClient = new RestClient("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
+            RestClient = new RestClient("https://ems-gateway-aws-eu-central-1-dev.coinapi.io");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io).
+        /// with default base path (https://ems-gateway-aws-eu-central-1-dev.coinapi.io).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -74,7 +74,7 @@ namespace CoinAPI.OMS.REST.V1.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io")
+        public ApiClient(String basePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

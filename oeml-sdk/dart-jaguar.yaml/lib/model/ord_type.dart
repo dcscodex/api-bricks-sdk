@@ -8,7 +8,7 @@ class OrdType {
 
   const OrdType._internal(this.value);
 
-  /// Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-type\&quot;&gt;OEML / Starter Guide / Order parameters / Order type&lt;/a&gt; 
+  /// Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-type\&quot;&gt;EMS / Starter Guide / Order parameters / Order type&lt;/a&gt; 
   static const OrdType LIMIT = const OrdType._internal('LIMIT');
 }
 

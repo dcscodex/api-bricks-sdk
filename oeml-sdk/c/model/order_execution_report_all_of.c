@@ -4,12 +4,12 @@
 #include "order_execution_report_all_of.h"
 
 
-char* statusorder_execution_report_all_of_ToString(oeml___rest_api_order_execution_report_all_of__e status) {
+char* statusorder_execution_report_all_of_ToString(ems___rest_api_order_execution_report_all_of__e status) {
     char* statusArray[] =  { "NULL", "RECEIVED", "ROUTING", "ROUTED", "NEW", "PENDING_CANCEL", "PARTIALLY_FILLED", "FILLED", "CANCELED", "REJECTED" };
 	return statusArray[status];
 }
 
-oeml___rest_api_order_execution_report_all_of__e statusorder_execution_report_all_of_FromString(char* status){
+ems___rest_api_order_execution_report_all_of__e statusorder_execution_report_all_of_FromString(char* status){
     int stringToReturn = 0;
     char *statusArray[] =  { "NULL", "RECEIVED", "ROUTING", "ROUTED", "NEW", "PENDING_CANCEL", "PARTIALLY_FILLED", "FILLED", "CANCELED", "REJECTED" };
     size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);

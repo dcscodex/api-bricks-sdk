@@ -1,6 +1,6 @@
 # BalancesApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import org.openapitools.client.api.BalancesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io");
+    defaultClient.setBasePath("https://ems-gateway-aws-eu-central-1-dev.coinapi.io");
 
     BalancesApi apiInstance = new BalancesApi(defaultClient);
     String exchangeId = "KRAKEN"; // String | Filter the balances to the specific exchange.

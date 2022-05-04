@@ -1,6 +1,6 @@
-# OemlRestApi.BalancesApi
+# EmsRestApi.BalancesApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,9 +19,9 @@ Get current currency balance from all or single exchange.
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.BalancesApi();
+let apiInstance = new EmsRestApi.BalancesApi();
 let opts = {
   'exchangeId': KRAKEN // String | Filter the balances to the specific exchange.
 };

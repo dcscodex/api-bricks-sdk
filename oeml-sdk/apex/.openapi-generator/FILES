@@ -89,5 +89,5 @@ force-app/main/default/classes/OASValidationError.cls
 force-app/main/default/classes/OASValidationError.cls-meta.xml
 force-app/main/default/classes/OASValidationErrorTest.cls
 force-app/main/default/classes/OASValidationErrorTest.cls-meta.xml
-force-app/main/default/namedCredentials/OEML__REST_API.namedCredential-meta.xml
+force-app/main/default/namedCredentials/EMS__REST_API.namedCredential-meta.xml
 sfdx-project.json

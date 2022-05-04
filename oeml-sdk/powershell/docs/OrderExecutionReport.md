@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **OrderType** | [**OrdType**](OrdType.md) |  | 
 **TimeInForce** | [**TimeInForce**](TimeInForce.md) |  | 
 **ExpireTime** | **System.DateTime** | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional] 
-**ExecInst** | **String[]** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;&quot;&quot;#oeml-order-params-exec&quot;&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] 
+**ExecInst** | **String[]** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;&quot;&quot;#ems-order-params-exec&quot;&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] 
 **ClientOrderIdFormatExchange** | **String** | The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it. | 
 **ExchangeOrderId** | **String** | Unique identifier of the order assigned by the exchange or executing system. | [optional] 
 **AmountOpen** | **Decimal** | Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60; | 

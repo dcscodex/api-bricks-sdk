@@ -2,8 +2,8 @@
 
 module Instances where
 
-import OEML-REST.Model
-import OEML-REST.Core
+import EMS-REST.Model
+import EMS-REST.Core
 
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy as BL

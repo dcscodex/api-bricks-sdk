@@ -13,19 +13,19 @@ part 'time_in_force.g.dart';
 
 class TimeInForce extends EnumClass {
 
-  /// Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+  /// Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
   @BuiltValueEnumConst(wireName: r'GOOD_TILL_CANCEL')
   static const TimeInForce GOOD_TILL_CANCEL = _$GOOD_TILL_CANCEL;
-  /// Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+  /// Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
   @BuiltValueEnumConst(wireName: r'GOOD_TILL_TIME_EXCHANGE')
   static const TimeInForce GOOD_TILL_TIME_EXCHANGE = _$GOOD_TILL_TIME_EXCHANGE;
-  /// Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+  /// Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
   @BuiltValueEnumConst(wireName: r'GOOD_TILL_TIME_OMS')
   static const TimeInForce GOOD_TILL_TIME_OMS = _$GOOD_TILL_TIME_OMS;
-  /// Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+  /// Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
   @BuiltValueEnumConst(wireName: r'FILL_OR_KILL')
   static const TimeInForce FILL_OR_KILL = _$FILL_OR_KILL;
-  /// Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+  /// Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
   @BuiltValueEnumConst(wireName: r'IMMEDIATE_OR_CANCEL')
   static const TimeInForce IMMEDIATE_OR_CANCEL = _$IMMEDIATE_OR_CANCEL;
 

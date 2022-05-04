@@ -4,12 +4,12 @@
 #include "order_execution_report.h"
 
 
-char* sideorder_execution_report_ToString(oeml___rest_api_order_execution_report__e side) {
+char* sideorder_execution_report_ToString(ems___rest_api_order_execution_report__e side) {
     char* sideArray[] =  { "NULL", "BUY", "SELL" };
 	return sideArray[side];
 }
 
-oeml___rest_api_order_execution_report__e sideorder_execution_report_FromString(char* side){
+ems___rest_api_order_execution_report__e sideorder_execution_report_FromString(char* side){
     int stringToReturn = 0;
     char *sideArray[] =  { "NULL", "BUY", "SELL" };
     size_t sizeofArray = sizeof(sideArray) / sizeof(sideArray[0]);
@@ -21,12 +21,12 @@ oeml___rest_api_order_execution_report__e sideorder_execution_report_FromString(
     }
     return 0;
 }
-char* order_typeorder_execution_report_ToString(oeml___rest_api_order_execution_report__e order_type) {
+char* order_typeorder_execution_report_ToString(ems___rest_api_order_execution_report__e order_type) {
     char* order_typeArray[] =  { "NULL", "LIMIT" };
 	return order_typeArray[order_type];
 }
 
-oeml___rest_api_order_execution_report__e order_typeorder_execution_report_FromString(char* order_type){
+ems___rest_api_order_execution_report__e order_typeorder_execution_report_FromString(char* order_type){
     int stringToReturn = 0;
     char *order_typeArray[] =  { "NULL", "LIMIT" };
     size_t sizeofArray = sizeof(order_typeArray) / sizeof(order_typeArray[0]);
@@ -38,12 +38,12 @@ oeml___rest_api_order_execution_report__e order_typeorder_execution_report_FromS
     }
     return 0;
 }
-char* time_in_forceorder_execution_report_ToString(oeml___rest_api_order_execution_report__e time_in_force) {
+char* time_in_forceorder_execution_report_ToString(ems___rest_api_order_execution_report__e time_in_force) {
     char* time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL" };
 	return time_in_forceArray[time_in_force];
 }
 
-oeml___rest_api_order_execution_report__e time_in_forceorder_execution_report_FromString(char* time_in_force){
+ems___rest_api_order_execution_report__e time_in_forceorder_execution_report_FromString(char* time_in_force){
     int stringToReturn = 0;
     char *time_in_forceArray[] =  { "NULL", "GOOD_TILL_CANCEL", "GOOD_TILL_TIME_EXCHANGE", "GOOD_TILL_TIME_OMS", "FILL_OR_KILL", "IMMEDIATE_OR_CANCEL" };
     size_t sizeofArray = sizeof(time_in_forceArray) / sizeof(time_in_forceArray[0]);
@@ -55,12 +55,12 @@ oeml___rest_api_order_execution_report__e time_in_forceorder_execution_report_Fr
     }
     return 0;
 }
-char* exec_instorder_execution_report_ToString(oeml___rest_api_order_execution_report_EXECINST_e exec_inst) {
+char* exec_instorder_execution_report_ToString(ems___rest_api_order_execution_report_EXECINST_e exec_inst) {
 	char *exec_instArray[] =  { "NULL", "MAKER_OR_CANCEL", "AUCTION_ONLY", "INDICATION_OF_INTEREST" };
 	return exec_instArray[exec_inst - 1];
 }
 
-oeml___rest_api_order_execution_report_EXECINST_e exec_instorder_execution_report_FromString(char* exec_inst) {
+ems___rest_api_order_execution_report_EXECINST_e exec_instorder_execution_report_FromString(char* exec_inst) {
     int stringToReturn = 0;
     char *exec_instArray[] =  { "NULL", "MAKER_OR_CANCEL", "AUCTION_ONLY", "INDICATION_OF_INTEREST" };
     size_t sizeofArray = sizeof(exec_instArray) / sizeof(exec_instArray[0]);
@@ -72,12 +72,12 @@ oeml___rest_api_order_execution_report_EXECINST_e exec_instorder_execution_repor
     }
     return 0;
 }
-char* statusorder_execution_report_ToString(oeml___rest_api_order_execution_report__e status) {
+char* statusorder_execution_report_ToString(ems___rest_api_order_execution_report__e status) {
     char* statusArray[] =  { "NULL", "RECEIVED", "ROUTING", "ROUTED", "NEW", "PENDING_CANCEL", "PARTIALLY_FILLED", "FILLED", "CANCELED", "REJECTED" };
 	return statusArray[status];
 }
 
-oeml___rest_api_order_execution_report__e statusorder_execution_report_FromString(char* status){
+ems___rest_api_order_execution_report__e statusorder_execution_report_FromString(char* status){
     int stringToReturn = 0;
     char *statusArray[] =  { "NULL", "RECEIVED", "ROUTING", "ROUTED", "NEW", "PENDING_CANCEL", "PARTIALLY_FILLED", "FILLED", "CANCELED", "REJECTED" };
     size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);

@@ -8,23 +8,23 @@ class OrdStatus {
 
   const OrdStatus._internal(this.value);
 
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus RECEIVED = const OrdStatus._internal('RECEIVED');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus ROUTING = const OrdStatus._internal('ROUTING');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus ROUTED = const OrdStatus._internal('ROUTED');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus NEW = const OrdStatus._internal('NEW');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus PENDING_CANCEL = const OrdStatus._internal('PENDING_CANCEL');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus PARTIALLY_FILLED = const OrdStatus._internal('PARTIALLY_FILLED');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus FILLED = const OrdStatus._internal('FILLED');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus CANCELED = const OrdStatus._internal('CANCELED');
-  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-lifecycle\&quot;&gt;OEML / Starter Guide / Order Lifecycle&lt;/a&gt; 
+  /// Order statuses and the lifecycle are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-lifecycle\&quot;&gt;EMS / Starter Guide / Order Lifecycle&lt;/a&gt; 
   static const OrdStatus REJECTED = const OrdStatus._internal('REJECTED');
 }
 

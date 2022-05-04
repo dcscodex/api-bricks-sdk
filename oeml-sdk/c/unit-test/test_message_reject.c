@@ -23,7 +23,7 @@ message_reject_t* instantiate_message_reject(int include_optional) {
   if (include_optional) {
     message_reject = message_reject_create(
       "MESSAGE_REJECT",
-      oeml___rest_api_message_reject__"ORDER_ID_NOT_FOUND",
+      ems___rest_api_message_reject__"ORDER_ID_NOT_FOUND",
       "BINANCE",
       "Order with ID: BINANCE-7d8a-4888 not found",
       "{"client_order_id":"BINANCE-7d8a-4888","exchange_id":"BINANCE","type":"ORDER_CANCEL_SINGLE_REQUEST"}"
@@ -31,7 +31,7 @@ message_reject_t* instantiate_message_reject(int include_optional) {
   } else {
     message_reject = message_reject_create(
       "MESSAGE_REJECT",
-      oeml___rest_api_message_reject__"ORDER_ID_NOT_FOUND",
+      ems___rest_api_message_reject__"ORDER_ID_NOT_FOUND",
       "BINANCE",
       "Order with ID: BINANCE-7d8a-4888 not found",
       "{"client_order_id":"BINANCE-7d8a-4888","exchange_id":"BINANCE","type":"ORDER_CANCEL_SINGLE_REQUEST"}"

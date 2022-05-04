@@ -1,6 +1,6 @@
 # CoinAPI.OMS.REST.V1.Api.OrdersApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -35,7 +35,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new OrdersApi(Configuration.Default);
             var orderCancelAllRequest = new OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
 
@@ -113,7 +113,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new OrdersApi(Configuration.Default);
             var orderCancelSingleRequest = new OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
@@ -191,7 +191,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new OrdersApi(Configuration.Default);
             var exchangeId = KRAKEN;  // string | Filter the open orders to the specific exchange. (optional) 
 
@@ -268,7 +268,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new OrdersApi(Configuration.Default);
             var orderNewSingleRequest = new OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
 
@@ -347,7 +347,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new OrdersApi(Configuration.Default);
             var clientOrderId = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b;  // string | The unique identifier of the order assigned by the client.
 

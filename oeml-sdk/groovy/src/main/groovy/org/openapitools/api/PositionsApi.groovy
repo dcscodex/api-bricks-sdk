@@ -5,7 +5,7 @@ import org.openapitools.model.MessageReject
 import org.openapitools.model.Position
 
 class PositionsApi {
-    String basePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    String basePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 

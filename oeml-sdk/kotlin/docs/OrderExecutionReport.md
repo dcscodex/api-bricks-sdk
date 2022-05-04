@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **symbolIdExchange** | **kotlin.String** | Exchange symbol. One of the properties (&#x60;symbol_id_exchange&#x60;, &#x60;symbol_id_coinapi&#x60;) is required to identify the market for the new order. |  [optional]
 **symbolIdCoinapi** | **kotlin.String** | CoinAPI symbol. One of the properties (&#x60;symbol_id_exchange&#x60;, &#x60;symbol_id_coinapi&#x60;) is required to identify the market for the new order. |  [optional]
 **expireTime** | [**java.time.LocalDate**](java.time.LocalDate.md) | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. |  [optional]
-**execInst** | [**inline**](#kotlin.collections.List&lt;ExecInst&gt;) | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  |  [optional]
+**execInst** | [**inline**](#kotlin.collections.List&lt;ExecInst&gt;) | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  |  [optional]
 **exchangeOrderId** | **kotlin.String** | Unique identifier of the order assigned by the exchange or executing system. |  [optional]
 **avgPx** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Calculated average price of all fills on this order. |  [optional]
 **statusHistory** | **kotlin.collections.List&lt;kotlin.collections.List&lt;kotlin.String&gt;&gt;** | Timestamped history of order status changes. |  [optional]

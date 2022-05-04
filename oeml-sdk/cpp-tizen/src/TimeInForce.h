@@ -1,7 +1,7 @@
 /*
  * TimeInForce.h
  *
- * Order time in force options are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-tif\&quot;&gt;OEML / Starter Guide / Order parameters / Time in force&lt;/a&gt; 
+ * Order time in force options are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-tif\&quot;&gt;EMS / Starter Guide / Order parameters / Time in force&lt;/a&gt; 
  */
 
 #ifndef _TimeInForce_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+/*! \brief Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
  *
  *  \ingroup Models
  *

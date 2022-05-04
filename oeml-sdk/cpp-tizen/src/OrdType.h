@@ -1,7 +1,7 @@
 /*
  * OrdType.h
  *
- * Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-type\&quot;&gt;OEML / Starter Guide / Order parameters / Order type&lt;/a&gt; 
+ * Order types are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-type\&quot;&gt;EMS / Starter Guide / Order parameters / Order type&lt;/a&gt; 
  */
 
 #ifndef _OrdType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Order types are documented in the separate section: <a href=\"#oeml-order-params-type\">OEML / Starter Guide / Order parameters / Order type</a> 
+/*! \brief Order types are documented in the separate section: <a href=\"#ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a> 
  *
  *  \ingroup Models
  *

@@ -74,7 +74,7 @@ API.Client.OrderExecutionReport.prototype.timeInForce;
 API.Client.OrderExecutionReport.prototype.expireTime;
 
 /**
- * Order execution instructions are documented in the separate section: <a href=\"#oeml-order-params-exec\">OEML / Starter Guide / Order parameters / Execution instructions</a> 
+ * Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a> 
  * @type {!Array<!string>}
  * @export
  */

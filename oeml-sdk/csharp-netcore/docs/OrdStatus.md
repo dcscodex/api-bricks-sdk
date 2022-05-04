@@ -1,5 +1,5 @@
 # CoinAPI.OMS.API.SDK.Model.OrdStatus
-Order statuses and the lifecycle are documented in the separate section: <a href=\"#oeml-order-lifecycle\">OEML / Starter Guide / Order Lifecycle</a> 
+Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
 
 ## Properties
 

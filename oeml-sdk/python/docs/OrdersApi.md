@@ -1,6 +1,6 @@
 # openapi_client.OrdersApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,10 +29,10 @@ from openapi_client.model.validation_error import ValidationError
 from openapi_client.model.order_cancel_all_request import OrderCancelAllRequest
 from openapi_client.model.message_reject import MessageReject
 from pprint import pprint
-# Defining the host is optional and defaults to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
 )
 
 
@@ -103,10 +103,10 @@ from openapi_client.model.validation_error import ValidationError
 from openapi_client.model.order_execution_report import OrderExecutionReport
 from openapi_client.model.message_reject import MessageReject
 from pprint import pprint
-# Defining the host is optional and defaults to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
 )
 
 
@@ -177,10 +177,10 @@ from openapi_client.api import orders_api
 from openapi_client.model.order_execution_reports import OrderExecutionReports
 from openapi_client.model.message_reject import MessageReject
 from pprint import pprint
-# Defining the host is optional and defaults to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
 )
 
 
@@ -249,10 +249,10 @@ from openapi_client.model.validation_error import ValidationError
 from openapi_client.model.order_execution_report import OrderExecutionReport
 from openapi_client.model.message_reject import MessageReject
 from pprint import pprint
-# Defining the host is optional and defaults to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
 )
 
 
@@ -332,10 +332,10 @@ from openapi_client.api import orders_api
 from openapi_client.model.order_execution_report import OrderExecutionReport
 from openapi_client.model.message_reject import MessageReject
 from pprint import pprint
-# Defining the host is optional and defaults to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
 )
 
 

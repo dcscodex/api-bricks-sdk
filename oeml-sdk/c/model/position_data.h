@@ -20,11 +20,11 @@ typedef struct position_data_t position_data_t;
 
 // Enum  for position_data
 
-typedef enum  { oeml___rest_api_position_data__NULL = 0, oeml___rest_api_position_data__BUY, oeml___rest_api_position_data__SELL } oeml___rest_api_position_data__e;
+typedef enum  { ems___rest_api_position_data__NULL = 0, ems___rest_api_position_data__BUY, ems___rest_api_position_data__SELL } ems___rest_api_position_data__e;
 
-char* position_data_side_ToString(oeml___rest_api_position_data__e side);
+char* position_data_side_ToString(ems___rest_api_position_data__e side);
 
-oeml___rest_api_position_data__e position_data_side_FromString(char* side);
+ems___rest_api_position_data__e position_data_side_FromString(char* side);
 
 
 

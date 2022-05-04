@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **order_type** | [**ORD_TYPE**](OrdType.md) |  | [default to null]
 **time_in_force** | [**TIME_IN_FORCE**](TimeInForce.md) |  | [default to null]
 **expire_time** | [**DATE**](DATE.md) | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional] [default to null]
-**exec_inst** | [**LIST [STRING_32]**](STRING_32.md) | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] [default to null]
+**exec_inst** | [**LIST [STRING_32]**](STRING_32.md) | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] [default to null]
 **client_order_id_format_exchange** | [**STRING_32**](STRING_32.md) | The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it. | [default to null]
 **exchange_order_id** | [**STRING_32**](STRING_32.md) | Unique identifier of the order assigned by the exchange or executing system. | [optional] [default to null]
 **amount_open** | **REAL_32** | Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60; | [default to null]

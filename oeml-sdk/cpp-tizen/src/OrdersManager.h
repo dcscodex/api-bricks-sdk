@@ -167,7 +167,7 @@ bool v1OrdersStatusClientOrderIdGetAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+		return "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
 	}
 };
 /** @}*/

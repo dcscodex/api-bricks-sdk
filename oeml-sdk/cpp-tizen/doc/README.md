@@ -1,4 +1,4 @@
-# Documentation for OEML - REST API v1 Tizen Client SDK
+# Documentation for EMS - REST API v1 Tizen Client SDK
 
 ## How do I get the doc files?
 First generate source code by running `openapi-generator`
@@ -16,7 +16,7 @@ This is the structure of the doc folder:
 ├── Doxyfile                  \\Doxygen config files
 ├── generateDocumentation.sh  \\Script to run to generate documentation
 ├── README.md                 \\This file
-├── SDK                       \\Documentation for all classes in OEML - REST API Tizen Client SDK. See ./html/index.html
+├── SDK                       \\Documentation for all classes in EMS - REST API Tizen Client SDK. See ./html/index.html
 │   └── html
 
 ```
@@ -36,7 +36,7 @@ Doxygen is the de facto standard tool for generating/extracting documentation fr
 Check out [Doxygen](https://www.doxygen.org/) for additional information about the Doxygen project.
 
 ## I Don't want to run Doxygen. What are the API files for accessing the REST endpoints?
-All URIs are relative to https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.iohttps://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+All URIs are relative to https://ems-gateway-aws-eu-central-1-dev.coinapi.iohttps://ems-gateway-aws-eu-central-1-dev.coinapi.io
 
 
 ### BalancesManager
@@ -76,8 +76,8 @@ Class | Description
  *Fills* | 
  *MessageReject* | 
  *OrdSide* | Side of order. 
- *OrdStatus* | Order statuses and the lifecycle are documented in the separate section: <a href=\"#oeml-order-lifecycle\">OEML / Starter Guide / Order Lifecycle</a> 
- *OrdType* | Order types are documented in the separate section: <a href=\"#oeml-order-params-type\">OEML / Starter Guide / Order parameters / Order type</a> 
+ *OrdStatus* | Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
+ *OrdType* | Order types are documented in the separate section: <a href=\"#ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a> 
  *OrderCancelAllRequest* | Cancel all orders request object.
  *OrderCancelSingleRequest* | Cancel single order request object.
  *OrderExecutionReport* | The order execution report object.
@@ -86,6 +86,6 @@ Class | Description
  *Position* | 
  *Position_data* | The Position object.
  *RejectReason* | Cause of rejection.
- *TimeInForce* | Order time in force options are documented in the separate section: <a href=\"#oeml-order-params-tif\">OEML / Starter Guide / Order parameters / Time in force</a> 
+ *TimeInForce* | Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
  *ValidationError* | 
 

@@ -4,12 +4,12 @@
 #include "balance_data.h"
 
 
-char* last_updated_bybalance_data_ToString(oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by) {
+char* last_updated_bybalance_data_ToString(ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by) {
     char* last_updated_byArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
 	return last_updated_byArray[last_updated_by];
 }
 
-oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_bybalance_data_FromString(char* last_updated_by){
+ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_bybalance_data_FromString(char* last_updated_by){
     int stringToReturn = 0;
     char *last_updated_byArray[] =  { "NULL", "INITIALIZATION", "BALANCE_MANAGER", "EXCHANGE" };
     size_t sizeofArray = sizeof(last_updated_byArray) / sizeof(last_updated_byArray[0]);
@@ -28,7 +28,7 @@ balance_data_t *balance_data_create(
     double balance,
     double available,
     double locked,
-    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
+    ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_by,
     double rate_usd,
     double traded
     ) {
@@ -191,7 +191,7 @@ balance_data_t *balance_data_parseFromJSON(cJSON *balance_dataJSON){
 
     // balance_data->last_updated_by
     cJSON *last_updated_by = cJSON_GetObjectItemCaseSensitive(balance_dataJSON, "last_updated_by");
-    oeml___rest_api_balance_data_LASTUPDATEDBY_e last_updated_byVariable;
+    ems___rest_api_balance_data_LASTUPDATEDBY_e last_updated_byVariable;
     if (last_updated_by) { 
     if(!cJSON_IsString(last_updated_by))
     {

@@ -1,5 +1,5 @@
 { application, openapi
-, [ {description, "This section will provide necessary information about the &#x60;CoinAPI OEML REST API&#x60; protocol. &lt;br/&gt; This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       &lt;br/&gt;&lt;br/&gt; Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) "}
+, [ {description, "This section will provide necessary information about the &#x60;CoinAPI EMS REST API&#x60; protocol. &lt;br/&gt; This API is also available in the Postman application: &lt;a href&#x3D;\&quot;https://postman.coinapi.io/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;https://postman.coinapi.io/&lt;/a&gt;       &lt;br/&gt;&lt;br/&gt; Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) "}
   , {vsn, "0.1.0"}
   , {registered, []}
   , { applications
@@ -10,12 +10,12 @@
       ]
     }
   , { env
-    , [ {host, "http://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io"}
+    , [ {host, "http://ems-gateway-aws-eu-central-1-dev.coinapi.io"}
       , {basic_auth, {"admin", "admin"}}
       ]
     }
   , {modules, []}
   , {maintainers, []}
-  , {licenses, ["MIT"]}
+  , {licenses, ["28961"]}
   , {links, ["https://www.coinapi.io"]}
 ]}.

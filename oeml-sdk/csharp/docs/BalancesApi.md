@@ -1,6 +1,6 @@
 # CoinAPI.OMS.REST.V1.Api.BalancesApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io";
+            Configuration.Default.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             var apiInstance = new BalancesApi(Configuration.Default);
             var exchangeId = KRAKEN;  // string | Filter the balances to the specific exchange. (optional) 
 

@@ -1,6 +1,6 @@
 /**
- * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+ * EMS - REST API
+ * This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.OemlRestApi);
+    factory(root.expect, root.EmsRestApi);
   }
-}(this, function(expect, OemlRestApi) {
+}(this, function(expect, EmsRestApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new OemlRestApi.ValidationError();
+    instance = new EmsRestApi.ValidationError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('ValidationError', function() {
     it('should create an instance of ValidationError', function() {
       // uncomment below and update the code to test ValidationError
-      //var instance = new OemlRestApi.ValidationError();
-      //expect(instance).to.be.a(OemlRestApi.ValidationError);
+      //var instance = new EmsRestApi.ValidationError();
+      //expect(instance).to.be.a(EmsRestApi.ValidationError);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new OemlRestApi.ValidationError();
+      //var instance = new EmsRestApi.ValidationError();
       //expect(instance).to.be();
     });
 
     it('should have the property title (base name: "title")', function() {
       // uncomment below and update the code to test the property title
-      //var instance = new OemlRestApi.ValidationError();
+      //var instance = new EmsRestApi.ValidationError();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new OemlRestApi.ValidationError();
+      //var instance = new EmsRestApi.ValidationError();
       //expect(instance).to.be();
     });
 
     it('should have the property traceId (base name: "traceId")', function() {
       // uncomment below and update the code to test the property traceId
-      //var instance = new OemlRestApi.ValidationError();
+      //var instance = new EmsRestApi.ValidationError();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new OemlRestApi.ValidationError();
+      //var instance = new EmsRestApi.ValidationError();
       //expect(instance).to.be();
     });
 

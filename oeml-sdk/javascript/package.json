@@ -1,8 +1,8 @@
 {
-  "name": "oeml_rest_api",
+  "name": "ems_rest_api",
   "version": "v1",
-  "description": "This_section_will_provide_necessary_information_about_the_CoinAPI_OEML_REST_API_protocol__br__This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a_______br_br__Implemented_Standards___HTTP1_0_https__datatracker_ietf_org_doc_html_rfc1945___HTTP1_1_https__datatracker_ietf_org_doc_html_rfc2616___HTTP2_0_https__datatracker_ietf_org_doc_html_rfc7540",
-  "license": "MIT",
+  "description": "This_section_will_provide_necessary_information_about_the_CoinAPI_EMS_REST_API_protocol__br__This_API_is_also_available_in_the_Postman_application_a_hrefhttps__postman_coinapi_io__target_blankhttps__postman_coinapi_io__a_______br_br__Implemented_Standards___HTTP1_0_https__datatracker_ietf_org_doc_html_rfc1945___HTTP1_1_https__datatracker_ietf_org_doc_html_rfc2616___HTTP2_0_https__datatracker_ietf_org_doc_html_rfc7540",
+  "license": "28961",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",

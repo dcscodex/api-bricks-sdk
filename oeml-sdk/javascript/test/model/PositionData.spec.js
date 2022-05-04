@@ -1,6 +1,6 @@
 /**
- * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+ * EMS - REST API
+ * This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.OemlRestApi);
+    factory(root.expect, root.EmsRestApi);
   }
-}(this, function(expect, OemlRestApi) {
+}(this, function(expect, EmsRestApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new OemlRestApi.PositionData();
+    instance = new EmsRestApi.PositionData();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('PositionData', function() {
     it('should create an instance of PositionData', function() {
       // uncomment below and update the code to test PositionData
-      //var instance = new OemlRestApi.PositionData();
-      //expect(instance).to.be.a(OemlRestApi.PositionData);
+      //var instance = new EmsRestApi.PositionData();
+      //expect(instance).to.be.a(EmsRestApi.PositionData);
     });
 
     it('should have the property symbolIdExchange (base name: "symbol_id_exchange")', function() {
       // uncomment below and update the code to test the property symbolIdExchange
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property symbolIdCoinapi (base name: "symbol_id_coinapi")', function() {
       // uncomment below and update the code to test the property symbolIdCoinapi
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property avgEntryPrice (base name: "avg_entry_price")', function() {
       // uncomment below and update the code to test the property avgEntryPrice
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property quantity (base name: "quantity")', function() {
       // uncomment below and update the code to test the property quantity
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property side (base name: "side")', function() {
       // uncomment below and update the code to test the property side
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property unrealizedPnl (base name: "unrealized_pnl")', function() {
       // uncomment below and update the code to test the property unrealizedPnl
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property leverage (base name: "leverage")', function() {
       // uncomment below and update the code to test the property leverage
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property crossMargin (base name: "cross_margin")', function() {
       // uncomment below and update the code to test the property crossMargin
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property liquidationPrice (base name: "liquidation_price")', function() {
       // uncomment below and update the code to test the property liquidationPrice
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 
     it('should have the property rawData (base name: "raw_data")', function() {
       // uncomment below and update the code to test the property rawData
-      //var instance = new OemlRestApi.PositionData();
+      //var instance = new EmsRestApi.PositionData();
       //expect(instance).to.be();
     });
 

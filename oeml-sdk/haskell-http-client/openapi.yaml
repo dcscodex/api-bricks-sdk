@@ -5,22 +5,22 @@ info:
     name: COINAPI LTD
     url: https://www.coinapi.io
   description: |
-    This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href="https://postman.coinapi.io/" target="_blank">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
+    This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href="https://postman.coinapi.io/" target="_blank">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
 
      * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
      * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
      * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
   license:
-    name: MIT
+    name: "28961"
     url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
   termsOfService: https://www.coinapi.io/legal
-  title: OEML - REST API
+  title: EMS - REST API
   version: v1
 servers:
-- url: https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io
+- url: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 tags:
 - description: |
-    Order statuses and the lifecycle are documented in the separate section: <a href="#oeml-order-lifecycle">OEML / Starter Guide / Order Lifecycle</a>
+    Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
   name: Orders
 - name: Balances
 - name: Positions
@@ -303,7 +303,7 @@ components:
           type: date
         exec_inst:
           description: |
-            Order execution instructions are documented in the separate section: <a href="#oeml-order-params-exec">OEML / Starter Guide / Order parameters / Execution instructions</a>
+            Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
           example:
           - MAKER_OR_CANCEL
           items:
@@ -447,7 +447,7 @@ components:
       type: object
     OrdStatus:
       description: |
-        Order statuses and the lifecycle are documented in the separate section: <a href="#oeml-order-lifecycle">OEML / Starter Guide / Order Lifecycle</a>
+        Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
       enum:
       - RECEIVED
       - ROUTING
@@ -469,14 +469,14 @@ components:
       type: string
     OrdType:
       description: |
-        Order types are documented in the separate section: <a href="#oeml-order-params-type">OEML / Starter Guide / Order parameters / Order type</a>
+        Order types are documented in the separate section: <a href="#ems-order-params-type">EMS / Starter Guide / Order parameters / Order type</a>
       enum:
       - LIMIT
       example: LIMIT
       type: string
     TimeInForce:
       description: |
-        Order time in force options are documented in the separate section: <a href="#oeml-order-params-tif">OEML / Starter Guide / Order parameters / Time in force</a>
+        Order time in force options are documented in the separate section: <a href="#ems-order-params-tif">EMS / Starter Guide / Order parameters / Time in force</a>
       enum:
       - GOOD_TILL_CANCEL
       - GOOD_TILL_TIME_EXCHANGE
@@ -487,7 +487,7 @@ components:
       type: string
     ExecInst:
       description: |
-        Order execution instructions are documented in the separate section: <a href="#oeml-order-params-exec">OEML / Starter Guide / Order parameters / Execution instructions</a>
+        Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
       example:
       - MAKER_OR_CANCEL
       items:

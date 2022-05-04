@@ -4,12 +4,12 @@
 #include "message_reject.h"
 
 
-char* reject_reasonmessage_reject_ToString(oeml___rest_api_message_reject__e reject_reason) {
+char* reject_reasonmessage_reject_ToString(ems___rest_api_message_reject__e reject_reason) {
     char* reject_reasonArray[] =  { "NULL", "OTHER", "EXCHANGE_UNREACHABLE", "EXCHANGE_RESPONSE_TIMEOUT", "ORDER_ID_NOT_FOUND", "INVALID_TYPE", "METHOD_NOT_SUPPORTED", "JSON_ERROR" };
 	return reject_reasonArray[reject_reason];
 }
 
-oeml___rest_api_message_reject__e reject_reasonmessage_reject_FromString(char* reject_reason){
+ems___rest_api_message_reject__e reject_reasonmessage_reject_FromString(char* reject_reason){
     int stringToReturn = 0;
     char *reject_reasonArray[] =  { "NULL", "OTHER", "EXCHANGE_UNREACHABLE", "EXCHANGE_RESPONSE_TIMEOUT", "ORDER_ID_NOT_FOUND", "INVALID_TYPE", "METHOD_NOT_SUPPORTED", "JSON_ERROR" };
     size_t sizeofArray = sizeof(reject_reasonArray) / sizeof(reject_reasonArray[0]);

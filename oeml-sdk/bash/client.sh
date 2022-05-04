@@ -12,7 +12,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for OEML - REST API.
+# This is a Bash client for EMS - REST API.
 #
 # LICENSE:
 # https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
@@ -482,7 +482,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}OEML - REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}EMS - REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -538,7 +538,7 @@ echo "  $ops" | column -t -s ';'
     echo -e "  -V,--version\\t\\t\\t\\tPrint API version"
     echo -e "  --about\\t\\t\\t\\tPrint the information about service"
     echo -e "  --host ${CYAN}<url>${OFF}\\t\\t\\t\\tSpecify the host URL "
-echo -e "              \\t\\t\\t\\t(e.g. 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io')"
+echo -e "              \\t\\t\\t\\t(e.g. 'https://ems-gateway-aws-eu-central-1-dev.coinapi.io')"
 
     echo -e "  --force\\t\\t\\t\\tForce command invocation in spite of missing"
     echo -e "         \\t\\t\\t\\trequired parameters or wrong content type"
@@ -559,14 +559,14 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://13d16e9d-d8b1-4ef4-bc4a-ed8156
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}OEML - REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}EMS - REST API command line client (API version v1)${OFF}"
     echo ""
-    echo -e "License: MIT"
+    echo -e "License: 28961"
     echo -e "Contact: support@coinapi.io"
     echo ""
 read -r -d '' appdescription <<EOF
 
-This section will provide necessary information about the 'CoinAPI OEML REST API' protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
+This section will provide necessary information about the 'CoinAPI EMS REST API' protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:
 
  * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
@@ -583,7 +583,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}OEML - REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}EMS - REST API command line client (API version v1)${OFF}"
     echo ""
 }
 

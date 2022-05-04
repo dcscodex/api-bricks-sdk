@@ -1,6 +1,6 @@
 /**
- * OEML - REST API
- * This section will provide necessary information about the `CoinAPI OEML REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
+ * EMS - REST API
+ * This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540) 
  *
  * The version of the OpenAPI document: v1
  * Contact: support@coinapi.io
@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.OemlRestApi);
+    factory(root.expect, root.EmsRestApi);
   }
-}(this, function(expect, OemlRestApi) {
+}(this, function(expect, EmsRestApi) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new OemlRestApi.OrderCancelSingleRequest();
+    instance = new EmsRestApi.OrderCancelSingleRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('OrderCancelSingleRequest', function() {
     it('should create an instance of OrderCancelSingleRequest', function() {
       // uncomment below and update the code to test OrderCancelSingleRequest
-      //var instance = new OemlRestApi.OrderCancelSingleRequest();
-      //expect(instance).to.be.a(OemlRestApi.OrderCancelSingleRequest);
+      //var instance = new EmsRestApi.OrderCancelSingleRequest();
+      //expect(instance).to.be.a(EmsRestApi.OrderCancelSingleRequest);
     });
 
     it('should have the property exchangeId (base name: "exchange_id")', function() {
       // uncomment below and update the code to test the property exchangeId
-      //var instance = new OemlRestApi.OrderCancelSingleRequest();
+      //var instance = new EmsRestApi.OrderCancelSingleRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property exchangeOrderId (base name: "exchange_order_id")', function() {
       // uncomment below and update the code to test the property exchangeOrderId
-      //var instance = new OemlRestApi.OrderCancelSingleRequest();
+      //var instance = new EmsRestApi.OrderCancelSingleRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property clientOrderId (base name: "client_order_id")', function() {
       // uncomment below and update the code to test the property clientOrderId
-      //var instance = new OemlRestApi.OrderCancelSingleRequest();
+      //var instance = new EmsRestApi.OrderCancelSingleRequest();
       //expect(instance).to.be();
     });
 

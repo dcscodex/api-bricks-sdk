@@ -84,7 +84,7 @@ test_that("expire_time", {
 
 test_that("exec_inst", {
   # tests for the property `exec_inst` (array[character])
-  # Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#oeml-order-params-exec\&quot;&gt;OEML / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
+  # Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
 
   # uncomment below to test the property
   #expect_equal(model.instance$`exec_inst`, "EXPECTED_RESULT")

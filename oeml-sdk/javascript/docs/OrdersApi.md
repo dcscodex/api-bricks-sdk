@@ -1,6 +1,6 @@
-# OemlRestApi.OrdersApi
+# EmsRestApi.OrdersApi
 
-All URIs are relative to *https://13d16e9d-d8b1-4ef4-bc4a-ed8156b2b159.mock.pstmn.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,10 +23,10 @@ This request cancels all open orders on single specified exchange.
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.OrdersApi();
-let orderCancelAllRequest = new OemlRestApi.OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
+let apiInstance = new EmsRestApi.OrdersApi();
+let orderCancelAllRequest = new EmsRestApi.OrderCancelAllRequest(); // OrderCancelAllRequest | OrderCancelAllRequest object.
 apiInstance.v1OrdersCancelAllPost(orderCancelAllRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -68,10 +68,10 @@ Request cancel for an existing order. The order can be canceled using the &#x60;
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.OrdersApi();
-let orderCancelSingleRequest = new OemlRestApi.OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
+let apiInstance = new EmsRestApi.OrdersApi();
+let orderCancelSingleRequest = new EmsRestApi.OrderCancelSingleRequest(); // OrderCancelSingleRequest | OrderCancelSingleRequest object.
 apiInstance.v1OrdersCancelPost(orderCancelSingleRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -113,9 +113,9 @@ Get last execution reports for open orders across all or single exchange.
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.OrdersApi();
+let apiInstance = new EmsRestApi.OrdersApi();
 let opts = {
   'exchangeId': KRAKEN // String | Filter the open orders to the specific exchange.
 };
@@ -160,10 +160,10 @@ This request creating new order for the specific exchange.
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.OrdersApi();
-let orderNewSingleRequest = new OemlRestApi.OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
+let apiInstance = new EmsRestApi.OrdersApi();
+let orderNewSingleRequest = new EmsRestApi.OrderNewSingleRequest(); // OrderNewSingleRequest | OrderNewSingleRequest object.
 apiInstance.v1OrdersPost(orderNewSingleRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -205,9 +205,9 @@ Get the last order execution report for the specified order. The requested order
 ### Example
 
 ```javascript
-import OemlRestApi from 'oeml_rest_api';
+import EmsRestApi from 'ems_rest_api';
 
-let apiInstance = new OemlRestApi.OrdersApi();
+let apiInstance = new EmsRestApi.OrdersApi();
 let clientOrderId = 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b; // String | The unique identifier of the order assigned by the client.
 apiInstance.v1OrdersStatusClientOrderIdGet(clientOrderId, (error, data, response) => {
   if (error) {

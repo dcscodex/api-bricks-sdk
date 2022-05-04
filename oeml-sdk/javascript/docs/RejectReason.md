@@ -1,4 +1,4 @@
-# OemlRestApi.RejectReason
+# EmsRestApi.RejectReason
 
 ## Enum
 

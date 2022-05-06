@@ -26,7 +26,7 @@ Implemented Standards:
     <tr>
       <td>Managed Cloud</td>
       <td>Production</td>
-      <td>Use <a hrefs=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
+      <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
     </tr>
     <tr>
       <td>Managed Cloud</td>

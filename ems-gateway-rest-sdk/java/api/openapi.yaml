@@ -12,7 +12,7 @@ info:
     \   \n### Endpoints\n<table>\n  <thead>\n    <tr>\n      <th>Deployment method</th>\n\
     \      <th>Environment</th>\n      <th>Url</th>\n    </tr>\n  </thead>\n  <tbody>\n\
     \    <tr>\n      <td>Managed Cloud</td>\n      <td>Production</td>\n      <td>Use\
-    \ <a hrefs=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific\
+    \ <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific\
     \ endpoints to each server site where your deployments span</td>\n    </tr>\n\
     \    <tr>\n      <td>Managed Cloud</td>\n      <td>Sandbox</td>\n      <td><code>https://ems-gateway-aws-eu-central-1-dev.coinapi.io/</code></td>\n\
     \    </tr>\n    <tr>\n      <td>Self Hosted</td>\n      <td>Production</td>\n\

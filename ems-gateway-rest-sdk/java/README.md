@@ -2,7 +2,7 @@
 
 EMS - REST API
 - API version: v1
-  - Build date: 2022-05-06T08:00:52.066271Z[Etc/UTC]
+  - Build date: 2022-05-06T09:35:03.775502Z[Etc/UTC]
 
 This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
 <br/>
@@ -27,7 +27,7 @@ Implemented Standards:
     <tr>
       <td>Managed Cloud</td>
       <td>Production</td>
-      <td>Use <a hrefs=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
+      <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
     </tr>
     <tr>
       <td>Managed Cloud</td>

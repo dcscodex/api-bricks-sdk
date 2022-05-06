@@ -9,9 +9,9 @@ Welcome to the CoinAPI SDK. This repository contain SDK for our API documented a
 Directory | Description |
 --- | --- |
 data-api | SDK for CoinAPI Market Data API
-ems-cloud-mgmt-rest-sdk | SDK for CoinAPI EMS Managed Cloud REST API (Execution Management System API)
-ems-gateway-rest-sdk | SDK for CoinAPI EMS REST API (Execution Management System API)
-ems-gateway-fix | SDK for CoinAPI EMS FIX API (Execution Management System API)
+ems-cloud-mgmt-sdk | SDK for CoinAPI Execution Management System Managed Cloud REST API
+ems-gateway-rest-sdk | SDK for CoinAPI Execution Management System REST API 
+ems-gateway-fix | SDK for CoinAPI Execution Management System FIX API 
 cryptotick-samples | Examples related to processing CryptoTick GZIP+CSV flat files
 
 ## Package managers coverage

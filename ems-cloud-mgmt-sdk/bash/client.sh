@@ -12,7 +12,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for EMS - Managed Cloud REST API.
+# This is a Bash client for EMS - REST API.
 #
 # LICENSE:
 # https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
@@ -95,10 +95,13 @@ declare -a result_color_table=( "$WHITE" "$WHITE" "$GREEN" "$YELLOW" "$WHITE" "$
 # 0 - optional
 # 1 - required
 declare -A operation_parameters_minimum_occurrences
-operation_parameters_minimum_occurrences["deleteAccount:::exchange_id"]=1
-operation_parameters_minimum_occurrences["getAccount:::filter_exchange_id"]=0
-operation_parameters_minimum_occurrences["persistAccount:::body"]=1
-operation_parameters_minimum_occurrences["endpoints:::filter_exchange_id"]=0
+operation_parameters_minimum_occurrences["v1BalancesGet:::exchange_id"]=0
+operation_parameters_minimum_occurrences["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=1
+operation_parameters_minimum_occurrences["v1OrdersCancelPost:::OrderCancelSingleRequest"]=1
+operation_parameters_minimum_occurrences["v1OrdersGet:::exchange_id"]=0
+operation_parameters_minimum_occurrences["v1OrdersPost:::OrderNewSingleRequest"]=1
+operation_parameters_minimum_occurrences["v1OrdersStatusClientOrderIdGet:::client_order_id"]=1
+operation_parameters_minimum_occurrences["v1PositionsGet:::exchange_id"]=0
 
 ##
 # This array stores the maximum number of allowed occurrences for parameter
@@ -107,19 +110,25 @@ operation_parameters_minimum_occurrences["endpoints:::filter_exchange_id"]=0
 # N - N values
 # 0 - unlimited
 declare -A operation_parameters_maximum_occurrences
-operation_parameters_maximum_occurrences["deleteAccount:::exchange_id"]=0
-operation_parameters_maximum_occurrences["getAccount:::filter_exchange_id"]=0
-operation_parameters_maximum_occurrences["persistAccount:::body"]=0
-operation_parameters_maximum_occurrences["endpoints:::filter_exchange_id"]=0
+operation_parameters_maximum_occurrences["v1BalancesGet:::exchange_id"]=0
+operation_parameters_maximum_occurrences["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=0
+operation_parameters_maximum_occurrences["v1OrdersCancelPost:::OrderCancelSingleRequest"]=0
+operation_parameters_maximum_occurrences["v1OrdersGet:::exchange_id"]=0
+operation_parameters_maximum_occurrences["v1OrdersPost:::OrderNewSingleRequest"]=0
+operation_parameters_maximum_occurrences["v1OrdersStatusClientOrderIdGet:::client_order_id"]=0
+operation_parameters_maximum_occurrences["v1PositionsGet:::exchange_id"]=0
 
 ##
 # The type of collection for specifying multiple values for parameter:
 # - multi, csv, ssv, tsv
 declare -A operation_parameters_collection_type
-operation_parameters_collection_type["deleteAccount:::exchange_id"]="multi"
-operation_parameters_collection_type["getAccount:::filter_exchange_id"]="multi"
-operation_parameters_collection_type["persistAccount:::body"]=""
-operation_parameters_collection_type["endpoints:::filter_exchange_id"]="multi"
+operation_parameters_collection_type["v1BalancesGet:::exchange_id"]=""
+operation_parameters_collection_type["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=""
+operation_parameters_collection_type["v1OrdersCancelPost:::OrderCancelSingleRequest"]=""
+operation_parameters_collection_type["v1OrdersGet:::exchange_id"]=""
+operation_parameters_collection_type["v1OrdersPost:::OrderNewSingleRequest"]=""
+operation_parameters_collection_type["v1OrdersStatusClientOrderIdGet:::client_order_id"]=""
+operation_parameters_collection_type["v1PositionsGet:::exchange_id"]=""
 
 
 ##
@@ -140,9 +149,6 @@ host=""
 # The user credentials for basic authentication
 basic_auth_credential=""
 
-##
-# The user API key
-apikey_auth_credential=""
 
 ##
 # If true, the script will only output the actual cURL command that would be
@@ -245,23 +251,10 @@ lookup_mime_type() {
 ##############################################################################
 header_arguments_to_curl() {
     local headers_curl=""
-    local api_key_header=""
-    local api_key_header_in_cli=""
-    api_key_header="X-CoinAPI-Key"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
-        if [[ "${key}XX" == "${api_key_header}XX" ]]; then
-            api_key_header_in_cli="YES"
-        fi
     done
-    #
-    # If the api_key was not provided in the header, try one from the
-    # environment variable
-    #
-    if [[ -z $api_key_header_in_cli && -n $apikey_auth_credential ]]; then
-        headers_curl+="-H \"${api_key_header}: ${apikey_auth_credential}\""
-    fi
     headers_curl+=" "
 
     echo "${headers_curl}"
@@ -396,15 +389,6 @@ build_request_path() {
         mapfile -t parameter_values < <(sed -e 's/'":::"'/\n/g' <<<"${operation_parameters[$qparam]}")
 
 
-        if [[ ${qparam} == "apikey" ]]; then
-            if [[ -n "${parameter_values[*]}" ]]; then
-                parameter_value+="${qparam}=${parameter_values}"
-            else
-                echo "Missing ApiKey!!! You have to provide on command line option 'apikey=...'"
-                exit 1
-            fi
-            continue
-        fi
 
         #
         # Append parameters without specific cardinality
@@ -498,7 +482,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}EMS - Managed Cloud REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}EMS - REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -525,45 +509,27 @@ ${BOLD}${WHITE}Usage${OFF}
                                       JSON as '{ ..., "${YELLOW}KEY${OFF}": ${BLUE}VALUE${OFF}, ... }'
 
 EOF
-    echo -e "${BOLD}${WHITE}Authentication methods${OFF}"
-    echo -e ""
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}X-CoinAPI-Key:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
-    
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}apikey=<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
-    
-    echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
-    echo -e "${BOLD}${WHITE}[account]${OFF}"
+    echo -e "${BOLD}${WHITE}[balances]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}deleteAccount${OFF};Delete account (AUTH) (AUTH)
-  ${CYAN}deleteAccountAll${OFF};Delete all accounts (AUTH) (AUTH)
-  ${CYAN}getAccount${OFF};Get accounts (AUTH) (AUTH)
-  ${CYAN}persistAccount${OFF};Add or update account (AUTH) (AUTH)
+  ${CYAN}v1BalancesGet${OFF};Get balances
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
-    echo -e "${BOLD}${WHITE}[certificate]${OFF}"
+    echo -e "${BOLD}${WHITE}[orders]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}certificate${OFF};Get authentication certificate (AUTH) (AUTH)
+  ${CYAN}v1OrdersCancelAllPost${OFF};Cancel all orders request
+  ${CYAN}v1OrdersCancelPost${OFF};Cancel order request
+  ${CYAN}v1OrdersGet${OFF};Get open orders
+  ${CYAN}v1OrdersPost${OFF};Send new order
+  ${CYAN}v1OrdersStatusClientOrderIdGet${OFF};Get order execution report
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
-    echo -e "${BOLD}${WHITE}[endpoints]${OFF}"
+    echo -e "${BOLD}${WHITE}[positions]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}endpoints${OFF};Get API endpoints (AUTH) (AUTH)
-EOF
-echo "  $ops" | column -t -s ';'
-    echo ""
-    echo -e "${BOLD}${WHITE}[exchange]${OFF}"
-read -r -d '' ops <<EOF
-  ${CYAN}exchangeLoginRequire${OFF};Get exchange configuration (AUTH) (AUTH)
-EOF
-echo "  $ops" | column -t -s ';'
-    echo ""
-    echo -e "${BOLD}${WHITE}[location]${OFF}"
-read -r -d '' ops <<EOF
-  ${CYAN}locations${OFF};Get site locations (AUTH) (AUTH)
+  ${CYAN}v1PositionsGet${OFF};Get open positions
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -572,7 +538,7 @@ echo "  $ops" | column -t -s ';'
     echo -e "  -V,--version\\t\\t\\t\\tPrint API version"
     echo -e "  --about\\t\\t\\t\\tPrint the information about service"
     echo -e "  --host ${CYAN}<url>${OFF}\\t\\t\\t\\tSpecify the host URL "
-echo -e "              \\t\\t\\t\\t(e.g. 'https://ems-mgmt-sandbox.coinapi.io')"
+echo -e "              \\t\\t\\t\\t(e.g. 'https://ems-gateway-aws-eu-central-1-dev.coinapi.io')"
 
     echo -e "  --force\\t\\t\\t\\tForce command invocation in spite of missing"
     echo -e "         \\t\\t\\t\\trequired parameters or wrong content type"
@@ -593,74 +559,77 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://ems-mgmt-sandbox.coinapi.io')"
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}EMS - Managed Cloud REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}EMS - REST API command line client (API version v1)${OFF}"
     echo ""
-    echo -e "License: 37284"
+    echo -e "License: 28961"
     echo -e "Contact: support@coinapi.io"
     echo ""
 read -r -d '' appdescription <<EOF
 
-This section will provide necessary information about the 'CoinAPI EMS Managed Cloud REST API' protocol. 
-<br/><br/>
-This API is used to manage the overall deployment of **Execution Management System API** ('EMS API') software, 
-which means that in this API, you define the accounts, credentials, and configurations for the order destinations or identify the CoinAPI endpoints where you need to connect to access the 'EMS API'. 
+This section will provide necessary information about the 'CoinAPI EMS REST API' protocol.
+<br/>
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
 <br/><br/>
 Implemented Standards:
 
- * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
- * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
- * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
- 
+  * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
+  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
+  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
+   
 ### Endpoints
 <table>
   <thead>
     <tr>
+      <th>Deployment method</th>
       <th>Environment</th>
       <th>Url</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>Managed Cloud</td>
       <td>Production</td>
-      <td><code>https://ems-mgmt.coinapi.io/</code></td>
+      <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
     </tr>
     <tr>
+      <td>Managed Cloud</td>
       <td>Sandbox</td>
-      <td><code>https://ems-mgmt-sandbox.coinapi.io/</code></td>
+      <td><code>https://ems-gateway-aws-eu-central-1-dev.coinapi.io/</code></td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Production</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Sandbox</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
     </tr>
   </tbody>
 </table>
 
 ### Authentication
+If the software is deployed as 'Self-Hosted' then API do not require authentication as inside your infrastructure, your company is responsible for the security and access controls. 
+<br/><br/>
+If the software is deployed in our 'Managed Cloud', there are 2 methods for authenticating with us, you only need to use one:
 
-To use resources that require authorized access, you will need to provide an API key to us when making HTTP requests.
-
-There are 2 methods for passing the API key to us, you only need to use one:
-
- 1. Custom authorization header named 'X-CoinAPI-Key'
- 2. Query string parameter named 'apikey'
+ 1. Custom authorization header named 'X-CoinAPI-Key' with the API Key
+ 2. Query string parameter named 'apikey' with the API Key
+ 3. <a href=\"#certificate\">TLS Client Certificate</a> from the 'Managed Cloud REST API' (/v1/certificate/pem endpoint) while establishing a TLS session with us.
 
 #### Custom authorization header
-
 You can authorize by providing additional custom header named 'X-CoinAPI-Key' and API key as its value.
-
 Assuming that your API key is '73034021-THIS-IS-SAMPLE-KEY', then the authorization header you should send to us will look like:
 <br/><br/>
 'X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY'
-
 <aside class=\"success\">This method is recommended by us and you should use it in production environments.</aside>
-
 #### Query string authorization parameter
-
 You can authorize by providing an additional parameter named 'apikey' with a value equal to your API key in the query string of your HTTP request.
-
-Assuming that your API key is '73034021-THIS-IS-SAMPLE-KEY' and that you want to request all accounts, then your query string should look like this: 
+Assuming that your API key is '73034021-THIS-IS-SAMPLE-KEY' and that you want to request all balances, then your query string should look like this: 
 <br/><br/>
-'GET /v1/accounts?apikey=73034021-THIS-IS-SAMPLE-KEY'
-
-<aside class=\"notice\">
-Query string method may be more practical for development activities.
-</aside>
+'GET /v1/balances?apikey=73034021-THIS-IS-SAMPLE-KEY'
+<aside class=\"notice\">Query string method may be more practical for development activities.</aside>
 EOF
 echo "$appdescription" | paste -sd' ' | fold -sw 80
 }
@@ -673,241 +642,181 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}EMS - Managed Cloud REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}EMS - REST API command line client (API version v1)${OFF}"
     echo ""
 }
 
 ##############################################################################
 #
-# Print help for deleteAccount operation
+# Print help for v1BalancesGet operation
 #
 ##############################################################################
-print_deleteAccount_help() {
+print_v1BalancesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}deleteAccount - Delete account${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1BalancesGet - Get balances${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Delete specific exchange account maintained by the EMS API for your subscription." | paste -sd' ' | fold -sw 80
+    echo -e "Get current currency balance from all or single exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier of the account to delete${YELLOW} Specify as: exchange_id=value1 exchange_id=value2 exchange_id=...${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=404
-    echo -e "${result_color_table[${code:0:1}]}  404;Exchange account not found${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for deleteAccountAll operation
-#
-##############################################################################
-print_deleteAccountAll_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}deleteAccountAll - Delete all accounts${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Delete all exchange accounts maintained by the EMS API for your subscription." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for getAccount operation
-#
-##############################################################################
-print_getAccount_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}getAccount - Get accounts${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all accounts maintained for your subscription in the EMS API." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}filter_exchange_id${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - Exchange id of the specific account to provide single account instead of the list of all accounts${YELLOW} Specify as: filter_exchange_id=value1 filter_exchange_id=value2 filter_exchange_id=...${OFF}" \
+    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter the balances to the specific exchange.${YELLOW} Specify as: exchange_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    echo -e "${result_color_table[${code:0:1}]}  200;Collection of balances.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 ##############################################################################
 #
-# Print help for persistAccount operation
+# Print help for v1OrdersCancelAllPost operation
 #
 ##############################################################################
-print_persistAccount_help() {
+print_v1OrdersCancelAllPost_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}persistAccount - Add or update account${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrdersCancelAllPost - Cancel all orders request${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Add new or update existing exchange account for your subscription in the EMS API." | paste -sd' ' | fold -sw 80
+    echo -e "This request cancels all open orders on single specified exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Exchange account object that needs to be add/update to the EMS" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - OrderCancelAllRequest object." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Result${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=400
-    echo -e "${result_color_table[${code:0:1}]}  400;Invalid exchange id${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=405
-    echo -e "${result_color_table[${code:0:1}]}  405;Validation exception${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    echo -e "${result_color_table[${code:0:1}]}  400;Input model validation errors.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 ##############################################################################
 #
-# Print help for certificate operation
+# Print help for v1OrdersCancelPost operation
 #
 ##############################################################################
-print_certificate_help() {
+print_v1OrdersCancelPost_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}certificate - Get authentication certificate${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrdersCancelPost - Cancel order request${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Providing PEM file with the Private Key, Public Key and the Certificate to authenticate to the EMS API." | paste -sd' ' | fold -sw 80
+    echo -e "Request cancel for an existing order. The order can be canceled using the 'client_order_id' or 'exchange_order_id'." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - OrderCancelSingleRequest object." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    echo -e "${result_color_table[${code:0:1}]}  200;The last execution report for the order for which cancelation was requested.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Input model validation errors.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 ##############################################################################
 #
-# Print help for endpoints operation
+# Print help for v1OrdersGet operation
 #
 ##############################################################################
-print_endpoints_help() {
+print_v1OrdersGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}endpoints - Get API endpoints${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrdersGet - Get open orders${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get all API endpoints that the EMS API expose for your subscription." | paste -sd' ' | fold -sw 80
+    echo -e "Get last execution reports for open orders across all or single exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}filter_exchange_id${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - Exchange id${YELLOW} Specify as: filter_exchange_id=value1 filter_exchange_id=value2 filter_exchange_id=...${OFF}" \
+    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter the open orders to the specific exchange.${YELLOW} Specify as: exchange_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    echo -e "${result_color_table[${code:0:1}]}  200;Collection of order execution reports.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Filtered exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 ##############################################################################
 #
-# Print help for exchangeLoginRequire operation
+# Print help for v1OrdersPost operation
 #
 ##############################################################################
-print_exchangeLoginRequire_help() {
+print_v1OrdersPost_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}exchangeLoginRequire - Get exchange configuration${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrdersPost - Send new order${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get information about the required parameters or server site location of the exchanges supported in the EMS API." | paste -sd' ' | fold -sw 80
+    echo -e "This request creating new order for the specific exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for locations operation
-#
-##############################################################################
-print_locations_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}locations - Get site locations${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - QUERY)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "This endpoint providing information about the server site locations supported in the EMS API." | paste -sd' ' | fold -sw 80
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - OrderNewSingleRequest object." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    echo -e "${result_color_table[${code:0:1}]}  200;Created${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Input model validation errors.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=504
+    echo -e "${result_color_table[${code:0:1}]}  504;Exchange didn't responded in the defined timeout.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v1OrdersStatusClientOrderIdGet operation
+#
+##############################################################################
+print_v1OrdersStatusClientOrderIdGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1OrdersStatusClientOrderIdGet - Get order execution report${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get the last order execution report for the specified order. The requested order does not need to be active or opened." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}client_order_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The unique identifier of the order assigned by the client. ${YELLOW}Specify as: client_order_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;The last execution report of the requested order.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;The requested order was not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v1PositionsGet operation
+#
+##############################################################################
+print_v1PositionsGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1PositionsGet - Get open positions${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get current open positions across all or single exchange." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter the balances to the specific exchange.${YELLOW} Specify as: exchange_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Collection of positons.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=490
+    echo -e "${result_color_table[${code:0:1}]}  490;Exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 
 
 ##############################################################################
 #
-# Call deleteAccount operation
+# Call v1BalancesGet operation
 #
 ##############################################################################
-call_deleteAccount() {
+call_v1BalancesGet() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(exchange_id   apikey )
+    local query_parameter_names=(exchange_id)
     local path
 
-    if ! path=$(build_request_path "/v1/accounts" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="DELETE"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call deleteAccountAll operation
-#
-##############################################################################
-call_deleteAccountAll() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(   apikey )
-    local path
-
-    if ! path=$(build_request_path "/v1/accounts/all" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="DELETE"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call getAccount operation
-#
-##############################################################################
-call_getAccount() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(filter_exchange_id   apikey )
-    local path
-
-    if ! path=$(build_request_path "/v1/accounts" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/v1/balances" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -931,19 +840,19 @@ call_getAccount() {
 
 ##############################################################################
 #
-# Call persistAccount operation
+# Call v1OrdersCancelAllPost operation
 #
 ##############################################################################
-call_persistAccount() {
+call_v1OrdersCancelAllPost() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(   apikey )
+    local query_parameter_names=()
     local path
 
-    if ! path=$(build_request_path "/v1/accounts" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/v1/orders/cancel/all" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -1009,19 +918,97 @@ call_persistAccount() {
 
 ##############################################################################
 #
-# Call certificate operation
+# Call v1OrdersCancelPost operation
 #
 ##############################################################################
-call_certificate() {
+call_v1OrdersCancelPost() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(   apikey )
+    local query_parameter_names=()
     local path
 
-    if ! path=$(build_request_path "/v1/certificate/pem" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/v1/orders/cancel" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call v1OrdersGet operation
+#
+##############################################################################
+call_v1OrdersGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(exchange_id)
+    local path
+
+    if ! path=$(build_request_path "/v1/orders" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -1045,19 +1032,97 @@ call_certificate() {
 
 ##############################################################################
 #
-# Call endpoints operation
+# Call v1OrdersPost operation
 #
 ##############################################################################
-call_endpoints() {
+call_v1OrdersPost() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_exchange_id   apikey )
+    local query_parameter_names=()
     local path
 
-    if ! path=$(build_request_path "/v1/endpoints" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/v1/orders" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call v1OrdersStatusClientOrderIdGet operation
+#
+##############################################################################
+call_v1OrdersStatusClientOrderIdGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(client_order_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=()
+    local path
+
+    if ! path=$(build_request_path "/v1/orders/status/{client_order_id}" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -1081,55 +1146,19 @@ call_endpoints() {
 
 ##############################################################################
 #
-# Call exchangeLoginRequire operation
+# Call v1PositionsGet operation
 #
 ##############################################################################
-call_exchangeLoginRequire() {
+call_v1PositionsGet() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(   apikey )
+    local query_parameter_names=(exchange_id)
     local path
 
-    if ! path=$(build_request_path "/v1/exchanges" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call locations operation
-#
-##############################################################################
-call_locations() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(   apikey )
-    local path
-
-    if ! path=$(build_request_path "/v1/locations" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/v1/positions" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -1248,29 +1277,26 @@ case $key in
         OFF=""
         result_color_table=( "" "" "" "" "" "" "" )
     ;;
-    deleteAccount)
-    operation="deleteAccount"
+    v1BalancesGet)
+    operation="v1BalancesGet"
     ;;
-    deleteAccountAll)
-    operation="deleteAccountAll"
+    v1OrdersCancelAllPost)
+    operation="v1OrdersCancelAllPost"
     ;;
-    getAccount)
-    operation="getAccount"
+    v1OrdersCancelPost)
+    operation="v1OrdersCancelPost"
     ;;
-    persistAccount)
-    operation="persistAccount"
+    v1OrdersGet)
+    operation="v1OrdersGet"
     ;;
-    certificate)
-    operation="certificate"
+    v1OrdersPost)
+    operation="v1OrdersPost"
     ;;
-    endpoints)
-    operation="endpoints"
+    v1OrdersStatusClientOrderIdGet)
+    operation="v1OrdersStatusClientOrderIdGet"
     ;;
-    exchangeLoginRequire)
-    operation="exchangeLoginRequire"
-    ;;
-    locations)
-    operation="locations"
+    v1PositionsGet)
+    operation="v1PositionsGet"
     ;;
     *==*)
     # Parse body arguments and convert them into top level
@@ -1295,13 +1321,6 @@ case $key in
     # only after the operation argument
     if [[ "$operation" ]]; then
         IFS=':' read -r header_name header_value <<< "$key"
-        #
-        # If the header key is the same as the api_key expected by API in the
-        # header, override the ${apikey_auth_credential} variable
-        #
-        if [[ $header_name == "X-CoinAPI-Key" ]]; then
-            apikey_auth_credential=$header_value
-        fi
         header_arguments[$header_name]=$header_value
     else
         curl_arguments+=" $key"
@@ -1356,29 +1375,26 @@ fi
 
 # Run cURL command based on the operation ID
 case $operation in
-    deleteAccount)
-    call_deleteAccount
+    v1BalancesGet)
+    call_v1BalancesGet
     ;;
-    deleteAccountAll)
-    call_deleteAccountAll
+    v1OrdersCancelAllPost)
+    call_v1OrdersCancelAllPost
     ;;
-    getAccount)
-    call_getAccount
+    v1OrdersCancelPost)
+    call_v1OrdersCancelPost
     ;;
-    persistAccount)
-    call_persistAccount
+    v1OrdersGet)
+    call_v1OrdersGet
     ;;
-    certificate)
-    call_certificate
+    v1OrdersPost)
+    call_v1OrdersPost
     ;;
-    endpoints)
-    call_endpoints
+    v1OrdersStatusClientOrderIdGet)
+    call_v1OrdersStatusClientOrderIdGet
     ;;
-    exchangeLoginRequire)
-    call_exchangeLoginRequire
-    ;;
-    locations)
-    call_locations
+    v1PositionsGet)
+    call_v1PositionsGet
     ;;
     *)
     ERROR_MSG="ERROR: Unknown operation: $operation"

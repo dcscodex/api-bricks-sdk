@@ -27,7 +27,7 @@ else()
     message (STATUS "OpenSSL Not found.")
 endif()
 
-set(pkgName "ems___managed_cloud_rest_api")
+set(pkgName "ems___rest_api")
 
 # this default version can be overridden in PreTarget.cmake
 set(PROJECT_VERSION_MAJOR 0)
@@ -49,19 +49,26 @@ set(SRCS
     src/binary.c
     external/cJSON.c
     model/object.c
-    model/account_data.c
-    model/account_endpoint.c
-    model/account_info.c
-    model/exchange_login_require.c
-    model/get_account.c
-    model/key_value.c
-    model/locations.c
-    model/update_account.c
-    api/AccountAPI.c
-    api/CertificateAPI.c
-    api/EndpointsAPI.c
-    api/ExchangeAPI.c
-    api/LocationAPI.c
+    model/balance.c
+    model/balance_data.c
+    model/fills.c
+    model/message_reject.c
+    model/ord_side.c
+    model/ord_status.c
+    model/ord_type.c
+    model/order_cancel_all_request.c
+    model/order_cancel_single_request.c
+    model/order_execution_report.c
+    model/order_execution_report_all_of.c
+    model/order_new_single_request.c
+    model/position.c
+    model/position_data.c
+    model/reject_reason.c
+    model/time_in_force.c
+    model/validation_error.c
+    api/BalancesAPI.c
+    api/OrdersAPI.c
+    api/PositionsAPI.c
 
 )
 
@@ -72,19 +79,26 @@ set(HDRS
     include/keyValuePair.h
     external/cJSON.h
     model/object.h
-    model/account_data.h
-    model/account_endpoint.h
-    model/account_info.h
-    model/exchange_login_require.h
-    model/get_account.h
-    model/key_value.h
-    model/locations.h
-    model/update_account.h
-    api/AccountAPI.h
-    api/CertificateAPI.h
-    api/EndpointsAPI.h
-    api/ExchangeAPI.h
-    api/LocationAPI.h
+    model/balance.h
+    model/balance_data.h
+    model/fills.h
+    model/message_reject.h
+    model/ord_side.h
+    model/ord_status.h
+    model/ord_type.h
+    model/order_cancel_all_request.h
+    model/order_cancel_single_request.h
+    model/order_execution_report.h
+    model/order_execution_report_all_of.h
+    model/order_new_single_request.h
+    model/position.h
+    model/position_data.h
+    model/reject_reason.h
+    model/time_in_force.h
+    model/validation_error.h
+    api/BalancesAPI.h
+    api/OrdersAPI.h
+    api/PositionsAPI.h
 
 )
 
@@ -166,11 +180,9 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-AccountAPI.c
-#    unit-tests/manual-CertificateAPI.c
-#    unit-tests/manual-EndpointsAPI.c
-#    unit-tests/manual-ExchangeAPI.c
-#    unit-tests/manual-LocationAPI.c
+#    unit-tests/manual-BalancesAPI.c
+#    unit-tests/manual-OrdersAPI.c
+#    unit-tests/manual-PositionsAPI.c
 #)
 
 ##set header files

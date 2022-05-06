@@ -58,17 +58,18 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import org.openapitools.client.api.AccountApi;
+import org.openapitools.client.api.BalancesApi;
 
-public class AccountApiExample {
+public class BalancesApiExample {
 
     public static void main(String[] args) {
-        AccountApi apiInstance = new AccountApi();
-        List<String> exchangeId = null; // List<String> | Exchange identifier of the account to delete
+        BalancesApi apiInstance = new BalancesApi();
+        String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
         try {
-            apiInstance.deleteAccount(exchangeId);
+            List<Balance> result = apiInstance.v1BalancesGet(exchangeId);
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AccountApi#deleteAccount");
+            System.err.println("Exception when calling BalancesApi#v1BalancesGet");
             e.printStackTrace();
         }
     }
@@ -78,49 +79,44 @@ public class AccountApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://ems-mgmt-sandbox.coinapi.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**deleteAccount**](docs/AccountApi.md#deleteAccount) | **DELETE** /v1/accounts | Delete account
-*AccountApi* | [**deleteAccountAll**](docs/AccountApi.md#deleteAccountAll) | **DELETE** /v1/accounts/all | Delete all accounts
-*AccountApi* | [**getAccount**](docs/AccountApi.md#getAccount) | **GET** /v1/accounts | Get accounts
-*AccountApi* | [**persistAccount**](docs/AccountApi.md#persistAccount) | **POST** /v1/accounts | Add or update account
-*CertificateApi* | [**certificate**](docs/CertificateApi.md#certificate) | **GET** /v1/certificate/pem | Get authentication certificate
-*EndpointsApi* | [**endpoints**](docs/EndpointsApi.md#endpoints) | **GET** /v1/endpoints | Get API endpoints
-*ExchangeApi* | [**exchangeLoginRequire**](docs/ExchangeApi.md#exchangeLoginRequire) | **GET** /v1/exchanges | Get exchange configuration
-*LocationApi* | [**locations**](docs/LocationApi.md#locations) | **GET** /v1/locations | Get site locations
+*BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
+*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
- - [AccountData](docs/AccountData.md)
- - [AccountEndpoint](docs/AccountEndpoint.md)
- - [AccountInfo](docs/AccountInfo.md)
- - [ExchangeLoginRequire](docs/ExchangeLoginRequire.md)
- - [GetAccount](docs/GetAccount.md)
- - [KeyValue](docs/KeyValue.md)
- - [Locations](docs/Locations.md)
- - [UpdateAccount](docs/UpdateAccount.md)
+ - [Balance](docs/Balance.md)
+ - [BalanceData](docs/BalanceData.md)
+ - [Fills](docs/Fills.md)
+ - [MessageReject](docs/MessageReject.md)
+ - [OrdSide](docs/OrdSide.md)
+ - [OrdStatus](docs/OrdStatus.md)
+ - [OrdType](docs/OrdType.md)
+ - [OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
+ - [Position](docs/Position.md)
+ - [PositionData](docs/PositionData.md)
+ - [RejectReason](docs/RejectReason.md)
+ - [TimeInForce](docs/TimeInForce.md)
+ - [ValidationError](docs/ValidationError.md)
 
 
 ## Documentation for Authorization
 
+All endpoints do not require authorization.
 Authentication schemes defined for the API:
-### APIKeyHeader
-
-- **Type**: API key
-
-- **API key parameter name**: X-CoinAPI-Key
-- **Location**: HTTP header
-
-### APIKeyQueryParam
-
-- **Type**: API key
-
-- **API key parameter name**: apikey
-- **Location**: URL query string
-
 
 ## Recommendation
 

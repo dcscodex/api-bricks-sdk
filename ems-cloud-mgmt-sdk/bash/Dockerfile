@@ -23,8 +23,8 @@ source /etc/bash-completion.d/client.sh\n\
 #
 # Setup prompt
 #
-RUN echo 'export PS1="[EMS - Managed Cloud REST API] \$ "' >> ~/.bashrc
-RUN echo 'export PROMPT="[EMS - Managed Cloud REST API] \$ "' >> ~/.zshrc
+RUN echo 'export PS1="[EMS - REST API] \$ "' >> ~/.bashrc
+RUN echo 'export PROMPT="[EMS - REST API] \$ "' >> ~/.zshrc
 
 #
 # Setup a welcome message with basic instruction
@@ -32,12 +32,10 @@ RUN echo 'export PROMPT="[EMS - Managed Cloud REST API] \$ "' >> ~/.zshrc
 RUN echo -e 'echo "\
 \n\
 This Docker provides preconfigured environment for running the command\n\
-line REST client for $(tput setaf 6)EMS - Managed Cloud REST API$(tput sgr0).\n\
+line REST client for $(tput setaf 6)EMS - REST API$(tput sgr0).\n\
 \n\
 For convenience, you can export the following environment variables:\n\
 \n\
-
-
 
 \n\
 $(tput setaf 7)Basic usage:$(tput sgr0)\n\

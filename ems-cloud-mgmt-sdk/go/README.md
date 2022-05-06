@@ -1,66 +1,69 @@
 # Go API client for openapi
 
-This section will provide necessary information about the `CoinAPI EMS Managed Cloud REST API` protocol. 
-<br/><br/>
-This API is used to manage the overall deployment of **Execution Management System API** (`EMS API`) software, 
-which means that in this API, you define the accounts, credentials, and configurations for the order destinations or identify the CoinAPI endpoints where you need to connect to access the `EMS API`. 
+This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
+<br/>
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
 <br/><br/>
 Implemented Standards:
 
- * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
- * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
- * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
- 
+  * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
+  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
+  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
+   
 ### Endpoints
 <table>
   <thead>
     <tr>
+      <th>Deployment method</th>
       <th>Environment</th>
       <th>Url</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>Managed Cloud</td>
       <td>Production</td>
-      <td><code>https://ems-mgmt.coinapi.io/</code></td>
+      <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
     </tr>
     <tr>
+      <td>Managed Cloud</td>
       <td>Sandbox</td>
-      <td><code>https://ems-mgmt-sandbox.coinapi.io/</code></td>
+      <td><code>https://ems-gateway-aws-eu-central-1-dev.coinapi.io/</code></td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Production</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Sandbox</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
     </tr>
   </tbody>
 </table>
 
 ### Authentication
+If the software is deployed as `Self-Hosted` then API do not require authentication as inside your infrastructure, your company is responsible for the security and access controls. 
+<br/><br/>
+If the software is deployed in our `Managed Cloud`, there are 2 methods for authenticating with us, you only need to use one:
 
-To use resources that require authorized access, you will need to provide an API key to us when making HTTP requests.
-
-There are 2 methods for passing the API key to us, you only need to use one:
-
- 1. Custom authorization header named `X-CoinAPI-Key`
- 2. Query string parameter named `apikey`
+ 1. Custom authorization header named `X-CoinAPI-Key` with the API Key
+ 2. Query string parameter named `apikey` with the API Key
+ 3. <a href=\"#certificate\">TLS Client Certificate</a> from the `Managed Cloud REST API` (/v1/certificate/pem endpoint) while establishing a TLS session with us.
 
 #### Custom authorization header
-
 You can authorize by providing additional custom header named `X-CoinAPI-Key` and API key as its value.
-
 Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`, then the authorization header you should send to us will look like:
 <br/><br/>
 `X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY`
-
 <aside class=\"success\">This method is recommended by us and you should use it in production environments.</aside>
-
 #### Query string authorization parameter
-
 You can authorize by providing an additional parameter named `apikey` with a value equal to your API key in the query string of your HTTP request.
-
-Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all accounts, then your query string should look like this: 
+Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all balances, then your query string should look like this: 
 <br/><br/>
-`GET /v1/accounts?apikey=73034021-THIS-IS-SAMPLE-KEY`
-
-<aside class=\"notice\">
-Query string method may be more practical for development activities.
-</aside>
+`GET /v1/balances?apikey=73034021-THIS-IS-SAMPLE-KEY`
+<aside class=\"notice\">Query string method may be more practical for development activities.</aside>
 
 
 ## Overview
@@ -136,52 +139,43 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://ems-mgmt-sandbox.coinapi.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**DeleteAccount**](docs/AccountApi.md#deleteaccount) | **Delete** /v1/accounts | Delete account
-*AccountApi* | [**DeleteAccountAll**](docs/AccountApi.md#deleteaccountall) | **Delete** /v1/accounts/all | Delete all accounts
-*AccountApi* | [**GetAccount**](docs/AccountApi.md#getaccount) | **Get** /v1/accounts | Get accounts
-*AccountApi* | [**PersistAccount**](docs/AccountApi.md#persistaccount) | **Post** /v1/accounts | Add or update account
-*CertificateApi* | [**Certificate**](docs/CertificateApi.md#certificate) | **Get** /v1/certificate/pem | Get authentication certificate
-*EndpointsApi* | [**Endpoints**](docs/EndpointsApi.md#endpoints) | **Get** /v1/endpoints | Get API endpoints
-*ExchangeApi* | [**ExchangeLoginRequire**](docs/ExchangeApi.md#exchangeloginrequire) | **Get** /v1/exchanges | Get exchange configuration
-*LocationApi* | [**Locations**](docs/LocationApi.md#locations) | **Get** /v1/locations | Get site locations
+*BalancesApi* | [**V1BalancesGet**](docs/BalancesApi.md#v1balancesget) | **Get** /v1/balances | Get balances
+*OrdersApi* | [**V1OrdersCancelAllPost**](docs/OrdersApi.md#v1orderscancelallpost) | **Post** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**V1OrdersCancelPost**](docs/OrdersApi.md#v1orderscancelpost) | **Post** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**V1OrdersGet**](docs/OrdersApi.md#v1ordersget) | **Get** /v1/orders | Get open orders
+*OrdersApi* | [**V1OrdersPost**](docs/OrdersApi.md#v1orderspost) | **Post** /v1/orders | Send new order
+*OrdersApi* | [**V1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1ordersstatusclientorderidget) | **Get** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**V1PositionsGet**](docs/PositionsApi.md#v1positionsget) | **Get** /v1/positions | Get open positions
 
 
 ## Documentation For Models
 
- - [AccountData](docs/AccountData.md)
- - [AccountEndpoint](docs/AccountEndpoint.md)
- - [AccountInfo](docs/AccountInfo.md)
- - [ExchangeLoginRequire](docs/ExchangeLoginRequire.md)
- - [GetAccount](docs/GetAccount.md)
- - [KeyValue](docs/KeyValue.md)
- - [Locations](docs/Locations.md)
- - [UpdateAccount](docs/UpdateAccount.md)
+ - [Balance](docs/Balance.md)
+ - [BalanceData](docs/BalanceData.md)
+ - [Fills](docs/Fills.md)
+ - [MessageReject](docs/MessageReject.md)
+ - [OrdSide](docs/OrdSide.md)
+ - [OrdStatus](docs/OrdStatus.md)
+ - [OrdType](docs/OrdType.md)
+ - [OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
+ - [Position](docs/Position.md)
+ - [PositionData](docs/PositionData.md)
+ - [RejectReason](docs/RejectReason.md)
+ - [TimeInForce](docs/TimeInForce.md)
+ - [ValidationError](docs/ValidationError.md)
 
 
 ## Documentation For Authorization
 
-
-
-### APIKeyHeader
-
-- **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
-- **Location**: HTTP header
-
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: X-CoinAPI-Key and passed in as the auth context for each request.
-
-
-### APIKeyQueryParam
-
-- **Type**: API key
-- **API key parameter name**: apikey
-- **Location**: URL query string
-
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: apikey and passed in as the auth context for each request.
+ Endpoints do not require authorization.
 
 
 ## Documentation for Utility Methods

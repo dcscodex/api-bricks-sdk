@@ -1,18 +1,19 @@
 -module(openapi_api).
 
--export([ locations/0
+-export([ v1_positions_get/0
         ]).
 
 -define(BASE_URL, "").
 
-%% @doc Get site locations
-%% This endpoint providing information about the server site locations supported in the EMS API.
--spec locations() ->
+%% @doc Get open positions
+%% Get current open positions across all or single exchange.
+-spec v1_positions_get() ->
   openapi_utils:response().
-locations() ->
+v1_positions_get() ->
   Method      = get,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
-  Path        = ["/v1/locations"],
+  Path        = ["/v1/positions"],
+  QueryString = [<<"exchange_id=">>, ExchangeId, <<"&">>],
 
-  openapi_utils:request(Method, [Host, ?BASE_URL, Path]).
+  openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 

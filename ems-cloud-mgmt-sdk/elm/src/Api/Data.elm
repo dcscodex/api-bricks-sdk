@@ -1,6 +1,6 @@
 {-
-   EMS - Managed Cloud REST API
-   This section will provide necessary information about the `CoinAPI EMS Managed Cloud REST API` protocol.  <br/><br/> This API is used to manage the overall deployment of **Execution Management System API** (`EMS API`) software,  which means that in this API, you define the accounts, credentials, and configurations for the order destinations or identify the CoinAPI endpoints where you need to connect to access the `EMS API`.  <br/><br/> Implemented Standards:   * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)   ### Endpoints <table>   <thead>     <tr>       <th>Environment</th>       <th>Url</th>     </tr>   </thead>   <tbody>     <tr>       <td>Production</td>       <td><code>https://ems-mgmt.coinapi.io/</code></td>     </tr>     <tr>       <td>Sandbox</td>       <td><code>https://ems-mgmt-sandbox.coinapi.io/</code></td>     </tr>   </tbody> </table>  ### Authentication  To use resources that require authorized access, you will need to provide an API key to us when making HTTP requests.  There are 2 methods for passing the API key to us, you only need to use one:   1. Custom authorization header named `X-CoinAPI-Key`  2. Query string parameter named `apikey`  #### Custom authorization header  You can authorize by providing additional custom header named `X-CoinAPI-Key` and API key as its value.  Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`, then the authorization header you should send to us will look like: <br/><br/> `X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY`  <aside class=\"success\">This method is recommended by us and you should use it in production environments.</aside>  #### Query string authorization parameter  You can authorize by providing an additional parameter named `apikey` with a value equal to your API key in the query string of your HTTP request.  Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all accounts, then your query string should look like this:  <br/><br/> `GET /v1/accounts?apikey=73034021-THIS-IS-SAMPLE-KEY`  <aside class=\"notice\"> Query string method may be more practical for development activities. </aside> 
+   EMS - REST API
+   This section will provide necessary information about the `CoinAPI EMS REST API` protocol. <br/> This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>       <br/><br/> Implemented Standards:    * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)   * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)   * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)     ### Endpoints <table>   <thead>     <tr>       <th>Deployment method</th>       <th>Environment</th>       <th>Url</th>     </tr>   </thead>   <tbody>     <tr>       <td>Managed Cloud</td>       <td>Production</td>       <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>     </tr>     <tr>       <td>Managed Cloud</td>       <td>Sandbox</td>       <td><code>https://ems-gateway-aws-eu-central-1-dev.coinapi.io/</code></td>     </tr>     <tr>       <td>Self Hosted</td>       <td>Production</td>       <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>     </tr>     <tr>       <td>Self Hosted</td>       <td>Sandbox</td>       <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>     </tr>   </tbody> </table>  ### Authentication If the software is deployed as `Self-Hosted` then API do not require authentication as inside your infrastructure, your company is responsible for the security and access controls.  <br/><br/> If the software is deployed in our `Managed Cloud`, there are 2 methods for authenticating with us, you only need to use one:   1. Custom authorization header named `X-CoinAPI-Key` with the API Key  2. Query string parameter named `apikey` with the API Key  3. <a href=\"#certificate\">TLS Client Certificate</a> from the `Managed Cloud REST API` (/v1/certificate/pem endpoint) while establishing a TLS session with us.  #### Custom authorization header You can authorize by providing additional custom header named `X-CoinAPI-Key` and API key as its value. Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`, then the authorization header you should send to us will look like: <br/><br/> `X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY` <aside class=\"success\">This method is recommended by us and you should use it in production environments.</aside> #### Query string authorization parameter You can authorize by providing an additional parameter named `apikey` with a value equal to your API key in the query string of your HTTP request. Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all balances, then your query string should look like this:  <br/><br/> `GET /v1/balances?apikey=73034021-THIS-IS-SAMPLE-KEY` <aside class=\"notice\">Query string method may be more practical for development activities.</aside> 
 
    The version of the OpenAPI document: v1
    Contact: support@coinapi.io
@@ -15,30 +15,54 @@
 
 
 module Api.Data exposing
-    ( AccountData
-    , AccountEndpoint
-    , AccountInfo
-    , ExchangeLoginRequire
-    , GetAccount
-    , KeyValue
-    , Locations
-    , UpdateAccount
-    , encodeAccountData
-    , encodeAccountEndpoint
-    , encodeAccountInfo
-    , encodeExchangeLoginRequire
-    , encodeGetAccount
-    , encodeKeyValue
-    , encodeLocations
-    , encodeUpdateAccount
-    , accountDataDecoder
-    , accountEndpointDecoder
-    , accountInfoDecoder
-    , exchangeLoginRequireDecoder
-    , getAccountDecoder
-    , keyValueDecoder
-    , locationsDecoder
-    , updateAccountDecoder
+    ( Balance
+    , BalanceData, BalanceDataLastUpdatedBy(..), balanceDataLastUpdatedByVariants
+    , Fills
+    , MessageReject
+    , OrdSide(..), ordSideVariants
+    , OrdStatus(..), ordStatusVariants
+    , OrdType(..), ordTypeVariants
+    , OrderCancelAllRequest
+    , OrderCancelSingleRequest
+    , OrderExecutionReport, OrderExecutionReportExecInst(..), orderExecutionReportExecInstVariants
+    , OrderNewSingleRequest, OrderNewSingleRequestExecInst(..), orderNewSingleRequestExecInstVariants
+    , Position
+    , PositionData
+    , RejectReason(..), rejectReasonVariants
+    , TimeInForce(..), timeInForceVariants
+    , ValidationError
+    , encodeBalance
+    , encodeBalanceData
+    , encodeFills
+    , encodeMessageReject
+    , encodeOrdSide
+    , encodeOrdStatus
+    , encodeOrdType
+    , encodeOrderCancelAllRequest
+    , encodeOrderCancelSingleRequest
+    , encodeOrderExecutionReport
+    , encodeOrderNewSingleRequest
+    , encodePosition
+    , encodePositionData
+    , encodeRejectReason
+    , encodeTimeInForce
+    , encodeValidationError
+    , balanceDecoder
+    , balanceDataDecoder
+    , fillsDecoder
+    , messageRejectDecoder
+    , ordSideDecoder
+    , ordStatusDecoder
+    , ordTypeDecoder
+    , orderCancelAllRequestDecoder
+    , orderCancelSingleRequestDecoder
+    , orderExecutionReportDecoder
+    , orderNewSingleRequestDecoder
+    , positionDecoder
+    , positionDataDecoder
+    , rejectReasonDecoder
+    , timeInForceDecoder
+    , validationErrorDecoder
     )
 
 import Api
@@ -50,230 +74,718 @@ import Json.Encode
 -- MODEL
 
 
-type alias AccountData =
+type alias Balance =
     { exchangeId : Maybe String
-    , parameters : Maybe (List (KeyValue))
+    , data : Maybe (List (BalanceData))
     }
 
 
-type alias AccountEndpoint =
-    { exchangeId : Maybe String
-    , locationId : Maybe String
-    , endpointSchema : Maybe String
-    , endpointHost : Maybe String
-    , endpointUrl : Maybe String
+type alias BalanceData =
+    { assetIdExchange : Maybe String
+    , assetIdCoinapi : Maybe String
+    , balance : Maybe Float
+    , available : Maybe Float
+    , locked : Maybe Float
+    , lastUpdatedBy : Maybe BalanceDataLastUpdatedBy
+    , rateUsd : Maybe Float
+    , traded : Maybe Float
     }
 
 
-type alias AccountInfo =
-    { exchangeId : Maybe String
+type BalanceDataLastUpdatedBy
+    = BalanceDataLastUpdatedByINITIALIZATION
+    | BalanceDataLastUpdatedByBALANCEMANAGER
+    | BalanceDataLastUpdatedByEXCHANGE
+
+
+balanceDataLastUpdatedByVariants : List BalanceDataLastUpdatedBy
+balanceDataLastUpdatedByVariants =
+    [ BalanceDataLastUpdatedByINITIALIZATION
+    , BalanceDataLastUpdatedByBALANCEMANAGER
+    , BalanceDataLastUpdatedByEXCHANGE
+    ]
+
+
+type alias Fills =
+    { time : Maybe Posix
+    , price : Maybe Float
+    , amount : Maybe Float
     }
 
 
-type alias ExchangeLoginRequire =
-    { exchangeId : Maybe String
-    , locationId : Maybe String
-    , requiredParameters : Maybe (List (String))
+type alias MessageReject =
+    { type_ : Maybe String
+    , rejectReason : Maybe RejectReason
+    , exchangeId : Maybe String
+    , message : Maybe String
+    , rejectedMessage : Maybe String
     }
 
 
-type alias GetAccount =
-    { exchangeId : Maybe String
-    , parameters : Maybe (List (KeyValue))
-    }
-
-
-{-| Key Value pair used to configure exchange accounts.
+{-| Side of order. 
 -}
-type alias KeyValue =
-    { key : Maybe String
-    , value : Maybe String
+type OrdSide
+    = OrdSideBUY
+    | OrdSideSELL
+
+
+ordSideVariants : List OrdSide
+ordSideVariants =
+    [ OrdSideBUY
+    , OrdSideSELL
+    ]
+
+
+{-| Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
+-}
+type OrdStatus
+    = OrdStatusRECEIVED
+    | OrdStatusROUTING
+    | OrdStatusROUTED
+    | OrdStatusNEW
+    | OrdStatusPENDINGCANCEL
+    | OrdStatusPARTIALLYFILLED
+    | OrdStatusFILLED
+    | OrdStatusCANCELED
+    | OrdStatusREJECTED
+
+
+ordStatusVariants : List OrdStatus
+ordStatusVariants =
+    [ OrdStatusRECEIVED
+    , OrdStatusROUTING
+    , OrdStatusROUTED
+    , OrdStatusNEW
+    , OrdStatusPENDINGCANCEL
+    , OrdStatusPARTIALLYFILLED
+    , OrdStatusFILLED
+    , OrdStatusCANCELED
+    , OrdStatusREJECTED
+    ]
+
+
+{-| Order types are documented in the separate section: <a href=\"#ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a> 
+-}
+type OrdType
+    = OrdTypeLIMIT
+
+
+ordTypeVariants : List OrdType
+ordTypeVariants =
+    [ OrdTypeLIMIT
+    ]
+
+
+{-| Cancel all orders request object.
+-}
+type alias OrderCancelAllRequest =
+    { exchangeId : String
     }
 
 
-type alias Locations =
-    { locationId : Maybe String
-    , regionName : Maybe String
-    , providerName : Maybe String
+{-| Cancel single order request object.
+-}
+type alias OrderCancelSingleRequest =
+    { exchangeId : String
+    , exchangeOrderId : Maybe String
+    , clientOrderId : Maybe String
     }
 
 
-type alias UpdateAccount =
+{-| The order execution report object.
+-}
+type alias OrderExecutionReport =
+    { exchangeId : String
+    , clientOrderId : String
+    , symbolIdExchange : Maybe String
+    , symbolIdCoinapi : Maybe String
+    , amountOrder : Float
+    , price : Float
+    , side : OrdSide
+    , orderType : OrdType
+    , timeInForce : TimeInForce
+    , expireTime : Maybe Posix
+    , execInst : Maybe (List OrderExecutionReportExecInst)
+    , clientOrderIdFormatExchange : String
+    , exchangeOrderId : Maybe String
+    , amountOpen : Float
+    , amountFilled : Float
+    , avgPx : Maybe Float
+    , status : OrdStatus
+    , statusHistory : Maybe (List (List (String)))
+    , errorMessage : Maybe String
+    , fills : Maybe (List (Fills))
+    }
+
+
+type OrderExecutionReportExecInst
+    = OrderExecutionReportExecInstMAKERORCANCEL
+    | OrderExecutionReportExecInstAUCTIONONLY
+    | OrderExecutionReportExecInstINDICATIONOFINTEREST
+
+
+orderExecutionReportExecInstVariants : List OrderExecutionReportExecInst
+orderExecutionReportExecInstVariants =
+    [ OrderExecutionReportExecInstMAKERORCANCEL
+    , OrderExecutionReportExecInstAUCTIONONLY
+    , OrderExecutionReportExecInstINDICATIONOFINTEREST
+    ]
+
+
+{-| The new order message.
+-}
+type alias OrderNewSingleRequest =
+    { exchangeId : String
+    , clientOrderId : String
+    , symbolIdExchange : Maybe String
+    , symbolIdCoinapi : Maybe String
+    , amountOrder : Float
+    , price : Float
+    , side : OrdSide
+    , orderType : OrdType
+    , timeInForce : TimeInForce
+    , expireTime : Maybe Posix
+    , execInst : Maybe (List OrderNewSingleRequestExecInst)
+    }
+
+
+type OrderNewSingleRequestExecInst
+    = OrderNewSingleRequestExecInstMAKERORCANCEL
+    | OrderNewSingleRequestExecInstAUCTIONONLY
+    | OrderNewSingleRequestExecInstINDICATIONOFINTEREST
+
+
+orderNewSingleRequestExecInstVariants : List OrderNewSingleRequestExecInst
+orderNewSingleRequestExecInstVariants =
+    [ OrderNewSingleRequestExecInstMAKERORCANCEL
+    , OrderNewSingleRequestExecInstAUCTIONONLY
+    , OrderNewSingleRequestExecInstINDICATIONOFINTEREST
+    ]
+
+
+type alias Position =
     { exchangeId : Maybe String
-    , parameters : Maybe (List (KeyValue))
+    , data : Maybe (List (PositionData))
+    }
+
+
+{-| The Position object.
+-}
+type alias PositionData =
+    { symbolIdExchange : Maybe String
+    , symbolIdCoinapi : Maybe String
+    , avgEntryPrice : Maybe Float
+    , quantity : Maybe Float
+    , side : Maybe OrdSide
+    , unrealizedPnl : Maybe Float
+    , leverage : Maybe Float
+    , crossMargin : Maybe Bool
+    , liquidationPrice : Maybe Float
+    , rawData : Maybe Object
+    }
+
+
+{-| Cause of rejection.
+-}
+type RejectReason
+    = RejectReasonOTHER
+    | RejectReasonEXCHANGEUNREACHABLE
+    | RejectReasonEXCHANGERESPONSETIMEOUT
+    | RejectReasonORDERIDNOTFOUND
+    | RejectReasonINVALIDTYPE
+    | RejectReasonMETHODNOTSUPPORTED
+    | RejectReasonJSONERROR
+
+
+rejectReasonVariants : List RejectReason
+rejectReasonVariants =
+    [ RejectReasonOTHER
+    , RejectReasonEXCHANGEUNREACHABLE
+    , RejectReasonEXCHANGERESPONSETIMEOUT
+    , RejectReasonORDERIDNOTFOUND
+    , RejectReasonINVALIDTYPE
+    , RejectReasonMETHODNOTSUPPORTED
+    , RejectReasonJSONERROR
+    ]
+
+
+{-| Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
+-}
+type TimeInForce
+    = TimeInForceGOODTILLCANCEL
+    | TimeInForceGOODTILLTIMEEXCHANGE
+    | TimeInForceGOODTILLTIMEOMS
+    | TimeInForceFILLORKILL
+    | TimeInForceIMMEDIATEORCANCEL
+
+
+timeInForceVariants : List TimeInForce
+timeInForceVariants =
+    [ TimeInForceGOODTILLCANCEL
+    , TimeInForceGOODTILLTIMEEXCHANGE
+    , TimeInForceGOODTILLTIMEOMS
+    , TimeInForceFILLORKILL
+    , TimeInForceIMMEDIATEORCANCEL
+    ]
+
+
+type alias ValidationError =
+    { type_ : Maybe String
+    , title : Maybe String
+    , status : Maybe Float
+    , traceId : Maybe String
+    , errors : Maybe String
     }
 
 
 -- ENCODER
 
 
-encodeAccountData : AccountData -> Json.Encode.Value
-encodeAccountData =
-    encodeObject << encodeAccountDataPairs
+encodeBalance : Balance -> Json.Encode.Value
+encodeBalance =
+    encodeObject << encodeBalancePairs
 
 
-encodeAccountDataWithTag : ( String, String ) -> AccountData -> Json.Encode.Value
-encodeAccountDataWithTag (tagField, tag) model =
-    encodeObject (encodeAccountDataPairs model ++ [ encode tagField Json.Encode.string tag ])
+encodeBalanceWithTag : ( String, String ) -> Balance -> Json.Encode.Value
+encodeBalanceWithTag (tagField, tag) model =
+    encodeObject (encodeBalancePairs model ++ [ encode tagField Json.Encode.string tag ])
 
 
-encodeAccountDataPairs : AccountData -> List EncodedField
-encodeAccountDataPairs model =
+encodeBalancePairs : Balance -> List EncodedField
+encodeBalancePairs model =
     let
         pairs =
             [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "parameters" (Json.Encode.list encodeKeyValue) model.parameters
+            , maybeEncode "data" (Json.Encode.list encodeBalanceData) model.data
             ]
     in
     pairs
 
 
-encodeAccountEndpoint : AccountEndpoint -> Json.Encode.Value
-encodeAccountEndpoint =
-    encodeObject << encodeAccountEndpointPairs
+encodeBalanceData : BalanceData -> Json.Encode.Value
+encodeBalanceData =
+    encodeObject << encodeBalanceDataPairs
 
 
-encodeAccountEndpointWithTag : ( String, String ) -> AccountEndpoint -> Json.Encode.Value
-encodeAccountEndpointWithTag (tagField, tag) model =
-    encodeObject (encodeAccountEndpointPairs model ++ [ encode tagField Json.Encode.string tag ])
+encodeBalanceDataWithTag : ( String, String ) -> BalanceData -> Json.Encode.Value
+encodeBalanceDataWithTag (tagField, tag) model =
+    encodeObject (encodeBalanceDataPairs model ++ [ encode tagField Json.Encode.string tag ])
 
 
-encodeAccountEndpointPairs : AccountEndpoint -> List EncodedField
-encodeAccountEndpointPairs model =
+encodeBalanceDataPairs : BalanceData -> List EncodedField
+encodeBalanceDataPairs model =
+    let
+        pairs =
+            [ maybeEncode "asset_id_exchange" Json.Encode.string model.assetIdExchange
+            , maybeEncode "asset_id_coinapi" Json.Encode.string model.assetIdCoinapi
+            , maybeEncode "balance" Json.Encode.float model.balance
+            , maybeEncode "available" Json.Encode.float model.available
+            , maybeEncode "locked" Json.Encode.float model.locked
+            , maybeEncode "last_updated_by" encodeBalanceDataLastUpdatedBy model.lastUpdatedBy
+            , maybeEncode "rate_usd" Json.Encode.float model.rateUsd
+            , maybeEncode "traded" Json.Encode.float model.traded
+            ]
+    in
+    pairs
+
+stringFromBalanceDataLastUpdatedBy : BalanceDataLastUpdatedBy -> String
+stringFromBalanceDataLastUpdatedBy model =
+    case model of
+        BalanceDataLastUpdatedByINITIALIZATION ->
+            "INITIALIZATION"
+
+        BalanceDataLastUpdatedByBALANCEMANAGER ->
+            "BALANCE_MANAGER"
+
+        BalanceDataLastUpdatedByEXCHANGE ->
+            "EXCHANGE"
+
+
+encodeBalanceDataLastUpdatedBy : BalanceDataLastUpdatedBy -> Json.Encode.Value
+encodeBalanceDataLastUpdatedBy =
+    Json.Encode.string << stringFromBalanceDataLastUpdatedBy
+
+
+
+encodeFills : Fills -> Json.Encode.Value
+encodeFills =
+    encodeObject << encodeFillsPairs
+
+
+encodeFillsWithTag : ( String, String ) -> Fills -> Json.Encode.Value
+encodeFillsWithTag (tagField, tag) model =
+    encodeObject (encodeFillsPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeFillsPairs : Fills -> List EncodedField
+encodeFillsPairs model =
+    let
+        pairs =
+            [ maybeEncode "time" encodePosix model.time
+            , maybeEncode "price" Json.Encode.float model.price
+            , maybeEncode "amount" Json.Encode.float model.amount
+            ]
+    in
+    pairs
+
+
+encodeMessageReject : MessageReject -> Json.Encode.Value
+encodeMessageReject =
+    encodeObject << encodeMessageRejectPairs
+
+
+encodeMessageRejectWithTag : ( String, String ) -> MessageReject -> Json.Encode.Value
+encodeMessageRejectWithTag (tagField, tag) model =
+    encodeObject (encodeMessageRejectPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeMessageRejectPairs : MessageReject -> List EncodedField
+encodeMessageRejectPairs model =
+    let
+        pairs =
+            [ maybeEncode "type" Json.Encode.string model.type_
+            , maybeEncode "reject_reason" encodeRejectReason model.rejectReason
+            , maybeEncode "exchange_id" Json.Encode.string model.exchangeId
+            , maybeEncode "message" Json.Encode.string model.message
+            , maybeEncode "rejected_message" Json.Encode.string model.rejectedMessage
+            ]
+    in
+    pairs
+
+
+stringFromOrdSide : OrdSide -> String
+stringFromOrdSide model =
+    case model of
+        OrdSideBUY ->
+            "BUY"
+
+        OrdSideSELL ->
+            "SELL"
+
+
+encodeOrdSide : OrdSide -> Json.Encode.Value
+encodeOrdSide =
+    Json.Encode.string << stringFromOrdSide
+
+
+stringFromOrdStatus : OrdStatus -> String
+stringFromOrdStatus model =
+    case model of
+        OrdStatusRECEIVED ->
+            "RECEIVED"
+
+        OrdStatusROUTING ->
+            "ROUTING"
+
+        OrdStatusROUTED ->
+            "ROUTED"
+
+        OrdStatusNEW ->
+            "NEW"
+
+        OrdStatusPENDINGCANCEL ->
+            "PENDING_CANCEL"
+
+        OrdStatusPARTIALLYFILLED ->
+            "PARTIALLY_FILLED"
+
+        OrdStatusFILLED ->
+            "FILLED"
+
+        OrdStatusCANCELED ->
+            "CANCELED"
+
+        OrdStatusREJECTED ->
+            "REJECTED"
+
+
+encodeOrdStatus : OrdStatus -> Json.Encode.Value
+encodeOrdStatus =
+    Json.Encode.string << stringFromOrdStatus
+
+
+stringFromOrdType : OrdType -> String
+stringFromOrdType model =
+    case model of
+        OrdTypeLIMIT ->
+            "LIMIT"
+
+
+encodeOrdType : OrdType -> Json.Encode.Value
+encodeOrdType =
+    Json.Encode.string << stringFromOrdType
+
+
+encodeOrderCancelAllRequest : OrderCancelAllRequest -> Json.Encode.Value
+encodeOrderCancelAllRequest =
+    encodeObject << encodeOrderCancelAllRequestPairs
+
+
+encodeOrderCancelAllRequestWithTag : ( String, String ) -> OrderCancelAllRequest -> Json.Encode.Value
+encodeOrderCancelAllRequestWithTag (tagField, tag) model =
+    encodeObject (encodeOrderCancelAllRequestPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeOrderCancelAllRequestPairs : OrderCancelAllRequest -> List EncodedField
+encodeOrderCancelAllRequestPairs model =
+    let
+        pairs =
+            [ encode "exchange_id" Json.Encode.string model.exchangeId
+            ]
+    in
+    pairs
+
+
+encodeOrderCancelSingleRequest : OrderCancelSingleRequest -> Json.Encode.Value
+encodeOrderCancelSingleRequest =
+    encodeObject << encodeOrderCancelSingleRequestPairs
+
+
+encodeOrderCancelSingleRequestWithTag : ( String, String ) -> OrderCancelSingleRequest -> Json.Encode.Value
+encodeOrderCancelSingleRequestWithTag (tagField, tag) model =
+    encodeObject (encodeOrderCancelSingleRequestPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeOrderCancelSingleRequestPairs : OrderCancelSingleRequest -> List EncodedField
+encodeOrderCancelSingleRequestPairs model =
+    let
+        pairs =
+            [ encode "exchange_id" Json.Encode.string model.exchangeId
+            , maybeEncode "exchange_order_id" Json.Encode.string model.exchangeOrderId
+            , maybeEncode "client_order_id" Json.Encode.string model.clientOrderId
+            ]
+    in
+    pairs
+
+
+encodeOrderExecutionReport : OrderExecutionReport -> Json.Encode.Value
+encodeOrderExecutionReport =
+    encodeObject << encodeOrderExecutionReportPairs
+
+
+encodeOrderExecutionReportWithTag : ( String, String ) -> OrderExecutionReport -> Json.Encode.Value
+encodeOrderExecutionReportWithTag (tagField, tag) model =
+    encodeObject (encodeOrderExecutionReportPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeOrderExecutionReportPairs : OrderExecutionReport -> List EncodedField
+encodeOrderExecutionReportPairs model =
+    let
+        pairs =
+            [ encode "exchange_id" Json.Encode.string model.exchangeId
+            , encode "client_order_id" Json.Encode.string model.clientOrderId
+            , maybeEncode "symbol_id_exchange" Json.Encode.string model.symbolIdExchange
+            , maybeEncode "symbol_id_coinapi" Json.Encode.string model.symbolIdCoinapi
+            , encode "amount_order" Json.Encode.float model.amountOrder
+            , encode "price" Json.Encode.float model.price
+            , encode "side" encodeOrdSide model.side
+            , encode "order_type" encodeOrdType model.orderType
+            , encode "time_in_force" encodeTimeInForce model.timeInForce
+            , maybeEncode "expire_time" encodePosix model.expireTime
+            , maybeEncode "exec_inst" (Json.Encode.list encodeOrderExecutionReportExecInst) model.execInst
+            , encode "client_order_id_format_exchange" Json.Encode.string model.clientOrderIdFormatExchange
+            , maybeEncode "exchange_order_id" Json.Encode.string model.exchangeOrderId
+            , encode "amount_open" Json.Encode.float model.amountOpen
+            , encode "amount_filled" Json.Encode.float model.amountFilled
+            , maybeEncode "avg_px" Json.Encode.float model.avgPx
+            , encode "status" encodeOrdStatus model.status
+            , maybeEncode "status_history" (Json.Encode.list (Json.Encode.list Json.Encode.string)) model.statusHistory
+            , maybeEncode "error_message" Json.Encode.string model.errorMessage
+            , maybeEncode "fills" (Json.Encode.list encodeFills) model.fills
+            ]
+    in
+    pairs
+
+stringFromOrderExecutionReportExecInst : OrderExecutionReportExecInst -> String
+stringFromOrderExecutionReportExecInst model =
+    case model of
+        OrderExecutionReportExecInstMAKERORCANCEL ->
+            "MAKER_OR_CANCEL"
+
+        OrderExecutionReportExecInstAUCTIONONLY ->
+            "AUCTION_ONLY"
+
+        OrderExecutionReportExecInstINDICATIONOFINTEREST ->
+            "INDICATION_OF_INTEREST"
+
+
+encodeOrderExecutionReportExecInst : OrderExecutionReportExecInst -> Json.Encode.Value
+encodeOrderExecutionReportExecInst =
+    Json.Encode.int << intFromOrderExecutionReportExecInst
+
+
+
+encodeOrderNewSingleRequest : OrderNewSingleRequest -> Json.Encode.Value
+encodeOrderNewSingleRequest =
+    encodeObject << encodeOrderNewSingleRequestPairs
+
+
+encodeOrderNewSingleRequestWithTag : ( String, String ) -> OrderNewSingleRequest -> Json.Encode.Value
+encodeOrderNewSingleRequestWithTag (tagField, tag) model =
+    encodeObject (encodeOrderNewSingleRequestPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeOrderNewSingleRequestPairs : OrderNewSingleRequest -> List EncodedField
+encodeOrderNewSingleRequestPairs model =
+    let
+        pairs =
+            [ encode "exchange_id" Json.Encode.string model.exchangeId
+            , encode "client_order_id" Json.Encode.string model.clientOrderId
+            , maybeEncode "symbol_id_exchange" Json.Encode.string model.symbolIdExchange
+            , maybeEncode "symbol_id_coinapi" Json.Encode.string model.symbolIdCoinapi
+            , encode "amount_order" Json.Encode.float model.amountOrder
+            , encode "price" Json.Encode.float model.price
+            , encode "side" encodeOrdSide model.side
+            , encode "order_type" encodeOrdType model.orderType
+            , encode "time_in_force" encodeTimeInForce model.timeInForce
+            , maybeEncode "expire_time" encodePosix model.expireTime
+            , maybeEncode "exec_inst" (Json.Encode.list encodeOrderNewSingleRequestExecInst) model.execInst
+            ]
+    in
+    pairs
+
+stringFromOrderNewSingleRequestExecInst : OrderNewSingleRequestExecInst -> String
+stringFromOrderNewSingleRequestExecInst model =
+    case model of
+        OrderNewSingleRequestExecInstMAKERORCANCEL ->
+            "MAKER_OR_CANCEL"
+
+        OrderNewSingleRequestExecInstAUCTIONONLY ->
+            "AUCTION_ONLY"
+
+        OrderNewSingleRequestExecInstINDICATIONOFINTEREST ->
+            "INDICATION_OF_INTEREST"
+
+
+encodeOrderNewSingleRequestExecInst : OrderNewSingleRequestExecInst -> Json.Encode.Value
+encodeOrderNewSingleRequestExecInst =
+    Json.Encode.int << intFromOrderNewSingleRequestExecInst
+
+
+
+encodePosition : Position -> Json.Encode.Value
+encodePosition =
+    encodeObject << encodePositionPairs
+
+
+encodePositionWithTag : ( String, String ) -> Position -> Json.Encode.Value
+encodePositionWithTag (tagField, tag) model =
+    encodeObject (encodePositionPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodePositionPairs : Position -> List EncodedField
+encodePositionPairs model =
     let
         pairs =
             [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "location_id" Json.Encode.string model.locationId
-            , maybeEncode "endpoint_schema" Json.Encode.string model.endpointSchema
-            , maybeEncode "endpoint_host" Json.Encode.string model.endpointHost
-            , maybeEncode "endpoint_url" Json.Encode.string model.endpointUrl
+            , maybeEncode "data" (Json.Encode.list encodePositionData) model.data
             ]
     in
     pairs
 
 
-encodeAccountInfo : AccountInfo -> Json.Encode.Value
-encodeAccountInfo =
-    encodeObject << encodeAccountInfoPairs
+encodePositionData : PositionData -> Json.Encode.Value
+encodePositionData =
+    encodeObject << encodePositionDataPairs
 
 
-encodeAccountInfoWithTag : ( String, String ) -> AccountInfo -> Json.Encode.Value
-encodeAccountInfoWithTag (tagField, tag) model =
-    encodeObject (encodeAccountInfoPairs model ++ [ encode tagField Json.Encode.string tag ])
+encodePositionDataWithTag : ( String, String ) -> PositionData -> Json.Encode.Value
+encodePositionDataWithTag (tagField, tag) model =
+    encodeObject (encodePositionDataPairs model ++ [ encode tagField Json.Encode.string tag ])
 
 
-encodeAccountInfoPairs : AccountInfo -> List EncodedField
-encodeAccountInfoPairs model =
+encodePositionDataPairs : PositionData -> List EncodedField
+encodePositionDataPairs model =
     let
         pairs =
-            [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
+            [ maybeEncode "symbol_id_exchange" Json.Encode.string model.symbolIdExchange
+            , maybeEncode "symbol_id_coinapi" Json.Encode.string model.symbolIdCoinapi
+            , maybeEncode "avg_entry_price" Json.Encode.float model.avgEntryPrice
+            , maybeEncode "quantity" Json.Encode.float model.quantity
+            , maybeEncode "side" encodeOrdSide model.side
+            , maybeEncode "unrealized_pnl" Json.Encode.float model.unrealizedPnl
+            , maybeEncode "leverage" Json.Encode.float model.leverage
+            , maybeEncode "cross_margin" Json.Encode.bool model.crossMargin
+            , maybeEncode "liquidation_price" Json.Encode.float model.liquidationPrice
+            , maybeEncode "raw_data" encodeObject model.rawData
             ]
     in
     pairs
 
 
-encodeExchangeLoginRequire : ExchangeLoginRequire -> Json.Encode.Value
-encodeExchangeLoginRequire =
-    encodeObject << encodeExchangeLoginRequirePairs
+stringFromRejectReason : RejectReason -> String
+stringFromRejectReason model =
+    case model of
+        RejectReasonOTHER ->
+            "OTHER"
+
+        RejectReasonEXCHANGEUNREACHABLE ->
+            "EXCHANGE_UNREACHABLE"
+
+        RejectReasonEXCHANGERESPONSETIMEOUT ->
+            "EXCHANGE_RESPONSE_TIMEOUT"
+
+        RejectReasonORDERIDNOTFOUND ->
+            "ORDER_ID_NOT_FOUND"
+
+        RejectReasonINVALIDTYPE ->
+            "INVALID_TYPE"
+
+        RejectReasonMETHODNOTSUPPORTED ->
+            "METHOD_NOT_SUPPORTED"
+
+        RejectReasonJSONERROR ->
+            "JSON_ERROR"
 
 
-encodeExchangeLoginRequireWithTag : ( String, String ) -> ExchangeLoginRequire -> Json.Encode.Value
-encodeExchangeLoginRequireWithTag (tagField, tag) model =
-    encodeObject (encodeExchangeLoginRequirePairs model ++ [ encode tagField Json.Encode.string tag ])
+encodeRejectReason : RejectReason -> Json.Encode.Value
+encodeRejectReason =
+    Json.Encode.string << stringFromRejectReason
 
 
-encodeExchangeLoginRequirePairs : ExchangeLoginRequire -> List EncodedField
-encodeExchangeLoginRequirePairs model =
+stringFromTimeInForce : TimeInForce -> String
+stringFromTimeInForce model =
+    case model of
+        TimeInForceGOODTILLCANCEL ->
+            "GOOD_TILL_CANCEL"
+
+        TimeInForceGOODTILLTIMEEXCHANGE ->
+            "GOOD_TILL_TIME_EXCHANGE"
+
+        TimeInForceGOODTILLTIMEOMS ->
+            "GOOD_TILL_TIME_OMS"
+
+        TimeInForceFILLORKILL ->
+            "FILL_OR_KILL"
+
+        TimeInForceIMMEDIATEORCANCEL ->
+            "IMMEDIATE_OR_CANCEL"
+
+
+encodeTimeInForce : TimeInForce -> Json.Encode.Value
+encodeTimeInForce =
+    Json.Encode.string << stringFromTimeInForce
+
+
+encodeValidationError : ValidationError -> Json.Encode.Value
+encodeValidationError =
+    encodeObject << encodeValidationErrorPairs
+
+
+encodeValidationErrorWithTag : ( String, String ) -> ValidationError -> Json.Encode.Value
+encodeValidationErrorWithTag (tagField, tag) model =
+    encodeObject (encodeValidationErrorPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeValidationErrorPairs : ValidationError -> List EncodedField
+encodeValidationErrorPairs model =
     let
         pairs =
-            [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "location_id" Json.Encode.string model.locationId
-            , maybeEncode "required_parameters" (Json.Encode.list Json.Encode.string) model.requiredParameters
-            ]
-    in
-    pairs
-
-
-encodeGetAccount : GetAccount -> Json.Encode.Value
-encodeGetAccount =
-    encodeObject << encodeGetAccountPairs
-
-
-encodeGetAccountWithTag : ( String, String ) -> GetAccount -> Json.Encode.Value
-encodeGetAccountWithTag (tagField, tag) model =
-    encodeObject (encodeGetAccountPairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeGetAccountPairs : GetAccount -> List EncodedField
-encodeGetAccountPairs model =
-    let
-        pairs =
-            [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "parameters" (Json.Encode.list encodeKeyValue) model.parameters
-            ]
-    in
-    pairs
-
-
-encodeKeyValue : KeyValue -> Json.Encode.Value
-encodeKeyValue =
-    encodeObject << encodeKeyValuePairs
-
-
-encodeKeyValueWithTag : ( String, String ) -> KeyValue -> Json.Encode.Value
-encodeKeyValueWithTag (tagField, tag) model =
-    encodeObject (encodeKeyValuePairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeKeyValuePairs : KeyValue -> List EncodedField
-encodeKeyValuePairs model =
-    let
-        pairs =
-            [ maybeEncode "key" Json.Encode.string model.key
-            , maybeEncode "value" Json.Encode.string model.value
-            ]
-    in
-    pairs
-
-
-encodeLocations : Locations -> Json.Encode.Value
-encodeLocations =
-    encodeObject << encodeLocationsPairs
-
-
-encodeLocationsWithTag : ( String, String ) -> Locations -> Json.Encode.Value
-encodeLocationsWithTag (tagField, tag) model =
-    encodeObject (encodeLocationsPairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeLocationsPairs : Locations -> List EncodedField
-encodeLocationsPairs model =
-    let
-        pairs =
-            [ maybeEncode "location_id" Json.Encode.string model.locationId
-            , maybeEncode "region_name" Json.Encode.string model.regionName
-            , maybeEncode "provider_name" Json.Encode.string model.providerName
-            ]
-    in
-    pairs
-
-
-encodeUpdateAccount : UpdateAccount -> Json.Encode.Value
-encodeUpdateAccount =
-    encodeObject << encodeUpdateAccountPairs
-
-
-encodeUpdateAccountWithTag : ( String, String ) -> UpdateAccount -> Json.Encode.Value
-encodeUpdateAccountWithTag (tagField, tag) model =
-    encodeObject (encodeUpdateAccountPairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeUpdateAccountPairs : UpdateAccount -> List EncodedField
-encodeUpdateAccountPairs model =
-    let
-        pairs =
-            [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "parameters" (Json.Encode.list encodeKeyValue) model.parameters
+            [ maybeEncode "type" Json.Encode.string model.type_
+            , maybeEncode "title" Json.Encode.string model.title
+            , maybeEncode "status" Json.Encode.float model.status
+            , maybeEncode "traceId" Json.Encode.string model.traceId
+            , maybeEncode "errors" Json.Encode.string model.errors
             ]
     in
     pairs
@@ -282,64 +794,319 @@ encodeUpdateAccountPairs model =
 -- DECODER
 
 
-accountDataDecoder : Json.Decode.Decoder AccountData
-accountDataDecoder =
-    Json.Decode.succeed AccountData
+balanceDecoder : Json.Decode.Decoder Balance
+balanceDecoder =
+    Json.Decode.succeed Balance
         |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "parameters" (Json.Decode.list keyValueDecoder) Nothing
+        |> maybeDecode "data" (Json.Decode.list balanceDataDecoder) Nothing
 
 
-accountEndpointDecoder : Json.Decode.Decoder AccountEndpoint
-accountEndpointDecoder =
-    Json.Decode.succeed AccountEndpoint
+balanceDataDecoder : Json.Decode.Decoder BalanceData
+balanceDataDecoder =
+    Json.Decode.succeed BalanceData
+        |> maybeDecode "asset_id_exchange" Json.Decode.string Nothing
+        |> maybeDecode "asset_id_coinapi" Json.Decode.string Nothing
+        |> maybeDecode "balance" Json.Decode.float Nothing
+        |> maybeDecode "available" Json.Decode.float Nothing
+        |> maybeDecode "locked" Json.Decode.float Nothing
+        |> maybeDecode "last_updated_by" balanceDataLastUpdatedByDecoder Nothing
+        |> maybeDecode "rate_usd" Json.Decode.float Nothing
+        |> maybeDecode "traded" Json.Decode.float Nothing
+
+
+balanceDataLastUpdatedByDecoder : Json.Decode.Decoder BalanceDataLastUpdatedBy
+balanceDataLastUpdatedByDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "INITIALIZATION" ->
+                        Json.Decode.succeed BalanceDataLastUpdatedByINITIALIZATION
+
+                    "BALANCE_MANAGER" ->
+                        Json.Decode.succeed BalanceDataLastUpdatedByBALANCEMANAGER
+
+                    "EXCHANGE" ->
+                        Json.Decode.succeed BalanceDataLastUpdatedByEXCHANGE
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+
+fillsDecoder : Json.Decode.Decoder Fills
+fillsDecoder =
+    Json.Decode.succeed Fills
+        |> maybeDecode "time" posixDecoder Nothing
+        |> maybeDecode "price" Json.Decode.float Nothing
+        |> maybeDecode "amount" Json.Decode.float Nothing
+
+
+messageRejectDecoder : Json.Decode.Decoder MessageReject
+messageRejectDecoder =
+    Json.Decode.succeed MessageReject
+        |> maybeDecode "type" Json.Decode.string Nothing
+        |> maybeDecode "reject_reason" rejectReasonDecoder Nothing
         |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "location_id" Json.Decode.string Nothing
-        |> maybeDecode "endpoint_schema" Json.Decode.string Nothing
-        |> maybeDecode "endpoint_host" Json.Decode.string Nothing
-        |> maybeDecode "endpoint_url" Json.Decode.string Nothing
+        |> maybeDecode "message" Json.Decode.string Nothing
+        |> maybeDecode "rejected_message" Json.Decode.string Nothing
 
 
-accountInfoDecoder : Json.Decode.Decoder AccountInfo
-accountInfoDecoder =
-    Json.Decode.succeed AccountInfo
+ordSideDecoder : Json.Decode.Decoder OrdSide
+ordSideDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "BUY" ->
+                        Json.Decode.succeed OrdSideBUY
+
+                    "SELL" ->
+                        Json.Decode.succeed OrdSideSELL
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+ordStatusDecoder : Json.Decode.Decoder OrdStatus
+ordStatusDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "RECEIVED" ->
+                        Json.Decode.succeed OrdStatusRECEIVED
+
+                    "ROUTING" ->
+                        Json.Decode.succeed OrdStatusROUTING
+
+                    "ROUTED" ->
+                        Json.Decode.succeed OrdStatusROUTED
+
+                    "NEW" ->
+                        Json.Decode.succeed OrdStatusNEW
+
+                    "PENDING_CANCEL" ->
+                        Json.Decode.succeed OrdStatusPENDINGCANCEL
+
+                    "PARTIALLY_FILLED" ->
+                        Json.Decode.succeed OrdStatusPARTIALLYFILLED
+
+                    "FILLED" ->
+                        Json.Decode.succeed OrdStatusFILLED
+
+                    "CANCELED" ->
+                        Json.Decode.succeed OrdStatusCANCELED
+
+                    "REJECTED" ->
+                        Json.Decode.succeed OrdStatusREJECTED
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+ordTypeDecoder : Json.Decode.Decoder OrdType
+ordTypeDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "LIMIT" ->
+                        Json.Decode.succeed OrdTypeLIMIT
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+orderCancelAllRequestDecoder : Json.Decode.Decoder OrderCancelAllRequest
+orderCancelAllRequestDecoder =
+    Json.Decode.succeed OrderCancelAllRequest
+        |> decode "exchange_id" Json.Decode.string 
+
+
+orderCancelSingleRequestDecoder : Json.Decode.Decoder OrderCancelSingleRequest
+orderCancelSingleRequestDecoder =
+    Json.Decode.succeed OrderCancelSingleRequest
+        |> decode "exchange_id" Json.Decode.string 
+        |> maybeDecode "exchange_order_id" Json.Decode.string Nothing
+        |> maybeDecode "client_order_id" Json.Decode.string Nothing
+
+
+orderExecutionReportDecoder : Json.Decode.Decoder OrderExecutionReport
+orderExecutionReportDecoder =
+    Json.Decode.succeed OrderExecutionReport
+        |> decode "exchange_id" Json.Decode.string 
+        |> decode "client_order_id" Json.Decode.string 
+        |> maybeDecode "symbol_id_exchange" Json.Decode.string Nothing
+        |> maybeDecode "symbol_id_coinapi" Json.Decode.string Nothing
+        |> decode "amount_order" Json.Decode.float 
+        |> decode "price" Json.Decode.float 
+        |> decode "side" ordSideDecoder 
+        |> decode "order_type" ordTypeDecoder 
+        |> decode "time_in_force" timeInForceDecoder 
+        |> maybeDecode "expire_time" posixDecoder Nothing
+        |> maybeDecode "exec_inst" (Json.Decode.list orderExecutionReportExecInstDecoder) Nothing
+        |> decode "client_order_id_format_exchange" Json.Decode.string 
+        |> maybeDecode "exchange_order_id" Json.Decode.string Nothing
+        |> decode "amount_open" Json.Decode.float 
+        |> decode "amount_filled" Json.Decode.float 
+        |> maybeDecode "avg_px" Json.Decode.float Nothing
+        |> decode "status" ordStatusDecoder 
+        |> maybeDecode "status_history" (Json.Decode.list (Json.Decode.list Json.Decode.string)) Nothing
+        |> maybeDecode "error_message" Json.Decode.string Nothing
+        |> maybeDecode "fills" (Json.Decode.list fillsDecoder) Nothing
+
+
+orderExecutionReportExecInstDecoder : Json.Decode.Decoder OrderExecutionReportExecInst
+orderExecutionReportExecInstDecoder =
+    Json.Decode.int
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "MAKER_OR_CANCEL" ->
+                        Json.Decode.succeed OrderExecutionReportExecInstMAKERORCANCEL
+
+                    "AUCTION_ONLY" ->
+                        Json.Decode.succeed OrderExecutionReportExecInstAUCTIONONLY
+
+                    "INDICATION_OF_INTEREST" ->
+                        Json.Decode.succeed OrderExecutionReportExecInstINDICATIONOFINTEREST
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ String.fromInt other
+            )
+
+
+
+orderNewSingleRequestDecoder : Json.Decode.Decoder OrderNewSingleRequest
+orderNewSingleRequestDecoder =
+    Json.Decode.succeed OrderNewSingleRequest
+        |> decode "exchange_id" Json.Decode.string 
+        |> decode "client_order_id" Json.Decode.string 
+        |> maybeDecode "symbol_id_exchange" Json.Decode.string Nothing
+        |> maybeDecode "symbol_id_coinapi" Json.Decode.string Nothing
+        |> decode "amount_order" Json.Decode.float 
+        |> decode "price" Json.Decode.float 
+        |> decode "side" ordSideDecoder 
+        |> decode "order_type" ordTypeDecoder 
+        |> decode "time_in_force" timeInForceDecoder 
+        |> maybeDecode "expire_time" posixDecoder Nothing
+        |> maybeDecode "exec_inst" (Json.Decode.list orderNewSingleRequestExecInstDecoder) Nothing
+
+
+orderNewSingleRequestExecInstDecoder : Json.Decode.Decoder OrderNewSingleRequestExecInst
+orderNewSingleRequestExecInstDecoder =
+    Json.Decode.int
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "MAKER_OR_CANCEL" ->
+                        Json.Decode.succeed OrderNewSingleRequestExecInstMAKERORCANCEL
+
+                    "AUCTION_ONLY" ->
+                        Json.Decode.succeed OrderNewSingleRequestExecInstAUCTIONONLY
+
+                    "INDICATION_OF_INTEREST" ->
+                        Json.Decode.succeed OrderNewSingleRequestExecInstINDICATIONOFINTEREST
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ String.fromInt other
+            )
+
+
+
+positionDecoder : Json.Decode.Decoder Position
+positionDecoder =
+    Json.Decode.succeed Position
         |> maybeDecode "exchange_id" Json.Decode.string Nothing
+        |> maybeDecode "data" (Json.Decode.list positionDataDecoder) Nothing
 
 
-exchangeLoginRequireDecoder : Json.Decode.Decoder ExchangeLoginRequire
-exchangeLoginRequireDecoder =
-    Json.Decode.succeed ExchangeLoginRequire
-        |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "location_id" Json.Decode.string Nothing
-        |> maybeDecode "required_parameters" (Json.Decode.list Json.Decode.string) Nothing
+positionDataDecoder : Json.Decode.Decoder PositionData
+positionDataDecoder =
+    Json.Decode.succeed PositionData
+        |> maybeDecode "symbol_id_exchange" Json.Decode.string Nothing
+        |> maybeDecode "symbol_id_coinapi" Json.Decode.string Nothing
+        |> maybeDecode "avg_entry_price" Json.Decode.float Nothing
+        |> maybeDecode "quantity" Json.Decode.float Nothing
+        |> maybeDecode "side" ordSideDecoder Nothing
+        |> maybeDecode "unrealized_pnl" Json.Decode.float Nothing
+        |> maybeDecode "leverage" Json.Decode.float Nothing
+        |> maybeDecode "cross_margin" Json.Decode.bool Nothing
+        |> maybeDecode "liquidation_price" Json.Decode.float Nothing
+        |> maybeDecode "raw_data" objectDecoder Nothing
 
 
-getAccountDecoder : Json.Decode.Decoder GetAccount
-getAccountDecoder =
-    Json.Decode.succeed GetAccount
-        |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "parameters" (Json.Decode.list keyValueDecoder) Nothing
+rejectReasonDecoder : Json.Decode.Decoder RejectReason
+rejectReasonDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "OTHER" ->
+                        Json.Decode.succeed RejectReasonOTHER
+
+                    "EXCHANGE_UNREACHABLE" ->
+                        Json.Decode.succeed RejectReasonEXCHANGEUNREACHABLE
+
+                    "EXCHANGE_RESPONSE_TIMEOUT" ->
+                        Json.Decode.succeed RejectReasonEXCHANGERESPONSETIMEOUT
+
+                    "ORDER_ID_NOT_FOUND" ->
+                        Json.Decode.succeed RejectReasonORDERIDNOTFOUND
+
+                    "INVALID_TYPE" ->
+                        Json.Decode.succeed RejectReasonINVALIDTYPE
+
+                    "METHOD_NOT_SUPPORTED" ->
+                        Json.Decode.succeed RejectReasonMETHODNOTSUPPORTED
+
+                    "JSON_ERROR" ->
+                        Json.Decode.succeed RejectReasonJSONERROR
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
 
 
-keyValueDecoder : Json.Decode.Decoder KeyValue
-keyValueDecoder =
-    Json.Decode.succeed KeyValue
-        |> maybeDecode "key" Json.Decode.string Nothing
-        |> maybeDecode "value" Json.Decode.string Nothing
+timeInForceDecoder : Json.Decode.Decoder TimeInForce
+timeInForceDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "GOOD_TILL_CANCEL" ->
+                        Json.Decode.succeed TimeInForceGOODTILLCANCEL
+
+                    "GOOD_TILL_TIME_EXCHANGE" ->
+                        Json.Decode.succeed TimeInForceGOODTILLTIMEEXCHANGE
+
+                    "GOOD_TILL_TIME_OMS" ->
+                        Json.Decode.succeed TimeInForceGOODTILLTIMEOMS
+
+                    "FILL_OR_KILL" ->
+                        Json.Decode.succeed TimeInForceFILLORKILL
+
+                    "IMMEDIATE_OR_CANCEL" ->
+                        Json.Decode.succeed TimeInForceIMMEDIATEORCANCEL
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
 
 
-locationsDecoder : Json.Decode.Decoder Locations
-locationsDecoder =
-    Json.Decode.succeed Locations
-        |> maybeDecode "location_id" Json.Decode.string Nothing
-        |> maybeDecode "region_name" Json.Decode.string Nothing
-        |> maybeDecode "provider_name" Json.Decode.string Nothing
-
-
-updateAccountDecoder : Json.Decode.Decoder UpdateAccount
-updateAccountDecoder =
-    Json.Decode.succeed UpdateAccount
-        |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "parameters" (Json.Decode.list keyValueDecoder) Nothing
+validationErrorDecoder : Json.Decode.Decoder ValidationError
+validationErrorDecoder =
+    Json.Decode.succeed ValidationError
+        |> maybeDecode "type" Json.Decode.string Nothing
+        |> maybeDecode "title" Json.Decode.string Nothing
+        |> maybeDecode "status" Json.Decode.float Nothing
+        |> maybeDecode "traceId" Json.Decode.string Nothing
+        |> maybeDecode "errors" Json.Decode.string Nothing
 
 
 

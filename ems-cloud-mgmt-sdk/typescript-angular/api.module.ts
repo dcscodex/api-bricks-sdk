@@ -2,11 +2,9 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
-import { AccountService } from './api/account.service';
-import { CertificateService } from './api/certificate.service';
-import { EndpointsService } from './api/endpoints.service';
-import { ExchangeService } from './api/exchange.service';
-import { LocationService } from './api/location.service';
+import { BalancesService } from './api/balances.service';
+import { OrdersService } from './api/orders.service';
+import { PositionsService } from './api/positions.service';
 
 @NgModule({
   imports:      [],

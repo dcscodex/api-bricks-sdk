@@ -1,13 +1,9 @@
-export * from './accountApi';
-import { AccountApi } from './accountApi';
-export * from './certificateApi';
-import { CertificateApi } from './certificateApi';
-export * from './endpointsApi';
-import { EndpointsApi } from './endpointsApi';
-export * from './exchangeApi';
-import { ExchangeApi } from './exchangeApi';
-export * from './locationApi';
-import { LocationApi } from './locationApi';
+export * from './balancesApi';
+import { BalancesApi } from './balancesApi';
+export * from './ordersApi';
+import { OrdersApi } from './ordersApi';
+export * from './positionsApi';
+import { PositionsApi } from './positionsApi';
 import * as http from 'http';
 
 export class HttpError extends Error {
@@ -19,4 +15,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountApi, CertificateApi, EndpointsApi, ExchangeApi, LocationApi];
+export const APIS = [BalancesApi, OrdersApi, PositionsApi];

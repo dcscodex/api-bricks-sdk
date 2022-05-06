@@ -4,9 +4,7 @@ README.md
 elm.json
 src/Api.elm
 src/Api/Data.elm
-src/Api/Request/Account.elm
-src/Api/Request/Certificate.elm
-src/Api/Request/Endpoints.elm
-src/Api/Request/Exchange.elm
-src/Api/Request/Location.elm
+src/Api/Request/Balances.elm
+src/Api/Request/Orders.elm
+src/Api/Request/Positions.elm
 src/Api/Time.elm

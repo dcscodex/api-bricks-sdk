@@ -11,10 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://ems-mgmt-sandbox.coinapi.io'}) {
-    // Setup authentications (key: authentication name, value: authentication).
-    _authentications[r'APIKeyHeader'] = ApiKeyAuth('header', 'X-CoinAPI-Key');
-    _authentications[r'APIKeyQueryParam'] = ApiKeyAuth('query', 'apikey');
+  ApiClient({this.basePath = 'https://ems-gateway-aws-eu-central-1-dev.coinapi.io'}) {
   }
 
   final String basePath;
@@ -194,22 +191,40 @@ class ApiClient {
           }
           final valueString = '$value'.toLowerCase();
           return valueString == 'true' || valueString == '1';
-        case 'AccountData':
-          return AccountData.fromJson(value);
-        case 'AccountEndpoint':
-          return AccountEndpoint.fromJson(value);
-        case 'AccountInfo':
-          return AccountInfo.fromJson(value);
-        case 'ExchangeLoginRequire':
-          return ExchangeLoginRequire.fromJson(value);
-        case 'GetAccount':
-          return GetAccount.fromJson(value);
-        case 'KeyValue':
-          return KeyValue.fromJson(value);
-        case 'Locations':
-          return Locations.fromJson(value);
-        case 'UpdateAccount':
-          return UpdateAccount.fromJson(value);
+        case 'Balance':
+          return Balance.fromJson(value);
+        case 'BalanceData':
+          return BalanceData.fromJson(value);
+        case 'Fills':
+          return Fills.fromJson(value);
+        case 'MessageReject':
+          return MessageReject.fromJson(value);
+        case 'OrdSide':
+          return OrdSideTypeTransformer().decode(value);
+        case 'OrdStatus':
+          return OrdStatusTypeTransformer().decode(value);
+        case 'OrdType':
+          return OrdTypeTypeTransformer().decode(value);
+        case 'OrderCancelAllRequest':
+          return OrderCancelAllRequest.fromJson(value);
+        case 'OrderCancelSingleRequest':
+          return OrderCancelSingleRequest.fromJson(value);
+        case 'OrderExecutionReport':
+          return OrderExecutionReport.fromJson(value);
+        case 'OrderExecutionReportAllOf':
+          return OrderExecutionReportAllOf.fromJson(value);
+        case 'OrderNewSingleRequest':
+          return OrderNewSingleRequest.fromJson(value);
+        case 'Position':
+          return Position.fromJson(value);
+        case 'PositionData':
+          return PositionData.fromJson(value);
+        case 'RejectReason':
+          return RejectReasonTypeTransformer().decode(value);
+        case 'TimeInForce':
+          return TimeInForceTypeTransformer().decode(value);
+        case 'ValidationError':
+          return ValidationError.fromJson(value);
         default:
           Match match;
           if (value is List && (match = _regList.firstMatch(targetType)) != null) {

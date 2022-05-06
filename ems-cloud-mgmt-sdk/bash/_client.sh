@@ -296,10 +296,11 @@ case $state in
   ops)
     # Operations
     _values "Operations" \
-            "deleteAccount[Delete account]" \
-            "deleteAccountAll[Delete all accounts]" \
-            "getAccount[Get accounts]" \
-            "persistAccount[Add or update account]"             "certificate[Get authentication certificate]"             "endpoints[Get API endpoints]"             "exchangeLoginRequire[Get exchange configuration]"             "locations[Get site locations]" \
+            "v1BalancesGet[Get balances]"             "v1OrdersCancelAllPost[Cancel all orders request]" \
+            "v1OrdersCancelPost[Cancel order request]" \
+            "v1OrdersGet[Get open orders]" \
+            "v1OrdersPost[Send new order]" \
+            "v1OrdersStatusClientOrderIdGet[Get order execution report]"             "v1PositionsGet[Get open positions]" \
 
     _arguments "(--help)--help[Print information about operation]"
 
@@ -307,55 +308,50 @@ case $state in
     ;;
   args)
     case $line[1] in
-      deleteAccount)
+      v1BalancesGet)
         local -a _op_arguments
         _op_arguments=(
-                    "exchange_id=:[QUERY] Exchange identifier of the account to delete"
+                    "exchange_id=:[QUERY] Filter the balances to the specific exchange."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      deleteAccountAll)
+      v1OrdersCancelAllPost)
         local -a _op_arguments
         _op_arguments=(
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      getAccount)
+      v1OrdersCancelPost)
         local -a _op_arguments
         _op_arguments=(
-                    "filter_exchange_id=:[QUERY] Exchange id of the specific account to provide single account instead of the list of all accounts"
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1OrdersGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "exchange_id=:[QUERY] Filter the open orders to the specific exchange."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      persistAccount)
+      v1OrdersPost)
         local -a _op_arguments
         _op_arguments=(
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      certificate)
+      v1OrdersStatusClientOrderIdGet)
         local -a _op_arguments
         _op_arguments=(
-                              )
+          "client_order_id=:[PATH] The unique identifier of the order assigned by the client."
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      endpoints)
+      v1PositionsGet)
         local -a _op_arguments
         _op_arguments=(
-                    "filter_exchange_id=:[QUERY] Exchange id"
+                    "exchange_id=:[QUERY] Filter the balances to the specific exchange."
           )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      exchangeLoginRequire)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      locations)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
     esac

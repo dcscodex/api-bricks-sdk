@@ -8,7 +8,7 @@ size_t writeDataCallback(void *buffer, size_t size, size_t nmemb, void *userp);
 
 apiClient_t *apiClient_create() {
     apiClient_t *apiClient = malloc(sizeof(apiClient_t));
-    apiClient->basePath = strdup("https://ems-mgmt-sandbox.coinapi.io");
+    apiClient->basePath = strdup("https://ems-gateway-aws-eu-central-1-dev.coinapi.io");
     apiClient->sslConfig = NULL;
     apiClient->dataReceived = NULL;
     apiClient->dataReceivedLen = 0;
@@ -16,22 +16,18 @@ apiClient_t *apiClient_create() {
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
     apiClient->response_code = 0;
-    apiClient->apiKeys_APIKeyHeader = NULL;
-    apiClient->apiKeys_APIKeyQueryParam = NULL;
 
     return apiClient;
 }
 
 apiClient_t *apiClient_create_with_base_path(const char *basePath
 , sslConfig_t *sslConfig
-, list_t *apiKeys_APIKeyHeader
-, list_t *apiKeys_APIKeyQueryParam
 ) {
     apiClient_t *apiClient = malloc(sizeof(apiClient_t));
     if(basePath){
         apiClient->basePath = strdup(basePath);
     }else{
-        apiClient->basePath = strdup("https://ems-mgmt-sandbox.coinapi.io");
+        apiClient->basePath = strdup("https://ems-gateway-aws-eu-central-1-dev.coinapi.io");
     }
 
     if(sslConfig){
@@ -46,28 +42,6 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
     apiClient->response_code = 0;
-    if(apiKeys_APIKeyHeader!= NULL) {
-        apiClient->apiKeys_APIKeyHeader = list_createList();
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiKeys_APIKeyHeader) {
-            keyValuePair_t *pair = listEntry->data;
-            keyValuePair_t *pairDup = keyValuePair_create(strdup(pair->key), strdup(pair->value));
-            list_addElement(apiClient->apiKeys_APIKeyHeader, pairDup);
-        }
-    }else{
-        apiClient->apiKeys_APIKeyHeader = NULL;
-    }
-    if(apiKeys_APIKeyQueryParam!= NULL) {
-        apiClient->apiKeys_APIKeyQueryParam = list_createList();
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiKeys_APIKeyQueryParam) {
-            keyValuePair_t *pair = listEntry->data;
-            keyValuePair_t *pairDup = keyValuePair_create(strdup(pair->key), strdup(pair->value));
-            list_addElement(apiClient->apiKeys_APIKeyQueryParam, pairDup);
-        }
-    }else{
-        apiClient->apiKeys_APIKeyQueryParam = NULL;
-    }
 
     return apiClient;
 }
@@ -79,34 +53,6 @@ void apiClient_free(apiClient_t *apiClient) {
     apiClient->data_callback_func = NULL;
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
-    if(apiClient->apiKeys_APIKeyHeader) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiClient->apiKeys_APIKeyHeader) {
-            keyValuePair_t *pair = listEntry->data;
-            if(pair->key){
-                free(pair->key);
-            }
-            if(pair->value){
-                free(pair->value);
-            }
-            keyValuePair_free(pair);
-        }
-        list_freeList(apiClient->apiKeys_APIKeyHeader);
-    }
-    if(apiClient->apiKeys_APIKeyQueryParam) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiClient->apiKeys_APIKeyQueryParam) {
-            keyValuePair_t *pair = listEntry->data;
-            if(pair->key){
-                free(pair->key);
-            }
-            if(pair->value){
-                free(pair->value);
-            }
-            keyValuePair_free(pair);
-        }
-        list_freeList(apiClient->apiKeys_APIKeyQueryParam);
-    }
     free(apiClient);
 }
 
@@ -424,36 +370,6 @@ void apiClient_invoke(apiClient_t    *apiClient,
             curl_easy_setopt(handle, CURLOPT_NOPROGRESS, 0L);
         }
 
-        // this would only be generated for apiKey authentication
-        if (apiClient->apiKeys_APIKeyHeader != NULL)
-        {
-        list_ForEach(listEntry, apiClient->apiKeys_APIKeyHeader) {
-        keyValuePair_t *apiKey = listEntry->data;
-        if((apiKey->key != NULL) &&
-           (apiKey->value != NULL) )
-        {
-            char *headerValueToWrite = assembleHeaderField(
-                apiKey->key, apiKey->value);
-            curl_slist_append(headers, headerValueToWrite);
-            free(headerValueToWrite);
-        }
-        }
-        }
-        // this would only be generated for apiKey authentication
-        if (apiClient->apiKeys_APIKeyQueryParam != NULL)
-        {
-        list_ForEach(listEntry, apiClient->apiKeys_APIKeyQueryParam) {
-        keyValuePair_t *apiKey = listEntry->data;
-        if((apiKey->key != NULL) &&
-           (apiKey->value != NULL) )
-        {
-            char *headerValueToWrite = assembleHeaderField(
-                apiKey->key, apiKey->value);
-            curl_slist_append(headers, headerValueToWrite);
-            free(headerValueToWrite);
-        }
-        }
-        }
 
         char *targetUrl =
             assembleTargetUrl(apiClient->basePath,

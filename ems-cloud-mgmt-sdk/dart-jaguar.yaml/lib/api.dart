@@ -8,32 +8,48 @@ import 'package:openapi/auth/basic_auth.dart';
 import 'package:openapi/auth/oauth.dart';
 import 'package:jaguar_mimetype/jaguar_mimetype.dart';
 
-import 'package:openapi/api/account_api.dart';
-import 'package:openapi/api/certificate_api.dart';
-import 'package:openapi/api/endpoints_api.dart';
-import 'package:openapi/api/exchange_api.dart';
-import 'package:openapi/api/location_api.dart';
+import 'package:openapi/api/balances_api.dart';
+import 'package:openapi/api/orders_api.dart';
+import 'package:openapi/api/positions_api.dart';
 
-import 'package:openapi/model/account_data.dart';
-import 'package:openapi/model/account_endpoint.dart';
-import 'package:openapi/model/account_info.dart';
-import 'package:openapi/model/exchange_login_require.dart';
-import 'package:openapi/model/get_account.dart';
-import 'package:openapi/model/key_value.dart';
-import 'package:openapi/model/locations.dart';
-import 'package:openapi/model/update_account.dart';
+import 'package:openapi/model/balance.dart';
+import 'package:openapi/model/balance_data.dart';
+import 'package:openapi/model/fills.dart';
+import 'package:openapi/model/message_reject.dart';
+import 'package:openapi/model/ord_side.dart';
+import 'package:openapi/model/ord_status.dart';
+import 'package:openapi/model/ord_type.dart';
+import 'package:openapi/model/order_cancel_all_request.dart';
+import 'package:openapi/model/order_cancel_single_request.dart';
+import 'package:openapi/model/order_execution_report.dart';
+import 'package:openapi/model/order_execution_report_all_of.dart';
+import 'package:openapi/model/order_new_single_request.dart';
+import 'package:openapi/model/position.dart';
+import 'package:openapi/model/position_data.dart';
+import 'package:openapi/model/reject_reason.dart';
+import 'package:openapi/model/time_in_force.dart';
+import 'package:openapi/model/validation_error.dart';
 
 
 
 final _jsonJaguarRepo = JsonRepo()
-..add(AccountDataSerializer())
-..add(AccountEndpointSerializer())
-..add(AccountInfoSerializer())
-..add(ExchangeLoginRequireSerializer())
-..add(GetAccountSerializer())
-..add(KeyValueSerializer())
-..add(LocationsSerializer())
-..add(UpdateAccountSerializer())
+..add(BalanceSerializer())
+..add(BalanceDataSerializer())
+..add(FillsSerializer())
+..add(MessageRejectSerializer())
+
+
+
+..add(OrderCancelAllRequestSerializer())
+..add(OrderCancelSingleRequestSerializer())
+..add(OrderExecutionReportSerializer())
+..add(OrderExecutionReportAllOfSerializer())
+..add(OrderNewSingleRequestSerializer())
+..add(PositionSerializer())
+..add(PositionDataSerializer())
+
+
+..add(ValidationErrorSerializer())
 ;
 final Map<String, CodecRepo> defaultConverters = {
     MimeTypes.json: _jsonJaguarRepo,
@@ -45,7 +61,7 @@ final _defaultInterceptors = [OAuthInterceptor(), BasicAuthInterceptor(), ApiKey
 
 class Openapi {
     List<Interceptor> interceptors;
-    String basePath = "https://ems-mgmt-sandbox.coinapi.io";
+    String basePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
     Route _baseRoute;
     final Duration timeout;
 
@@ -84,77 +100,47 @@ class Openapi {
 
     
     /**
-    * Get AccountApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get BalancesApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    AccountApi getAccountApi({Route base, Map<String, CodecRepo> converters}) {
+    BalancesApi getBalancesApi({Route base, Map<String, CodecRepo> converters}) {
         if(base == null) {
             base = _baseRoute;
         }
         if(converters == null) {
             converters = defaultConverters;
         }
-        return AccountApi(base: base, converters: converters, timeout: timeout);
+        return BalancesApi(base: base, converters: converters, timeout: timeout);
     }
 
     
     /**
-    * Get CertificateApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get OrdersApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    CertificateApi getCertificateApi({Route base, Map<String, CodecRepo> converters}) {
+    OrdersApi getOrdersApi({Route base, Map<String, CodecRepo> converters}) {
         if(base == null) {
             base = _baseRoute;
         }
         if(converters == null) {
             converters = defaultConverters;
         }
-        return CertificateApi(base: base, converters: converters, timeout: timeout);
+        return OrdersApi(base: base, converters: converters, timeout: timeout);
     }
 
     
     /**
-    * Get EndpointsApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get PositionsApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    EndpointsApi getEndpointsApi({Route base, Map<String, CodecRepo> converters}) {
+    PositionsApi getPositionsApi({Route base, Map<String, CodecRepo> converters}) {
         if(base == null) {
             base = _baseRoute;
         }
         if(converters == null) {
             converters = defaultConverters;
         }
-        return EndpointsApi(base: base, converters: converters, timeout: timeout);
-    }
-
-    
-    /**
-    * Get ExchangeApi instance, base route and serializer can be overridden by a given but be careful,
-    * by doing that all interceptors will not be executed
-    */
-    ExchangeApi getExchangeApi({Route base, Map<String, CodecRepo> converters}) {
-        if(base == null) {
-            base = _baseRoute;
-        }
-        if(converters == null) {
-            converters = defaultConverters;
-        }
-        return ExchangeApi(base: base, converters: converters, timeout: timeout);
-    }
-
-    
-    /**
-    * Get LocationApi instance, base route and serializer can be overridden by a given but be careful,
-    * by doing that all interceptors will not be executed
-    */
-    LocationApi getLocationApi({Route base, Map<String, CodecRepo> converters}) {
-        if(base == null) {
-            base = _baseRoute;
-        }
-        if(converters == null) {
-            converters = defaultConverters;
-        }
-        return LocationApi(base: base, converters: converters, timeout: timeout);
+        return PositionsApi(base: base, converters: converters, timeout: timeout);
     }
 
     

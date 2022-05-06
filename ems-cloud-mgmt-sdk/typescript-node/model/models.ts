@@ -1,13 +1,22 @@
 import localVarRequest from 'request';
 
-export * from './accountData';
-export * from './accountEndpoint';
-export * from './accountInfo';
-export * from './exchangeLoginRequire';
-export * from './getAccount';
-export * from './keyValue';
-export * from './locations';
-export * from './updateAccount';
+export * from './balance';
+export * from './balanceData';
+export * from './fills';
+export * from './messageReject';
+export * from './ordSide';
+export * from './ordStatus';
+export * from './ordType';
+export * from './orderCancelAllRequest';
+export * from './orderCancelSingleRequest';
+export * from './orderExecutionReport';
+export * from './orderExecutionReportAllOf';
+export * from './orderNewSingleRequest';
+export * from './position';
+export * from './positionData';
+export * from './rejectReason';
+export * from './timeInForce';
+export * from './validationError';
 
 import * as fs from 'fs';
 
@@ -22,14 +31,23 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
-import { AccountData } from './accountData';
-import { AccountEndpoint } from './accountEndpoint';
-import { AccountInfo } from './accountInfo';
-import { ExchangeLoginRequire } from './exchangeLoginRequire';
-import { GetAccount } from './getAccount';
-import { KeyValue } from './keyValue';
-import { Locations } from './locations';
-import { UpdateAccount } from './updateAccount';
+import { Balance } from './balance';
+import { BalanceData } from './balanceData';
+import { Fills } from './fills';
+import { MessageReject } from './messageReject';
+import { OrdSide } from './ordSide';
+import { OrdStatus } from './ordStatus';
+import { OrdType } from './ordType';
+import { OrderCancelAllRequest } from './orderCancelAllRequest';
+import { OrderCancelSingleRequest } from './orderCancelSingleRequest';
+import { OrderExecutionReport } from './orderExecutionReport';
+import { OrderExecutionReportAllOf } from './orderExecutionReportAllOf';
+import { OrderNewSingleRequest } from './orderNewSingleRequest';
+import { Position } from './position';
+import { PositionData } from './positionData';
+import { RejectReason } from './rejectReason';
+import { TimeInForce } from './timeInForce';
+import { ValidationError } from './validationError';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -44,17 +62,29 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
+        "BalanceData.LastUpdatedByEnum": BalanceData.LastUpdatedByEnum,
+        "OrdSide": OrdSide,
+        "OrdStatus": OrdStatus,
+        "OrdType": OrdType,
+        "OrderExecutionReport.ExecInstEnum": OrderExecutionReport.ExecInstEnum,
+        "OrderNewSingleRequest.ExecInstEnum": OrderNewSingleRequest.ExecInstEnum,
+        "RejectReason": RejectReason,
+        "TimeInForce": TimeInForce,
 }
 
 let typeMap: {[index: string]: any} = {
-    "AccountData": AccountData,
-    "AccountEndpoint": AccountEndpoint,
-    "AccountInfo": AccountInfo,
-    "ExchangeLoginRequire": ExchangeLoginRequire,
-    "GetAccount": GetAccount,
-    "KeyValue": KeyValue,
-    "Locations": Locations,
-    "UpdateAccount": UpdateAccount,
+    "Balance": Balance,
+    "BalanceData": BalanceData,
+    "Fills": Fills,
+    "MessageReject": MessageReject,
+    "OrderCancelAllRequest": OrderCancelAllRequest,
+    "OrderCancelSingleRequest": OrderCancelSingleRequest,
+    "OrderExecutionReport": OrderExecutionReport,
+    "OrderExecutionReportAllOf": OrderExecutionReportAllOf,
+    "OrderNewSingleRequest": OrderNewSingleRequest,
+    "Position": Position,
+    "PositionData": PositionData,
+    "ValidationError": ValidationError,
 }
 
 export class ObjectSerializer {

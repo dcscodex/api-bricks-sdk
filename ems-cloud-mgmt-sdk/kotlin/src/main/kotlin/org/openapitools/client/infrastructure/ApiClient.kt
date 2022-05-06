@@ -143,32 +143,9 @@ open class ApiClient(val baseUrl: String) {
         }
     }
 
-    protected fun <T> updateAuthParams(requestConfig: RequestConfig<T>) {
-        if (requestConfig.headers["X-CoinAPI-Key"].isNullOrEmpty()) {
-            if (apiKey["X-CoinAPI-Key"] != null) {
-                if (apiKeyPrefix["X-CoinAPI-Key"] != null) {
-                    requestConfig.headers["X-CoinAPI-Key"] = apiKeyPrefix["X-CoinAPI-Key"]!! + " " + apiKey["X-CoinAPI-Key"]!!
-                } else {
-                    requestConfig.headers["X-CoinAPI-Key"] = apiKey["X-CoinAPI-Key"]!!
-                }
-            }
-        }
-        if (requestConfig.query["apikey"].isNullOrEmpty()) {
-            if (apiKey["apikey"] != null) {
-                if (apiKeyPrefix["apikey"] != null) {
-                    requestConfig.query["apikey"] = apiKeyPrefix["apikey"]!! + " " + apiKey["apikey"]!!
-                } else {
-                    requestConfig.query["apikey"] = apiKey["apikey"]!!
-                }
-            }
-        }
-    }
 
     protected inline fun <reified I, reified T: Any?> request(requestConfig: RequestConfig<I>): ApiResponse<T?> {
         val httpUrl = baseUrl.toHttpUrlOrNull() ?: throw IllegalStateException("baseUrl is invalid.")
-
-        // take authMethod from operation
-        updateAuthParams(requestConfig)
 
         val url = httpUrl.newBuilder()
             .addPathSegments(requestConfig.path.trimStart('/'))

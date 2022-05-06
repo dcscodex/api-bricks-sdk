@@ -1,14 +1,14 @@
 {
-  "name": "ems_managed_cloud_rest_api",
+  "name": "ems_rest_api",
   "version": "1.0.0",
-  "description": "OpenAPI Client for ems_managed_cloud_rest_api",
+  "description": "OpenAPI Client for ems_rest_api",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "fetch",
     "flow",
     "openapi",
     "openapi-generator",
-    "ems_managed_cloud_rest_api"
+    "ems_rest_api"
   ],
   "license": "Unlicense",
   "main": "./lib/index.js",

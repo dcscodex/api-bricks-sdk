@@ -13,11 +13,9 @@ import 'package:openapi/serializers.dart';
 import 'package:openapi/auth/api_key_auth.dart';
 import 'package:openapi/auth/basic_auth.dart';
 import 'package:openapi/auth/oauth.dart';
-import 'package:openapi/api/account_api.dart';
-import 'package:openapi/api/certificate_api.dart';
-import 'package:openapi/api/endpoints_api.dart';
-import 'package:openapi/api/exchange_api.dart';
-import 'package:openapi/api/location_api.dart';
+import 'package:openapi/api/balances_api.dart';
+import 'package:openapi/api/orders_api.dart';
+import 'package:openapi/api/positions_api.dart';
 
 
 final _defaultInterceptors = [
@@ -28,7 +26,7 @@ final _defaultInterceptors = [
 
 class Openapi {
 
-    static const String basePath = r'https://ems-mgmt-sandbox.coinapi.io';
+    static const String basePath = r'https://ems-gateway-aws-eu-central-1-dev.coinapi.io';
 
     final Dio dio;
 
@@ -67,47 +65,29 @@ class Openapi {
 
 
     /**
-    * Get AccountApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get BalancesApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    AccountApi getAccountApi() {
-    return AccountApi(dio, serializers);
+    BalancesApi getBalancesApi() {
+    return BalancesApi(dio, serializers);
     }
 
 
     /**
-    * Get CertificateApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get OrdersApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    CertificateApi getCertificateApi() {
-    return CertificateApi(dio, serializers);
+    OrdersApi getOrdersApi() {
+    return OrdersApi(dio, serializers);
     }
 
 
     /**
-    * Get EndpointsApi instance, base route and serializer can be overridden by a given but be careful,
+    * Get PositionsApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
-    EndpointsApi getEndpointsApi() {
-    return EndpointsApi(dio, serializers);
-    }
-
-
-    /**
-    * Get ExchangeApi instance, base route and serializer can be overridden by a given but be careful,
-    * by doing that all interceptors will not be executed
-    */
-    ExchangeApi getExchangeApi() {
-    return ExchangeApi(dio, serializers);
-    }
-
-
-    /**
-    * Get LocationApi instance, base route and serializer can be overridden by a given but be careful,
-    * by doing that all interceptors will not be executed
-    */
-    LocationApi getLocationApi() {
-    return LocationApi(dio, serializers);
+    PositionsApi getPositionsApi() {
+    return PositionsApi(dio, serializers);
     }
 
 

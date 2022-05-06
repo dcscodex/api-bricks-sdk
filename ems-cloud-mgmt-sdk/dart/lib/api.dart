@@ -27,20 +27,27 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
-part 'api/account_api.dart';
-part 'api/certificate_api.dart';
-part 'api/endpoints_api.dart';
-part 'api/exchange_api.dart';
-part 'api/location_api.dart';
+part 'api/balances_api.dart';
+part 'api/orders_api.dart';
+part 'api/positions_api.dart';
 
-part 'model/account_data.dart';
-part 'model/account_endpoint.dart';
-part 'model/account_info.dart';
-part 'model/exchange_login_require.dart';
-part 'model/get_account.dart';
-part 'model/key_value.dart';
-part 'model/locations.dart';
-part 'model/update_account.dart';
+part 'model/balance.dart';
+part 'model/balance_data.dart';
+part 'model/fills.dart';
+part 'model/message_reject.dart';
+part 'model/ord_side.dart';
+part 'model/ord_status.dart';
+part 'model/ord_type.dart';
+part 'model/order_cancel_all_request.dart';
+part 'model/order_cancel_single_request.dart';
+part 'model/order_execution_report.dart';
+part 'model/order_execution_report_all_of.dart';
+part 'model/order_new_single_request.dart';
+part 'model/position.dart';
+part 'model/position_data.dart';
+part 'model/reject_reason.dart';
+part 'model/time_in_force.dart';
+part 'model/validation_error.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};

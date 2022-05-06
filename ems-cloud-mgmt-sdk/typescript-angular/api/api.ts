@@ -1,11 +1,7 @@
-export * from './account.service';
-import { AccountService } from './account.service';
-export * from './certificate.service';
-import { CertificateService } from './certificate.service';
-export * from './endpoints.service';
-import { EndpointsService } from './endpoints.service';
-export * from './exchange.service';
-import { ExchangeService } from './exchange.service';
-export * from './location.service';
-import { LocationService } from './location.service';
-export const APIS = [AccountService, CertificateService, EndpointsService, ExchangeService, LocationService];
+export * from './balances.service';
+import { BalancesService } from './balances.service';
+export * from './orders.service';
+import { OrdersService } from './orders.service';
+export * from './positions.service';
+import { PositionsService } from './positions.service';
+export const APIS = [BalancesService, OrdersService, PositionsService];

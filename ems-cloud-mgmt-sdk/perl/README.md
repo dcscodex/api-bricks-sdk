@@ -1,68 +1,71 @@
 # NAME
 
-WWW::OpenAPIClient::Role - a Moose role for the EMS - Managed Cloud REST API
+WWW::OpenAPIClient::Role - a Moose role for the EMS - REST API
 
-This section will provide necessary information about the `CoinAPI EMS Managed Cloud REST API` protocol. 
-<br/><br/>
-This API is used to manage the overall deployment of **Execution Management System API** (`EMS API`) software, 
-which means that in this API, you define the accounts, credentials, and configurations for the order destinations or identify the CoinAPI endpoints where you need to connect to access the `EMS API`. 
+This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
+<br/>
+This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
 <br/><br/>
 Implemented Standards:
 
- * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
- * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
- * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
- 
+  * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)
+  * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)
+  * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)
+   
 ### Endpoints
 <table>
   <thead>
     <tr>
+      <th>Deployment method</th>
       <th>Environment</th>
       <th>Url</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>Managed Cloud</td>
       <td>Production</td>
-      <td><code>https://ems-mgmt.coinapi.io/</code></td>
+      <td>Use <a href=\"#ems-docs-sh\">Managed Cloud REST API /v1/locations</a> to get specific endpoints to each server site where your deployments span</td>
     </tr>
     <tr>
+      <td>Managed Cloud</td>
       <td>Sandbox</td>
-      <td><code>https://ems-mgmt-sandbox.coinapi.io/</code></td>
+      <td><code>https://ems-gateway-aws-eu-central-1-dev.coinapi.io/</code></td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Production</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
+    </tr>
+    <tr>
+      <td>Self Hosted</td>
+      <td>Sandbox</td>
+      <td>IP Address of the <code>ems-gateway</code> container/excecutable in the closest server site to the caller location</td>
     </tr>
   </tbody>
 </table>
 
 ### Authentication
+If the software is deployed as `Self-Hosted` then API do not require authentication as inside your infrastructure, your company is responsible for the security and access controls. 
+<br/><br/>
+If the software is deployed in our `Managed Cloud`, there are 2 methods for authenticating with us, you only need to use one:
 
-To use resources that require authorized access, you will need to provide an API key to us when making HTTP requests.
-
-There are 2 methods for passing the API key to us, you only need to use one:
-
- 1. Custom authorization header named `X-CoinAPI-Key`
- 2. Query string parameter named `apikey`
+ 1. Custom authorization header named `X-CoinAPI-Key` with the API Key
+ 2. Query string parameter named `apikey` with the API Key
+ 3. <a href=\"#certificate\">TLS Client Certificate</a> from the `Managed Cloud REST API` (/v1/certificate/pem endpoint) while establishing a TLS session with us.
 
 #### Custom authorization header
-
 You can authorize by providing additional custom header named `X-CoinAPI-Key` and API key as its value.
-
 Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`, then the authorization header you should send to us will look like:
 <br/><br/>
 `X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY`
-
 <aside class=\"success\">This method is recommended by us and you should use it in production environments.</aside>
-
 #### Query string authorization parameter
-
 You can authorize by providing an additional parameter named `apikey` with a value equal to your API key in the query string of your HTTP request.
-
-Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all accounts, then your query string should look like this: 
+Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to request all balances, then your query string should look like this: 
 <br/><br/>
-`GET /v1/accounts?apikey=73034021-THIS-IS-SAMPLE-KEY`
-
-<aside class=\"notice\">
-Query string method may be more practical for development activities.
-</aside>
+`GET /v1/balances?apikey=73034021-THIS-IS-SAMPLE-KEY`
+<aside class=\"notice\">Query string method may be more practical for development activities.</aside>
 
 
 # VERSION
@@ -292,24 +295,31 @@ cpanm --quiet --no-interactive Class::Accessor Test::Exception Test::More Log::A
 
 To load the API packages:
 ```perl
-use WWW::OpenAPIClient::AccountApi;
-use WWW::OpenAPIClient::CertificateApi;
-use WWW::OpenAPIClient::EndpointsApi;
-use WWW::OpenAPIClient::ExchangeApi;
-use WWW::OpenAPIClient::LocationApi;
+use WWW::OpenAPIClient::BalancesApi;
+use WWW::OpenAPIClient::OrdersApi;
+use WWW::OpenAPIClient::PositionsApi;
 
 ```
 
 To load the models:
 ```perl
-use WWW::OpenAPIClient::Object::AccountData;
-use WWW::OpenAPIClient::Object::AccountEndpoint;
-use WWW::OpenAPIClient::Object::AccountInfo;
-use WWW::OpenAPIClient::Object::ExchangeLoginRequire;
-use WWW::OpenAPIClient::Object::GetAccount;
-use WWW::OpenAPIClient::Object::KeyValue;
-use WWW::OpenAPIClient::Object::Locations;
-use WWW::OpenAPIClient::Object::UpdateAccount;
+use WWW::OpenAPIClient::Object::Balance;
+use WWW::OpenAPIClient::Object::BalanceData;
+use WWW::OpenAPIClient::Object::Fills;
+use WWW::OpenAPIClient::Object::MessageReject;
+use WWW::OpenAPIClient::Object::OrdSide;
+use WWW::OpenAPIClient::Object::OrdStatus;
+use WWW::OpenAPIClient::Object::OrdType;
+use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
+use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
+use WWW::OpenAPIClient::Object::OrderExecutionReport;
+use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
+use WWW::OpenAPIClient::Object::Position;
+use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::RejectReason;
+use WWW::OpenAPIClient::Object::TimeInForce;
+use WWW::OpenAPIClient::Object::ValidationError;
 
 ````
 
@@ -321,86 +331,83 @@ use lib 'lib';
 use strict;
 use warnings;
 # load the API package
-use WWW::OpenAPIClient::AccountApi;
-use WWW::OpenAPIClient::CertificateApi;
-use WWW::OpenAPIClient::EndpointsApi;
-use WWW::OpenAPIClient::ExchangeApi;
-use WWW::OpenAPIClient::LocationApi;
+use WWW::OpenAPIClient::BalancesApi;
+use WWW::OpenAPIClient::OrdersApi;
+use WWW::OpenAPIClient::PositionsApi;
 
 # load the models
-use WWW::OpenAPIClient::Object::AccountData;
-use WWW::OpenAPIClient::Object::AccountEndpoint;
-use WWW::OpenAPIClient::Object::AccountInfo;
-use WWW::OpenAPIClient::Object::ExchangeLoginRequire;
-use WWW::OpenAPIClient::Object::GetAccount;
-use WWW::OpenAPIClient::Object::KeyValue;
-use WWW::OpenAPIClient::Object::Locations;
-use WWW::OpenAPIClient::Object::UpdateAccount;
+use WWW::OpenAPIClient::Object::Balance;
+use WWW::OpenAPIClient::Object::BalanceData;
+use WWW::OpenAPIClient::Object::Fills;
+use WWW::OpenAPIClient::Object::MessageReject;
+use WWW::OpenAPIClient::Object::OrdSide;
+use WWW::OpenAPIClient::Object::OrdStatus;
+use WWW::OpenAPIClient::Object::OrdType;
+use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
+use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
+use WWW::OpenAPIClient::Object::OrderExecutionReport;
+use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
+use WWW::OpenAPIClient::Object::Position;
+use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::RejectReason;
+use WWW::OpenAPIClient::Object::TimeInForce;
+use WWW::OpenAPIClient::Object::ValidationError;
 
 # for displaying the API response data
 use Data::Dumper;
 
 
-my $api_instance = WWW::OpenAPIClient::AccountApi->new(
-    # Configure API key authorization: APIKeyHeader
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
-    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
-    # Configure API key authorization: APIKeyQueryParam
-    api_key => {'apikey' => 'YOUR_API_KEY'},
-    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'apikey' => 'Bearer'},
+my $api_instance = WWW::OpenAPIClient::BalancesApi->new(
 );
 
-my $exchange_id = [("null")]; # ARRAY[string] | Exchange identifier of the account to delete
+my $exchange_id = KRAKEN; # string | Filter the balances to the specific exchange.
 
 eval {
-    $api_instance->delete_account(exchange_id => $exchange_id);
+    my $result = $api_instance->v1_balances_get(exchange_id => $exchange_id);
+    print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling AccountApi->delete_account: $@\n";
+    warn "Exception when calling BalancesApi->v1_balances_get: $@\n";
 }
 
 ```
 
 # DOCUMENTATION FOR API ENDPOINTS
 
-All URIs are relative to *https://ems-mgmt-sandbox.coinapi.io*
+All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**delete_account**](docs/AccountApi.md#delete_account) | **DELETE** /v1/accounts | Delete account
-*AccountApi* | [**delete_account_all**](docs/AccountApi.md#delete_account_all) | **DELETE** /v1/accounts/all | Delete all accounts
-*AccountApi* | [**get_account**](docs/AccountApi.md#get_account) | **GET** /v1/accounts | Get accounts
-*AccountApi* | [**persist_account**](docs/AccountApi.md#persist_account) | **POST** /v1/accounts | Add or update account
-*CertificateApi* | [**certificate**](docs/CertificateApi.md#certificate) | **GET** /v1/certificate/pem | Get authentication certificate
-*EndpointsApi* | [**endpoints**](docs/EndpointsApi.md#endpoints) | **GET** /v1/endpoints | Get API endpoints
-*ExchangeApi* | [**exchange_login_require**](docs/ExchangeApi.md#exchange_login_require) | **GET** /v1/exchanges | Get exchange configuration
-*LocationApi* | [**locations**](docs/LocationApi.md#locations) | **GET** /v1/locations | Get site locations
+*BalancesApi* | [**v1_balances_get**](docs/BalancesApi.md#v1_balances_get) | **GET** /v1/balances | Get balances
+*OrdersApi* | [**v1_orders_cancel_all_post**](docs/OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1_orders_cancel_post**](docs/OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1_orders_get**](docs/OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1_orders_post**](docs/OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1_orders_status_client_order_id_get**](docs/OrdersApi.md#v1_orders_status_client_order_id_get) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1_positions_get**](docs/PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get open positions
 
 
 # DOCUMENTATION FOR MODELS
- - [WWW::OpenAPIClient::Object::AccountData](docs/AccountData.md)
- - [WWW::OpenAPIClient::Object::AccountEndpoint](docs/AccountEndpoint.md)
- - [WWW::OpenAPIClient::Object::AccountInfo](docs/AccountInfo.md)
- - [WWW::OpenAPIClient::Object::ExchangeLoginRequire](docs/ExchangeLoginRequire.md)
- - [WWW::OpenAPIClient::Object::GetAccount](docs/GetAccount.md)
- - [WWW::OpenAPIClient::Object::KeyValue](docs/KeyValue.md)
- - [WWW::OpenAPIClient::Object::Locations](docs/Locations.md)
- - [WWW::OpenAPIClient::Object::UpdateAccount](docs/UpdateAccount.md)
+ - [WWW::OpenAPIClient::Object::Balance](docs/Balance.md)
+ - [WWW::OpenAPIClient::Object::BalanceData](docs/BalanceData.md)
+ - [WWW::OpenAPIClient::Object::Fills](docs/Fills.md)
+ - [WWW::OpenAPIClient::Object::MessageReject](docs/MessageReject.md)
+ - [WWW::OpenAPIClient::Object::OrdSide](docs/OrdSide.md)
+ - [WWW::OpenAPIClient::Object::OrdStatus](docs/OrdStatus.md)
+ - [WWW::OpenAPIClient::Object::OrdType](docs/OrdType.md)
+ - [WWW::OpenAPIClient::Object::OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [WWW::OpenAPIClient::Object::OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [WWW::OpenAPIClient::Object::OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [WWW::OpenAPIClient::Object::OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [WWW::OpenAPIClient::Object::OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
+ - [WWW::OpenAPIClient::Object::Position](docs/Position.md)
+ - [WWW::OpenAPIClient::Object::PositionData](docs/PositionData.md)
+ - [WWW::OpenAPIClient::Object::RejectReason](docs/RejectReason.md)
+ - [WWW::OpenAPIClient::Object::TimeInForce](docs/TimeInForce.md)
+ - [WWW::OpenAPIClient::Object::ValidationError](docs/ValidationError.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION
-
-## APIKeyHeader
-
-- **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
-- **Location**: HTTP header
-
-## APIKeyQueryParam
-
-- **Type**: API key
-- **API key parameter name**: apikey
-- **Location**: URL query string
+ All endpoints do not require authorization.
 

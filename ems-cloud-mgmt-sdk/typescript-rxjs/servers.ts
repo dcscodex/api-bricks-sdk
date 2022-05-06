@@ -38,6 +38,6 @@ export class ServerConfiguration<T extends { [key: string]: string }> {
     }
 }
 
-const server1 = new ServerConfiguration<{  }>("https://ems-mgmt-sandbox.coinapi.io", {  }, "")
+const server1 = new ServerConfiguration<{  }>("https://ems-gateway-aws-eu-central-1-dev.coinapi.io", {  }, "")
 
 export const servers = [server1];

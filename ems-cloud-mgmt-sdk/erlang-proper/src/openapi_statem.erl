@@ -58,12 +58,12 @@ cleanup() -> ok.
 initial_state() -> #{}.
 
 %%==============================================================================
-%% locations
+%% v1_positions_get
 %%==============================================================================
 
-locations() ->
-  openapi_api:locations().
+v1_positions_get() ->
+  openapi_api:v1_positions_get().
 
-locations_args(_S) ->
+v1_positions_get_args(_S) ->
   [].
 

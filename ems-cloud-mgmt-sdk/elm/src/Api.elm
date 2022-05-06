@@ -39,7 +39,7 @@ request method path pathParams queryParams headerParams body decoder =
     Request
         { method = method
         , headers = headers headerParams
-        , basePath = "https://ems-mgmt-sandbox.coinapi.io"
+        , basePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
         , pathParams = interpolatePath path pathParams
         , queryParams = queries queryParams
         , body = Maybe.withDefault Http.emptyBody (Maybe.map Http.jsonBody body)

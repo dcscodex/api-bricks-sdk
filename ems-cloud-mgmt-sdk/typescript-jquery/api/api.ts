@@ -1,11 +1,7 @@
-export * from './AccountApi';
-import { AccountApi } from './AccountApi';
-export * from './CertificateApi';
-import { CertificateApi } from './CertificateApi';
-export * from './EndpointsApi';
-import { EndpointsApi } from './EndpointsApi';
-export * from './ExchangeApi';
-import { ExchangeApi } from './ExchangeApi';
-export * from './LocationApi';
-import { LocationApi } from './LocationApi';
-export const APIS = [AccountApi, CertificateApi, EndpointsApi, ExchangeApi, LocationApi];
+export * from './BalancesApi';
+import { BalancesApi } from './BalancesApi';
+export * from './OrdersApi';
+import { OrdersApi } from './OrdersApi';
+export * from './PositionsApi';
+import { PositionsApi } from './PositionsApi';
+export const APIS = [BalancesApi, OrdersApi, PositionsApi];

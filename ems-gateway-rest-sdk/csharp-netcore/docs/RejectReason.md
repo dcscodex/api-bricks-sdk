@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.RejectReason
+# CoinAPI.EMS.REST.V1.Model.RejectReason
 Cause of rejection.
 
 ## Properties

@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.OrdType
+# CoinAPI.EMS.REST.V1.Model.OrdType
 Order types are documented in the separate section: <a href=\"#ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a> 
 
 ## Properties

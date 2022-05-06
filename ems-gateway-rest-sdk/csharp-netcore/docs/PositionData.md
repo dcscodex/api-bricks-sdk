@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.PositionData
+# CoinAPI.EMS.REST.V1.Model.PositionData
 The Position object.
 
 ## Properties

@@ -1,4 +1,4 @@
-# CoinAPI.OMS.REST.V1.Api.BalancesApi
+# CoinAPI.EMS.REST.V1.Api.BalancesApi
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
@@ -21,9 +21,9 @@ Get current currency balance from all or single exchange.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {

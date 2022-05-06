@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK - the C# library for the EMS - REST API
+# CoinAPI.EMS.REST.V1 - the C# library for the EMS - REST API
 
 This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
 <br/>
@@ -103,9 +103,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 ```
 <a name="packaging"></a>
 ## Packaging
@@ -115,7 +115,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out CoinAPI.OMS.API.SDK.csproj
+nuget pack -Build -OutputDirectory out CoinAPI.EMS.REST.V1.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -137,9 +137,9 @@ c.Proxy = webProxy;
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {

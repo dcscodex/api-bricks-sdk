@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Api.PositionsApi
+# CoinAPI.EMS.REST.V1.Api.PositionsApi
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
@@ -19,9 +19,9 @@ Get current open positions across all or single exchange.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.API.SDK.Api;
-using CoinAPI.OMS.API.SDK.Client;
-using CoinAPI.OMS.API.SDK.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {

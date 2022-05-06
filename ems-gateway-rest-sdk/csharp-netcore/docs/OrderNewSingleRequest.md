@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.OrderNewSingleRequest
+# CoinAPI.EMS.REST.V1.Model.OrderNewSingleRequest
 The new order message.
 
 ## Properties

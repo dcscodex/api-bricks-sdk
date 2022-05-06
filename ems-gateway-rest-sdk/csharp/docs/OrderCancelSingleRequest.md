@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.REST.V1.Model.OrderCancelSingleRequest
+# CoinAPI.EMS.REST.V1.Model.OrderCancelSingleRequest
 
 ## Properties
 

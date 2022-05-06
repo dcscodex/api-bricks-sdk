@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.REST.V1.Model.RejectReason
+# CoinAPI.EMS.REST.V1.Model.RejectReason
 
 ## Properties
 

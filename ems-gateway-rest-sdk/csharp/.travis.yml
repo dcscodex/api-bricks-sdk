@@ -4,6 +4,6 @@
 language: csharp
 mono:
   - latest
-solution: CoinAPI.OMS.REST.V1.sln
+solution: CoinAPI.EMS.REST.V1.sln
 script:
   - /bin/sh ./mono_nunit_test.sh

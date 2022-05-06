@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.REST.V1.Model.PositionData
+# CoinAPI.EMS.REST.V1.Model.PositionData
 
 ## Properties
 

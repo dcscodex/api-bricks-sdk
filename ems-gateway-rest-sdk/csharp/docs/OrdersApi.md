@@ -1,4 +1,4 @@
-# CoinAPI.OMS.REST.V1.Api.OrdersApi
+# CoinAPI.EMS.REST.V1.Api.OrdersApi
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
@@ -25,9 +25,9 @@ This request cancels all open orders on single specified exchange.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {
@@ -103,9 +103,9 @@ Request cancel for an existing order. The order can be canceled using the `clien
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {
@@ -181,9 +181,9 @@ Get last execution reports for open orders across all or single exchange.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {
@@ -258,9 +258,9 @@ This request creating new order for the specific exchange.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {
@@ -337,9 +337,9 @@ Get the last order execution report for the specified order. The requested order
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using CoinAPI.OMS.REST.V1.Api;
-using CoinAPI.OMS.REST.V1.Client;
-using CoinAPI.OMS.REST.V1.Model;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.ValidationError
+# CoinAPI.EMS.REST.V1.Model.ValidationError
 
 ## Properties
 

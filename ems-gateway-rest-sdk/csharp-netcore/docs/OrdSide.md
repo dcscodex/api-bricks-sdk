@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.OrdSide
+# CoinAPI.EMS.REST.V1.Model.OrdSide
 Side of order. 
 
 ## Properties

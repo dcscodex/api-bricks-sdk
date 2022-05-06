@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.REST.V1.Model.OrderNewSingleRequest
+# CoinAPI.EMS.REST.V1.Model.OrderNewSingleRequest
 
 ## Properties
 

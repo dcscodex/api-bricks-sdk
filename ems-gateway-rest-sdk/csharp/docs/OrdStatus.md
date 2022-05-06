@@ -1,5 +1,5 @@
 
-# CoinAPI.OMS.REST.V1.Model.OrdStatus
+# CoinAPI.EMS.REST.V1.Model.OrdStatus
 
 ## Properties
 

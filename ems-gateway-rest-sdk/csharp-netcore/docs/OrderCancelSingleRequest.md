@@ -1,4 +1,4 @@
-# CoinAPI.OMS.API.SDK.Model.OrderCancelSingleRequest
+# CoinAPI.EMS.REST.V1.Model.OrderCancelSingleRequest
 Cancel single order request object.
 
 ## Properties

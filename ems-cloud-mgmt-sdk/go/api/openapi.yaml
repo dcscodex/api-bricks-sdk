@@ -1,0 +1,400 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@coinapi.io
+    name: COINAPI LTD
+    url: https://www.coinapi.io
+  description: "This section will provide necessary information about the `CoinAPI\
+    \ EMS Managed Cloud REST API` protocol. \n<br/><br/>\nThis API is used to manage\
+    \ the overall deployment of **Execution Management System API** (`EMS API`) software,\
+    \ \nwhich means that in this API, you define the accounts, credentials, and configurations\
+    \ for the order destinations or identify the CoinAPI endpoints where you need\
+    \ to connect to access the `EMS API`. \n<br/><br/>\nImplemented Standards:\n\n\
+    \ * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)\n * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)\n\
+    \ * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)\n \n### Endpoints\n\
+    <table>\n  <thead>\n    <tr>\n      <th>Environment</th>\n      <th>Url</th>\n\
+    \    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Production</td>\n     \
+    \ <td><code>https://ems-mgmt.coinapi.io/</code></td>\n    </tr>\n    <tr>\n  \
+    \    <td>Sandbox</td>\n      <td><code>https://ems-mgmt-sandbox.coinapi.io/</code></td>\n\
+    \    </tr>\n  </tbody>\n</table>\n\n### Authentication\n\nTo use resources that\
+    \ require authorized access, you will need to provide an API key to us when making\
+    \ HTTP requests.\n\nThere are 2 methods for passing the API key to us, you only\
+    \ need to use one:\n\n 1. Custom authorization header named `X-CoinAPI-Key`\n\
+    \ 2. Query string parameter named `apikey`\n\n#### Custom authorization header\n\
+    \nYou can authorize by providing additional custom header named `X-CoinAPI-Key`\
+    \ and API key as its value.\n\nAssuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`,\
+    \ then the authorization header you should send to us will look like:\n<br/><br/>\n\
+    `X-CoinAPI-Key: 73034021-THIS-IS-SAMPLE-KEY`\n\n<aside class=\"success\">This\
+    \ method is recommended by us and you should use it in production environments.</aside>\n\
+    \n#### Query string authorization parameter\n\nYou can authorize by providing\
+    \ an additional parameter named `apikey` with a value equal to your API key in\
+    \ the query string of your HTTP request.\n\nAssuming that your API key is `73034021-THIS-IS-SAMPLE-KEY`\
+    \ and that you want to request all accounts, then your query string should look\
+    \ like this: \n<br/><br/>\n`GET /v1/accounts?apikey=73034021-THIS-IS-SAMPLE-KEY`\n\
+    \n<aside class=\"notice\">\nQuery string method may be more practical for development\
+    \ activities.\n</aside>\n"
+  license:
+    name: "37284"
+    url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+  termsOfService: https://www.coinapi.io/legal
+  title: EMS - Managed Cloud REST API
+  version: v1
+externalDocs:
+  description: Find out more about EMS Managed Cloud API
+  url: https://docs.coinapi.io/
+servers:
+- url: https://ems-mgmt-sandbox.coinapi.io
+security:
+- APIKeyHeader: []
+- APIKeyQueryParam: []
+tags:
+- description: In the account section you can manage the accounts on the exchanges
+    (order destinations).
+  name: Account
+- description: In the exchange section we provide information about the exchanges
+    supported in the EMS API.
+  name: Exchange
+- description: In the location section we provide information about the server sites
+    used in the EMS API.
+  name: Location
+- description: In the endpoint section we provide information about the EMS API endpoints
+    to the server sites used in the EMS API deployment for your API Key.
+  name: Endpoints
+- description: In the certificate section we generate TLS certificates that can be
+    used as method of authenticating to the EMS API.
+  name: Certificate
+paths:
+  /v1/accounts:
+    delete:
+      description: Delete specific exchange account maintained by the EMS API for
+        your subscription.
+      operationId: deleteAccount
+      parameters:
+      - description: Exchange identifier of the account to delete
+        explode: true
+        in: query
+        name: exchange_id
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "404":
+          description: Exchange account not found
+      summary: Delete account
+      tags:
+      - Account
+      x-codegen-request-body-name: body
+    get:
+      description: Get all accounts maintained for your subscription in the EMS API.
+      operationId: getAccount
+      parameters:
+      - description: Exchange id of the specific account to provide single account
+          instead of the list of all accounts
+        explode: true
+        in: query
+        name: filter_exchange_id
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GetAccount'
+                type: array
+          description: OK
+      summary: Get accounts
+      tags:
+      - Account
+    post:
+      description: Add new or update existing exchange account for your subscription
+        in the EMS API.
+      operationId: persistAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountData'
+        description: Exchange account object that needs to be add/update to the EMS
+        required: true
+      responses:
+        "400":
+          description: Invalid exchange id
+        "405":
+          description: Validation exception
+      summary: Add or update account
+      tags:
+      - Account
+      x-codegen-request-body-name: body
+  /v1/accounts/all:
+    delete:
+      description: Delete all exchange accounts maintained by the EMS API for your
+        subscription.
+      operationId: deleteAccountAll
+      responses:
+        "200":
+          description: OK
+      summary: Delete all accounts
+      tags:
+      - Account
+  /v1/endpoints:
+    get:
+      description: Get all API endpoints that the EMS API expose for your subscription.
+      operationId: endpoints
+      parameters:
+      - description: Exchange id
+        explode: true
+        in: query
+        name: filter_exchange_id
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccountEndpoint'
+                type: array
+          description: OK
+      summary: Get API endpoints
+      tags:
+      - Endpoints
+  /v1/exchanges:
+    get:
+      description: Get information about the required parameters or server site location
+        of the exchanges supported in the EMS API.
+      operationId: exchangeLoginRequire
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExchangeLoginRequire'
+                type: array
+          description: OK
+      summary: Get exchange configuration
+      tags:
+      - Exchange
+  /v1/locations:
+    get:
+      description: This endpoint providing information about the server site locations
+        supported in the EMS API.
+      operationId: locations
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Locations'
+                type: array
+          description: OK
+      summary: Get site locations
+      tags:
+      - Location
+  /v1/certificate/pem:
+    get:
+      description: Providing PEM file with the Private Key, Public Key and the Certificate
+        to authenticate to the EMS API.
+      operationId: certificate
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                example: |
+                  -----BEGIN PUBLIC KEY-----
+                  MIIBIjANB.......
+                  -----END PUBLIC KEY-----
+                  -----BEGIN PRIVATE KEY-----
+                  MIIEvwIAA.......
+                  -----END PRIVATE KEY-----
+                  -----BEGIN CERTIFICATE-----
+                  MIIDEjCCA.......
+                  -----END CERTIFICATE-----
+                type: string
+          description: OK
+      summary: Get authentication certificate
+      tags:
+      - Certificate
+components:
+  schemas:
+    AccountInfo:
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          type: string
+      type: object
+    AccountData:
+      example:
+        exchange_id: exchange_id
+        parameters:
+        - key: PublicApiKey
+          value: 36279b02-d24f-40be-a61b-e9fd7de46dd6
+        - key: PublicApiKey
+          value: 36279b02-d24f-40be-a61b-e9fd7de46dd6
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          type: string
+        parameters:
+          description: Parameters required to log into the exchange
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+      type: object
+    UpdateAccount:
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          type: string
+        parameters:
+          description: Parameters required to log into the exchange
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+      type: object
+    GetAccount:
+      example:
+        exchange_id: exchange_id
+        parameters:
+        - key: PublicApiKey
+          value: 36279b02-d24f-40be-a61b-e9fd7de46dd6
+        - key: PublicApiKey
+          value: 36279b02-d24f-40be-a61b-e9fd7de46dd6
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          type: string
+        parameters:
+          description: Exchange specific configuration parameters
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+      type: object
+    ExchangeLoginRequire:
+      example:
+        exchange_id: exchange_id
+        required_parameters:
+        - required_parameters
+        - required_parameters
+        location_id: location_id
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          type: string
+        location_id:
+          description: Location identifier
+          type: string
+        required_parameters:
+          description: Parameters required to log into the exchange
+          items:
+            type: string
+          type: array
+      type: object
+    Locations:
+      example:
+        region_name: us-east-1
+        provider_name: aws
+        location_id: aws-us-east-1
+      properties:
+        location_id:
+          description: CoinAPI location identifier
+          example: aws-us-east-1
+          type: string
+        region_name:
+          description: Identifier of the region by the location provider
+          example: us-east-1
+          type: string
+        provider_name:
+          description: Identifier of the location provider
+          example: aws
+          type: string
+      type: object
+    KeyValue:
+      description: Key Value pair used to configure exchange accounts.
+      example:
+        key: PublicApiKey
+        value: 36279b02-d24f-40be-a61b-e9fd7de46dd6
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      type: object
+    AccountEndpoint:
+      example:
+        exchange_id: KRAKEN
+        endpoint_host: 1314.51253.51.ec2.eu-west-1.amazonaws.com
+        endpoint_url: https://1314.51253.51.ec2.eu-west-1.amazonaws.com/
+        endpoint_schema: https
+        location_id: aws-us-east-2
+      properties:
+        exchange_id:
+          description: "Exchange identifier and optional tag identifying specific\
+            \ account configured when the software will be managing multiple accounts\
+            \ on the same exchange; for eg: \n<code>BITSTAMP</code>\n<code>BITSTAMP/7c177641-74bd-4dbe-9b01-2497c12a5f70`</code>\n\
+            <code>BITSTAMP/2574</code>\nAllowed separators between the exchange identifier\
+            \ and the tag: <code>~/.,:;\\!@#$%^&*-_+=.</code>\n"
+          example: KRAKEN
+          type: string
+        location_id:
+          description: Location identifier
+          example: aws-us-east-2
+          type: string
+        endpoint_schema:
+          description: Endpoint schema
+          example: https
+          type: string
+        endpoint_host:
+          description: Endpoint host
+          example: 1314.51253.51.ec2.eu-west-1.amazonaws.com
+          type: string
+        endpoint_url:
+          description: Endpoint URL
+          example: https://1314.51253.51.ec2.eu-west-1.amazonaws.com/
+          type: string
+      type: object
+  securitySchemes:
+    APIKeyHeader:
+      in: header
+      name: X-CoinAPI-Key
+      type: apiKey
+    APIKeyQueryParam:
+      in: query
+      name: apikey
+      type: apiKey

@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+README.md
+build.gradle
+src/main/groovy/org/openapitools/api/AccountApi.groovy
+src/main/groovy/org/openapitools/api/ApiUtils.groovy
+src/main/groovy/org/openapitools/api/CertificateApi.groovy
+src/main/groovy/org/openapitools/api/EndpointsApi.groovy
+src/main/groovy/org/openapitools/api/ExchangeApi.groovy
+src/main/groovy/org/openapitools/api/LocationApi.groovy
+src/main/groovy/org/openapitools/model/AccountData.groovy
+src/main/groovy/org/openapitools/model/AccountEndpoint.groovy
+src/main/groovy/org/openapitools/model/AccountInfo.groovy
+src/main/groovy/org/openapitools/model/ExchangeLoginRequire.groovy
+src/main/groovy/org/openapitools/model/GetAccount.groovy
+src/main/groovy/org/openapitools/model/KeyValue.groovy
+src/main/groovy/org/openapitools/model/Locations.groovy
+src/main/groovy/org/openapitools/model/UpdateAccount.groovy

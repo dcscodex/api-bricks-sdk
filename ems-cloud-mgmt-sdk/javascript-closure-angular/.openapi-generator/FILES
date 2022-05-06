@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+API/Client/AccountApi.js
+API/Client/AccountData.js
+API/Client/AccountEndpoint.js
+API/Client/AccountInfo.js
+API/Client/CertificateApi.js
+API/Client/EndpointsApi.js
+API/Client/ExchangeApi.js
+API/Client/ExchangeLoginRequire.js
+API/Client/GetAccount.js
+API/Client/KeyValue.js
+API/Client/LocationApi.js
+API/Client/Locations.js
+API/Client/UpdateAccount.js

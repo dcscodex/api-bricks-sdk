@@ -28,7 +28,7 @@ import java.io.IOException;
  * Key Value pair used to configure exchange accounts.
  */
 @ApiModel(description = "Key Value pair used to configure exchange accounts.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T08:00:53.681977Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T09:35:06.920152Z[Etc/UTC]")
 public class KeyValue {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

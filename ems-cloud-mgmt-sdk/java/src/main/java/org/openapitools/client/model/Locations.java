@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Locations
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T08:00:53.681977Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T09:35:06.920152Z[Etc/UTC]")
 public class Locations {
   public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
   @SerializedName(SERIALIZED_NAME_LOCATION_ID)

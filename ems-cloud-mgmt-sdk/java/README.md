@@ -2,7 +2,7 @@
 
 EMS - Managed Cloud REST API
 - API version: v1
-  - Build date: 2022-05-06T08:00:53.681977Z[Etc/UTC]
+  - Build date: 2022-05-06T09:35:06.920152Z[Etc/UTC]
 
 This section will provide necessary information about the `CoinAPI EMS Managed Cloud REST API` protocol. 
 <br/><br/>

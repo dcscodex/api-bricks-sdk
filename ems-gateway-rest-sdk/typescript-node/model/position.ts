@@ -11,14 +11,14 @@
  */
 
 import { RequestFile } from './models';
-import { PositionData } from './positionData';
+import { PositionDataInner } from './positionDataInner';
 
 export class Position {
     /**
     * Exchange identifier used to identify the routing destination.
     */
     'exchangeId'?: string;
-    'data'?: Array<PositionData>;
+    'data'?: Array<PositionDataInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,7 +31,7 @@ export class Position {
         {
             "name": "data",
             "baseName": "data",
-            "type": "Array<PositionData>"
+            "type": "Array<PositionDataInner>"
         }    ];
 
     static getAttributeTypeMap() {

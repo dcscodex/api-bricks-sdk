@@ -3,7 +3,7 @@
 
 context("Test OrderCancelSingleRequest")
 
-model.instance <- OrderCancelSingleRequest$new()
+model_instance <- OrderCancelSingleRequest$new()
 
 test_that("exchange_id", {
   # tests for the property `exchange_id` (character)
@@ -28,4 +28,3 @@ test_that("client_order_id", {
   # uncomment below to test the property
   #expect_equal(model.instance$`client_order_id`, "EXPECTED_RESULT")
 })
-

@@ -21,6 +21,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
+import okhttp3.OkHttpClient
 
 import org.openapitools.client.models.Balance
 import org.openapitools.client.models.MessageReject
@@ -34,13 +35,14 @@ import org.openapitools.client.infrastructure.ClientError
 import org.openapitools.client.infrastructure.ServerException
 import org.openapitools.client.infrastructure.ServerError
 import org.openapitools.client.infrastructure.MultiValueMap
+import org.openapitools.client.infrastructure.PartConfig
 import org.openapitools.client.infrastructure.RequestConfig
 import org.openapitools.client.infrastructure.RequestMethod
 import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath) {
+class BalancesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -49,19 +51,19 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     }
 
     /**
-    * Get balances
-    * Get current currency balance from all or single exchange.
-    * @param exchangeId Filter the balances to the specific exchange. (optional)
-    * @return kotlin.collections.List<Balance>
-    * @throws IllegalStateException If the request is not correctly configured
-    * @throws IOException Rethrows the OkHttp execute method exception
-    * @throws UnsupportedOperationException If the API returns an informational or redirection response
-    * @throws ClientException If the API returns a client error response
-    * @throws ServerException If the API returns a server error response
-    */
+     * Get balances
+     * Get current currency balance from all or single exchange.
+     * @param exchangeId Filter the balances to the specific exchange. (optional)
+     * @return kotlin.collections.List<Balance>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1BalancesGet(exchangeId: kotlin.String?) : kotlin.collections.List<Balance> {
+    fun v1BalancesGet(exchangeId: kotlin.String? = null) : kotlin.collections.List<Balance> {
         val localVarResponse = v1BalancesGetWithHttpInfo(exchangeId = exchangeId)
 
         return when (localVarResponse.responseType) {
@@ -80,13 +82,13 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     }
 
     /**
-    * Get balances
-    * Get current currency balance from all or single exchange.
-    * @param exchangeId Filter the balances to the specific exchange. (optional)
-    * @return ApiResponse<kotlin.collections.List<Balance>?>
-    * @throws IllegalStateException If the request is not correctly configured
-    * @throws IOException Rethrows the OkHttp execute method exception
-    */
+     * Get balances
+     * Get current currency balance from all or single exchange.
+     * @param exchangeId Filter the balances to the specific exchange. (optional)
+     * @return ApiResponse<kotlin.collections.List<Balance>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
     fun v1BalancesGetWithHttpInfo(exchangeId: kotlin.String?) : ApiResponse<kotlin.collections.List<Balance>?> {
@@ -98,11 +100,11 @@ class BalancesApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePat
     }
 
     /**
-    * To obtain the request config of the operation v1BalancesGet
-    *
-    * @param exchangeId Filter the balances to the specific exchange. (optional)
-    * @return RequestConfig
-    */
+     * To obtain the request config of the operation v1BalancesGet
+     *
+     * @param exchangeId Filter the balances to the specific exchange. (optional)
+     * @return RequestConfig
+     */
     fun v1BalancesGetRequestConfig(exchangeId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()

@@ -128,7 +128,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [PSOpenAPITools/Model.Balance](docs/Balance.md)
- - [PSOpenAPITools/Model.BalanceData](docs/BalanceData.md)
+ - [PSOpenAPITools/Model.BalanceDataInner](docs/BalanceDataInner.md)
  - [PSOpenAPITools/Model.Fills](docs/Fills.md)
  - [PSOpenAPITools/Model.MessageReject](docs/MessageReject.md)
  - [PSOpenAPITools/Model.OrdSide](docs/OrdSide.md)
@@ -140,7 +140,7 @@ Class | Method | HTTP request | Description
  - [PSOpenAPITools/Model.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [PSOpenAPITools/Model.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [PSOpenAPITools/Model.Position](docs/Position.md)
- - [PSOpenAPITools/Model.PositionData](docs/PositionData.md)
+ - [PSOpenAPITools/Model.PositionDataInner](docs/PositionDataInner.md)
  - [PSOpenAPITools/Model.RejectReason](docs/RejectReason.md)
  - [PSOpenAPITools/Model.TimeInForce](docs/TimeInForce.md)
  - [PSOpenAPITools/Model.ValidationError](docs/ValidationError.md)

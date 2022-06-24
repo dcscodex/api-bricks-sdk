@@ -3,7 +3,7 @@
 
 context("Test MessageReject")
 
-model.instance <- MessageReject$new()
+model_instance <- MessageReject$new()
 
 test_that("type", {
   # tests for the property `type` (character)
@@ -43,4 +43,3 @@ test_that("rejected_message", {
   # uncomment below to test the property
   #expect_equal(model.instance$`rejected_message`, "EXPECTED_RESULT")
 })
-

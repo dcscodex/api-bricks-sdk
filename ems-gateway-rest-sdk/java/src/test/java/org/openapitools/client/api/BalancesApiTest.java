@@ -16,8 +16,8 @@ package org.openapitools.client.api;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.Balance;
 import org.openapitools.client.model.MessageReject;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,25 +27,23 @@ import java.util.Map;
 /**
  * API tests for BalancesApi
  */
-@Ignore
+@Disabled
 public class BalancesApiTest {
 
     private final BalancesApi api = new BalancesApi();
 
-    
     /**
      * Get balances
      *
      * Get current currency balance from all or single exchange.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void v1BalancesGetTest() throws ApiException {
         String exchangeId = null;
-                List<Balance> response = api.v1BalancesGet(exchangeId);
+        List<Balance> response = api.v1BalancesGet(exchangeId);
         // TODO: test validations
     }
-    
+
 }

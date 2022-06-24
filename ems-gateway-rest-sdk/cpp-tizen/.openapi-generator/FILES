@@ -4,8 +4,8 @@ doc/README.md
 doc/generateDocumentation.sh
 src/Balance.cpp
 src/Balance.h
-src/BalanceData.cpp
-src/BalanceData.h
+src/BalanceDataInner.cpp
+src/BalanceDataInner.h
 src/BalancesManager.cpp
 src/BalancesManager.h
 src/Error.cpp
@@ -39,8 +39,8 @@ src/OrdersManager.cpp
 src/OrdersManager.h
 src/Position.cpp
 src/Position.h
-src/PositionData.cpp
-src/PositionData.h
+src/PositionDataInner.cpp
+src/PositionDataInner.h
 src/PositionsManager.cpp
 src/PositionsManager.h
 src/RejectReason.cpp

@@ -11,9 +11,11 @@
  * Do not edit the class manually.
  */
 
-import { Observable } from 'rxjs';
-import { BaseAPI, HttpQuery, OperationOpts, RawAjaxResponse } from '../runtime';
-import {
+import type { Observable } from 'rxjs';
+import type { AjaxResponse } from 'rxjs/ajax';
+import { BaseAPI } from '../runtime';
+import type { OperationOpts, HttpQuery } from '../runtime';
+import type {
     Balance,
     MessageReject,
 } from '../models';
@@ -32,8 +34,8 @@ export class BalancesApi extends BaseAPI {
      * Get balances
      */
     v1BalancesGet({ exchangeId }: V1BalancesGetRequest): Observable<Array<Balance>>
-    v1BalancesGet({ exchangeId }: V1BalancesGetRequest, opts?: OperationOpts): Observable<RawAjaxResponse<Array<Balance>>>
-    v1BalancesGet({ exchangeId }: V1BalancesGetRequest, opts?: OperationOpts): Observable<Array<Balance> | RawAjaxResponse<Array<Balance>>> {
+    v1BalancesGet({ exchangeId }: V1BalancesGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<Balance>>>
+    v1BalancesGet({ exchangeId }: V1BalancesGetRequest, opts?: OperationOpts): Observable<Array<Balance> | AjaxResponse<Array<Balance>>> {
 
         const query: HttpQuery = {};
 

@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Fills;
@@ -33,13 +34,32 @@ import org.openapitools.client.model.OrdType;
 import org.openapitools.client.model.OrderExecutionReportAllOf;
 import org.openapitools.client.model.OrderNewSingleRequest;
 import org.openapitools.client.model.TimeInForce;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * The order execution report object.
  */
 @ApiModel(description = "The order execution report object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T10:47:19.665644Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-24T08:18:00.787637Z[Etc/UTC]")
 public class OrderExecutionReport {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -411,7 +431,7 @@ public class OrderExecutionReport {
 
   public OrderExecutionReport addExecInstItem(ExecInstEnum execInstItem) {
     if (this.execInst == null) {
-      this.execInst = new ArrayList<ExecInstEnum>();
+      this.execInst = new ArrayList<>();
     }
     this.execInst.add(execInstItem);
     return this;
@@ -580,7 +600,7 @@ public class OrderExecutionReport {
 
   public OrderExecutionReport addStatusHistoryItem(List<String> statusHistoryItem) {
     if (this.statusHistory == null) {
-      this.statusHistory = new ArrayList<List<String>>();
+      this.statusHistory = new ArrayList<>();
     }
     this.statusHistory.add(statusHistoryItem);
     return this;
@@ -634,7 +654,7 @@ public class OrderExecutionReport {
 
   public OrderExecutionReport addFillsItem(Fills fillsItem) {
     if (this.fills == null) {
-      this.fills = new ArrayList<Fills>();
+      this.fills = new ArrayList<>();
     }
     this.fills.add(fillsItem);
     return this;
@@ -655,6 +675,7 @@ public class OrderExecutionReport {
   public void setFills(List<Fills> fills) {
     this.fills = fills;
   }
+
 
 
   @Override
@@ -732,5 +753,168 @@ public class OrderExecutionReport {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("exchange_id");
+    openapiFields.add("client_order_id");
+    openapiFields.add("symbol_id_exchange");
+    openapiFields.add("symbol_id_coinapi");
+    openapiFields.add("amount_order");
+    openapiFields.add("price");
+    openapiFields.add("side");
+    openapiFields.add("order_type");
+    openapiFields.add("time_in_force");
+    openapiFields.add("expire_time");
+    openapiFields.add("exec_inst");
+    openapiFields.add("client_order_id_format_exchange");
+    openapiFields.add("exchange_order_id");
+    openapiFields.add("amount_open");
+    openapiFields.add("amount_filled");
+    openapiFields.add("avg_px");
+    openapiFields.add("status");
+    openapiFields.add("status_history");
+    openapiFields.add("error_message");
+    openapiFields.add("fills");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("exchange_id");
+    openapiRequiredFields.add("client_order_id");
+    openapiRequiredFields.add("amount_order");
+    openapiRequiredFields.add("price");
+    openapiRequiredFields.add("side");
+    openapiRequiredFields.add("order_type");
+    openapiRequiredFields.add("time_in_force");
+    openapiRequiredFields.add("client_order_id_format_exchange");
+    openapiRequiredFields.add("amount_open");
+    openapiRequiredFields.add("amount_filled");
+    openapiRequiredFields.add("status");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to OrderExecutionReport
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (OrderExecutionReport.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OrderExecutionReport is not found in the empty JSON string", OrderExecutionReport.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!OrderExecutionReport.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderExecutionReport` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : OrderExecutionReport.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
+      }
+      if (jsonObj.get("client_order_id") != null && !jsonObj.get("client_order_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_order_id").toString()));
+      }
+      if (jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_exchange").toString()));
+      }
+      if (jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_coinapi").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("exec_inst") != null && !jsonObj.get("exec_inst").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec_inst` to be an array in the JSON string but got `%s`", jsonObj.get("exec_inst").toString()));
+      }
+      if (jsonObj.get("client_order_id_format_exchange") != null && !jsonObj.get("client_order_id_format_exchange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_order_id_format_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_order_id_format_exchange").toString()));
+      }
+      if (jsonObj.get("exchange_order_id") != null && !jsonObj.get("exchange_order_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exchange_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_order_id").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("status_history") != null && !jsonObj.get("status_history").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status_history` to be an array in the JSON string but got `%s`", jsonObj.get("status_history").toString()));
+      }
+      if (jsonObj.get("error_message") != null && !jsonObj.get("error_message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_message").toString()));
+      }
+      JsonArray jsonArrayfills = jsonObj.getAsJsonArray("fills");
+      if (jsonArrayfills != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("fills").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `fills` to be an array in the JSON string but got `%s`", jsonObj.get("fills").toString()));
+        }
+
+        // validate the optional field `fills` (array)
+        for (int i = 0; i < jsonArrayfills.size(); i++) {
+          Fills.validateJsonObject(jsonArrayfills.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!OrderExecutionReport.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OrderExecutionReport' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<OrderExecutionReport> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OrderExecutionReport.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<OrderExecutionReport>() {
+           @Override
+           public void write(JsonWriter out, OrderExecutionReport value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public OrderExecutionReport read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of OrderExecutionReport given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of OrderExecutionReport
+  * @throws IOException if the JSON string is invalid with respect to OrderExecutionReport
+  */
+  public static OrderExecutionReport fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OrderExecutionReport.class);
+  }
+
+ /**
+  * Convert an instance of OrderExecutionReport to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

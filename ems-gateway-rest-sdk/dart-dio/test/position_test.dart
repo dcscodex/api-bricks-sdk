@@ -1,12 +1,5 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.7
-
-// ignore_for_file: unused_import
-
-import 'package:openapi/model/position.dart';
 import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
 
 // tests for Position
 void main() {
@@ -20,12 +13,10 @@ void main() {
       // TODO
     });
 
-    // BuiltList<PositionData> data
+    // BuiltList<PositionDataInner> data
     test('to test the property `data`', () async {
       // TODO
     });
 
-
   });
-
 }

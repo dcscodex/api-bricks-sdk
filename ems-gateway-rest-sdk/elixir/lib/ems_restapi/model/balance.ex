@@ -15,7 +15,7 @@ defmodule EMS-RESTAPI.Model.Balance do
 
   @type t :: %__MODULE__{
     :"exchange_id" => String.t | nil,
-    :"data" => [EMS-RESTAPI.Model.BalanceData.t] | nil
+    :"data" => [EMS-RESTAPI.Model.BalanceDataInner.t] | nil
   }
 end
 
@@ -23,7 +23,7 @@ defimpl Poison.Decoder, for: EMS-RESTAPI.Model.Balance do
   import EMS-RESTAPI.Deserializer
   def decode(value, options) do
     value
-    |> deserialize(:"data", :list, EMS-RESTAPI.Model.BalanceData, options)
+    |> deserialize(:"data", :list, EMS-RESTAPI.Model.BalanceDataInner, options)
   end
 end
 

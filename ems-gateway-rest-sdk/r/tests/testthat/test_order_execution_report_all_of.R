@@ -3,7 +3,7 @@
 
 context("Test OrderExecutionReportAllOf")
 
-model.instance <- OrderExecutionReportAllOf$new()
+model_instance <- OrderExecutionReportAllOf$new()
 
 test_that("client_order_id_format_exchange", {
   # tests for the property `client_order_id_format_exchange` (character)
@@ -75,4 +75,3 @@ test_that("fills", {
   # uncomment below to test the property
   #expect_equal(model.instance$`fills`, "EXPECTED_RESULT")
 })
-

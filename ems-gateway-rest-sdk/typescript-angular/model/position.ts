@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PositionData } from './positionData';
+import { PositionDataInner } from './positionDataInner';
 
 
 export interface Position { 
@@ -17,6 +17,6 @@ export interface Position {
      * Exchange identifier used to identify the routing destination.
      */
     exchange_id?: string;
-    data?: Array<PositionData>;
+    data?: Array<PositionDataInner>;
 }
 

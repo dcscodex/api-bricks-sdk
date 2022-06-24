@@ -304,7 +304,7 @@ use WWW::OpenAPIClient::PositionsApi;
 To load the models:
 ```perl
 use WWW::OpenAPIClient::Object::Balance;
-use WWW::OpenAPIClient::Object::BalanceData;
+use WWW::OpenAPIClient::Object::BalanceDataInner;
 use WWW::OpenAPIClient::Object::Fills;
 use WWW::OpenAPIClient::Object::MessageReject;
 use WWW::OpenAPIClient::Object::OrdSide;
@@ -316,7 +316,7 @@ use WWW::OpenAPIClient::Object::OrderExecutionReport;
 use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
 use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
-use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::PositionDataInner;
 use WWW::OpenAPIClient::Object::RejectReason;
 use WWW::OpenAPIClient::Object::TimeInForce;
 use WWW::OpenAPIClient::Object::ValidationError;
@@ -337,7 +337,7 @@ use WWW::OpenAPIClient::PositionsApi;
 
 # load the models
 use WWW::OpenAPIClient::Object::Balance;
-use WWW::OpenAPIClient::Object::BalanceData;
+use WWW::OpenAPIClient::Object::BalanceDataInner;
 use WWW::OpenAPIClient::Object::Fills;
 use WWW::OpenAPIClient::Object::MessageReject;
 use WWW::OpenAPIClient::Object::OrdSide;
@@ -349,7 +349,7 @@ use WWW::OpenAPIClient::Object::OrderExecutionReport;
 use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
 use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
-use WWW::OpenAPIClient::Object::PositionData;
+use WWW::OpenAPIClient::Object::PositionDataInner;
 use WWW::OpenAPIClient::Object::RejectReason;
 use WWW::OpenAPIClient::Object::TimeInForce;
 use WWW::OpenAPIClient::Object::ValidationError;
@@ -390,7 +390,7 @@ Class | Method | HTTP request | Description
 
 # DOCUMENTATION FOR MODELS
  - [WWW::OpenAPIClient::Object::Balance](docs/Balance.md)
- - [WWW::OpenAPIClient::Object::BalanceData](docs/BalanceData.md)
+ - [WWW::OpenAPIClient::Object::BalanceDataInner](docs/BalanceDataInner.md)
  - [WWW::OpenAPIClient::Object::Fills](docs/Fills.md)
  - [WWW::OpenAPIClient::Object::MessageReject](docs/MessageReject.md)
  - [WWW::OpenAPIClient::Object::OrdSide](docs/OrdSide.md)
@@ -402,7 +402,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [WWW::OpenAPIClient::Object::OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [WWW::OpenAPIClient::Object::Position](docs/Position.md)
- - [WWW::OpenAPIClient::Object::PositionData](docs/PositionData.md)
+ - [WWW::OpenAPIClient::Object::PositionDataInner](docs/PositionDataInner.md)
  - [WWW::OpenAPIClient::Object::RejectReason](docs/RejectReason.md)
  - [WWW::OpenAPIClient::Object::TimeInForce](docs/TimeInForce.md)
  - [WWW::OpenAPIClient::Object::ValidationError](docs/ValidationError.md)

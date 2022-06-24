@@ -1,6 +1,6 @@
 .gitignore
 .openapi-generator-ignore
-.php_cs
+.php-cs-fixer.dist.php
 .travis.yml
 README.md
 composer.json
@@ -8,7 +8,7 @@ docs/Api/BalancesApi.md
 docs/Api/OrdersApi.md
 docs/Api/PositionsApi.md
 docs/Model/Balance.md
-docs/Model/BalanceData.md
+docs/Model/BalanceDataInner.md
 docs/Model/Fills.md
 docs/Model/MessageReject.md
 docs/Model/OrdSide.md
@@ -20,7 +20,7 @@ docs/Model/OrderExecutionReport.md
 docs/Model/OrderExecutionReportAllOf.md
 docs/Model/OrderNewSingleRequest.md
 docs/Model/Position.md
-docs/Model/PositionData.md
+docs/Model/PositionDataInner.md
 docs/Model/RejectReason.md
 docs/Model/TimeInForce.md
 docs/Model/ValidationError.md
@@ -32,7 +32,7 @@ lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/Balance.php
-lib/Model/BalanceData.php
+lib/Model/BalanceDataInner.php
 lib/Model/Fills.php
 lib/Model/MessageReject.php
 lib/Model/ModelInterface.php
@@ -45,7 +45,7 @@ lib/Model/OrderExecutionReport.php
 lib/Model/OrderExecutionReportAllOf.php
 lib/Model/OrderNewSingleRequest.php
 lib/Model/Position.php
-lib/Model/PositionData.php
+lib/Model/PositionDataInner.php
 lib/Model/RejectReason.php
 lib/Model/TimeInForce.php
 lib/Model/ValidationError.php
@@ -54,7 +54,7 @@ phpunit.xml.dist
 test/Api/BalancesApiTest.php
 test/Api/OrdersApiTest.php
 test/Api/PositionsApiTest.php
-test/Model/BalanceDataTest.php
+test/Model/BalanceDataInnerTest.php
 test/Model/BalanceTest.php
 test/Model/FillsTest.php
 test/Model/MessageRejectTest.php
@@ -66,7 +66,7 @@ test/Model/OrderCancelSingleRequestTest.php
 test/Model/OrderExecutionReportAllOfTest.php
 test/Model/OrderExecutionReportTest.php
 test/Model/OrderNewSingleRequestTest.php
-test/Model/PositionDataTest.php
+test/Model/PositionDataInnerTest.php
 test/Model/PositionTest.php
 test/Model/RejectReasonTest.php
 test/Model/TimeInForceTest.php

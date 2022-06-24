@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExchangeId** | Pointer to **string** | Exchange identifier used to identify the routing destination. | [optional] 
-**Data** | Pointer to [**[]BalanceData**](BalanceData.md) |  | [optional] 
+**Data** | Pointer to [**[]BalanceDataInner**](BalanceDataInner.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasExchangeId returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *Balance) GetData() []BalanceData`
+`func (o *Balance) GetData() []BalanceDataInner`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *Balance) GetDataOk() (*[]BalanceData, bool)`
+`func (o *Balance) GetDataOk() (*[]BalanceDataInner, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *Balance) SetData(v []BalanceData)`
+`func (o *Balance) SetData(v []BalanceDataInner)`
 
 SetData sets Data field to given value.
 

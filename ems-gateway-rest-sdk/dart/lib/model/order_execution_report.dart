@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,23 +13,23 @@ part of openapi.api;
 class OrderExecutionReport {
   /// Returns a new [OrderExecutionReport] instance.
   OrderExecutionReport({
-    @required this.exchangeId,
-    @required this.clientOrderId,
+    required this.exchangeId,
+    required this.clientOrderId,
     this.symbolIdExchange,
     this.symbolIdCoinapi,
-    @required this.amountOrder,
-    @required this.price,
-    @required this.side,
-    @required this.orderType,
-    @required this.timeInForce,
+    required this.amountOrder,
+    required this.price,
+    required this.side,
+    required this.orderType,
+    required this.timeInForce,
     this.expireTime,
     this.execInst = const [],
-    @required this.clientOrderIdFormatExchange,
+    required this.clientOrderIdFormatExchange,
     this.exchangeOrderId,
-    @required this.amountOpen,
-    @required this.amountFilled,
+    required this.amountOpen,
+    required this.amountFilled,
     this.avgPx,
-    @required this.status,
+    required this.status,
     this.statusHistory = const [],
     this.errorMessage,
     this.fills = const [],
@@ -42,10 +42,22 @@ class OrderExecutionReport {
   String clientOrderId;
 
   /// Exchange symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
-  String symbolIdExchange;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbolIdExchange;
 
   /// CoinAPI symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
-  String symbolIdCoinapi;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbolIdCoinapi;
 
   /// Order quantity.
   num amountOrder;
@@ -60,7 +72,13 @@ class OrderExecutionReport {
   TimeInForce timeInForce;
 
   /// Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
-  DateTime expireTime;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? expireTime;
 
   /// Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a> 
   List<ExecInstEnum> execInst;
@@ -69,7 +87,13 @@ class OrderExecutionReport {
   String clientOrderIdFormatExchange;
 
   /// Unique identifier of the order assigned by the exchange or executing system.
-  String exchangeOrderId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? exchangeOrderId;
 
   /// Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
   num amountOpen;
@@ -78,7 +102,13 @@ class OrderExecutionReport {
   num amountFilled;
 
   /// Calculated average price of all fills on this order.
-  num avgPx;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? avgPx;
 
   OrdStatus status;
 
@@ -86,7 +116,13 @@ class OrderExecutionReport {
   List<List<String>> statusHistory;
 
   /// Error message.
-  String errorMessage;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? errorMessage;
 
   /// Relay fill information on working orders.
   List<Fills> fills;
@@ -116,151 +152,182 @@ class OrderExecutionReport {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (exchangeId == null ? 0 : exchangeId.hashCode) +
-    (clientOrderId == null ? 0 : clientOrderId.hashCode) +
-    (symbolIdExchange == null ? 0 : symbolIdExchange.hashCode) +
-    (symbolIdCoinapi == null ? 0 : symbolIdCoinapi.hashCode) +
-    (amountOrder == null ? 0 : amountOrder.hashCode) +
-    (price == null ? 0 : price.hashCode) +
-    (side == null ? 0 : side.hashCode) +
-    (orderType == null ? 0 : orderType.hashCode) +
-    (timeInForce == null ? 0 : timeInForce.hashCode) +
-    (expireTime == null ? 0 : expireTime.hashCode) +
-    (execInst == null ? 0 : execInst.hashCode) +
-    (clientOrderIdFormatExchange == null ? 0 : clientOrderIdFormatExchange.hashCode) +
-    (exchangeOrderId == null ? 0 : exchangeOrderId.hashCode) +
-    (amountOpen == null ? 0 : amountOpen.hashCode) +
-    (amountFilled == null ? 0 : amountFilled.hashCode) +
-    (avgPx == null ? 0 : avgPx.hashCode) +
-    (status == null ? 0 : status.hashCode) +
-    (statusHistory == null ? 0 : statusHistory.hashCode) +
-    (errorMessage == null ? 0 : errorMessage.hashCode) +
-    (fills == null ? 0 : fills.hashCode);
+    // ignore: unnecessary_parenthesis
+    (exchangeId.hashCode) +
+    (clientOrderId.hashCode) +
+    (symbolIdExchange == null ? 0 : symbolIdExchange!.hashCode) +
+    (symbolIdCoinapi == null ? 0 : symbolIdCoinapi!.hashCode) +
+    (amountOrder.hashCode) +
+    (price.hashCode) +
+    (side.hashCode) +
+    (orderType.hashCode) +
+    (timeInForce.hashCode) +
+    (expireTime == null ? 0 : expireTime!.hashCode) +
+    (execInst.hashCode) +
+    (clientOrderIdFormatExchange.hashCode) +
+    (exchangeOrderId == null ? 0 : exchangeOrderId!.hashCode) +
+    (amountOpen.hashCode) +
+    (amountFilled.hashCode) +
+    (avgPx == null ? 0 : avgPx!.hashCode) +
+    (status.hashCode) +
+    (statusHistory.hashCode) +
+    (errorMessage == null ? 0 : errorMessage!.hashCode) +
+    (fills.hashCode);
 
   @override
   String toString() => 'OrderExecutionReport[exchangeId=$exchangeId, clientOrderId=$clientOrderId, symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, amountOrder=$amountOrder, price=$price, side=$side, orderType=$orderType, timeInForce=$timeInForce, expireTime=$expireTime, execInst=$execInst, clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, avgPx=$avgPx, status=$status, statusHistory=$statusHistory, errorMessage=$errorMessage, fills=$fills]';
 
   Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{};
-      json[r'exchange_id'] = exchangeId;
-      json[r'client_order_id'] = clientOrderId;
+    final _json = <String, dynamic>{};
+      _json[r'exchange_id'] = exchangeId;
+      _json[r'client_order_id'] = clientOrderId;
     if (symbolIdExchange != null) {
-      json[r'symbol_id_exchange'] = symbolIdExchange;
+      _json[r'symbol_id_exchange'] = symbolIdExchange;
     }
     if (symbolIdCoinapi != null) {
-      json[r'symbol_id_coinapi'] = symbolIdCoinapi;
+      _json[r'symbol_id_coinapi'] = symbolIdCoinapi;
     }
-      json[r'amount_order'] = amountOrder;
-      json[r'price'] = price;
-      json[r'side'] = side;
-      json[r'order_type'] = orderType;
-      json[r'time_in_force'] = timeInForce;
+      _json[r'amount_order'] = amountOrder;
+      _json[r'price'] = price;
+      _json[r'side'] = side;
+      _json[r'order_type'] = orderType;
+      _json[r'time_in_force'] = timeInForce;
     if (expireTime != null) {
-      json[r'expire_time'] = expireTime;
+      _json[r'expire_time'] = expireTime;
     }
-    if (execInst != null) {
-      json[r'exec_inst'] = execInst;
-    }
-      json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
+      _json[r'exec_inst'] = execInst;
+      _json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
     if (exchangeOrderId != null) {
-      json[r'exchange_order_id'] = exchangeOrderId;
+      _json[r'exchange_order_id'] = exchangeOrderId;
     }
-      json[r'amount_open'] = amountOpen;
-      json[r'amount_filled'] = amountFilled;
+      _json[r'amount_open'] = amountOpen;
+      _json[r'amount_filled'] = amountFilled;
     if (avgPx != null) {
-      json[r'avg_px'] = avgPx;
+      _json[r'avg_px'] = avgPx;
     }
-      json[r'status'] = status;
-    if (statusHistory != null) {
-      json[r'status_history'] = statusHistory;
-    }
+      _json[r'status'] = status;
+      _json[r'status_history'] = statusHistory;
     if (errorMessage != null) {
-      json[r'error_message'] = errorMessage;
+      _json[r'error_message'] = errorMessage;
     }
-    if (fills != null) {
-      json[r'fills'] = fills;
-    }
-    return json;
+      _json[r'fills'] = fills;
+    return _json;
   }
 
   /// Returns a new [OrderExecutionReport] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static OrderExecutionReport fromJson(dynamic value) {
+  static OrderExecutionReport? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "OrderExecutionReport[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderExecutionReport[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return OrderExecutionReport(
-        exchangeId: mapValueOfType<String>(json, r'exchange_id'),
-        clientOrderId: mapValueOfType<String>(json, r'client_order_id'),
+        exchangeId: mapValueOfType<String>(json, r'exchange_id')!,
+        clientOrderId: mapValueOfType<String>(json, r'client_order_id')!,
         symbolIdExchange: mapValueOfType<String>(json, r'symbol_id_exchange'),
         symbolIdCoinapi: mapValueOfType<String>(json, r'symbol_id_coinapi'),
         amountOrder: json[r'amount_order'] == null
-          ? null
-          : num.parse(json[r'amount_order'].toString()),
+            ? null
+            : num.parse(json[r'amount_order'].toString()),
         price: json[r'price'] == null
-          ? null
-          : num.parse(json[r'price'].toString()),
-        side: OrdSide.fromJson(json[r'side']),
-        orderType: OrdType.fromJson(json[r'order_type']),
-        timeInForce: TimeInForce.fromJson(json[r'time_in_force']),
+            ? null
+            : num.parse(json[r'price'].toString()),
+        side: OrdSide.fromJson(json[r'side'])!,
+        orderType: OrdType.fromJson(json[r'order_type'])!,
+        timeInForce: TimeInForce.fromJson(json[r'time_in_force'])!,
         expireTime: DateTime.fromJson(json[r'expire_time']),
-        execInst: OrderExecutionReportExecInstEnum.listFromJson(json[r'exec_inst']),
-        clientOrderIdFormatExchange: mapValueOfType<String>(json, r'client_order_id_format_exchange'),
+        execInst: OrderExecutionReportExecInstEnum.listFromJson(json[r'exec_inst']) ?? const [],
+        clientOrderIdFormatExchange: mapValueOfType<String>(json, r'client_order_id_format_exchange')!,
         exchangeOrderId: mapValueOfType<String>(json, r'exchange_order_id'),
         amountOpen: json[r'amount_open'] == null
-          ? null
-          : num.parse(json[r'amount_open'].toString()),
+            ? null
+            : num.parse(json[r'amount_open'].toString()),
         amountFilled: json[r'amount_filled'] == null
-          ? null
-          : num.parse(json[r'amount_filled'].toString()),
+            ? null
+            : num.parse(json[r'amount_filled'].toString()),
         avgPx: json[r'avg_px'] == null
-          ? null
-          : num.parse(json[r'avg_px'].toString()),
-        status: OrdStatus.fromJson(json[r'status']),
+            ? null
+            : num.parse(json[r'avg_px'].toString()),
+        status: OrdStatus.fromJson(json[r'status'])!,
         statusHistory: json[r'status_history'] is List
           ? (json[r'status_history'] as List).map(
               (e) => e == null ? null : (e as List).cast<String>()
-            ).toList(growable: false)
+            ).toList()
           : null,
         errorMessage: mapValueOfType<String>(json, r'error_message'),
-        fills: Fills.listFromJson(json[r'fills']),
+        fills: Fills.listFromJson(json[r'fills']) ?? const [],
       );
     }
     return null;
   }
 
-  static List<OrderExecutionReport> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderExecutionReport.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderExecutionReport>[];
+  static List<OrderExecutionReport>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderExecutionReport>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderExecutionReport.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, OrderExecutionReport> mapFromJson(dynamic json) {
     final map = <String, OrderExecutionReport>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = OrderExecutionReport.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderExecutionReport.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of OrderExecutionReport-objects as value to a dart map
-  static Map<String, List<OrderExecutionReport>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderExecutionReport>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<OrderExecutionReport>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = OrderExecutionReport.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderExecutionReport.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'exchange_id',
+    'client_order_id',
+    'amount_order',
+    'price',
+    'side',
+    'order_type',
+    'time_in_force',
+    'client_order_id_format_exchange',
+    'amount_open',
+    'amount_filled',
+    'status',
+  };
 }
 
 
@@ -272,7 +339,7 @@ class OrderExecutionReportExecInstEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -287,13 +354,20 @@ class OrderExecutionReportExecInstEnum {
     INDICATION_OF_INTEREST,
   ];
 
-  static OrderExecutionReportExecInstEnum fromJson(dynamic value) =>
-    OrderExecutionReportExecInstEnumTypeTransformer().decode(value);
+  static OrderExecutionReportExecInstEnum? fromJson(dynamic value) => OrderExecutionReportExecInstEnumTypeTransformer().decode(value);
 
-  static List<OrderExecutionReportExecInstEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderExecutionReportExecInstEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderExecutionReportExecInstEnum>[];
+  static List<OrderExecutionReportExecInstEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderExecutionReportExecInstEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderExecutionReportExecInstEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [OrderExecutionReportExecInstEnum] to String,
@@ -313,14 +387,14 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  OrderExecutionReportExecInstEnum decode(dynamic data, {bool allowNull}) {
+  OrderExecutionReportExecInstEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data.toString()) {
         case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
         case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
         case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -329,7 +403,7 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   }
 
   /// Singleton [OrderExecutionReportExecInstEnumTypeTransformer] instance.
-  static OrderExecutionReportExecInstEnumTypeTransformer _instance;
+  static OrderExecutionReportExecInstEnumTypeTransformer? _instance;
 }
 
 

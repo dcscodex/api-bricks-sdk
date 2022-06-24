@@ -10,7 +10,7 @@
 
 -type openapi_position() ::
   [ {'exchange_id', binary() }
-  | {'data', list(openapi_position_data:openapi_position_data()) }
+  | {'data', list(openapi_position_data_inner:openapi_position_data_inner()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_position() ->
 
 openapi_position(Fields) ->
   Default = [ {'exchange_id', binary() }
-            , {'data', list(openapi_position_data:openapi_position_data()) }
+            , {'data', list(openapi_position_data_inner:openapi_position_data_inner()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

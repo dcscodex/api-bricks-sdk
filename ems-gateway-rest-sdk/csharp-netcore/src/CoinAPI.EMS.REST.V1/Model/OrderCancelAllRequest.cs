@@ -44,7 +44,8 @@ namespace CoinAPI.EMS.REST.V1.Model
         public OrderCancelAllRequest(string exchangeId = default(string))
         {
             // to ensure "exchangeId" is required (not null)
-            if (exchangeId == null) {
+            if (exchangeId == null)
+            {
                 throw new ArgumentNullException("exchangeId is a required property for OrderCancelAllRequest and cannot be null");
             }
             this.ExchangeId = exchangeId;

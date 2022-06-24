@@ -75,15 +75,15 @@ cJSON *message_reject_convertToJSON(message_reject_t *message_reject) {
     cJSON *item = cJSON_CreateObject();
 
     // message_reject->type
-    if(message_reject->type) { 
+    if(message_reject->type) {
     if(cJSON_AddStringToObject(item, "type", message_reject->type) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // message_reject->reject_reason
-    
+    if(message_reject->reject_reason != ems___rest_api_message_reject__NULL) {
     cJSON *reject_reason_local_JSON = reject_reason_convertToJSON(message_reject->reject_reason);
     if(reject_reason_local_JSON == NULL) {
         goto fail; // custom
@@ -92,31 +92,31 @@ cJSON *message_reject_convertToJSON(message_reject_t *message_reject) {
     if(item->child == NULL) {
         goto fail;
     }
-    
+    }
 
 
     // message_reject->exchange_id
-    if(message_reject->exchange_id) { 
+    if(message_reject->exchange_id) {
     if(cJSON_AddStringToObject(item, "exchange_id", message_reject->exchange_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // message_reject->message
-    if(message_reject->message) { 
+    if(message_reject->message) {
     if(cJSON_AddStringToObject(item, "message", message_reject->message) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // message_reject->rejected_message
-    if(message_reject->rejected_message) { 
+    if(message_reject->rejected_message) {
     if(cJSON_AddStringToObject(item, "rejected_message", message_reject->rejected_message) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
     return item;
 fail:

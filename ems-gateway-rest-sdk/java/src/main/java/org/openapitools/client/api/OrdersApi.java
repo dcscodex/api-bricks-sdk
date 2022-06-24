@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class OrdersApi {
     private ApiClient localVarApiClient;
@@ -93,7 +94,6 @@ public class OrdersApi {
      */
     public okhttp3.Call v1OrdersCancelAllPostCall(OrderCancelAllRequest orderCancelAllRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -228,7 +228,6 @@ public class OrdersApi {
      */
     public okhttp3.Call v1OrdersCancelPostCall(OrderCancelSingleRequest orderCancelSingleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -362,7 +361,6 @@ public class OrdersApi {
      */
     public okhttp3.Call v1OrdersGetCall(String exchangeId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -494,7 +492,6 @@ public class OrdersApi {
      */
     public okhttp3.Call v1OrdersPostCall(OrderNewSingleRequest orderNewSingleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -631,7 +628,6 @@ public class OrdersApi {
      */
     public okhttp3.Call v1OrdersStatusClientOrderIdGetCall(String clientOrderId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

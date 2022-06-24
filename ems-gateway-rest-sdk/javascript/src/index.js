@@ -14,7 +14,7 @@
 
 import ApiClient from './ApiClient';
 import Balance from './model/Balance';
-import BalanceData from './model/BalanceData';
+import BalanceDataInner from './model/BalanceDataInner';
 import Fills from './model/Fills';
 import MessageReject from './model/MessageReject';
 import OrdSide from './model/OrdSide';
@@ -26,7 +26,7 @@ import OrderExecutionReport from './model/OrderExecutionReport';
 import OrderExecutionReportAllOf from './model/OrderExecutionReportAllOf';
 import OrderNewSingleRequest from './model/OrderNewSingleRequest';
 import Position from './model/Position';
-import PositionData from './model/PositionData';
+import PositionDataInner from './model/PositionDataInner';
 import RejectReason from './model/RejectReason';
 import TimeInForce from './model/TimeInForce';
 import ValidationError from './model/ValidationError';
@@ -80,10 +80,10 @@ export {
     Balance,
 
     /**
-     * The BalanceData model constructor.
-     * @property {module:model/BalanceData}
+     * The BalanceDataInner model constructor.
+     * @property {module:model/BalanceDataInner}
      */
-    BalanceData,
+    BalanceDataInner,
 
     /**
      * The Fills model constructor.
@@ -152,10 +152,10 @@ export {
     Position,
 
     /**
-     * The PositionData model constructor.
-     * @property {module:model/PositionData}
+     * The PositionDataInner model constructor.
+     * @property {module:model/PositionDataInner}
      */
-    PositionData,
+    PositionDataInner,
 
     /**
      * The RejectReason model constructor.

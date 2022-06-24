@@ -3,7 +3,7 @@
 
 context("Test ValidationError")
 
-model.instance <- ValidationError$new()
+model_instance <- ValidationError$new()
 
 test_that("type", {
   # tests for the property `type` (character)
@@ -39,4 +39,3 @@ test_that("errors", {
   # uncomment below to test the property
   #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
-

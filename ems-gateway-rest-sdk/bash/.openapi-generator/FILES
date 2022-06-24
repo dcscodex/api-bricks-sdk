@@ -5,7 +5,7 @@ _client.sh
 client.sh
 client.sh.bash-completion
 docs/Balance.md
-docs/BalanceData.md
+docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
 docs/MessageReject.md
@@ -19,7 +19,7 @@ docs/OrderExecutionReportAllOf.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
-docs/PositionData.md
+docs/PositionDataInner.md
 docs/PositionsApi.md
 docs/RejectReason.md
 docs/TimeInForce.md

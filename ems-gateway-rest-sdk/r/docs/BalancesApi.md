@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **V1BalancesGet**
-> array[Balance] V1BalancesGet(exchange.id=var.exchange.id)
+> array[Balance] V1BalancesGet(exchange_id=var.exchange_id)
 
 Get balances
 
@@ -18,11 +18,11 @@ Get current currency balance from all or single exchange.
 ```R
 library(openapi)
 
-var.exchange.id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
+var.exchange_id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
 
 #Get balances
 api.instance <- BalancesApi$new()
-result <- api.instance$V1BalancesGet(exchange.id=var.exchange.id)
+result <- api.instance$V1BalancesGet(exchange_id=var.exchange_id)
 dput(result)
 ```
 
@@ -30,7 +30,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange.id** | **character**| Filter the balances to the specific exchange. | [optional] 
+ **exchange_id** | **character**| Filter the balances to the specific exchange. | [optional] 
 
 ### Return type
 

@@ -73,7 +73,7 @@ For more information, please visit [https://www.coinapi.io](https://www.coinapi.
 
 ## Requirements
 
-Dart 2.0 or later
+Dart 2.12 or later
 
 ## Installation & Usage
 
@@ -135,7 +135,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Balance](doc//Balance.md)
- - [BalanceData](doc//BalanceData.md)
+ - [BalanceDataInner](doc//BalanceDataInner.md)
  - [Fills](doc//Fills.md)
  - [MessageReject](doc//MessageReject.md)
  - [OrdSide](doc//OrdSide.md)
@@ -147,7 +147,7 @@ Class | Method | HTTP request | Description
  - [OrderExecutionReportAllOf](doc//OrderExecutionReportAllOf.md)
  - [OrderNewSingleRequest](doc//OrderNewSingleRequest.md)
  - [Position](doc//Position.md)
- - [PositionData](doc//PositionData.md)
+ - [PositionDataInner](doc//PositionDataInner.md)
  - [RejectReason](doc//RejectReason.md)
  - [TimeInForce](doc//TimeInForce.md)
  - [ValidationError](doc//ValidationError.md)

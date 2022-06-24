@@ -77,7 +77,7 @@ Category | Method | HTTP request | Description
 ## Documentation for Models
 
  - [balance_t](docs/balance.md)
- - [balance_data_t](docs/balance_data.md)
+ - [balance_data_inner_t](docs/balance_data_inner.md)
  - [fills_t](docs/fills.md)
  - [message_reject_t](docs/message_reject.md)
  - [ord_side_t](docs/ord_side.md)
@@ -89,7 +89,7 @@ Category | Method | HTTP request | Description
  - [order_execution_report_all_of_t](docs/order_execution_report_all_of.md)
  - [order_new_single_request_t](docs/order_new_single_request.md)
  - [position_t](docs/position.md)
- - [position_data_t](docs/position_data.md)
+ - [position_data_inner_t](docs/position_data_inner.md)
  - [reject_reason_t](docs/reject_reason.md)
  - [time_in_force_t](docs/time_in_force.md)
  - [validation_error_t](docs/validation_error.md)

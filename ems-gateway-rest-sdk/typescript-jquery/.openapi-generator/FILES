@@ -7,7 +7,7 @@ configuration.ts
 git_push.sh
 index.ts
 model/Balance.ts
-model/BalanceData.ts
+model/BalanceDataInner.ts
 model/Fills.ts
 model/MessageReject.ts
 model/OrdSide.ts
@@ -19,7 +19,7 @@ model/OrderExecutionReport.ts
 model/OrderExecutionReportAllOf.ts
 model/OrderNewSingleRequest.ts
 model/Position.ts
-model/PositionData.ts
+model/PositionDataInner.ts
 model/RejectReason.ts
 model/TimeInForce.ts
 model/ValidationError.ts

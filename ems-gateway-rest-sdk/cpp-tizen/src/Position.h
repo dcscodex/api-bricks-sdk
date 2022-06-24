@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Position_data.h"
+#include "Position_data_inner.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setExchangeId(std::string  exchange_id);
 	/*! \brief Get 
 	 */
-	std::list<Position_data> getData();
+	std::list<Position_data_inner> getData();
 
 	/*! \brief Set 
 	 */
-	void setData(std::list <Position_data> data);
+	void setData(std::list <Position_data_inner> data);
 
 private:
 	std::string exchange_id;
-	std::list <Position_data>data;
+	std::list <Position_data_inner>data;
 	void __init();
 	void __cleanup();
 

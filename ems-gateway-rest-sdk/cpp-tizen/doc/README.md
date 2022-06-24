@@ -72,7 +72,7 @@ Method | HTTP request | Description
 Class | Description
 ------------- | -------------
  *Balance* | 
- *Balance_data* | 
+ *Balance_data_inner* | 
  *Fills* | 
  *MessageReject* | 
  *OrdSide* | Side of order. 
@@ -84,7 +84,7 @@ Class | Description
  *OrderExecutionReport_allOf* | The order execution report message.
  *OrderNewSingleRequest* | The new order message.
  *Position* | 
- *Position_data* | The Position object.
+ *Position_data_inner* | The Position object.
  *RejectReason* | Cause of rejection.
  *TimeInForce* | Order time in force options are documented in the separate section: <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters / Time in force</a> 
  *ValidationError* | 

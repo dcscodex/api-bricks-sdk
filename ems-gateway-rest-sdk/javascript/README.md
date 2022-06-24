@@ -199,7 +199,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [EmsRestApi.Balance](docs/Balance.md)
- - [EmsRestApi.BalanceData](docs/BalanceData.md)
+ - [EmsRestApi.BalanceDataInner](docs/BalanceDataInner.md)
  - [EmsRestApi.Fills](docs/Fills.md)
  - [EmsRestApi.MessageReject](docs/MessageReject.md)
  - [EmsRestApi.OrdSide](docs/OrdSide.md)
@@ -211,7 +211,7 @@ Class | Method | HTTP request | Description
  - [EmsRestApi.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [EmsRestApi.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [EmsRestApi.Position](docs/Position.md)
- - [EmsRestApi.PositionData](docs/PositionData.md)
+ - [EmsRestApi.PositionDataInner](docs/PositionDataInner.md)
  - [EmsRestApi.RejectReason](docs/RejectReason.md)
  - [EmsRestApi.TimeInForce](docs/TimeInForce.md)
  - [EmsRestApi.ValidationError](docs/ValidationError.md)

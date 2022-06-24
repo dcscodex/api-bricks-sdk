@@ -169,7 +169,7 @@ static bool v1OrdersCancelAllPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersCancelAllPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -338,7 +338,7 @@ static bool v1OrdersCancelPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersCancelPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -483,7 +483,7 @@ static bool v1OrdersGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -657,7 +657,7 @@ static bool v1OrdersPostHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -814,7 +814,7 @@ static bool v1OrdersStatusClientOrderIdGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = v1OrdersStatusClientOrderIdGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);

@@ -80,7 +80,7 @@ newtype ExchangeId = ExchangeId { unExchangeId :: Text } deriving (P.Eq, P.Show)
 -- | Balance
 data Balance = Balance
   { balanceExchangeId :: !(Maybe Text) -- ^ "exchange_id" - Exchange identifier used to identify the routing destination.
-  , balanceData :: !(Maybe [BalanceData]) -- ^ "data"
+  , balanceData :: !(Maybe [BalanceDataInner]) -- ^ "data"
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON Balance
@@ -108,23 +108,23 @@ mkBalance =
   , balanceData = Nothing
   }
 
--- ** BalanceData
--- | BalanceData
-data BalanceData = BalanceData
-  { balanceDataAssetIdExchange :: !(Maybe Text) -- ^ "asset_id_exchange" - Exchange currency code.
-  , balanceDataAssetIdCoinapi :: !(Maybe Text) -- ^ "asset_id_coinapi" - CoinAPI currency code.
-  , balanceDataBalance :: !(Maybe Double) -- ^ "balance" - Value of the current total currency balance on the exchange.
-  , balanceDataAvailable :: !(Maybe Double) -- ^ "available" - Value of the current available currency balance on the exchange that can be used as collateral.
-  , balanceDataLocked :: !(Maybe Double) -- ^ "locked" - Value of the current locked currency balance by the exchange.
-  , balanceDataLastUpdatedBy :: !(Maybe E'LastUpdatedBy) -- ^ "last_updated_by" - Source of the last modification. 
-  , balanceDataRateUsd :: !(Maybe Double) -- ^ "rate_usd" - Current exchange rate to the USD for the single unit of the currency. 
-  , balanceDataTraded :: !(Maybe Double) -- ^ "traded" - Value of the current total traded.
+-- ** BalanceDataInner
+-- | BalanceDataInner
+data BalanceDataInner = BalanceDataInner
+  { balanceDataInnerAssetIdExchange :: !(Maybe Text) -- ^ "asset_id_exchange" - Exchange currency code.
+  , balanceDataInnerAssetIdCoinapi :: !(Maybe Text) -- ^ "asset_id_coinapi" - CoinAPI currency code.
+  , balanceDataInnerBalance :: !(Maybe Double) -- ^ "balance" - Value of the current total currency balance on the exchange.
+  , balanceDataInnerAvailable :: !(Maybe Double) -- ^ "available" - Value of the current available currency balance on the exchange that can be used as collateral.
+  , balanceDataInnerLocked :: !(Maybe Double) -- ^ "locked" - Value of the current locked currency balance by the exchange.
+  , balanceDataInnerLastUpdatedBy :: !(Maybe E'LastUpdatedBy) -- ^ "last_updated_by" - Source of the last modification. 
+  , balanceDataInnerRateUsd :: !(Maybe Double) -- ^ "rate_usd" - Current exchange rate to the USD for the single unit of the currency. 
+  , balanceDataInnerTraded :: !(Maybe Double) -- ^ "traded" - Value of the current total traded.
   } deriving (P.Show, P.Eq, P.Typeable)
 
--- | FromJSON BalanceData
-instance A.FromJSON BalanceData where
-  parseJSON = A.withObject "BalanceData" $ \o ->
-    BalanceData
+-- | FromJSON BalanceDataInner
+instance A.FromJSON BalanceDataInner where
+  parseJSON = A.withObject "BalanceDataInner" $ \o ->
+    BalanceDataInner
       <$> (o .:? "asset_id_exchange")
       <*> (o .:? "asset_id_coinapi")
       <*> (o .:? "balance")
@@ -134,34 +134,34 @@ instance A.FromJSON BalanceData where
       <*> (o .:? "rate_usd")
       <*> (o .:? "traded")
 
--- | ToJSON BalanceData
-instance A.ToJSON BalanceData where
-  toJSON BalanceData {..} =
+-- | ToJSON BalanceDataInner
+instance A.ToJSON BalanceDataInner where
+  toJSON BalanceDataInner {..} =
    _omitNulls
-      [ "asset_id_exchange" .= balanceDataAssetIdExchange
-      , "asset_id_coinapi" .= balanceDataAssetIdCoinapi
-      , "balance" .= balanceDataBalance
-      , "available" .= balanceDataAvailable
-      , "locked" .= balanceDataLocked
-      , "last_updated_by" .= balanceDataLastUpdatedBy
-      , "rate_usd" .= balanceDataRateUsd
-      , "traded" .= balanceDataTraded
+      [ "asset_id_exchange" .= balanceDataInnerAssetIdExchange
+      , "asset_id_coinapi" .= balanceDataInnerAssetIdCoinapi
+      , "balance" .= balanceDataInnerBalance
+      , "available" .= balanceDataInnerAvailable
+      , "locked" .= balanceDataInnerLocked
+      , "last_updated_by" .= balanceDataInnerLastUpdatedBy
+      , "rate_usd" .= balanceDataInnerRateUsd
+      , "traded" .= balanceDataInnerTraded
       ]
 
 
--- | Construct a value of type 'BalanceData' (by applying it's required fields, if any)
-mkBalanceData
-  :: BalanceData
-mkBalanceData =
-  BalanceData
-  { balanceDataAssetIdExchange = Nothing
-  , balanceDataAssetIdCoinapi = Nothing
-  , balanceDataBalance = Nothing
-  , balanceDataAvailable = Nothing
-  , balanceDataLocked = Nothing
-  , balanceDataLastUpdatedBy = Nothing
-  , balanceDataRateUsd = Nothing
-  , balanceDataTraded = Nothing
+-- | Construct a value of type 'BalanceDataInner' (by applying it's required fields, if any)
+mkBalanceDataInner
+  :: BalanceDataInner
+mkBalanceDataInner =
+  BalanceDataInner
+  { balanceDataInnerAssetIdExchange = Nothing
+  , balanceDataInnerAssetIdCoinapi = Nothing
+  , balanceDataInnerBalance = Nothing
+  , balanceDataInnerAvailable = Nothing
+  , balanceDataInnerLocked = Nothing
+  , balanceDataInnerLastUpdatedBy = Nothing
+  , balanceDataInnerRateUsd = Nothing
+  , balanceDataInnerTraded = Nothing
   }
 
 -- ** Fills
@@ -577,7 +577,7 @@ mkOrderNewSingleRequest orderNewSingleRequestExchangeId orderNewSingleRequestCli
 -- | Position
 data Position = Position
   { positionExchangeId :: !(Maybe Text) -- ^ "exchange_id" - Exchange identifier used to identify the routing destination.
-  , positionData :: !(Maybe [PositionData]) -- ^ "data"
+  , positionData :: !(Maybe [PositionDataInner]) -- ^ "data"
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON Position
@@ -605,26 +605,26 @@ mkPosition =
   , positionData = Nothing
   }
 
--- ** PositionData
--- | PositionData
+-- ** PositionDataInner
+-- | PositionDataInner
 -- The Position object.
-data PositionData = PositionData
-  { positionDataSymbolIdExchange :: !(Maybe Text) -- ^ "symbol_id_exchange" - Exchange symbol.
-  , positionDataSymbolIdCoinapi :: !(Maybe Text) -- ^ "symbol_id_coinapi" - CoinAPI symbol.
-  , positionDataAvgEntryPrice :: !(Maybe Double) -- ^ "avg_entry_price" - Calculated average price of all fills on this position.
-  , positionDataQuantity :: !(Maybe Double) -- ^ "quantity" - The current position quantity.
-  , positionDataSide :: !(Maybe OrdSide) -- ^ "side"
-  , positionDataUnrealizedPnl :: !(Maybe Double) -- ^ "unrealized_pnl" - Unrealised profit or loss (PNL) of this position.
-  , positionDataLeverage :: !(Maybe Double) -- ^ "leverage" - Leverage for this position reported by the exchange.
-  , positionDataCrossMargin :: !(Maybe Bool) -- ^ "cross_margin" - Is cross margin mode enable for this position?
-  , positionDataLiquidationPrice :: !(Maybe Double) -- ^ "liquidation_price" - Liquidation price. If mark price will reach this value, the position will be liquidated.
-  , positionDataRawData :: !(Maybe A.Value) -- ^ "raw_data"
+data PositionDataInner = PositionDataInner
+  { positionDataInnerSymbolIdExchange :: !(Maybe Text) -- ^ "symbol_id_exchange" - Exchange symbol.
+  , positionDataInnerSymbolIdCoinapi :: !(Maybe Text) -- ^ "symbol_id_coinapi" - CoinAPI symbol.
+  , positionDataInnerAvgEntryPrice :: !(Maybe Double) -- ^ "avg_entry_price" - Calculated average price of all fills on this position.
+  , positionDataInnerQuantity :: !(Maybe Double) -- ^ "quantity" - The current position quantity.
+  , positionDataInnerSide :: !(Maybe OrdSide) -- ^ "side"
+  , positionDataInnerUnrealizedPnl :: !(Maybe Double) -- ^ "unrealized_pnl" - Unrealised profit or loss (PNL) of this position.
+  , positionDataInnerLeverage :: !(Maybe Double) -- ^ "leverage" - Leverage for this position reported by the exchange.
+  , positionDataInnerCrossMargin :: !(Maybe Bool) -- ^ "cross_margin" - Is cross margin mode enable for this position?
+  , positionDataInnerLiquidationPrice :: !(Maybe Double) -- ^ "liquidation_price" - Liquidation price. If mark price will reach this value, the position will be liquidated.
+  , positionDataInnerRawData :: !(Maybe A.Value) -- ^ "raw_data"
   } deriving (P.Show, P.Eq, P.Typeable)
 
--- | FromJSON PositionData
-instance A.FromJSON PositionData where
-  parseJSON = A.withObject "PositionData" $ \o ->
-    PositionData
+-- | FromJSON PositionDataInner
+instance A.FromJSON PositionDataInner where
+  parseJSON = A.withObject "PositionDataInner" $ \o ->
+    PositionDataInner
       <$> (o .:? "symbol_id_exchange")
       <*> (o .:? "symbol_id_coinapi")
       <*> (o .:? "avg_entry_price")
@@ -636,38 +636,38 @@ instance A.FromJSON PositionData where
       <*> (o .:? "liquidation_price")
       <*> (o .:? "raw_data")
 
--- | ToJSON PositionData
-instance A.ToJSON PositionData where
-  toJSON PositionData {..} =
+-- | ToJSON PositionDataInner
+instance A.ToJSON PositionDataInner where
+  toJSON PositionDataInner {..} =
    _omitNulls
-      [ "symbol_id_exchange" .= positionDataSymbolIdExchange
-      , "symbol_id_coinapi" .= positionDataSymbolIdCoinapi
-      , "avg_entry_price" .= positionDataAvgEntryPrice
-      , "quantity" .= positionDataQuantity
-      , "side" .= positionDataSide
-      , "unrealized_pnl" .= positionDataUnrealizedPnl
-      , "leverage" .= positionDataLeverage
-      , "cross_margin" .= positionDataCrossMargin
-      , "liquidation_price" .= positionDataLiquidationPrice
-      , "raw_data" .= positionDataRawData
+      [ "symbol_id_exchange" .= positionDataInnerSymbolIdExchange
+      , "symbol_id_coinapi" .= positionDataInnerSymbolIdCoinapi
+      , "avg_entry_price" .= positionDataInnerAvgEntryPrice
+      , "quantity" .= positionDataInnerQuantity
+      , "side" .= positionDataInnerSide
+      , "unrealized_pnl" .= positionDataInnerUnrealizedPnl
+      , "leverage" .= positionDataInnerLeverage
+      , "cross_margin" .= positionDataInnerCrossMargin
+      , "liquidation_price" .= positionDataInnerLiquidationPrice
+      , "raw_data" .= positionDataInnerRawData
       ]
 
 
--- | Construct a value of type 'PositionData' (by applying it's required fields, if any)
-mkPositionData
-  :: PositionData
-mkPositionData =
-  PositionData
-  { positionDataSymbolIdExchange = Nothing
-  , positionDataSymbolIdCoinapi = Nothing
-  , positionDataAvgEntryPrice = Nothing
-  , positionDataQuantity = Nothing
-  , positionDataSide = Nothing
-  , positionDataUnrealizedPnl = Nothing
-  , positionDataLeverage = Nothing
-  , positionDataCrossMargin = Nothing
-  , positionDataLiquidationPrice = Nothing
-  , positionDataRawData = Nothing
+-- | Construct a value of type 'PositionDataInner' (by applying it's required fields, if any)
+mkPositionDataInner
+  :: PositionDataInner
+mkPositionDataInner =
+  PositionDataInner
+  { positionDataInnerSymbolIdExchange = Nothing
+  , positionDataInnerSymbolIdCoinapi = Nothing
+  , positionDataInnerAvgEntryPrice = Nothing
+  , positionDataInnerQuantity = Nothing
+  , positionDataInnerSide = Nothing
+  , positionDataInnerUnrealizedPnl = Nothing
+  , positionDataInnerLeverage = Nothing
+  , positionDataInnerCrossMargin = Nothing
+  , positionDataInnerLiquidationPrice = Nothing
+  , positionDataInnerRawData = Nothing
   }
 
 -- ** ValidationError

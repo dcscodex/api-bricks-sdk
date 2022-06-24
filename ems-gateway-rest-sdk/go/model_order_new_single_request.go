@@ -75,7 +75,7 @@ func (o *OrderNewSingleRequest) GetExchangeId() string {
 // GetExchangeIdOk returns a tuple with the ExchangeId field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetExchangeIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExchangeId, true
@@ -99,7 +99,7 @@ func (o *OrderNewSingleRequest) GetClientOrderId() string {
 // GetClientOrderIdOk returns a tuple with the ClientOrderId field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetClientOrderIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientOrderId, true
@@ -187,7 +187,7 @@ func (o *OrderNewSingleRequest) GetAmountOrder() float32 {
 // GetAmountOrderOk returns a tuple with the AmountOrder field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetAmountOrderOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AmountOrder, true
@@ -211,7 +211,7 @@ func (o *OrderNewSingleRequest) GetPrice() float32 {
 // GetPriceOk returns a tuple with the Price field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetPriceOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Price, true
@@ -235,7 +235,7 @@ func (o *OrderNewSingleRequest) GetSide() OrdSide {
 // GetSideOk returns a tuple with the Side field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetSideOk() (*OrdSide, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Side, true
@@ -259,7 +259,7 @@ func (o *OrderNewSingleRequest) GetOrderType() OrdType {
 // GetOrderTypeOk returns a tuple with the OrderType field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetOrderTypeOk() (*OrdType, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.OrderType, true
@@ -283,7 +283,7 @@ func (o *OrderNewSingleRequest) GetTimeInForce() TimeInForce {
 // GetTimeInForceOk returns a tuple with the TimeInForce field value
 // and a boolean to check if the value has been set.
 func (o *OrderNewSingleRequest) GetTimeInForceOk() (*TimeInForce, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TimeInForce, true

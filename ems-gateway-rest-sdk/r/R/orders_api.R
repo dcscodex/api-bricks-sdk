@@ -10,7 +10,7 @@
 #' @title Orders operations
 #' @description openapi.Orders
 #' @format An \code{R6Class} generator object
-#' @field apiClient Handles the client-server communication.
+#' @field api_client Handles the client-server communication.
 #'
 #' @section Methods:
 #' \describe{
@@ -18,7 +18,7 @@
 #' This request cancels all open orders on single specified exchange.
 #'
 #' \itemize{
-#' \item \emph{ @param } order.cancel.all.request \link{OrderCancelAllRequest}
+#' \item \emph{ @param } order_cancel_all_request \link{OrderCancelAllRequest}
 #' \item \emph{ @returnType } \link{MessageReject} \cr
 #'
 #'
@@ -49,7 +49,7 @@
 #' Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
 #'
 #' \itemize{
-#' \item \emph{ @param } order.cancel.single.request \link{OrderCancelSingleRequest}
+#' \item \emph{ @param } order_cancel_single_request \link{OrderCancelSingleRequest}
 #' \item \emph{ @returnType } \link{OrderExecutionReport} \cr
 #'
 #'
@@ -80,7 +80,7 @@
 #' Get last execution reports for open orders across all or single exchange.
 #'
 #' \itemize{
-#' \item \emph{ @param } exchange.id character
+#' \item \emph{ @param } exchange_id character
 #' \item \emph{ @returnType } list( \link{OrderExecutionReport} ) \cr
 #'
 #'
@@ -104,7 +104,7 @@
 #' This request creating new order for the specific exchange.
 #'
 #' \itemize{
-#' \item \emph{ @param } order.new.single.request \link{OrderNewSingleRequest}
+#' \item \emph{ @param } order_new_single_request \link{OrderNewSingleRequest}
 #' \item \emph{ @returnType } \link{OrderExecutionReport} \cr
 #'
 #'
@@ -142,7 +142,7 @@
 #' Get the last order execution report for the specified order. The requested order does not need to be active or opened.
 #'
 #' \itemize{
-#' \item \emph{ @param } client.order.id character
+#' \item \emph{ @param } client_order_id character
 #' \item \emph{ @returnType } \link{OrderExecutionReport} \cr
 #'
 #'
@@ -170,56 +170,56 @@
 #' ####################  V1OrdersCancelAllPost  ####################
 #'
 #' library(openapi)
-#' var.order.cancel.all.request <- OrderCancelAllRequest$new() # OrderCancelAllRequest | OrderCancelAllRequest object.
+#' var.order_cancel_all_request <- OrderCancelAllRequest$new() # OrderCancelAllRequest | OrderCancelAllRequest object.
 #'
 #' #Cancel all orders request
 #' api.instance <- OrdersApi$new()
 #'
-#' result <- api.instance$V1OrdersCancelAllPost(var.order.cancel.all.request)
+#' result <- api.instance$V1OrdersCancelAllPost(var.order_cancel_all_request)
 #'
 #'
 #' ####################  V1OrdersCancelPost  ####################
 #'
 #' library(openapi)
-#' var.order.cancel.single.request <- OrderCancelSingleRequest$new() # OrderCancelSingleRequest | OrderCancelSingleRequest object.
+#' var.order_cancel_single_request <- OrderCancelSingleRequest$new() # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 #'
 #' #Cancel order request
 #' api.instance <- OrdersApi$new()
 #'
-#' result <- api.instance$V1OrdersCancelPost(var.order.cancel.single.request)
+#' result <- api.instance$V1OrdersCancelPost(var.order_cancel_single_request)
 #'
 #'
 #' ####################  V1OrdersGet  ####################
 #'
 #' library(openapi)
-#' var.exchange.id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
+#' var.exchange_id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
 #'
 #' #Get open orders
 #' api.instance <- OrdersApi$new()
 #'
-#' result <- api.instance$V1OrdersGet(exchange.id=var.exchange.id)
+#' result <- api.instance$V1OrdersGet(exchange_id=var.exchange_id)
 #'
 #'
 #' ####################  V1OrdersPost  ####################
 #'
 #' library(openapi)
-#' var.order.new.single.request <- OrderNewSingleRequest$new() # OrderNewSingleRequest | OrderNewSingleRequest object.
+#' var.order_new_single_request <- OrderNewSingleRequest$new() # OrderNewSingleRequest | OrderNewSingleRequest object.
 #'
 #' #Send new order
 #' api.instance <- OrdersApi$new()
 #'
-#' result <- api.instance$V1OrdersPost(var.order.new.single.request)
+#' result <- api.instance$V1OrdersPost(var.order_new_single_request)
 #'
 #'
 #' ####################  V1OrdersStatusClientOrderIdGet  ####################
 #'
 #' library(openapi)
-#' var.client.order.id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
+#' var.client_order_id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
 #'
 #' #Get order execution report
 #' api.instance <- OrdersApi$new()
 #'
-#' result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client.order.id)
+#' result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client_order_id)
 #'
 #'
 #' }
@@ -227,273 +227,296 @@
 #' @importFrom base64enc base64encode
 #' @export
 OrdersApi <- R6::R6Class(
-  'OrdersApi',
+  "OrdersApi",
   public = list(
-    apiClient = NULL,
-    initialize = function(apiClient){
-      if (!missing(apiClient)) {
-        self$apiClient <- apiClient
+    api_client = NULL,
+    initialize = function(api_client) {
+      if (!missing(api_client)) {
+        self$api_client <- api_client
       }
       else {
-        self$apiClient <- ApiClient$new()
+        self$api_client <- ApiClient$new()
       }
     },
-    V1OrdersCancelAllPost = function(order.cancel.all.request, ...){
-      apiResponse <- self$V1OrdersCancelAllPostWithHttpInfo(order.cancel.all.request, ...)
-      resp <- apiResponse$response
+    V1OrdersCancelAllPost = function(order_cancel_all_request, data_file=NULL, ...) {
+      api_response <- self$V1OrdersCancelAllPostWithHttpInfo(order_cancel_all_request, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1OrdersCancelAllPostWithHttpInfo = function(order.cancel.all.request, ...){
+    V1OrdersCancelAllPostWithHttpInfo = function(order_cancel_all_request, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
+      query_params <- list()
+      header_params <- c()
 
-      if (missing(`order.cancel.all.request`)) {
-        stop("Missing required parameter `order.cancel.all.request`.")
+      if (missing(`order_cancel_all_request`)) {
+        stop("Missing required parameter `order_cancel_all_request`.")
       }
 
-      if (!missing(`order.cancel.all.request`)) {
-        body <- `order.cancel.all.request`$toJSONString()
+      if (!missing(`order_cancel_all_request`)) {
+        body <- `order_cancel_all_request`$toJSONString()
       } else {
         body <- NULL
       }
 
-      urlPath <- "/v1/orders/cancel/all"
+      url_path <- "/v1/orders/cancel/all"
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "MessageReject", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "MessageReject", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
     },
-    V1OrdersCancelPost = function(order.cancel.single.request, ...){
-      apiResponse <- self$V1OrdersCancelPostWithHttpInfo(order.cancel.single.request, ...)
-      resp <- apiResponse$response
+    V1OrdersCancelPost = function(order_cancel_single_request, data_file=NULL, ...) {
+      api_response <- self$V1OrdersCancelPostWithHttpInfo(order_cancel_single_request, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1OrdersCancelPostWithHttpInfo = function(order.cancel.single.request, ...){
+    V1OrdersCancelPostWithHttpInfo = function(order_cancel_single_request, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
+      query_params <- list()
+      header_params <- c()
 
-      if (missing(`order.cancel.single.request`)) {
-        stop("Missing required parameter `order.cancel.single.request`.")
+      if (missing(`order_cancel_single_request`)) {
+        stop("Missing required parameter `order_cancel_single_request`.")
       }
 
-      if (!missing(`order.cancel.single.request`)) {
-        body <- `order.cancel.single.request`$toJSONString()
+      if (!missing(`order_cancel_single_request`)) {
+        body <- `order_cancel_single_request`$toJSONString()
       } else {
         body <- NULL
       }
 
-      urlPath <- "/v1/orders/cancel"
+      url_path <- "/v1/orders/cancel"
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
     },
-    V1OrdersGet = function(exchange.id=NULL, ...){
-      apiResponse <- self$V1OrdersGetWithHttpInfo(exchange.id, ...)
-      resp <- apiResponse$response
+    V1OrdersGet = function(exchange_id=NULL, data_file=NULL, ...) {
+      api_response <- self$V1OrdersGetWithHttpInfo(exchange_id, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1OrdersGetWithHttpInfo = function(exchange.id=NULL, ...){
+    V1OrdersGetWithHttpInfo = function(exchange_id=NULL, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
-
-      queryParams['exchange_id'] <- exchange.id
+      query_params <- list()
+      header_params <- c()
 
       body <- NULL
-      urlPath <- "/v1/orders"
+      url_path <- "/v1/orders"
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "array[OrderExecutionReport]", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "array[OrderExecutionReport]", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
     },
-    V1OrdersPost = function(order.new.single.request, ...){
-      apiResponse <- self$V1OrdersPostWithHttpInfo(order.new.single.request, ...)
-      resp <- apiResponse$response
+    V1OrdersPost = function(order_new_single_request, data_file=NULL, ...) {
+      api_response <- self$V1OrdersPostWithHttpInfo(order_new_single_request, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1OrdersPostWithHttpInfo = function(order.new.single.request, ...){
+    V1OrdersPostWithHttpInfo = function(order_new_single_request, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
+      query_params <- list()
+      header_params <- c()
 
-      if (missing(`order.new.single.request`)) {
-        stop("Missing required parameter `order.new.single.request`.")
+      if (missing(`order_new_single_request`)) {
+        stop("Missing required parameter `order_new_single_request`.")
       }
 
-      if (!missing(`order.new.single.request`)) {
-        body <- `order.new.single.request`$toJSONString()
+      if (!missing(`order_new_single_request`)) {
+        body <- `order_new_single_request`$toJSONString()
       } else {
         body <- NULL
       }
 
-      urlPath <- "/v1/orders"
+      url_path <- "/v1/orders"
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
     },
-    V1OrdersStatusClientOrderIdGet = function(client.order.id, ...){
-      apiResponse <- self$V1OrdersStatusClientOrderIdGetWithHttpInfo(client.order.id, ...)
-      resp <- apiResponse$response
+    V1OrdersStatusClientOrderIdGet = function(client_order_id, data_file=NULL, ...) {
+      api_response <- self$V1OrdersStatusClientOrderIdGetWithHttpInfo(client_order_id, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1OrdersStatusClientOrderIdGetWithHttpInfo = function(client.order.id, ...){
+    V1OrdersStatusClientOrderIdGetWithHttpInfo = function(client_order_id, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
+      query_params <- list()
+      header_params <- c()
 
-      if (missing(`client.order.id`)) {
-        stop("Missing required parameter `client.order.id`.")
+      if (missing(`client_order_id`)) {
+        stop("Missing required parameter `client_order_id`.")
       }
 
       body <- NULL
-      urlPath <- "/v1/orders/status/{client_order_id}"
-      if (!missing(`client.order.id`)) {
-        urlPath <- gsub(paste0("\\{", "client_order_id", "\\}"), URLencode(as.character(`client.order.id`), reserved = TRUE), urlPath)
+      url_path <- "/v1/orders/status/{client_order_id}"
+      if (!missing(`client_order_id`)) {
+        url_path <- gsub(paste0("\\{", "client_order_id", "\\}"), URLencode(as.character(`client_order_id`), reserved = TRUE), url_path)
       }
 
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "OrderExecutionReport", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

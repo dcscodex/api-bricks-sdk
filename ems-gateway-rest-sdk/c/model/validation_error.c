@@ -54,43 +54,43 @@ cJSON *validation_error_convertToJSON(validation_error_t *validation_error) {
     cJSON *item = cJSON_CreateObject();
 
     // validation_error->type
-    if(validation_error->type) { 
+    if(validation_error->type) {
     if(cJSON_AddStringToObject(item, "type", validation_error->type) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // validation_error->title
-    if(validation_error->title) { 
+    if(validation_error->title) {
     if(cJSON_AddStringToObject(item, "title", validation_error->title) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // validation_error->status
-    if(validation_error->status) { 
+    if(validation_error->status) {
     if(cJSON_AddNumberToObject(item, "status", validation_error->status) == NULL) {
     goto fail; //Numeric
     }
-     } 
+    }
 
 
     // validation_error->trace_id
-    if(validation_error->trace_id) { 
+    if(validation_error->trace_id) {
     if(cJSON_AddStringToObject(item, "traceId", validation_error->trace_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // validation_error->errors
-    if(validation_error->errors) { 
+    if(validation_error->errors) {
     if(cJSON_AddStringToObject(item, "errors", validation_error->errors) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
     return item;
 fail:

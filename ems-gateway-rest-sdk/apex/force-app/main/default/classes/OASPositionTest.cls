@@ -79,7 +79,7 @@ private class OASPositionTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASPosition position = new OASPosition();
-        System.assertEquals(new List<OASPositionData>(), position.data);
+        System.assertEquals(new List<OASPositionDataInner>(), position.data);
         System.assertEquals(null, position.exchangeId);
     }
 }

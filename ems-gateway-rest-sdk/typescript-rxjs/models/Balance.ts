@@ -11,8 +11,8 @@
  * Do not edit the class manually.
  */
 
-import {
-    BalanceData,
+import type {
+    BalanceDataInner,
 } from './';
 
 /**
@@ -27,8 +27,8 @@ export interface Balance {
      */
     exchange_id?: string;
     /**
-     * @type {Array<BalanceData>}
+     * @type {Array<BalanceDataInner>}
      * @memberof Balance
      */
-    data?: Array<BalanceData>;
+    data?: Array<BalanceDataInner>;
 }

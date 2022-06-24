@@ -57,12 +57,14 @@ PositionsAPI_v1PositionsGet(apiClient_t *apiClient, char * exchange_id )
                     localVarBodyParameters,
                     "GET");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","Collection of positons.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Exchange is unreachable.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Collection of positons.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Exchange is unreachable.");
+    //}
     cJSON *PositionsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     if(!cJSON_IsArray(PositionsAPIlocalVarJSON)) {
         return 0;//nonprimitive container

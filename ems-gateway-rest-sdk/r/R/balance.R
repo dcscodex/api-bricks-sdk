@@ -15,7 +15,7 @@
 #'
 #' @field exchange_id  character [optional]
 #'
-#' @field data  list( \link{BalanceData} ) [optional]
+#' @field data  list( \link{BalanceDataInner} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -58,7 +58,7 @@ Balance <- R6::R6Class(
         self$`exchange_id` <- BalanceObject$`exchange_id`
       }
       if (!is.null(BalanceObject$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(BalanceObject$`data`, "array[BalanceData]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(BalanceObject$`data`, "array[BalanceDataInner]", loadNamespace("openapi"))
       }
       self
     },
@@ -85,7 +85,7 @@ Balance <- R6::R6Class(
     fromJSONString = function(BalanceJson) {
       BalanceObject <- jsonlite::fromJSON(BalanceJson)
       self$`exchange_id` <- BalanceObject$`exchange_id`
-      self$`data` <- ApiClient$new()$deserializeObj(BalanceObject$`data`, "array[BalanceData]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(BalanceObject$`data`, "array[BalanceDataInner]", loadNamespace("openapi"))
       self
     }
   )

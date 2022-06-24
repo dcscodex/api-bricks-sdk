@@ -1,4 +1,4 @@
-# openapi
+# openapi (EXPERIMENTAL)
 This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
 <br/>
 This API is also available in the Postman application: <a href=\"https://postman.coinapi.io/\" target=\"_blank\">https://postman.coinapi.io/</a>      
@@ -73,25 +73,31 @@ For more information, please visit [https://www.coinapi.io](https://www.coinapi.
 
 ## Requirements
 
-Dart 2.7.0 or later OR Flutter 1.12 or later
+* Dart 2.12.0 or later OR Flutter 1.26.0 or later
+* Dio 4.0.0+
 
 ## Installation & Usage
 
-### Github
-If this Dart package is published to Github, please include the following in pubspec.yaml
-```
-name: openapi
-version: 1.0.0
-description: OpenAPI API client
+### pub.dev
+To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
+```yaml
 dependencies:
-  openapi:
-    git: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-      version: 'any'
+  openapi: 1.0.0
 ```
 
-### Local
-To use the package in your local drive, please include the following in pubspec.yaml
+### Github
+If this Dart package is published to Github, please include the following in pubspec.yaml
+```yaml
+dependencies:
+  openapi:
+    git:
+      url: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+      #ref: main
 ```
+
+### Local development
+To use the package from your local drive, please include the following in pubspec.yaml
+```yaml
 dependencies:
   openapi:
     path: /path/to/openapi
@@ -102,16 +108,16 @@ dependencies:
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```dart
-import 'package:openapi/api.dart';
+import 'package:openapi/openapi.dart';
 
 
-final api = BalancesApi();
-final exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
+final api = Openapi().getBalancesApi();
+final String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 
 try {
     final response = await api.v1BalancesGet(exchangeId);
     print(response);
-} catch (e) {
+} catch on DioError (e) {
     print("Exception when calling BalancesApi->v1BalancesGet: $e\n");
 }
 
@@ -123,19 +129,19 @@ All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BalancesApi* | [**v1BalancesGet**](doc/BalancesApi.md#v1balancesget) | **GET** /v1/balances | Get balances
-*OrdersApi* | [**v1OrdersCancelAllPost**](doc/OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request
-*OrdersApi* | [**v1OrdersCancelPost**](doc/OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request
-*OrdersApi* | [**v1OrdersGet**](doc/OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders
-*OrdersApi* | [**v1OrdersPost**](doc/OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order
-*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](doc/OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
-*PositionsApi* | [**v1PositionsGet**](doc/PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions
+[*BalancesApi*](doc/BalancesApi.md) | [**v1BalancesGet**](doc/BalancesApi.md#v1balancesget) | **GET** /v1/balances | Get balances
+[*OrdersApi*](doc/OrdersApi.md) | [**v1OrdersCancelAllPost**](doc/OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+[*OrdersApi*](doc/OrdersApi.md) | [**v1OrdersCancelPost**](doc/OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request
+[*OrdersApi*](doc/OrdersApi.md) | [**v1OrdersGet**](doc/OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders
+[*OrdersApi*](doc/OrdersApi.md) | [**v1OrdersPost**](doc/OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order
+[*OrdersApi*](doc/OrdersApi.md) | [**v1OrdersStatusClientOrderIdGet**](doc/OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+[*PositionsApi*](doc/PositionsApi.md) | [**v1PositionsGet**](doc/PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation For Models
 
  - [Balance](doc/Balance.md)
- - [BalanceData](doc/BalanceData.md)
+ - [BalanceDataInner](doc/BalanceDataInner.md)
  - [Fills](doc/Fills.md)
  - [MessageReject](doc/MessageReject.md)
  - [OrdSide](doc/OrdSide.md)
@@ -147,7 +153,7 @@ Class | Method | HTTP request | Description
  - [OrderExecutionReportAllOf](doc/OrderExecutionReportAllOf.md)
  - [OrderNewSingleRequest](doc/OrderNewSingleRequest.md)
  - [Position](doc/Position.md)
- - [PositionData](doc/PositionData.md)
+ - [PositionDataInner](doc/PositionDataInner.md)
  - [RejectReason](doc/RejectReason.md)
  - [TimeInForce](doc/TimeInForce.md)
  - [ValidationError](doc/ValidationError.md)

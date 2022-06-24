@@ -3,7 +3,7 @@
 
 context("Test OrderExecutionReport")
 
-model.instance <- OrderExecutionReport$new()
+model_instance <- OrderExecutionReport$new()
 
 test_that("exchange_id", {
   # tests for the property `exchange_id` (character)
@@ -160,4 +160,3 @@ test_that("fills", {
   # uncomment below to test the property
   #expect_equal(model.instance$`fills`, "EXPECTED_RESULT")
 })
-

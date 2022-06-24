@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import PositionData from './PositionData';
+import PositionDataInner from './PositionDataInner';
 
 /**
  * The Position model module.
@@ -52,7 +52,7 @@ class Position {
                 obj['exchange_id'] = ApiClient.convertToType(data['exchange_id'], 'String');
             }
             if (data.hasOwnProperty('data')) {
-                obj['data'] = ApiClient.convertToType(data['data'], [PositionData]);
+                obj['data'] = ApiClient.convertToType(data['data'], [PositionDataInner]);
             }
         }
         return obj;
@@ -68,7 +68,7 @@ class Position {
 Position.prototype['exchange_id'] = undefined;
 
 /**
- * @member {Array.<module:model/PositionData>} data
+ * @member {Array.<module:model/PositionDataInner>} data
  */
 Position.prototype['data'] = undefined;
 

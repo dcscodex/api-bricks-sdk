@@ -49,26 +49,25 @@ cJSON *order_cancel_single_request_convertToJSON(order_cancel_single_request_t *
     if (!order_cancel_single_request->exchange_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "exchange_id", order_cancel_single_request->exchange_id) == NULL) {
     goto fail; //String
     }
 
 
     // order_cancel_single_request->exchange_order_id
-    if(order_cancel_single_request->exchange_order_id) { 
+    if(order_cancel_single_request->exchange_order_id) {
     if(cJSON_AddStringToObject(item, "exchange_order_id", order_cancel_single_request->exchange_order_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_cancel_single_request->client_order_id
-    if(order_cancel_single_request->client_order_id) { 
+    if(order_cancel_single_request->client_order_id) {
     if(cJSON_AddStringToObject(item, "client_order_id", order_cancel_single_request->client_order_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
     return item;
 fail:

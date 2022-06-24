@@ -3,17 +3,16 @@
 
 context("Test PositionsApi")
 
-api.instance <- PositionsApi$new()
+api_instance <- PositionsApi$new()
 
 test_that("V1PositionsGet", {
   # tests for V1PositionsGet
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Get open positions
   # Get current open positions across all or single exchange.
-  # @param exchange.id character Filter the balances to the specific exchange. (optional)
+  # @param exchange_id character Filter the balances to the specific exchange. (optional)
   # @return [array[Position]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-

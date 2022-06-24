@@ -34,12 +34,17 @@ set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 1)
 
-find_package(CURL 7.58.0 REQUIRED)
-if(CURL_FOUND)
+if( (DEFINED CURL_INCLUDE_DIR) AND (DEFINED CURL_LIBRARIES))
     include_directories(${CURL_INCLUDE_DIR})
     set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${CURL_LIBRARIES} )
-else(CURL_FOUND)
-    message(FATAL_ERROR "Could not find the CURL library and development files.")
+else()
+    find_package(CURL 7.58.0 REQUIRED)
+    if(CURL_FOUND)
+        include_directories(${CURL_INCLUDE_DIR})
+        set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${CURL_LIBRARIES} )
+    else(CURL_FOUND)
+        message(FATAL_ERROR "Could not find the CURL library and development files.")
+    endif()
 endif()
 
 set(SRCS
@@ -50,7 +55,7 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/balance.c
-    model/balance_data.c
+    model/balance_data_inner.c
     model/fills.c
     model/message_reject.c
     model/ord_side.c
@@ -62,7 +67,7 @@ set(SRCS
     model/order_execution_report_all_of.c
     model/order_new_single_request.c
     model/position.c
-    model/position_data.c
+    model/position_data_inner.c
     model/reject_reason.c
     model/time_in_force.c
     model/validation_error.c
@@ -80,7 +85,7 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/balance.h
-    model/balance_data.h
+    model/balance_data_inner.h
     model/fills.h
     model/message_reject.h
     model/ord_side.h
@@ -92,7 +97,7 @@ set(HDRS
     model/order_execution_report_all_of.h
     model/order_new_single_request.h
     model/position.h
-    model/position_data.h
+    model/position_data_inner.h
     model/reject_reason.h
     model/time_in_force.h
     model/validation_error.h

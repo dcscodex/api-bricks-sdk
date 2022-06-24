@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExchangeId** | Pointer to **string** | Exchange identifier used to identify the routing destination. | [optional] 
-**Data** | Pointer to [**[]PositionData**](PositionData.md) |  | [optional] 
+**Data** | Pointer to [**[]PositionDataInner**](PositionDataInner.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasExchangeId returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *Position) GetData() []PositionData`
+`func (o *Position) GetData() []PositionDataInner`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *Position) GetDataOk() (*[]PositionData, bool)`
+`func (o *Position) GetDataOk() (*[]PositionDataInner, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *Position) SetData(v []PositionData)`
+`func (o *Position) SetData(v []PositionDataInner)`
 
 SetData sets Data field to given value.
 

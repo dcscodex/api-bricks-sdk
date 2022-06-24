@@ -37,7 +37,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// </summary>
         /// <param name="exchangeId">Exchange identifier used to identify the routing destination..</param>
         /// <param name="data">data.</param>
-        public Balance(string exchangeId = default(string), List<BalanceData> data = default(List<BalanceData>))
+        public Balance(string exchangeId = default(string), List<BalanceDataInner> data = default(List<BalanceDataInner>))
         {
             this.ExchangeId = exchangeId;
             this.Data = data;
@@ -54,7 +54,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = false)]
-        public List<BalanceData> Data { get; set; }
+        public List<BalanceDataInner> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

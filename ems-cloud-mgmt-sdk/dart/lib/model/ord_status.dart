@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class OrdStatus {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -46,13 +46,20 @@ class OrdStatus {
     REJECTED,
   ];
 
-  static OrdStatus fromJson(dynamic value) =>
-    OrdStatusTypeTransformer().decode(value);
+  static OrdStatus? fromJson(dynamic value) => OrdStatusTypeTransformer().decode(value);
 
-  static List<OrdStatus> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrdStatus.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrdStatus>[];
+  static List<OrdStatus>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrdStatus>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrdStatus.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [OrdStatus] to String,
@@ -72,7 +79,7 @@ class OrdStatusTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  OrdStatus decode(dynamic data, {bool allowNull}) {
+  OrdStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data.toString()) {
         case r'RECEIVED': return OrdStatus.RECEIVED;
@@ -85,7 +92,7 @@ class OrdStatusTypeTransformer {
         case r'CANCELED': return OrdStatus.CANCELED;
         case r'REJECTED': return OrdStatus.REJECTED;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -94,6 +101,6 @@ class OrdStatusTypeTransformer {
   }
 
   /// Singleton [OrdStatusTypeTransformer] instance.
-  static OrdStatusTypeTransformer _instance;
+  static OrdStatusTypeTransformer? _instance;
 }
 

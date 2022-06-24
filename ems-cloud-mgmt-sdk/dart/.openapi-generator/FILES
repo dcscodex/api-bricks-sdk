@@ -4,7 +4,7 @@
 README.md
 analysis_options.yaml
 doc/Balance.md
-doc/BalanceData.md
+doc/BalanceDataInner.md
 doc/BalancesApi.md
 doc/Fills.md
 doc/MessageReject.md
@@ -18,7 +18,7 @@ doc/OrderExecutionReportAllOf.md
 doc/OrderNewSingleRequest.md
 doc/OrdersApi.md
 doc/Position.md
-doc/PositionData.md
+doc/PositionDataInner.md
 doc/PositionsApi.md
 doc/RejectReason.md
 doc/TimeInForce.md
@@ -37,7 +37,7 @@ lib/auth/http_basic_auth.dart
 lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/balance.dart
-lib/model/balance_data.dart
+lib/model/balance_data_inner.dart
 lib/model/fills.dart
 lib/model/message_reject.dart
 lib/model/ord_side.dart
@@ -49,12 +49,12 @@ lib/model/order_execution_report.dart
 lib/model/order_execution_report_all_of.dart
 lib/model/order_new_single_request.dart
 lib/model/position.dart
-lib/model/position_data.dart
+lib/model/position_data_inner.dart
 lib/model/reject_reason.dart
 lib/model/time_in_force.dart
 lib/model/validation_error.dart
 pubspec.yaml
-test/balance_data_test.dart
+test/balance_data_inner_test.dart
 test/balance_test.dart
 test/balances_api_test.dart
 test/fills_test.dart
@@ -68,7 +68,7 @@ test/order_execution_report_all_of_test.dart
 test/order_execution_report_test.dart
 test/order_new_single_request_test.dart
 test/orders_api_test.dart
-test/position_data_test.dart
+test/position_data_inner_test.dart
 test/position_test.dart
 test/positions_api_test.dart
 test/reject_reason_test.dart

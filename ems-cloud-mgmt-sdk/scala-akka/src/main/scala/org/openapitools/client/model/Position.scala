@@ -16,6 +16,6 @@ import org.openapitools.client.core.ApiModel
 case class Position (
   /* Exchange identifier used to identify the routing destination. */
   exchangeId: Option[String] = None,
-  data: Option[Seq[PositionData]] = None
+  data: Option[Seq[PositionDataInner]] = None
 ) extends ApiModel
 

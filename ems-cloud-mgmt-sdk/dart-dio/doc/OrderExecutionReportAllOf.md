@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **amountFilled** | **num** | Total quantity filled. | 
 **avgPx** | **num** | Calculated average price of all fills on this order. | [optional] 
 **status** | [**OrdStatus**](OrdStatus.md) |  | 
-**statusHistory** | [**BuiltList<BuiltList<String>>**](BuiltList.md) | Timestamped history of order status changes. | [optional] 
+**statusHistory** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | Timestamped history of order status changes. | [optional] 
 **errorMessage** | **String** | Error message. | [optional] 
-**fills** | [**BuiltList<Fills>**](Fills.md) | Relay fill information on working orders. | [optional] 
+**fills** | [**BuiltList&lt;Fills&gt;**](Fills.md) | Relay fill information on working orders. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

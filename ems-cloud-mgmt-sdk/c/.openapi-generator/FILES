@@ -12,7 +12,7 @@ docs/BalancesAPI.md
 docs/OrdersAPI.md
 docs/PositionsAPI.md
 docs/balance.md
-docs/balance_data.md
+docs/balance_data_inner.md
 docs/fills.md
 docs/message_reject.md
 docs/ord_side.md
@@ -24,7 +24,7 @@ docs/order_execution_report.md
 docs/order_execution_report_all_of.md
 docs/order_new_single_request.md
 docs/position.md
-docs/position_data.md
+docs/position_data_inner.md
 docs/reject_reason.md
 docs/time_in_force.md
 docs/validation_error.md
@@ -38,8 +38,8 @@ include/list.h
 libcurl.licence
 model/balance.c
 model/balance.h
-model/balance_data.c
-model/balance_data.h
+model/balance_data_inner.c
+model/balance_data_inner.h
 model/fills.c
 model/fills.h
 model/message_reject.c
@@ -64,8 +64,8 @@ model/order_new_single_request.c
 model/order_new_single_request.h
 model/position.c
 model/position.h
-model/position_data.c
-model/position_data.h
+model/position_data_inner.c
+model/position_data_inner.h
 model/reject_reason.c
 model/reject_reason.h
 model/time_in_force.c
@@ -78,7 +78,7 @@ src/binary.c
 src/list.c
 uncrustify-rules.cfg
 unit-test/test_balance.c
-unit-test/test_balance_data.c
+unit-test/test_balance_data_inner.c
 unit-test/test_fills.c
 unit-test/test_message_reject.c
 unit-test/test_ord_side.c
@@ -90,7 +90,7 @@ unit-test/test_order_execution_report.c
 unit-test/test_order_execution_report_all_of.c
 unit-test/test_order_new_single_request.c
 unit-test/test_position.c
-unit-test/test_position_data.c
+unit-test/test_position_data_inner.c
 unit-test/test_reject_reason.c
 unit-test/test_time_in_force.c
 unit-test/test_validation_error.c

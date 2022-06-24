@@ -53,8 +53,8 @@ externalDocs:
 servers:
 - url: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 tags:
-- description: |
-    Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
+- description: "Order statuses and the lifecycle are documented in the separate section:\
+    \ <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a>\n"
   name: Orders
 - name: Balances
 - name: Positions
@@ -127,7 +127,7 @@ paths:
       summary: Send new order
       tags:
       - Orders
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /v1/orders/status/{client_order_id}:
     get:
@@ -194,7 +194,7 @@ paths:
       summary: Cancel order request
       tags:
       - Orders
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /v1/orders/cancel/all:
     post:
@@ -228,7 +228,7 @@ paths:
       summary: Cancel all orders request
       tags:
       - Orders
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /v1/balances:
     get:
@@ -317,13 +317,15 @@ components:
           example: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
           type: string
         symbol_id_exchange:
-          description: Exchange symbol. One of the properties (`symbol_id_exchange`,
-            `symbol_id_coinapi`) is required to identify the market for the new order.
+          description: "Exchange symbol. One of the properties (`symbol_id_exchange`,\
+            \ `symbol_id_coinapi`) is required to identify the market for the new\
+            \ order."
           example: XBT/USDT
           type: string
         symbol_id_coinapi:
-          description: CoinAPI symbol. One of the properties (`symbol_id_exchange`,
-            `symbol_id_coinapi`) is required to identify the market for the new order.
+          description: "CoinAPI symbol. One of the properties (`symbol_id_exchange`,\
+            \ `symbol_id_coinapi`) is required to identify the market for the new\
+            \ order."
           example: KRAKEN_SPOT_BTC_USDT
           type: string
         amount_order:
@@ -346,8 +348,9 @@ components:
           example: 2020-01-01T10:45:20.1677709Z
           type: date
         exec_inst:
-          description: |
-            Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
+          description: "Order execution instructions are documented in the separate\
+            \ section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order\
+            \ parameters / Execution instructions</a>\n"
           example:
           - MAKER_OR_CANCEL
           items:
@@ -378,15 +381,15 @@ components:
           example: KRAKEN
           type: string
         exchange_order_id:
-          description: Unique identifier of the order assigned by the exchange or
-            executing system. One of the properties (`exchange_order_id`, `client_order_id`)
-            is required to identify the new order.
+          description: "Unique identifier of the order assigned by the exchange or\
+            \ executing system. One of the properties (`exchange_order_id`, `client_order_id`)\
+            \ is required to identify the new order."
           example: "3456456754"
           type: string
         client_order_id:
-          description: The unique identifier of the order assigned by the client.
-            One of the properties (`exchange_order_id`, `client_order_id`) is required
-            to identify the new order.
+          description: "The unique identifier of the order assigned by the client.\
+            \ One of the properties (`exchange_order_id`, `client_order_id`) is required\
+            \ to identify the new order."
           example: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
           type: string
       required:
@@ -447,7 +450,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Balance_data'
+            $ref: '#/components/schemas/Balance_data_inner'
           type: array
       type: object
     Positions:
@@ -486,12 +489,12 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Position_data'
+            $ref: '#/components/schemas/Position_data_inner'
           type: array
       type: object
     OrdStatus:
-      description: |
-        Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
+      description: "Order statuses and the lifecycle are documented in the separate\
+        \ section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a>\n"
       enum:
       - RECEIVED
       - ROUTING
@@ -512,15 +515,16 @@ components:
       example: BUY
       type: string
     OrdType:
-      description: |
-        Order types are documented in the separate section: <a href="#ems-order-params-type">EMS / Starter Guide / Order parameters / Order type</a>
+      description: "Order types are documented in the separate section: <a href=\"\
+        #ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a>\n"
       enum:
       - LIMIT
       example: LIMIT
       type: string
     TimeInForce:
-      description: |
-        Order time in force options are documented in the separate section: <a href="#ems-order-params-tif">EMS / Starter Guide / Order parameters / Time in force</a>
+      description: "Order time in force options are documented in the separate section:\
+        \ <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters\
+        \ / Time in force</a>\n"
       enum:
       - GOOD_TILL_CANCEL
       - GOOD_TILL_TIME_EXCHANGE
@@ -530,8 +534,9 @@ components:
       example: GOOD_TILL_CANCEL
       type: string
     ExecInst:
-      description: |
-        Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
+      description: "Order execution instructions are documented in the separate section:\
+        \ <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters\
+        \ / Execution instructions</a>\n"
       example:
       - MAKER_OR_CANCEL
       items:
@@ -562,29 +567,31 @@ components:
     MessageReject:
       example:
         exchange_id: BINANCE
-        rejected_message: '{"client_order_id":"BINANCE-7d8a-4888","exchange_id":"BINANCE","type":"ORDER_CANCEL_SINGLE_REQUEST"}'
+        rejected_message: "{\"client_order_id\":\"BINANCE-7d8a-4888\",\"exchange_id\"\
+          :\"BINANCE\",\"type\":\"ORDER_CANCEL_SINGLE_REQUEST\"}"
         reject_reason: ORDER_ID_NOT_FOUND
         type: MESSAGE_REJECT
-        message: 'Order with ID: BINANCE-7d8a-4888 not found'
+        message: "Order with ID: BINANCE-7d8a-4888 not found"
       properties:
         type:
-          description: Message type, constant.
+          description: "Message type, constant."
           example: MESSAGE_REJECT
           type: string
         reject_reason:
           $ref: '#/components/schemas/RejectReason'
         exchange_id:
-          description: If the message related to exchange, then the identifier of
-            the exchange will be provided.
+          description: "If the message related to exchange, then the identifier of\
+            \ the exchange will be provided."
           example: BINANCE
           type: string
         message:
           description: Message text.
-          example: 'Order with ID: BINANCE-7d8a-4888 not found'
+          example: "Order with ID: BINANCE-7d8a-4888 not found"
           type: string
         rejected_message:
-          description: Value of rejected request, if available.
-          example: '{"client_order_id":"BINANCE-7d8a-4888","exchange_id":"BINANCE","type":"ORDER_CANCEL_SINGLE_REQUEST"}'
+          description: "Value of rejected request, if available."
+          example: "{\"client_order_id\":\"BINANCE-7d8a-4888\",\"exchange_id\":\"\
+            BINANCE\",\"type\":\"ORDER_CANCEL_SINGLE_REQUEST\"}"
           type: string
       title: MessageReject object.
       type: object
@@ -648,15 +655,16 @@ components:
           description: Timestamped history of order status changes.
           items:
             items:
-              example: '[["RECEIVED","2020-05-27T11:16:20.1677709Z"],["REJECTED","2020-05-27T11:16:20.1677710Z"]]'
+              example: "[[\"RECEIVED\",\"2020-05-27T11:16:20.1677709Z\"],[\"REJECTED\"\
+                ,\"2020-05-27T11:16:20.1677710Z\"]]"
               type: string
             type: array
           type: array
         error_message:
           description: Error message.
-          example: '{"result":"error","reason":"InsufficientFunds","message":"Failed
-            to place buy order on symbol ''BTCUSD'' for price $7,000.00 and quantity
-            0.22 BTC due to insufficient funds"}'
+          example: "{\"result\":\"error\",\"reason\":\"InsufficientFunds\",\"message\"\
+            :\"Failed to place buy order on symbol 'BTCUSD' for price $7,000.00 and\
+            \ quantity 0.22 BTC due to insufficient funds\"}"
           type: string
         fills:
           description: Relay fill information on working orders.
@@ -670,7 +678,7 @@ components:
       - status
       - time_order
       type: object
-    Balance_data:
+    Balance_data_inner:
       example:
         last_updated_by: EXCHANGE
         asset_id_exchange: XBT
@@ -726,7 +734,7 @@ components:
           format: double
           type: number
       type: object
-    Position_data:
+    Position_data_inner:
       description: The Position object.
       example:
         symbol_id_coinapi: BITMEX_PERP_BTC_USD
@@ -771,8 +779,8 @@ components:
           example: true
           type: boolean
         liquidation_price:
-          description: Liquidation price. If mark price will reach this value, the
-            position will be liquidated.
+          description: "Liquidation price. If mark price will reach this value, the\
+            \ position will be liquidated."
           example: 0.072323
           type: number
         raw_data:

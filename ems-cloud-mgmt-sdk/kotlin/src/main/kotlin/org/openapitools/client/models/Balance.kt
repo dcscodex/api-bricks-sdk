@@ -20,7 +20,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.BalanceData
+import org.openapitools.client.models.BalanceDataInner
 
 import com.squareup.moshi.Json
 
@@ -38,7 +38,7 @@ data class Balance (
     val exchangeId: kotlin.String? = null,
 
     @Json(name = "data")
-    val `data`: kotlin.collections.List<BalanceData>? = null
+    val `data`: kotlin.collections.List<BalanceDataInner>? = null
 
 )
 

@@ -4,7 +4,7 @@ README.md
 api_client.ecf
 docs/BALANCE.md
 docs/BALANCES_API.md
-docs/BALANCE_DATA.md
+docs/BALANCE_DATA_INNER.md
 docs/FILLS.md
 docs/MESSAGE_REJECT.md
 docs/ORDERS_API.md
@@ -18,7 +18,7 @@ docs/ORD_STATUS.md
 docs/ORD_TYPE.md
 docs/POSITION.md
 docs/POSITIONS_API.md
-docs/POSITION_DATA.md
+docs/POSITION_DATA_INNER.md
 docs/REJECT_REASON.md
 docs/TIME_IN_FORCE.md
 docs/VALIDATION_ERROR.md
@@ -27,7 +27,7 @@ src/api/orders_api.e
 src/api/positions_api.e
 src/api_client.e
 src/domain/balance.e
-src/domain/balance_data.e
+src/domain/balance_data_inner.e
 src/domain/fills.e
 src/domain/message_reject.e
 src/domain/ord_side.e
@@ -39,7 +39,7 @@ src/domain/order_execution_report.e
 src/domain/order_execution_report_all_of.e
 src/domain/order_new_single_request.e
 src/domain/position.e
-src/domain/position_data.e
+src/domain/position_data_inner.e
 src/domain/reject_reason.e
 src/domain/time_in_force.e
 src/domain/validation_error.e

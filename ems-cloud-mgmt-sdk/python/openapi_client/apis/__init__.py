@@ -6,7 +6,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from .api.balances_api import BalancesApi
+#   from openapi_client.api.balances_api import BalancesApi
 #
 # or import this package, but before doing it, use:
 #

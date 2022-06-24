@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
-[**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
-[**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
-[**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
-[**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request |
+| [**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request |
+| [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders |
+| [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order |
+| [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report |
 
 
 <a name="v1OrdersCancelAllPost"></a>
@@ -51,9 +51,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | |
 
 ### Return type
 
@@ -71,9 +71,9 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Result |  -  |
-**400** | Input model validation errors. |  -  |
-**490** | Exchange is unreachable. |  -  |
+| **200** | Result |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 
 <a name="v1OrdersCancelPost"></a>
 # **v1OrdersCancelPost**
@@ -115,9 +115,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | |
 
 ### Return type
 
@@ -135,9 +135,9 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The last execution report for the order for which cancelation was requested. |  -  |
-**400** | Input model validation errors. |  -  |
-**490** | Exchange is unreachable. |  -  |
+| **200** | The last execution report for the order for which cancelation was requested. |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 
 <a name="v1OrdersGet"></a>
 # **v1OrdersGet**
@@ -179,9 +179,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Filter the open orders to the specific exchange. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **exchangeId** | **String**| Filter the open orders to the specific exchange. | [optional] |
 
 ### Return type
 
@@ -199,8 +199,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Collection of order execution reports. |  -  |
-**490** | Filtered exchange is unreachable. |  -  |
+| **200** | Collection of order execution reports. |  -  |
+| **490** | Filtered exchange is unreachable. |  -  |
 
 <a name="v1OrdersPost"></a>
 # **v1OrdersPost**
@@ -242,9 +242,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | |
 
 ### Return type
 
@@ -262,10 +262,10 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created |  -  |
-**400** | Input model validation errors. |  -  |
-**490** | Exchange is unreachable. |  -  |
-**504** | Exchange didn&#39;t responded in the defined timeout. |  -  |
+| **200** | Created |  -  |
+| **400** | Input model validation errors. |  -  |
+| **490** | Exchange is unreachable. |  -  |
+| **504** | Exchange didn&#39;t responded in the defined timeout. |  -  |
 
 <a name="v1OrdersStatusClientOrderIdGet"></a>
 # **v1OrdersStatusClientOrderIdGet**
@@ -307,9 +307,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **clientOrderId** | **String**| The unique identifier of the order assigned by the client. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clientOrderId** | **String**| The unique identifier of the order assigned by the client. | |
 
 ### Return type
 
@@ -327,6 +327,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The last execution report of the requested order. |  -  |
-**404** | The requested order was not found. |  -  |
+| **200** | The last execution report of the requested order. |  -  |
+| **404** | The requested order was not found. |  -  |
 

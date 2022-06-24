@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class PositionsApi {
-  PositionsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  PositionsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -26,24 +26,21 @@ class PositionsApi {
   ///
   /// * [String] exchangeId:
   ///   Filter the balances to the specific exchange.
-  Future<Response> v1PositionsGetWithHttpInfo({ String exchangeId, }) async {
-    // Verify required params are set.
-
+  Future<Response> v1PositionsGetWithHttpInfo({ String? exchangeId, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/positions';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
     if (exchangeId != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'exchange_id', exchangeId));
+      queryParams.addAll(_queryParams('', 'exchange_id', exchangeId));
     }
 
-    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -54,8 +51,7 @@ class PositionsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -67,7 +63,7 @@ class PositionsApi {
   ///
   /// * [String] exchangeId:
   ///   Filter the balances to the specific exchange.
-  Future<List<Position>> v1PositionsGet({ String exchangeId, }) async {
+  Future<List<Position>?> v1PositionsGet({ String? exchangeId, }) async {
     final response = await v1PositionsGetWithHttpInfo( exchangeId: exchangeId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -75,13 +71,13 @@ class PositionsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<Position>') as List)
         .cast<Position>()
-        .toList(growable: false);
+        .toList();
 
     }
-    return Future<List<Position>>.value();
+    return null;
   }
 }

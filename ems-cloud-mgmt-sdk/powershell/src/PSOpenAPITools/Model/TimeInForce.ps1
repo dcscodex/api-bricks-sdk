@@ -9,77 +9,23 @@
 <#
 .SYNOPSIS
 
-No summary available.
+Enum TimeInForce.
 
 .DESCRIPTION
 
 Order time in force options are documented in the separate section: <a href=""#ems-order-params-tif"">EMS / Starter Guide / Order parameters / Time in force</a> 
-
-.OUTPUTS
-
-TimeInForce<PSCustomObject>
 #>
 
-function Initialize-TimeInForce {
-    [CmdletBinding()]
-    Param (
-    )
-
-    Process {
-        'Creating PSCustomObject: PSOpenAPITools => TimeInForce' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-
-        $PSO = [PSCustomObject]@{
-        }
-
-
-        return $PSO
-    }
-}
-
-<#
-.SYNOPSIS
-
-Convert from JSON to TimeInForce<PSCustomObject>
-
-.DESCRIPTION
-
-Convert from JSON to TimeInForce<PSCustomObject>
-
-.PARAMETER Json
-
-Json object
-
-.OUTPUTS
-
-TimeInForce<PSCustomObject>
-#>
-function ConvertFrom-JsonToTimeInForce {
-    Param(
-        [AllowEmptyString()]
-        [string]$Json
-    )
-
-    Process {
-        'Converting JSON to PSCustomObject: PSOpenAPITools => TimeInForce' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        $JsonParameters = ConvertFrom-Json -InputObject $Json
-
-        # check if Json contains properties not defined in TimeInForce
-        $AllProperties = ()
-        foreach ($name in $JsonParameters.PsObject.Properties.Name) {
-            if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
-            }
-        }
-
-        $PSO = [PSCustomObject]@{
-        }
-
-        return $PSO
-    }
-
+enum TimeInForce {
+    # enum value: "GOOD_TILL_CANCEL"
+    GOOD_TILL_CANCEL
+    # enum value: "GOOD_TILL_TIME_EXCHANGE"
+    GOOD_TILL_TIME_EXCHANGE
+    # enum value: "GOOD_TILL_TIME_OMS"
+    GOOD_TILL_TIME_OMS
+    # enum value: "FILL_OR_KILL"
+    FILL_OR_KILL
+    # enum value: "IMMEDIATE_OR_CANCEL"
+    IMMEDIATE_OR_CANCEL
 }
 

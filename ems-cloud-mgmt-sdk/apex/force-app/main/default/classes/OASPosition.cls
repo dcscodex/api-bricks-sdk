@@ -24,7 +24,7 @@ public class OASPosition implements OAS.MappedProperties {
      * Get data
      * @return data
      */
-    public List<OASPositionData> data { get; set; }
+    public List<OASPositionDataInner> data { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'exchange_id' => 'exchangeId'
@@ -35,13 +35,13 @@ public class OASPosition implements OAS.MappedProperties {
     }
 
     public OASPosition() {
-        data = new List<OASPositionData>();
+        data = new List<OASPositionDataInner>();
     }
 
     public static OASPosition getExample() {
         OASPosition position = new OASPosition();
           position.exchangeId = 'KRAKEN';
-          position.data = new List<OASPositionData>{OASPositionData.getExample()};
+          position.data = new List<OASPositionDataInner>{OASPositionDataInner.getExample()};
         return position;
     }
 

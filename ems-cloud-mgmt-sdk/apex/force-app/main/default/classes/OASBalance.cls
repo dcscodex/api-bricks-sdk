@@ -24,7 +24,7 @@ public class OASBalance implements OAS.MappedProperties {
      * Get data
      * @return data
      */
-    public List<OASBalanceData> data { get; set; }
+    public List<OASBalanceDataInner> data { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'exchange_id' => 'exchangeId'
@@ -35,13 +35,13 @@ public class OASBalance implements OAS.MappedProperties {
     }
 
     public OASBalance() {
-        data = new List<OASBalanceData>();
+        data = new List<OASBalanceDataInner>();
     }
 
     public static OASBalance getExample() {
         OASBalance balance = new OASBalance();
           balance.exchangeId = 'KRAKEN';
-          balance.data = new List<OASBalanceData>{OASBalanceData.getExample()};
+          balance.data = new List<OASBalanceDataInner>{OASBalanceDataInner.getExample()};
         return balance;
     }
 

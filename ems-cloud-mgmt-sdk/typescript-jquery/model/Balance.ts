@@ -18,6 +18,6 @@ export interface Balance {
      */
     exchange_id?: string;
 
-    data?: Array<models.BalanceData>;
+    data?: Array<models.BalanceDataInner>;
 
 }

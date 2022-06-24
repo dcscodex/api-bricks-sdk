@@ -37,7 +37,6 @@ cJSON *order_cancel_all_request_convertToJSON(order_cancel_all_request_t *order_
     if (!order_cancel_all_request->exchange_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "exchange_id", order_cancel_all_request->exchange_id) == NULL) {
     goto fail; //String
     }

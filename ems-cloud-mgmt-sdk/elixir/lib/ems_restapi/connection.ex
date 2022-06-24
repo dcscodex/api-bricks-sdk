@@ -10,7 +10,7 @@ defmodule EMS-RESTAPI.Connection do
   use Tesla
 
   # Add any middleware here (authentication)
-  plug Tesla.Middleware.BaseUrl, "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
+  plug Tesla.Middleware.BaseUrl, Application.get_env(:ems___rest_api, :base_url, "https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
   plug Tesla.Middleware.Headers, [{"user-agent", "Elixir"}]
   plug Tesla.Middleware.EncodeJson, engine: Poison
 

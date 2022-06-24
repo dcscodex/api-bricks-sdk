@@ -220,7 +220,6 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     if (!order_execution_report->exchange_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "exchange_id", order_execution_report->exchange_id) == NULL) {
     goto fail; //String
     }
@@ -230,33 +229,31 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     if (!order_execution_report->client_order_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "client_order_id", order_execution_report->client_order_id) == NULL) {
     goto fail; //String
     }
 
 
     // order_execution_report->symbol_id_exchange
-    if(order_execution_report->symbol_id_exchange) { 
+    if(order_execution_report->symbol_id_exchange) {
     if(cJSON_AddStringToObject(item, "symbol_id_exchange", order_execution_report->symbol_id_exchange) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report->symbol_id_coinapi
-    if(order_execution_report->symbol_id_coinapi) { 
+    if(order_execution_report->symbol_id_coinapi) {
     if(cJSON_AddStringToObject(item, "symbol_id_coinapi", order_execution_report->symbol_id_coinapi) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report->amount_order
     if (!order_execution_report->amount_order) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_order", order_execution_report->amount_order) == NULL) {
     goto fail; //Numeric
     }
@@ -266,14 +263,15 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     if (!order_execution_report->price) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "price", order_execution_report->price) == NULL) {
     goto fail; //Numeric
     }
 
 
     // order_execution_report->side
-    
+    if (ems___rest_api_order_execution_report__NULL == order_execution_report->side) {
+        goto fail;
+    }
     cJSON *side_local_JSON = ord_side_convertToJSON(order_execution_report->side);
     if(side_local_JSON == NULL) {
         goto fail; // custom
@@ -285,7 +283,9 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
 
     // order_execution_report->order_type
-    
+    if (ems___rest_api_order_execution_report__NULL == order_execution_report->order_type) {
+        goto fail;
+    }
     cJSON *order_type_local_JSON = ord_type_convertToJSON(order_execution_report->order_type);
     if(order_type_local_JSON == NULL) {
         goto fail; // custom
@@ -297,7 +297,9 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
 
     // order_execution_report->time_in_force
-    
+    if (ems___rest_api_order_execution_report__NULL == order_execution_report->time_in_force) {
+        goto fail;
+    }
     cJSON *time_in_force_local_JSON = time_in_force_convertToJSON(order_execution_report->time_in_force);
     if(time_in_force_local_JSON == NULL) {
         goto fail; // custom
@@ -309,12 +311,12 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
 
     // order_execution_report->expire_time
-    if(order_execution_report->expire_time) { 
-     } 
+    if(order_execution_report->expire_time) {
+    }
 
 
     // order_execution_report->exec_inst
-    
+    if(order_execution_report->exec_inst != ems___rest_api_order_execution_report_EXECINST_NULL) {
     cJSON *exec_inst = cJSON_AddArrayToObject(item, "exec_inst");
     if(exec_inst == NULL) {
         goto fail; //primitive container
@@ -327,32 +329,30 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
         goto fail;
     }
     }
-    
+    }
 
 
     // order_execution_report->client_order_id_format_exchange
     if (!order_execution_report->client_order_id_format_exchange) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "client_order_id_format_exchange", order_execution_report->client_order_id_format_exchange) == NULL) {
     goto fail; //String
     }
 
 
     // order_execution_report->exchange_order_id
-    if(order_execution_report->exchange_order_id) { 
+    if(order_execution_report->exchange_order_id) {
     if(cJSON_AddStringToObject(item, "exchange_order_id", order_execution_report->exchange_order_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report->amount_open
     if (!order_execution_report->amount_open) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_open", order_execution_report->amount_open) == NULL) {
     goto fail; //Numeric
     }
@@ -362,22 +362,23 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     if (!order_execution_report->amount_filled) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_filled", order_execution_report->amount_filled) == NULL) {
     goto fail; //Numeric
     }
 
 
     // order_execution_report->avg_px
-    if(order_execution_report->avg_px) { 
+    if(order_execution_report->avg_px) {
     if(cJSON_AddNumberToObject(item, "avg_px", order_execution_report->avg_px) == NULL) {
     goto fail; //Numeric
     }
-     } 
+    }
 
 
     // order_execution_report->status
-    
+    if (ems___rest_api_order_execution_report__NULL == order_execution_report->status) {
+        goto fail;
+    }
     cJSON *status_local_JSON = ord_status_convertToJSON(order_execution_report->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -389,7 +390,7 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
 
 
     // order_execution_report->status_history
-    if(order_execution_report->status_history) { 
+    if(order_execution_report->status_history) {
     cJSON *status_history = cJSON_AddArrayToObject(item, "status_history");
     if(status_history == NULL) {
         goto fail; //primitive container
@@ -398,19 +399,19 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     listEntry_t *status_historyListEntry;
     list_ForEach(status_historyListEntry, order_execution_report->status_history) {
     }
-     } 
+    }
 
 
     // order_execution_report->error_message
-    if(order_execution_report->error_message) { 
+    if(order_execution_report->error_message) {
     if(cJSON_AddStringToObject(item, "error_message", order_execution_report->error_message) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report->fills
-    if(order_execution_report->fills) { 
+    if(order_execution_report->fills) {
     cJSON *fills = cJSON_AddArrayToObject(item, "fills");
     if(fills == NULL) {
     goto fail; //nonprimitive container
@@ -426,7 +427,7 @@ cJSON *order_execution_report_convertToJSON(order_execution_report_t *order_exec
     cJSON_AddItemToArray(fills, itemLocal);
     }
     }
-     } 
+    }
 
     return item;
 fail:
@@ -449,8 +450,17 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
     // define the local variable for order_execution_report->time_in_force
     time_in_force_t *time_in_force_local_nonprim = NULL;
 
+    // define the local list for order_execution_report->exec_inst
+    list_t *exec_instList = NULL;
+
     // define the local variable for order_execution_report->status
     ord_status_t *status_local_nonprim = NULL;
+
+    // define the local list for order_execution_report->status_history
+    list_t *status_historyList = NULL;
+
+    // define the local list for order_execution_report->fills
+    list_t *fillsList = NULL;
 
     // order_execution_report->exchange_id
     cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "exchange_id");
@@ -551,9 +561,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
 
     // order_execution_report->exec_inst
     cJSON *exec_inst = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "exec_inst");
-    list_t *exec_instList;
     if (exec_inst) { 
-    cJSON *exec_inst_local;
+    cJSON *exec_inst_local = NULL;
     if(!cJSON_IsArray(exec_inst)) {
         goto end;//primitive container
     }
@@ -634,9 +643,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
 
     // order_execution_report->status_history
     cJSON *status_history = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "status_history");
-    list_t *status_historyList;
     if (status_history) { 
-    cJSON *status_history_local;
+    cJSON *status_history_local = NULL;
     if(!cJSON_IsArray(status_history)) {
         goto end;//primitive container
     }
@@ -658,9 +666,8 @@ order_execution_report_t *order_execution_report_parseFromJSON(cJSON *order_exec
 
     // order_execution_report->fills
     cJSON *fills = cJSON_GetObjectItemCaseSensitive(order_execution_reportJSON, "fills");
-    list_t *fillsList;
     if (fills) { 
-    cJSON *fills_local_nonprimitive;
+    cJSON *fills_local_nonprimitive = NULL;
     if(!cJSON_IsArray(fills)){
         goto end; //nonprimitive container
     }
@@ -715,9 +722,31 @@ end:
         time_in_force_free(time_in_force_local_nonprim);
         time_in_force_local_nonprim = NULL;
     }
+    if (exec_instList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, exec_instList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(exec_instList);
+        exec_instList = NULL;
+    }
     if (status_local_nonprim) {
         ord_status_free(status_local_nonprim);
         status_local_nonprim = NULL;
+    }
+    if (status_historyList) {
+        list_freeList(status_historyList);
+        status_historyList = NULL;
+    }
+    if (fillsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, fillsList) {
+            fills_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(fillsList);
+        fillsList = NULL;
     }
     return NULL;
 

@@ -33,24 +33,24 @@ cJSON *fills_convertToJSON(fills_t *fills) {
     cJSON *item = cJSON_CreateObject();
 
     // fills->time
-    if(fills->time) { 
-     } 
+    if(fills->time) {
+    }
 
 
     // fills->price
-    if(fills->price) { 
+    if(fills->price) {
     if(cJSON_AddNumberToObject(item, "price", fills->price) == NULL) {
     goto fail; //Numeric
     }
-     } 
+    }
 
 
     // fills->amount
-    if(fills->amount) { 
+    if(fills->amount) {
     if(cJSON_AddNumberToObject(item, "amount", fills->amount) == NULL) {
     goto fail; //Numeric
     }
-     } 
+    }
 
     return item;
 fail:

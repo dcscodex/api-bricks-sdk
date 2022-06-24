@@ -3,7 +3,7 @@
 
 context("Test Fills")
 
-model.instance <- Fills$new()
+model_instance <- Fills$new()
 
 test_that("time", {
   # tests for the property `time` (character)
@@ -28,4 +28,3 @@ test_that("amount", {
   # uncomment below to test the property
   #expect_equal(model.instance$`amount`, "EXPECTED_RESULT")
 })
-

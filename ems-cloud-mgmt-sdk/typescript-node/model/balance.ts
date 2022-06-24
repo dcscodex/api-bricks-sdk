@@ -11,14 +11,14 @@
  */
 
 import { RequestFile } from './models';
-import { BalanceData } from './balanceData';
+import { BalanceDataInner } from './balanceDataInner';
 
 export class Balance {
     /**
     * Exchange identifier used to identify the routing destination.
     */
     'exchangeId'?: string;
-    'data'?: Array<BalanceData>;
+    'data'?: Array<BalanceDataInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,7 +31,7 @@ export class Balance {
         {
             "name": "data",
             "baseName": "data",
-            "type": "Array<BalanceData>"
+            "type": "Array<BalanceDataInner>"
         }    ];
 
     static getAttributeTypeMap() {

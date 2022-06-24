@@ -24,3 +24,11 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/ems_restapi](https://hexdocs.pm/ems_restapi).
+
+
+## Configuration
+
+You can override the URL of your server (e.g. if you have a separate development and production server in your configuration files.
+```elixir
+config :ems___rest_api, base_url: "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
+```

@@ -16,6 +16,6 @@ import org.openapitools.client.core.ApiModel
 case class Balance (
   /* Exchange identifier used to identify the routing destination. */
   exchangeId: Option[String] = None,
-  data: Option[Seq[BalanceData]] = None
+  data: Option[Seq[BalanceDataInner]] = None
 ) extends ApiModel
 

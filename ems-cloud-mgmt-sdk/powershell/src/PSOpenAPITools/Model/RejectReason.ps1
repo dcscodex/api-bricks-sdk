@@ -9,77 +9,27 @@
 <#
 .SYNOPSIS
 
-No summary available.
+Enum RejectReason.
 
 .DESCRIPTION
 
 Cause of rejection.
-
-.OUTPUTS
-
-RejectReason<PSCustomObject>
 #>
 
-function Initialize-RejectReason {
-    [CmdletBinding()]
-    Param (
-    )
-
-    Process {
-        'Creating PSCustomObject: PSOpenAPITools => RejectReason' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-
-        $PSO = [PSCustomObject]@{
-        }
-
-
-        return $PSO
-    }
-}
-
-<#
-.SYNOPSIS
-
-Convert from JSON to RejectReason<PSCustomObject>
-
-.DESCRIPTION
-
-Convert from JSON to RejectReason<PSCustomObject>
-
-.PARAMETER Json
-
-Json object
-
-.OUTPUTS
-
-RejectReason<PSCustomObject>
-#>
-function ConvertFrom-JsonToRejectReason {
-    Param(
-        [AllowEmptyString()]
-        [string]$Json
-    )
-
-    Process {
-        'Converting JSON to PSCustomObject: PSOpenAPITools => RejectReason' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        $JsonParameters = ConvertFrom-Json -InputObject $Json
-
-        # check if Json contains properties not defined in RejectReason
-        $AllProperties = ()
-        foreach ($name in $JsonParameters.PsObject.Properties.Name) {
-            if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
-            }
-        }
-
-        $PSO = [PSCustomObject]@{
-        }
-
-        return $PSO
-    }
-
+enum RejectReason {
+    # enum value: "OTHER"
+    OTHER
+    # enum value: "EXCHANGE_UNREACHABLE"
+    EXCHANGE_UNREACHABLE
+    # enum value: "EXCHANGE_RESPONSE_TIMEOUT"
+    EXCHANGE_RESPONSE_TIMEOUT
+    # enum value: "ORDER_ID_NOT_FOUND"
+    ORDER_ID_NOT_FOUND
+    # enum value: "INVALID_TYPE"
+    INVALID_TYPE
+    # enum value: "METHOD_NOT_SUPPORTED"
+    METHOD_NOT_SUPPORTED
+    # enum value: "JSON_ERROR"
+    JSON_ERROR
 }
 

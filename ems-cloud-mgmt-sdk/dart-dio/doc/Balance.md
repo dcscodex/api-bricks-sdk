@@ -9,7 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exchangeId** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
-**data** | [**BuiltList<BalanceData>**](BalanceData.md) |  | [optional] 
+**data** | [**BuiltList&lt;BalanceDataInner&gt;**](BalanceDataInner.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

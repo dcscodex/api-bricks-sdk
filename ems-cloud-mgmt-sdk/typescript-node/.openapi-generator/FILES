@@ -7,7 +7,7 @@ api/ordersApi.ts
 api/positionsApi.ts
 git_push.sh
 model/balance.ts
-model/balanceData.ts
+model/balanceDataInner.ts
 model/fills.ts
 model/messageReject.ts
 model/models.ts
@@ -20,7 +20,7 @@ model/orderExecutionReport.ts
 model/orderExecutionReportAllOf.ts
 model/orderNewSingleRequest.ts
 model/position.ts
-model/positionData.ts
+model/positionDataInner.ts
 model/rejectReason.ts
 model/timeInForce.ts
 model/validationError.ts

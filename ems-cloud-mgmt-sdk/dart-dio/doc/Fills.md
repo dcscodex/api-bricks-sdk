@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | [**DateTime**](DateTime.md) | Execution time. | [optional] 
+**time** | [**Date**](Date.md) | Execution time. | [optional] 
 **price** | **num** | Execution price. | [optional] 
 **amount** | **num** | Executed quantity. | [optional] 
 

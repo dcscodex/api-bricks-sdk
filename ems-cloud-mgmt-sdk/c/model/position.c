@@ -31,7 +31,7 @@ void position_free(position_t *position) {
     }
     if (position->data) {
         list_ForEach(listEntry, position->data) {
-            position_data_free(listEntry->data);
+            position_data_inner_free(listEntry->data);
         }
         list_freeList(position->data);
         position->data = NULL;
@@ -43,15 +43,15 @@ cJSON *position_convertToJSON(position_t *position) {
     cJSON *item = cJSON_CreateObject();
 
     // position->exchange_id
-    if(position->exchange_id) { 
+    if(position->exchange_id) {
     if(cJSON_AddStringToObject(item, "exchange_id", position->exchange_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // position->data
-    if(position->data) { 
+    if(position->data) {
     cJSON *data = cJSON_AddArrayToObject(item, "data");
     if(data == NULL) {
     goto fail; //nonprimitive container
@@ -60,14 +60,14 @@ cJSON *position_convertToJSON(position_t *position) {
     listEntry_t *dataListEntry;
     if (position->data) {
     list_ForEach(dataListEntry, position->data) {
-    cJSON *itemLocal = position_data_convertToJSON(dataListEntry->data);
+    cJSON *itemLocal = position_data_inner_convertToJSON(dataListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(data, itemLocal);
     }
     }
-     } 
+    }
 
     return item;
 fail:
@@ -81,6 +81,9 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
 
     position_t *position_local_var = NULL;
 
+    // define the local list for position->data
+    list_t *dataList = NULL;
+
     // position->exchange_id
     cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(positionJSON, "exchange_id");
     if (exchange_id) { 
@@ -92,9 +95,8 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
 
     // position->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(positionJSON, "data");
-    list_t *dataList;
     if (data) { 
-    cJSON *data_local_nonprimitive;
+    cJSON *data_local_nonprimitive = NULL;
     if(!cJSON_IsArray(data)){
         goto end; //nonprimitive container
     }
@@ -106,7 +108,7 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
         if(!cJSON_IsObject(data_local_nonprimitive)){
             goto end;
         }
-        position_data_t *dataItem = position_data_parseFromJSON(data_local_nonprimitive);
+        position_data_inner_t *dataItem = position_data_inner_parseFromJSON(data_local_nonprimitive);
 
         list_addElement(dataList, dataItem);
     }
@@ -120,6 +122,15 @@ position_t *position_parseFromJSON(cJSON *positionJSON){
 
     return position_local_var;
 end:
+    if (dataList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, dataList) {
+            position_data_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(dataList);
+        dataList = NULL;
+    }
     return NULL;
 
 }

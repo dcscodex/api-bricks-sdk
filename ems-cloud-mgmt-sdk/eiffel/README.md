@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [BALANCE](docs/BALANCE.md)
- - [BALANCE_DATA](docs/BALANCE_DATA.md)
+ - [BALANCE_DATA_INNER](docs/BALANCE_DATA_INNER.md)
  - [FILLS](docs/FILLS.md)
  - [MESSAGE_REJECT](docs/MESSAGE_REJECT.md)
  - [ORDER_CANCEL_ALL_REQUEST](docs/ORDER_CANCEL_ALL_REQUEST.md)
@@ -110,7 +110,7 @@ Class | Method | HTTP request | Description
  - [ORD_STATUS](docs/ORD_STATUS.md)
  - [ORD_TYPE](docs/ORD_TYPE.md)
  - [POSITION](docs/POSITION.md)
- - [POSITION_DATA](docs/POSITION_DATA.md)
+ - [POSITION_DATA_INNER](docs/POSITION_DATA_INNER.md)
  - [REJECT_REASON](docs/REJECT_REASON.md)
  - [TIME_IN_FORCE](docs/TIME_IN_FORCE.md)
  - [VALIDATION_ERROR](docs/VALIDATION_ERROR.md)

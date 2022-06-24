@@ -25,12 +25,32 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.BalanceData;
+import org.openapitools.client.model.BalanceDataInner;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * Balance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T10:47:11.460866Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-24T08:18:05.483929Z[Etc/UTC]")
 public class Balance {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -38,7 +58,7 @@ public class Balance {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<BalanceData> data = null;
+  private List<BalanceDataInner> data = null;
 
   public Balance() { 
   }
@@ -66,15 +86,15 @@ public class Balance {
   }
 
 
-  public Balance data(List<BalanceData> data) {
+  public Balance data(List<BalanceDataInner> data) {
     
     this.data = data;
     return this;
   }
 
-  public Balance addDataItem(BalanceData dataItem) {
+  public Balance addDataItem(BalanceDataInner dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<BalanceData>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;
@@ -87,14 +107,15 @@ public class Balance {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<BalanceData> getData() {
+  public List<BalanceDataInner> getData() {
     return data;
   }
 
 
-  public void setData(List<BalanceData> data) {
+  public void setData(List<BalanceDataInner> data) {
     this.data = data;
   }
+
 
 
   @Override
@@ -136,5 +157,106 @@ public class Balance {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("exchange_id");
+    openapiFields.add("data");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Balance
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Balance.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Balance is not found in the empty JSON string", Balance.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Balance.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Balance` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
+      }
+      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+      if (jsonArraydata != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("data").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+        }
+
+        // validate the optional field `data` (array)
+        for (int i = 0; i < jsonArraydata.size(); i++) {
+          BalanceDataInner.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Balance.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Balance' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Balance> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Balance.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Balance>() {
+           @Override
+           public void write(JsonWriter out, Balance value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Balance read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Balance given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Balance
+  * @throws IOException if the JSON string is invalid with respect to Balance
+  */
+  public static Balance fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Balance.class);
+  }
+
+ /**
+  * Convert an instance of Balance to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

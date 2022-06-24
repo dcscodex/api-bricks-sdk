@@ -13,7 +13,7 @@
 package org.openapitools.client.model;
 
 import java.util.*;
-import org.openapitools.client.model.BalanceData;
+import org.openapitools.client.model.BalanceDataInner;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,7 +23,7 @@ public class Balance {
   @SerializedName("exchange_id")
   private String exchangeId = null;
   @SerializedName("data")
-  private List<BalanceData> data = null;
+  private List<BalanceDataInner> data = null;
 
   /**
    * Exchange identifier used to identify the routing destination.
@@ -39,10 +39,10 @@ public class Balance {
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<BalanceData> getData() {
+  public List<BalanceDataInner> getData() {
     return data;
   }
-  public void setData(List<BalanceData> data) {
+  public void setData(List<BalanceDataInner> data) {
     this.data = data;
   }
 

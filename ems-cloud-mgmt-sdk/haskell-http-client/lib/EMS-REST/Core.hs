@@ -80,7 +80,7 @@ data EMS-RESTConfig = EMS-RESTConfig
   , configLogContext :: LogContext -- ^ Configures the logger
   , configAuthMethods :: [AnyAuthMethod] -- ^ List of configured auth methods
   , configValidateAuthMethods :: Bool -- ^ throw exceptions if auth methods are not configured
-  , configQueryExtraUnreserved :: B.ByteString -- ^ Configures additional querystring characters which must not be URI encoded, e.g. '+' or ':' 
+  , configQueryExtraUnreserved :: B.ByteString -- ^ Configures additional querystring characters which must not be URI encoded, e.g. '+' or ':'
   }
 
 -- | display the config
@@ -429,7 +429,7 @@ _applyAuthMethods req config@(EMS-RESTConfig {configAuthMethods = as}) =
 -- * Utils
 
 -- | Removes Null fields.  (OpenAPI-Specification 2.0 does not allow Null in JSON)
-_omitNulls :: [(Text, A.Value)] -> A.Value
+_omitNulls :: [(A.Key, A.Value)] -> A.Value
 _omitNulls = A.object . P.filter notNull
   where
     notNull (_, A.Null) = False

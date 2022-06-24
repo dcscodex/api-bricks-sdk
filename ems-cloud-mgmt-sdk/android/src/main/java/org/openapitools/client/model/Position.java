@@ -13,7 +13,7 @@
 package org.openapitools.client.model;
 
 import java.util.*;
-import org.openapitools.client.model.PositionData;
+import org.openapitools.client.model.PositionDataInner;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,7 +23,7 @@ public class Position {
   @SerializedName("exchange_id")
   private String exchangeId = null;
   @SerializedName("data")
-  private List<PositionData> data = null;
+  private List<PositionDataInner> data = null;
 
   /**
    * Exchange identifier used to identify the routing destination.
@@ -39,10 +39,10 @@ public class Position {
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<PositionData> getData() {
+  public List<PositionDataInner> getData() {
     return data;
   }
-  public void setData(List<PositionData> data) {
+  public void setData(List<PositionDataInner> data) {
     this.data = data;
   }
 

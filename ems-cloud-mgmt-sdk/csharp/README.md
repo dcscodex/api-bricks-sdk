@@ -182,7 +182,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Model.Balance](docs/Balance.md)
- - [Model.BalanceData](docs/BalanceData.md)
+ - [Model.BalanceDataInner](docs/BalanceDataInner.md)
  - [Model.Fills](docs/Fills.md)
  - [Model.MessageReject](docs/MessageReject.md)
  - [Model.OrdSide](docs/OrdSide.md)
@@ -194,7 +194,7 @@ Class | Method | HTTP request | Description
  - [Model.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [Model.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [Model.Position](docs/Position.md)
- - [Model.PositionData](docs/PositionData.md)
+ - [Model.PositionDataInner](docs/PositionDataInner.md)
  - [Model.RejectReason](docs/RejectReason.md)
  - [Model.TimeInForce](docs/TimeInForce.md)
  - [Model.ValidationError](docs/ValidationError.md)

@@ -10,7 +10,7 @@
 #' @title Positions operations
 #' @description openapi.Positions
 #' @format An \code{R6Class} generator object
-#' @field apiClient Handles the client-server communication.
+#' @field api_client Handles the client-server communication.
 #'
 #' @section Methods:
 #' \describe{
@@ -18,7 +18,7 @@
 #' Get current open positions across all or single exchange.
 #'
 #' \itemize{
-#' \item \emph{ @param } exchange.id character
+#' \item \emph{ @param } exchange_id character
 #' \item \emph{ @returnType } list( \link{Position} ) \cr
 #'
 #'
@@ -46,12 +46,12 @@
 #' ####################  V1PositionsGet  ####################
 #'
 #' library(openapi)
-#' var.exchange.id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
+#' var.exchange_id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
 #'
 #' #Get open positions
 #' api.instance <- PositionsApi$new()
 #'
-#' result <- api.instance$V1PositionsGet(exchange.id=var.exchange.id)
+#' result <- api.instance$V1PositionsGet(exchange_id=var.exchange_id)
 #'
 #'
 #' }
@@ -59,58 +59,61 @@
 #' @importFrom base64enc base64encode
 #' @export
 PositionsApi <- R6::R6Class(
-  'PositionsApi',
+  "PositionsApi",
   public = list(
-    apiClient = NULL,
-    initialize = function(apiClient){
-      if (!missing(apiClient)) {
-        self$apiClient <- apiClient
+    api_client = NULL,
+    initialize = function(api_client) {
+      if (!missing(api_client)) {
+        self$api_client <- api_client
       }
       else {
-        self$apiClient <- ApiClient$new()
+        self$api_client <- ApiClient$new()
       }
     },
-    V1PositionsGet = function(exchange.id=NULL, ...){
-      apiResponse <- self$V1PositionsGetWithHttpInfo(exchange.id, ...)
-      resp <- apiResponse$response
+    V1PositionsGet = function(exchange_id=NULL, data_file=NULL, ...) {
+      api_response <- self$V1PositionsGetWithHttpInfo(exchange_id, data_file = data_file, ...)
+      resp <- api_response$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        apiResponse$content
+        api_response$content
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        apiResponse
+        api_response
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        apiResponse
+        api_response
       }
     },
 
-    V1PositionsGetWithHttpInfo = function(exchange.id=NULL, ...){
+    V1PositionsGetWithHttpInfo = function(exchange_id=NULL, data_file = NULL, ...) {
       args <- list(...)
-      queryParams <- list()
-      headerParams <- c()
-
-      queryParams['exchange_id'] <- exchange.id
+      query_params <- list()
+      header_params <- c()
 
       body <- NULL
-      urlPath <- "/v1/positions"
+      url_path <- "/v1/positions"
 
-      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
                                  method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
+                                 query_params = query_params,
+                                 header_params = header_params,
                                  body = body,
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "array[Position]", loadNamespace("openapi")),
-          error = function(e){
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "array[Position]", loadNamespace("openapi")),
+          error = function(e) {
              stop("Failed to deserialize response")
           }
         )
-        ApiResponse$new(deserializedRespObj, resp)
+        ApiResponse$new(deserialized_resp_obj, resp)
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
-        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

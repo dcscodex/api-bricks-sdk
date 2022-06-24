@@ -45,53 +45,53 @@ balanceExchangeIdL f Balance{..} = (\balanceExchangeId -> Balance { balanceExcha
 {-# INLINE balanceExchangeIdL #-}
 
 -- | 'balanceData' Lens
-balanceDataL :: Lens_' Balance (Maybe [BalanceData])
+balanceDataL :: Lens_' Balance (Maybe [BalanceDataInner])
 balanceDataL f Balance{..} = (\balanceData -> Balance { balanceData, ..} ) <$> f balanceData
 {-# INLINE balanceDataL #-}
 
 
 
--- * BalanceData
+-- * BalanceDataInner
 
--- | 'balanceDataAssetIdExchange' Lens
-balanceDataAssetIdExchangeL :: Lens_' BalanceData (Maybe Text)
-balanceDataAssetIdExchangeL f BalanceData{..} = (\balanceDataAssetIdExchange -> BalanceData { balanceDataAssetIdExchange, ..} ) <$> f balanceDataAssetIdExchange
-{-# INLINE balanceDataAssetIdExchangeL #-}
+-- | 'balanceDataInnerAssetIdExchange' Lens
+balanceDataInnerAssetIdExchangeL :: Lens_' BalanceDataInner (Maybe Text)
+balanceDataInnerAssetIdExchangeL f BalanceDataInner{..} = (\balanceDataInnerAssetIdExchange -> BalanceDataInner { balanceDataInnerAssetIdExchange, ..} ) <$> f balanceDataInnerAssetIdExchange
+{-# INLINE balanceDataInnerAssetIdExchangeL #-}
 
--- | 'balanceDataAssetIdCoinapi' Lens
-balanceDataAssetIdCoinapiL :: Lens_' BalanceData (Maybe Text)
-balanceDataAssetIdCoinapiL f BalanceData{..} = (\balanceDataAssetIdCoinapi -> BalanceData { balanceDataAssetIdCoinapi, ..} ) <$> f balanceDataAssetIdCoinapi
-{-# INLINE balanceDataAssetIdCoinapiL #-}
+-- | 'balanceDataInnerAssetIdCoinapi' Lens
+balanceDataInnerAssetIdCoinapiL :: Lens_' BalanceDataInner (Maybe Text)
+balanceDataInnerAssetIdCoinapiL f BalanceDataInner{..} = (\balanceDataInnerAssetIdCoinapi -> BalanceDataInner { balanceDataInnerAssetIdCoinapi, ..} ) <$> f balanceDataInnerAssetIdCoinapi
+{-# INLINE balanceDataInnerAssetIdCoinapiL #-}
 
--- | 'balanceDataBalance' Lens
-balanceDataBalanceL :: Lens_' BalanceData (Maybe Double)
-balanceDataBalanceL f BalanceData{..} = (\balanceDataBalance -> BalanceData { balanceDataBalance, ..} ) <$> f balanceDataBalance
-{-# INLINE balanceDataBalanceL #-}
+-- | 'balanceDataInnerBalance' Lens
+balanceDataInnerBalanceL :: Lens_' BalanceDataInner (Maybe Double)
+balanceDataInnerBalanceL f BalanceDataInner{..} = (\balanceDataInnerBalance -> BalanceDataInner { balanceDataInnerBalance, ..} ) <$> f balanceDataInnerBalance
+{-# INLINE balanceDataInnerBalanceL #-}
 
--- | 'balanceDataAvailable' Lens
-balanceDataAvailableL :: Lens_' BalanceData (Maybe Double)
-balanceDataAvailableL f BalanceData{..} = (\balanceDataAvailable -> BalanceData { balanceDataAvailable, ..} ) <$> f balanceDataAvailable
-{-# INLINE balanceDataAvailableL #-}
+-- | 'balanceDataInnerAvailable' Lens
+balanceDataInnerAvailableL :: Lens_' BalanceDataInner (Maybe Double)
+balanceDataInnerAvailableL f BalanceDataInner{..} = (\balanceDataInnerAvailable -> BalanceDataInner { balanceDataInnerAvailable, ..} ) <$> f balanceDataInnerAvailable
+{-# INLINE balanceDataInnerAvailableL #-}
 
--- | 'balanceDataLocked' Lens
-balanceDataLockedL :: Lens_' BalanceData (Maybe Double)
-balanceDataLockedL f BalanceData{..} = (\balanceDataLocked -> BalanceData { balanceDataLocked, ..} ) <$> f balanceDataLocked
-{-# INLINE balanceDataLockedL #-}
+-- | 'balanceDataInnerLocked' Lens
+balanceDataInnerLockedL :: Lens_' BalanceDataInner (Maybe Double)
+balanceDataInnerLockedL f BalanceDataInner{..} = (\balanceDataInnerLocked -> BalanceDataInner { balanceDataInnerLocked, ..} ) <$> f balanceDataInnerLocked
+{-# INLINE balanceDataInnerLockedL #-}
 
--- | 'balanceDataLastUpdatedBy' Lens
-balanceDataLastUpdatedByL :: Lens_' BalanceData (Maybe E'LastUpdatedBy)
-balanceDataLastUpdatedByL f BalanceData{..} = (\balanceDataLastUpdatedBy -> BalanceData { balanceDataLastUpdatedBy, ..} ) <$> f balanceDataLastUpdatedBy
-{-# INLINE balanceDataLastUpdatedByL #-}
+-- | 'balanceDataInnerLastUpdatedBy' Lens
+balanceDataInnerLastUpdatedByL :: Lens_' BalanceDataInner (Maybe E'LastUpdatedBy)
+balanceDataInnerLastUpdatedByL f BalanceDataInner{..} = (\balanceDataInnerLastUpdatedBy -> BalanceDataInner { balanceDataInnerLastUpdatedBy, ..} ) <$> f balanceDataInnerLastUpdatedBy
+{-# INLINE balanceDataInnerLastUpdatedByL #-}
 
--- | 'balanceDataRateUsd' Lens
-balanceDataRateUsdL :: Lens_' BalanceData (Maybe Double)
-balanceDataRateUsdL f BalanceData{..} = (\balanceDataRateUsd -> BalanceData { balanceDataRateUsd, ..} ) <$> f balanceDataRateUsd
-{-# INLINE balanceDataRateUsdL #-}
+-- | 'balanceDataInnerRateUsd' Lens
+balanceDataInnerRateUsdL :: Lens_' BalanceDataInner (Maybe Double)
+balanceDataInnerRateUsdL f BalanceDataInner{..} = (\balanceDataInnerRateUsd -> BalanceDataInner { balanceDataInnerRateUsd, ..} ) <$> f balanceDataInnerRateUsd
+{-# INLINE balanceDataInnerRateUsdL #-}
 
--- | 'balanceDataTraded' Lens
-balanceDataTradedL :: Lens_' BalanceData (Maybe Double)
-balanceDataTradedL f BalanceData{..} = (\balanceDataTraded -> BalanceData { balanceDataTraded, ..} ) <$> f balanceDataTraded
-{-# INLINE balanceDataTradedL #-}
+-- | 'balanceDataInnerTraded' Lens
+balanceDataInnerTradedL :: Lens_' BalanceDataInner (Maybe Double)
+balanceDataInnerTradedL f BalanceDataInner{..} = (\balanceDataInnerTraded -> BalanceDataInner { balanceDataInnerTraded, ..} ) <$> f balanceDataInnerTraded
+{-# INLINE balanceDataInnerTradedL #-}
 
 
 
@@ -403,63 +403,63 @@ positionExchangeIdL f Position{..} = (\positionExchangeId -> Position { position
 {-# INLINE positionExchangeIdL #-}
 
 -- | 'positionData' Lens
-positionDataL :: Lens_' Position (Maybe [PositionData])
+positionDataL :: Lens_' Position (Maybe [PositionDataInner])
 positionDataL f Position{..} = (\positionData -> Position { positionData, ..} ) <$> f positionData
 {-# INLINE positionDataL #-}
 
 
 
--- * PositionData
+-- * PositionDataInner
 
--- | 'positionDataSymbolIdExchange' Lens
-positionDataSymbolIdExchangeL :: Lens_' PositionData (Maybe Text)
-positionDataSymbolIdExchangeL f PositionData{..} = (\positionDataSymbolIdExchange -> PositionData { positionDataSymbolIdExchange, ..} ) <$> f positionDataSymbolIdExchange
-{-# INLINE positionDataSymbolIdExchangeL #-}
+-- | 'positionDataInnerSymbolIdExchange' Lens
+positionDataInnerSymbolIdExchangeL :: Lens_' PositionDataInner (Maybe Text)
+positionDataInnerSymbolIdExchangeL f PositionDataInner{..} = (\positionDataInnerSymbolIdExchange -> PositionDataInner { positionDataInnerSymbolIdExchange, ..} ) <$> f positionDataInnerSymbolIdExchange
+{-# INLINE positionDataInnerSymbolIdExchangeL #-}
 
--- | 'positionDataSymbolIdCoinapi' Lens
-positionDataSymbolIdCoinapiL :: Lens_' PositionData (Maybe Text)
-positionDataSymbolIdCoinapiL f PositionData{..} = (\positionDataSymbolIdCoinapi -> PositionData { positionDataSymbolIdCoinapi, ..} ) <$> f positionDataSymbolIdCoinapi
-{-# INLINE positionDataSymbolIdCoinapiL #-}
+-- | 'positionDataInnerSymbolIdCoinapi' Lens
+positionDataInnerSymbolIdCoinapiL :: Lens_' PositionDataInner (Maybe Text)
+positionDataInnerSymbolIdCoinapiL f PositionDataInner{..} = (\positionDataInnerSymbolIdCoinapi -> PositionDataInner { positionDataInnerSymbolIdCoinapi, ..} ) <$> f positionDataInnerSymbolIdCoinapi
+{-# INLINE positionDataInnerSymbolIdCoinapiL #-}
 
--- | 'positionDataAvgEntryPrice' Lens
-positionDataAvgEntryPriceL :: Lens_' PositionData (Maybe Double)
-positionDataAvgEntryPriceL f PositionData{..} = (\positionDataAvgEntryPrice -> PositionData { positionDataAvgEntryPrice, ..} ) <$> f positionDataAvgEntryPrice
-{-# INLINE positionDataAvgEntryPriceL #-}
+-- | 'positionDataInnerAvgEntryPrice' Lens
+positionDataInnerAvgEntryPriceL :: Lens_' PositionDataInner (Maybe Double)
+positionDataInnerAvgEntryPriceL f PositionDataInner{..} = (\positionDataInnerAvgEntryPrice -> PositionDataInner { positionDataInnerAvgEntryPrice, ..} ) <$> f positionDataInnerAvgEntryPrice
+{-# INLINE positionDataInnerAvgEntryPriceL #-}
 
--- | 'positionDataQuantity' Lens
-positionDataQuantityL :: Lens_' PositionData (Maybe Double)
-positionDataQuantityL f PositionData{..} = (\positionDataQuantity -> PositionData { positionDataQuantity, ..} ) <$> f positionDataQuantity
-{-# INLINE positionDataQuantityL #-}
+-- | 'positionDataInnerQuantity' Lens
+positionDataInnerQuantityL :: Lens_' PositionDataInner (Maybe Double)
+positionDataInnerQuantityL f PositionDataInner{..} = (\positionDataInnerQuantity -> PositionDataInner { positionDataInnerQuantity, ..} ) <$> f positionDataInnerQuantity
+{-# INLINE positionDataInnerQuantityL #-}
 
--- | 'positionDataSide' Lens
-positionDataSideL :: Lens_' PositionData (Maybe OrdSide)
-positionDataSideL f PositionData{..} = (\positionDataSide -> PositionData { positionDataSide, ..} ) <$> f positionDataSide
-{-# INLINE positionDataSideL #-}
+-- | 'positionDataInnerSide' Lens
+positionDataInnerSideL :: Lens_' PositionDataInner (Maybe OrdSide)
+positionDataInnerSideL f PositionDataInner{..} = (\positionDataInnerSide -> PositionDataInner { positionDataInnerSide, ..} ) <$> f positionDataInnerSide
+{-# INLINE positionDataInnerSideL #-}
 
--- | 'positionDataUnrealizedPnl' Lens
-positionDataUnrealizedPnlL :: Lens_' PositionData (Maybe Double)
-positionDataUnrealizedPnlL f PositionData{..} = (\positionDataUnrealizedPnl -> PositionData { positionDataUnrealizedPnl, ..} ) <$> f positionDataUnrealizedPnl
-{-# INLINE positionDataUnrealizedPnlL #-}
+-- | 'positionDataInnerUnrealizedPnl' Lens
+positionDataInnerUnrealizedPnlL :: Lens_' PositionDataInner (Maybe Double)
+positionDataInnerUnrealizedPnlL f PositionDataInner{..} = (\positionDataInnerUnrealizedPnl -> PositionDataInner { positionDataInnerUnrealizedPnl, ..} ) <$> f positionDataInnerUnrealizedPnl
+{-# INLINE positionDataInnerUnrealizedPnlL #-}
 
--- | 'positionDataLeverage' Lens
-positionDataLeverageL :: Lens_' PositionData (Maybe Double)
-positionDataLeverageL f PositionData{..} = (\positionDataLeverage -> PositionData { positionDataLeverage, ..} ) <$> f positionDataLeverage
-{-# INLINE positionDataLeverageL #-}
+-- | 'positionDataInnerLeverage' Lens
+positionDataInnerLeverageL :: Lens_' PositionDataInner (Maybe Double)
+positionDataInnerLeverageL f PositionDataInner{..} = (\positionDataInnerLeverage -> PositionDataInner { positionDataInnerLeverage, ..} ) <$> f positionDataInnerLeverage
+{-# INLINE positionDataInnerLeverageL #-}
 
--- | 'positionDataCrossMargin' Lens
-positionDataCrossMarginL :: Lens_' PositionData (Maybe Bool)
-positionDataCrossMarginL f PositionData{..} = (\positionDataCrossMargin -> PositionData { positionDataCrossMargin, ..} ) <$> f positionDataCrossMargin
-{-# INLINE positionDataCrossMarginL #-}
+-- | 'positionDataInnerCrossMargin' Lens
+positionDataInnerCrossMarginL :: Lens_' PositionDataInner (Maybe Bool)
+positionDataInnerCrossMarginL f PositionDataInner{..} = (\positionDataInnerCrossMargin -> PositionDataInner { positionDataInnerCrossMargin, ..} ) <$> f positionDataInnerCrossMargin
+{-# INLINE positionDataInnerCrossMarginL #-}
 
--- | 'positionDataLiquidationPrice' Lens
-positionDataLiquidationPriceL :: Lens_' PositionData (Maybe Double)
-positionDataLiquidationPriceL f PositionData{..} = (\positionDataLiquidationPrice -> PositionData { positionDataLiquidationPrice, ..} ) <$> f positionDataLiquidationPrice
-{-# INLINE positionDataLiquidationPriceL #-}
+-- | 'positionDataInnerLiquidationPrice' Lens
+positionDataInnerLiquidationPriceL :: Lens_' PositionDataInner (Maybe Double)
+positionDataInnerLiquidationPriceL f PositionDataInner{..} = (\positionDataInnerLiquidationPrice -> PositionDataInner { positionDataInnerLiquidationPrice, ..} ) <$> f positionDataInnerLiquidationPrice
+{-# INLINE positionDataInnerLiquidationPriceL #-}
 
--- | 'positionDataRawData' Lens
-positionDataRawDataL :: Lens_' PositionData (Maybe A.Value)
-positionDataRawDataL f PositionData{..} = (\positionDataRawData -> PositionData { positionDataRawData, ..} ) <$> f positionDataRawData
-{-# INLINE positionDataRawDataL #-}
+-- | 'positionDataInnerRawData' Lens
+positionDataInnerRawDataL :: Lens_' PositionDataInner (Maybe A.Value)
+positionDataInnerRawDataL f PositionDataInner{..} = (\positionDataInnerRawData -> PositionDataInner { positionDataInnerRawData, ..} ) <$> f positionDataInnerRawData
+{-# INLINE positionDataInnerRawDataL #-}
 
 
 

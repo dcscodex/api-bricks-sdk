@@ -11,9 +11,11 @@
  * Do not edit the class manually.
  */
 
-import { Observable } from 'rxjs';
-import { BaseAPI, HttpQuery, OperationOpts, RawAjaxResponse } from '../runtime';
-import {
+import type { Observable } from 'rxjs';
+import type { AjaxResponse } from 'rxjs/ajax';
+import { BaseAPI } from '../runtime';
+import type { OperationOpts, HttpQuery } from '../runtime';
+import type {
     MessageReject,
     Position,
 } from '../models';
@@ -32,8 +34,8 @@ export class PositionsApi extends BaseAPI {
      * Get open positions
      */
     v1PositionsGet({ exchangeId }: V1PositionsGetRequest): Observable<Array<Position>>
-    v1PositionsGet({ exchangeId }: V1PositionsGetRequest, opts?: OperationOpts): Observable<RawAjaxResponse<Array<Position>>>
-    v1PositionsGet({ exchangeId }: V1PositionsGetRequest, opts?: OperationOpts): Observable<Array<Position> | RawAjaxResponse<Array<Position>>> {
+    v1PositionsGet({ exchangeId }: V1PositionsGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<Position>>>
+    v1PositionsGet({ exchangeId }: V1PositionsGetRequest, opts?: OperationOpts): Observable<Array<Position> | AjaxResponse<Array<Position>>> {
 
         const query: HttpQuery = {};
 

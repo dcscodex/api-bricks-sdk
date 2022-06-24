@@ -11,9 +11,11 @@
  * Do not edit the class manually.
  */
 
-import { Observable } from 'rxjs';
-import { BaseAPI, HttpHeaders, HttpQuery, throwIfNullOrUndefined, encodeURI, OperationOpts, RawAjaxResponse } from '../runtime';
-import {
+import type { Observable } from 'rxjs';
+import type { AjaxResponse } from 'rxjs/ajax';
+import { BaseAPI, throwIfNullOrUndefined, encodeURI } from '../runtime';
+import type { OperationOpts, HttpHeaders, HttpQuery } from '../runtime';
+import type {
     MessageReject,
     OrderCancelAllRequest,
     OrderCancelSingleRequest,
@@ -52,8 +54,8 @@ export class OrdersApi extends BaseAPI {
      * Cancel all orders request
      */
     v1OrdersCancelAllPost({ orderCancelAllRequest }: V1OrdersCancelAllPostRequest): Observable<MessageReject>
-    v1OrdersCancelAllPost({ orderCancelAllRequest }: V1OrdersCancelAllPostRequest, opts?: OperationOpts): Observable<RawAjaxResponse<MessageReject>>
-    v1OrdersCancelAllPost({ orderCancelAllRequest }: V1OrdersCancelAllPostRequest, opts?: OperationOpts): Observable<MessageReject | RawAjaxResponse<MessageReject>> {
+    v1OrdersCancelAllPost({ orderCancelAllRequest }: V1OrdersCancelAllPostRequest, opts?: OperationOpts): Observable<AjaxResponse<MessageReject>>
+    v1OrdersCancelAllPost({ orderCancelAllRequest }: V1OrdersCancelAllPostRequest, opts?: OperationOpts): Observable<MessageReject | AjaxResponse<MessageReject>> {
         throwIfNullOrUndefined(orderCancelAllRequest, 'orderCancelAllRequest', 'v1OrdersCancelAllPost');
 
         const headers: HttpHeaders = {
@@ -73,8 +75,8 @@ export class OrdersApi extends BaseAPI {
      * Cancel order request
      */
     v1OrdersCancelPost({ orderCancelSingleRequest }: V1OrdersCancelPostRequest): Observable<OrderExecutionReport>
-    v1OrdersCancelPost({ orderCancelSingleRequest }: V1OrdersCancelPostRequest, opts?: OperationOpts): Observable<RawAjaxResponse<OrderExecutionReport>>
-    v1OrdersCancelPost({ orderCancelSingleRequest }: V1OrdersCancelPostRequest, opts?: OperationOpts): Observable<OrderExecutionReport | RawAjaxResponse<OrderExecutionReport>> {
+    v1OrdersCancelPost({ orderCancelSingleRequest }: V1OrdersCancelPostRequest, opts?: OperationOpts): Observable<AjaxResponse<OrderExecutionReport>>
+    v1OrdersCancelPost({ orderCancelSingleRequest }: V1OrdersCancelPostRequest, opts?: OperationOpts): Observable<OrderExecutionReport | AjaxResponse<OrderExecutionReport>> {
         throwIfNullOrUndefined(orderCancelSingleRequest, 'orderCancelSingleRequest', 'v1OrdersCancelPost');
 
         const headers: HttpHeaders = {
@@ -94,8 +96,8 @@ export class OrdersApi extends BaseAPI {
      * Get open orders
      */
     v1OrdersGet({ exchangeId }: V1OrdersGetRequest): Observable<Array<OrderExecutionReport>>
-    v1OrdersGet({ exchangeId }: V1OrdersGetRequest, opts?: OperationOpts): Observable<RawAjaxResponse<Array<OrderExecutionReport>>>
-    v1OrdersGet({ exchangeId }: V1OrdersGetRequest, opts?: OperationOpts): Observable<Array<OrderExecutionReport> | RawAjaxResponse<Array<OrderExecutionReport>>> {
+    v1OrdersGet({ exchangeId }: V1OrdersGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<OrderExecutionReport>>>
+    v1OrdersGet({ exchangeId }: V1OrdersGetRequest, opts?: OperationOpts): Observable<Array<OrderExecutionReport> | AjaxResponse<Array<OrderExecutionReport>>> {
 
         const query: HttpQuery = {};
 
@@ -113,8 +115,8 @@ export class OrdersApi extends BaseAPI {
      * Send new order
      */
     v1OrdersPost({ orderNewSingleRequest }: V1OrdersPostRequest): Observable<OrderExecutionReport>
-    v1OrdersPost({ orderNewSingleRequest }: V1OrdersPostRequest, opts?: OperationOpts): Observable<RawAjaxResponse<OrderExecutionReport>>
-    v1OrdersPost({ orderNewSingleRequest }: V1OrdersPostRequest, opts?: OperationOpts): Observable<OrderExecutionReport | RawAjaxResponse<OrderExecutionReport>> {
+    v1OrdersPost({ orderNewSingleRequest }: V1OrdersPostRequest, opts?: OperationOpts): Observable<AjaxResponse<OrderExecutionReport>>
+    v1OrdersPost({ orderNewSingleRequest }: V1OrdersPostRequest, opts?: OperationOpts): Observable<OrderExecutionReport | AjaxResponse<OrderExecutionReport>> {
         throwIfNullOrUndefined(orderNewSingleRequest, 'orderNewSingleRequest', 'v1OrdersPost');
 
         const headers: HttpHeaders = {
@@ -134,8 +136,8 @@ export class OrdersApi extends BaseAPI {
      * Get order execution report
      */
     v1OrdersStatusClientOrderIdGet({ clientOrderId }: V1OrdersStatusClientOrderIdGetRequest): Observable<OrderExecutionReport>
-    v1OrdersStatusClientOrderIdGet({ clientOrderId }: V1OrdersStatusClientOrderIdGetRequest, opts?: OperationOpts): Observable<RawAjaxResponse<OrderExecutionReport>>
-    v1OrdersStatusClientOrderIdGet({ clientOrderId }: V1OrdersStatusClientOrderIdGetRequest, opts?: OperationOpts): Observable<OrderExecutionReport | RawAjaxResponse<OrderExecutionReport>> {
+    v1OrdersStatusClientOrderIdGet({ clientOrderId }: V1OrdersStatusClientOrderIdGetRequest, opts?: OperationOpts): Observable<AjaxResponse<OrderExecutionReport>>
+    v1OrdersStatusClientOrderIdGet({ clientOrderId }: V1OrdersStatusClientOrderIdGetRequest, opts?: OperationOpts): Observable<OrderExecutionReport | AjaxResponse<OrderExecutionReport>> {
         throwIfNullOrUndefined(clientOrderId, 'clientOrderId', 'v1OrdersStatusClientOrderIdGet');
 
         return this.request<OrderExecutionReport>({

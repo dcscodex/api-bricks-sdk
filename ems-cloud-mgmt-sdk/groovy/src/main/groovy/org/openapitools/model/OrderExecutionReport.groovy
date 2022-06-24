@@ -37,7 +37,7 @@ class OrderExecutionReport {
     /* Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`. */
     Date expireTime = null
     /* Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a>  */
-    List<String> execInst = new ArrayList<ExecInstEnum>()
+    List<String> execInst = new ArrayList<>()
     /* The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it. */
     String clientOrderIdFormatExchange
     /* Unique identifier of the order assigned by the exchange or executing system. */
@@ -51,9 +51,9 @@ class OrderExecutionReport {
     
     OrdStatus status
     /* Timestamped history of order status changes. */
-    List<List<String>> statusHistory = new ArrayList<List<String>>()
+    List<List<String>> statusHistory = new ArrayList<>()
     /* Error message. */
     String errorMessage
     /* Relay fill information on working orders. */
-    List<Fills> fills = new ArrayList<Fills>()
+    List<Fills> fills = new ArrayList<>()
 }

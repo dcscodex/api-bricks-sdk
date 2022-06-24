@@ -15,7 +15,7 @@
 #'
 #' @field exchange_id  character [optional]
 #'
-#' @field data  list( \link{PositionData} ) [optional]
+#' @field data  list( \link{PositionDataInner} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -58,7 +58,7 @@ Position <- R6::R6Class(
         self$`exchange_id` <- PositionObject$`exchange_id`
       }
       if (!is.null(PositionObject$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(PositionObject$`data`, "array[PositionData]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(PositionObject$`data`, "array[PositionDataInner]", loadNamespace("openapi"))
       }
       self
     },
@@ -85,7 +85,7 @@ Position <- R6::R6Class(
     fromJSONString = function(PositionJson) {
       PositionObject <- jsonlite::fromJSON(PositionJson)
       self$`exchange_id` <- PositionObject$`exchange_id`
-      self$`data` <- ApiClient$new()$deserializeObj(PositionObject$`data`, "array[PositionData]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(PositionObject$`data`, "array[PositionDataInner]", loadNamespace("openapi"))
       self
     }
   )

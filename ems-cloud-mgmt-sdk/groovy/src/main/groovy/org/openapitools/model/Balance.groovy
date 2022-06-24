@@ -5,12 +5,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.model.BalanceData;
+import org.openapitools.model.BalanceDataInner;
 
 @Canonical
 class Balance {
     /* Exchange identifier used to identify the routing destination. */
     String exchangeId
     
-    List<BalanceData> data = new ArrayList<BalanceData>()
+    List<BalanceDataInner> data = new ArrayList<>()
 }

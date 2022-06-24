@@ -96,25 +96,23 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
     if (!order_execution_report_all_of->client_order_id_format_exchange) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "client_order_id_format_exchange", order_execution_report_all_of->client_order_id_format_exchange) == NULL) {
     goto fail; //String
     }
 
 
     // order_execution_report_all_of->exchange_order_id
-    if(order_execution_report_all_of->exchange_order_id) { 
+    if(order_execution_report_all_of->exchange_order_id) {
     if(cJSON_AddStringToObject(item, "exchange_order_id", order_execution_report_all_of->exchange_order_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report_all_of->amount_open
     if (!order_execution_report_all_of->amount_open) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_open", order_execution_report_all_of->amount_open) == NULL) {
     goto fail; //Numeric
     }
@@ -124,22 +122,23 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
     if (!order_execution_report_all_of->amount_filled) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_filled", order_execution_report_all_of->amount_filled) == NULL) {
     goto fail; //Numeric
     }
 
 
     // order_execution_report_all_of->avg_px
-    if(order_execution_report_all_of->avg_px) { 
+    if(order_execution_report_all_of->avg_px) {
     if(cJSON_AddNumberToObject(item, "avg_px", order_execution_report_all_of->avg_px) == NULL) {
     goto fail; //Numeric
     }
-     } 
+    }
 
 
     // order_execution_report_all_of->status
-    
+    if (ems___rest_api_order_execution_report_all_of__NULL == order_execution_report_all_of->status) {
+        goto fail;
+    }
     cJSON *status_local_JSON = ord_status_convertToJSON(order_execution_report_all_of->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -151,7 +150,7 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
 
 
     // order_execution_report_all_of->status_history
-    if(order_execution_report_all_of->status_history) { 
+    if(order_execution_report_all_of->status_history) {
     cJSON *status_history = cJSON_AddArrayToObject(item, "status_history");
     if(status_history == NULL) {
         goto fail; //primitive container
@@ -160,19 +159,19 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
     listEntry_t *status_historyListEntry;
     list_ForEach(status_historyListEntry, order_execution_report_all_of->status_history) {
     }
-     } 
+    }
 
 
     // order_execution_report_all_of->error_message
-    if(order_execution_report_all_of->error_message) { 
+    if(order_execution_report_all_of->error_message) {
     if(cJSON_AddStringToObject(item, "error_message", order_execution_report_all_of->error_message) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_execution_report_all_of->fills
-    if(order_execution_report_all_of->fills) { 
+    if(order_execution_report_all_of->fills) {
     cJSON *fills = cJSON_AddArrayToObject(item, "fills");
     if(fills == NULL) {
     goto fail; //nonprimitive container
@@ -188,7 +187,7 @@ cJSON *order_execution_report_all_of_convertToJSON(order_execution_report_all_of
     cJSON_AddItemToArray(fills, itemLocal);
     }
     }
-     } 
+    }
 
     return item;
 fail:
@@ -204,6 +203,12 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
 
     // define the local variable for order_execution_report_all_of->status
     ord_status_t *status_local_nonprim = NULL;
+
+    // define the local list for order_execution_report_all_of->status_history
+    list_t *status_historyList = NULL;
+
+    // define the local list for order_execution_report_all_of->fills
+    list_t *fillsList = NULL;
 
     // order_execution_report_all_of->client_order_id_format_exchange
     cJSON *client_order_id_format_exchange = cJSON_GetObjectItemCaseSensitive(order_execution_report_all_ofJSON, "client_order_id_format_exchange");
@@ -270,9 +275,8 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
 
     // order_execution_report_all_of->status_history
     cJSON *status_history = cJSON_GetObjectItemCaseSensitive(order_execution_report_all_ofJSON, "status_history");
-    list_t *status_historyList;
     if (status_history) { 
-    cJSON *status_history_local;
+    cJSON *status_history_local = NULL;
     if(!cJSON_IsArray(status_history)) {
         goto end;//primitive container
     }
@@ -294,9 +298,8 @@ order_execution_report_all_of_t *order_execution_report_all_of_parseFromJSON(cJS
 
     // order_execution_report_all_of->fills
     cJSON *fills = cJSON_GetObjectItemCaseSensitive(order_execution_report_all_ofJSON, "fills");
-    list_t *fillsList;
     if (fills) { 
-    cJSON *fills_local_nonprimitive;
+    cJSON *fills_local_nonprimitive = NULL;
     if(!cJSON_IsArray(fills)){
         goto end; //nonprimitive container
     }
@@ -332,6 +335,19 @@ end:
     if (status_local_nonprim) {
         ord_status_free(status_local_nonprim);
         status_local_nonprim = NULL;
+    }
+    if (status_historyList) {
+        list_freeList(status_historyList);
+        status_historyList = NULL;
+    }
+    if (fillsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, fillsList) {
+            fills_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(fillsList);
+        fillsList = NULL;
     }
     return NULL;
 

@@ -155,7 +155,6 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
     if (!order_new_single_request->exchange_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "exchange_id", order_new_single_request->exchange_id) == NULL) {
     goto fail; //String
     }
@@ -165,33 +164,31 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
     if (!order_new_single_request->client_order_id) {
         goto fail;
     }
-    
     if(cJSON_AddStringToObject(item, "client_order_id", order_new_single_request->client_order_id) == NULL) {
     goto fail; //String
     }
 
 
     // order_new_single_request->symbol_id_exchange
-    if(order_new_single_request->symbol_id_exchange) { 
+    if(order_new_single_request->symbol_id_exchange) {
     if(cJSON_AddStringToObject(item, "symbol_id_exchange", order_new_single_request->symbol_id_exchange) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_new_single_request->symbol_id_coinapi
-    if(order_new_single_request->symbol_id_coinapi) { 
+    if(order_new_single_request->symbol_id_coinapi) {
     if(cJSON_AddStringToObject(item, "symbol_id_coinapi", order_new_single_request->symbol_id_coinapi) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // order_new_single_request->amount_order
     if (!order_new_single_request->amount_order) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "amount_order", order_new_single_request->amount_order) == NULL) {
     goto fail; //Numeric
     }
@@ -201,14 +198,15 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
     if (!order_new_single_request->price) {
         goto fail;
     }
-    
     if(cJSON_AddNumberToObject(item, "price", order_new_single_request->price) == NULL) {
     goto fail; //Numeric
     }
 
 
     // order_new_single_request->side
-    
+    if (ems___rest_api_order_new_single_request__NULL == order_new_single_request->side) {
+        goto fail;
+    }
     cJSON *side_local_JSON = ord_side_convertToJSON(order_new_single_request->side);
     if(side_local_JSON == NULL) {
         goto fail; // custom
@@ -220,7 +218,9 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
 
 
     // order_new_single_request->order_type
-    
+    if (ems___rest_api_order_new_single_request__NULL == order_new_single_request->order_type) {
+        goto fail;
+    }
     cJSON *order_type_local_JSON = ord_type_convertToJSON(order_new_single_request->order_type);
     if(order_type_local_JSON == NULL) {
         goto fail; // custom
@@ -232,7 +232,9 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
 
 
     // order_new_single_request->time_in_force
-    
+    if (ems___rest_api_order_new_single_request__NULL == order_new_single_request->time_in_force) {
+        goto fail;
+    }
     cJSON *time_in_force_local_JSON = time_in_force_convertToJSON(order_new_single_request->time_in_force);
     if(time_in_force_local_JSON == NULL) {
         goto fail; // custom
@@ -244,12 +246,12 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
 
 
     // order_new_single_request->expire_time
-    if(order_new_single_request->expire_time) { 
-     } 
+    if(order_new_single_request->expire_time) {
+    }
 
 
     // order_new_single_request->exec_inst
-    
+    if(order_new_single_request->exec_inst != ems___rest_api_order_new_single_request_EXECINST_NULL) {
     cJSON *exec_inst = cJSON_AddArrayToObject(item, "exec_inst");
     if(exec_inst == NULL) {
         goto fail; //primitive container
@@ -262,7 +264,7 @@ cJSON *order_new_single_request_convertToJSON(order_new_single_request_t *order_
         goto fail;
     }
     }
-    
+    }
 
     return item;
 fail:
@@ -284,6 +286,9 @@ order_new_single_request_t *order_new_single_request_parseFromJSON(cJSON *order_
 
     // define the local variable for order_new_single_request->time_in_force
     time_in_force_t *time_in_force_local_nonprim = NULL;
+
+    // define the local list for order_new_single_request->exec_inst
+    list_t *exec_instList = NULL;
 
     // order_new_single_request->exchange_id
     cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(order_new_single_requestJSON, "exchange_id");
@@ -384,9 +389,8 @@ order_new_single_request_t *order_new_single_request_parseFromJSON(cJSON *order_
 
     // order_new_single_request->exec_inst
     cJSON *exec_inst = cJSON_GetObjectItemCaseSensitive(order_new_single_requestJSON, "exec_inst");
-    list_t *exec_instList;
     if (exec_inst) { 
-    cJSON *exec_inst_local;
+    cJSON *exec_inst_local = NULL;
     if(!cJSON_IsArray(exec_inst)) {
         goto end;//primitive container
     }
@@ -429,6 +433,15 @@ end:
     if (time_in_force_local_nonprim) {
         time_in_force_free(time_in_force_local_nonprim);
         time_in_force_local_nonprim = NULL;
+    }
+    if (exec_instList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, exec_instList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(exec_instList);
+        exec_instList = NULL;
     }
     return NULL;
 

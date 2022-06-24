@@ -13,7 +13,7 @@ API.Client.Balance = function() {}
 API.Client.Balance.prototype.exchangeId;
 
 /**
- * @type {!Array<!API.Client.Balance_data>}
+ * @type {!Array<!API.Client.Balance_data_inner>}
  * @export
  */
 API.Client.Balance.prototype.data;

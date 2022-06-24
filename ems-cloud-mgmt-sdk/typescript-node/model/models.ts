@@ -1,7 +1,7 @@
 import localVarRequest from 'request';
 
 export * from './balance';
-export * from './balanceData';
+export * from './balanceDataInner';
 export * from './fills';
 export * from './messageReject';
 export * from './ordSide';
@@ -13,7 +13,7 @@ export * from './orderExecutionReport';
 export * from './orderExecutionReportAllOf';
 export * from './orderNewSingleRequest';
 export * from './position';
-export * from './positionData';
+export * from './positionDataInner';
 export * from './rejectReason';
 export * from './timeInForce';
 export * from './validationError';
@@ -32,7 +32,7 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
 import { Balance } from './balance';
-import { BalanceData } from './balanceData';
+import { BalanceDataInner } from './balanceDataInner';
 import { Fills } from './fills';
 import { MessageReject } from './messageReject';
 import { OrdSide } from './ordSide';
@@ -44,7 +44,7 @@ import { OrderExecutionReport } from './orderExecutionReport';
 import { OrderExecutionReportAllOf } from './orderExecutionReportAllOf';
 import { OrderNewSingleRequest } from './orderNewSingleRequest';
 import { Position } from './position';
-import { PositionData } from './positionData';
+import { PositionDataInner } from './positionDataInner';
 import { RejectReason } from './rejectReason';
 import { TimeInForce } from './timeInForce';
 import { ValidationError } from './validationError';
@@ -62,7 +62,7 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
-        "BalanceData.LastUpdatedByEnum": BalanceData.LastUpdatedByEnum,
+        "BalanceDataInner.LastUpdatedByEnum": BalanceDataInner.LastUpdatedByEnum,
         "OrdSide": OrdSide,
         "OrdStatus": OrdStatus,
         "OrdType": OrdType,
@@ -74,7 +74,7 @@ let enumsMap: {[index: string]: any} = {
 
 let typeMap: {[index: string]: any} = {
     "Balance": Balance,
-    "BalanceData": BalanceData,
+    "BalanceDataInner": BalanceDataInner,
     "Fills": Fills,
     "MessageReject": MessageReject,
     "OrderCancelAllRequest": OrderCancelAllRequest,
@@ -83,7 +83,7 @@ let typeMap: {[index: string]: any} = {
     "OrderExecutionReportAllOf": OrderExecutionReportAllOf,
     "OrderNewSingleRequest": OrderNewSingleRequest,
     "Position": Position,
-    "PositionData": PositionData,
+    "PositionDataInner": PositionDataInner,
     "ValidationError": ValidationError,
 }
 

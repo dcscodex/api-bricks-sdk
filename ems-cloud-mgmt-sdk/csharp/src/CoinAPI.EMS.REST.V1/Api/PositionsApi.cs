@@ -33,7 +33,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
-        /// <returns>List&lt;Position&gt;</returns>
+        /// <returns>List<Position></returns>
         List<Position> V1PositionsGet (string exchangeId = default(string));
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Position&gt;</returns>
+        /// <returns>ApiResponse of List<Position></returns>
         ApiResponse<List<Position>> V1PositionsGetWithHttpInfo (string exchangeId = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
@@ -57,7 +57,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of List&lt;Position&gt;</returns>
+        /// <returns>Task of List<Position></returns>
         System.Threading.Tasks.Task<List<Position>> V1PositionsGetAsync (string exchangeId = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
-        /// <returns>List&lt;Position&gt;</returns>
+        /// <returns>List<Position></returns>
         public List<Position> V1PositionsGet (string exchangeId = default(string))
         {
              ApiResponse<List<Position>> localVarResponse = V1PositionsGetWithHttpInfo(exchangeId);
@@ -199,7 +199,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Position&gt;</returns>
+        /// <returns>ApiResponse of List<Position></returns>
         public ApiResponse<List<Position>> V1PositionsGetWithHttpInfo (string exchangeId = default(string))
         {
 
@@ -252,7 +252,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the balances to the specific exchange. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of List&lt;Position&gt;</returns>
+        /// <returns>Task of List<Position></returns>
         public async System.Threading.Tasks.Task<List<Position>> V1PositionsGetAsync (string exchangeId = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<List<Position>> localVarResponse = await V1PositionsGetWithHttpInfoAsync(exchangeId, cancellationToken);

@@ -1,5 +1,5 @@
 export * from './balance';
-export * from './balanceData';
+export * from './balanceDataInner';
 export * from './fills';
 export * from './messageReject';
 export * from './ordSide';
@@ -11,7 +11,7 @@ export * from './orderExecutionReport';
 export * from './orderExecutionReportAllOf';
 export * from './orderNewSingleRequest';
 export * from './position';
-export * from './positionData';
+export * from './positionDataInner';
 export * from './rejectReason';
 export * from './timeInForce';
 export * from './validationError';

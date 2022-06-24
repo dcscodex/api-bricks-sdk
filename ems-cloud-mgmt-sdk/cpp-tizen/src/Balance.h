@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Balance_data.h"
+#include "Balance_data_inner.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setExchangeId(std::string  exchange_id);
 	/*! \brief Get 
 	 */
-	std::list<Balance_data> getData();
+	std::list<Balance_data_inner> getData();
 
 	/*! \brief Set 
 	 */
-	void setData(std::list <Balance_data> data);
+	void setData(std::list <Balance_data_inner> data);
 
 private:
 	std::string exchange_id;
-	std::list <Balance_data>data;
+	std::list <Balance_data_inner>data;
 	void __init();
 	void __cleanup();
 

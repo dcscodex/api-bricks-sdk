@@ -12,6 +12,7 @@ import qualified Data.Set as Set
 import qualified Data.Text as T
 import qualified Data.Time as TI
 import qualified Data.Vector as V
+import Data.String (fromString)
 
 import Control.Monad
 import Data.Char (isSpace)
@@ -52,8 +53,12 @@ instance Arbitrary Date where
     shrink (Date xs) = Date <$> shrink xs
 
 -- | A naive Arbitrary instance for A.Value:
-instance Arbitrary A.Value where
-  arbitrary = frequency [(3, simpleTypes), (1, arrayTypes), (1, objectTypes)]
+-- instance Arbitrary A.Value where
+--   arbitrary = arbitraryValue
+
+arbitraryValue :: Gen A.Value
+arbitraryValue =
+  frequency [(3, simpleTypes), (1, arrayTypes), (1, objectTypes)]
     where
       simpleTypes :: Gen A.Value
       simpleTypes =
@@ -63,7 +68,7 @@ instance Arbitrary A.Value where
           , (2, liftM (A.Number . fromIntegral) (arbitrary :: Gen Int))
           , (2, liftM (A.String . T.pack) (arbitrary :: Gen String))
           ]
-      mapF (k, v) = (T.pack k, v)
+      mapF (k, v) = (fromString k, v)
       simpleAndArrays = frequency [(1, sized sizedArray), (4, simpleTypes)]
       arrayTypes = sized sizedArray
       objectTypes = sized sizedObject
@@ -111,22 +116,22 @@ genBalance :: Int -> Gen Balance
 genBalance n =
   Balance
     <$> arbitraryReducedMaybe n -- balanceExchangeId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- balanceData :: Maybe [BalanceData]
+    <*> arbitraryReducedMaybe n -- balanceData :: Maybe [BalanceDataInner]
   
-instance Arbitrary BalanceData where
-  arbitrary = sized genBalanceData
+instance Arbitrary BalanceDataInner where
+  arbitrary = sized genBalanceDataInner
 
-genBalanceData :: Int -> Gen BalanceData
-genBalanceData n =
-  BalanceData
-    <$> arbitraryReducedMaybe n -- balanceDataAssetIdExchange :: Maybe Text
-    <*> arbitraryReducedMaybe n -- balanceDataAssetIdCoinapi :: Maybe Text
-    <*> arbitraryReducedMaybe n -- balanceDataBalance :: Maybe Double
-    <*> arbitraryReducedMaybe n -- balanceDataAvailable :: Maybe Double
-    <*> arbitraryReducedMaybe n -- balanceDataLocked :: Maybe Double
-    <*> arbitraryReducedMaybe n -- balanceDataLastUpdatedBy :: Maybe E'LastUpdatedBy
-    <*> arbitraryReducedMaybe n -- balanceDataRateUsd :: Maybe Double
-    <*> arbitraryReducedMaybe n -- balanceDataTraded :: Maybe Double
+genBalanceDataInner :: Int -> Gen BalanceDataInner
+genBalanceDataInner n =
+  BalanceDataInner
+    <$> arbitraryReducedMaybe n -- balanceDataInnerAssetIdExchange :: Maybe Text
+    <*> arbitraryReducedMaybe n -- balanceDataInnerAssetIdCoinapi :: Maybe Text
+    <*> arbitraryReducedMaybe n -- balanceDataInnerBalance :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataInnerAvailable :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataInnerLocked :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataInnerLastUpdatedBy :: Maybe E'LastUpdatedBy
+    <*> arbitraryReducedMaybe n -- balanceDataInnerRateUsd :: Maybe Double
+    <*> arbitraryReducedMaybe n -- balanceDataInnerTraded :: Maybe Double
   
 instance Arbitrary Fills where
   arbitrary = sized genFills
@@ -236,24 +241,24 @@ genPosition :: Int -> Gen Position
 genPosition n =
   Position
     <$> arbitraryReducedMaybe n -- positionExchangeId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- positionData :: Maybe [PositionData]
+    <*> arbitraryReducedMaybe n -- positionData :: Maybe [PositionDataInner]
   
-instance Arbitrary PositionData where
-  arbitrary = sized genPositionData
+instance Arbitrary PositionDataInner where
+  arbitrary = sized genPositionDataInner
 
-genPositionData :: Int -> Gen PositionData
-genPositionData n =
-  PositionData
-    <$> arbitraryReducedMaybe n -- positionDataSymbolIdExchange :: Maybe Text
-    <*> arbitraryReducedMaybe n -- positionDataSymbolIdCoinapi :: Maybe Text
-    <*> arbitraryReducedMaybe n -- positionDataAvgEntryPrice :: Maybe Double
-    <*> arbitraryReducedMaybe n -- positionDataQuantity :: Maybe Double
-    <*> arbitraryReducedMaybe n -- positionDataSide :: Maybe OrdSide
-    <*> arbitraryReducedMaybe n -- positionDataUnrealizedPnl :: Maybe Double
-    <*> arbitraryReducedMaybe n -- positionDataLeverage :: Maybe Double
-    <*> arbitraryReducedMaybe n -- positionDataCrossMargin :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- positionDataLiquidationPrice :: Maybe Double
-    <*> arbitraryReducedMaybeValue n -- positionDataRawData :: Maybe A.Value
+genPositionDataInner :: Int -> Gen PositionDataInner
+genPositionDataInner n =
+  PositionDataInner
+    <$> arbitraryReducedMaybe n -- positionDataInnerSymbolIdExchange :: Maybe Text
+    <*> arbitraryReducedMaybe n -- positionDataInnerSymbolIdCoinapi :: Maybe Text
+    <*> arbitraryReducedMaybe n -- positionDataInnerAvgEntryPrice :: Maybe Double
+    <*> arbitraryReducedMaybe n -- positionDataInnerQuantity :: Maybe Double
+    <*> arbitraryReducedMaybe n -- positionDataInnerSide :: Maybe OrdSide
+    <*> arbitraryReducedMaybe n -- positionDataInnerUnrealizedPnl :: Maybe Double
+    <*> arbitraryReducedMaybe n -- positionDataInnerLeverage :: Maybe Double
+    <*> arbitraryReducedMaybe n -- positionDataInnerCrossMargin :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- positionDataInnerLiquidationPrice :: Maybe Double
+    <*> arbitraryReducedMaybeValue n -- positionDataInnerRawData :: Maybe A.Value
   
 instance Arbitrary ValidationError where
   arbitrary = sized genValidationError

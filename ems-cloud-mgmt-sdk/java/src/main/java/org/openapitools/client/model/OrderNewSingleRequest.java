@@ -24,18 +24,38 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.OrdSide;
 import org.openapitools.client.model.OrdType;
 import org.openapitools.client.model.TimeInForce;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * The new order message.
  */
 @ApiModel(description = "The new order message.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-06T10:47:11.460866Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-24T08:18:05.483929Z[Etc/UTC]")
 public class OrderNewSingleRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -371,7 +391,7 @@ public class OrderNewSingleRequest {
 
   public OrderNewSingleRequest addExecInstItem(ExecInstEnum execInstItem) {
     if (this.execInst == null) {
-      this.execInst = new ArrayList<ExecInstEnum>();
+      this.execInst = new ArrayList<>();
     }
     this.execInst.add(execInstItem);
     return this;
@@ -392,6 +412,7 @@ public class OrderNewSingleRequest {
   public void setExecInst(List<ExecInstEnum> execInst) {
     this.execInst = execInst;
   }
+
 
 
   @Override
@@ -451,5 +472,130 @@ public class OrderNewSingleRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("exchange_id");
+    openapiFields.add("client_order_id");
+    openapiFields.add("symbol_id_exchange");
+    openapiFields.add("symbol_id_coinapi");
+    openapiFields.add("amount_order");
+    openapiFields.add("price");
+    openapiFields.add("side");
+    openapiFields.add("order_type");
+    openapiFields.add("time_in_force");
+    openapiFields.add("expire_time");
+    openapiFields.add("exec_inst");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("exchange_id");
+    openapiRequiredFields.add("client_order_id");
+    openapiRequiredFields.add("amount_order");
+    openapiRequiredFields.add("price");
+    openapiRequiredFields.add("side");
+    openapiRequiredFields.add("order_type");
+    openapiRequiredFields.add("time_in_force");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to OrderNewSingleRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (OrderNewSingleRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OrderNewSingleRequest is not found in the empty JSON string", OrderNewSingleRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!OrderNewSingleRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderNewSingleRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : OrderNewSingleRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
+      }
+      if (jsonObj.get("client_order_id") != null && !jsonObj.get("client_order_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_order_id").toString()));
+      }
+      if (jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_exchange").toString()));
+      }
+      if (jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_coinapi").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("exec_inst") != null && !jsonObj.get("exec_inst").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec_inst` to be an array in the JSON string but got `%s`", jsonObj.get("exec_inst").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!OrderNewSingleRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OrderNewSingleRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<OrderNewSingleRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OrderNewSingleRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<OrderNewSingleRequest>() {
+           @Override
+           public void write(JsonWriter out, OrderNewSingleRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public OrderNewSingleRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of OrderNewSingleRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of OrderNewSingleRequest
+  * @throws IOException if the JSON string is invalid with respect to OrderNewSingleRequest
+  */
+  public static OrderNewSingleRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OrderNewSingleRequest.class);
+  }
+
+ /**
+  * Convert an instance of OrderNewSingleRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

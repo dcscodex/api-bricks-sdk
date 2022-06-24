@@ -16,7 +16,7 @@
 
 module Api.Data exposing
     ( Balance
-    , BalanceData, BalanceDataLastUpdatedBy(..), balanceDataLastUpdatedByVariants
+    , BalanceDataInner, BalanceDataInnerLastUpdatedBy(..), balanceDataInnerLastUpdatedByVariants
     , Fills
     , MessageReject
     , OrdSide(..), ordSideVariants
@@ -27,12 +27,12 @@ module Api.Data exposing
     , OrderExecutionReport, OrderExecutionReportExecInst(..), orderExecutionReportExecInstVariants
     , OrderNewSingleRequest, OrderNewSingleRequestExecInst(..), orderNewSingleRequestExecInstVariants
     , Position
-    , PositionData
+    , PositionDataInner
     , RejectReason(..), rejectReasonVariants
     , TimeInForce(..), timeInForceVariants
     , ValidationError
     , encodeBalance
-    , encodeBalanceData
+    , encodeBalanceDataInner
     , encodeFills
     , encodeMessageReject
     , encodeOrdSide
@@ -43,12 +43,12 @@ module Api.Data exposing
     , encodeOrderExecutionReport
     , encodeOrderNewSingleRequest
     , encodePosition
-    , encodePositionData
+    , encodePositionDataInner
     , encodeRejectReason
     , encodeTimeInForce
     , encodeValidationError
     , balanceDecoder
-    , balanceDataDecoder
+    , balanceDataInnerDecoder
     , fillsDecoder
     , messageRejectDecoder
     , ordSideDecoder
@@ -59,7 +59,7 @@ module Api.Data exposing
     , orderExecutionReportDecoder
     , orderNewSingleRequestDecoder
     , positionDecoder
-    , positionDataDecoder
+    , positionDataInnerDecoder
     , rejectReasonDecoder
     , timeInForceDecoder
     , validationErrorDecoder
@@ -76,33 +76,33 @@ import Json.Encode
 
 type alias Balance =
     { exchangeId : Maybe String
-    , data : Maybe (List (BalanceData))
+    , data : Maybe (List (BalanceDataInner))
     }
 
 
-type alias BalanceData =
+type alias BalanceDataInner =
     { assetIdExchange : Maybe String
     , assetIdCoinapi : Maybe String
     , balance : Maybe Float
     , available : Maybe Float
     , locked : Maybe Float
-    , lastUpdatedBy : Maybe BalanceDataLastUpdatedBy
+    , lastUpdatedBy : Maybe BalanceDataInnerLastUpdatedBy
     , rateUsd : Maybe Float
     , traded : Maybe Float
     }
 
 
-type BalanceDataLastUpdatedBy
-    = BalanceDataLastUpdatedByINITIALIZATION
-    | BalanceDataLastUpdatedByBALANCEMANAGER
-    | BalanceDataLastUpdatedByEXCHANGE
+type BalanceDataInnerLastUpdatedBy
+    = BalanceDataInnerLastUpdatedByINITIALIZATION
+    | BalanceDataInnerLastUpdatedByBALANCEMANAGER
+    | BalanceDataInnerLastUpdatedByEXCHANGE
 
 
-balanceDataLastUpdatedByVariants : List BalanceDataLastUpdatedBy
-balanceDataLastUpdatedByVariants =
-    [ BalanceDataLastUpdatedByINITIALIZATION
-    , BalanceDataLastUpdatedByBALANCEMANAGER
-    , BalanceDataLastUpdatedByEXCHANGE
+balanceDataInnerLastUpdatedByVariants : List BalanceDataInnerLastUpdatedBy
+balanceDataInnerLastUpdatedByVariants =
+    [ BalanceDataInnerLastUpdatedByINITIALIZATION
+    , BalanceDataInnerLastUpdatedByBALANCEMANAGER
+    , BalanceDataInnerLastUpdatedByEXCHANGE
     ]
 
 
@@ -265,13 +265,13 @@ orderNewSingleRequestExecInstVariants =
 
 type alias Position =
     { exchangeId : Maybe String
-    , data : Maybe (List (PositionData))
+    , data : Maybe (List (PositionDataInner))
     }
 
 
 {-| The Position object.
 -}
-type alias PositionData =
+type alias PositionDataInner =
     { symbolIdExchange : Maybe String
     , symbolIdCoinapi : Maybe String
     , avgEntryPrice : Maybe Float
@@ -356,24 +356,24 @@ encodeBalancePairs model =
     let
         pairs =
             [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "data" (Json.Encode.list encodeBalanceData) model.data
+            , maybeEncode "data" (Json.Encode.list encodeBalanceDataInner) model.data
             ]
     in
     pairs
 
 
-encodeBalanceData : BalanceData -> Json.Encode.Value
-encodeBalanceData =
-    encodeObject << encodeBalanceDataPairs
+encodeBalanceDataInner : BalanceDataInner -> Json.Encode.Value
+encodeBalanceDataInner =
+    encodeObject << encodeBalanceDataInnerPairs
 
 
-encodeBalanceDataWithTag : ( String, String ) -> BalanceData -> Json.Encode.Value
-encodeBalanceDataWithTag (tagField, tag) model =
-    encodeObject (encodeBalanceDataPairs model ++ [ encode tagField Json.Encode.string tag ])
+encodeBalanceDataInnerWithTag : ( String, String ) -> BalanceDataInner -> Json.Encode.Value
+encodeBalanceDataInnerWithTag (tagField, tag) model =
+    encodeObject (encodeBalanceDataInnerPairs model ++ [ encode tagField Json.Encode.string tag ])
 
 
-encodeBalanceDataPairs : BalanceData -> List EncodedField
-encodeBalanceDataPairs model =
+encodeBalanceDataInnerPairs : BalanceDataInner -> List EncodedField
+encodeBalanceDataInnerPairs model =
     let
         pairs =
             [ maybeEncode "asset_id_exchange" Json.Encode.string model.assetIdExchange
@@ -381,29 +381,29 @@ encodeBalanceDataPairs model =
             , maybeEncode "balance" Json.Encode.float model.balance
             , maybeEncode "available" Json.Encode.float model.available
             , maybeEncode "locked" Json.Encode.float model.locked
-            , maybeEncode "last_updated_by" encodeBalanceDataLastUpdatedBy model.lastUpdatedBy
+            , maybeEncode "last_updated_by" encodeBalanceDataInnerLastUpdatedBy model.lastUpdatedBy
             , maybeEncode "rate_usd" Json.Encode.float model.rateUsd
             , maybeEncode "traded" Json.Encode.float model.traded
             ]
     in
     pairs
 
-stringFromBalanceDataLastUpdatedBy : BalanceDataLastUpdatedBy -> String
-stringFromBalanceDataLastUpdatedBy model =
+stringFromBalanceDataInnerLastUpdatedBy : BalanceDataInnerLastUpdatedBy -> String
+stringFromBalanceDataInnerLastUpdatedBy model =
     case model of
-        BalanceDataLastUpdatedByINITIALIZATION ->
+        BalanceDataInnerLastUpdatedByINITIALIZATION ->
             "INITIALIZATION"
 
-        BalanceDataLastUpdatedByBALANCEMANAGER ->
+        BalanceDataInnerLastUpdatedByBALANCEMANAGER ->
             "BALANCE_MANAGER"
 
-        BalanceDataLastUpdatedByEXCHANGE ->
+        BalanceDataInnerLastUpdatedByEXCHANGE ->
             "EXCHANGE"
 
 
-encodeBalanceDataLastUpdatedBy : BalanceDataLastUpdatedBy -> Json.Encode.Value
-encodeBalanceDataLastUpdatedBy =
-    Json.Encode.string << stringFromBalanceDataLastUpdatedBy
+encodeBalanceDataInnerLastUpdatedBy : BalanceDataInnerLastUpdatedBy -> Json.Encode.Value
+encodeBalanceDataInnerLastUpdatedBy =
+    Json.Encode.string << stringFromBalanceDataInnerLastUpdatedBy
 
 
 
@@ -678,24 +678,24 @@ encodePositionPairs model =
     let
         pairs =
             [ maybeEncode "exchange_id" Json.Encode.string model.exchangeId
-            , maybeEncode "data" (Json.Encode.list encodePositionData) model.data
+            , maybeEncode "data" (Json.Encode.list encodePositionDataInner) model.data
             ]
     in
     pairs
 
 
-encodePositionData : PositionData -> Json.Encode.Value
-encodePositionData =
-    encodeObject << encodePositionDataPairs
+encodePositionDataInner : PositionDataInner -> Json.Encode.Value
+encodePositionDataInner =
+    encodeObject << encodePositionDataInnerPairs
 
 
-encodePositionDataWithTag : ( String, String ) -> PositionData -> Json.Encode.Value
-encodePositionDataWithTag (tagField, tag) model =
-    encodeObject (encodePositionDataPairs model ++ [ encode tagField Json.Encode.string tag ])
+encodePositionDataInnerWithTag : ( String, String ) -> PositionDataInner -> Json.Encode.Value
+encodePositionDataInnerWithTag (tagField, tag) model =
+    encodeObject (encodePositionDataInnerPairs model ++ [ encode tagField Json.Encode.string tag ])
 
 
-encodePositionDataPairs : PositionData -> List EncodedField
-encodePositionDataPairs model =
+encodePositionDataInnerPairs : PositionDataInner -> List EncodedField
+encodePositionDataInnerPairs model =
     let
         pairs =
             [ maybeEncode "symbol_id_exchange" Json.Encode.string model.symbolIdExchange
@@ -798,36 +798,36 @@ balanceDecoder : Json.Decode.Decoder Balance
 balanceDecoder =
     Json.Decode.succeed Balance
         |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "data" (Json.Decode.list balanceDataDecoder) Nothing
+        |> maybeDecode "data" (Json.Decode.list balanceDataInnerDecoder) Nothing
 
 
-balanceDataDecoder : Json.Decode.Decoder BalanceData
-balanceDataDecoder =
-    Json.Decode.succeed BalanceData
+balanceDataInnerDecoder : Json.Decode.Decoder BalanceDataInner
+balanceDataInnerDecoder =
+    Json.Decode.succeed BalanceDataInner
         |> maybeDecode "asset_id_exchange" Json.Decode.string Nothing
         |> maybeDecode "asset_id_coinapi" Json.Decode.string Nothing
         |> maybeDecode "balance" Json.Decode.float Nothing
         |> maybeDecode "available" Json.Decode.float Nothing
         |> maybeDecode "locked" Json.Decode.float Nothing
-        |> maybeDecode "last_updated_by" balanceDataLastUpdatedByDecoder Nothing
+        |> maybeDecode "last_updated_by" balanceDataInnerLastUpdatedByDecoder Nothing
         |> maybeDecode "rate_usd" Json.Decode.float Nothing
         |> maybeDecode "traded" Json.Decode.float Nothing
 
 
-balanceDataLastUpdatedByDecoder : Json.Decode.Decoder BalanceDataLastUpdatedBy
-balanceDataLastUpdatedByDecoder =
+balanceDataInnerLastUpdatedByDecoder : Json.Decode.Decoder BalanceDataInnerLastUpdatedBy
+balanceDataInnerLastUpdatedByDecoder =
     Json.Decode.string
         |> Json.Decode.andThen
             (\value ->
                 case value of
                     "INITIALIZATION" ->
-                        Json.Decode.succeed BalanceDataLastUpdatedByINITIALIZATION
+                        Json.Decode.succeed BalanceDataInnerLastUpdatedByINITIALIZATION
 
                     "BALANCE_MANAGER" ->
-                        Json.Decode.succeed BalanceDataLastUpdatedByBALANCEMANAGER
+                        Json.Decode.succeed BalanceDataInnerLastUpdatedByBALANCEMANAGER
 
                     "EXCHANGE" ->
-                        Json.Decode.succeed BalanceDataLastUpdatedByEXCHANGE
+                        Json.Decode.succeed BalanceDataInnerLastUpdatedByEXCHANGE
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -1023,12 +1023,12 @@ positionDecoder : Json.Decode.Decoder Position
 positionDecoder =
     Json.Decode.succeed Position
         |> maybeDecode "exchange_id" Json.Decode.string Nothing
-        |> maybeDecode "data" (Json.Decode.list positionDataDecoder) Nothing
+        |> maybeDecode "data" (Json.Decode.list positionDataInnerDecoder) Nothing
 
 
-positionDataDecoder : Json.Decode.Decoder PositionData
-positionDataDecoder =
-    Json.Decode.succeed PositionData
+positionDataInnerDecoder : Json.Decode.Decoder PositionDataInner
+positionDataInnerDecoder =
+    Json.Decode.succeed PositionDataInner
         |> maybeDecode "symbol_id_exchange" Json.Decode.string Nothing
         |> maybeDecode "symbol_id_coinapi" Json.Decode.string Nothing
         |> maybeDecode "avg_entry_price" Json.Decode.float Nothing

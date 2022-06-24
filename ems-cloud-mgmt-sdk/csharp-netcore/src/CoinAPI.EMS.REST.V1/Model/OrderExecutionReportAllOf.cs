@@ -58,7 +58,8 @@ namespace CoinAPI.EMS.REST.V1.Model
         public OrderExecutionReportAllOf(string clientOrderIdFormatExchange = default(string), string exchangeOrderId = default(string), decimal amountOpen = default(decimal), decimal amountFilled = default(decimal), decimal avgPx = default(decimal), OrdStatus status = default(OrdStatus), List<List<string>> statusHistory = default(List<List<string>>), string errorMessage = default(string), List<Fills> fills = default(List<Fills>))
         {
             // to ensure "clientOrderIdFormatExchange" is required (not null)
-            if (clientOrderIdFormatExchange == null) {
+            if (clientOrderIdFormatExchange == null)
+            {
                 throw new ArgumentNullException("clientOrderIdFormatExchange is a required property for OrderExecutionReportAllOf and cannot be null");
             }
             this.ClientOrderIdFormatExchange = clientOrderIdFormatExchange;

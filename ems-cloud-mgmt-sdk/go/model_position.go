@@ -19,7 +19,7 @@ import (
 type Position struct {
 	// Exchange identifier used to identify the routing destination.
 	ExchangeId *string `json:"exchange_id,omitempty"`
-	Data []PositionData `json:"data,omitempty"`
+	Data []PositionDataInner `json:"data,omitempty"`
 }
 
 // NewPosition instantiates a new Position object
@@ -72,9 +72,9 @@ func (o *Position) SetExchangeId(v string) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *Position) GetData() []PositionData {
+func (o *Position) GetData() []PositionDataInner {
 	if o == nil || o.Data == nil {
-		var ret []PositionData
+		var ret []PositionDataInner
 		return ret
 	}
 	return o.Data
@@ -82,7 +82,7 @@ func (o *Position) GetData() []PositionData {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Position) GetDataOk() ([]PositionData, bool) {
+func (o *Position) GetDataOk() ([]PositionDataInner, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *Position) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []PositionData and assigns it to the Data field.
-func (o *Position) SetData(v []PositionData) {
+// SetData gets a reference to the given []PositionDataInner and assigns it to the Data field.
+func (o *Position) SetData(v []PositionDataInner) {
 	o.Data = v
 }
 

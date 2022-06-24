@@ -61,8 +61,8 @@ public class JsonUtil {
       return new TypeToken<List<Balance>>(){}.getType();
     }
     
-    if ("BalanceData".equalsIgnoreCase(className)) {
-      return new TypeToken<List<BalanceData>>(){}.getType();
+    if ("BalanceDataInner".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BalanceDataInner>>(){}.getType();
     }
     
     if ("Fills".equalsIgnoreCase(className)) {
@@ -109,8 +109,8 @@ public class JsonUtil {
       return new TypeToken<List<Position>>(){}.getType();
     }
     
-    if ("PositionData".equalsIgnoreCase(className)) {
-      return new TypeToken<List<PositionData>>(){}.getType();
+    if ("PositionDataInner".equalsIgnoreCase(className)) {
+      return new TypeToken<List<PositionDataInner>>(){}.getType();
     }
     
     if ("RejectReason".equalsIgnoreCase(className)) {
@@ -135,8 +135,8 @@ public class JsonUtil {
       return new TypeToken<Balance>(){}.getType();
     }
     
-    if ("BalanceData".equalsIgnoreCase(className)) {
-      return new TypeToken<BalanceData>(){}.getType();
+    if ("BalanceDataInner".equalsIgnoreCase(className)) {
+      return new TypeToken<BalanceDataInner>(){}.getType();
     }
     
     if ("Fills".equalsIgnoreCase(className)) {
@@ -183,8 +183,8 @@ public class JsonUtil {
       return new TypeToken<Position>(){}.getType();
     }
     
-    if ("PositionData".equalsIgnoreCase(className)) {
-      return new TypeToken<PositionData>(){}.getType();
+    if ("PositionDataInner".equalsIgnoreCase(className)) {
+      return new TypeToken<PositionDataInner>(){}.getType();
     }
     
     if ("RejectReason".equalsIgnoreCase(className)) {

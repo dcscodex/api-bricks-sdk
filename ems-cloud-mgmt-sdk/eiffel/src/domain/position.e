@@ -21,7 +21,7 @@ feature --Access
 
     exchange_id: detachable STRING_32
       -- Exchange identifier used to identify the routing destination.
-    data: detachable LIST [POSITION_DATA]
+    data: detachable LIST [POSITION_DATA_INNER]
       
 
 feature -- Change Element

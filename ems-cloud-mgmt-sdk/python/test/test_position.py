@@ -13,8 +13,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.position_data import PositionData
-globals()['PositionData'] = PositionData
+from openapi_client.model.position_data_inner import PositionDataInner
+globals()['PositionDataInner'] = PositionDataInner
 from openapi_client.model.position import Position
 
 

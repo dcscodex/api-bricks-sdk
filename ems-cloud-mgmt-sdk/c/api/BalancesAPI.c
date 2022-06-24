@@ -57,12 +57,14 @@ BalancesAPI_v1BalancesGet(apiClient_t *apiClient, char * exchange_id )
                     localVarBodyParameters,
                     "GET");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","Collection of balances.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Exchange is unreachable.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Collection of balances.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Exchange is unreachable.");
+    //}
     cJSON *BalancesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     if(!cJSON_IsArray(BalancesAPIlocalVarJSON)) {
         return 0;//nonprimitive container

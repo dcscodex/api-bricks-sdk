@@ -3,17 +3,16 @@
 
 context("Test BalancesApi")
 
-api.instance <- BalancesApi$new()
+api_instance <- BalancesApi$new()
 
 test_that("V1BalancesGet", {
   # tests for V1BalancesGet
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Get balances
   # Get current currency balance from all or single exchange.
-  # @param exchange.id character Filter the balances to the specific exchange. (optional)
+  # @param exchange_id character Filter the balances to the specific exchange. (optional)
   # @return [array[Balance]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-

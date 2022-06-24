@@ -155,7 +155,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Balance](docs/Balance.md)
- - [BalanceData](docs/BalanceData.md)
+ - [BalanceDataInner](docs/BalanceDataInner.md)
  - [Fills](docs/Fills.md)
  - [MessageReject](docs/MessageReject.md)
  - [OrdSide](docs/OrdSide.md)
@@ -167,7 +167,7 @@ Class | Method | HTTP request | Description
  - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [Position](docs/Position.md)
- - [PositionData](docs/PositionData.md)
+ - [PositionDataInner](docs/PositionDataInner.md)
  - [RejectReason](docs/RejectReason.md)
  - [TimeInForce](docs/TimeInForce.md)
  - [ValidationError](docs/ValidationError.md)

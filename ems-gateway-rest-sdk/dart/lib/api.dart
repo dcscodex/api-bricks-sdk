@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -32,7 +32,7 @@ part 'api/orders_api.dart';
 part 'api/positions_api.dart';
 
 part 'model/balance.dart';
-part 'model/balance_data.dart';
+part 'model/balance_data_inner.dart';
 part 'model/fills.dart';
 part 'model/message_reject.dart';
 part 'model/ord_side.dart';
@@ -44,7 +44,7 @@ part 'model/order_execution_report.dart';
 part 'model/order_execution_report_all_of.dart';
 part 'model/order_new_single_request.dart';
 part 'model/position.dart';
-part 'model/position_data.dart';
+part 'model/position_data_inner.dart';
 part 'model/reject_reason.dart';
 part 'model/time_in_force.dart';
 part 'model/validation_error.dart';

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExchangeId** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
-**VarData** | [**BalanceData[]**](BalanceData.md) |  | [optional] 
+**VarData** | [**BalanceDataInner[]**](BalanceDataInner.md) |  | [optional] 
 
 ## Examples
 

@@ -3,14 +3,14 @@
 
 context("Test OrdersApi")
 
-api.instance <- OrdersApi$new()
+api_instance <- OrdersApi$new()
 
 test_that("V1OrdersCancelAllPost", {
   # tests for V1OrdersCancelAllPost
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Cancel all orders request
   # This request cancels all open orders on single specified exchange.
-  # @param order.cancel.all.request OrderCancelAllRequest OrderCancelAllRequest object.
+  # @param order_cancel_all_request OrderCancelAllRequest OrderCancelAllRequest object.
   # @return [MessageReject]
 
   # uncomment below to test the operation
@@ -22,7 +22,7 @@ test_that("V1OrdersCancelPost", {
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Cancel order request
   # Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
-  # @param order.cancel.single.request OrderCancelSingleRequest OrderCancelSingleRequest object.
+  # @param order_cancel_single_request OrderCancelSingleRequest OrderCancelSingleRequest object.
   # @return [OrderExecutionReport]
 
   # uncomment below to test the operation
@@ -34,7 +34,7 @@ test_that("V1OrdersGet", {
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Get open orders
   # Get last execution reports for open orders across all or single exchange.
-  # @param exchange.id character Filter the open orders to the specific exchange. (optional)
+  # @param exchange_id character Filter the open orders to the specific exchange. (optional)
   # @return [array[OrderExecutionReport]]
 
   # uncomment below to test the operation
@@ -46,7 +46,7 @@ test_that("V1OrdersPost", {
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Send new order
   # This request creating new order for the specific exchange.
-  # @param order.new.single.request OrderNewSingleRequest OrderNewSingleRequest object.
+  # @param order_new_single_request OrderNewSingleRequest OrderNewSingleRequest object.
   # @return [OrderExecutionReport]
 
   # uncomment below to test the operation
@@ -58,10 +58,9 @@ test_that("V1OrdersStatusClientOrderIdGet", {
   # base path: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
   # Get order execution report
   # Get the last order execution report for the specified order. The requested order does not need to be active or opened.
-  # @param client.order.id character The unique identifier of the order assigned by the client.
+  # @param client_order_id character The unique identifier of the order assigned by the client.
   # @return [OrderExecutionReport]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-

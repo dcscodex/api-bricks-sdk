@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class TimeInForce {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -38,13 +38,20 @@ class TimeInForce {
     IMMEDIATE_OR_CANCEL,
   ];
 
-  static TimeInForce fromJson(dynamic value) =>
-    TimeInForceTypeTransformer().decode(value);
+  static TimeInForce? fromJson(dynamic value) => TimeInForceTypeTransformer().decode(value);
 
-  static List<TimeInForce> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(TimeInForce.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <TimeInForce>[];
+  static List<TimeInForce>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TimeInForce>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TimeInForce.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [TimeInForce] to String,
@@ -64,7 +71,7 @@ class TimeInForceTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  TimeInForce decode(dynamic data, {bool allowNull}) {
+  TimeInForce? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data.toString()) {
         case r'GOOD_TILL_CANCEL': return TimeInForce.GOOD_TILL_CANCEL;
@@ -73,7 +80,7 @@ class TimeInForceTypeTransformer {
         case r'FILL_OR_KILL': return TimeInForce.FILL_OR_KILL;
         case r'IMMEDIATE_OR_CANCEL': return TimeInForce.IMMEDIATE_OR_CANCEL;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -82,6 +89,6 @@ class TimeInForceTypeTransformer {
   }
 
   /// Singleton [TimeInForceTypeTransformer] instance.
-  static TimeInForceTypeTransformer _instance;
+  static TimeInForceTypeTransformer? _instance;
 }
 

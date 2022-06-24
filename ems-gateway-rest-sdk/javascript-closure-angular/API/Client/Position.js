@@ -13,7 +13,7 @@ API.Client.Position = function() {}
 API.Client.Position.prototype.exchangeId;
 
 /**
- * @type {!Array<!API.Client.Position_data>}
+ * @type {!Array<!API.Client.Position_data_inner>}
  * @export
  */
 API.Client.Position.prototype.data;

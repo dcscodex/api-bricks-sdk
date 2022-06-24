@@ -79,7 +79,7 @@ private class OASBalanceTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASBalance balance = new OASBalance();
-        System.assertEquals(new List<OASBalanceData>(), balance.data);
+        System.assertEquals(new List<OASBalanceDataInner>(), balance.data);
         System.assertEquals(null, balance.exchangeId);
     }
 }

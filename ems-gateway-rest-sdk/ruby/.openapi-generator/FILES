@@ -7,7 +7,7 @@ Gemfile
 README.md
 Rakefile
 docs/Balance.md
-docs/BalanceData.md
+docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
 docs/MessageReject.md
@@ -21,7 +21,7 @@ docs/OrderExecutionReportAllOf.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
-docs/PositionData.md
+docs/PositionDataInner.md
 docs/PositionsApi.md
 docs/RejectReason.md
 docs/TimeInForce.md
@@ -35,7 +35,7 @@ lib/openapi_client/api_client.rb
 lib/openapi_client/api_error.rb
 lib/openapi_client/configuration.rb
 lib/openapi_client/models/balance.rb
-lib/openapi_client/models/balance_data.rb
+lib/openapi_client/models/balance_data_inner.rb
 lib/openapi_client/models/fills.rb
 lib/openapi_client/models/message_reject.rb
 lib/openapi_client/models/ord_side.rb
@@ -47,7 +47,7 @@ lib/openapi_client/models/order_execution_report.rb
 lib/openapi_client/models/order_execution_report_all_of.rb
 lib/openapi_client/models/order_new_single_request.rb
 lib/openapi_client/models/position.rb
-lib/openapi_client/models/position_data.rb
+lib/openapi_client/models/position_data_inner.rb
 lib/openapi_client/models/reject_reason.rb
 lib/openapi_client/models/time_in_force.rb
 lib/openapi_client/models/validation_error.rb
@@ -58,7 +58,7 @@ spec/api/orders_api_spec.rb
 spec/api/positions_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/balance_data_spec.rb
+spec/models/balance_data_inner_spec.rb
 spec/models/balance_spec.rb
 spec/models/fills_spec.rb
 spec/models/message_reject_spec.rb
@@ -70,7 +70,7 @@ spec/models/order_cancel_single_request_spec.rb
 spec/models/order_execution_report_all_of_spec.rb
 spec/models/order_execution_report_spec.rb
 spec/models/order_new_single_request_spec.rb
-spec/models/position_data_spec.rb
+spec/models/position_data_inner_spec.rb
 spec/models/position_spec.rb
 spec/models/reject_reason_spec.rb
 spec/models/time_in_force_spec.rb

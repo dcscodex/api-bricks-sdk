@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExchangeId** | **String** | Exchange identifier used to identify the routing destination. | [optional] 
-**VarData** | [**PositionData[]**](PositionData.md) |  | [optional] 
+**VarData** | [**PositionDataInner[]**](PositionDataInner.md) |  | [optional] 
 
 ## Examples
 

@@ -6,7 +6,7 @@ README.md
 build.bat
 build.sh
 docs/Balance.md
-docs/BalanceData.md
+docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
 docs/MessageReject.md
@@ -20,7 +20,7 @@ docs/OrderExecutionReportAllOf.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
-docs/PositionData.md
+docs/PositionDataInner.md
 docs/PositionsApi.md
 docs/RejectReason.md
 docs/TimeInForce.md
@@ -31,7 +31,7 @@ src/CoinAPI.EMS.REST.V1.Test/Api/BalancesApiTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Api/OrdersApiTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Api/PositionsApiTests.cs
 src/CoinAPI.EMS.REST.V1.Test/CoinAPI.EMS.REST.V1.Test.csproj
-src/CoinAPI.EMS.REST.V1.Test/Model/BalanceDataTests.cs
+src/CoinAPI.EMS.REST.V1.Test/Model/BalanceDataInnerTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/BalanceTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/FillsTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/MessageRejectTests.cs
@@ -43,7 +43,7 @@ src/CoinAPI.EMS.REST.V1.Test/Model/OrderCancelSingleRequestTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/OrderExecutionReportAllOfTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/OrderExecutionReportTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/OrderNewSingleRequestTests.cs
-src/CoinAPI.EMS.REST.V1.Test/Model/PositionDataTests.cs
+src/CoinAPI.EMS.REST.V1.Test/Model/PositionDataInnerTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/PositionTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/RejectReasonTests.cs
 src/CoinAPI.EMS.REST.V1.Test/Model/TimeInForceTests.cs
@@ -64,7 +64,7 @@ src/CoinAPI.EMS.REST.V1/Client/OpenAPIDateConverter.cs
 src/CoinAPI.EMS.REST.V1/CoinAPI.EMS.REST.V1.csproj
 src/CoinAPI.EMS.REST.V1/CoinAPI.EMS.REST.V1.nuspec
 src/CoinAPI.EMS.REST.V1/Model/Balance.cs
-src/CoinAPI.EMS.REST.V1/Model/BalanceData.cs
+src/CoinAPI.EMS.REST.V1/Model/BalanceDataInner.cs
 src/CoinAPI.EMS.REST.V1/Model/Fills.cs
 src/CoinAPI.EMS.REST.V1/Model/MessageReject.cs
 src/CoinAPI.EMS.REST.V1/Model/OrdSide.cs
@@ -76,7 +76,7 @@ src/CoinAPI.EMS.REST.V1/Model/OrderExecutionReport.cs
 src/CoinAPI.EMS.REST.V1/Model/OrderExecutionReportAllOf.cs
 src/CoinAPI.EMS.REST.V1/Model/OrderNewSingleRequest.cs
 src/CoinAPI.EMS.REST.V1/Model/Position.cs
-src/CoinAPI.EMS.REST.V1/Model/PositionData.cs
+src/CoinAPI.EMS.REST.V1/Model/PositionDataInner.cs
 src/CoinAPI.EMS.REST.V1/Model/RejectReason.cs
 src/CoinAPI.EMS.REST.V1/Model/TimeInForce.cs
 src/CoinAPI.EMS.REST.V1/Model/ValidationError.cs

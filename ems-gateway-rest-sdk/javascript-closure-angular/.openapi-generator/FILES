@@ -1,6 +1,6 @@
 .openapi-generator-ignore
 API/Client/Balance.js
-API/Client/BalanceData.js
+API/Client/BalanceDataInner.js
 API/Client/BalancesApi.js
 API/Client/Fills.js
 API/Client/MessageReject.js
@@ -14,7 +14,7 @@ API/Client/OrderExecutionReportAllOf.js
 API/Client/OrderNewSingleRequest.js
 API/Client/OrdersApi.js
 API/Client/Position.js
-API/Client/PositionData.js
+API/Client/PositionDataInner.js
 API/Client/PositionsApi.js
 API/Client/RejectReason.js
 API/Client/TimeInForce.js

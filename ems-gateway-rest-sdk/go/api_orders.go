@@ -20,10 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // OrdersApiService OrdersApi service
 type OrdersApiService service
@@ -551,7 +547,6 @@ type ApiV1OrdersStatusClientOrderIdGetRequest struct {
 	ApiService *OrdersApiService
 	clientOrderId string
 }
-
 
 func (r ApiV1OrdersStatusClientOrderIdGetRequest) Execute() (*OrderExecutionReport, *http.Response, error) {
 	return r.ApiService.V1OrdersStatusClientOrderIdGetExecute(r)

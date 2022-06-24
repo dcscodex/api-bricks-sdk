@@ -13,8 +13,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.balance_data import BalanceData
-globals()['BalanceData'] = BalanceData
+from openapi_client.model.balance_data_inner import BalanceDataInner
+globals()['BalanceDataInner'] = BalanceDataInner
 from openapi_client.model.balance import Balance
 
 

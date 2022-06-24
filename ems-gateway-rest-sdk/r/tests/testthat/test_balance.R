@@ -3,7 +3,7 @@
 
 context("Test Balance")
 
-model.instance <- Balance$new()
+model_instance <- Balance$new()
 
 test_that("exchange_id", {
   # tests for the property `exchange_id` (character)
@@ -14,9 +14,8 @@ test_that("exchange_id", {
 })
 
 test_that("data", {
-  # tests for the property `data` (array[BalanceData])
+  # tests for the property `data` (array[BalanceDataInner])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
-

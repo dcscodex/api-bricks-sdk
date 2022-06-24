@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1PositionsGet**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions |
 
 
 <a name="v1PositionsGet"></a>
@@ -47,9 +47,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exchangeId** | **String**| Filter the balances to the specific exchange. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **exchangeId** | **String**| Filter the balances to the specific exchange. | [optional] |
 
 ### Return type
 
@@ -67,6 +67,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Collection of positons. |  -  |
-**490** | Exchange is unreachable. |  -  |
+| **200** | Collection of positons. |  -  |
+| **490** | Exchange is unreachable. |  -  |
 

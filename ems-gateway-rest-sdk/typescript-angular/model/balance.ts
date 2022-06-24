@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { BalanceData } from './balanceData';
+import { BalanceDataInner } from './balanceDataInner';
 
 
 export interface Balance { 
@@ -17,6 +17,6 @@ export interface Balance {
      * Exchange identifier used to identify the routing destination.
      */
     exchange_id?: string;
-    data?: Array<BalanceData>;
+    data?: Array<BalanceDataInner>;
 }
 

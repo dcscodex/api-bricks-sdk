@@ -21,7 +21,7 @@ main =
     describe "JSON instances" $ do
       pure ()
       propMimeEq MimeJSON (Proxy :: Proxy Balance)
-      propMimeEq MimeJSON (Proxy :: Proxy BalanceData)
+      propMimeEq MimeJSON (Proxy :: Proxy BalanceDataInner)
       propMimeEq MimeJSON (Proxy :: Proxy Fills)
       propMimeEq MimeJSON (Proxy :: Proxy MessageReject)
       propMimeEq MimeJSON (Proxy :: Proxy OrdSide)
@@ -33,7 +33,7 @@ main =
       propMimeEq MimeJSON (Proxy :: Proxy OrderExecutionReportAllOf)
       propMimeEq MimeJSON (Proxy :: Proxy OrderNewSingleRequest)
       propMimeEq MimeJSON (Proxy :: Proxy Position)
-      propMimeEq MimeJSON (Proxy :: Proxy PositionData)
+      propMimeEq MimeJSON (Proxy :: Proxy PositionDataInner)
       propMimeEq MimeJSON (Proxy :: Proxy RejectReason)
       propMimeEq MimeJSON (Proxy :: Proxy TimeInForce)
       propMimeEq MimeJSON (Proxy :: Proxy ValidationError)

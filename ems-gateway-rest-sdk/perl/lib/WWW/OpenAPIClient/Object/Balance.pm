@@ -30,7 +30,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WWW::OpenAPIClient::Object::BalanceData;
+use WWW::OpenAPIClient::Object::BalanceDataInner;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'data' => {
-        datatype => 'ARRAY[BalanceData]',
+        datatype => 'ARRAY[BalanceDataInner]',
         base_name => 'data',
         description => '',
         format => '',
@@ -179,7 +179,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'exchange_id' => 'string',
-    'data' => 'ARRAY[BalanceData]'
+    'data' => 'ARRAY[BalanceDataInner]'
 } );
 
 __PACKAGE__->attribute_map( {

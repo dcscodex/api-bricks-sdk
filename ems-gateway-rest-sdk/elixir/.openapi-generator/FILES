@@ -8,7 +8,7 @@ lib/ems_restapi/api/positions.ex
 lib/ems_restapi/connection.ex
 lib/ems_restapi/deserializer.ex
 lib/ems_restapi/model/balance.ex
-lib/ems_restapi/model/balance_data.ex
+lib/ems_restapi/model/balance_data_inner.ex
 lib/ems_restapi/model/fills.ex
 lib/ems_restapi/model/message_reject.ex
 lib/ems_restapi/model/ord_side.ex
@@ -20,7 +20,7 @@ lib/ems_restapi/model/order_execution_report.ex
 lib/ems_restapi/model/order_execution_report_all_of.ex
 lib/ems_restapi/model/order_new_single_request.ex
 lib/ems_restapi/model/position.ex
-lib/ems_restapi/model/position_data.ex
+lib/ems_restapi/model/position_data_inner.ex
 lib/ems_restapi/model/reject_reason.ex
 lib/ems_restapi/model/time_in_force.ex
 lib/ems_restapi/model/validation_error.ex

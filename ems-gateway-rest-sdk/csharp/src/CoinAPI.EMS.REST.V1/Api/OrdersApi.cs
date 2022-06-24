@@ -50,7 +50,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// Cancel order request
         /// </summary>
         /// <remarks>
-        /// Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -61,7 +61,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// Cancel order request
         /// </summary>
         /// <remarks>
-        /// Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -75,7 +75,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
-        /// <returns>List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>List<OrderExecutionReport></returns>
         List<OrderExecutionReport> V1OrdersGet (string exchangeId = default(string));
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
-        /// <returns>ApiResponse of List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>ApiResponse of List<OrderExecutionReport></returns>
         ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo (string exchangeId = default(string));
         /// <summary>
         /// Send new order
@@ -159,7 +159,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// Cancel order request
         /// </summary>
         /// <remarks>
-        /// Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -171,7 +171,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// Cancel order request
         /// </summary>
         /// <remarks>
-        /// Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -187,7 +187,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>Task of List<OrderExecutionReport></returns>
         System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync (string exchangeId = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         }
 
         /// <summary>
-        /// Cancel order request Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Cancel order request Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -524,7 +524,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         }
 
         /// <summary>
-        /// Cancel order request Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Cancel order request Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -587,7 +587,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         }
 
         /// <summary>
-        /// Cancel order request Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Cancel order request Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -601,7 +601,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         }
 
         /// <summary>
-        /// Cancel order request Request cancel for an existing order. The order can be canceled using the &#x60;client_order_id&#x60; or &#x60;exchange_order_id&#x60;.
+        /// Cancel order request Request cancel for an existing order. The order can be canceled using the `client_order_id` or `exchange_order_id`.
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
@@ -669,7 +669,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
-        /// <returns>List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>List<OrderExecutionReport></returns>
         public List<OrderExecutionReport> V1OrdersGet (string exchangeId = default(string))
         {
              ApiResponse<List<OrderExecutionReport>> localVarResponse = V1OrdersGetWithHttpInfo(exchangeId);
@@ -681,7 +681,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
-        /// <returns>ApiResponse of List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>ApiResponse of List<OrderExecutionReport></returns>
         public ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo (string exchangeId = default(string))
         {
 
@@ -734,7 +734,7 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of List&lt;OrderExecutionReport&gt;</returns>
+        /// <returns>Task of List<OrderExecutionReport></returns>
         public async System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync (string exchangeId = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<List<OrderExecutionReport>> localVarResponse = await V1OrdersGetWithHttpInfoAsync(exchangeId, cancellationToken);

@@ -24,9 +24,9 @@ class OrderExecutionReportAllOf {
     
     OrdStatus status
     /* Timestamped history of order status changes. */
-    List<List<String>> statusHistory = new ArrayList<List<String>>()
+    List<List<String>> statusHistory = new ArrayList<>()
     /* Error message. */
     String errorMessage
     /* Relay fill information on working orders. */
-    List<Fills> fills = new ArrayList<Fills>()
+    List<Fills> fills = new ArrayList<>()
 }

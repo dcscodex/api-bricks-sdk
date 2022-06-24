@@ -1,12 +1,5 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.7
-
-// ignore_for_file: unused_import
-
-import 'package:openapi/model/order_new_single_request.dart';
 import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
 
 // tests for OrderNewSingleRequest
 void main() {
@@ -66,7 +59,7 @@ void main() {
     });
 
     // Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
-    // DateTime expireTime
+    // Date expireTime
     test('to test the property `expireTime`', () async {
       // TODO
     });
@@ -77,7 +70,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

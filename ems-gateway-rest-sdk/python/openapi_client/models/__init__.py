@@ -10,7 +10,7 @@
 # sys.setrecursionlimit(n)
 
 from openapi_client.model.balance import Balance
-from openapi_client.model.balance_data import BalanceData
+from openapi_client.model.balance_data_inner import BalanceDataInner
 from openapi_client.model.balances import Balances
 from openapi_client.model.exec_inst import ExecInst
 from openapi_client.model.fills import Fills
@@ -25,7 +25,7 @@ from openapi_client.model.order_execution_report_all_of import OrderExecutionRep
 from openapi_client.model.order_execution_reports import OrderExecutionReports
 from openapi_client.model.order_new_single_request import OrderNewSingleRequest
 from openapi_client.model.position import Position
-from openapi_client.model.position_data import PositionData
+from openapi_client.model.position_data_inner import PositionDataInner
 from openapi_client.model.positions import Positions
 from openapi_client.model.reject_reason import RejectReason
 from openapi_client.model.time_in_force import TimeInForce

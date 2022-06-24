@@ -124,40 +124,86 @@ libraryDependencies += "org.openapitools" % "openapi-client" % "1.0.0"
 
 ## Getting Started
 
+Please follow the [installation](#installation) instruction and execute the following Java code:
+
+```scala
+
+import org.openapitools.client.core._
+import org.openapitools.client.model._
+import org.openapitools.client.api.BalancesApi
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object BalancesApiExample extends App {
+
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    // Create invoker to execute requests
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BalancesApi("https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
+    val exchangeId: String = KRAKEN // String | Filter the balances to the specific exchange.
+
+    val request = apiInstance.v1BalancesGet(exchangeId)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(org.openapitools.client.core.ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BalancesApi#v1BalancesGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) =>
+            System.err.println("Exception when calling BalancesApi#v1BalancesGet")
+            exception.printStackTrace();
+    }
+
+}
+
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BalancesApi* | **v1BalancesGet** | **GET** /v1/balances | Get balances
-*OrdersApi* | **v1OrdersCancelAllPost** | **POST** /v1/orders/cancel/all | Cancel all orders request
-*OrdersApi* | **v1OrdersCancelPost** | **POST** /v1/orders/cancel | Cancel order request
-*OrdersApi* | **v1OrdersGet** | **GET** /v1/orders | Get open orders
-*OrdersApi* | **v1OrdersPost** | **POST** /v1/orders | Send new order
-*OrdersApi* | **v1OrdersStatusClientOrderIdGet** | **GET** /v1/orders/status/{client_order_id} | Get order execution report
-*PositionsApi* | **v1PositionsGet** | **GET** /v1/positions | Get open positions
+*BalancesApi* | [**v1BalancesGet**](docs/BalancesApi.md#v1BalancesGet) | **GET** /v1/balances | Get balances
+*OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
+*OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
+*OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
+*OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
+*PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
 
 
 ## Documentation for Models
 
- - [Balance](Balance.md)
- - [BalanceData](BalanceData.md)
- - [Fills](Fills.md)
- - [MessageReject](MessageReject.md)
- - [OrdSide](OrdSide.md)
- - [OrdStatus](OrdStatus.md)
- - [OrdType](OrdType.md)
- - [OrderCancelAllRequest](OrderCancelAllRequest.md)
- - [OrderCancelSingleRequest](OrderCancelSingleRequest.md)
- - [OrderExecutionReport](OrderExecutionReport.md)
- - [OrderExecutionReportAllOf](OrderExecutionReportAllOf.md)
- - [OrderNewSingleRequest](OrderNewSingleRequest.md)
- - [Position](Position.md)
- - [PositionData](PositionData.md)
- - [RejectReason](RejectReason.md)
- - [TimeInForce](TimeInForce.md)
- - [ValidationError](ValidationError.md)
+ - [Balance](docs/Balance.md)
+ - [BalanceDataInner](docs/BalanceDataInner.md)
+ - [Fills](docs/Fills.md)
+ - [MessageReject](docs/MessageReject.md)
+ - [OrdSide](docs/OrdSide.md)
+ - [OrdStatus](docs/OrdStatus.md)
+ - [OrdType](docs/OrdType.md)
+ - [OrderCancelAllRequest](docs/OrderCancelAllRequest.md)
+ - [OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
+ - [OrderExecutionReport](docs/OrderExecutionReport.md)
+ - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
+ - [Position](docs/Position.md)
+ - [PositionDataInner](docs/PositionDataInner.md)
+ - [RejectReason](docs/RejectReason.md)
+ - [TimeInForce](docs/TimeInForce.md)
+ - [ValidationError](docs/ValidationError.md)
 
 
 ## Documentation for Authorization

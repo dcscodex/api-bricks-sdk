@@ -23,13 +23,13 @@ Get current currency balance from all or single exchange.
 ```dart
 import 'package:openapi/api.dart';
 
-var api_instance = new BalancesApi();
-var exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
+final api = Openapi().getBalancesApi();
+final String exchangeId = KRAKEN; // String | Filter the balances to the specific exchange.
 
 try {
-    var result = api_instance.v1BalancesGet(exchangeId);
-    print(result);
-} catch (e) {
+    final response = api.v1BalancesGet(exchangeId);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling BalancesApi->v1BalancesGet: $e\n');
 }
 ```
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList<Balance>**](Balance.md)
+[**BuiltList&lt;Balance&gt;**](Balance.md)
 
 ### Authorization
 

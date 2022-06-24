@@ -19,7 +19,7 @@ import (
 type Balance struct {
 	// Exchange identifier used to identify the routing destination.
 	ExchangeId *string `json:"exchange_id,omitempty"`
-	Data []BalanceData `json:"data,omitempty"`
+	Data []BalanceDataInner `json:"data,omitempty"`
 }
 
 // NewBalance instantiates a new Balance object
@@ -72,9 +72,9 @@ func (o *Balance) SetExchangeId(v string) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *Balance) GetData() []BalanceData {
+func (o *Balance) GetData() []BalanceDataInner {
 	if o == nil || o.Data == nil {
-		var ret []BalanceData
+		var ret []BalanceDataInner
 		return ret
 	}
 	return o.Data
@@ -82,7 +82,7 @@ func (o *Balance) GetData() []BalanceData {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Balance) GetDataOk() ([]BalanceData, bool) {
+func (o *Balance) GetDataOk() ([]BalanceDataInner, bool) {
 	if o == nil || o.Data == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *Balance) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []BalanceData and assigns it to the Data field.
-func (o *Balance) SetData(v []BalanceData) {
+// SetData gets a reference to the given []BalanceDataInner and assigns it to the Data field.
+func (o *Balance) SetData(v []BalanceDataInner) {
 	o.Data = v
 }
 

@@ -75,7 +75,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [OASBalance](OASBalance.md)
- - [OASBalanceData](OASBalanceData.md)
+ - [OASBalanceDataInner](OASBalanceDataInner.md)
  - [OASFills](OASFills.md)
  - [OASMessageReject](OASMessageReject.md)
  - [OASOrdSide](OASOrdSide.md)
@@ -87,7 +87,7 @@ Class | Method | HTTP request | Description
  - [OASOrderExecutionReportAllOf](OASOrderExecutionReportAllOf.md)
  - [OASOrderNewSingleRequest](OASOrderNewSingleRequest.md)
  - [OASPosition](OASPosition.md)
- - [OASPositionData](OASPositionData.md)
+ - [OASPositionDataInner](OASPositionDataInner.md)
  - [OASRejectReason](OASRejectReason.md)
  - [OASTimeInForce](OASTimeInForce.md)
  - [OASValidationError](OASValidationError.md)

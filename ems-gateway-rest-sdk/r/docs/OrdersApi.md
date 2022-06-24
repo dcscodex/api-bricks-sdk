@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **V1OrdersCancelAllPost**
-> MessageReject V1OrdersCancelAllPost(order.cancel.all.request)
+> MessageReject V1OrdersCancelAllPost(order_cancel_all_request)
 
 Cancel all orders request
 
@@ -22,11 +22,11 @@ This request cancels all open orders on single specified exchange.
 ```R
 library(openapi)
 
-var.order.cancel.all.request <- OrderCancelAllRequest$new("exchange_id_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
+var.order_cancel_all_request <- OrderCancelAllRequest$new("exchange_id_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
 
 #Cancel all orders request
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelAllPost(var.order.cancel.all.request)
+result <- api.instance$V1OrdersCancelAllPost(var.order_cancel_all_request)
 dput(result)
 ```
 
@@ -34,7 +34,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order.cancel.all.request** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
+ **order_cancel_all_request** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
 
 ### Return type
 
@@ -57,7 +57,7 @@ No authorization required
 | **490** | Exchange is unreachable. |  -  |
 
 # **V1OrdersCancelPost**
-> OrderExecutionReport V1OrdersCancelPost(order.cancel.single.request)
+> OrderExecutionReport V1OrdersCancelPost(order_cancel_single_request)
 
 Cancel order request
 
@@ -67,11 +67,11 @@ Request cancel for an existing order. The order can be canceled using the `clien
 ```R
 library(openapi)
 
-var.order.cancel.single.request <- OrderCancelSingleRequest$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
+var.order_cancel_single_request <- OrderCancelSingleRequest$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
 #Cancel order request
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelPost(var.order.cancel.single.request)
+result <- api.instance$V1OrdersCancelPost(var.order_cancel_single_request)
 dput(result)
 ```
 
@@ -79,7 +79,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order.cancel.single.request** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
+ **order_cancel_single_request** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ No authorization required
 | **490** | Exchange is unreachable. |  -  |
 
 # **V1OrdersGet**
-> array[OrderExecutionReport] V1OrdersGet(exchange.id=var.exchange.id)
+> array[OrderExecutionReport] V1OrdersGet(exchange_id=var.exchange_id)
 
 Get open orders
 
@@ -112,11 +112,11 @@ Get last execution reports for open orders across all or single exchange.
 ```R
 library(openapi)
 
-var.exchange.id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
+var.exchange_id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
 
 #Get open orders
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersGet(exchange.id=var.exchange.id)
+result <- api.instance$V1OrdersGet(exchange_id=var.exchange_id)
 dput(result)
 ```
 
@@ -124,7 +124,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange.id** | **character**| Filter the open orders to the specific exchange. | [optional] 
+ **exchange_id** | **character**| Filter the open orders to the specific exchange. | [optional] 
 
 ### Return type
 
@@ -146,7 +146,7 @@ No authorization required
 | **490** | Filtered exchange is unreachable. |  -  |
 
 # **V1OrdersPost**
-> OrderExecutionReport V1OrdersPost(order.new.single.request)
+> OrderExecutionReport V1OrdersPost(order_new_single_request)
 
 Send new order
 
@@ -156,11 +156,11 @@ This request creating new order for the specific exchange.
 ```R
 library(openapi)
 
-var.order.new.single.request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "symbol_id_exchange_example", "symbol_id_coinapi_example", "expire_time_example", list("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
+var.order_new_single_request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "symbol_id_exchange_example", "symbol_id_coinapi_example", "expire_time_example", list("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
 #Send new order
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersPost(var.order.new.single.request)
+result <- api.instance$V1OrdersPost(var.order_new_single_request)
 dput(result)
 ```
 
@@ -168,7 +168,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order.new.single.request** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
+ **order_new_single_request** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
 
 ### Return type
 
@@ -192,7 +192,7 @@ No authorization required
 | **504** | Exchange didn&#39;t responded in the defined timeout. |  -  |
 
 # **V1OrdersStatusClientOrderIdGet**
-> OrderExecutionReport V1OrdersStatusClientOrderIdGet(client.order.id)
+> OrderExecutionReport V1OrdersStatusClientOrderIdGet(client_order_id)
 
 Get order execution report
 
@@ -202,11 +202,11 @@ Get the last order execution report for the specified order. The requested order
 ```R
 library(openapi)
 
-var.client.order.id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
+var.client_order_id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
 
 #Get order execution report
 api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client.order.id)
+result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client_order_id)
 dput(result)
 ```
 
@@ -214,7 +214,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client.order.id** | **character**| The unique identifier of the order assigned by the client. | 
+ **client_order_id** | **character**| The unique identifier of the order assigned by the client. | 
 
 ### Return type
 

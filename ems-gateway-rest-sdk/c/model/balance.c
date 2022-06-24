@@ -31,7 +31,7 @@ void balance_free(balance_t *balance) {
     }
     if (balance->data) {
         list_ForEach(listEntry, balance->data) {
-            balance_data_free(listEntry->data);
+            balance_data_inner_free(listEntry->data);
         }
         list_freeList(balance->data);
         balance->data = NULL;
@@ -43,15 +43,15 @@ cJSON *balance_convertToJSON(balance_t *balance) {
     cJSON *item = cJSON_CreateObject();
 
     // balance->exchange_id
-    if(balance->exchange_id) { 
+    if(balance->exchange_id) {
     if(cJSON_AddStringToObject(item, "exchange_id", balance->exchange_id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
 
     // balance->data
-    if(balance->data) { 
+    if(balance->data) {
     cJSON *data = cJSON_AddArrayToObject(item, "data");
     if(data == NULL) {
     goto fail; //nonprimitive container
@@ -60,14 +60,14 @@ cJSON *balance_convertToJSON(balance_t *balance) {
     listEntry_t *dataListEntry;
     if (balance->data) {
     list_ForEach(dataListEntry, balance->data) {
-    cJSON *itemLocal = balance_data_convertToJSON(dataListEntry->data);
+    cJSON *itemLocal = balance_data_inner_convertToJSON(dataListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(data, itemLocal);
     }
     }
-     } 
+    }
 
     return item;
 fail:
@@ -81,6 +81,9 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
 
     balance_t *balance_local_var = NULL;
 
+    // define the local list for balance->data
+    list_t *dataList = NULL;
+
     // balance->exchange_id
     cJSON *exchange_id = cJSON_GetObjectItemCaseSensitive(balanceJSON, "exchange_id");
     if (exchange_id) { 
@@ -92,9 +95,8 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
 
     // balance->data
     cJSON *data = cJSON_GetObjectItemCaseSensitive(balanceJSON, "data");
-    list_t *dataList;
     if (data) { 
-    cJSON *data_local_nonprimitive;
+    cJSON *data_local_nonprimitive = NULL;
     if(!cJSON_IsArray(data)){
         goto end; //nonprimitive container
     }
@@ -106,7 +108,7 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
         if(!cJSON_IsObject(data_local_nonprimitive)){
             goto end;
         }
-        balance_data_t *dataItem = balance_data_parseFromJSON(data_local_nonprimitive);
+        balance_data_inner_t *dataItem = balance_data_inner_parseFromJSON(data_local_nonprimitive);
 
         list_addElement(dataList, dataItem);
     }
@@ -120,6 +122,15 @@ balance_t *balance_parseFromJSON(cJSON *balanceJSON){
 
     return balance_local_var;
 end:
+    if (dataList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, dataList) {
+            balance_data_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(dataList);
+        dataList = NULL;
+    }
     return NULL;
 
 }

@@ -82,65 +82,65 @@ export type Balance = {
     exchange_id?: string;
     /**
      * 
-     * @type {Array<BalanceData>}
+     * @type {Array<BalanceDataInner>}
      * @memberof Balance
      */
-    data?: Array<BalanceData>;
+    data?: Array<BalanceDataInner>;
 }
 
 
-            export type BalanceDataLastUpdatedByEnum = 'INITIALIZATION' | 'BALANCE_MANAGER' | 'EXCHANGE';
+            export type BalanceDataInnerLastUpdatedByEnum = 'INITIALIZATION' | 'BALANCE_MANAGER' | 'EXCHANGE';
 /**
  * 
  * @export
  */
-export type BalanceData = {
+export type BalanceDataInner = {
     /**
      * Exchange currency code.
      * @type {string}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     asset_id_exchange?: string;
     /**
      * CoinAPI currency code.
      * @type {string}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     asset_id_coinapi?: string;
     /**
      * Value of the current total currency balance on the exchange.
      * @type {number}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     balance?: number;
     /**
      * Value of the current available currency balance on the exchange that can be used as collateral.
      * @type {number}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     available?: number;
     /**
      * Value of the current locked currency balance by the exchange.
      * @type {number}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     locked?: number;
     /**
      * Source of the last modification. 
      * @type {string}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
-    last_updated_by?: BalanceDataLastUpdatedByEnum;
+    last_updated_by?: BalanceDataInnerLastUpdatedByEnum;
     /**
      * Current exchange rate to the USD for the single unit of the currency. 
      * @type {number}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     rate_usd?: number;
     /**
      * Value of the current total traded.
      * @type {number}
-     * @memberof BalanceData
+     * @memberof BalanceDataInner
      */
     traded?: number;
 }
@@ -544,75 +544,75 @@ export type Position = {
     exchange_id?: string;
     /**
      * 
-     * @type {Array<PositionData>}
+     * @type {Array<PositionDataInner>}
      * @memberof Position
      */
-    data?: Array<PositionData>;
+    data?: Array<PositionDataInner>;
 }
 
 /**
  * The Position object.
  * @export
  */
-export type PositionData = {
+export type PositionDataInner = {
     /**
      * Exchange symbol.
      * @type {string}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     symbol_id_exchange?: string;
     /**
      * CoinAPI symbol.
      * @type {string}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     symbol_id_coinapi?: string;
     /**
      * Calculated average price of all fills on this position.
      * @type {number}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     avg_entry_price?: number;
     /**
      * The current position quantity.
      * @type {number}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     quantity?: number;
     /**
      * 
      * @type {OrdSide}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     side?: OrdSide;
     /**
      * Unrealised profit or loss (PNL) of this position.
      * @type {number}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     unrealized_pnl?: number;
     /**
      * Leverage for this position reported by the exchange.
      * @type {number}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     leverage?: number;
     /**
      * Is cross margin mode enable for this position?
      * @type {boolean}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     cross_margin?: boolean;
     /**
      * Liquidation price. If mark price will reach this value, the position will be liquidated.
      * @type {number}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     liquidation_price?: number;
     /**
      * 
      * @type {Object}
-     * @memberof PositionData
+     * @memberof PositionDataInner
      */
     raw_data?: Object;
 }

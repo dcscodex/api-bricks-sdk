@@ -11,8 +11,8 @@
  * Do not edit the class manually.
  */
 
-import {
-    PositionData,
+import type {
+    PositionDataInner,
 } from './';
 
 /**
@@ -27,8 +27,8 @@ export interface Position {
      */
     exchange_id?: string;
     /**
-     * @type {Array<PositionData>}
+     * @type {Array<PositionDataInner>}
      * @memberof Position
      */
-    data?: Array<PositionData>;
+    data?: Array<PositionDataInner>;
 }

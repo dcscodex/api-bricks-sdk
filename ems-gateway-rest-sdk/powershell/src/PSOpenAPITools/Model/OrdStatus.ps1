@@ -9,77 +9,31 @@
 <#
 .SYNOPSIS
 
-No summary available.
+Enum OrdStatus.
 
 .DESCRIPTION
 
 Order statuses and the lifecycle are documented in the separate section: <a href=""#ems-order-lifecycle"">EMS / Starter Guide / Order Lifecycle</a> 
-
-.OUTPUTS
-
-OrdStatus<PSCustomObject>
 #>
 
-function Initialize-OrdStatus {
-    [CmdletBinding()]
-    Param (
-    )
-
-    Process {
-        'Creating PSCustomObject: PSOpenAPITools => OrdStatus' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-
-        $PSO = [PSCustomObject]@{
-        }
-
-
-        return $PSO
-    }
-}
-
-<#
-.SYNOPSIS
-
-Convert from JSON to OrdStatus<PSCustomObject>
-
-.DESCRIPTION
-
-Convert from JSON to OrdStatus<PSCustomObject>
-
-.PARAMETER Json
-
-Json object
-
-.OUTPUTS
-
-OrdStatus<PSCustomObject>
-#>
-function ConvertFrom-JsonToOrdStatus {
-    Param(
-        [AllowEmptyString()]
-        [string]$Json
-    )
-
-    Process {
-        'Converting JSON to PSCustomObject: PSOpenAPITools => OrdStatus' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        $JsonParameters = ConvertFrom-Json -InputObject $Json
-
-        # check if Json contains properties not defined in OrdStatus
-        $AllProperties = ()
-        foreach ($name in $JsonParameters.PsObject.Properties.Name) {
-            if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
-            }
-        }
-
-        $PSO = [PSCustomObject]@{
-        }
-
-        return $PSO
-    }
-
+enum OrdStatus {
+    # enum value: "RECEIVED"
+    RECEIVED
+    # enum value: "ROUTING"
+    ROUTING
+    # enum value: "ROUTED"
+    ROUTED
+    # enum value: "NEW"
+    NEW
+    # enum value: "PENDING_CANCEL"
+    PENDING_CANCEL
+    # enum value: "PARTIALLY_FILLED"
+    PARTIALLY_FILLED
+    # enum value: "FILLED"
+    FILLED
+    # enum value: "CANCELED"
+    CANCELED
+    # enum value: "REJECTED"
+    REJECTED
 }
 

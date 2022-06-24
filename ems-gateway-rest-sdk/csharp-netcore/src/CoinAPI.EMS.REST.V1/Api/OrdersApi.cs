@@ -35,8 +35,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>MessageReject</returns>
-        MessageReject V1OrdersCancelAllPost(OrderCancelAllRequest orderCancelAllRequest);
+        MessageReject V1OrdersCancelAllPost(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0);
 
         /// <summary>
         /// Cancel all orders request
@@ -46,8 +47,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of MessageReject</returns>
-        ApiResponse<MessageReject> V1OrdersCancelAllPostWithHttpInfo(OrderCancelAllRequest orderCancelAllRequest);
+        ApiResponse<MessageReject> V1OrdersCancelAllPostWithHttpInfo(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0);
         /// <summary>
         /// Cancel order request
         /// </summary>
@@ -56,8 +58,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        OrderExecutionReport V1OrdersCancelPost(OrderCancelSingleRequest orderCancelSingleRequest);
+        OrderExecutionReport V1OrdersCancelPost(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0);
 
         /// <summary>
         /// Cancel order request
@@ -67,8 +70,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        ApiResponse<OrderExecutionReport> V1OrdersCancelPostWithHttpInfo(OrderCancelSingleRequest orderCancelSingleRequest);
+        ApiResponse<OrderExecutionReport> V1OrdersCancelPostWithHttpInfo(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0);
         /// <summary>
         /// Get open orders
         /// </summary>
@@ -77,8 +81,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;OrderExecutionReport&gt;</returns>
-        List<OrderExecutionReport> V1OrdersGet(string exchangeId = default(string));
+        List<OrderExecutionReport> V1OrdersGet(string exchangeId = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get open orders
@@ -88,8 +93,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;OrderExecutionReport&gt;</returns>
-        ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo(string exchangeId = default(string));
+        ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo(string exchangeId = default(string), int operationIndex = 0);
         /// <summary>
         /// Send new order
         /// </summary>
@@ -98,8 +104,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        OrderExecutionReport V1OrdersPost(OrderNewSingleRequest orderNewSingleRequest);
+        OrderExecutionReport V1OrdersPost(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0);
 
         /// <summary>
         /// Send new order
@@ -109,8 +116,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        ApiResponse<OrderExecutionReport> V1OrdersPostWithHttpInfo(OrderNewSingleRequest orderNewSingleRequest);
+        ApiResponse<OrderExecutionReport> V1OrdersPostWithHttpInfo(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0);
         /// <summary>
         /// Get order execution report
         /// </summary>
@@ -119,8 +127,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        OrderExecutionReport V1OrdersStatusClientOrderIdGet(string clientOrderId);
+        OrderExecutionReport V1OrdersStatusClientOrderIdGet(string clientOrderId, int operationIndex = 0);
 
         /// <summary>
         /// Get order execution report
@@ -130,8 +139,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        ApiResponse<OrderExecutionReport> V1OrdersStatusClientOrderIdGetWithHttpInfo(string clientOrderId);
+        ApiResponse<OrderExecutionReport> V1OrdersStatusClientOrderIdGetWithHttpInfo(string clientOrderId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -149,9 +159,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MessageReject</returns>
-        System.Threading.Tasks.Task<MessageReject> V1OrdersCancelAllPostAsync(OrderCancelAllRequest orderCancelAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<MessageReject> V1OrdersCancelAllPostAsync(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel all orders request
@@ -161,9 +172,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MessageReject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MessageReject>> V1OrdersCancelAllPostWithHttpInfoAsync(OrderCancelAllRequest orderCancelAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<MessageReject>> V1OrdersCancelAllPostWithHttpInfoAsync(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel order request
         /// </summary>
@@ -172,9 +184,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersCancelPostAsync(OrderCancelSingleRequest orderCancelSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersCancelPostAsync(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel order request
@@ -184,9 +197,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersCancelPostWithHttpInfoAsync(OrderCancelSingleRequest orderCancelSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersCancelPostWithHttpInfoAsync(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get open orders
         /// </summary>
@@ -195,9 +209,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;OrderExecutionReport&gt;</returns>
-        System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync(string exchangeId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync(string exchangeId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get open orders
@@ -207,9 +222,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;OrderExecutionReport&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync(string exchangeId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync(string exchangeId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send new order
         /// </summary>
@@ -218,9 +234,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersPostAsync(OrderNewSingleRequest orderNewSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersPostAsync(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send new order
@@ -230,9 +247,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersPostWithHttpInfoAsync(OrderNewSingleRequest orderNewSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersPostWithHttpInfoAsync(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get order execution report
         /// </summary>
@@ -241,9 +259,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersStatusClientOrderIdGetAsync(string clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersStatusClientOrderIdGetAsync(string clientOrderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get order execution report
@@ -253,9 +272,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </remarks>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(string clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderExecutionReport>> V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(string clientOrderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -381,8 +401,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>MessageReject</returns>
-        public MessageReject V1OrdersCancelAllPost(OrderCancelAllRequest orderCancelAllRequest)
+        public MessageReject V1OrdersCancelAllPost(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject> localVarResponse = V1OrdersCancelAllPostWithHttpInfo(orderCancelAllRequest);
             return localVarResponse.Data;
@@ -393,8 +414,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of MessageReject</returns>
-        public CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject> V1OrdersCancelAllPostWithHttpInfo(OrderCancelAllRequest orderCancelAllRequest)
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject> V1OrdersCancelAllPostWithHttpInfo(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0)
         {
             // verify the required parameter 'orderCancelAllRequest' is set
             if (orderCancelAllRequest == null)
@@ -427,6 +449,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderCancelAllRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersCancelAllPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -448,11 +473,12 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MessageReject</returns>
-        public async System.Threading.Tasks.Task<MessageReject> V1OrdersCancelAllPostAsync(OrderCancelAllRequest orderCancelAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MessageReject> V1OrdersCancelAllPostAsync(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject> localVarResponse = await V1OrdersCancelAllPostWithHttpInfoAsync(orderCancelAllRequest, cancellationToken).ConfigureAwait(false);
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject> localVarResponse = await V1OrdersCancelAllPostWithHttpInfoAsync(orderCancelAllRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -461,9 +487,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelAllRequest">OrderCancelAllRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MessageReject)</returns>
-        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject>> V1OrdersCancelAllPostWithHttpInfoAsync(OrderCancelAllRequest orderCancelAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<MessageReject>> V1OrdersCancelAllPostWithHttpInfoAsync(OrderCancelAllRequest orderCancelAllRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'orderCancelAllRequest' is set
             if (orderCancelAllRequest == null)
@@ -497,6 +524,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderCancelAllRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersCancelAllPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -519,8 +549,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        public OrderExecutionReport V1OrdersCancelPost(OrderCancelSingleRequest orderCancelSingleRequest)
+        public OrderExecutionReport V1OrdersCancelPost(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = V1OrdersCancelPostWithHttpInfo(orderCancelSingleRequest);
             return localVarResponse.Data;
@@ -531,8 +562,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersCancelPostWithHttpInfo(OrderCancelSingleRequest orderCancelSingleRequest)
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersCancelPostWithHttpInfo(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0)
         {
             // verify the required parameter 'orderCancelSingleRequest' is set
             if (orderCancelSingleRequest == null)
@@ -565,6 +597,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderCancelSingleRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersCancelPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -586,11 +621,12 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersCancelPostAsync(OrderCancelSingleRequest orderCancelSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersCancelPostAsync(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersCancelPostWithHttpInfoAsync(orderCancelSingleRequest, cancellationToken).ConfigureAwait(false);
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersCancelPostWithHttpInfoAsync(orderCancelSingleRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -599,9 +635,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderCancelSingleRequest">OrderCancelSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersCancelPostWithHttpInfoAsync(OrderCancelSingleRequest orderCancelSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersCancelPostWithHttpInfoAsync(OrderCancelSingleRequest orderCancelSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'orderCancelSingleRequest' is set
             if (orderCancelSingleRequest == null)
@@ -635,6 +672,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderCancelSingleRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersCancelPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -657,8 +697,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;OrderExecutionReport&gt;</returns>
-        public List<OrderExecutionReport> V1OrdersGet(string exchangeId = default(string))
+        public List<OrderExecutionReport> V1OrdersGet(string exchangeId = default(string), int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>> localVarResponse = V1OrdersGetWithHttpInfo(exchangeId);
             return localVarResponse.Data;
@@ -669,8 +710,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;OrderExecutionReport&gt;</returns>
-        public CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo(string exchangeId = default(string))
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo(string exchangeId = default(string), int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.RequestOptions localVarRequestOptions = new CoinAPI.EMS.REST.V1.Client.RequestOptions();
 
@@ -699,6 +741,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             {
                 localVarRequestOptions.QueryParameters.Add(CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToMultiMap("", "exchange_id", exchangeId));
             }
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -720,11 +765,12 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;OrderExecutionReport&gt;</returns>
-        public async System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync(string exchangeId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<OrderExecutionReport>> V1OrdersGetAsync(string exchangeId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>> localVarResponse = await V1OrdersGetWithHttpInfoAsync(exchangeId, cancellationToken).ConfigureAwait(false);
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>> localVarResponse = await V1OrdersGetWithHttpInfoAsync(exchangeId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -733,9 +779,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;OrderExecutionReport&gt;)</returns>
-        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync(string exchangeId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync(string exchangeId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             CoinAPI.EMS.REST.V1.Client.RequestOptions localVarRequestOptions = new CoinAPI.EMS.REST.V1.Client.RequestOptions();
@@ -765,6 +812,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             {
                 localVarRequestOptions.QueryParameters.Add(CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToMultiMap("", "exchange_id", exchangeId));
             }
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -787,8 +837,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        public OrderExecutionReport V1OrdersPost(OrderNewSingleRequest orderNewSingleRequest)
+        public OrderExecutionReport V1OrdersPost(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = V1OrdersPostWithHttpInfo(orderNewSingleRequest);
             return localVarResponse.Data;
@@ -799,8 +850,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersPostWithHttpInfo(OrderNewSingleRequest orderNewSingleRequest)
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersPostWithHttpInfo(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0)
         {
             // verify the required parameter 'orderNewSingleRequest' is set
             if (orderNewSingleRequest == null)
@@ -833,6 +885,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderNewSingleRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -854,11 +909,12 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersPostAsync(OrderNewSingleRequest orderNewSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersPostAsync(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersPostWithHttpInfoAsync(orderNewSingleRequest, cancellationToken).ConfigureAwait(false);
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersPostWithHttpInfoAsync(orderNewSingleRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -867,9 +923,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderNewSingleRequest">OrderNewSingleRequest object.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersPostWithHttpInfoAsync(OrderNewSingleRequest orderNewSingleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersPostWithHttpInfoAsync(OrderNewSingleRequest orderNewSingleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'orderNewSingleRequest' is set
             if (orderNewSingleRequest == null)
@@ -903,6 +960,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.Data = orderNewSingleRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -925,8 +985,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderExecutionReport</returns>
-        public OrderExecutionReport V1OrdersStatusClientOrderIdGet(string clientOrderId)
+        public OrderExecutionReport V1OrdersStatusClientOrderIdGet(string clientOrderId, int operationIndex = 0)
         {
             CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = V1OrdersStatusClientOrderIdGetWithHttpInfo(clientOrderId);
             return localVarResponse.Data;
@@ -937,8 +998,9 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderExecutionReport</returns>
-        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersStatusClientOrderIdGetWithHttpInfo(string clientOrderId)
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> V1OrdersStatusClientOrderIdGetWithHttpInfo(string clientOrderId, int operationIndex = 0)
         {
             // verify the required parameter 'clientOrderId' is set
             if (clientOrderId == null)
@@ -969,6 +1031,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.PathParameters.Add("client_order_id", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(clientOrderId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersStatusClientOrderIdGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
@@ -990,11 +1055,12 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderExecutionReport</returns>
-        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersStatusClientOrderIdGetAsync(string clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderExecutionReport> V1OrdersStatusClientOrderIdGetAsync(string clientOrderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(clientOrderId, cancellationToken).ConfigureAwait(false);
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport> localVarResponse = await V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(clientOrderId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1003,9 +1069,10 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// </summary>
         /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="clientOrderId">The unique identifier of the order assigned by the client.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderExecutionReport)</returns>
-        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(string clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<OrderExecutionReport>> V1OrdersStatusClientOrderIdGetWithHttpInfoAsync(string clientOrderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'clientOrderId' is set
             if (clientOrderId == null)
@@ -1037,6 +1104,9 @@ namespace CoinAPI.EMS.REST.V1.Api
             }
 
             localVarRequestOptions.PathParameters.Add("client_order_id", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(clientOrderId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersStatusClientOrderIdGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request

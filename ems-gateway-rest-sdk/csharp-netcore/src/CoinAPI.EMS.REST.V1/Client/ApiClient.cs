@@ -431,9 +431,10 @@ namespace CoinAPI.EMS.REST.V1.Client
             return transformed;
         }
 
-        private ApiResponse<T> Exec<T>(RestRequest req, IReadableConfiguration configuration)
+        private ApiResponse<T> Exec<T>(RestRequest req, RequestOptions options, IReadableConfiguration configuration)
         {
-            RestClient client = new RestClient(_baseUrl);
+            var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
+            RestClient client = new RestClient(baseUrl);
 
             client.ClearHandlers();
             var existingDeserializer = req.JsonSerializer as IDeserializer;
@@ -512,6 +513,10 @@ namespace CoinAPI.EMS.REST.V1.Client
             {
                 response.Data = (T)(object)new MemoryStream(response.RawBytes);
             }
+            else if (typeof(T).Name == "Byte[]") // for byte response
+            {
+                response.Data = (T)(object)response.RawBytes;
+            }
 
             InterceptResponse(req, response);
 
@@ -550,9 +555,10 @@ namespace CoinAPI.EMS.REST.V1.Client
             return result;
         }
 
-        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, IReadableConfiguration configuration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, RequestOptions options, IReadableConfiguration configuration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            RestClient client = new RestClient(_baseUrl);
+            var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
+            RestClient client = new RestClient(baseUrl);
 
             client.ClearHandlers();
             var existingDeserializer = req.JsonSerializer as IDeserializer;
@@ -624,6 +630,10 @@ namespace CoinAPI.EMS.REST.V1.Client
             {
                 response.Data = (T)(object)new MemoryStream(response.RawBytes);
             }
+            else if (typeof(T).Name == "Byte[]") // for byte response
+            {
+                response.Data = (T)(object)response.RawBytes;
+            }
 
             InterceptResponse(req, response);
 
@@ -675,7 +685,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -690,7 +700,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -705,7 +715,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -720,7 +730,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -735,7 +745,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -750,7 +760,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), options, config, cancellationToken);
         }
 
         /// <summary>
@@ -765,7 +775,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), options, config, cancellationToken);
         }
         #endregion IAsynchronousClient
 
@@ -781,7 +791,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Get, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Get, path, options, config), options, config);
         }
 
         /// <summary>
@@ -795,7 +805,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Post, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Post, path, options, config), options, config);
         }
 
         /// <summary>
@@ -809,7 +819,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Put, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Put, path, options, config), options, config);
         }
 
         /// <summary>
@@ -823,7 +833,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Delete, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Delete, path, options, config), options, config);
         }
 
         /// <summary>
@@ -837,7 +847,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Head, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Head, path, options, config), options, config);
         }
 
         /// <summary>
@@ -851,7 +861,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Options, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Options, path, options, config), options, config);
         }
 
         /// <summary>
@@ -865,7 +875,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Patch, path, options, config), config);
+            return Exec<T>(NewRequest(HttpMethod.Patch, path, options, config), options, config);
         }
         #endregion ISynchronousClient
     }

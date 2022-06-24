@@ -5,12 +5,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.model.PositionData;
+import org.openapitools.model.PositionDataInner;
 
 @Canonical
 class Position {
     /* Exchange identifier used to identify the routing destination. */
     String exchangeId
     
-    List<PositionData> data = new ArrayList<PositionData>()
+    List<PositionDataInner> data = new ArrayList<>()
 }

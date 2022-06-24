@@ -70,7 +70,7 @@ func (o *OrderExecutionReportAllOf) GetClientOrderIdFormatExchange() string {
 // GetClientOrderIdFormatExchangeOk returns a tuple with the ClientOrderIdFormatExchange field value
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReportAllOf) GetClientOrderIdFormatExchangeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientOrderIdFormatExchange, true
@@ -126,7 +126,7 @@ func (o *OrderExecutionReportAllOf) GetAmountOpen() float32 {
 // GetAmountOpenOk returns a tuple with the AmountOpen field value
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReportAllOf) GetAmountOpenOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AmountOpen, true
@@ -150,7 +150,7 @@ func (o *OrderExecutionReportAllOf) GetAmountFilled() float32 {
 // GetAmountFilledOk returns a tuple with the AmountFilled field value
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReportAllOf) GetAmountFilledOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AmountFilled, true
@@ -206,7 +206,7 @@ func (o *OrderExecutionReportAllOf) GetStatus() OrdStatus {
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReportAllOf) GetStatusOk() (*OrdStatus, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Status, true

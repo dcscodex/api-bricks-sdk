@@ -18,6 +18,6 @@ export interface Position {
      */
     exchange_id?: string;
 
-    data?: Array<models.PositionData>;
+    data?: Array<models.PositionDataInner>;
 
 }

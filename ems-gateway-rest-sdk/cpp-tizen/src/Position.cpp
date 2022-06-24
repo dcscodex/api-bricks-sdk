@@ -66,12 +66,12 @@ Position::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<Position_data> new_list;
-			Position_data inst;
+			list<Position_data_inner> new_list;
+			Position_data_inner inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("Position_data")) {
-					jsonToValue(&inst, temp_json, "Position_data", "");
+				if (isprimitive("Position_data_inner")) {
+					jsonToValue(&inst, temp_json, "Position_data_inner", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Position::toJson()
 	}
 	const gchar *exchange_idKey = "exchange_id";
 	json_object_set_member(pJsonObject, exchange_idKey, node);
-	if (isprimitive("Position_data")) {
-		list<Position_data> new_list = static_cast<list <Position_data> > (getData());
-		node = converttoJson(&new_list, "Position_data", "array");
+	if (isprimitive("Position_data_inner")) {
+		list<Position_data_inner> new_list = static_cast<list <Position_data_inner> > (getData());
+		node = converttoJson(&new_list, "Position_data_inner", "array");
 	} else {
 		node = json_node_alloc();
-		list<Position_data> new_list = static_cast<list <Position_data> > (getData());
+		list<Position_data_inner> new_list = static_cast<list <Position_data_inner> > (getData());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<Position_data>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<Position_data_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			Position_data obj = *it;
+			Position_data_inner obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Position::setExchangeId(std::string  exchange_id)
 	this->exchange_id = exchange_id;
 }
 
-std::list<Position_data>
+std::list<Position_data_inner>
 Position::getData()
 {
 	return data;
 }
 
 void
-Position::setData(std::list <Position_data> data)
+Position::setData(std::list <Position_data_inner> data)
 {
 	this->data = data;
 }

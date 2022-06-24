@@ -2,7 +2,7 @@
 
 EMS - REST API
 - API version: v1
-  - Build date: 2022-05-06T10:47:19.665644Z[Etc/UTC]
+  - Build date: 2022-06-24T08:18:00.787637Z[Etc/UTC]
 
 This section will provide necessary information about the `CoinAPI EMS REST API` protocol.
 <br/>
@@ -78,7 +78,7 @@ Assuming that your API key is `73034021-THIS-IS-SAMPLE-KEY` and that you want to
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.7+
+1. Java 1.8+
 2. Maven (3.8.3+)/Gradle (7.2+)
 
 ## Installation
@@ -191,7 +191,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Balance](docs/Balance.md)
- - [BalanceData](docs/BalanceData.md)
+ - [BalanceDataInner](docs/BalanceDataInner.md)
  - [Fills](docs/Fills.md)
  - [MessageReject](docs/MessageReject.md)
  - [OrdSide](docs/OrdSide.md)
@@ -203,7 +203,7 @@ Class | Method | HTTP request | Description
  - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [Position](docs/Position.md)
- - [PositionData](docs/PositionData.md)
+ - [PositionDataInner](docs/PositionDataInner.md)
  - [RejectReason](docs/RejectReason.md)
  - [TimeInForce](docs/TimeInForce.md)
  - [ValidationError](docs/ValidationError.md)

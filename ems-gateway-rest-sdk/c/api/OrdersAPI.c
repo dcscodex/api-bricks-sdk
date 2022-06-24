@@ -55,15 +55,18 @@ OrdersAPI_v1OrdersCancelAllPost(apiClient_t *apiClient, order_cancel_all_request
                     localVarBodyParameters,
                     "POST");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","Result");
-    }
-    if (apiClient->response_code == 400) {
-        printf("%s\n","Input model validation errors.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Exchange is unreachable.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Result");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Input model validation errors.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Exchange is unreachable.");
+    //}
     //nonprimitive not container
     cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     message_reject_t *elementToReturn = message_reject_parseFromJSON(OrdersAPIlocalVarJSON);
@@ -139,15 +142,18 @@ OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, order_cancel_single_request
                     localVarBodyParameters,
                     "POST");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","The last execution report for the order for which cancelation was requested.");
-    }
-    if (apiClient->response_code == 400) {
-        printf("%s\n","Input model validation errors.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Exchange is unreachable.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The last execution report for the order for which cancelation was requested.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Input model validation errors.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Exchange is unreachable.");
+    //}
     //nonprimitive not container
     cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     order_execution_report_t *elementToReturn = order_execution_report_parseFromJSON(OrdersAPIlocalVarJSON);
@@ -225,12 +231,14 @@ OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id )
                     localVarBodyParameters,
                     "GET");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","Collection of order execution reports.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Filtered exchange is unreachable.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Collection of order execution reports.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Filtered exchange is unreachable.");
+    //}
     cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     if(!cJSON_IsArray(OrdersAPIlocalVarJSON)) {
         return 0;//nonprimitive container
@@ -323,18 +331,22 @@ OrdersAPI_v1OrdersPost(apiClient_t *apiClient, order_new_single_request_t * orde
                     localVarBodyParameters,
                     "POST");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","Created");
-    }
-    if (apiClient->response_code == 400) {
-        printf("%s\n","Input model validation errors.");
-    }
-    if (apiClient->response_code == 490) {
-        printf("%s\n","Exchange is unreachable.");
-    }
-    if (apiClient->response_code == 504) {
-        printf("%s\n","Exchange didn&#39;t responded in the defined timeout.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Created");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Input model validation errors.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 490) {
+    //    printf("%s\n","Exchange is unreachable.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 504) {
+    //    printf("%s\n","Exchange didn&#39;t responded in the defined timeout.");
+    //}
     //nonprimitive not container
     cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     order_execution_report_t *elementToReturn = order_execution_report_parseFromJSON(OrdersAPIlocalVarJSON);
@@ -409,12 +421,14 @@ OrdersAPI_v1OrdersStatusClientOrderIdGet(apiClient_t *apiClient, char * client_o
                     localVarBodyParameters,
                     "GET");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","The last execution report of the requested order.");
-    }
-    if (apiClient->response_code == 404) {
-        printf("%s\n","The requested order was not found.");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The last execution report of the requested order.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested order was not found.");
+    //}
     //nonprimitive not container
     cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     order_execution_report_t *elementToReturn = order_execution_report_parseFromJSON(OrdersAPIlocalVarJSON);

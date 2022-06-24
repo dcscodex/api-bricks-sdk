@@ -72,8 +72,8 @@ For more information, please visit [https://www.coinapi.io](https://www.coinapi.
 
 ### Requirements
 
-PHP 7.3 and later.
-Should also work with PHP 8.0 but has not been tested.
+PHP 7.4 and later.
+Should also work with PHP 8.0.
 
 ### Composer
 
@@ -148,7 +148,7 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [Balance](docs/Model/Balance.md)
-- [BalanceData](docs/Model/BalanceData.md)
+- [BalanceDataInner](docs/Model/BalanceDataInner.md)
 - [Fills](docs/Model/Fills.md)
 - [MessageReject](docs/Model/MessageReject.md)
 - [OrdSide](docs/Model/OrdSide.md)
@@ -160,7 +160,7 @@ Class | Method | HTTP request | Description
 - [OrderExecutionReportAllOf](docs/Model/OrderExecutionReportAllOf.md)
 - [OrderNewSingleRequest](docs/Model/OrderNewSingleRequest.md)
 - [Position](docs/Model/Position.md)
-- [PositionData](docs/Model/PositionData.md)
+- [PositionDataInner](docs/Model/PositionDataInner.md)
 - [RejectReason](docs/Model/RejectReason.md)
 - [TimeInForce](docs/Model/TimeInForce.md)
 - [ValidationError](docs/Model/ValidationError.md)

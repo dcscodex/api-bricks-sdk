@@ -154,7 +154,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [OpenapiClient::Balance](docs/Balance.md)
- - [OpenapiClient::BalanceData](docs/BalanceData.md)
+ - [OpenapiClient::BalanceDataInner](docs/BalanceDataInner.md)
  - [OpenapiClient::Fills](docs/Fills.md)
  - [OpenapiClient::MessageReject](docs/MessageReject.md)
  - [OpenapiClient::OrdSide](docs/OrdSide.md)
@@ -166,7 +166,7 @@ Class | Method | HTTP request | Description
  - [OpenapiClient::OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
  - [OpenapiClient::OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [OpenapiClient::Position](docs/Position.md)
- - [OpenapiClient::PositionData](docs/PositionData.md)
+ - [OpenapiClient::PositionDataInner](docs/PositionDataInner.md)
  - [OpenapiClient::RejectReason](docs/RejectReason.md)
  - [OpenapiClient::TimeInForce](docs/TimeInForce.md)
  - [OpenapiClient::ValidationError](docs/ValidationError.md)

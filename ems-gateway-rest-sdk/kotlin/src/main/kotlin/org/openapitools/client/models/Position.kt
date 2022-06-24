@@ -20,7 +20,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PositionData
+import org.openapitools.client.models.PositionDataInner
 
 import com.squareup.moshi.Json
 
@@ -38,7 +38,7 @@ data class Position (
     val exchangeId: kotlin.String? = null,
 
     @Json(name = "data")
-    val `data`: kotlin.collections.List<PositionData>? = null
+    val `data`: kotlin.collections.List<PositionDataInner>? = null
 
 )
 

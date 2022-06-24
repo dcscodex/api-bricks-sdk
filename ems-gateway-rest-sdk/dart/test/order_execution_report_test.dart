@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,7 +13,7 @@ import 'package:test/test.dart';
 
 // tests for OrderExecutionReport
 void main() {
-  final instance = OrderExecutionReport();
+  // final instance = OrderExecutionReport();
 
   group('test OrderExecutionReport', () {
     // Exchange identifier used to identify the routing destination.

@@ -15,7 +15,7 @@
 
 typedef struct balance_t balance_t;
 
-#include "balance_data.h"
+#include "balance_data_inner.h"
 
 
 

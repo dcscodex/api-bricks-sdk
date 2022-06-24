@@ -16,8 +16,8 @@ package org.openapitools.client.api;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.MessageReject;
 import org.openapitools.client.model.Position;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,25 +27,23 @@ import java.util.Map;
 /**
  * API tests for PositionsApi
  */
-@Ignore
+@Disabled
 public class PositionsApiTest {
 
     private final PositionsApi api = new PositionsApi();
 
-    
     /**
      * Get open positions
      *
      * Get current open positions across all or single exchange.
      *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void v1PositionsGetTest() throws ApiException {
         String exchangeId = null;
-                List<Position> response = api.v1PositionsGet(exchangeId);
+        List<Position> response = api.v1PositionsGet(exchangeId);
         // TODO: test validations
     }
-    
+
 }

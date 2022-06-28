@@ -97,6 +97,39 @@ private class OASOrdersApiTest {
     }
 
     /**
+     * History of order changes
+     *
+     * Based on the date range, all changes registered in the orderbook.
+     */
+    @isTest
+    private static void v1OrdersHistoryTimeStartTimeEndGetTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'timeStart' => 2022-05-01T00:00:00,
+            'timeEnd' => 2022-05-01T12:00:00
+        };
+
+        OASClient client;
+        OASOrdersApi api;
+        List<OASOrderHistory> response;
+        List<OASOrderHistory> expectedResponse;
+        String js = '';
+
+        api = new OASOrdersApi(new OASClient());
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASOrderHistory>) api.v1OrdersHistoryTimeStartTimeEndGet(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
      * Send new order
      *
      * This request creating new order for the specific exchange.

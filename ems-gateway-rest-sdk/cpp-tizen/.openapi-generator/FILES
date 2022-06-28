@@ -14,6 +14,8 @@ src/Fills.cpp
 src/Fills.h
 src/Helpers.cpp
 src/Helpers.h
+src/MessageError.cpp
+src/MessageError.h
 src/MessageReject.cpp
 src/MessageReject.h
 src/NetClient.cpp
@@ -33,6 +35,8 @@ src/OrderExecutionReport.cpp
 src/OrderExecutionReport.h
 src/OrderExecutionReportAllOf.cpp
 src/OrderExecutionReportAllOf.h
+src/OrderHistory.cpp
+src/OrderHistory.h
 src/OrderNewSingleRequest.cpp
 src/OrderNewSingleRequest.h
 src/OrdersManager.cpp

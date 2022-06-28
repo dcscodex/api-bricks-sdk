@@ -20,6 +20,104 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in OrderHistory_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("apikey", Value.Apikey);
+      Into.Write_Entity ("exchangeId", Value.Exchange_Id);
+      Into.Write_Entity ("clientOrderId", Value.Client_Order_Id);
+      Into.Write_Entity ("symbolIdExchange", Value.Symbol_Id_Exchange);
+      Into.Write_Entity ("symbolIdCoinapi", Value.Symbol_Id_Coinapi);
+      Serialize (Into, "amountOrder", Value.Amount_Order);
+      Serialize (Into, "price", Value.Price);
+      Serialize (Into, "side", Value.Side);
+      Into.Write_Entity ("orderType", Value.Order_Type);
+      Into.Write_Entity ("timeInForce", Value.Time_In_Force);
+      Serialize (Into, "expireTime", Value.Expire_Time);
+      Serialize (Into, "execInst", Value.Exec_Inst);
+      Into.Write_Entity ("clientOrderIdFormatExchange", Value.Client_Order_Id_Format_Exchange);
+      Into.Write_Entity ("exchangeOrderId", Value.Exchange_Order_Id);
+      Serialize (Into, "amountOpen", Value.Amount_Open);
+      Serialize (Into, "amountFilled", Value.Amount_Filled);
+      Serialize (Into, "avgPx", Value.Avg_Px);
+      Into.Write_Entity ("status", Value.Status);
+      Serialize (Into, "statusHistoryStatus", Value.Status_History_Status);
+      Serialize (Into, "statusHistoryTime", Value.Status_History_Time);
+      Into.Write_Entity ("errorMessageResult", Value.Error_Message_Result);
+      Into.Write_Entity ("errorMessageReason", Value.Error_Message_Reason);
+      Into.Write_Entity ("errorMessageMessage", Value.Error_Message_Message);
+      Serialize (Into, "fillsTime", Value.Fills_Time);
+      Serialize (Into, "fillsPrice", Value.Fills_Price);
+      Serialize (Into, "fillsAmount", Value.Fills_Amount);
+      Serialize (Into, "createdTime", Value.Created_Time);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderHistory_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OrderHistory_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "apikey", Value.Apikey);
+      Swagger.Streams.Deserialize (Object, "exchangeId", Value.Exchange_Id);
+      Swagger.Streams.Deserialize (Object, "clientOrderId", Value.Client_Order_Id);
+      Swagger.Streams.Deserialize (Object, "symbolIdExchange", Value.Symbol_Id_Exchange);
+      Swagger.Streams.Deserialize (Object, "symbolIdCoinapi", Value.Symbol_Id_Coinapi);
+      Swagger.Streams.Deserialize (Object, "amountOrder", Value.Amount_Order);
+      Swagger.Streams.Deserialize (Object, "price", Value.Price);
+      Swagger.Streams.Deserialize (Object, "side", Value.Side);
+      Swagger.Streams.Deserialize (Object, "orderType", Value.Order_Type);
+      Swagger.Streams.Deserialize (Object, "timeInForce", Value.Time_In_Force);
+      Swagger.Streams.Deserialize (Object, "expireTime", Value.Expire_Time);
+      Swagger.Streams.Deserialize (Object, "execInst", Value.Exec_Inst);
+      Swagger.Streams.Deserialize (Object, "clientOrderIdFormatExchange", Value.Client_Order_Id_Format_Exchange);
+      Swagger.Streams.Deserialize (Object, "exchangeOrderId", Value.Exchange_Order_Id);
+      Swagger.Streams.Deserialize (Object, "amountOpen", Value.Amount_Open);
+      Swagger.Streams.Deserialize (Object, "amountFilled", Value.Amount_Filled);
+      Swagger.Streams.Deserialize (Object, "avgPx", Value.Avg_Px);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "statusHistoryStatus", Value.Status_History_Status);
+      Swagger.Streams.Deserialize (Object, "statusHistoryTime", Value.Status_History_Time);
+      Swagger.Streams.Deserialize (Object, "errorMessageResult", Value.Error_Message_Result);
+      Swagger.Streams.Deserialize (Object, "errorMessageReason", Value.Error_Message_Reason);
+      Swagger.Streams.Deserialize (Object, "errorMessageMessage", Value.Error_Message_Message);
+      Swagger.Streams.Deserialize (Object, "fillsTime", Value.Fills_Time);
+      Swagger.Streams.Deserialize (Object, "fillsPrice", Value.Fills_Price);
+      Swagger.Streams.Deserialize (Object, "fillsAmount", Value.Fills_Amount);
+      Swagger.Streams.Deserialize (Object, "createdTime", Value.Created_Time);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OrderHistory_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : OrderHistory_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+
+
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in RejectReason_Type) is
    begin
       Into.Start_Entity (Name);
@@ -692,6 +790,52 @@ package body .Models is
                           Value : out OrderExecutionReportAllOf_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : OrderExecutionReportAllOf_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+
+
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MessageError_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("message", Value.Message);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MessageError_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MessageError_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "message", Value.Message);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MessageError_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : MessageError_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

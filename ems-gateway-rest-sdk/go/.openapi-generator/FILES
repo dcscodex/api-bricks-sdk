@@ -12,6 +12,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -20,6 +21,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -34,6 +36,7 @@ go.sum
 model_balance.go
 model_balance_data_inner.go
 model_fills.go
+model_message_error.go
 model_message_reject.go
 model_ord_side.go
 model_ord_status.go
@@ -42,6 +45,7 @@ model_order_cancel_all_request.go
 model_order_cancel_single_request.go
 model_order_execution_report.go
 model_order_execution_report_all_of.go
+model_order_history.go
 model_order_new_single_request.go
 model_position.go
 model_position_data_inner.go

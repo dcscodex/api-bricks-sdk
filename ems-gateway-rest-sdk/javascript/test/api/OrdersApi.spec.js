@@ -78,6 +78,16 @@
         done();
       });
     });
+    describe('v1OrdersHistoryTimeStartTimeEndGet', function() {
+      it('should call v1OrdersHistoryTimeStartTimeEndGet successfully', function(done) {
+        //uncomment below and update the code to test v1OrdersHistoryTimeStartTimeEndGet
+        //instance.v1OrdersHistoryTimeStartTimeEndGet(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('v1OrdersPost', function() {
       it('should call v1OrdersPost successfully', function(done) {
         //uncomment below and update the code to test v1OrdersPost

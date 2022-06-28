@@ -57,6 +57,7 @@ set(SRCS
     model/balance.c
     model/balance_data_inner.c
     model/fills.c
+    model/message_error.c
     model/message_reject.c
     model/ord_side.c
     model/ord_status.c
@@ -65,6 +66,7 @@ set(SRCS
     model/order_cancel_single_request.c
     model/order_execution_report.c
     model/order_execution_report_all_of.c
+    model/order_history.c
     model/order_new_single_request.c
     model/position.c
     model/position_data_inner.c
@@ -87,6 +89,7 @@ set(HDRS
     model/balance.h
     model/balance_data_inner.h
     model/fills.h
+    model/message_error.h
     model/message_reject.h
     model/ord_side.h
     model/ord_status.h
@@ -95,6 +98,7 @@ set(HDRS
     model/order_cancel_single_request.h
     model/order_execution_report.h
     model/order_execution_report_all_of.h
+    model/order_history.h
     model/order_new_single_request.h
     model/position.h
     model/position_data_inner.h

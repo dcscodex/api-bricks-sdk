@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.MessageError;
 import org.openapitools.client.model.MessageReject;
 import org.openapitools.client.model.OrderCancelAllRequest;
 import org.openapitools.client.model.OrderCancelSingleRequest;
 import org.openapitools.client.model.OrderExecutionReport;
+import org.openapitools.client.model.OrderHistory;
 import org.openapitools.client.model.OrderNewSingleRequest;
 import org.openapitools.client.model.ValidationError;
 
@@ -472,6 +474,147 @@ public class OrdersApi {
 
         okhttp3.Call localVarCall = v1OrdersGetValidateBeforeCall(exchangeId, _callback);
         Type localVarReturnType = new TypeToken<List<OrderExecutionReport>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for v1OrdersHistoryTimeStartTimeEndGet
+     * @param timeStart Start date (required)
+     * @param timeEnd End date (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The last execution report of the requested order. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Orders log is not configured. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1OrdersHistoryTimeStartTimeEndGetCall(String timeStart, String timeEnd, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/orders/history/{time_start}/{time_end}"
+            .replaceAll("\\{" + "time_start" + "\\}", localVarApiClient.escapeString(timeStart.toString()))
+            .replaceAll("\\{" + "time_end" + "\\}", localVarApiClient.escapeString(timeEnd.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call v1OrdersHistoryTimeStartTimeEndGetValidateBeforeCall(String timeStart, String timeEnd, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'timeStart' is set
+        if (timeStart == null) {
+            throw new ApiException("Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet(Async)");
+        }
+        
+        // verify the required parameter 'timeEnd' is set
+        if (timeEnd == null) {
+            throw new ApiException("Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = v1OrdersHistoryTimeStartTimeEndGetCall(timeStart, timeEnd, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * History of order changes
+     * Based on the date range, all changes registered in the orderbook.
+     * @param timeStart Start date (required)
+     * @param timeEnd End date (required)
+     * @return List&lt;OrderHistory&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The last execution report of the requested order. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Orders log is not configured. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<OrderHistory> v1OrdersHistoryTimeStartTimeEndGet(String timeStart, String timeEnd) throws ApiException {
+        ApiResponse<List<OrderHistory>> localVarResp = v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(timeStart, timeEnd);
+        return localVarResp.getData();
+    }
+
+    /**
+     * History of order changes
+     * Based on the date range, all changes registered in the orderbook.
+     * @param timeStart Start date (required)
+     * @param timeEnd End date (required)
+     * @return ApiResponse&lt;List&lt;OrderHistory&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The last execution report of the requested order. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Orders log is not configured. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<OrderHistory>> v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(String timeStart, String timeEnd) throws ApiException {
+        okhttp3.Call localVarCall = v1OrdersHistoryTimeStartTimeEndGetValidateBeforeCall(timeStart, timeEnd, null);
+        Type localVarReturnType = new TypeToken<List<OrderHistory>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * History of order changes (asynchronously)
+     * Based on the date range, all changes registered in the orderbook.
+     * @param timeStart Start date (required)
+     * @param timeEnd End date (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The last execution report of the requested order. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Orders log is not configured. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1OrdersHistoryTimeStartTimeEndGetAsync(String timeStart, String timeEnd, final ApiCallback<List<OrderHistory>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = v1OrdersHistoryTimeStartTimeEndGetValidateBeforeCall(timeStart, timeEnd, _callback);
+        Type localVarReturnType = new TypeToken<List<OrderHistory>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

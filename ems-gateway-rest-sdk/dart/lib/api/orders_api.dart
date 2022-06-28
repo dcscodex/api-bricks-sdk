@@ -197,6 +197,75 @@ class OrdersApi {
     return null;
   }
 
+  /// History of order changes
+  ///
+  /// Based on the date range, all changes registered in the orderbook.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] timeStart (required):
+  ///   Start date
+  ///
+  /// * [String] timeEnd (required):
+  ///   End date
+  Future<Response> v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(String timeStart, String timeEnd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/orders/history/{time_start}/{time_end}'
+      .replaceAll('{time_start}', timeStart)
+      .replaceAll('{time_end}', timeEnd);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// History of order changes
+  ///
+  /// Based on the date range, all changes registered in the orderbook.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] timeStart (required):
+  ///   Start date
+  ///
+  /// * [String] timeEnd (required):
+  ///   End date
+  Future<List<OrderHistory>?> v1OrdersHistoryTimeStartTimeEndGet(String timeStart, String timeEnd,) async {
+    final response = await v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(timeStart, timeEnd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<OrderHistory>') as List)
+        .cast<OrderHistory>()
+        .toList();
+
+    }
+    return null;
+  }
+
   /// Send new order
   ///
   /// This request creating new order for the specific exchange.

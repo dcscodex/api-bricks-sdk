@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**v1OrdersCancelAllPost()**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**v1OrdersCancelPost()**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**v1OrdersGet()**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersHistoryTimeStartTimeEndGet()**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1OrdersPost()**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 [**v1OrdersStatusClientOrderIdGet()**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -174,6 +175,64 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`, `appliction/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `v1OrdersHistoryTimeStartTimeEndGet()`
+
+```php
+v1OrdersHistoryTimeStartTimeEndGet($time_start, $time_end): \OpenAPI\Client\Model\OrderHistory[]
+```
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$time_start = 2022-05-01T00:00:00; // string | Start date
+$time_end = 2022-05-01T12:00:00; // string | End date
+
+try {
+    $result = $apiInstance->v1OrdersHistoryTimeStartTimeEndGet($time_start, $time_end);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->v1OrdersHistoryTimeStartTimeEndGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **time_start** | **string**| Start date |
+ **time_end** | **string**| End date |
+
+### Return type
+
+[**\OpenAPI\Client\Model\OrderHistory[]**](../Model/OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

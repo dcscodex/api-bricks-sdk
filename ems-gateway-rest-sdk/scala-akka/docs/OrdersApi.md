@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**v1OrdersCancelPostWithHttpInfo**](OrdersApi.md#v1OrdersCancelPostWithHttpInfo) | **POST** /v1/orders/cancel | Cancel order request
 [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
 [**v1OrdersGetWithHttpInfo**](OrdersApi.md#v1OrdersGetWithHttpInfo) | **GET** /v1/orders | Get open orders
+[**v1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
+[**v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGetWithHttpInfo) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 [**v1OrdersPostWithHttpInfo**](OrdersApi.md#v1OrdersPostWithHttpInfo) | **POST** /v1/orders | Send new order
 [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
@@ -266,6 +268,91 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Collection of order execution reports. |  -  |
 | **490** | Filtered exchange is unreachable. |  -  |
+
+
+## v1OrdersHistoryTimeStartTimeEndGet
+
+> v1OrdersHistoryTimeStartTimeEndGet(v1OrdersHistoryTimeStartTimeEndGetRequest): ApiRequest[Seq[OrderHistory]]
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+
+    val apiInvoker = ApiInvoker()
+    val apiInstance = OrdersApi("https://ems-gateway-aws-eu-central-1-dev.coinapi.io")
+    val timeStart: String = 2022-05-01T00:00:00 // String | Start date
+
+    val timeEnd: String = 2022-05-01T12:00:00 // String | End date
+    
+    val request = apiInstance.v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling OrdersApi#v1OrdersHistoryTimeStartTimeEndGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling OrdersApi#v1OrdersHistoryTimeStartTimeEndGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeStart** | **String**| Start date |
+ **timeEnd** | **String**| End date |
+
+### Return type
+
+ApiRequest[[**Seq[OrderHistory]**](OrderHistory.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report of the requested order. |  -  |
+| **400** | Orders log is not configured. |  -  |
 
 
 ## v1OrdersPost

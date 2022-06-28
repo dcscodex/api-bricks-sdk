@@ -69,6 +69,7 @@ Category | Method | HTTP request | Description
 *OrdersAPI* | [**OrdersAPI_v1OrdersCancelAllPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *OrdersAPI* | [**OrdersAPI_v1OrdersCancelPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 *OrdersAPI* | [**OrdersAPI_v1OrdersGet**](docs/OrdersAPI.md#OrdersAPI_v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersAPI* | [**OrdersAPI_v1OrdersHistoryTimeStartTimeEndGet**](docs/OrdersAPI.md#OrdersAPI_v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *OrdersAPI* | [**OrdersAPI_v1OrdersPost**](docs/OrdersAPI.md#OrdersAPI_v1OrdersPost) | **POST** /v1/orders | Send new order
 *OrdersAPI* | [**OrdersAPI_v1OrdersStatusClientOrderIdGet**](docs/OrdersAPI.md#OrdersAPI_v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *PositionsAPI* | [**PositionsAPI_v1PositionsGet**](docs/PositionsAPI.md#PositionsAPI_v1PositionsGet) | **GET** /v1/positions | Get open positions
@@ -79,6 +80,7 @@ Category | Method | HTTP request | Description
  - [balance_t](docs/balance.md)
  - [balance_data_inner_t](docs/balance_data_inner.md)
  - [fills_t](docs/fills.md)
+ - [message_error_t](docs/message_error.md)
  - [message_reject_t](docs/message_reject.md)
  - [ord_side_t](docs/ord_side.md)
  - [ord_status_t](docs/ord_status.md)
@@ -87,6 +89,7 @@ Category | Method | HTTP request | Description
  - [order_cancel_single_request_t](docs/order_cancel_single_request.md)
  - [order_execution_report_t](docs/order_execution_report.md)
  - [order_execution_report_all_of_t](docs/order_execution_report_all_of.md)
+ - [order_history_t](docs/order_history.md)
  - [order_new_single_request_t](docs/order_new_single_request.md)
  - [position_t](docs/position.md)
  - [position_data_inner_t](docs/position_data_inner.md)

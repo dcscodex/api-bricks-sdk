@@ -100,6 +100,34 @@ public class OASOrdersApi {
         );
     }
     /**
+     * History of order changes
+     * Based on the date range, all changes registered in the orderbook.
+     * @param timeStart Start date (required)
+     * @param timeEnd End date (required)
+     * @return List<OASOrderHistory>
+     * @throws OAS.ApiException if fails to make API call
+     */
+    public List<OASOrderHistory> v1OrdersHistoryTimeStartTimeEndGet(Map<String, Object> params) {
+        client.assertNotNull(params.get('timeStart'), 'timeStart');
+        client.assertNotNull(params.get('timeEnd'), 'timeEnd');
+        List<OAS.Param> query = new List<OAS.Param>();
+        List<OAS.Param> form = new List<OAS.Param>();
+
+        return (List<OASOrderHistory>) client.invoke(
+            'GET', '/v1/orders/history/{time_start}/{time_end}', '',
+            query, form,
+            new Map<String, Object>{
+                'time_start' => (String) params.get('timeStart'),
+                'time_end' => (String) params.get('timeEnd')
+            },
+            new Map<String, Object>(),
+            new List<String>{ 'application/json' },
+            new List<String>(),
+            new List<String>(),
+            List<OASOrderHistory>.class
+        );
+    }
+    /**
      * Send new order
      * This request creating new order for the specific exchange.
      * @param oaSOrderNewSingleRequest OrderNewSingleRequest object. (required)

@@ -306,6 +306,7 @@ To load the models:
 use WWW::OpenAPIClient::Object::Balance;
 use WWW::OpenAPIClient::Object::BalanceDataInner;
 use WWW::OpenAPIClient::Object::Fills;
+use WWW::OpenAPIClient::Object::MessageError;
 use WWW::OpenAPIClient::Object::MessageReject;
 use WWW::OpenAPIClient::Object::OrdSide;
 use WWW::OpenAPIClient::Object::OrdStatus;
@@ -314,6 +315,7 @@ use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
 use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
 use WWW::OpenAPIClient::Object::OrderExecutionReport;
 use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderHistory;
 use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
 use WWW::OpenAPIClient::Object::PositionDataInner;
@@ -339,6 +341,7 @@ use WWW::OpenAPIClient::PositionsApi;
 use WWW::OpenAPIClient::Object::Balance;
 use WWW::OpenAPIClient::Object::BalanceDataInner;
 use WWW::OpenAPIClient::Object::Fills;
+use WWW::OpenAPIClient::Object::MessageError;
 use WWW::OpenAPIClient::Object::MessageReject;
 use WWW::OpenAPIClient::Object::OrdSide;
 use WWW::OpenAPIClient::Object::OrdStatus;
@@ -347,6 +350,7 @@ use WWW::OpenAPIClient::Object::OrderCancelAllRequest;
 use WWW::OpenAPIClient::Object::OrderCancelSingleRequest;
 use WWW::OpenAPIClient::Object::OrderExecutionReport;
 use WWW::OpenAPIClient::Object::OrderExecutionReportAllOf;
+use WWW::OpenAPIClient::Object::OrderHistory;
 use WWW::OpenAPIClient::Object::OrderNewSingleRequest;
 use WWW::OpenAPIClient::Object::Position;
 use WWW::OpenAPIClient::Object::PositionDataInner;
@@ -383,6 +387,7 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**v1_orders_cancel_all_post**](docs/OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *OrdersApi* | [**v1_orders_cancel_post**](docs/OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order request
 *OrdersApi* | [**v1_orders_get**](docs/OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1_orders_history_time_start_time_end_get**](docs/OrdersApi.md#v1_orders_history_time_start_time_end_get) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *OrdersApi* | [**v1_orders_post**](docs/OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Send new order
 *OrdersApi* | [**v1_orders_status_client_order_id_get**](docs/OrdersApi.md#v1_orders_status_client_order_id_get) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *PositionsApi* | [**v1_positions_get**](docs/PositionsApi.md#v1_positions_get) | **GET** /v1/positions | Get open positions
@@ -392,6 +397,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::Balance](docs/Balance.md)
  - [WWW::OpenAPIClient::Object::BalanceDataInner](docs/BalanceDataInner.md)
  - [WWW::OpenAPIClient::Object::Fills](docs/Fills.md)
+ - [WWW::OpenAPIClient::Object::MessageError](docs/MessageError.md)
  - [WWW::OpenAPIClient::Object::MessageReject](docs/MessageReject.md)
  - [WWW::OpenAPIClient::Object::OrdSide](docs/OrdSide.md)
  - [WWW::OpenAPIClient::Object::OrdStatus](docs/OrdStatus.md)
@@ -400,6 +406,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
  - [WWW::OpenAPIClient::Object::OrderExecutionReport](docs/OrderExecutionReport.md)
  - [WWW::OpenAPIClient::Object::OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [WWW::OpenAPIClient::Object::OrderHistory](docs/OrderHistory.md)
  - [WWW::OpenAPIClient::Object::OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [WWW::OpenAPIClient::Object::Position](docs/Position.md)
  - [WWW::OpenAPIClient::Object::PositionDataInner](docs/PositionDataInner.md)

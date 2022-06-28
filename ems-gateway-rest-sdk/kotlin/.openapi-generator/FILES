@@ -5,6 +5,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -13,6 +14,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -49,6 +51,7 @@ src/main/kotlin/org/openapitools/client/infrastructure/UUIDAdapter.kt
 src/main/kotlin/org/openapitools/client/models/Balance.kt
 src/main/kotlin/org/openapitools/client/models/BalanceDataInner.kt
 src/main/kotlin/org/openapitools/client/models/Fills.kt
+src/main/kotlin/org/openapitools/client/models/MessageError.kt
 src/main/kotlin/org/openapitools/client/models/MessageReject.kt
 src/main/kotlin/org/openapitools/client/models/OrdSide.kt
 src/main/kotlin/org/openapitools/client/models/OrdStatus.kt
@@ -57,6 +60,7 @@ src/main/kotlin/org/openapitools/client/models/OrderCancelAllRequest.kt
 src/main/kotlin/org/openapitools/client/models/OrderCancelSingleRequest.kt
 src/main/kotlin/org/openapitools/client/models/OrderExecutionReport.kt
 src/main/kotlin/org/openapitools/client/models/OrderExecutionReportAllOf.kt
+src/main/kotlin/org/openapitools/client/models/OrderHistory.kt
 src/main/kotlin/org/openapitools/client/models/OrderNewSingleRequest.kt
 src/main/kotlin/org/openapitools/client/models/Position.kt
 src/main/kotlin/org/openapitools/client/models/PositionDataInner.kt

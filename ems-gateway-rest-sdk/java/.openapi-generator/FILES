@@ -10,6 +10,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -18,6 +19,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -59,6 +61,7 @@ src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
 src/main/java/org/openapitools/client/model/Balance.java
 src/main/java/org/openapitools/client/model/BalanceDataInner.java
 src/main/java/org/openapitools/client/model/Fills.java
+src/main/java/org/openapitools/client/model/MessageError.java
 src/main/java/org/openapitools/client/model/MessageReject.java
 src/main/java/org/openapitools/client/model/OrdSide.java
 src/main/java/org/openapitools/client/model/OrdStatus.java
@@ -67,6 +70,7 @@ src/main/java/org/openapitools/client/model/OrderCancelAllRequest.java
 src/main/java/org/openapitools/client/model/OrderCancelSingleRequest.java
 src/main/java/org/openapitools/client/model/OrderExecutionReport.java
 src/main/java/org/openapitools/client/model/OrderExecutionReportAllOf.java
+src/main/java/org/openapitools/client/model/OrderHistory.java
 src/main/java/org/openapitools/client/model/OrderNewSingleRequest.java
 src/main/java/org/openapitools/client/model/Position.java
 src/main/java/org/openapitools/client/model/PositionDataInner.java
@@ -79,6 +83,7 @@ src/test/java/org/openapitools/client/api/PositionsApiTest.java
 src/test/java/org/openapitools/client/model/BalanceDataInnerTest.java
 src/test/java/org/openapitools/client/model/BalanceTest.java
 src/test/java/org/openapitools/client/model/FillsTest.java
+src/test/java/org/openapitools/client/model/MessageErrorTest.java
 src/test/java/org/openapitools/client/model/MessageRejectTest.java
 src/test/java/org/openapitools/client/model/OrdSideTest.java
 src/test/java/org/openapitools/client/model/OrdStatusTest.java
@@ -87,6 +92,7 @@ src/test/java/org/openapitools/client/model/OrderCancelAllRequestTest.java
 src/test/java/org/openapitools/client/model/OrderCancelSingleRequestTest.java
 src/test/java/org/openapitools/client/model/OrderExecutionReportAllOfTest.java
 src/test/java/org/openapitools/client/model/OrderExecutionReportTest.java
+src/test/java/org/openapitools/client/model/OrderHistoryTest.java
 src/test/java/org/openapitools/client/model/OrderNewSingleRequestTest.java
 src/test/java/org/openapitools/client/model/PositionDataInnerTest.java
 src/test/java/org/openapitools/client/model/PositionTest.java

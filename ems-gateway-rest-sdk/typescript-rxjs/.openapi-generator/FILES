@@ -8,6 +8,7 @@ index.ts
 models/Balance.ts
 models/BalanceDataInner.ts
 models/Fills.ts
+models/MessageError.ts
 models/MessageReject.ts
 models/OrdSide.ts
 models/OrdStatus.ts
@@ -16,6 +17,7 @@ models/OrderCancelAllRequest.ts
 models/OrderCancelSingleRequest.ts
 models/OrderExecutionReport.ts
 models/OrderExecutionReportAllOf.ts
+models/OrderHistory.ts
 models/OrderNewSingleRequest.ts
 models/Position.ts
 models/PositionDataInner.ts

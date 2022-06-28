@@ -45,6 +45,13 @@ class TestOrdersApi(unittest.TestCase):
         """
         pass
 
+    def test_v1_orders_history_time_start_time_end_get(self):
+        """Test case for v1_orders_history_time_start_time_end_get
+
+        History of order changes  # noqa: E501
+        """
+        pass
+
     def test_v1_orders_post(self):
         """Test case for v1_orders_post
 

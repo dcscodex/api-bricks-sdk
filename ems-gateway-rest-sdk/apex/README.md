@@ -67,6 +67,7 @@ Class | Method | HTTP request | Description
 *OASOrdersApi* | [**v1OrdersCancelAllPost**](OASOrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *OASOrdersApi* | [**v1OrdersCancelPost**](OASOrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 *OASOrdersApi* | [**v1OrdersGet**](OASOrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OASOrdersApi* | [**v1OrdersHistoryTimeStartTimeEndGet**](OASOrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *OASOrdersApi* | [**v1OrdersPost**](OASOrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 *OASOrdersApi* | [**v1OrdersStatusClientOrderIdGet**](OASOrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *OASPositionsApi* | [**v1PositionsGet**](OASPositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
@@ -77,6 +78,7 @@ Class | Method | HTTP request | Description
  - [OASBalance](OASBalance.md)
  - [OASBalanceDataInner](OASBalanceDataInner.md)
  - [OASFills](OASFills.md)
+ - [OASMessageError](OASMessageError.md)
  - [OASMessageReject](OASMessageReject.md)
  - [OASOrdSide](OASOrdSide.md)
  - [OASOrdStatus](OASOrdStatus.md)
@@ -85,6 +87,7 @@ Class | Method | HTTP request | Description
  - [OASOrderCancelSingleRequest](OASOrderCancelSingleRequest.md)
  - [OASOrderExecutionReport](OASOrderExecutionReport.md)
  - [OASOrderExecutionReportAllOf](OASOrderExecutionReportAllOf.md)
+ - [OASOrderHistory](OASOrderHistory.md)
  - [OASOrderNewSingleRequest](OASOrderNewSingleRequest.md)
  - [OASPosition](OASPosition.md)
  - [OASPositionDataInner](OASPositionDataInner.md)

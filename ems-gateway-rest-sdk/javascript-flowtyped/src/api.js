@@ -174,6 +174,19 @@ export type Fills = {
  * 
  * @export
  */
+export type MessageError = {
+    /**
+     * Message text.
+     * @type {string}
+     * @memberof MessageError
+     */
+    message?: string;
+}
+
+/**
+ * 
+ * @export
+ */
 export type MessageReject = {
     /**
      * Message type, constant.
@@ -454,6 +467,175 @@ export type OrderExecutionReportAllOf = {
      * @memberof OrderExecutionReportAllOf
      */
     fills?: Array<Fills>;
+}
+
+/**
+ * 
+ * @export
+ */
+export type OrderHistory = {
+    /**
+     * Apikey
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    apikey?: string;
+    /**
+     * Exchange id
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    exchangeId?: string;
+    /**
+     * Client order id
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    clientOrderId?: string;
+    /**
+     * Symbol id exchange
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    symbolIdExchange?: string;
+    /**
+     * Symbol id in coinapi
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    symbolIdCoinapi?: string;
+    /**
+     * Amount
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    amountOrder?: number;
+    /**
+     * Price
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    price?: number;
+    /**
+     * 1-buy, 2-sell
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    side?: number;
+    /**
+     * Order type
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    orderType?: string;
+    /**
+     * Time in force
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    timeInForce?: string;
+    /**
+     * Expire time
+     * @type {Date}
+     * @memberof OrderHistory
+     */
+    expireTime?: Date;
+    /**
+     * Exec inst
+     * @type {Array<string>}
+     * @memberof OrderHistory
+     */
+    execInst?: Array<string>;
+    /**
+     * Client order id format
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    clientOrderIdFormatExchange?: string;
+    /**
+     * Exchange order id
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    exchangeOrderId?: string;
+    /**
+     * Amount open
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    amountOpen?: number;
+    /**
+     * Amount filled
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    amountFilled?: number;
+    /**
+     * Average price
+     * @type {number}
+     * @memberof OrderHistory
+     */
+    avgPx?: number;
+    /**
+     * Status
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    status?: string;
+    /**
+     * History status
+     * @type {Array<string>}
+     * @memberof OrderHistory
+     */
+    statusHistoryStatus?: Array<string>;
+    /**
+     * History status time
+     * @type {Array<Date>}
+     * @memberof OrderHistory
+     */
+    statusHistoryTime?: Array<Date>;
+    /**
+     * Error message
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    errorMessageResult?: string;
+    /**
+     * Error message reason
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    errorMessageReason?: string;
+    /**
+     * Error message
+     * @type {string}
+     * @memberof OrderHistory
+     */
+    errorMessageMessage?: string;
+    /**
+     * Fills time
+     * @type {Array<Date>}
+     * @memberof OrderHistory
+     */
+    fillsTime?: Array<Date>;
+    /**
+     * Fills price
+     * @type {Array<number>}
+     * @memberof OrderHistory
+     */
+    fillsPrice?: Array<number>;
+    /**
+     * Fills amount
+     * @type {Array<number>}
+     * @memberof OrderHistory
+     */
+    fillsAmount?: Array<number>;
+    /**
+     * Created time
+     * @type {Date}
+     * @memberof OrderHistory
+     */
+    createdTime?: Date;
 }
 
 
@@ -828,6 +1010,38 @@ export const OrdersApiFetchParamCreator = function (configuration?: Configuratio
             };
         },
         /**
+         * Based on the date range, all changes registered in the orderbook.
+         * @summary History of order changes
+         * @throws {RequiredError}
+         */
+        v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, options: RequestOptions): FetchArgs {
+            // verify required parameter 'timeStart' is not null or undefined
+            if (timeStart === null || timeStart === undefined) {
+                throw new RequiredError('timeStart','Required parameter timeStart was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+            }
+            // verify required parameter 'timeEnd' is not null or undefined
+            if (timeEnd === null || timeEnd === undefined) {
+                throw new RequiredError('timeEnd','Required parameter timeEnd was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+            }
+            const localVarPath = `/v1/orders/history/{time_start}/{time_end}`
+                .replace(`{${"time_start"}}`, encodeURIComponent(String(timeStart)))
+                .replace(`{${"time_end"}}`, encodeURIComponent(String(timeEnd)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This request creating new order for the specific exchange.
          * @summary Send new order
          * @throws {RequiredError}
@@ -894,6 +1108,8 @@ export type OrdersApiType = {
 
     v1OrdersGet(exchangeId?: string, options?: RequestOptions): Promise<Array<OrderExecutionReport>>,
 
+    v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, options?: RequestOptions): Promise<Array<OrderHistory>>,
+
     v1OrdersPost(orderNewSingleRequest: OrderNewSingleRequest, options?: RequestOptions): Promise<OrderExecutionReport>,
 
     v1OrdersStatusClientOrderIdGet(clientOrderId: string, options?: RequestOptions): Promise<OrderExecutionReport>,
@@ -943,6 +1159,21 @@ export const OrdersApi = function(configuration?: Configuration, fetch: FetchAPI
          */
         v1OrdersGet(exchangeId?: string, options?: RequestOptions = {}): Promise<Array<OrderExecutionReport>> {
             const localVarFetchArgs = OrdersApiFetchParamCreator(configuration).v1OrdersGet(exchangeId, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Based on the date range, all changes registered in the orderbook.
+         * @summary History of order changes
+         * @throws {RequiredError}
+         */
+        v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, options?: RequestOptions = {}): Promise<Array<OrderHistory>> {
+            const localVarFetchArgs = OrdersApiFetchParamCreator(configuration).v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();

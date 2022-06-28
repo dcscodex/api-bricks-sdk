@@ -69,6 +69,10 @@ public class JsonUtil {
       return new TypeToken<List<Fills>>(){}.getType();
     }
     
+    if ("MessageError".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MessageError>>(){}.getType();
+    }
+    
     if ("MessageReject".equalsIgnoreCase(className)) {
       return new TypeToken<List<MessageReject>>(){}.getType();
     }
@@ -99,6 +103,10 @@ public class JsonUtil {
     
     if ("OrderExecutionReportAllOf".equalsIgnoreCase(className)) {
       return new TypeToken<List<OrderExecutionReportAllOf>>(){}.getType();
+    }
+    
+    if ("OrderHistory".equalsIgnoreCase(className)) {
+      return new TypeToken<List<OrderHistory>>(){}.getType();
     }
     
     if ("OrderNewSingleRequest".equalsIgnoreCase(className)) {
@@ -143,6 +151,10 @@ public class JsonUtil {
       return new TypeToken<Fills>(){}.getType();
     }
     
+    if ("MessageError".equalsIgnoreCase(className)) {
+      return new TypeToken<MessageError>(){}.getType();
+    }
+    
     if ("MessageReject".equalsIgnoreCase(className)) {
       return new TypeToken<MessageReject>(){}.getType();
     }
@@ -173,6 +185,10 @@ public class JsonUtil {
     
     if ("OrderExecutionReportAllOf".equalsIgnoreCase(className)) {
       return new TypeToken<OrderExecutionReportAllOf>(){}.getType();
+    }
+    
+    if ("OrderHistory".equalsIgnoreCase(className)) {
+      return new TypeToken<OrderHistory>(){}.getType();
     }
     
     if ("OrderNewSingleRequest".equalsIgnoreCase(className)) {

@@ -19,6 +19,7 @@ include/CppRestOpenAPIClient/api/PositionsApi.h
 include/CppRestOpenAPIClient/model/Balance.h
 include/CppRestOpenAPIClient/model/Balance_data_inner.h
 include/CppRestOpenAPIClient/model/Fills.h
+include/CppRestOpenAPIClient/model/MessageError.h
 include/CppRestOpenAPIClient/model/MessageReject.h
 include/CppRestOpenAPIClient/model/OrdSide.h
 include/CppRestOpenAPIClient/model/OrdStatus.h
@@ -27,6 +28,7 @@ include/CppRestOpenAPIClient/model/OrderCancelAllRequest.h
 include/CppRestOpenAPIClient/model/OrderCancelSingleRequest.h
 include/CppRestOpenAPIClient/model/OrderExecutionReport.h
 include/CppRestOpenAPIClient/model/OrderExecutionReport_allOf.h
+include/CppRestOpenAPIClient/model/OrderHistory.h
 include/CppRestOpenAPIClient/model/OrderNewSingleRequest.h
 include/CppRestOpenAPIClient/model/Position.h
 include/CppRestOpenAPIClient/model/Position_data_inner.h
@@ -47,6 +49,7 @@ src/api/PositionsApi.cpp
 src/model/Balance.cpp
 src/model/Balance_data_inner.cpp
 src/model/Fills.cpp
+src/model/MessageError.cpp
 src/model/MessageReject.cpp
 src/model/OrdSide.cpp
 src/model/OrdStatus.cpp
@@ -55,6 +58,7 @@ src/model/OrderCancelAllRequest.cpp
 src/model/OrderCancelSingleRequest.cpp
 src/model/OrderExecutionReport.cpp
 src/model/OrderExecutionReport_allOf.cpp
+src/model/OrderHistory.cpp
 src/model/OrderNewSingleRequest.cpp
 src/model/Position.cpp
 src/model/Position_data_inner.cpp

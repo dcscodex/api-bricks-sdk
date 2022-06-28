@@ -73,6 +73,12 @@ newtype ClientOrderId = ClientOrderId { unClientOrderId :: Text } deriving (P.Eq
 -- ** ExchangeId
 newtype ExchangeId = ExchangeId { unExchangeId :: Text } deriving (P.Eq, P.Show)
 
+-- ** TimeEnd
+newtype TimeEnd = TimeEnd { unTimeEnd :: Text } deriving (P.Eq, P.Show)
+
+-- ** TimeStart
+newtype TimeStart = TimeStart { unTimeStart :: Text } deriving (P.Eq, P.Show)
+
 -- * Models
 
 
@@ -200,6 +206,36 @@ mkFills =
   { fillsTime = Nothing
   , fillsPrice = Nothing
   , fillsAmount = Nothing
+  }
+
+-- ** MessageError
+-- | MessageError
+-- MessageError object.
+-- 
+data MessageError = MessageError
+  { messageErrorMessage :: !(Maybe Text) -- ^ "message" - Message text.
+  } deriving (P.Show, P.Eq, P.Typeable)
+
+-- | FromJSON MessageError
+instance A.FromJSON MessageError where
+  parseJSON = A.withObject "MessageError" $ \o ->
+    MessageError
+      <$> (o .:? "message")
+
+-- | ToJSON MessageError
+instance A.ToJSON MessageError where
+  toJSON MessageError {..} =
+   _omitNulls
+      [ "message" .= messageErrorMessage
+      ]
+
+
+-- | Construct a value of type 'MessageError' (by applying it's required fields, if any)
+mkMessageError
+  :: MessageError
+mkMessageError =
+  MessageError
+  { messageErrorMessage = Nothing
   }
 
 -- ** MessageReject
@@ -495,6 +531,140 @@ mkOrderExecutionReportAllOf orderExecutionReportAllOfClientOrderIdFormatExchange
   , orderExecutionReportAllOfStatusHistory = Nothing
   , orderExecutionReportAllOfErrorMessage = Nothing
   , orderExecutionReportAllOfFills = Nothing
+  }
+
+-- ** OrderHistory
+-- | OrderHistory
+-- Order history
+-- 
+data OrderHistory = OrderHistory
+  { orderHistoryApikey :: !(Maybe Text) -- ^ "apikey" - Apikey
+  , orderHistoryExchangeId :: !(Maybe Text) -- ^ "exchangeId" - Exchange id
+  , orderHistoryClientOrderId :: !(Maybe Text) -- ^ "clientOrderId" - Client order id
+  , orderHistorySymbolIdExchange :: !(Maybe Text) -- ^ "symbolIdExchange" - Symbol id exchange
+  , orderHistorySymbolIdCoinapi :: !(Maybe Text) -- ^ "symbolIdCoinapi" - Symbol id in coinapi
+  , orderHistoryAmountOrder :: !(Maybe Double) -- ^ "amountOrder" - Amount
+  , orderHistoryPrice :: !(Maybe Double) -- ^ "price" - Price
+  , orderHistorySide :: !(Maybe Double) -- ^ "side" - 1-buy, 2-sell
+  , orderHistoryOrderType :: !(Maybe Text) -- ^ "orderType" - Order type
+  , orderHistoryTimeInForce :: !(Maybe Text) -- ^ "timeInForce" - Time in force
+  , orderHistoryExpireTime :: !(Maybe Date) -- ^ "expireTime" - Expire time
+  , orderHistoryExecInst :: !(Maybe [Text]) -- ^ "execInst" - Exec inst
+  , orderHistoryClientOrderIdFormatExchange :: !(Maybe Text) -- ^ "clientOrderIdFormatExchange" - Client order id format
+  , orderHistoryExchangeOrderId :: !(Maybe Text) -- ^ "exchangeOrderId" - Exchange order id
+  , orderHistoryAmountOpen :: !(Maybe Double) -- ^ "amountOpen" - Amount open
+  , orderHistoryAmountFilled :: !(Maybe Double) -- ^ "amountFilled" - Amount filled
+  , orderHistoryAvgPx :: !(Maybe Double) -- ^ "avgPx" - Average price
+  , orderHistoryStatus :: !(Maybe Text) -- ^ "status" - Status
+  , orderHistoryStatusHistoryStatus :: !(Maybe [Text]) -- ^ "statusHistoryStatus" - History status
+  , orderHistoryStatusHistoryTime :: !(Maybe [Date]) -- ^ "statusHistoryTime" - History status time
+  , orderHistoryErrorMessageResult :: !(Maybe Text) -- ^ "errorMessageResult" - Error message
+  , orderHistoryErrorMessageReason :: !(Maybe Text) -- ^ "errorMessageReason" - Error message reason
+  , orderHistoryErrorMessageMessage :: !(Maybe Text) -- ^ "errorMessageMessage" - Error message
+  , orderHistoryFillsTime :: !(Maybe [Date]) -- ^ "fillsTime" - Fills time
+  , orderHistoryFillsPrice :: !(Maybe [Double]) -- ^ "fillsPrice" - Fills price
+  , orderHistoryFillsAmount :: !(Maybe [Double]) -- ^ "fillsAmount" - Fills amount
+  , orderHistoryCreatedTime :: !(Maybe Date) -- ^ "createdTime" - Created time
+  } deriving (P.Show, P.Eq, P.Typeable)
+
+-- | FromJSON OrderHistory
+instance A.FromJSON OrderHistory where
+  parseJSON = A.withObject "OrderHistory" $ \o ->
+    OrderHistory
+      <$> (o .:? "apikey")
+      <*> (o .:? "exchangeId")
+      <*> (o .:? "clientOrderId")
+      <*> (o .:? "symbolIdExchange")
+      <*> (o .:? "symbolIdCoinapi")
+      <*> (o .:? "amountOrder")
+      <*> (o .:? "price")
+      <*> (o .:? "side")
+      <*> (o .:? "orderType")
+      <*> (o .:? "timeInForce")
+      <*> (o .:? "expireTime")
+      <*> (o .:? "execInst")
+      <*> (o .:? "clientOrderIdFormatExchange")
+      <*> (o .:? "exchangeOrderId")
+      <*> (o .:? "amountOpen")
+      <*> (o .:? "amountFilled")
+      <*> (o .:? "avgPx")
+      <*> (o .:? "status")
+      <*> (o .:? "statusHistoryStatus")
+      <*> (o .:? "statusHistoryTime")
+      <*> (o .:? "errorMessageResult")
+      <*> (o .:? "errorMessageReason")
+      <*> (o .:? "errorMessageMessage")
+      <*> (o .:? "fillsTime")
+      <*> (o .:? "fillsPrice")
+      <*> (o .:? "fillsAmount")
+      <*> (o .:? "createdTime")
+
+-- | ToJSON OrderHistory
+instance A.ToJSON OrderHistory where
+  toJSON OrderHistory {..} =
+   _omitNulls
+      [ "apikey" .= orderHistoryApikey
+      , "exchangeId" .= orderHistoryExchangeId
+      , "clientOrderId" .= orderHistoryClientOrderId
+      , "symbolIdExchange" .= orderHistorySymbolIdExchange
+      , "symbolIdCoinapi" .= orderHistorySymbolIdCoinapi
+      , "amountOrder" .= orderHistoryAmountOrder
+      , "price" .= orderHistoryPrice
+      , "side" .= orderHistorySide
+      , "orderType" .= orderHistoryOrderType
+      , "timeInForce" .= orderHistoryTimeInForce
+      , "expireTime" .= orderHistoryExpireTime
+      , "execInst" .= orderHistoryExecInst
+      , "clientOrderIdFormatExchange" .= orderHistoryClientOrderIdFormatExchange
+      , "exchangeOrderId" .= orderHistoryExchangeOrderId
+      , "amountOpen" .= orderHistoryAmountOpen
+      , "amountFilled" .= orderHistoryAmountFilled
+      , "avgPx" .= orderHistoryAvgPx
+      , "status" .= orderHistoryStatus
+      , "statusHistoryStatus" .= orderHistoryStatusHistoryStatus
+      , "statusHistoryTime" .= orderHistoryStatusHistoryTime
+      , "errorMessageResult" .= orderHistoryErrorMessageResult
+      , "errorMessageReason" .= orderHistoryErrorMessageReason
+      , "errorMessageMessage" .= orderHistoryErrorMessageMessage
+      , "fillsTime" .= orderHistoryFillsTime
+      , "fillsPrice" .= orderHistoryFillsPrice
+      , "fillsAmount" .= orderHistoryFillsAmount
+      , "createdTime" .= orderHistoryCreatedTime
+      ]
+
+
+-- | Construct a value of type 'OrderHistory' (by applying it's required fields, if any)
+mkOrderHistory
+  :: OrderHistory
+mkOrderHistory =
+  OrderHistory
+  { orderHistoryApikey = Nothing
+  , orderHistoryExchangeId = Nothing
+  , orderHistoryClientOrderId = Nothing
+  , orderHistorySymbolIdExchange = Nothing
+  , orderHistorySymbolIdCoinapi = Nothing
+  , orderHistoryAmountOrder = Nothing
+  , orderHistoryPrice = Nothing
+  , orderHistorySide = Nothing
+  , orderHistoryOrderType = Nothing
+  , orderHistoryTimeInForce = Nothing
+  , orderHistoryExpireTime = Nothing
+  , orderHistoryExecInst = Nothing
+  , orderHistoryClientOrderIdFormatExchange = Nothing
+  , orderHistoryExchangeOrderId = Nothing
+  , orderHistoryAmountOpen = Nothing
+  , orderHistoryAmountFilled = Nothing
+  , orderHistoryAvgPx = Nothing
+  , orderHistoryStatus = Nothing
+  , orderHistoryStatusHistoryStatus = Nothing
+  , orderHistoryStatusHistoryTime = Nothing
+  , orderHistoryErrorMessageResult = Nothing
+  , orderHistoryErrorMessageReason = Nothing
+  , orderHistoryErrorMessageMessage = Nothing
+  , orderHistoryFillsTime = Nothing
+  , orderHistoryFillsPrice = Nothing
+  , orderHistoryFillsAmount = Nothing
+  , orderHistoryCreatedTime = Nothing
   }
 
 -- ** OrderNewSingleRequest

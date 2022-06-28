@@ -18,6 +18,7 @@ module Api.Data exposing
     ( Balance
     , BalanceDataInner, BalanceDataInnerLastUpdatedBy(..), balanceDataInnerLastUpdatedByVariants
     , Fills
+    , MessageError
     , MessageReject
     , OrdSide(..), ordSideVariants
     , OrdStatus(..), ordStatusVariants
@@ -25,6 +26,7 @@ module Api.Data exposing
     , OrderCancelAllRequest
     , OrderCancelSingleRequest
     , OrderExecutionReport, OrderExecutionReportExecInst(..), orderExecutionReportExecInstVariants
+    , OrderHistory
     , OrderNewSingleRequest, OrderNewSingleRequestExecInst(..), orderNewSingleRequestExecInstVariants
     , Position
     , PositionDataInner
@@ -34,6 +36,7 @@ module Api.Data exposing
     , encodeBalance
     , encodeBalanceDataInner
     , encodeFills
+    , encodeMessageError
     , encodeMessageReject
     , encodeOrdSide
     , encodeOrdStatus
@@ -41,6 +44,7 @@ module Api.Data exposing
     , encodeOrderCancelAllRequest
     , encodeOrderCancelSingleRequest
     , encodeOrderExecutionReport
+    , encodeOrderHistory
     , encodeOrderNewSingleRequest
     , encodePosition
     , encodePositionDataInner
@@ -50,6 +54,7 @@ module Api.Data exposing
     , balanceDecoder
     , balanceDataInnerDecoder
     , fillsDecoder
+    , messageErrorDecoder
     , messageRejectDecoder
     , ordSideDecoder
     , ordStatusDecoder
@@ -57,6 +62,7 @@ module Api.Data exposing
     , orderCancelAllRequestDecoder
     , orderCancelSingleRequestDecoder
     , orderExecutionReportDecoder
+    , orderHistoryDecoder
     , orderNewSingleRequestDecoder
     , positionDecoder
     , positionDataInnerDecoder
@@ -110,6 +116,11 @@ type alias Fills =
     { time : Maybe Posix
     , price : Maybe Float
     , amount : Maybe Float
+    }
+
+
+type alias MessageError =
+    { message : Maybe String
     }
 
 
@@ -230,6 +241,37 @@ orderExecutionReportExecInstVariants =
     , OrderExecutionReportExecInstAUCTIONONLY
     , OrderExecutionReportExecInstINDICATIONOFINTEREST
     ]
+
+
+type alias OrderHistory =
+    { apikey : Maybe String
+    , exchangeId : Maybe String
+    , clientOrderId : Maybe String
+    , symbolIdExchange : Maybe String
+    , symbolIdCoinapi : Maybe String
+    , amountOrder : Maybe Float
+    , price : Maybe Float
+    , side : Maybe Float
+    , orderType : Maybe String
+    , timeInForce : Maybe String
+    , expireTime : Maybe Posix
+    , execInst : Maybe (List (String))
+    , clientOrderIdFormatExchange : Maybe String
+    , exchangeOrderId : Maybe String
+    , amountOpen : Maybe Float
+    , amountFilled : Maybe Float
+    , avgPx : Maybe Float
+    , status : Maybe String
+    , statusHistoryStatus : Maybe (List (String))
+    , statusHistoryTime : Maybe (List (Posix))
+    , errorMessageResult : Maybe String
+    , errorMessageReason : Maybe String
+    , errorMessageMessage : Maybe String
+    , fillsTime : Maybe (List (Posix))
+    , fillsPrice : Maybe (List (Float))
+    , fillsAmount : Maybe (List (Float))
+    , createdTime : Maybe Posix
+    }
 
 
 {-| The new order message.
@@ -429,6 +471,26 @@ encodeFillsPairs model =
     pairs
 
 
+encodeMessageError : MessageError -> Json.Encode.Value
+encodeMessageError =
+    encodeObject << encodeMessageErrorPairs
+
+
+encodeMessageErrorWithTag : ( String, String ) -> MessageError -> Json.Encode.Value
+encodeMessageErrorWithTag (tagField, tag) model =
+    encodeObject (encodeMessageErrorPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeMessageErrorPairs : MessageError -> List EncodedField
+encodeMessageErrorPairs model =
+    let
+        pairs =
+            [ maybeEncode "message" Json.Encode.string model.message
+            ]
+    in
+    pairs
+
+
 encodeMessageReject : MessageReject -> Json.Encode.Value
 encodeMessageReject =
     encodeObject << encodeMessageRejectPairs
@@ -613,6 +675,52 @@ encodeOrderExecutionReportExecInst : OrderExecutionReportExecInst -> Json.Encode
 encodeOrderExecutionReportExecInst =
     Json.Encode.int << intFromOrderExecutionReportExecInst
 
+
+
+encodeOrderHistory : OrderHistory -> Json.Encode.Value
+encodeOrderHistory =
+    encodeObject << encodeOrderHistoryPairs
+
+
+encodeOrderHistoryWithTag : ( String, String ) -> OrderHistory -> Json.Encode.Value
+encodeOrderHistoryWithTag (tagField, tag) model =
+    encodeObject (encodeOrderHistoryPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeOrderHistoryPairs : OrderHistory -> List EncodedField
+encodeOrderHistoryPairs model =
+    let
+        pairs =
+            [ maybeEncode "apikey" Json.Encode.string model.apikey
+            , maybeEncode "exchangeId" Json.Encode.string model.exchangeId
+            , maybeEncode "clientOrderId" Json.Encode.string model.clientOrderId
+            , maybeEncode "symbolIdExchange" Json.Encode.string model.symbolIdExchange
+            , maybeEncode "symbolIdCoinapi" Json.Encode.string model.symbolIdCoinapi
+            , maybeEncode "amountOrder" Json.Encode.float model.amountOrder
+            , maybeEncode "price" Json.Encode.float model.price
+            , maybeEncode "side" Json.Encode.float model.side
+            , maybeEncode "orderType" Json.Encode.string model.orderType
+            , maybeEncode "timeInForce" Json.Encode.string model.timeInForce
+            , maybeEncode "expireTime" encodePosix model.expireTime
+            , maybeEncode "execInst" (Json.Encode.list Json.Encode.string) model.execInst
+            , maybeEncode "clientOrderIdFormatExchange" Json.Encode.string model.clientOrderIdFormatExchange
+            , maybeEncode "exchangeOrderId" Json.Encode.string model.exchangeOrderId
+            , maybeEncode "amountOpen" Json.Encode.float model.amountOpen
+            , maybeEncode "amountFilled" Json.Encode.float model.amountFilled
+            , maybeEncode "avgPx" Json.Encode.float model.avgPx
+            , maybeEncode "status" Json.Encode.string model.status
+            , maybeEncode "statusHistoryStatus" (Json.Encode.list Json.Encode.string) model.statusHistoryStatus
+            , maybeEncode "statusHistoryTime" (Json.Encode.list encodePosix) model.statusHistoryTime
+            , maybeEncode "errorMessageResult" Json.Encode.string model.errorMessageResult
+            , maybeEncode "errorMessageReason" Json.Encode.string model.errorMessageReason
+            , maybeEncode "errorMessageMessage" Json.Encode.string model.errorMessageMessage
+            , maybeEncode "fillsTime" (Json.Encode.list encodePosix) model.fillsTime
+            , maybeEncode "fillsPrice" (Json.Encode.list Json.Encode.float) model.fillsPrice
+            , maybeEncode "fillsAmount" (Json.Encode.list Json.Encode.float) model.fillsAmount
+            , maybeEncode "createdTime" encodePosix model.createdTime
+            ]
+    in
+    pairs
 
 
 encodeOrderNewSingleRequest : OrderNewSingleRequest -> Json.Encode.Value
@@ -843,6 +951,12 @@ fillsDecoder =
         |> maybeDecode "amount" Json.Decode.float Nothing
 
 
+messageErrorDecoder : Json.Decode.Decoder MessageError
+messageErrorDecoder =
+    Json.Decode.succeed MessageError
+        |> maybeDecode "message" Json.Decode.string Nothing
+
+
 messageRejectDecoder : Json.Decode.Decoder MessageReject
 messageRejectDecoder =
     Json.Decode.succeed MessageReject
@@ -980,6 +1094,38 @@ orderExecutionReportExecInstDecoder =
                         Json.Decode.fail <| "Unknown type: " ++ String.fromInt other
             )
 
+
+
+orderHistoryDecoder : Json.Decode.Decoder OrderHistory
+orderHistoryDecoder =
+    Json.Decode.succeed OrderHistory
+        |> maybeDecode "apikey" Json.Decode.string Nothing
+        |> maybeDecode "exchangeId" Json.Decode.string Nothing
+        |> maybeDecode "clientOrderId" Json.Decode.string Nothing
+        |> maybeDecode "symbolIdExchange" Json.Decode.string Nothing
+        |> maybeDecode "symbolIdCoinapi" Json.Decode.string Nothing
+        |> maybeDecode "amountOrder" Json.Decode.float Nothing
+        |> maybeDecode "price" Json.Decode.float Nothing
+        |> maybeDecode "side" Json.Decode.float Nothing
+        |> maybeDecode "orderType" Json.Decode.string Nothing
+        |> maybeDecode "timeInForce" Json.Decode.string Nothing
+        |> maybeDecode "expireTime" posixDecoder Nothing
+        |> maybeDecode "execInst" (Json.Decode.list Json.Decode.string) Nothing
+        |> maybeDecode "clientOrderIdFormatExchange" Json.Decode.string Nothing
+        |> maybeDecode "exchangeOrderId" Json.Decode.string Nothing
+        |> maybeDecode "amountOpen" Json.Decode.float Nothing
+        |> maybeDecode "amountFilled" Json.Decode.float Nothing
+        |> maybeDecode "avgPx" Json.Decode.float Nothing
+        |> maybeDecode "status" Json.Decode.string Nothing
+        |> maybeDecode "statusHistoryStatus" (Json.Decode.list Json.Decode.string) Nothing
+        |> maybeDecode "statusHistoryTime" (Json.Decode.list posixDecoder) Nothing
+        |> maybeDecode "errorMessageResult" Json.Decode.string Nothing
+        |> maybeDecode "errorMessageReason" Json.Decode.string Nothing
+        |> maybeDecode "errorMessageMessage" Json.Decode.string Nothing
+        |> maybeDecode "fillsTime" (Json.Decode.list posixDecoder) Nothing
+        |> maybeDecode "fillsPrice" (Json.Decode.list Json.Decode.float) Nothing
+        |> maybeDecode "fillsAmount" (Json.Decode.list Json.Decode.float) Nothing
+        |> maybeDecode "createdTime" posixDecoder Nothing
 
 
 orderNewSingleRequestDecoder : Json.Decode.Decoder OrderNewSingleRequest

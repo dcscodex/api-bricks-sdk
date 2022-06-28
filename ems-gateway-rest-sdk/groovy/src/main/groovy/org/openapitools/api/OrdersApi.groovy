@@ -1,10 +1,12 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.MessageError
 import org.openapitools.model.MessageReject
 import org.openapitools.model.OrderCancelAllRequest
 import org.openapitools.model.OrderCancelSingleRequest
 import org.openapitools.model.OrderExecutionReport
+import org.openapitools.model.OrderHistory
 import org.openapitools.model.OrderNewSingleRequest
 import org.openapitools.model.ValidationError
 
@@ -85,6 +87,34 @@ class OrdersApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "array",
                     OrderExecutionReport.class )
+
+    }
+
+    def v1OrdersHistoryTimeStartTimeEndGet ( String timeStart, String timeEnd, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/v1/orders/history/${time_start}/${time_end}"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (timeStart == null) {
+            throw new RuntimeException("missing required params timeStart")
+        }
+        // verify required params are set
+        if (timeEnd == null) {
+            throw new RuntimeException("missing required params timeEnd")
+        }
+
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "array",
+                    OrderHistory.class )
 
     }
 

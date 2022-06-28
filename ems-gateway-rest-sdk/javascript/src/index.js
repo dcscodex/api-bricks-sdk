@@ -16,6 +16,7 @@ import ApiClient from './ApiClient';
 import Balance from './model/Balance';
 import BalanceDataInner from './model/BalanceDataInner';
 import Fills from './model/Fills';
+import MessageError from './model/MessageError';
 import MessageReject from './model/MessageReject';
 import OrdSide from './model/OrdSide';
 import OrdStatus from './model/OrdStatus';
@@ -24,6 +25,7 @@ import OrderCancelAllRequest from './model/OrderCancelAllRequest';
 import OrderCancelSingleRequest from './model/OrderCancelSingleRequest';
 import OrderExecutionReport from './model/OrderExecutionReport';
 import OrderExecutionReportAllOf from './model/OrderExecutionReportAllOf';
+import OrderHistory from './model/OrderHistory';
 import OrderNewSingleRequest from './model/OrderNewSingleRequest';
 import Position from './model/Position';
 import PositionDataInner from './model/PositionDataInner';
@@ -92,6 +94,12 @@ export {
     Fills,
 
     /**
+     * The MessageError model constructor.
+     * @property {module:model/MessageError}
+     */
+    MessageError,
+
+    /**
      * The MessageReject model constructor.
      * @property {module:model/MessageReject}
      */
@@ -138,6 +146,12 @@ export {
      * @property {module:model/OrderExecutionReportAllOf}
      */
     OrderExecutionReportAllOf,
+
+    /**
+     * The OrderHistory model constructor.
+     * @property {module:model/OrderHistory}
+     */
+    OrderHistory,
 
     /**
      * The OrderNewSingleRequest model constructor.

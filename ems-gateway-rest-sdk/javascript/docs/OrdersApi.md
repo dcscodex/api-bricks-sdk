@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -147,6 +148,53 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json, appliction/json
+
+
+## v1OrdersHistoryTimeStartTimeEndGet
+
+> [OrderHistory] v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+
+```javascript
+import EmsRestApi from 'ems_rest_api';
+
+let apiInstance = new EmsRestApi.OrdersApi();
+let timeStart = 2022-05-01T00:00:00; // String | Start date
+let timeEnd = 2022-05-01T12:00:00; // String | End date
+apiInstance.v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeStart** | **String**| Start date | 
+ **timeEnd** | **String**| End date | 
+
+### Return type
+
+[**[OrderHistory]**](OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## v1OrdersPost

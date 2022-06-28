@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**Invoke-V1OrdersCancelAllPost**](docs/OrdersApi.md#Invoke-V1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *OrdersApi* | [**Invoke-V1OrdersCancelPost**](docs/OrdersApi.md#Invoke-V1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 *OrdersApi* | [**Invoke-V1OrdersGet**](docs/OrdersApi.md#Invoke-V1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**Invoke-V1OrdersHistoryTimeStartTimeEndGet**](docs/OrdersApi.md#Invoke-V1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *OrdersApi* | [**Invoke-V1OrdersPost**](docs/OrdersApi.md#Invoke-V1OrdersPost) | **POST** /v1/orders | Send new order
 *OrdersApi* | [**Invoke-V1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#Invoke-V1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *PositionsApi* | [**Invoke-V1PositionsGet**](docs/PositionsApi.md#Invoke-V1PositionsGet) | **GET** /v1/positions | Get open positions
@@ -130,6 +131,7 @@ Class | Method | HTTP request | Description
  - [PSOpenAPITools/Model.Balance](docs/Balance.md)
  - [PSOpenAPITools/Model.BalanceDataInner](docs/BalanceDataInner.md)
  - [PSOpenAPITools/Model.Fills](docs/Fills.md)
+ - [PSOpenAPITools/Model.MessageError](docs/MessageError.md)
  - [PSOpenAPITools/Model.MessageReject](docs/MessageReject.md)
  - [PSOpenAPITools/Model.OrdSide](docs/OrdSide.md)
  - [PSOpenAPITools/Model.OrdStatus](docs/OrdStatus.md)
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
  - [PSOpenAPITools/Model.OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
  - [PSOpenAPITools/Model.OrderExecutionReport](docs/OrderExecutionReport.md)
  - [PSOpenAPITools/Model.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [PSOpenAPITools/Model.OrderHistory](docs/OrderHistory.md)
  - [PSOpenAPITools/Model.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [PSOpenAPITools/Model.Position](docs/Position.md)
  - [PSOpenAPITools/Model.PositionDataInner](docs/PositionDataInner.md)

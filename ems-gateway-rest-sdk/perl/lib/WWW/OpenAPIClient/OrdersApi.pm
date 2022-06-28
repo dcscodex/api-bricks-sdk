@@ -239,6 +239,91 @@ sub v1_orders_get {
 }
 
 #
+# v1_orders_history_time_start_time_end_get
+#
+# History of order changes
+#
+# @param string $time_start Start date (required)
+# @param string $time_end End date (required)
+{
+    my $params = {
+    'time_start' => {
+        data_type => 'string',
+        description => 'Start date',
+        required => '1',
+    },
+    'time_end' => {
+        data_type => 'string',
+        description => 'End date',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'v1_orders_history_time_start_time_end_get' } = {
+        summary => 'History of order changes',
+        params => $params,
+        returns => 'ARRAY[OrderHistory]',
+        };
+}
+# @return ARRAY[OrderHistory]
+#
+sub v1_orders_history_time_start_time_end_get {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'time_start' is set
+    unless (exists $args{'time_start'}) {
+      croak("Missing the required parameter 'time_start' when calling v1_orders_history_time_start_time_end_get");
+    }
+
+    # verify the required parameter 'time_end' is set
+    unless (exists $args{'time_end'}) {
+      croak("Missing the required parameter 'time_end' when calling v1_orders_history_time_start_time_end_get");
+    }
+
+    # parse inputs
+    my $_resource_path = '/v1/orders/history/{time_start}/{time_end}';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'time_start'}) {
+        my $_base_variable = "{" . "time_start" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'time_start'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'time_end'}) {
+        my $_base_variable = "{" . "time_end" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'time_end'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw()];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[OrderHistory]', $response);
+    return $_response_object;
+}
+
+#
 # v1_orders_post
 #
 # Send new order

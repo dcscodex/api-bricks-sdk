@@ -6,6 +6,7 @@ src/openapi_balance.erl
 src/openapi_balance_data_inner.erl
 src/openapi_balances_api.erl
 src/openapi_fills.erl
+src/openapi_message_error.erl
 src/openapi_message_reject.erl
 src/openapi_ord_side.erl
 src/openapi_ord_status.erl
@@ -14,6 +15,7 @@ src/openapi_order_cancel_all_request.erl
 src/openapi_order_cancel_single_request.erl
 src/openapi_order_execution_report.erl
 src/openapi_order_execution_report_all_of.erl
+src/openapi_order_history.erl
 src/openapi_order_new_single_request.erl
 src/openapi_orders_api.erl
 src/openapi_position.erl

@@ -6,6 +6,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -14,6 +15,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -42,6 +44,7 @@ src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/model/Balance.java
 src/main/java/org/openapitools/client/model/BalanceDataInner.java
 src/main/java/org/openapitools/client/model/Fills.java
+src/main/java/org/openapitools/client/model/MessageError.java
 src/main/java/org/openapitools/client/model/MessageReject.java
 src/main/java/org/openapitools/client/model/OrdSide.java
 src/main/java/org/openapitools/client/model/OrdStatus.java
@@ -50,6 +53,7 @@ src/main/java/org/openapitools/client/model/OrderCancelAllRequest.java
 src/main/java/org/openapitools/client/model/OrderCancelSingleRequest.java
 src/main/java/org/openapitools/client/model/OrderExecutionReport.java
 src/main/java/org/openapitools/client/model/OrderExecutionReportAllOf.java
+src/main/java/org/openapitools/client/model/OrderHistory.java
 src/main/java/org/openapitools/client/model/OrderNewSingleRequest.java
 src/main/java/org/openapitools/client/model/Position.java
 src/main/java/org/openapitools/client/model/PositionDataInner.java

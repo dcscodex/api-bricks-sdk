@@ -14,10 +14,12 @@
 
 goog.provide('API.Client.OrdersApi');
 
+goog.require('API.Client.MessageError');
 goog.require('API.Client.MessageReject');
 goog.require('API.Client.OrderCancelAllRequest');
 goog.require('API.Client.OrderCancelSingleRequest');
 goog.require('API.Client.OrderExecutionReport');
+goog.require('API.Client.OrderHistory');
 goog.require('API.Client.OrderNewSingleRequest');
 goog.require('API.Client.ValidationError');
 
@@ -142,6 +144,49 @@ API.Client.OrdersApi.prototype.v1OrdersGet = function(opt_exchangeId, opt_extraH
     queryParameters['exchange_id'] = opt_exchangeId;
   }
 
+  /** @type {!Object} */
+  var httpRequestParams = {
+    method: 'GET',
+    url: path,
+    json: true,
+            params: queryParameters,
+    headers: headerParams
+  };
+
+  if (opt_extraHttpRequestParams) {
+    httpRequestParams = angular.extend(httpRequestParams, opt_extraHttpRequestParams);
+  }
+
+  return (/** @type {?} */ (this.http_))(httpRequestParams);
+}
+
+/**
+ * History of order changes
+ * Based on the date range, all changes registered in the orderbook.
+ * @param {!string} timeStart Start date
+ * @param {!string} timeEnd End date
+ * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
+ * @return {!angular.$q.Promise<!Array<!API.Client.OrderHistory>>}
+ */
+API.Client.OrdersApi.prototype.v1OrdersHistoryTimeStartTimeEndGet = function(timeStart, timeEnd, opt_extraHttpRequestParams) {
+  /** @const {string} */
+  var path = this.basePath_ + '/v1/orders/history/{time_start}/{time_end}'
+      .replace('{' + 'time_start' + '}', String(timeStart))
+      .replace('{' + 'time_end' + '}', String(timeEnd));
+
+  /** @type {!Object} */
+  var queryParameters = {};
+
+  /** @type {!Object} */
+  var headerParams = angular.extend({}, this.defaultHeaders_);
+  // verify required parameter 'timeStart' is set
+  if (!timeStart) {
+    throw new Error('Missing required parameter timeStart when calling v1OrdersHistoryTimeStartTimeEndGet');
+  }
+  // verify required parameter 'timeEnd' is set
+  if (!timeEnd) {
+    throw new Error('Missing required parameter timeEnd when calling v1OrdersHistoryTimeStartTimeEndGet');
+  }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'GET',

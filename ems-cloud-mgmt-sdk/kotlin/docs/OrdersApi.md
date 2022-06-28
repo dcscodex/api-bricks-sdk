@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -142,6 +143,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**kotlin.collections.List&lt;OrderExecutionReport&gt;**](OrderExecutionReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="v1OrdersHistoryTimeStartTimeEndGet"></a>
+# **v1OrdersHistoryTimeStartTimeEndGet**
+> kotlin.collections.List&lt;OrderHistory&gt; v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = OrdersApi()
+val timeStart : kotlin.String = 2022-05-01T00:00:00 // kotlin.String | Start date
+val timeEnd : kotlin.String = 2022-05-01T12:00:00 // kotlin.String | End date
+try {
+    val result : kotlin.collections.List<OrderHistory> = apiInstance.v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling OrdersApi#v1OrdersHistoryTimeStartTimeEndGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling OrdersApi#v1OrdersHistoryTimeStartTimeEndGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeStart** | **kotlin.String**| Start date |
+ **timeEnd** | **kotlin.String**| End date |
+
+### Return type
+
+[**kotlin.collections.List&lt;OrderHistory&gt;**](OrderHistory.md)
 
 ### Authorization
 

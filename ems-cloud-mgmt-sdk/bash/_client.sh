@@ -299,6 +299,7 @@ case $state in
             "v1BalancesGet[Get balances]"             "v1OrdersCancelAllPost[Cancel all orders request]" \
             "v1OrdersCancelPost[Cancel order request]" \
             "v1OrdersGet[Get open orders]" \
+            "v1OrdersHistoryTimeStartTimeEndGet[History of order changes]" \
             "v1OrdersPost[Send new order]" \
             "v1OrdersStatusClientOrderIdGet[Get order execution report]"             "v1PositionsGet[Get open positions]" \
 
@@ -332,6 +333,14 @@ case $state in
         _op_arguments=(
                     "exchange_id=:[QUERY] Filter the open orders to the specific exchange."
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1OrdersHistoryTimeStartTimeEndGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "time_start=:[PATH] Start date"
+"time_end=:[PATH] End date"
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       v1OrdersPost)

@@ -114,6 +114,15 @@ fillsAmountL f Fills{..} = (\fillsAmount -> Fills { fillsAmount, ..} ) <$> f fil
 
 
 
+-- * MessageError
+
+-- | 'messageErrorMessage' Lens
+messageErrorMessageL :: Lens_' MessageError (Maybe Text)
+messageErrorMessageL f MessageError{..} = (\messageErrorMessage -> MessageError { messageErrorMessage, ..} ) <$> f messageErrorMessage
+{-# INLINE messageErrorMessageL #-}
+
+
+
 -- * MessageReject
 
 -- | 'messageRejectType' Lens
@@ -333,6 +342,145 @@ orderExecutionReportAllOfErrorMessageL f OrderExecutionReportAllOf{..} = (\order
 orderExecutionReportAllOfFillsL :: Lens_' OrderExecutionReportAllOf (Maybe [Fills])
 orderExecutionReportAllOfFillsL f OrderExecutionReportAllOf{..} = (\orderExecutionReportAllOfFills -> OrderExecutionReportAllOf { orderExecutionReportAllOfFills, ..} ) <$> f orderExecutionReportAllOfFills
 {-# INLINE orderExecutionReportAllOfFillsL #-}
+
+
+
+-- * OrderHistory
+
+-- | 'orderHistoryApikey' Lens
+orderHistoryApikeyL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryApikeyL f OrderHistory{..} = (\orderHistoryApikey -> OrderHistory { orderHistoryApikey, ..} ) <$> f orderHistoryApikey
+{-# INLINE orderHistoryApikeyL #-}
+
+-- | 'orderHistoryExchangeId' Lens
+orderHistoryExchangeIdL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryExchangeIdL f OrderHistory{..} = (\orderHistoryExchangeId -> OrderHistory { orderHistoryExchangeId, ..} ) <$> f orderHistoryExchangeId
+{-# INLINE orderHistoryExchangeIdL #-}
+
+-- | 'orderHistoryClientOrderId' Lens
+orderHistoryClientOrderIdL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryClientOrderIdL f OrderHistory{..} = (\orderHistoryClientOrderId -> OrderHistory { orderHistoryClientOrderId, ..} ) <$> f orderHistoryClientOrderId
+{-# INLINE orderHistoryClientOrderIdL #-}
+
+-- | 'orderHistorySymbolIdExchange' Lens
+orderHistorySymbolIdExchangeL :: Lens_' OrderHistory (Maybe Text)
+orderHistorySymbolIdExchangeL f OrderHistory{..} = (\orderHistorySymbolIdExchange -> OrderHistory { orderHistorySymbolIdExchange, ..} ) <$> f orderHistorySymbolIdExchange
+{-# INLINE orderHistorySymbolIdExchangeL #-}
+
+-- | 'orderHistorySymbolIdCoinapi' Lens
+orderHistorySymbolIdCoinapiL :: Lens_' OrderHistory (Maybe Text)
+orderHistorySymbolIdCoinapiL f OrderHistory{..} = (\orderHistorySymbolIdCoinapi -> OrderHistory { orderHistorySymbolIdCoinapi, ..} ) <$> f orderHistorySymbolIdCoinapi
+{-# INLINE orderHistorySymbolIdCoinapiL #-}
+
+-- | 'orderHistoryAmountOrder' Lens
+orderHistoryAmountOrderL :: Lens_' OrderHistory (Maybe Double)
+orderHistoryAmountOrderL f OrderHistory{..} = (\orderHistoryAmountOrder -> OrderHistory { orderHistoryAmountOrder, ..} ) <$> f orderHistoryAmountOrder
+{-# INLINE orderHistoryAmountOrderL #-}
+
+-- | 'orderHistoryPrice' Lens
+orderHistoryPriceL :: Lens_' OrderHistory (Maybe Double)
+orderHistoryPriceL f OrderHistory{..} = (\orderHistoryPrice -> OrderHistory { orderHistoryPrice, ..} ) <$> f orderHistoryPrice
+{-# INLINE orderHistoryPriceL #-}
+
+-- | 'orderHistorySide' Lens
+orderHistorySideL :: Lens_' OrderHistory (Maybe Double)
+orderHistorySideL f OrderHistory{..} = (\orderHistorySide -> OrderHistory { orderHistorySide, ..} ) <$> f orderHistorySide
+{-# INLINE orderHistorySideL #-}
+
+-- | 'orderHistoryOrderType' Lens
+orderHistoryOrderTypeL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryOrderTypeL f OrderHistory{..} = (\orderHistoryOrderType -> OrderHistory { orderHistoryOrderType, ..} ) <$> f orderHistoryOrderType
+{-# INLINE orderHistoryOrderTypeL #-}
+
+-- | 'orderHistoryTimeInForce' Lens
+orderHistoryTimeInForceL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryTimeInForceL f OrderHistory{..} = (\orderHistoryTimeInForce -> OrderHistory { orderHistoryTimeInForce, ..} ) <$> f orderHistoryTimeInForce
+{-# INLINE orderHistoryTimeInForceL #-}
+
+-- | 'orderHistoryExpireTime' Lens
+orderHistoryExpireTimeL :: Lens_' OrderHistory (Maybe Date)
+orderHistoryExpireTimeL f OrderHistory{..} = (\orderHistoryExpireTime -> OrderHistory { orderHistoryExpireTime, ..} ) <$> f orderHistoryExpireTime
+{-# INLINE orderHistoryExpireTimeL #-}
+
+-- | 'orderHistoryExecInst' Lens
+orderHistoryExecInstL :: Lens_' OrderHistory (Maybe [Text])
+orderHistoryExecInstL f OrderHistory{..} = (\orderHistoryExecInst -> OrderHistory { orderHistoryExecInst, ..} ) <$> f orderHistoryExecInst
+{-# INLINE orderHistoryExecInstL #-}
+
+-- | 'orderHistoryClientOrderIdFormatExchange' Lens
+orderHistoryClientOrderIdFormatExchangeL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryClientOrderIdFormatExchangeL f OrderHistory{..} = (\orderHistoryClientOrderIdFormatExchange -> OrderHistory { orderHistoryClientOrderIdFormatExchange, ..} ) <$> f orderHistoryClientOrderIdFormatExchange
+{-# INLINE orderHistoryClientOrderIdFormatExchangeL #-}
+
+-- | 'orderHistoryExchangeOrderId' Lens
+orderHistoryExchangeOrderIdL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryExchangeOrderIdL f OrderHistory{..} = (\orderHistoryExchangeOrderId -> OrderHistory { orderHistoryExchangeOrderId, ..} ) <$> f orderHistoryExchangeOrderId
+{-# INLINE orderHistoryExchangeOrderIdL #-}
+
+-- | 'orderHistoryAmountOpen' Lens
+orderHistoryAmountOpenL :: Lens_' OrderHistory (Maybe Double)
+orderHistoryAmountOpenL f OrderHistory{..} = (\orderHistoryAmountOpen -> OrderHistory { orderHistoryAmountOpen, ..} ) <$> f orderHistoryAmountOpen
+{-# INLINE orderHistoryAmountOpenL #-}
+
+-- | 'orderHistoryAmountFilled' Lens
+orderHistoryAmountFilledL :: Lens_' OrderHistory (Maybe Double)
+orderHistoryAmountFilledL f OrderHistory{..} = (\orderHistoryAmountFilled -> OrderHistory { orderHistoryAmountFilled, ..} ) <$> f orderHistoryAmountFilled
+{-# INLINE orderHistoryAmountFilledL #-}
+
+-- | 'orderHistoryAvgPx' Lens
+orderHistoryAvgPxL :: Lens_' OrderHistory (Maybe Double)
+orderHistoryAvgPxL f OrderHistory{..} = (\orderHistoryAvgPx -> OrderHistory { orderHistoryAvgPx, ..} ) <$> f orderHistoryAvgPx
+{-# INLINE orderHistoryAvgPxL #-}
+
+-- | 'orderHistoryStatus' Lens
+orderHistoryStatusL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryStatusL f OrderHistory{..} = (\orderHistoryStatus -> OrderHistory { orderHistoryStatus, ..} ) <$> f orderHistoryStatus
+{-# INLINE orderHistoryStatusL #-}
+
+-- | 'orderHistoryStatusHistoryStatus' Lens
+orderHistoryStatusHistoryStatusL :: Lens_' OrderHistory (Maybe [Text])
+orderHistoryStatusHistoryStatusL f OrderHistory{..} = (\orderHistoryStatusHistoryStatus -> OrderHistory { orderHistoryStatusHistoryStatus, ..} ) <$> f orderHistoryStatusHistoryStatus
+{-# INLINE orderHistoryStatusHistoryStatusL #-}
+
+-- | 'orderHistoryStatusHistoryTime' Lens
+orderHistoryStatusHistoryTimeL :: Lens_' OrderHistory (Maybe [Date])
+orderHistoryStatusHistoryTimeL f OrderHistory{..} = (\orderHistoryStatusHistoryTime -> OrderHistory { orderHistoryStatusHistoryTime, ..} ) <$> f orderHistoryStatusHistoryTime
+{-# INLINE orderHistoryStatusHistoryTimeL #-}
+
+-- | 'orderHistoryErrorMessageResult' Lens
+orderHistoryErrorMessageResultL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryErrorMessageResultL f OrderHistory{..} = (\orderHistoryErrorMessageResult -> OrderHistory { orderHistoryErrorMessageResult, ..} ) <$> f orderHistoryErrorMessageResult
+{-# INLINE orderHistoryErrorMessageResultL #-}
+
+-- | 'orderHistoryErrorMessageReason' Lens
+orderHistoryErrorMessageReasonL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryErrorMessageReasonL f OrderHistory{..} = (\orderHistoryErrorMessageReason -> OrderHistory { orderHistoryErrorMessageReason, ..} ) <$> f orderHistoryErrorMessageReason
+{-# INLINE orderHistoryErrorMessageReasonL #-}
+
+-- | 'orderHistoryErrorMessageMessage' Lens
+orderHistoryErrorMessageMessageL :: Lens_' OrderHistory (Maybe Text)
+orderHistoryErrorMessageMessageL f OrderHistory{..} = (\orderHistoryErrorMessageMessage -> OrderHistory { orderHistoryErrorMessageMessage, ..} ) <$> f orderHistoryErrorMessageMessage
+{-# INLINE orderHistoryErrorMessageMessageL #-}
+
+-- | 'orderHistoryFillsTime' Lens
+orderHistoryFillsTimeL :: Lens_' OrderHistory (Maybe [Date])
+orderHistoryFillsTimeL f OrderHistory{..} = (\orderHistoryFillsTime -> OrderHistory { orderHistoryFillsTime, ..} ) <$> f orderHistoryFillsTime
+{-# INLINE orderHistoryFillsTimeL #-}
+
+-- | 'orderHistoryFillsPrice' Lens
+orderHistoryFillsPriceL :: Lens_' OrderHistory (Maybe [Double])
+orderHistoryFillsPriceL f OrderHistory{..} = (\orderHistoryFillsPrice -> OrderHistory { orderHistoryFillsPrice, ..} ) <$> f orderHistoryFillsPrice
+{-# INLINE orderHistoryFillsPriceL #-}
+
+-- | 'orderHistoryFillsAmount' Lens
+orderHistoryFillsAmountL :: Lens_' OrderHistory (Maybe [Double])
+orderHistoryFillsAmountL f OrderHistory{..} = (\orderHistoryFillsAmount -> OrderHistory { orderHistoryFillsAmount, ..} ) <$> f orderHistoryFillsAmount
+{-# INLINE orderHistoryFillsAmountL #-}
+
+-- | 'orderHistoryCreatedTime' Lens
+orderHistoryCreatedTimeL :: Lens_' OrderHistory (Maybe Date)
+orderHistoryCreatedTimeL f OrderHistory{..} = (\orderHistoryCreatedTime -> OrderHistory { orderHistoryCreatedTime, ..} ) <$> f orderHistoryCreatedTime
+{-# INLINE orderHistoryCreatedTimeL #-}
 
 
 

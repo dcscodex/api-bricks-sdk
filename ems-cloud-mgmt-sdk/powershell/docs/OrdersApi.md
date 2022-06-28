@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**Invoke-V1OrdersCancelAllPost**](OrdersApi.md#Invoke-V1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**Invoke-V1OrdersCancelPost**](OrdersApi.md#Invoke-V1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**Invoke-V1OrdersGet**](OrdersApi.md#Invoke-V1OrdersGet) | **GET** /v1/orders | Get open orders
+[**Invoke-V1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#Invoke-V1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**Invoke-V1OrdersPost**](OrdersApi.md#Invoke-V1OrdersPost) | **POST** /v1/orders | Send new order
 [**Invoke-V1OrdersStatusClientOrderIdGet**](OrdersApi.md#Invoke-V1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -137,6 +138,52 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, appliction/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="Invoke-V1OrdersHistoryTimeStartTimeEndGet"></a>
+# **Invoke-V1OrdersHistoryTimeStartTimeEndGet**
+> OrderHistory[] Invoke-V1OrdersHistoryTimeStartTimeEndGet<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TimeStart] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TimeEnd] <String><br>
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+```powershell
+$TimeStart = "2022-05-01T00:00:00" # String | Start date
+$TimeEnd = "2022-05-01T12:00:00" # String | End date
+
+# History of order changes
+try {
+    $Result = Invoke-V1OrdersHistoryTimeStartTimeEndGet -TimeStart $TimeStart -TimeEnd $TimeEnd
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-V1OrdersHistoryTimeStartTimeEndGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **TimeStart** | **String**| Start date | 
+ **TimeEnd** | **String**| End date | 
+
+### Return type
+
+[**OrderHistory[]**](OrderHistory.md) (PSCustomObject)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

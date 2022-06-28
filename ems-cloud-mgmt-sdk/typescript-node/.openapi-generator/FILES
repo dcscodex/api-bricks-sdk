@@ -9,6 +9,7 @@ git_push.sh
 model/balance.ts
 model/balanceDataInner.ts
 model/fills.ts
+model/messageError.ts
 model/messageReject.ts
 model/models.ts
 model/ordSide.ts
@@ -18,6 +19,7 @@ model/orderCancelAllRequest.ts
 model/orderCancelSingleRequest.ts
 model/orderExecutionReport.ts
 model/orderExecutionReportAllOf.ts
+model/orderHistory.ts
 model/orderNewSingleRequest.ts
 model/position.ts
 model/positionDataInner.ts

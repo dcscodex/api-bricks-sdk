@@ -11,10 +11,12 @@
  */
 package org.openapitools.client.api
 
+import org.openapitools.client.model.MessageError
 import org.openapitools.client.model.MessageReject
 import org.openapitools.client.model.OrderCancelAllRequest
 import org.openapitools.client.model.OrderCancelSingleRequest
 import org.openapitools.client.model.OrderExecutionReport
+import org.openapitools.client.model.OrderHistory
 import org.openapitools.client.model.OrderNewSingleRequest
 import org.openapitools.client.model.ValidationError
 import org.openapitools.client.core._
@@ -78,6 +80,24 @@ class OrdersApi(baseUrl: String) {
       .withQueryParam("exchange_id", exchangeId)
       .withSuccessResponse[Seq[OrderExecutionReport]](200)
       .withErrorResponse[MessageReject](490)
+      
+
+  /**
+   * Based on the date range, all changes registered in the orderbook.
+   * 
+   * Expected answers:
+   *   code 200 : Seq[OrderHistory] (The last execution report of the requested order.)
+   *   code 400 : MessageError (Orders log is not configured.)
+   * 
+   * @param timeStart Start date
+   * @param timeEnd End date
+   */
+  def v1OrdersHistoryTimeStartTimeEndGet(timeStart: String, timeEnd: String): ApiRequest[Seq[OrderHistory]] =
+    ApiRequest[Seq[OrderHistory]](ApiMethods.GET, baseUrl, "/v1/orders/history/{time_start}/{time_end}", "application/json")
+      .withPathParam("time_start", timeStart)
+      .withPathParam("time_end", timeEnd)
+      .withSuccessResponse[Seq[OrderHistory]](200)
+      .withErrorResponse[MessageError](400)
       
 
   /**

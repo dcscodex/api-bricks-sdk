@@ -10,6 +10,7 @@ docs/Api/PositionsApi.md
 docs/Model/Balance.md
 docs/Model/BalanceDataInner.md
 docs/Model/Fills.md
+docs/Model/MessageError.md
 docs/Model/MessageReject.md
 docs/Model/OrdSide.md
 docs/Model/OrdStatus.md
@@ -18,6 +19,7 @@ docs/Model/OrderCancelAllRequest.md
 docs/Model/OrderCancelSingleRequest.md
 docs/Model/OrderExecutionReport.md
 docs/Model/OrderExecutionReportAllOf.md
+docs/Model/OrderHistory.md
 docs/Model/OrderNewSingleRequest.md
 docs/Model/Position.md
 docs/Model/PositionDataInner.md
@@ -34,6 +36,7 @@ lib/HeaderSelector.php
 lib/Model/Balance.php
 lib/Model/BalanceDataInner.php
 lib/Model/Fills.php
+lib/Model/MessageError.php
 lib/Model/MessageReject.php
 lib/Model/ModelInterface.php
 lib/Model/OrdSide.php
@@ -43,6 +46,7 @@ lib/Model/OrderCancelAllRequest.php
 lib/Model/OrderCancelSingleRequest.php
 lib/Model/OrderExecutionReport.php
 lib/Model/OrderExecutionReportAllOf.php
+lib/Model/OrderHistory.php
 lib/Model/OrderNewSingleRequest.php
 lib/Model/Position.php
 lib/Model/PositionDataInner.php
@@ -57,6 +61,7 @@ test/Api/PositionsApiTest.php
 test/Model/BalanceDataInnerTest.php
 test/Model/BalanceTest.php
 test/Model/FillsTest.php
+test/Model/MessageErrorTest.php
 test/Model/MessageRejectTest.php
 test/Model/OrdSideTest.php
 test/Model/OrdStatusTest.php
@@ -65,6 +70,7 @@ test/Model/OrderCancelAllRequestTest.php
 test/Model/OrderCancelSingleRequestTest.php
 test/Model/OrderExecutionReportAllOfTest.php
 test/Model/OrderExecutionReportTest.php
+test/Model/OrderHistoryTest.php
 test/Model/OrderNewSingleRequestTest.php
 test/Model/PositionDataInnerTest.php
 test/Model/PositionTest.php

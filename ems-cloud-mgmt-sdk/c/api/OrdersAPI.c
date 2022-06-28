@@ -288,6 +288,105 @@ end:
 
 }
 
+// History of order changes
+//
+// Based on the date range, all changes registered in the orderbook.
+//
+list_t*
+OrdersAPI_v1OrdersHistoryTimeStartTimeEndGet(apiClient_t *apiClient, char * time_start , char * time_end )
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/v1/orders/history/{time_start}/{time_end}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/v1/orders/history/{time_start}/{time_end}");
+
+
+    // Path Params
+    long sizeOfPathParams_time_start = strlen(time_start)+3 + strlen(time_end)+3 + strlen("{ time_start }");
+    if(time_start == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_time_start = malloc(sizeOfPathParams_time_start);
+    sprintf(localVarToReplace_time_start, "{%s}", "time_start");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_time_start, time_start);
+
+    // Path Params
+    long sizeOfPathParams_time_end = strlen(time_start)+3 + strlen(time_end)+3 + strlen("{ time_end }");
+    if(time_end == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_time_end = malloc(sizeOfPathParams_time_end);
+    sprintf(localVarToReplace_time_end, "{%s}", "time_end");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_time_end, time_end);
+
+
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The last execution report of the requested order.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Orders log is not configured.");
+    //}
+    cJSON *OrdersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    if(!cJSON_IsArray(OrdersAPIlocalVarJSON)) {
+        return 0;//nonprimitive container
+    }
+    list_t *elementToReturn = list_createList();
+    cJSON *VarJSON;
+    cJSON_ArrayForEach(VarJSON, OrdersAPIlocalVarJSON)
+    {
+        if(!cJSON_IsObject(VarJSON))
+        {
+           // return 0;
+        }
+        char *localVarJSONToChar = cJSON_Print(VarJSON);
+        list_addElement(elementToReturn , localVarJSONToChar);
+    }
+
+    cJSON_Delete( OrdersAPIlocalVarJSON);
+    cJSON_Delete( VarJSON);
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_time_start);
+    free(localVarToReplace_time_end);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Send new order
 //
 // This request creating new order for the specific exchange.

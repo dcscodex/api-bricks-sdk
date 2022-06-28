@@ -23,10 +23,12 @@
 
 #include "CppRestOpenAPIClient/ApiClient.h"
 
+#include "CppRestOpenAPIClient/model/MessageError.h"
 #include "CppRestOpenAPIClient/model/MessageReject.h"
 #include "CppRestOpenAPIClient/model/OrderCancelAllRequest.h"
 #include "CppRestOpenAPIClient/model/OrderCancelSingleRequest.h"
 #include "CppRestOpenAPIClient/model/OrderExecutionReport.h"
+#include "CppRestOpenAPIClient/model/OrderHistory.h"
 #include "CppRestOpenAPIClient/model/OrderNewSingleRequest.h"
 #include "CppRestOpenAPIClient/model/ValidationError.h"
 #include <cpprest/details/basic_types.h>
@@ -78,6 +80,18 @@ public:
     /// <param name="exchangeId">Filter the open orders to the specific exchange. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     pplx::task<std::vector<std::shared_ptr<OrderExecutionReport>>> v1OrdersGet(
         boost::optional<utility::string_t> exchangeId
+    ) const;
+    /// <summary>
+    /// History of order changes
+    /// </summary>
+    /// <remarks>
+    /// Based on the date range, all changes registered in the orderbook.
+    /// </remarks>
+    /// <param name="timeStart">Start date</param>
+    /// <param name="timeEnd">End date</param>
+    pplx::task<std::vector<std::shared_ptr<OrderHistory>>> v1OrdersHistoryTimeStartTimeEndGet(
+        utility::string_t timeStart,
+        utility::string_t timeEnd
     ) const;
     /// <summary>
     /// Send new order

@@ -16,10 +16,12 @@ import type { AjaxResponse } from 'rxjs/ajax';
 import { BaseAPI, throwIfNullOrUndefined, encodeURI } from '../runtime';
 import type { OperationOpts, HttpHeaders, HttpQuery } from '../runtime';
 import type {
+    MessageError,
     MessageReject,
     OrderCancelAllRequest,
     OrderCancelSingleRequest,
     OrderExecutionReport,
+    OrderHistory,
     OrderNewSingleRequest,
     ValidationError,
 } from '../models';
@@ -34,6 +36,11 @@ export interface V1OrdersCancelPostRequest {
 
 export interface V1OrdersGetRequest {
     exchangeId?: string;
+}
+
+export interface V1OrdersHistoryTimeStartTimeEndGetRequest {
+    timeStart: string;
+    timeEnd: string;
 }
 
 export interface V1OrdersPostRequest {
@@ -107,6 +114,22 @@ export class OrdersApi extends BaseAPI {
             url: '/v1/orders',
             method: 'GET',
             query,
+        }, opts?.responseOpts);
+    };
+
+    /**
+     * Based on the date range, all changes registered in the orderbook.
+     * History of order changes
+     */
+    v1OrdersHistoryTimeStartTimeEndGet({ timeStart, timeEnd }: V1OrdersHistoryTimeStartTimeEndGetRequest): Observable<Array<OrderHistory>>
+    v1OrdersHistoryTimeStartTimeEndGet({ timeStart, timeEnd }: V1OrdersHistoryTimeStartTimeEndGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<OrderHistory>>>
+    v1OrdersHistoryTimeStartTimeEndGet({ timeStart, timeEnd }: V1OrdersHistoryTimeStartTimeEndGetRequest, opts?: OperationOpts): Observable<Array<OrderHistory> | AjaxResponse<Array<OrderHistory>>> {
+        throwIfNullOrUndefined(timeStart, 'timeStart', 'v1OrdersHistoryTimeStartTimeEndGet');
+        throwIfNullOrUndefined(timeEnd, 'timeEnd', 'v1OrdersHistoryTimeStartTimeEndGet');
+
+        return this.request<Array<OrderHistory>>({
+            url: '/v1/orders/history/{time_start}/{time_end}'.replace('{time_start}', encodeURI(timeStart)).replace('{time_end}', encodeURI(timeEnd)),
+            method: 'GET',
         }, opts?.responseOpts);
     };
 

@@ -43,6 +43,14 @@ package .Clients is
        Exchange_Id : in Swagger.Nullable_UString;
        Result : out .Models.OrderExecutionReport_Type_Vectors.Vector);
 
+   --  History of order changes
+   --  Based on the date range, all changes registered in the orderbook.
+   procedure V_1Orders_History_Time_Start_Time_End_Get
+      (Client : in out Client_Type;
+       Time_Start : in Swagger.UString;
+       Time_End : in Swagger.UString;
+       Result : out .Models.OrderHistory_Type_Vectors.Vector);
+
    --  Send new order
    --  This request creating new order for the specific exchange.
    procedure V_1Orders_Post

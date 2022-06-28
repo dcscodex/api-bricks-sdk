@@ -100,6 +100,19 @@ namespace CoinAPI.EMS.REST.V1.Test
         }
         
         /// <summary>
+        /// Test V1OrdersHistoryTimeStartTimeEndGet
+        /// </summary>
+        [Test]
+        public void V1OrdersHistoryTimeStartTimeEndGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string timeStart = null;
+            //string timeEnd = null;
+            //var response = instance.V1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd);
+            //Assert.IsInstanceOf(typeof(List<OrderHistory>), response, "response is List<OrderHistory>");
+        }
+        
+        /// <summary>
         /// Test V1OrdersPost
         /// </summary>
         [Test]

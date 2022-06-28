@@ -242,6 +242,74 @@ export class OrdersApi {
     }
 
     /**
+     * Based on the date range, all changes registered in the orderbook.
+     * @summary History of order changes
+     * @param timeStart Start date
+     * @param timeEnd End date
+     */
+    public v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body: Array<models.OrderHistory>;  },
+    { response: JQueryXHR; errorThrown: string }
+    > {
+        let localVarPath = this.basePath + '/v1/orders/history/{time_start}/{time_end}'.replace('{' + 'time_start' + '}', encodeURIComponent(String(timeStart))).replace('{' + 'time_end' + '}', encodeURIComponent(String(timeEnd)));
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'timeStart' is not null or undefined
+        if (timeStart === null || timeStart === undefined) {
+            throw new Error('Required parameter timeStart was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+
+        // verify required parameter 'timeEnd' is not null or undefined
+        if (timeEnd === null || timeEnd === undefined) {
+            throw new Error('Required parameter timeEnd was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'GET',
+            headers: headerParams,
+            processData: false
+        };
+
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred<
+            { response: JQueryXHR; body: Array<models.OrderHistory>;  },
+            { response: JQueryXHR; errorThrown: string }
+        >();
+        $.ajax(requestOptions).then(
+            (data: Array<models.OrderHistory>, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve({response: jqXHR, body: data}),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject({response: xhr, errorThrown: errorThrown})
+        );
+        return dfd.promise();
+    }
+
+    /**
      * This request creating new order for the specific exchange.
      * @summary Send new order
      * @param orderNewSingleRequest OrderNewSingleRequest object.

@@ -130,6 +130,45 @@ feature -- API Access
 			end
 		end
 
+	v1_orders_history_time_start_time_end_get (time_start: STRING_32; time_end: STRING_32): detachable LIST [ORDER_HISTORY]
+			-- History of order changes
+			-- Based on the date range, all changes registered in the orderbook.
+			-- 
+			-- argument: time_start Start date (required)
+			-- 
+			-- argument: time_end End date (required)
+			-- 
+			-- 
+			-- Result LIST [ORDER_HISTORY]
+		require
+		local
+  			l_path: STRING
+  			l_request: API_CLIENT_REQUEST
+  			l_response: API_CLIENT_RESPONSE
+		do
+			reset_error
+			create l_request
+			
+			l_path := "/v1/orders/history/{time_start}/{time_end}"
+			l_path.replace_substring_all ("{"+"time_start"+"}", api_client.url_encode (time_start.out))
+			l_path.replace_substring_all ("{"+"time_end"+"}", api_client.url_encode (time_end.out))
+
+
+			if attached {STRING} api_client.select_header_accept ({ARRAY [STRING]}<<"application/json">>)  as l_accept then
+				l_request.add_header(l_accept,"Accept");
+			end
+			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
+			l_request.set_auth_names ({ARRAY [STRING]}<<>>)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
+			if l_response.has_error then
+				last_error := l_response.error
+			elseif attached { LIST [ORDER_HISTORY] } l_response.data ({ LIST [ORDER_HISTORY] }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
+			end
+		end
+
 	v1_orders_post (order_new_single_request: ORDER_NEW_SINGLE_REQUEST): detachable ORDER_EXECUTION_REPORT
 			-- Send new order
 			-- This request creating new order for the specific exchange.

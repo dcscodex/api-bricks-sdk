@@ -3,6 +3,7 @@ API/Client/Balance.js
 API/Client/BalanceDataInner.js
 API/Client/BalancesApi.js
 API/Client/Fills.js
+API/Client/MessageError.js
 API/Client/MessageReject.js
 API/Client/OrdSide.js
 API/Client/OrdStatus.js
@@ -11,6 +12,7 @@ API/Client/OrderCancelAllRequest.js
 API/Client/OrderCancelSingleRequest.js
 API/Client/OrderExecutionReport.js
 API/Client/OrderExecutionReportAllOf.js
+API/Client/OrderHistory.js
 API/Client/OrderNewSingleRequest.js
 API/Client/OrdersApi.js
 API/Client/Position.js

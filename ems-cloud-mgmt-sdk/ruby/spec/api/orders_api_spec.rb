@@ -68,6 +68,19 @@ describe 'OrdersApi' do
     end
   end
 
+  # unit tests for v1_orders_history_time_start_time_end_get
+  # History of order changes
+  # Based on the date range, all changes registered in the orderbook.
+  # @param time_start Start date
+  # @param time_end End date
+  # @param [Hash] opts the optional parameters
+  # @return [Array<OrderHistory>]
+  describe 'v1_orders_history_time_start_time_end_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for v1_orders_post
   # Send new order
   # This request creating new order for the specific exchange.

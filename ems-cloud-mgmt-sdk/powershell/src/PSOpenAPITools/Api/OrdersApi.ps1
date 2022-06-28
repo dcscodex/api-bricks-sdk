@@ -274,6 +274,89 @@ function Invoke-V1OrdersGet {
 <#
 .SYNOPSIS
 
+History of order changes
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER TimeStart
+Start date
+
+.PARAMETER TimeEnd
+End date
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+OrderHistory[]
+#>
+function Invoke-V1OrdersHistoryTimeStartTimeEndGet {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${TimeStart},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${TimeEnd},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: Invoke-V1OrdersHistoryTimeStartTimeEndGet' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        $LocalVarUri = '/v1/orders/history/{time_start}/{time_end}'
+        if (!$TimeStart) {
+            throw "Error! The required parameter `TimeStart` missing when calling v1OrdersHistoryTimeStartTimeEndGet."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{time_start}', [System.Web.HTTPUtility]::UrlEncode($TimeStart))
+        if (!$TimeEnd) {
+            throw "Error! The required parameter `TimeEnd` missing when calling v1OrdersHistoryTimeStartTimeEndGet."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{time_end}', [System.Web.HTTPUtility]::UrlEncode($TimeEnd))
+
+        $LocalVarResult = Invoke-ApiClient -Method 'GET' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "OrderHistory[]" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
 Send new order
 
 .DESCRIPTION

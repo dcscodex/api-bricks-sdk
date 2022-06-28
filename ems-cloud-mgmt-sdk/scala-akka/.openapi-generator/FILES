@@ -5,6 +5,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -13,6 +14,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -36,6 +38,7 @@ src/main/scala/org/openapitools/client/core/requests.scala
 src/main/scala/org/openapitools/client/model/Balance.scala
 src/main/scala/org/openapitools/client/model/BalanceDataInner.scala
 src/main/scala/org/openapitools/client/model/Fills.scala
+src/main/scala/org/openapitools/client/model/MessageError.scala
 src/main/scala/org/openapitools/client/model/MessageReject.scala
 src/main/scala/org/openapitools/client/model/OrdSide.scala
 src/main/scala/org/openapitools/client/model/OrdStatus.scala
@@ -44,6 +47,7 @@ src/main/scala/org/openapitools/client/model/OrderCancelAllRequest.scala
 src/main/scala/org/openapitools/client/model/OrderCancelSingleRequest.scala
 src/main/scala/org/openapitools/client/model/OrderExecutionReport.scala
 src/main/scala/org/openapitools/client/model/OrderExecutionReportAllOf.scala
+src/main/scala/org/openapitools/client/model/OrderHistory.scala
 src/main/scala/org/openapitools/client/model/OrderNewSingleRequest.scala
 src/main/scala/org/openapitools/client/model/Position.scala
 src/main/scala/org/openapitools/client/model/PositionDataInner.scala

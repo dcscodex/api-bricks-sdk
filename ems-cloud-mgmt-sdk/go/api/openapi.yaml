@@ -222,6 +222,44 @@ paths:
       summary: Cancel all orders request
       tags:
       - Orders
+  /v1/orders/history/{time_start}/{time_end}:
+    get:
+      description: "Based on the date range, all changes registered in the orderbook."
+      parameters:
+      - description: Start date
+        explode: false
+        in: path
+        name: time_start
+        required: true
+        schema:
+          example: 2022-05-01T00:00:00
+          type: string
+        style: simple
+      - description: End date
+        explode: false
+        in: path
+        name: time_end
+        required: true
+        schema:
+          example: 2022-05-01T12:00:00
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderHistoryArray'
+          description: The last execution report of the requested order.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageError'
+          description: Orders log is not configured.
+      summary: History of order changes
+      tags:
+      - Orders
   /v1/balances:
     get:
       description: Get current currency balance from all or single exchange.
@@ -612,6 +650,193 @@ components:
           example: 0.002
           type: number
       title: Relay fill information on working orders.
+      type: object
+    OrderHistoryArray:
+      description: Collection of the order history.
+      items:
+        $ref: '#/components/schemas/OrderHistory'
+      type: array
+    OrderHistory:
+      example:
+        orderType: LIMIT
+        execInst:
+        - "[\"MAKER_OR_CANCEL\"]"
+        - "[\"MAKER_OR_CANCEL\"]"
+        amountFilled: 0
+        errorMessageResult: errorMessageResult
+        errorMessageReason: errorMessageReason
+        amountOpen: 0.00034
+        price: 31939.47
+        fillsPrice:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        createdTime: 2022-06-27T07:02:33.1977903Z
+        timeInForce: GOOD_TILL_CANCEL
+        exchangeOrderId: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+        statusHistoryStatus:
+        - "[\"RECEIVED\",\"ROUTING\",\"REJECTED\"]"
+        - "[\"RECEIVED\",\"ROUTING\",\"REJECTED\"]"
+        fillsAmount:
+        - 6.027456183070403
+        - 6.027456183070403
+        side: 2
+        symbolIdExchange: BTCUSDT
+        symbolIdCoinapi: BINANCE_SPOT_BTC_USDT
+        apikey: 9a55567a-b5ff-4b78-b6aa-xxxx
+        amountOrder: 0.00034
+        clientOrderId: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+        exchangeId: BINANCE
+        statusHistoryTime:
+        - - 2022-05-27T13:06:34.5122626Z
+          - 2022-05-27T13:06:37.3410216Z
+          - 2022-05-27T13:06:40.1342877Z
+        - - 2022-05-27T13:06:34.5122626Z
+          - 2022-05-27T13:06:37.3410216Z
+          - 2022-05-27T13:06:40.1342877Z
+        expireTime: 2022-05-01T00:00:00
+        clientOrderIdFormatExchange: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+        avgPx: 0
+        fillsTime:
+        - - 2022-05-27T13:06:34.5122626Z
+          - 2022-05-27T13:06:37.3410216Z
+          - 2022-05-27T13:06:40.1342877Z
+        - - 2022-05-27T13:06:34.5122626Z
+          - 2022-05-27T13:06:37.3410216Z
+          - 2022-05-27T13:06:40.1342877Z
+        errorMessageMessage: "-2015 Invalid API-key, IP, or permissions for action.\
+          \ https://api.binance.com/api/v3/order?newOrderRespType"
+        status: REJECTED
+      properties:
+        apikey:
+          description: Apikey
+          example: 9a55567a-b5ff-4b78-b6aa-xxxx
+          type: string
+        exchangeId:
+          description: Exchange id
+          example: BINANCE
+          type: string
+        clientOrderId:
+          description: Client order id
+          example: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+          type: string
+        symbolIdExchange:
+          description: Symbol id exchange
+          example: BTCUSDT
+          type: string
+        symbolIdCoinapi:
+          description: Symbol id in coinapi
+          example: BINANCE_SPOT_BTC_USDT
+          type: string
+        amountOrder:
+          description: Amount
+          example: 0.00034
+          type: number
+        price:
+          description: Price
+          example: 31939.47
+          type: number
+        side:
+          description: "1-buy, 2-sell"
+          example: 2
+          type: number
+        orderType:
+          description: Order type
+          example: LIMIT
+          type: string
+        timeInForce:
+          description: Time in force
+          example: GOOD_TILL_CANCEL
+          type: string
+        expireTime:
+          description: Expire time
+          example: 2022-05-01T00:00:00
+          type: date
+        execInst:
+          description: Exec inst
+          items:
+            example: "[\"MAKER_OR_CANCEL\"]"
+            type: string
+          type: array
+        clientOrderIdFormatExchange:
+          description: Client order id format
+          example: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+          type: string
+        exchangeOrderId:
+          description: Exchange order id
+          example: 6ab36bc1-344d-432e-ac6d-0bf44ee64c2b
+          type: string
+        amountOpen:
+          description: Amount open
+          example: 0.00034
+          type: number
+        amountFilled:
+          description: Amount filled
+          example: 0
+          type: number
+        avgPx:
+          description: Average price
+          example: 0
+          type: number
+        status:
+          description: Status
+          example: REJECTED
+          type: string
+        statusHistoryStatus:
+          description: History status
+          items:
+            example: "[\"RECEIVED\",\"ROUTING\",\"REJECTED\"]"
+            type: string
+          type: array
+        statusHistoryTime:
+          description: History status time
+          items:
+            example:
+            - 2022-05-27T13:06:34.5122626Z
+            - 2022-05-27T13:06:37.3410216Z
+            - 2022-05-27T13:06:40.1342877Z
+            type: date
+          type: array
+        errorMessageResult:
+          description: Error message
+          type: string
+        errorMessageReason:
+          description: Error message reason
+          type: string
+        errorMessageMessage:
+          description: Error message
+          example: "-2015 Invalid API-key, IP, or permissions for action. https://api.binance.com/api/v3/order?newOrderRespType"
+          type: string
+        fillsTime:
+          description: Fills time
+          items:
+            example:
+            - 2022-05-27T13:06:34.5122626Z
+            - 2022-05-27T13:06:37.3410216Z
+            - 2022-05-27T13:06:40.1342877Z
+            type: date
+          type: array
+        fillsPrice:
+          description: Fills price
+          items:
+            type: number
+          type: array
+        fillsAmount:
+          description: Fills amount
+          items:
+            type: number
+          type: array
+        createdTime:
+          description: Created time
+          example: 2022-06-27T07:02:33.1977903Z
+          type: date
+      title: Order history
+      type: object
+    MessageError:
+      properties:
+        message:
+          description: Message text.
+          type: string
+      title: MessageError object.
       type: object
     OrderExecutionReport_allOf:
       description: The order execution report message.

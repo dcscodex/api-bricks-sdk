@@ -44,6 +44,15 @@ void main() {
       // TODO
     });
 
+    // History of order changes
+    //
+    // Based on the date range, all changes registered in the orderbook.
+    //
+    //Future<List<OrderHistory>> v1OrdersHistoryTimeStartTimeEndGet(String timeStart, String timeEnd) async
+    test('test v1OrdersHistoryTimeStartTimeEndGet', () async {
+      // TODO
+    });
+
     // Send new order
     //
     // This request creating new order for the specific exchange.

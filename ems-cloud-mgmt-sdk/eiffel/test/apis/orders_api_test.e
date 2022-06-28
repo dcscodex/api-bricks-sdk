@@ -57,6 +57,23 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
 
+    test_v1_orders_history_time_start_time_end_get
+            -- History of order changes
+            --
+            -- Based on the date range, all changes registered in the orderbook.
+        local
+            l_response: LIST [ORDER_HISTORY]
+            l_time_start: STRING_32
+            l_time_end: STRING_32
+        do
+            -- TODO: Initialize required params.
+            -- l_time_start
+            -- l_time_end
+
+            -- l_response := api.v1_orders_history_time_start_time_end_get(l_time_start, l_time_end)
+            assert ("not_implemented", False)
+        end
+
     test_v1_orders_post
             -- Send new order
             --

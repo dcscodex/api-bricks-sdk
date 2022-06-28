@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+[**v1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -113,6 +114,42 @@ No authorization required
 
 - **Content-Type**: Not Applicable
 - **Accept**: application/json, appliction/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## v1OrdersHistoryTimeStartTimeEndGet
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+
+```bash
+ v1OrdersHistoryTimeStartTimeEndGet time_start=value time_end=value
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeStart** | **string** | Start date | [default to null]
+ **timeEnd** | **string** | End date | [default to null]
+
+### Return type
+
+[**array[OrderHistory]**](OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not Applicable
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

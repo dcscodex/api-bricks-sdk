@@ -7,6 +7,7 @@ doc/Balance.md
 doc/BalanceDataInner.md
 doc/BalancesApi.md
 doc/Fills.md
+doc/MessageError.md
 doc/MessageReject.md
 doc/OrdSide.md
 doc/OrdStatus.md
@@ -15,6 +16,7 @@ doc/OrderCancelAllRequest.md
 doc/OrderCancelSingleRequest.md
 doc/OrderExecutionReport.md
 doc/OrderExecutionReportAllOf.md
+doc/OrderHistory.md
 doc/OrderNewSingleRequest.md
 doc/OrdersApi.md
 doc/Position.md
@@ -39,6 +41,7 @@ lib/auth/oauth.dart
 lib/model/balance.dart
 lib/model/balance_data_inner.dart
 lib/model/fills.dart
+lib/model/message_error.dart
 lib/model/message_reject.dart
 lib/model/ord_side.dart
 lib/model/ord_status.dart
@@ -47,6 +50,7 @@ lib/model/order_cancel_all_request.dart
 lib/model/order_cancel_single_request.dart
 lib/model/order_execution_report.dart
 lib/model/order_execution_report_all_of.dart
+lib/model/order_history.dart
 lib/model/order_new_single_request.dart
 lib/model/position.dart
 lib/model/position_data_inner.dart
@@ -58,6 +62,7 @@ test/balance_data_inner_test.dart
 test/balance_test.dart
 test/balances_api_test.dart
 test/fills_test.dart
+test/message_error_test.dart
 test/message_reject_test.dart
 test/ord_side_test.dart
 test/ord_status_test.dart
@@ -66,6 +71,7 @@ test/order_cancel_all_request_test.dart
 test/order_cancel_single_request_test.dart
 test/order_execution_report_all_of_test.dart
 test/order_execution_report_test.dart
+test/order_history_test.dart
 test/order_new_single_request_test.dart
 test/orders_api_test.dart
 test/position_data_inner_test.dart

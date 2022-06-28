@@ -109,6 +109,18 @@ class OrdersApiTest extends TestCase
     }
 
     /**
+     * Test case for v1OrdersHistoryTimeStartTimeEndGet
+     *
+     * History of order changes.
+     *
+     */
+    public function testV1OrdersHistoryTimeStartTimeEndGet()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for v1OrdersPost
      *
      * Send new order.

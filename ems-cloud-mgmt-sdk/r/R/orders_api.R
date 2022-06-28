@@ -100,6 +100,31 @@
 #' }
 #' }
 #'
+#' \strong{ V1OrdersHistoryTimeStartTimeEndGet } \emph{ History of order changes }
+#' Based on the date range, all changes registered in the orderbook.
+#'
+#' \itemize{
+#' \item \emph{ @param } time_start character
+#' \item \emph{ @param } time_end character
+#' \item \emph{ @returnType } list( \link{OrderHistory} ) \cr
+#'
+#'
+#' \item status code : 200 | The last execution report of the requested order.
+#'
+#' \item return type : array[OrderHistory] 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' \item status code : 400 | Orders log is not configured.
+#'
+#' \item return type : MessageError 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ V1OrdersPost } \emph{ Send new order }
 #' This request creating new order for the specific exchange.
 #'
@@ -198,6 +223,18 @@
 #' api.instance <- OrdersApi$new()
 #'
 #' result <- api.instance$V1OrdersGet(exchange_id=var.exchange_id)
+#'
+#'
+#' ####################  V1OrdersHistoryTimeStartTimeEndGet  ####################
+#'
+#' library(openapi)
+#' var.time_start <- '2022-05-01T00:00:00' # character | Start date
+#' var.time_end <- '2022-05-01T12:00:00' # character | End date
+#'
+#' #History of order changes
+#' api.instance <- OrdersApi$new()
+#'
+#' result <- api.instance$V1OrdersHistoryTimeStartTimeEndGet(var.time_start, var.time_end)
 #'
 #'
 #' ####################  V1OrdersPost  ####################
@@ -393,6 +430,72 @@ OrdersApi <- R6::R6Class(
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(resp, "array[OrderExecutionReport]", loadNamespace("openapi")),
+          error = function(e) {
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserialized_resp_obj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned ", httr::status_code(resp), " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    V1OrdersHistoryTimeStartTimeEndGet = function(time_start, time_end, data_file=NULL, ...) {
+      api_response <- self$V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(time_start, time_end, data_file = data_file, ...)
+      resp <- api_response$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        api_response$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        api_response
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        api_response
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        api_response
+      }
+    },
+
+    V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo = function(time_start, time_end, data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+
+      if (missing(`time_start`)) {
+        stop("Missing required parameter `time_start`.")
+      }
+
+      if (missing(`time_end`)) {
+        stop("Missing required parameter `time_end`.")
+      }
+
+      body <- NULL
+      url_path <- "/v1/orders/history/{time_start}/{time_end}"
+      if (!missing(`time_start`)) {
+        url_path <- gsub(paste0("\\{", "time_start", "\\}"), URLencode(as.character(`time_start`), reserved = TRUE), url_path)
+      }
+
+      if (!missing(`time_end`)) {
+        url_path <- gsub(paste0("\\{", "time_end", "\\}"), URLencode(as.character(`time_end`), reserved = TRUE), url_path)
+      }
+
+
+      resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+            write(httr::content(resp, "text", encoding = "UTF-8", simplifyVector = FALSE), data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(resp, "array[OrderHistory]", loadNamespace("openapi")),
           error = function(e) {
              stop("Failed to deserialize response")
           }

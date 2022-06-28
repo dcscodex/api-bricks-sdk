@@ -15,6 +15,7 @@ import 'package:openapi/src/model/date.dart';
 import 'package:openapi/src/model/balance.dart';
 import 'package:openapi/src/model/balance_data_inner.dart';
 import 'package:openapi/src/model/fills.dart';
+import 'package:openapi/src/model/message_error.dart';
 import 'package:openapi/src/model/message_reject.dart';
 import 'package:openapi/src/model/ord_side.dart';
 import 'package:openapi/src/model/ord_status.dart';
@@ -23,6 +24,7 @@ import 'package:openapi/src/model/order_cancel_all_request.dart';
 import 'package:openapi/src/model/order_cancel_single_request.dart';
 import 'package:openapi/src/model/order_execution_report.dart';
 import 'package:openapi/src/model/order_execution_report_all_of.dart';
+import 'package:openapi/src/model/order_history.dart';
 import 'package:openapi/src/model/order_new_single_request.dart';
 import 'package:openapi/src/model/position.dart';
 import 'package:openapi/src/model/position_data_inner.dart';
@@ -36,6 +38,7 @@ part 'serializers.g.dart';
   Balance,
   BalanceDataInner,
   Fills,
+  MessageError,
   MessageReject,
   OrdSide,
   OrdStatus,
@@ -44,6 +47,7 @@ part 'serializers.g.dart';
   OrderCancelSingleRequest,
   OrderExecutionReport,
   OrderExecutionReportAllOf,
+  OrderHistory,
   OrderNewSingleRequest,
   Position,
   PositionDataInner,
@@ -59,6 +63,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Balance)]),
         () => ListBuilder<Balance>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(OrderHistory)]),
+        () => ListBuilder<OrderHistory>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Position)]),

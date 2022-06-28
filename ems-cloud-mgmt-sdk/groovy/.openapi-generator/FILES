@@ -8,6 +8,7 @@ src/main/groovy/org/openapitools/api/PositionsApi.groovy
 src/main/groovy/org/openapitools/model/Balance.groovy
 src/main/groovy/org/openapitools/model/BalanceDataInner.groovy
 src/main/groovy/org/openapitools/model/Fills.groovy
+src/main/groovy/org/openapitools/model/MessageError.groovy
 src/main/groovy/org/openapitools/model/MessageReject.groovy
 src/main/groovy/org/openapitools/model/OrdSide.groovy
 src/main/groovy/org/openapitools/model/OrdStatus.groovy
@@ -16,6 +17,7 @@ src/main/groovy/org/openapitools/model/OrderCancelAllRequest.groovy
 src/main/groovy/org/openapitools/model/OrderCancelSingleRequest.groovy
 src/main/groovy/org/openapitools/model/OrderExecutionReport.groovy
 src/main/groovy/org/openapitools/model/OrderExecutionReportAllOf.groovy
+src/main/groovy/org/openapitools/model/OrderHistory.groovy
 src/main/groovy/org/openapitools/model/OrderNewSingleRequest.groovy
 src/main/groovy/org/openapitools/model/Position.groovy
 src/main/groovy/org/openapitools/model/PositionDataInner.groovy

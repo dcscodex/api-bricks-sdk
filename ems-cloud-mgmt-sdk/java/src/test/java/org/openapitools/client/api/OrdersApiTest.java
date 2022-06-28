@@ -14,10 +14,12 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.MessageError;
 import org.openapitools.client.model.MessageReject;
 import org.openapitools.client.model.OrderCancelAllRequest;
 import org.openapitools.client.model.OrderCancelSingleRequest;
 import org.openapitools.client.model.OrderExecutionReport;
+import org.openapitools.client.model.OrderHistory;
 import org.openapitools.client.model.OrderNewSingleRequest;
 import org.openapitools.client.model.ValidationError;
 import org.junit.jupiter.api.Disabled;
@@ -75,6 +77,21 @@ public class OrdersApiTest {
     public void v1OrdersGetTest() throws ApiException {
         String exchangeId = null;
         List<OrderExecutionReport> response = api.v1OrdersGet(exchangeId);
+        // TODO: test validations
+    }
+
+    /**
+     * History of order changes
+     *
+     * Based on the date range, all changes registered in the orderbook.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void v1OrdersHistoryTimeStartTimeEndGetTest() throws ApiException {
+        String timeStart = null;
+        String timeEnd = null;
+        List<OrderHistory> response = api.v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd);
         // TODO: test validations
     }
 

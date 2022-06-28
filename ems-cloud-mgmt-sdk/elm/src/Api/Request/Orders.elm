@@ -18,6 +18,7 @@ module Api.Request.Orders exposing
     ( v1OrdersCancelAllPost
     , v1OrdersCancelPost
     , v1OrdersGet
+    , v1OrdersHistoryTimeStartTimeEndGet
     , v1OrdersPost
     , v1OrdersStatusClientOrderIdGet
     )
@@ -73,6 +74,21 @@ v1OrdersGet exchangeId_query =
         []
         Nothing
         (Json.Decode.list Api.Data.orderExecutionReportDecoder)
+
+
+
+{-| Based on the date range, all changes registered in the orderbook.
+-}
+v1OrdersHistoryTimeStartTimeEndGet : String -> String -> Api.Request (List Api.Data.OrderHistory)
+v1OrdersHistoryTimeStartTimeEndGet timeStart_path timeEnd_path =
+    Api.request
+        "GET"
+        "/v1/orders/history/{time_start}/{time_end}"
+        [ ( "timeStart", identity timeStart_path ), ( "timeEnd", identity timeEnd_path ) ]
+        []
+        []
+        Nothing
+        (Json.Decode.list Api.Data.orderHistoryDecoder)
 
 
 

@@ -143,6 +143,14 @@ genFills n =
     <*> arbitraryReducedMaybe n -- fillsPrice :: Maybe Double
     <*> arbitraryReducedMaybe n -- fillsAmount :: Maybe Double
   
+instance Arbitrary MessageError where
+  arbitrary = sized genMessageError
+
+genMessageError :: Int -> Gen MessageError
+genMessageError n =
+  MessageError
+    <$> arbitraryReducedMaybe n -- messageErrorMessage :: Maybe Text
+  
 instance Arbitrary MessageReject where
   arbitrary = sized genMessageReject
 
@@ -215,6 +223,40 @@ genOrderExecutionReportAllOf n =
     <*> arbitraryReducedMaybe n -- orderExecutionReportAllOfStatusHistory :: Maybe [[Text]]
     <*> arbitraryReducedMaybe n -- orderExecutionReportAllOfErrorMessage :: Maybe Text
     <*> arbitraryReducedMaybe n -- orderExecutionReportAllOfFills :: Maybe [Fills]
+  
+instance Arbitrary OrderHistory where
+  arbitrary = sized genOrderHistory
+
+genOrderHistory :: Int -> Gen OrderHistory
+genOrderHistory n =
+  OrderHistory
+    <$> arbitraryReducedMaybe n -- orderHistoryApikey :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryExchangeId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryClientOrderId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistorySymbolIdExchange :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistorySymbolIdCoinapi :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryAmountOrder :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistoryPrice :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistorySide :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistoryOrderType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryTimeInForce :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryExpireTime :: Maybe Date
+    <*> arbitraryReducedMaybe n -- orderHistoryExecInst :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- orderHistoryClientOrderIdFormatExchange :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryExchangeOrderId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryAmountOpen :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistoryAmountFilled :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistoryAvgPx :: Maybe Double
+    <*> arbitraryReducedMaybe n -- orderHistoryStatus :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryStatusHistoryStatus :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- orderHistoryStatusHistoryTime :: Maybe [Date]
+    <*> arbitraryReducedMaybe n -- orderHistoryErrorMessageResult :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryErrorMessageReason :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryErrorMessageMessage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- orderHistoryFillsTime :: Maybe [Date]
+    <*> arbitraryReducedMaybe n -- orderHistoryFillsPrice :: Maybe [Double]
+    <*> arbitraryReducedMaybe n -- orderHistoryFillsAmount :: Maybe [Double]
+    <*> arbitraryReducedMaybe n -- orderHistoryCreatedTime :: Maybe Date
   
 instance Arbitrary OrderNewSingleRequest where
   arbitrary = sized genOrderNewSingleRequest

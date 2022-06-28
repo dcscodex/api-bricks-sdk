@@ -5,10 +5,12 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "MessageError.h"
 #include "MessageReject.h"
 #include "OrderCancelAllRequest.h"
 #include "OrderCancelSingleRequest.h"
 #include "OrderExecutionReport.h"
+#include "OrderHistory.h"
 #include "OrderNewSingleRequest.h"
 #include "ValidationError.h"
 #include "Error.h"
@@ -107,6 +109,35 @@ bool v1OrdersGetSync(char * accessToken,
 bool v1OrdersGetAsync(char * accessToken,
 	std::string exchangeId, 
 	void(* handler)(std::list<OrderExecutionReport>, Error, void* )
+	, void* userData);
+
+
+/*! \brief History of order changes. *Synchronous*
+ *
+ * Based on the date range, all changes registered in the orderbook.
+ * \param timeStart Start date *Required*
+ * \param timeEnd End date *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool v1OrdersHistoryTimeStartTimeEndGetSync(char * accessToken,
+	std::string timeStart, std::string timeEnd, 
+	void(* handler)(std::list<OrderHistory>, Error, void* )
+	, void* userData);
+
+/*! \brief History of order changes. *Asynchronous*
+ *
+ * Based on the date range, all changes registered in the orderbook.
+ * \param timeStart Start date *Required*
+ * \param timeEnd End date *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool v1OrdersHistoryTimeStartTimeEndGetAsync(char * accessToken,
+	std::string timeStart, std::string timeEnd, 
+	void(* handler)(std::list<OrderHistory>, Error, void* )
 	, void* userData);
 
 

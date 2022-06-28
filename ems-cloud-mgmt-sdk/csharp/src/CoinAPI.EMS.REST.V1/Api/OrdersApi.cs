@@ -89,6 +89,29 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <returns>ApiResponse of List<OrderExecutionReport></returns>
         ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo (string exchangeId = default(string));
         /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <returns>List<OrderHistory></returns>
+        List<OrderHistory> V1OrdersHistoryTimeStartTimeEndGet (string timeStart, string timeEnd);
+
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <returns>ApiResponse of List<OrderHistory></returns>
+        ApiResponse<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo (string timeStart, string timeEnd);
+        /// <summary>
         /// Send new order
         /// </summary>
         /// <remarks>
@@ -201,6 +224,31 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (List&lt;OrderExecutionReport&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync (string exchangeId = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of List<OrderHistory></returns>
+        System.Threading.Tasks.Task<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetAsync (string timeStart, string timeEnd, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (List&lt;OrderHistory&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<OrderHistory>>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync (string timeStart, string timeEnd, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Send new order
         /// </summary>
@@ -793,6 +841,153 @@ namespace CoinAPI.EMS.REST.V1.Api
             return new ApiResponse<List<OrderExecutionReport>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (List<OrderExecutionReport>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OrderExecutionReport>)));
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <returns>List<OrderHistory></returns>
+        public List<OrderHistory> V1OrdersHistoryTimeStartTimeEndGet (string timeStart, string timeEnd)
+        {
+             ApiResponse<List<OrderHistory>> localVarResponse = V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(timeStart, timeEnd);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <returns>ApiResponse of List<OrderHistory></returns>
+        public ApiResponse<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo (string timeStart, string timeEnd)
+        {
+            // verify the required parameter 'timeStart' is set
+            if (timeStart == null)
+                throw new ApiException(400, "Missing required parameter 'timeStart' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            // verify the required parameter 'timeEnd' is set
+            if (timeEnd == null)
+                throw new ApiException(400, "Missing required parameter 'timeEnd' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+
+            var localVarPath = "/v1/orders/history/{time_start}/{time_end}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (timeStart != null) localVarPathParams.Add("time_start", this.Configuration.ApiClient.ParameterToString(timeStart)); // path parameter
+            if (timeEnd != null) localVarPathParams.Add("time_end", this.Configuration.ApiClient.ParameterToString(timeEnd)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("V1OrdersHistoryTimeStartTimeEndGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<OrderHistory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<OrderHistory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OrderHistory>)));
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of List<OrderHistory></returns>
+        public async System.Threading.Tasks.Task<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetAsync (string timeStart, string timeEnd, CancellationToken cancellationToken = default(CancellationToken))
+        {
+             ApiResponse<List<OrderHistory>> localVarResponse = await V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync(timeStart, timeEnd, cancellationToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (List&lt;OrderHistory&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<OrderHistory>>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync (string timeStart, string timeEnd, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // verify the required parameter 'timeStart' is set
+            if (timeStart == null)
+                throw new ApiException(400, "Missing required parameter 'timeStart' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            // verify the required parameter 'timeEnd' is set
+            if (timeEnd == null)
+                throw new ApiException(400, "Missing required parameter 'timeEnd' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+
+            var localVarPath = "/v1/orders/history/{time_start}/{time_end}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (timeStart != null) localVarPathParams.Add("time_start", this.Configuration.ApiClient.ParameterToString(timeStart)); // path parameter
+            if (timeEnd != null) localVarPathParams.Add("time_end", this.Configuration.ApiClient.ParameterToString(timeEnd)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType, cancellationToken);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("V1OrdersHistoryTimeStartTimeEndGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<OrderHistory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<OrderHistory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OrderHistory>)));
         }
 
         /// <summary>

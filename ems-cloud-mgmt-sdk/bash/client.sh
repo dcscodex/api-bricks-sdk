@@ -99,6 +99,8 @@ operation_parameters_minimum_occurrences["v1BalancesGet:::exchange_id"]=0
 operation_parameters_minimum_occurrences["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=1
 operation_parameters_minimum_occurrences["v1OrdersCancelPost:::OrderCancelSingleRequest"]=1
 operation_parameters_minimum_occurrences["v1OrdersGet:::exchange_id"]=0
+operation_parameters_minimum_occurrences["v1OrdersHistoryTimeStartTimeEndGet:::time_start"]=1
+operation_parameters_minimum_occurrences["v1OrdersHistoryTimeStartTimeEndGet:::time_end"]=1
 operation_parameters_minimum_occurrences["v1OrdersPost:::OrderNewSingleRequest"]=1
 operation_parameters_minimum_occurrences["v1OrdersStatusClientOrderIdGet:::client_order_id"]=1
 operation_parameters_minimum_occurrences["v1PositionsGet:::exchange_id"]=0
@@ -114,6 +116,8 @@ operation_parameters_maximum_occurrences["v1BalancesGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=0
 operation_parameters_maximum_occurrences["v1OrdersCancelPost:::OrderCancelSingleRequest"]=0
 operation_parameters_maximum_occurrences["v1OrdersGet:::exchange_id"]=0
+operation_parameters_maximum_occurrences["v1OrdersHistoryTimeStartTimeEndGet:::time_start"]=0
+operation_parameters_maximum_occurrences["v1OrdersHistoryTimeStartTimeEndGet:::time_end"]=0
 operation_parameters_maximum_occurrences["v1OrdersPost:::OrderNewSingleRequest"]=0
 operation_parameters_maximum_occurrences["v1OrdersStatusClientOrderIdGet:::client_order_id"]=0
 operation_parameters_maximum_occurrences["v1PositionsGet:::exchange_id"]=0
@@ -126,6 +130,8 @@ operation_parameters_collection_type["v1BalancesGet:::exchange_id"]=""
 operation_parameters_collection_type["v1OrdersCancelAllPost:::OrderCancelAllRequest"]=""
 operation_parameters_collection_type["v1OrdersCancelPost:::OrderCancelSingleRequest"]=""
 operation_parameters_collection_type["v1OrdersGet:::exchange_id"]=""
+operation_parameters_collection_type["v1OrdersHistoryTimeStartTimeEndGet:::time_start"]=""
+operation_parameters_collection_type["v1OrdersHistoryTimeStartTimeEndGet:::time_end"]=""
 operation_parameters_collection_type["v1OrdersPost:::OrderNewSingleRequest"]=""
 operation_parameters_collection_type["v1OrdersStatusClientOrderIdGet:::client_order_id"]=""
 operation_parameters_collection_type["v1PositionsGet:::exchange_id"]=""
@@ -522,6 +528,7 @@ read -r -d '' ops <<EOF
   ${CYAN}v1OrdersCancelAllPost${OFF};Cancel all orders request
   ${CYAN}v1OrdersCancelPost${OFF};Cancel order request
   ${CYAN}v1OrdersGet${OFF};Get open orders
+  ${CYAN}v1OrdersHistoryTimeStartTimeEndGet${OFF};History of order changes
   ${CYAN}v1OrdersPost${OFF};Send new order
   ${CYAN}v1OrdersStatusClientOrderIdGet${OFF};Get order execution report
 EOF
@@ -733,6 +740,27 @@ print_v1OrdersGet_help() {
     echo -e "${result_color_table[${code:0:1}]}  200;Collection of order execution reports.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=490
     echo -e "${result_color_table[${code:0:1}]}  490;Filtered exchange is unreachable.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v1OrdersHistoryTimeStartTimeEndGet operation
+#
+##############################################################################
+print_v1OrdersHistoryTimeStartTimeEndGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1OrdersHistoryTimeStartTimeEndGet - History of order changes${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Based on the date range, all changes registered in the orderbook." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Start date ${YELLOW}Specify as: time_start=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - End date ${YELLOW}Specify as: time_end=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;The last execution report of the requested order.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Orders log is not configured.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
 ##############################################################################
 #
@@ -1032,6 +1060,42 @@ call_v1OrdersGet() {
 
 ##############################################################################
 #
+# Call v1OrdersHistoryTimeStartTimeEndGet operation
+#
+##############################################################################
+call_v1OrdersHistoryTimeStartTimeEndGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(time_start time_end)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=()
+    local path
+
+    if ! path=$(build_request_path "/v1/orders/history/{time_start}/{time_end}" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
 # Call v1OrdersPost operation
 #
 ##############################################################################
@@ -1289,6 +1353,9 @@ case $key in
     v1OrdersGet)
     operation="v1OrdersGet"
     ;;
+    v1OrdersHistoryTimeStartTimeEndGet)
+    operation="v1OrdersHistoryTimeStartTimeEndGet"
+    ;;
     v1OrdersPost)
     operation="v1OrdersPost"
     ;;
@@ -1386,6 +1453,9 @@ case $operation in
     ;;
     v1OrdersGet)
     call_v1OrdersGet
+    ;;
+    v1OrdersHistoryTimeStartTimeEndGet)
+    call_v1OrdersHistoryTimeStartTimeEndGet
     ;;
     v1OrdersPost)
     call_v1OrdersPost

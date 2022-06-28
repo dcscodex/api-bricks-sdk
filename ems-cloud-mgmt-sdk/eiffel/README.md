@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *ORDERS_API* | [**v1_orders_cancel_all_post**](docs/ORDERS_API.md#v1_orders_cancel_all_post) | **Post** /v1/orders/cancel/all | Cancel all orders request
 *ORDERS_API* | [**v1_orders_cancel_post**](docs/ORDERS_API.md#v1_orders_cancel_post) | **Post** /v1/orders/cancel | Cancel order request
 *ORDERS_API* | [**v1_orders_get**](docs/ORDERS_API.md#v1_orders_get) | **Get** /v1/orders | Get open orders
+*ORDERS_API* | [**v1_orders_history_time_start_time_end_get**](docs/ORDERS_API.md#v1_orders_history_time_start_time_end_get) | **Get** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *ORDERS_API* | [**v1_orders_post**](docs/ORDERS_API.md#v1_orders_post) | **Post** /v1/orders | Send new order
 *ORDERS_API* | [**v1_orders_status_client_order_id_get**](docs/ORDERS_API.md#v1_orders_status_client_order_id_get) | **Get** /v1/orders/status/{client_order_id} | Get order execution report
 *POSITIONS_API* | [**v1_positions_get**](docs/POSITIONS_API.md#v1_positions_get) | **Get** /v1/positions | Get open positions
@@ -100,11 +101,13 @@ Class | Method | HTTP request | Description
  - [BALANCE](docs/BALANCE.md)
  - [BALANCE_DATA_INNER](docs/BALANCE_DATA_INNER.md)
  - [FILLS](docs/FILLS.md)
+ - [MESSAGE_ERROR](docs/MESSAGE_ERROR.md)
  - [MESSAGE_REJECT](docs/MESSAGE_REJECT.md)
  - [ORDER_CANCEL_ALL_REQUEST](docs/ORDER_CANCEL_ALL_REQUEST.md)
  - [ORDER_CANCEL_SINGLE_REQUEST](docs/ORDER_CANCEL_SINGLE_REQUEST.md)
  - [ORDER_EXECUTION_REPORT](docs/ORDER_EXECUTION_REPORT.md)
  - [ORDER_EXECUTION_REPORT_ALL_OF](docs/ORDER_EXECUTION_REPORT_ALL_OF.md)
+ - [ORDER_HISTORY](docs/ORDER_HISTORY.md)
  - [ORDER_NEW_SINGLE_REQUEST](docs/ORDER_NEW_SINGLE_REQUEST.md)
  - [ORD_SIDE](docs/ORD_SIDE.md)
  - [ORD_STATUS](docs/ORD_STATUS.md)

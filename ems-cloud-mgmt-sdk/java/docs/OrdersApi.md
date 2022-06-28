@@ -7,6 +7,7 @@ All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 | [**v1OrdersCancelAllPost**](OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request |
 | [**v1OrdersCancelPost**](OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request |
 | [**v1OrdersGet**](OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders |
+| [**v1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes |
 | [**v1OrdersPost**](OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order |
 | [**v1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report |
 
@@ -201,6 +202,71 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Collection of order execution reports. |  -  |
 | **490** | Filtered exchange is unreachable. |  -  |
+
+<a name="v1OrdersHistoryTimeStartTimeEndGet"></a>
+# **v1OrdersHistoryTimeStartTimeEndGet**
+> List&lt;OrderHistory&gt; v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.OrdersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://ems-gateway-aws-eu-central-1-dev.coinapi.io");
+
+    OrdersApi apiInstance = new OrdersApi(defaultClient);
+    String timeStart = "2022-05-01T00:00:00"; // String | Start date
+    String timeEnd = "2022-05-01T12:00:00"; // String | End date
+    try {
+      List<OrderHistory> result = apiInstance.v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling OrdersApi#v1OrdersHistoryTimeStartTimeEndGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **timeStart** | **String**| Start date | |
+| **timeEnd** | **String**| End date | |
+
+### Return type
+
+[**List&lt;OrderHistory&gt;**](OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report of the requested order. |  -  |
+| **400** | Orders log is not configured. |  -  |
 
 <a name="v1OrdersPost"></a>
 # **v1OrdersPost**

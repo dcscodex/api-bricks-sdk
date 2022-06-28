@@ -191,6 +191,7 @@ Class | Method | HTTP request | Description
 *EmsRestApi.OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *EmsRestApi.OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 *EmsRestApi.OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*EmsRestApi.OrdersApi* | [**v1OrdersHistoryTimeStartTimeEndGet**](docs/OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *EmsRestApi.OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 *EmsRestApi.OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *EmsRestApi.PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
@@ -201,6 +202,7 @@ Class | Method | HTTP request | Description
  - [EmsRestApi.Balance](docs/Balance.md)
  - [EmsRestApi.BalanceDataInner](docs/BalanceDataInner.md)
  - [EmsRestApi.Fills](docs/Fills.md)
+ - [EmsRestApi.MessageError](docs/MessageError.md)
  - [EmsRestApi.MessageReject](docs/MessageReject.md)
  - [EmsRestApi.OrdSide](docs/OrdSide.md)
  - [EmsRestApi.OrdStatus](docs/OrdStatus.md)
@@ -209,6 +211,7 @@ Class | Method | HTTP request | Description
  - [EmsRestApi.OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
  - [EmsRestApi.OrderExecutionReport](docs/OrderExecutionReport.md)
  - [EmsRestApi.OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [EmsRestApi.OrderHistory](docs/OrderHistory.md)
  - [EmsRestApi.OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [EmsRestApi.Position](docs/Position.md)
  - [EmsRestApi.PositionDataInner](docs/PositionDataInner.md)

@@ -23,10 +23,12 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.openapitools.client.model.MessageError;
 import org.openapitools.client.model.MessageReject;
 import org.openapitools.client.model.OrderCancelAllRequest;
 import org.openapitools.client.model.OrderCancelSingleRequest;
 import org.openapitools.client.model.OrderExecutionReport;
+import org.openapitools.client.model.OrderHistory;
 import org.openapitools.client.model.OrderNewSingleRequest;
 import org.openapitools.client.model.ValidationError;
 
@@ -421,6 +423,144 @@ public class OrdersApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((List<OrderExecutionReport>) ApiInvoker.deserialize(localVarResponse,  "array", OrderExecutionReport.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * History of order changes
+  * Based on the date range, all changes registered in the orderbook.
+   * @param timeStart Start date
+   * @param timeEnd End date
+   * @return List<OrderHistory>
+  */
+  public List<OrderHistory> v1OrdersHistoryTimeStartTimeEndGet (String timeStart, String timeEnd) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'timeStart' is set
+    if (timeStart == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet",
+        new ApiException(400, "Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet"));
+    }
+    // verify the required parameter 'timeEnd' is set
+    if (timeEnd == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet",
+        new ApiException(400, "Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet"));
+    }
+
+    // create path and map variables
+    String path = "/v1/orders/history/{time_start}/{time_end}".replaceAll("\\{" + "time_start" + "\\}", apiInvoker.escapeString(timeStart.toString())).replaceAll("\\{" + "time_end" + "\\}", apiInvoker.escapeString(timeEnd.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (List<OrderHistory>) ApiInvoker.deserialize(localVarResponse, "array", OrderHistory.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * History of order changes
+   * Based on the date range, all changes registered in the orderbook.
+   * @param timeStart Start date   * @param timeEnd End date
+  */
+  public void v1OrdersHistoryTimeStartTimeEndGet (String timeStart, String timeEnd, final Response.Listener<List<OrderHistory>> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'timeStart' is set
+    if (timeStart == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet",
+        new ApiException(400, "Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet"));
+    }
+    // verify the required parameter 'timeEnd' is set
+    if (timeEnd == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet",
+        new ApiException(400, "Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet"));
+    }
+
+    // create path and map variables
+    String path = "/v1/orders/history/{time_start}/{time_end}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "time_start" + "\\}", apiInvoker.escapeString(timeStart.toString())).replaceAll("\\{" + "time_end" + "\\}", apiInvoker.escapeString(timeEnd.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((List<OrderHistory>) ApiInvoker.deserialize(localVarResponse,  "array", OrderHistory.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

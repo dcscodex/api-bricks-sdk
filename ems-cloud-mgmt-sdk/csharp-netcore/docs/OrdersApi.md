@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**V1OrdersCancelAllPost**](OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**V1OrdersCancelPost**](OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request
 [**V1OrdersGet**](OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders
+[**V1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1ordershistorytimestarttimeendget) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**V1OrdersPost**](OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order
 [**V1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -226,6 +227,80 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Collection of order execution reports. |  -  |
 | **490** | Filtered exchange is unreachable. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="v1ordershistorytimestarttimeendget"></a>
+# **V1OrdersHistoryTimeStartTimeEndGet**
+> List&lt;OrderHistory&gt; V1OrdersHistoryTimeStartTimeEndGet (string timeStart, string timeEnd)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using CoinAPI.EMS.REST.V1.Api;
+using CoinAPI.EMS.REST.V1.Client;
+using CoinAPI.EMS.REST.V1.Model;
+
+namespace Example
+{
+    public class V1OrdersHistoryTimeStartTimeEndGetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
+            var apiInstance = new OrdersApi(config);
+            var timeStart = 2022-05-01T00:00:00;  // string | Start date
+            var timeEnd = 2022-05-01T12:00:00;  // string | End date
+
+            try
+            {
+                // History of order changes
+                List<OrderHistory> result = apiInstance.V1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.V1OrdersHistoryTimeStartTimeEndGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeStart** | **string**| Start date | 
+ **timeEnd** | **string**| End date | 
+
+### Return type
+
+[**List&lt;OrderHistory&gt;**](OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report of the requested order. |  -  |
+| **400** | Orders log is not configured. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

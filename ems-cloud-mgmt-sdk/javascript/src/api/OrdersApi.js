@@ -13,10 +13,12 @@
 
 
 import ApiClient from "../ApiClient";
+import MessageError from '../model/MessageError';
 import MessageReject from '../model/MessageReject';
 import OrderCancelAllRequest from '../model/OrderCancelAllRequest';
 import OrderCancelSingleRequest from '../model/OrderCancelSingleRequest';
 import OrderExecutionReport from '../model/OrderExecutionReport';
+import OrderHistory from '../model/OrderHistory';
 import OrderNewSingleRequest from '../model/OrderNewSingleRequest';
 import ValidationError from '../model/ValidationError';
 
@@ -159,6 +161,55 @@ export default class OrdersApi {
       let returnType = [OrderExecutionReport];
       return this.apiClient.callApi(
         '/v1/orders', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the v1OrdersHistoryTimeStartTimeEndGet operation.
+     * @callback module:api/OrdersApi~v1OrdersHistoryTimeStartTimeEndGetCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/OrderHistory>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * History of order changes
+     * Based on the date range, all changes registered in the orderbook.
+     * @param {String} timeStart Start date
+     * @param {String} timeEnd End date
+     * @param {module:api/OrdersApi~v1OrdersHistoryTimeStartTimeEndGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/OrderHistory>}
+     */
+    v1OrdersHistoryTimeStartTimeEndGet(timeStart, timeEnd, callback) {
+      let postBody = null;
+      // verify the required parameter 'timeStart' is set
+      if (timeStart === undefined || timeStart === null) {
+        throw new Error("Missing the required parameter 'timeStart' when calling v1OrdersHistoryTimeStartTimeEndGet");
+      }
+      // verify the required parameter 'timeEnd' is set
+      if (timeEnd === undefined || timeEnd === null) {
+        throw new Error("Missing the required parameter 'timeEnd' when calling v1OrdersHistoryTimeStartTimeEndGet");
+      }
+
+      let pathParams = {
+        'time_start': timeStart,
+        'time_end': timeEnd
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [OrderHistory];
+      return this.apiClient.callApi(
+        '/v1/orders/history/{time_start}/{time_end}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

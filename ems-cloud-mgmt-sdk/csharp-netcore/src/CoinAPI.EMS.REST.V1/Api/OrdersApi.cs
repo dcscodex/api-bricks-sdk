@@ -97,6 +97,31 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <returns>ApiResponse of List&lt;OrderExecutionReport&gt;</returns>
         ApiResponse<List<OrderExecutionReport>> V1OrdersGetWithHttpInfo(string exchangeId = default(string), int operationIndex = 0);
         /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>List&lt;OrderHistory&gt;</returns>
+        List<OrderHistory> V1OrdersHistoryTimeStartTimeEndGet(string timeStart, string timeEnd, int operationIndex = 0);
+
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of List&lt;OrderHistory&gt;</returns>
+        ApiResponse<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(string timeStart, string timeEnd, int operationIndex = 0);
+        /// <summary>
         /// Send new order
         /// </summary>
         /// <remarks>
@@ -226,6 +251,33 @@ namespace CoinAPI.EMS.REST.V1.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;OrderExecutionReport&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<OrderExecutionReport>>> V1OrdersGetWithHttpInfoAsync(string exchangeId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of List&lt;OrderHistory&gt;</returns>
+        System.Threading.Tasks.Task<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetAsync(string timeStart, string timeEnd, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// History of order changes
+        /// </summary>
+        /// <remarks>
+        /// Based on the date range, all changes registered in the orderbook.
+        /// </remarks>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (List&lt;OrderHistory&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<OrderHistory>>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync(string timeStart, string timeEnd, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send new order
         /// </summary>
@@ -823,6 +875,168 @@ namespace CoinAPI.EMS.REST.V1.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("V1OrdersGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>List&lt;OrderHistory&gt;</returns>
+        public List<OrderHistory> V1OrdersHistoryTimeStartTimeEndGet(string timeStart, string timeEnd, int operationIndex = 0)
+        {
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderHistory>> localVarResponse = V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(timeStart, timeEnd);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of List&lt;OrderHistory&gt;</returns>
+        public CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(string timeStart, string timeEnd, int operationIndex = 0)
+        {
+            // verify the required parameter 'timeStart' is set
+            if (timeStart == null)
+            {
+                throw new CoinAPI.EMS.REST.V1.Client.ApiException(400, "Missing required parameter 'timeStart' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            }
+
+            // verify the required parameter 'timeEnd' is set
+            if (timeEnd == null)
+            {
+                throw new CoinAPI.EMS.REST.V1.Client.ApiException(400, "Missing required parameter 'timeEnd' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            }
+
+            CoinAPI.EMS.REST.V1.Client.RequestOptions localVarRequestOptions = new CoinAPI.EMS.REST.V1.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = CoinAPI.EMS.REST.V1.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = CoinAPI.EMS.REST.V1.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("time_start", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(timeStart)); // path parameter
+            localVarRequestOptions.PathParameters.Add("time_end", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(timeEnd)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersHistoryTimeStartTimeEndGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<List<OrderHistory>>("/v1/orders/history/{time_start}/{time_end}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("V1OrdersHistoryTimeStartTimeEndGet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of List&lt;OrderHistory&gt;</returns>
+        public async System.Threading.Tasks.Task<List<OrderHistory>> V1OrdersHistoryTimeStartTimeEndGetAsync(string timeStart, string timeEnd, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderHistory>> localVarResponse = await V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync(timeStart, timeEnd, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// History of order changes Based on the date range, all changes registered in the orderbook.
+        /// </summary>
+        /// <exception cref="CoinAPI.EMS.REST.V1.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timeStart">Start date</param>
+        /// <param name="timeEnd">End date</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (List&lt;OrderHistory&gt;)</returns>
+        public async System.Threading.Tasks.Task<CoinAPI.EMS.REST.V1.Client.ApiResponse<List<OrderHistory>>> V1OrdersHistoryTimeStartTimeEndGetWithHttpInfoAsync(string timeStart, string timeEnd, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'timeStart' is set
+            if (timeStart == null)
+            {
+                throw new CoinAPI.EMS.REST.V1.Client.ApiException(400, "Missing required parameter 'timeStart' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            }
+
+            // verify the required parameter 'timeEnd' is set
+            if (timeEnd == null)
+            {
+                throw new CoinAPI.EMS.REST.V1.Client.ApiException(400, "Missing required parameter 'timeEnd' when calling OrdersApi->V1OrdersHistoryTimeStartTimeEndGet");
+            }
+
+
+            CoinAPI.EMS.REST.V1.Client.RequestOptions localVarRequestOptions = new CoinAPI.EMS.REST.V1.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = CoinAPI.EMS.REST.V1.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = CoinAPI.EMS.REST.V1.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("time_start", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(timeStart)); // path parameter
+            localVarRequestOptions.PathParameters.Add("time_end", CoinAPI.EMS.REST.V1.Client.ClientUtils.ParameterToString(timeEnd)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.V1OrdersHistoryTimeStartTimeEndGet";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<OrderHistory>>("/v1/orders/history/{time_start}/{time_end}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("V1OrdersHistoryTimeStartTimeEndGet", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

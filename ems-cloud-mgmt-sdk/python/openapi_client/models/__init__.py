@@ -14,6 +14,7 @@ from openapi_client.model.balance_data_inner import BalanceDataInner
 from openapi_client.model.balances import Balances
 from openapi_client.model.exec_inst import ExecInst
 from openapi_client.model.fills import Fills
+from openapi_client.model.message_error import MessageError
 from openapi_client.model.message_reject import MessageReject
 from openapi_client.model.ord_side import OrdSide
 from openapi_client.model.ord_status import OrdStatus
@@ -23,6 +24,8 @@ from openapi_client.model.order_cancel_single_request import OrderCancelSingleRe
 from openapi_client.model.order_execution_report import OrderExecutionReport
 from openapi_client.model.order_execution_report_all_of import OrderExecutionReportAllOf
 from openapi_client.model.order_execution_reports import OrderExecutionReports
+from openapi_client.model.order_history import OrderHistory
+from openapi_client.model.order_history_array import OrderHistoryArray
 from openapi_client.model.order_new_single_request import OrderNewSingleRequest
 from openapi_client.model.position import Position
 from openapi_client.model.position_data_inner import PositionDataInner

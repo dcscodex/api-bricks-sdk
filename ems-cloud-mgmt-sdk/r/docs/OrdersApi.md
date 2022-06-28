@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**V1OrdersCancelAllPost**](OrdersApi.md#V1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**V1OrdersCancelPost**](OrdersApi.md#V1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 [**V1OrdersGet**](OrdersApi.md#V1OrdersGet) | **GET** /v1/orders | Get open orders
+[**V1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#V1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**V1OrdersPost**](OrdersApi.md#V1OrdersPost) | **POST** /v1/orders | Send new order
 [**V1OrdersStatusClientOrderIdGet**](OrdersApi.md#V1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -144,6 +145,52 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Collection of order execution reports. |  -  |
 | **490** | Filtered exchange is unreachable. |  -  |
+
+# **V1OrdersHistoryTimeStartTimeEndGet**
+> array[OrderHistory] V1OrdersHistoryTimeStartTimeEndGet(time_start, time_end)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+```R
+library(openapi)
+
+var.time_start <- '2022-05-01T00:00:00' # character | Start date
+var.time_end <- '2022-05-01T12:00:00' # character | End date
+
+#History of order changes
+api.instance <- OrdersApi$new()
+result <- api.instance$V1OrdersHistoryTimeStartTimeEndGet(var.time_start, var.time_end)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **time_start** | **character**| Start date | 
+ **time_end** | **character**| End date | 
+
+### Return type
+
+[**array[OrderHistory]**](OrderHistory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The last execution report of the requested order. |  -  |
+| **400** | Orders log is not configured. |  -  |
 
 # **V1OrdersPost**
 > OrderExecutionReport V1OrdersPost(order_new_single_request)

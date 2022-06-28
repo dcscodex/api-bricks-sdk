@@ -196,6 +196,8 @@ class ApiClient {
           return BalanceDataInner.fromJson(value);
         case 'Fills':
           return Fills.fromJson(value);
+        case 'MessageError':
+          return MessageError.fromJson(value);
         case 'MessageReject':
           return MessageReject.fromJson(value);
         case 'OrdSide':
@@ -212,6 +214,8 @@ class ApiClient {
           return OrderExecutionReport.fromJson(value);
         case 'OrderExecutionReportAllOf':
           return OrderExecutionReportAllOf.fromJson(value);
+        case 'OrderHistory':
+          return OrderHistory.fromJson(value);
         case 'OrderNewSingleRequest':
           return OrderNewSingleRequest.fromJson(value);
         case 'Position':

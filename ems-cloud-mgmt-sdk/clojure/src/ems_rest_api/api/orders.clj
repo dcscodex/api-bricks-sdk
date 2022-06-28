@@ -6,6 +6,7 @@
             [ems-rest-api.specs.time-in-force :refer :all]
             [ems-rest-api.specs.position-data-inner :refer :all]
             [ems-rest-api.specs.validation-error :refer :all]
+            [ems-rest-api.specs.message-error :refer :all]
             [ems-rest-api.specs.balance-data-inner :refer :all]
             [ems-rest-api.specs.reject-reason :refer :all]
             [ems-rest-api.specs.order-cancel-single-request :refer :all]
@@ -17,6 +18,7 @@
             [ems-rest-api.specs.message-reject :refer :all]
             [ems-rest-api.specs.order-cancel-all-request :refer :all]
             [ems-rest-api.specs.position :refer :all]
+            [ems-rest-api.specs.order-history :refer :all]
             [ems-rest-api.specs.order-new-single-request :refer :all]
             [ems-rest-api.specs.ord-side :refer :all]
             [ems-rest-api.specs.fills :refer :all]
@@ -97,6 +99,30 @@
      (if (:decode-models *api-context*)
         (st/decode (s/coll-of order-execution-report-spec) res st/string-transformer)
         res))))
+
+
+(defn-spec v1-orders-history-time-start-time-end-get-with-http-info any?
+  "History of order changes
+  Based on the date range, all changes registered in the orderbook."
+  [time_start string?, time_end string?]
+  (check-required-params time_start time_end)
+  (call-api "/v1/orders/history/{time_start}/{time_end}" :get
+            {:path-params   {"time_start" time_start "time_end" time_end }
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    []}))
+
+(defn-spec v1-orders-history-time-start-time-end-get (s/coll-of order-history-spec)
+  "History of order changes
+  Based on the date range, all changes registered in the orderbook."
+  [time_start string?, time_end string?]
+  (let [res (:data (v1-orders-history-time-start-time-end-get-with-http-info time_start time_end))]
+    (if (:decode-models *api-context*)
+       (st/decode (s/coll-of order-history-spec) res st/string-transformer)
+       res)))
 
 
 (defn-spec v1-orders-post-with-http-info any?

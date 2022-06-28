@@ -9,6 +9,7 @@ docs/Balances.md
 docs/BalancesApi.md
 docs/ExecInst.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -18,6 +19,8 @@ docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
 docs/OrderExecutionReports.md
+docs/OrderHistory.md
+docs/OrderHistoryArray.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -43,6 +46,7 @@ openapi_client/model/balance_data_inner.py
 openapi_client/model/balances.py
 openapi_client/model/exec_inst.py
 openapi_client/model/fills.py
+openapi_client/model/message_error.py
 openapi_client/model/message_reject.py
 openapi_client/model/ord_side.py
 openapi_client/model/ord_status.py
@@ -52,6 +56,8 @@ openapi_client/model/order_cancel_single_request.py
 openapi_client/model/order_execution_report.py
 openapi_client/model/order_execution_report_all_of.py
 openapi_client/model/order_execution_reports.py
+openapi_client/model/order_history.py
+openapi_client/model/order_history_array.py
 openapi_client/model/order_new_single_request.py
 openapi_client/model/position.py
 openapi_client/model/position_data_inner.py
@@ -73,6 +79,7 @@ test/test_balances.py
 test/test_balances_api.py
 test/test_exec_inst.py
 test/test_fills.py
+test/test_message_error.py
 test/test_message_reject.py
 test/test_ord_side.py
 test/test_ord_status.py
@@ -82,6 +89,8 @@ test/test_order_cancel_single_request.py
 test/test_order_execution_report.py
 test/test_order_execution_report_all_of.py
 test/test_order_execution_reports.py
+test/test_order_history.py
+test/test_order_history_array.py
 test/test_order_new_single_request.py
 test/test_orders_api.py
 test/test_position.py

@@ -19,6 +19,8 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { MessageError } from '../model/messageError';
+// @ts-ignore
 import { MessageReject } from '../model/messageReject';
 // @ts-ignore
 import { OrderCancelAllRequest } from '../model/orderCancelAllRequest';
@@ -26,6 +28,8 @@ import { OrderCancelAllRequest } from '../model/orderCancelAllRequest';
 import { OrderCancelSingleRequest } from '../model/orderCancelSingleRequest';
 // @ts-ignore
 import { OrderExecutionReport } from '../model/orderExecutionReport';
+// @ts-ignore
+import { OrderHistory } from '../model/orderHistory';
 // @ts-ignore
 import { OrderNewSingleRequest } from '../model/orderNewSingleRequest';
 // @ts-ignore
@@ -288,6 +292,68 @@ export class OrdersService {
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * History of order changes
+     * Based on the date range, all changes registered in the orderbook.
+     * @param timeStart Start date
+     * @param timeEnd End date
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<OrderHistory>>;
+    public v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<OrderHistory>>>;
+    public v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<OrderHistory>>>;
+    public v1OrdersHistoryTimeStartTimeEndGet(timeStart: string, timeEnd: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (timeStart === null || timeStart === undefined) {
+            throw new Error('Required parameter timeStart was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+        if (timeEnd === null || timeEnd === undefined) {
+            throw new Error('Required parameter timeEnd was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        return this.httpClient.get<Array<OrderHistory>>(`${this.configuration.basePath}/v1/orders/history/${encodeURIComponent(String(timeStart))}/${encodeURIComponent(String(timeEnd))}`,
+            {
+                context: localVarHttpContext,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

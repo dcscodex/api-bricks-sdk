@@ -7,6 +7,7 @@ docs/Balance.md
 docs/BalanceDataInner.md
 docs/BalancesApi.md
 docs/Fills.md
+docs/MessageError.md
 docs/MessageReject.md
 docs/OrdSide.md
 docs/OrdStatus.md
@@ -15,6 +16,7 @@ docs/OrderCancelAllRequest.md
 docs/OrderCancelSingleRequest.md
 docs/OrderExecutionReport.md
 docs/OrderExecutionReportAllOf.md
+docs/OrderHistory.md
 docs/OrderNewSingleRequest.md
 docs/OrdersApi.md
 docs/Position.md
@@ -31,6 +33,7 @@ lib/WWW/OpenAPIClient/Configuration.pm
 lib/WWW/OpenAPIClient/Object/Balance.pm
 lib/WWW/OpenAPIClient/Object/BalanceDataInner.pm
 lib/WWW/OpenAPIClient/Object/Fills.pm
+lib/WWW/OpenAPIClient/Object/MessageError.pm
 lib/WWW/OpenAPIClient/Object/MessageReject.pm
 lib/WWW/OpenAPIClient/Object/OrdSide.pm
 lib/WWW/OpenAPIClient/Object/OrdStatus.pm
@@ -39,6 +42,7 @@ lib/WWW/OpenAPIClient/Object/OrderCancelAllRequest.pm
 lib/WWW/OpenAPIClient/Object/OrderCancelSingleRequest.pm
 lib/WWW/OpenAPIClient/Object/OrderExecutionReport.pm
 lib/WWW/OpenAPIClient/Object/OrderExecutionReportAllOf.pm
+lib/WWW/OpenAPIClient/Object/OrderHistory.pm
 lib/WWW/OpenAPIClient/Object/OrderNewSingleRequest.pm
 lib/WWW/OpenAPIClient/Object/Position.pm
 lib/WWW/OpenAPIClient/Object/PositionDataInner.pm
@@ -53,6 +57,7 @@ t/BalanceDataInnerTest.t
 t/BalanceTest.t
 t/BalancesApiTest.t
 t/FillsTest.t
+t/MessageErrorTest.t
 t/MessageRejectTest.t
 t/OrdSideTest.t
 t/OrdStatusTest.t
@@ -61,6 +66,7 @@ t/OrderCancelAllRequestTest.t
 t/OrderCancelSingleRequestTest.t
 t/OrderExecutionReportAllOfTest.t
 t/OrderExecutionReportTest.t
+t/OrderHistoryTest.t
 t/OrderNewSingleRequestTest.t
 t/OrdersApiTest.t
 t/PositionDataInnerTest.t

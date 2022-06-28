@@ -14,6 +14,62 @@ package .Models is
    pragma Style_Checks ("-mr");
 
 
+   --  ------------------------------
+   --  Order history
+   --  ------------------------------
+   type OrderHistory_Type is
+     record
+       Apikey : Swagger.Nullable_UString;
+       Exchange_Id : Swagger.Nullable_UString;
+       Client_Order_Id : Swagger.Nullable_UString;
+       Symbol_Id_Exchange : Swagger.Nullable_UString;
+       Symbol_Id_Coinapi : Swagger.Nullable_UString;
+       Amount_Order : Swagger.Number;
+       Price : Swagger.Number;
+       Side : Swagger.Number;
+       Order_Type : Swagger.Nullable_UString;
+       Time_In_Force : Swagger.Nullable_UString;
+       Expire_Time : Swagger.Nullable_Date;
+       Exec_Inst : Swagger.UString_Vectors.Vector;
+       Client_Order_Id_Format_Exchange : Swagger.Nullable_UString;
+       Exchange_Order_Id : Swagger.Nullable_UString;
+       Amount_Open : Swagger.Number;
+       Amount_Filled : Swagger.Number;
+       Avg_Px : Swagger.Number;
+       Status : Swagger.Nullable_UString;
+       Status_History_Status : Swagger.UString_Vectors.Vector;
+       Status_History_Time : Swagger.Date_Vectors.Vector;
+       Error_Message_Result : Swagger.Nullable_UString;
+       Error_Message_Reason : Swagger.Nullable_UString;
+       Error_Message_Message : Swagger.Nullable_UString;
+       Fills_Time : Swagger.Date_Vectors.Vector;
+       Fills_Price : Swagger.Number_Vectors.Vector;
+       Fills_Amount : Swagger.Number_Vectors.Vector;
+       Created_Time : Swagger.Nullable_Date;
+     end record;
+
+   package OrderHistory_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => OrderHistory_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderHistory_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderHistory_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OrderHistory_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OrderHistory_Type_Vectors.Vector);
+
+
+
 
    type RejectReason_Type is
      record
@@ -425,6 +481,36 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : out OrderExecutionReportAllOf_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  MessageError object.
+   --  ------------------------------
+   type MessageError_Type is
+     record
+       Message : Swagger.Nullable_UString;
+     end record;
+
+   package MessageError_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => MessageError_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MessageError_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MessageError_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MessageError_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MessageError_Type_Vectors.Vector);
 
 
 

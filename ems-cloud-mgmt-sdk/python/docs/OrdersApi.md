@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**v1_orders_cancel_all_post**](OrdersApi.md#v1_orders_cancel_all_post) | **POST** /v1/orders/cancel/all | Cancel all orders request
 [**v1_orders_cancel_post**](OrdersApi.md#v1_orders_cancel_post) | **POST** /v1/orders/cancel | Cancel order request
 [**v1_orders_get**](OrdersApi.md#v1_orders_get) | **GET** /v1/orders | Get open orders
+[**v1_orders_history_time_start_time_end_get**](OrdersApi.md#v1_orders_history_time_start_time_end_get) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 [**v1_orders_post**](OrdersApi.md#v1_orders_post) | **POST** /v1/orders | Send new order
 [**v1_orders_status_client_order_id_get**](OrdersApi.md#v1_orders_status_client_order_id_get) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 
@@ -227,6 +228,77 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | Collection of order execution reports. |  -  |
 **490** | Filtered exchange is unreachable. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_orders_history_time_start_time_end_get**
+> OrderHistoryArray v1_orders_history_time_start_time_end_get(time_start, time_end)
+
+History of order changes
+
+Based on the date range, all changes registered in the orderbook.
+
+### Example
+
+
+```python
+import time
+import openapi_client
+from openapi_client.api import orders_api
+from openapi_client.model.order_history_array import OrderHistoryArray
+from openapi_client.model.message_error import MessageError
+from pprint import pprint
+# Defining the host is optional and defaults to https://ems-gateway-aws-eu-central-1-dev.coinapi.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io"
+)
+
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = orders_api.OrdersApi(api_client)
+    time_start = "2022-05-01T00:00:00" # str | Start date
+    time_end = "2022-05-01T12:00:00" # str | End date
+
+    # example passing only required values which don't have defaults set
+    try:
+        # History of order changes
+        api_response = api_instance.v1_orders_history_time_start_time_end_get(time_start, time_end)
+        pprint(api_response)
+    except openapi_client.ApiException as e:
+        print("Exception when calling OrdersApi->v1_orders_history_time_start_time_end_get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **time_start** | **str**| Start date |
+ **time_end** | **str**| End date |
+
+### Return type
+
+[**OrderHistoryArray**](OrderHistoryArray.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The last execution report of the requested order. |  -  |
+**400** | Orders log is not configured. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

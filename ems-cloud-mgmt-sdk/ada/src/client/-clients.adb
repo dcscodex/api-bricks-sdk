@@ -89,6 +89,25 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end V_1Orders_Get;
 
+   --  History of order changes
+   --  Based on the date range, all changes registered in the orderbook.
+   procedure V_1Orders_History_Time_Start_Time_End_Get
+      (Client : in out Client_Type;
+       Time_Start : in Swagger.UString;
+       Time_End : in Swagger.UString;
+       Result : out .Models.OrderHistory_Type_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+
+      URI.Set_Path ("/v1/orders/history/{time_start}/{time_end}");
+      URI.Set_Path_Param ("time_start", Time_Start);
+      URI.Set_Path_Param ("time_end", Time_End);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_1Orders_History_Time_Start_Time_End_Get;
+
    --  Send new order
    --  This request creating new order for the specific exchange.
    procedure V_1Orders_Post

@@ -180,6 +180,7 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**v1OrdersCancelAllPost**](docs/OrdersApi.md#v1OrdersCancelAllPost) | **POST** /v1/orders/cancel/all | Cancel all orders request
 *OrdersApi* | [**v1OrdersCancelPost**](docs/OrdersApi.md#v1OrdersCancelPost) | **POST** /v1/orders/cancel | Cancel order request
 *OrdersApi* | [**v1OrdersGet**](docs/OrdersApi.md#v1OrdersGet) | **GET** /v1/orders | Get open orders
+*OrdersApi* | [**v1OrdersHistoryTimeStartTimeEndGet**](docs/OrdersApi.md#v1OrdersHistoryTimeStartTimeEndGet) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
 *OrdersApi* | [**v1OrdersPost**](docs/OrdersApi.md#v1OrdersPost) | **POST** /v1/orders | Send new order
 *OrdersApi* | [**v1OrdersStatusClientOrderIdGet**](docs/OrdersApi.md#v1OrdersStatusClientOrderIdGet) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
 *PositionsApi* | [**v1PositionsGet**](docs/PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
@@ -190,6 +191,7 @@ Class | Method | HTTP request | Description
  - [Balance](docs/Balance.md)
  - [BalanceDataInner](docs/BalanceDataInner.md)
  - [Fills](docs/Fills.md)
+ - [MessageError](docs/MessageError.md)
  - [MessageReject](docs/MessageReject.md)
  - [OrdSide](docs/OrdSide.md)
  - [OrdStatus](docs/OrdStatus.md)
@@ -198,6 +200,7 @@ Class | Method | HTTP request | Description
  - [OrderCancelSingleRequest](docs/OrderCancelSingleRequest.md)
  - [OrderExecutionReport](docs/OrderExecutionReport.md)
  - [OrderExecutionReportAllOf](docs/OrderExecutionReportAllOf.md)
+ - [OrderHistory](docs/OrderHistory.md)
  - [OrderNewSingleRequest](docs/OrderNewSingleRequest.md)
  - [Position](docs/Position.md)
  - [PositionDataInner](docs/PositionDataInner.md)

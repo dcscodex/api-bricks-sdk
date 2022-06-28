@@ -55,6 +55,8 @@ Method | HTTP request | Description
 *v1OrdersCancelPostASync* | *POST* /v1/orders/cancel | Cancel order request.
 *v1OrdersGetSync* | *GET* /v1/orders | Get open orders.
 *v1OrdersGetASync* | *GET* /v1/orders | Get open orders.
+*v1OrdersHistoryTimeStartTimeEndGetSync* | *GET* /v1/orders/history/{time_start}/{time_end} | History of order changes.
+*v1OrdersHistoryTimeStartTimeEndGetASync* | *GET* /v1/orders/history/{time_start}/{time_end} | History of order changes.
 *v1OrdersPostSync* | *POST* /v1/orders | Send new order.
 *v1OrdersPostASync* | *POST* /v1/orders | Send new order.
 *v1OrdersStatusClientOrderIdGetSync* | *GET* /v1/orders/status/{client_order_id} | Get order execution report.
@@ -74,6 +76,7 @@ Class | Description
  *Balance* | 
  *Balance_data_inner* | 
  *Fills* | 
+ *MessageError* | 
  *MessageReject* | 
  *OrdSide* | Side of order. 
  *OrdStatus* | Order statuses and the lifecycle are documented in the separate section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a> 
@@ -82,6 +85,7 @@ Class | Description
  *OrderCancelSingleRequest* | Cancel single order request object.
  *OrderExecutionReport* | The order execution report object.
  *OrderExecutionReport_allOf* | The order execution report message.
+ *OrderHistory* | 
  *OrderNewSingleRequest* | The new order message.
  *Position* | 
  *Position_data_inner* | The Position object.

@@ -9,6 +9,7 @@ src/ems_rest_api/core.clj
 src/ems_rest_api/specs/balance.clj
 src/ems_rest_api/specs/balance_data_inner.clj
 src/ems_rest_api/specs/fills.clj
+src/ems_rest_api/specs/message_error.clj
 src/ems_rest_api/specs/message_reject.clj
 src/ems_rest_api/specs/ord_side.clj
 src/ems_rest_api/specs/ord_status.clj
@@ -17,6 +18,7 @@ src/ems_rest_api/specs/order_cancel_all_request.clj
 src/ems_rest_api/specs/order_cancel_single_request.clj
 src/ems_rest_api/specs/order_execution_report.clj
 src/ems_rest_api/specs/order_execution_report_all_of.clj
+src/ems_rest_api/specs/order_history.clj
 src/ems_rest_api/specs/order_new_single_request.clj
 src/ems_rest_api/specs/position.clj
 src/ems_rest_api/specs/position_data_inner.clj

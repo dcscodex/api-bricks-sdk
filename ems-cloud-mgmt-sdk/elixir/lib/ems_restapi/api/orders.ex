@@ -101,6 +101,34 @@ defmodule EMS-RESTAPI.Api.Orders do
   end
 
   @doc """
+  History of order changes
+  Based on the date range, all changes registered in the orderbook.
+
+  ## Parameters
+
+  - connection (EMS-RESTAPI.Connection): Connection to server
+  - time_start (String.t): Start date
+  - time_end (String.t): End date
+  - opts (KeywordList): [optional] Optional parameters
+  ## Returns
+
+  {:ok, [%OrderHistory{}, ...]} on success
+  {:error, Tesla.Env.t} on failure
+  """
+  @spec v1_orders_history_time_start_time_end_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, EMS-RESTAPI.Model.MessageError.t} | {:ok, list(EMS-RESTAPI.Model.OrderHistory.t)} | {:error, Tesla.Env.t}
+  def v1_orders_history_time_start_time_end_get(connection, time_start, time_end, _opts \\ []) do
+    %{}
+    |> method(:get)
+    |> url("/v1/orders/history/#{time_start}/#{time_end}")
+    |> Enum.into([])
+    |> (&Connection.request(connection, &1)).()
+    |> evaluate_response([
+      { 200, [%EMS-RESTAPI.Model.OrderHistory{}]},
+      { 400, %EMS-RESTAPI.Model.MessageError{}}
+    ])
+  end
+
+  @doc """
   Send new order
   This request creating new order for the specific exchange.
 

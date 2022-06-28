@@ -1,6 +1,7 @@
 export * from './Balance';
 export * from './BalanceDataInner';
 export * from './Fills';
+export * from './MessageError';
 export * from './MessageReject';
 export * from './OrdSide';
 export * from './OrdStatus';
@@ -9,6 +10,7 @@ export * from './OrderCancelAllRequest';
 export * from './OrderCancelSingleRequest';
 export * from './OrderExecutionReport';
 export * from './OrderExecutionReportAllOf';
+export * from './OrderHistory';
 export * from './OrderNewSingleRequest';
 export * from './Position';
 export * from './PositionDataInner';

@@ -15,10 +15,12 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { MessageError } from '../model/messageError';
 import { MessageReject } from '../model/messageReject';
 import { OrderCancelAllRequest } from '../model/orderCancelAllRequest';
 import { OrderCancelSingleRequest } from '../model/orderCancelSingleRequest';
 import { OrderExecutionReport } from '../model/orderExecutionReport';
+import { OrderHistory } from '../model/orderHistory';
 import { OrderNewSingleRequest } from '../model/orderNewSingleRequest';
 import { ValidationError } from '../model/validationError';
 
@@ -287,6 +289,82 @@ export class OrdersApi {
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             body = ObjectSerializer.deserialize(body, "Array<OrderExecutionReport>");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Based on the date range, all changes registered in the orderbook.
+     * @summary History of order changes
+     * @param timeStart Start date
+     * @param timeEnd End date
+     */
+    public async v1OrdersHistoryTimeStartTimeEndGet (timeStart: string, timeEnd: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<OrderHistory>;  }> {
+        const localVarPath = this.basePath + '/v1/orders/history/{time_start}/{time_end}'
+            .replace('{' + 'time_start' + '}', encodeURIComponent(String(timeStart)))
+            .replace('{' + 'time_end' + '}', encodeURIComponent(String(timeEnd)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'timeStart' is not null or undefined
+        if (timeStart === null || timeStart === undefined) {
+            throw new Error('Required parameter timeStart was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+
+        // verify required parameter 'timeEnd' is not null or undefined
+        if (timeEnd === null || timeEnd === undefined) {
+            throw new Error('Required parameter timeEnd was null or undefined when calling v1OrdersHistoryTimeStartTimeEndGet.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Array<OrderHistory>;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "Array<OrderHistory>");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

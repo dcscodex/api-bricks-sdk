@@ -5,10 +5,12 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/message_error.h"
 #include "../model/message_reject.h"
 #include "../model/order_cancel_all_request.h"
 #include "../model/order_cancel_single_request.h"
 #include "../model/order_execution_report.h"
+#include "../model/order_history.h"
 #include "../model/order_new_single_request.h"
 #include "../model/validation_error.h"
 
@@ -35,6 +37,14 @@ OrdersAPI_v1OrdersCancelPost(apiClient_t *apiClient, order_cancel_single_request
 //
 list_t*
 OrdersAPI_v1OrdersGet(apiClient_t *apiClient, char * exchange_id );
+
+
+// History of order changes
+//
+// Based on the date range, all changes registered in the orderbook.
+//
+list_t*
+OrdersAPI_v1OrdersHistoryTimeStartTimeEndGet(apiClient_t *apiClient, char * time_start , char * time_end );
 
 
 // Send new order

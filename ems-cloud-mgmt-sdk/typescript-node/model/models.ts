@@ -3,6 +3,7 @@ import localVarRequest from 'request';
 export * from './balance';
 export * from './balanceDataInner';
 export * from './fills';
+export * from './messageError';
 export * from './messageReject';
 export * from './ordSide';
 export * from './ordStatus';
@@ -11,6 +12,7 @@ export * from './orderCancelAllRequest';
 export * from './orderCancelSingleRequest';
 export * from './orderExecutionReport';
 export * from './orderExecutionReportAllOf';
+export * from './orderHistory';
 export * from './orderNewSingleRequest';
 export * from './position';
 export * from './positionDataInner';
@@ -34,6 +36,7 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 import { Balance } from './balance';
 import { BalanceDataInner } from './balanceDataInner';
 import { Fills } from './fills';
+import { MessageError } from './messageError';
 import { MessageReject } from './messageReject';
 import { OrdSide } from './ordSide';
 import { OrdStatus } from './ordStatus';
@@ -42,6 +45,7 @@ import { OrderCancelAllRequest } from './orderCancelAllRequest';
 import { OrderCancelSingleRequest } from './orderCancelSingleRequest';
 import { OrderExecutionReport } from './orderExecutionReport';
 import { OrderExecutionReportAllOf } from './orderExecutionReportAllOf';
+import { OrderHistory } from './orderHistory';
 import { OrderNewSingleRequest } from './orderNewSingleRequest';
 import { Position } from './position';
 import { PositionDataInner } from './positionDataInner';
@@ -76,11 +80,13 @@ let typeMap: {[index: string]: any} = {
     "Balance": Balance,
     "BalanceDataInner": BalanceDataInner,
     "Fills": Fills,
+    "MessageError": MessageError,
     "MessageReject": MessageReject,
     "OrderCancelAllRequest": OrderCancelAllRequest,
     "OrderCancelSingleRequest": OrderCancelSingleRequest,
     "OrderExecutionReport": OrderExecutionReport,
     "OrderExecutionReportAllOf": OrderExecutionReportAllOf,
+    "OrderHistory": OrderHistory,
     "OrderNewSingleRequest": OrderNewSingleRequest,
     "Position": Position,
     "PositionDataInner": PositionDataInner,

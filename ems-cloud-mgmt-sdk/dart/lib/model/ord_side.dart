@@ -67,7 +67,7 @@ class OrdSideTypeTransformer {
   /// and users are still using an old app with the old code.
   OrdSide? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'BUY': return OrdSide.BUY;
         case r'SELL': return OrdSide.SELL;
         default:

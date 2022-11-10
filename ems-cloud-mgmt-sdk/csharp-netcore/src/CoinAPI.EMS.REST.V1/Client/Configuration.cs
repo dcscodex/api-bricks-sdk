@@ -18,6 +18,7 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Net.Http;
 
 namespace CoinAPI.EMS.REST.V1.Client
 {
@@ -114,7 +115,7 @@ namespace CoinAPI.EMS.REST.V1.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "OpenAPI-Generator/1.0.0/csharp";
+            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/1.0.0/csharp");
             BasePath = "https://ems-gateway-aws-eu-central-1-dev.coinapi.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();

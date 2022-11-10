@@ -81,7 +81,7 @@ class OrdStatusTypeTransformer {
   /// and users are still using an old app with the old code.
   OrdStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'RECEIVED': return OrdStatus.RECEIVED;
         case r'ROUTING': return OrdStatus.ROUTING;
         case r'ROUTED': return OrdStatus.ROUTED;

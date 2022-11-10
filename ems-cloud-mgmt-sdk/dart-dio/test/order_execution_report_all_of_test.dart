@@ -3,7 +3,7 @@ import 'package:openapi/openapi.dart';
 
 // tests for OrderExecutionReportAllOf
 void main() {
-  final instance = OrderExecutionReportAllOfBuilder();
+  //final instance = OrderExecutionReportAllOfBuilder();
   // TODO add properties to the builder and call build()
 
   group(OrderExecutionReportAllOf, () {

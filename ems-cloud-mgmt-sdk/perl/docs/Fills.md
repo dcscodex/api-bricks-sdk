@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::Fills;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **DateTime** | Execution time. | [optional] 
+**time** | **DATE** | Execution time. | [optional] 
 **price** | **double** | Execution price. | [optional] 
 **amount** | **double** | Executed quantity. | [optional] 
 

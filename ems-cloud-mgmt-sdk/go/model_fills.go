@@ -44,7 +44,7 @@ func NewFillsWithDefaults() *Fills {
 
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *Fills) GetTime() string {
-	if o == nil || o.Time == nil {
+	if o == nil || isNil(o.Time) {
 		var ret string
 		return ret
 	}
@@ -54,15 +54,15 @@ func (o *Fills) GetTime() string {
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Fills) GetTimeOk() (*string, bool) {
-	if o == nil || o.Time == nil {
-		return nil, false
+	if o == nil || isNil(o.Time) {
+    return nil, false
 	}
 	return o.Time, true
 }
 
 // HasTime returns a boolean if a field has been set.
 func (o *Fills) HasTime() bool {
-	if o != nil && o.Time != nil {
+	if o != nil && !isNil(o.Time) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *Fills) SetTime(v string) {
 
 // GetPrice returns the Price field value if set, zero value otherwise.
 func (o *Fills) GetPrice() float32 {
-	if o == nil || o.Price == nil {
+	if o == nil || isNil(o.Price) {
 		var ret float32
 		return ret
 	}
@@ -86,15 +86,15 @@ func (o *Fills) GetPrice() float32 {
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Fills) GetPriceOk() (*float32, bool) {
-	if o == nil || o.Price == nil {
-		return nil, false
+	if o == nil || isNil(o.Price) {
+    return nil, false
 	}
 	return o.Price, true
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *Fills) HasPrice() bool {
-	if o != nil && o.Price != nil {
+	if o != nil && !isNil(o.Price) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *Fills) SetPrice(v float32) {
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *Fills) GetAmount() float32 {
-	if o == nil || o.Amount == nil {
+	if o == nil || isNil(o.Amount) {
 		var ret float32
 		return ret
 	}
@@ -118,15 +118,15 @@ func (o *Fills) GetAmount() float32 {
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Fills) GetAmountOk() (*float32, bool) {
-	if o == nil || o.Amount == nil {
-		return nil, false
+	if o == nil || isNil(o.Amount) {
+    return nil, false
 	}
 	return o.Amount, true
 }
 
 // HasAmount returns a boolean if a field has been set.
 func (o *Fills) HasAmount() bool {
-	if o != nil && o.Amount != nil {
+	if o != nil && !isNil(o.Amount) {
 		return true
 	}
 
@@ -140,13 +140,13 @@ func (o *Fills) SetAmount(v float32) {
 
 func (o Fills) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Time != nil {
+	if !isNil(o.Time) {
 		toSerialize["time"] = o.Time
 	}
-	if o.Price != nil {
+	if !isNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
-	if o.Amount != nil {
+	if !isNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
 	return json.Marshal(toSerialize)

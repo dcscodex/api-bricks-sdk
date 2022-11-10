@@ -53,4 +53,7 @@ model_reject_reason.go
 model_time_in_force.go
 model_validation_error.go
 response.go
+test/api_balances_test.go
+test/api_orders_test.go
+test/api_positions_test.go
 utils.go

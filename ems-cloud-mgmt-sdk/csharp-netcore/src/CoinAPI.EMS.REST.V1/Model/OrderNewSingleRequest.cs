@@ -36,19 +36,19 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// <summary>
         /// Gets or Sets Side
         /// </summary>
-        [DataMember(Name = "side", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "side", IsRequired = true, EmitDefaultValue = true)]
         public OrdSide Side { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderType
         /// </summary>
-        [DataMember(Name = "order_type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "order_type", IsRequired = true, EmitDefaultValue = true)]
         public OrdType OrderType { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeInForce
         /// </summary>
-        [DataMember(Name = "time_in_force", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "time_in_force", IsRequired = true, EmitDefaultValue = true)]
         public TimeInForce TimeInForce { get; set; }
         /// <summary>
         /// Defines ExecInst
@@ -76,14 +76,6 @@ namespace CoinAPI.EMS.REST.V1.Model
 
         }
 
-
-
-        /// <summary>
-        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
-        /// </summary>
-        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
-        [DataMember(Name = "exec_inst", EmitDefaultValue = false)]
-        public List<ExecInstEnum> ExecInst { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderNewSingleRequest" /> class.
         /// </summary>
@@ -132,14 +124,14 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Exchange identifier used to identify the routing destination.
         /// </summary>
         /// <value>Exchange identifier used to identify the routing destination.</value>
-        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = true)]
         public string ExchangeId { get; set; }
 
         /// <summary>
         /// The unique identifier of the order assigned by the client.
         /// </summary>
         /// <value>The unique identifier of the order assigned by the client.</value>
-        [DataMember(Name = "client_order_id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "client_order_id", IsRequired = true, EmitDefaultValue = true)]
         public string ClientOrderId { get; set; }
 
         /// <summary>
@@ -160,14 +152,14 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Order quantity.
         /// </summary>
         /// <value>Order quantity.</value>
-        [DataMember(Name = "amount_order", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amount_order", IsRequired = true, EmitDefaultValue = true)]
         public decimal AmountOrder { get; set; }
 
         /// <summary>
         /// Order price.
         /// </summary>
         /// <value>Order price.</value>
-        [DataMember(Name = "price", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "price", IsRequired = true, EmitDefaultValue = true)]
         public decimal Price { get; set; }
 
         /// <summary>
@@ -176,6 +168,13 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// <value>Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;.</value>
         [DataMember(Name = "expire_time", EmitDefaultValue = false)]
         public DateTime ExpireTime { get; set; }
+
+        /// <summary>
+        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
+        /// </summary>
+        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
+        [DataMember(Name = "exec_inst", EmitDefaultValue = false)]
+        public List<OrderNewSingleRequest.ExecInstEnum> ExecInst { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -278,6 +277,8 @@ namespace CoinAPI.EMS.REST.V1.Model
                 ) && 
                 (
                     this.ExecInst == input.ExecInst ||
+                    this.ExecInst != null &&
+                    input.ExecInst != null &&
                     this.ExecInst.SequenceEqual(input.ExecInst)
                 );
         }
@@ -316,7 +317,10 @@ namespace CoinAPI.EMS.REST.V1.Model
                 {
                     hashCode = (hashCode * 59) + this.ExpireTime.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ExecInst.GetHashCode();
+                if (this.ExecInst != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExecInst.GetHashCode();
+                }
                 return hashCode;
             }
         }

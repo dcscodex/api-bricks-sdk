@@ -43,7 +43,7 @@ func NewValidationErrorWithDefaults() *ValidationError {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ValidationError) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -53,15 +53,15 @@ func (o *ValidationError) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ValidationError) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *ValidationError) SetType(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *ValidationError) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || isNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -85,15 +85,15 @@ func (o *ValidationError) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
-		return nil, false
+	if o == nil || isNil(o.Title) {
+    return nil, false
 	}
 	return o.Title, true
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *ValidationError) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !isNil(o.Title) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *ValidationError) SetTitle(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ValidationError) GetStatus() float32 {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret float32
 		return ret
 	}
@@ -117,15 +117,15 @@ func (o *ValidationError) GetStatus() float32 {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetStatusOk() (*float32, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ValidationError) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *ValidationError) SetStatus(v float32) {
 
 // GetTraceId returns the TraceId field value if set, zero value otherwise.
 func (o *ValidationError) GetTraceId() string {
-	if o == nil || o.TraceId == nil {
+	if o == nil || isNil(o.TraceId) {
 		var ret string
 		return ret
 	}
@@ -149,15 +149,15 @@ func (o *ValidationError) GetTraceId() string {
 // GetTraceIdOk returns a tuple with the TraceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetTraceIdOk() (*string, bool) {
-	if o == nil || o.TraceId == nil {
-		return nil, false
+	if o == nil || isNil(o.TraceId) {
+    return nil, false
 	}
 	return o.TraceId, true
 }
 
 // HasTraceId returns a boolean if a field has been set.
 func (o *ValidationError) HasTraceId() bool {
-	if o != nil && o.TraceId != nil {
+	if o != nil && !isNil(o.TraceId) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *ValidationError) SetTraceId(v string) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *ValidationError) GetErrors() string {
-	if o == nil || o.Errors == nil {
+	if o == nil || isNil(o.Errors) {
 		var ret string
 		return ret
 	}
@@ -181,15 +181,15 @@ func (o *ValidationError) GetErrors() string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetErrorsOk() (*string, bool) {
-	if o == nil || o.Errors == nil {
-		return nil, false
+	if o == nil || isNil(o.Errors) {
+    return nil, false
 	}
 	return o.Errors, true
 }
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ValidationError) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !isNil(o.Errors) {
 		return true
 	}
 
@@ -203,19 +203,19 @@ func (o *ValidationError) SetErrors(v string) {
 
 func (o ValidationError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Title != nil {
+	if !isNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.TraceId != nil {
+	if !isNil(o.TraceId) {
 		toSerialize["traceId"] = o.TraceId
 	}
-	if o.Errors != nil {
+	if !isNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
 	return json.Marshal(toSerialize)

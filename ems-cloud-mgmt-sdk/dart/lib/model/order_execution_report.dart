@@ -178,40 +178,52 @@ class OrderExecutionReport {
   String toString() => 'OrderExecutionReport[exchangeId=$exchangeId, clientOrderId=$clientOrderId, symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, amountOrder=$amountOrder, price=$price, side=$side, orderType=$orderType, timeInForce=$timeInForce, expireTime=$expireTime, execInst=$execInst, clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, avgPx=$avgPx, status=$status, statusHistory=$statusHistory, errorMessage=$errorMessage, fills=$fills]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'exchange_id'] = exchangeId;
-      _json[r'client_order_id'] = clientOrderId;
-    if (symbolIdExchange != null) {
-      _json[r'symbol_id_exchange'] = symbolIdExchange;
+    final json = <String, dynamic>{};
+      json[r'exchange_id'] = this.exchangeId;
+      json[r'client_order_id'] = this.clientOrderId;
+    if (this.symbolIdExchange != null) {
+      json[r'symbol_id_exchange'] = this.symbolIdExchange;
+    } else {
+      json[r'symbol_id_exchange'] = null;
     }
-    if (symbolIdCoinapi != null) {
-      _json[r'symbol_id_coinapi'] = symbolIdCoinapi;
+    if (this.symbolIdCoinapi != null) {
+      json[r'symbol_id_coinapi'] = this.symbolIdCoinapi;
+    } else {
+      json[r'symbol_id_coinapi'] = null;
     }
-      _json[r'amount_order'] = amountOrder;
-      _json[r'price'] = price;
-      _json[r'side'] = side;
-      _json[r'order_type'] = orderType;
-      _json[r'time_in_force'] = timeInForce;
-    if (expireTime != null) {
-      _json[r'expire_time'] = expireTime;
+      json[r'amount_order'] = this.amountOrder;
+      json[r'price'] = this.price;
+      json[r'side'] = this.side;
+      json[r'order_type'] = this.orderType;
+      json[r'time_in_force'] = this.timeInForce;
+    if (this.expireTime != null) {
+      json[r'expire_time'] = this.expireTime;
+    } else {
+      json[r'expire_time'] = null;
     }
-      _json[r'exec_inst'] = execInst;
-      _json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
-    if (exchangeOrderId != null) {
-      _json[r'exchange_order_id'] = exchangeOrderId;
+      json[r'exec_inst'] = this.execInst;
+      json[r'client_order_id_format_exchange'] = this.clientOrderIdFormatExchange;
+    if (this.exchangeOrderId != null) {
+      json[r'exchange_order_id'] = this.exchangeOrderId;
+    } else {
+      json[r'exchange_order_id'] = null;
     }
-      _json[r'amount_open'] = amountOpen;
-      _json[r'amount_filled'] = amountFilled;
-    if (avgPx != null) {
-      _json[r'avg_px'] = avgPx;
+      json[r'amount_open'] = this.amountOpen;
+      json[r'amount_filled'] = this.amountFilled;
+    if (this.avgPx != null) {
+      json[r'avg_px'] = this.avgPx;
+    } else {
+      json[r'avg_px'] = null;
     }
-      _json[r'status'] = status;
-      _json[r'status_history'] = statusHistory;
-    if (errorMessage != null) {
-      _json[r'error_message'] = errorMessage;
+      json[r'status'] = this.status;
+      json[r'status_history'] = this.statusHistory;
+    if (this.errorMessage != null) {
+      json[r'error_message'] = this.errorMessage;
+    } else {
+      json[r'error_message'] = null;
     }
-      _json[r'fills'] = fills;
-    return _json;
+      json[r'fills'] = this.fills;
+    return json;
   }
 
   /// Returns a new [OrderExecutionReport] instance and imports its values from
@@ -389,7 +401,7 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   /// and users are still using an old app with the old code.
   OrderExecutionReportExecInstEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
         case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
         case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;

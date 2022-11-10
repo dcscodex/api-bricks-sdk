@@ -53,8 +53,8 @@ externalDocs:
 servers:
 - url: https://ems-gateway-aws-eu-central-1-dev.coinapi.io
 tags:
-- description: "Order statuses and the lifecycle are documented in the separate section:\
-    \ <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a>\n"
+- description: |
+    Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
   name: Orders
 - name: Balances
 - name: Positions
@@ -387,9 +387,8 @@ components:
           example: 2020-01-01T10:45:20.1677709Z
           type: date
         exec_inst:
-          description: "Order execution instructions are documented in the separate\
-            \ section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order\
-            \ parameters / Execution instructions</a>\n"
+          description: |
+            Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
           example:
           - MAKER_OR_CANCEL
           items:
@@ -532,8 +531,8 @@ components:
           type: array
       type: object
     OrdStatus:
-      description: "Order statuses and the lifecycle are documented in the separate\
-        \ section: <a href=\"#ems-order-lifecycle\">EMS / Starter Guide / Order Lifecycle</a>\n"
+      description: |
+        Order statuses and the lifecycle are documented in the separate section: <a href="#ems-order-lifecycle">EMS / Starter Guide / Order Lifecycle</a>
       enum:
       - RECEIVED
       - ROUTING
@@ -554,16 +553,15 @@ components:
       example: BUY
       type: string
     OrdType:
-      description: "Order types are documented in the separate section: <a href=\"\
-        #ems-order-params-type\">EMS / Starter Guide / Order parameters / Order type</a>\n"
+      description: |
+        Order types are documented in the separate section: <a href="#ems-order-params-type">EMS / Starter Guide / Order parameters / Order type</a>
       enum:
       - LIMIT
       example: LIMIT
       type: string
     TimeInForce:
-      description: "Order time in force options are documented in the separate section:\
-        \ <a href=\"#ems-order-params-tif\">EMS / Starter Guide / Order parameters\
-        \ / Time in force</a>\n"
+      description: |
+        Order time in force options are documented in the separate section: <a href="#ems-order-params-tif">EMS / Starter Guide / Order parameters / Time in force</a>
       enum:
       - GOOD_TILL_CANCEL
       - GOOD_TILL_TIME_EXCHANGE
@@ -573,9 +571,8 @@ components:
       example: GOOD_TILL_CANCEL
       type: string
     ExecInst:
-      description: "Order execution instructions are documented in the separate section:\
-        \ <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters\
-        \ / Execution instructions</a>\n"
+      description: |
+        Order execution instructions are documented in the separate section: <a href="#ems-order-params-exec">EMS / Starter Guide / Order parameters / Execution instructions</a>
       example:
       - MAKER_OR_CANCEL
       items:
@@ -904,6 +901,7 @@ components:
       - status
       - time_order
       type: object
+      example: null
     Balance_data_inner:
       example:
         last_updated_by: EXCHANGE

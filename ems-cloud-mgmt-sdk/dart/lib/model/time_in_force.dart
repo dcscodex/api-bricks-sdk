@@ -73,7 +73,7 @@ class TimeInForceTypeTransformer {
   /// and users are still using an old app with the old code.
   TimeInForce? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'GOOD_TILL_CANCEL': return TimeInForce.GOOD_TILL_CANCEL;
         case r'GOOD_TILL_TIME_EXCHANGE': return TimeInForce.GOOD_TILL_TIME_EXCHANGE;
         case r'GOOD_TILL_TIME_OMS': return TimeInForce.GOOD_TILL_TIME_OMS;

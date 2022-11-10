@@ -56,15 +56,19 @@ class OrderCancelSingleRequest {
   String toString() => 'OrderCancelSingleRequest[exchangeId=$exchangeId, exchangeOrderId=$exchangeOrderId, clientOrderId=$clientOrderId]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'exchange_id'] = exchangeId;
-    if (exchangeOrderId != null) {
-      _json[r'exchange_order_id'] = exchangeOrderId;
+    final json = <String, dynamic>{};
+      json[r'exchange_id'] = this.exchangeId;
+    if (this.exchangeOrderId != null) {
+      json[r'exchange_order_id'] = this.exchangeOrderId;
+    } else {
+      json[r'exchange_order_id'] = null;
     }
-    if (clientOrderId != null) {
-      _json[r'client_order_id'] = clientOrderId;
+    if (this.clientOrderId != null) {
+      json[r'client_order_id'] = this.clientOrderId;
+    } else {
+      json[r'client_order_id'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [OrderCancelSingleRequest] instance and imports its values from

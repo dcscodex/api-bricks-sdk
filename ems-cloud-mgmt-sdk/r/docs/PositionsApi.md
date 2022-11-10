@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **V1PositionsGet**
-> array[Position] V1PositionsGet(exchange_id=var.exchange_id)
+> array[Position] V1PositionsGet(exchange_id = var.exchange_id)
 
 Get open positions
 
@@ -18,11 +18,15 @@ Get current open positions across all or single exchange.
 ```R
 library(openapi)
 
-var.exchange_id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
+# Get open positions
+#
+# prepare function argument(s)
+var_exchange_id <- "KRAKEN" # character | Filter the balances to the specific exchange. (Optional)
 
-#Get open positions
-api.instance <- PositionsApi$new()
-result <- api.instance$V1PositionsGet(exchange_id=var.exchange_id)
+api_instance <- PositionsApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1PositionsGet(exchange_id = var_exchange_iddata_file = "result.txt")
+result <- api_instance$V1PositionsGet(exchange_id = var_exchange_id)
 dput(result)
 ```
 

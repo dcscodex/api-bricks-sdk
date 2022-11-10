@@ -67,8 +67,36 @@ class MessageReject {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>MessageReject</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MessageReject</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
+        if (data['exchange_id'] && !(typeof data['exchange_id'] === 'string' || data['exchange_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_id` to be a primitive type in the JSON string but got " + data['exchange_id']);
+        }
+        // ensure the json data is a string
+        if (data['message'] && !(typeof data['message'] === 'string' || data['message'] instanceof String)) {
+            throw new Error("Expected the field `message` to be a primitive type in the JSON string but got " + data['message']);
+        }
+        // ensure the json data is a string
+        if (data['rejected_message'] && !(typeof data['rejected_message'] === 'string' || data['rejected_message'] instanceof String)) {
+            throw new Error("Expected the field `rejected_message` to be a primitive type in the JSON string but got " + data['rejected_message']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Message type, constant.

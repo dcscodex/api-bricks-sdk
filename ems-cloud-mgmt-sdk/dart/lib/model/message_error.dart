@@ -38,11 +38,13 @@ class MessageError {
   String toString() => 'MessageError[message=$message]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (message != null) {
-      _json[r'message'] = message;
+    final json = <String, dynamic>{};
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [MessageError] instance and imports its values from

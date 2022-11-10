@@ -75,8 +75,32 @@ class BalanceDataInner {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>BalanceDataInner</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>BalanceDataInner</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['asset_id_exchange'] && !(typeof data['asset_id_exchange'] === 'string' || data['asset_id_exchange'] instanceof String)) {
+            throw new Error("Expected the field `asset_id_exchange` to be a primitive type in the JSON string but got " + data['asset_id_exchange']);
+        }
+        // ensure the json data is a string
+        if (data['asset_id_coinapi'] && !(typeof data['asset_id_coinapi'] === 'string' || data['asset_id_coinapi'] instanceof String)) {
+            throw new Error("Expected the field `asset_id_coinapi` to be a primitive type in the JSON string but got " + data['asset_id_coinapi']);
+        }
+        // ensure the json data is a string
+        if (data['last_updated_by'] && !(typeof data['last_updated_by'] === 'string' || data['last_updated_by'] instanceof String)) {
+            throw new Error("Expected the field `last_updated_by` to be a primitive type in the JSON string but got " + data['last_updated_by']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Exchange currency code.

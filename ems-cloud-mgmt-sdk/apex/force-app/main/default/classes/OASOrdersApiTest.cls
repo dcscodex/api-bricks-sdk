@@ -30,6 +30,13 @@ private class OASOrdersApiTest {
         expectedResponse = OASMessageReject.getExample();
         response = (OASMessageReject) api.v1OrdersCancelAllPost(params);
         System.assertEquals(expectedResponse, response);
+
+        js = JSON.serialize(OASMessageReject.getExample());
+        res.setHeader('Content-Type', 'appliction/json');
+        res.setBody(js);
+        expectedResponse = OASMessageReject.getExample();
+        response = (OASMessageReject) api.v1OrdersCancelAllPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -62,6 +69,13 @@ private class OASOrdersApiTest {
         expectedResponse = OASOrderExecutionReport.getExample();
         response = (OASOrderExecutionReport) api.v1OrdersCancelPost(params);
         System.assertEquals(expectedResponse, response);
+
+        js = JSON.serialize(OASOrderExecutionReport.getExample());
+        res.setHeader('Content-Type', 'appliction/json');
+        res.setBody(js);
+        expectedResponse = OASOrderExecutionReport.getExample();
+        response = (OASOrderExecutionReport) api.v1OrdersCancelPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -90,6 +104,13 @@ private class OASOrdersApiTest {
 
         js = JSON.serialize(List.getExample());
         res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASOrderExecutionReport>) api.v1OrdersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'appliction/json');
         res.setBody(js);
         expectedResponse = List.getExample();
         response = (List<OASOrderExecutionReport>) api.v1OrdersGet(params);
@@ -155,6 +176,13 @@ private class OASOrdersApiTest {
 
         js = JSON.serialize(OASOrderExecutionReport.getExample());
         res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderExecutionReport.getExample();
+        response = (OASOrderExecutionReport) api.v1OrdersPost(params);
+        System.assertEquals(expectedResponse, response);
+
+        js = JSON.serialize(OASOrderExecutionReport.getExample());
+        res.setHeader('Content-Type', 'appliction/json');
         res.setBody(js);
         expectedResponse = OASOrderExecutionReport.getExample();
         response = (OASOrderExecutionReport) api.v1OrdersPost(params);

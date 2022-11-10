@@ -71,13 +71,6 @@ namespace CoinAPI.EMS.REST.V1.Model
 
         }
 
-
-        /// <summary>
-        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
-        /// </summary>
-        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
-        [DataMember(Name="exec_inst", EmitDefaultValue=false)]
-        public List<ExecInstEnum> ExecInst { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderNewSingleRequest" /> class.
         /// </summary>
@@ -227,6 +220,12 @@ namespace CoinAPI.EMS.REST.V1.Model
         [DataMember(Name="expire_time", EmitDefaultValue=false)]
         public DateTime ExpireTime { get; set; }
 
+        /// <summary>
+        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
+        /// </summary>
+        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
+        [DataMember(Name="exec_inst", EmitDefaultValue=false)]
+        public List<OrderNewSingleRequest.ExecInstEnum> ExecInst { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

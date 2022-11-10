@@ -1,10 +1,10 @@
 # OpenAPI\Client\PositionsApi
 
-All URIs are relative to https://ems-gateway-aws-eu-central-1-dev.coinapi.io.
+All URIs are relative to https://ems-gateway-aws-eu-central-1-dev.coinapi.io, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1PositionsGet()**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**v1PositionsGet()**](PositionsApi.md#v1PositionsGet) | **GET** /v1/positions | Get open positions |
 
 
 ## `v1PositionsGet()`
@@ -42,9 +42,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exchange_id** | **string**| Filter the balances to the specific exchange. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **exchange_id** | **string**| Filter the balances to the specific exchange. | [optional] |
 
 ### Return type
 

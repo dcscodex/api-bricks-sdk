@@ -43,12 +43,14 @@ class Balance {
   String toString() => 'Balance[exchangeId=$exchangeId, data=$data]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (exchangeId != null) {
-      _json[r'exchange_id'] = exchangeId;
+    final json = <String, dynamic>{};
+    if (this.exchangeId != null) {
+      json[r'exchange_id'] = this.exchangeId;
+    } else {
+      json[r'exchange_id'] = null;
     }
-      _json[r'data'] = data;
-    return _json;
+      json[r'data'] = this.data;
+    return json;
   }
 
   /// Returns a new [Balance] instance and imports its values from

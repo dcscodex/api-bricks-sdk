@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **side** | **double** | 1-buy, 2-sell | [optional] 
 **order_type** | **string** | Order type | [optional] 
 **time_in_force** | **string** | Time in force | [optional] 
-**expire_time** | **DateTime** | Expire time | [optional] 
+**expire_time** | **DATE** | Expire time | [optional] 
 **exec_inst** | **ARRAY[string]** | Exec inst | [optional] 
 **client_order_id_format_exchange** | **string** | Client order id format | [optional] 
 **exchange_order_id** | **string** | Exchange order id | [optional] 
@@ -27,14 +27,14 @@ Name | Type | Description | Notes
 **avg_px** | **double** | Average price | [optional] 
 **status** | **string** | Status | [optional] 
 **status_history_status** | **ARRAY[string]** | History status | [optional] 
-**status_history_time** | **ARRAY[DateTime]** | History status time | [optional] 
+**status_history_time** | **ARRAY[DATE]** | History status time | [optional] 
 **error_message_result** | **string** | Error message | [optional] 
 **error_message_reason** | **string** | Error message reason | [optional] 
 **error_message_message** | **string** | Error message | [optional] 
-**fills_time** | **ARRAY[DateTime]** | Fills time | [optional] 
+**fills_time** | **ARRAY[DATE]** | Fills time | [optional] 
 **fills_price** | **ARRAY[double]** | Fills price | [optional] 
 **fills_amount** | **ARRAY[double]** | Fills amount | [optional] 
-**created_time** | **DateTime** | Created time | [optional] 
+**created_time** | **DATE** | Created time | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

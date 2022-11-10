@@ -42,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * OrderHistory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:27.933192Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:05.874163Z[Etc/UTC]")
 public class OrderHistory {
   public static final String SERIALIZED_NAME_APIKEY = "apikey";
   @SerializedName(SERIALIZED_NAME_APIKEY)
@@ -161,7 +162,7 @@ public class OrderHistory {
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
   private LocalDate createdTime = null;
 
-  public OrderHistory() { 
+  public OrderHistory() {
   }
 
   public OrderHistory apikey(String apikey) {
@@ -970,9 +971,7 @@ public class OrderHistory {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (OrderHistory.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!OrderHistory.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrderHistory is not found in the empty JSON string", OrderHistory.openapiRequiredFields.toString()));
         }
       }
@@ -984,66 +983,66 @@ public class OrderHistory {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderHistory` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("apikey") != null && !jsonObj.get("apikey").isJsonPrimitive()) {
+      if ((jsonObj.get("apikey") != null && !jsonObj.get("apikey").isJsonNull()) && !jsonObj.get("apikey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `apikey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("apikey").toString()));
       }
-      if (jsonObj.get("exchangeId") != null && !jsonObj.get("exchangeId").isJsonPrimitive()) {
+      if ((jsonObj.get("exchangeId") != null && !jsonObj.get("exchangeId").isJsonNull()) && !jsonObj.get("exchangeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchangeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchangeId").toString()));
       }
-      if (jsonObj.get("clientOrderId") != null && !jsonObj.get("clientOrderId").isJsonPrimitive()) {
+      if ((jsonObj.get("clientOrderId") != null && !jsonObj.get("clientOrderId").isJsonNull()) && !jsonObj.get("clientOrderId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clientOrderId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientOrderId").toString()));
       }
-      if (jsonObj.get("symbolIdExchange") != null && !jsonObj.get("symbolIdExchange").isJsonPrimitive()) {
+      if ((jsonObj.get("symbolIdExchange") != null && !jsonObj.get("symbolIdExchange").isJsonNull()) && !jsonObj.get("symbolIdExchange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbolIdExchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbolIdExchange").toString()));
       }
-      if (jsonObj.get("symbolIdCoinapi") != null && !jsonObj.get("symbolIdCoinapi").isJsonPrimitive()) {
+      if ((jsonObj.get("symbolIdCoinapi") != null && !jsonObj.get("symbolIdCoinapi").isJsonNull()) && !jsonObj.get("symbolIdCoinapi").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbolIdCoinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbolIdCoinapi").toString()));
       }
-      if (jsonObj.get("orderType") != null && !jsonObj.get("orderType").isJsonPrimitive()) {
+      if ((jsonObj.get("orderType") != null && !jsonObj.get("orderType").isJsonNull()) && !jsonObj.get("orderType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `orderType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orderType").toString()));
       }
-      if (jsonObj.get("timeInForce") != null && !jsonObj.get("timeInForce").isJsonPrimitive()) {
+      if ((jsonObj.get("timeInForce") != null && !jsonObj.get("timeInForce").isJsonNull()) && !jsonObj.get("timeInForce").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timeInForce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeInForce").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("execInst") != null && !jsonObj.get("execInst").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `execInst` to be an array in the JSON string but got `%s`", jsonObj.get("execInst").toString()));
       }
-      if (jsonObj.get("clientOrderIdFormatExchange") != null && !jsonObj.get("clientOrderIdFormatExchange").isJsonPrimitive()) {
+      if ((jsonObj.get("clientOrderIdFormatExchange") != null && !jsonObj.get("clientOrderIdFormatExchange").isJsonNull()) && !jsonObj.get("clientOrderIdFormatExchange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clientOrderIdFormatExchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientOrderIdFormatExchange").toString()));
       }
-      if (jsonObj.get("exchangeOrderId") != null && !jsonObj.get("exchangeOrderId").isJsonPrimitive()) {
+      if ((jsonObj.get("exchangeOrderId") != null && !jsonObj.get("exchangeOrderId").isJsonNull()) && !jsonObj.get("exchangeOrderId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchangeOrderId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchangeOrderId").toString()));
       }
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("statusHistoryStatus") != null && !jsonObj.get("statusHistoryStatus").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `statusHistoryStatus` to be an array in the JSON string but got `%s`", jsonObj.get("statusHistoryStatus").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("statusHistoryTime") != null && !jsonObj.get("statusHistoryTime").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `statusHistoryTime` to be an array in the JSON string but got `%s`", jsonObj.get("statusHistoryTime").toString()));
       }
-      if (jsonObj.get("errorMessageResult") != null && !jsonObj.get("errorMessageResult").isJsonPrimitive()) {
+      if ((jsonObj.get("errorMessageResult") != null && !jsonObj.get("errorMessageResult").isJsonNull()) && !jsonObj.get("errorMessageResult").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorMessageResult` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessageResult").toString()));
       }
-      if (jsonObj.get("errorMessageReason") != null && !jsonObj.get("errorMessageReason").isJsonPrimitive()) {
+      if ((jsonObj.get("errorMessageReason") != null && !jsonObj.get("errorMessageReason").isJsonNull()) && !jsonObj.get("errorMessageReason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorMessageReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessageReason").toString()));
       }
-      if (jsonObj.get("errorMessageMessage") != null && !jsonObj.get("errorMessageMessage").isJsonPrimitive()) {
+      if ((jsonObj.get("errorMessageMessage") != null && !jsonObj.get("errorMessageMessage").isJsonNull()) && !jsonObj.get("errorMessageMessage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorMessageMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessageMessage").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("fillsTime") != null && !jsonObj.get("fillsTime").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fillsTime` to be an array in the JSON string but got `%s`", jsonObj.get("fillsTime").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("fillsPrice") != null && !jsonObj.get("fillsPrice").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fillsPrice` to be an array in the JSON string but got `%s`", jsonObj.get("fillsPrice").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("fillsAmount") != null && !jsonObj.get("fillsAmount").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fillsAmount` to be an array in the JSON string but got `%s`", jsonObj.get("fillsAmount").toString()));
       }

@@ -59,7 +59,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Exchange identifier used to identify the routing destination.
         /// </summary>
         /// <value>Exchange identifier used to identify the routing destination.</value>
-        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = true)]
         public string ExchangeId { get; set; }
 
         /// <summary>

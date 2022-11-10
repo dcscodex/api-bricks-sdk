@@ -102,8 +102,46 @@ class OrderNewSingleRequest {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>OrderNewSingleRequest</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OrderNewSingleRequest</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of OrderNewSingleRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['exchange_id'] && !(typeof data['exchange_id'] === 'string' || data['exchange_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_id` to be a primitive type in the JSON string but got " + data['exchange_id']);
+        }
+        // ensure the json data is a string
+        if (data['client_order_id'] && !(typeof data['client_order_id'] === 'string' || data['client_order_id'] instanceof String)) {
+            throw new Error("Expected the field `client_order_id` to be a primitive type in the JSON string but got " + data['client_order_id']);
+        }
+        // ensure the json data is a string
+        if (data['symbol_id_exchange'] && !(typeof data['symbol_id_exchange'] === 'string' || data['symbol_id_exchange'] instanceof String)) {
+            throw new Error("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got " + data['symbol_id_exchange']);
+        }
+        // ensure the json data is a string
+        if (data['symbol_id_coinapi'] && !(typeof data['symbol_id_coinapi'] === 'string' || data['symbol_id_coinapi'] instanceof String)) {
+            throw new Error("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got " + data['symbol_id_coinapi']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['exec_inst'])) {
+            throw new Error("Expected the field `exec_inst` to be an array in the JSON data but got " + data['exec_inst']);
+        }
+
+        return true;
+    }
+
 
 }
+
+OrderNewSingleRequest.RequiredProperties = ["exchange_id", "client_order_id", "amount_order", "price", "side", "order_type", "time_in_force"];
 
 /**
  * Exchange identifier used to identify the routing destination.

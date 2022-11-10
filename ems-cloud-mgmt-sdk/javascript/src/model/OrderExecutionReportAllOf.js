@@ -89,8 +89,52 @@ class OrderExecutionReportAllOf {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>OrderExecutionReportAllOf</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OrderExecutionReportAllOf</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of OrderExecutionReportAllOf.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['client_order_id_format_exchange'] && !(typeof data['client_order_id_format_exchange'] === 'string' || data['client_order_id_format_exchange'] instanceof String)) {
+            throw new Error("Expected the field `client_order_id_format_exchange` to be a primitive type in the JSON string but got " + data['client_order_id_format_exchange']);
+        }
+        // ensure the json data is a string
+        if (data['exchange_order_id'] && !(typeof data['exchange_order_id'] === 'string' || data['exchange_order_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_order_id` to be a primitive type in the JSON string but got " + data['exchange_order_id']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['status_history'])) {
+            throw new Error("Expected the field `status_history` to be an array in the JSON data but got " + data['status_history']);
+        }
+        // ensure the json data is a string
+        if (data['error_message'] && !(typeof data['error_message'] === 'string' || data['error_message'] instanceof String)) {
+            throw new Error("Expected the field `error_message` to be a primitive type in the JSON string but got " + data['error_message']);
+        }
+        if (data['fills']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['fills'])) {
+                throw new Error("Expected the field `fills` to be an array in the JSON data but got " + data['fills']);
+            }
+            // validate the optional field `fills` (array)
+            for (const item of data['fills']) {
+                Fills.validateJsonObject(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+OrderExecutionReportAllOf.RequiredProperties = ["client_order_id_format_exchange", "amount_open", "amount_filled", "status"];
 
 /**
  * The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.

@@ -32,9 +32,9 @@ class OrderCancelAllRequest {
   String toString() => 'OrderCancelAllRequest[exchangeId=$exchangeId]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'exchange_id'] = exchangeId;
-    return _json;
+    final json = <String, dynamic>{};
+      json[r'exchange_id'] = this.exchangeId;
+    return json;
   }
 
   /// Returns a new [OrderCancelAllRequest] instance and imports its values from

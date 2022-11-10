@@ -63,8 +63,38 @@ class OrderCancelSingleRequest {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>OrderCancelSingleRequest</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OrderCancelSingleRequest</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of OrderCancelSingleRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['exchange_id'] && !(typeof data['exchange_id'] === 'string' || data['exchange_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_id` to be a primitive type in the JSON string but got " + data['exchange_id']);
+        }
+        // ensure the json data is a string
+        if (data['exchange_order_id'] && !(typeof data['exchange_order_id'] === 'string' || data['exchange_order_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_order_id` to be a primitive type in the JSON string but got " + data['exchange_order_id']);
+        }
+        // ensure the json data is a string
+        if (data['client_order_id'] && !(typeof data['client_order_id'] === 'string' || data['client_order_id'] instanceof String)) {
+            throw new Error("Expected the field `client_order_id` to be a primitive type in the JSON string but got " + data['client_order_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+OrderCancelSingleRequest.RequiredProperties = ["exchange_id"];
 
 /**
  * Exchange identifier used to identify the routing destination.

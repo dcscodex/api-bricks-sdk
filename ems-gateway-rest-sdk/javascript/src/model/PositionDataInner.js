@@ -83,8 +83,28 @@ class PositionDataInner {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>PositionDataInner</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PositionDataInner</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['symbol_id_exchange'] && !(typeof data['symbol_id_exchange'] === 'string' || data['symbol_id_exchange'] instanceof String)) {
+            throw new Error("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got " + data['symbol_id_exchange']);
+        }
+        // ensure the json data is a string
+        if (data['symbol_id_coinapi'] && !(typeof data['symbol_id_coinapi'] === 'string' || data['symbol_id_coinapi'] instanceof String)) {
+            throw new Error("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got " + data['symbol_id_coinapi']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Exchange symbol.

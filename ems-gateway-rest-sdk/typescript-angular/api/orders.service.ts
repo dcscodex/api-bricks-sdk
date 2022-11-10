@@ -51,11 +51,15 @@ export class OrdersService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
         if (typeof this.configuration.basePath !== 'string') {
+            if (Array.isArray(basePath) && basePath.length > 0) {
+                basePath = basePath[0];
+            }
+
             if (typeof basePath !== 'string') {
                 basePath = this.basePath;
             }
@@ -65,6 +69,7 @@ export class OrdersService {
     }
 
 
+    // @ts-ignore
     private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
         if (typeof value === "object" && value instanceof Date === false) {
             httpParams = this.addToHttpParamsRecursive(httpParams, value);
@@ -156,10 +161,11 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.post<MessageReject>(`${this.configuration.basePath}/v1/orders/cancel/all`,
-            orderCancelAllRequest,
+        let localVarPath = `/v1/orders/cancel/all`;
+        return this.httpClient.request<MessageReject>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                body: orderCancelAllRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -225,10 +231,11 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/cancel`,
-            orderCancelSingleRequest,
+        let localVarPath = `/v1/orders/cancel`;
+        return this.httpClient.request<OrderExecutionReport>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                body: orderCancelSingleRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -288,7 +295,8 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.get<Array<OrderExecutionReport>>(`${this.configuration.basePath}/v1/orders`,
+        let localVarPath = `/v1/orders`;
+        return this.httpClient.request<Array<OrderExecutionReport>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -351,7 +359,8 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.get<Array<OrderHistory>>(`${this.configuration.basePath}/v1/orders/history/${encodeURIComponent(String(timeStart))}/${encodeURIComponent(String(timeEnd))}`,
+        let localVarPath = `/v1/orders/history/${this.configuration.encodeParam({name: "timeStart", value: timeStart, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/${this.configuration.encodeParam({name: "timeEnd", value: timeEnd, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.request<Array<OrderHistory>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -419,10 +428,11 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.post<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders`,
-            orderNewSingleRequest,
+        let localVarPath = `/v1/orders`;
+        return this.httpClient.request<OrderExecutionReport>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                body: orderNewSingleRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -478,7 +488,8 @@ export class OrdersService {
             }
         }
 
-        return this.httpClient.get<OrderExecutionReport>(`${this.configuration.basePath}/v1/orders/status/${encodeURIComponent(String(clientOrderId))}`,
+        let localVarPath = `/v1/orders/status/${this.configuration.encodeParam({name: "clientOrderId", value: clientOrderId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.request<OrderExecutionReport>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

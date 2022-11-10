@@ -39,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -48,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * MessageReject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:17.634419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:01.685375Z[Etc/UTC]")
 public class MessageReject {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -70,7 +71,7 @@ public class MessageReject {
   @SerializedName(SERIALIZED_NAME_REJECTED_MESSAGE)
   private String rejectedMessage;
 
-  public MessageReject() { 
+  public MessageReject() {
   }
 
   public MessageReject type(String type) {
@@ -259,9 +260,7 @@ public class MessageReject {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MessageReject.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MessageReject.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageReject is not found in the empty JSON string", MessageReject.openapiRequiredFields.toString()));
         }
       }
@@ -273,16 +272,16 @@ public class MessageReject {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageReject` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+      if ((jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonNull()) && !jsonObj.get("exchange_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
       }
-      if (jsonObj.get("message") != null && !jsonObj.get("message").isJsonPrimitive()) {
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
-      if (jsonObj.get("rejected_message") != null && !jsonObj.get("rejected_message").isJsonPrimitive()) {
+      if ((jsonObj.get("rejected_message") != null && !jsonObj.get("rejected_message").isJsonNull()) && !jsonObj.get("rejected_message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rejected_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rejected_message").toString()));
       }
   }

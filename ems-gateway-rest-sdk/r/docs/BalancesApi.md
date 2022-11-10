@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **V1BalancesGet**
-> array[Balance] V1BalancesGet(exchange_id=var.exchange_id)
+> array[Balance] V1BalancesGet(exchange_id = var.exchange_id)
 
 Get balances
 
@@ -18,11 +18,15 @@ Get current currency balance from all or single exchange.
 ```R
 library(openapi)
 
-var.exchange_id <- 'KRAKEN' # character | Filter the balances to the specific exchange.
+# Get balances
+#
+# prepare function argument(s)
+var_exchange_id <- "KRAKEN" # character | Filter the balances to the specific exchange. (Optional)
 
-#Get balances
-api.instance <- BalancesApi$new()
-result <- api.instance$V1BalancesGet(exchange_id=var.exchange_id)
+api_instance <- BalancesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1BalancesGet(exchange_id = var_exchange_iddata_file = "result.txt")
+result <- api_instance$V1BalancesGet(exchange_id = var_exchange_id)
 dput(result)
 ```
 

@@ -3,7 +3,7 @@ import 'package:openapi/openapi.dart';
 
 // tests for OrderNewSingleRequest
 void main() {
-  final instance = OrderNewSingleRequestBuilder();
+  //final instance = OrderNewSingleRequestBuilder();
   // TODO add properties to the builder and call build()
 
   group(OrderNewSingleRequest, () {

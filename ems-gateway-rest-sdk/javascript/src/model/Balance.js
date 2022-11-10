@@ -58,8 +58,34 @@ class Balance {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Balance</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Balance</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['exchange_id'] && !(typeof data['exchange_id'] === 'string' || data['exchange_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_id` to be a primitive type in the JSON string but got " + data['exchange_id']);
+        }
+        if (data['data']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['data'])) {
+                throw new Error("Expected the field `data` to be an array in the JSON data but got " + data['data']);
+            }
+            // validate the optional field `data` (array)
+            for (const item of data['data']) {
+                BalanceDataInner.validateJsonObject(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Exchange identifier used to identify the routing destination.

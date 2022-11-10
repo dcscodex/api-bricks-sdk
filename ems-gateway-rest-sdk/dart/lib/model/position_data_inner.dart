@@ -144,38 +144,58 @@ class PositionDataInner {
   String toString() => 'PositionDataInner[symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, avgEntryPrice=$avgEntryPrice, quantity=$quantity, side=$side, unrealizedPnl=$unrealizedPnl, leverage=$leverage, crossMargin=$crossMargin, liquidationPrice=$liquidationPrice, rawData=$rawData]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (symbolIdExchange != null) {
-      _json[r'symbol_id_exchange'] = symbolIdExchange;
+    final json = <String, dynamic>{};
+    if (this.symbolIdExchange != null) {
+      json[r'symbol_id_exchange'] = this.symbolIdExchange;
+    } else {
+      json[r'symbol_id_exchange'] = null;
     }
-    if (symbolIdCoinapi != null) {
-      _json[r'symbol_id_coinapi'] = symbolIdCoinapi;
+    if (this.symbolIdCoinapi != null) {
+      json[r'symbol_id_coinapi'] = this.symbolIdCoinapi;
+    } else {
+      json[r'symbol_id_coinapi'] = null;
     }
-    if (avgEntryPrice != null) {
-      _json[r'avg_entry_price'] = avgEntryPrice;
+    if (this.avgEntryPrice != null) {
+      json[r'avg_entry_price'] = this.avgEntryPrice;
+    } else {
+      json[r'avg_entry_price'] = null;
     }
-    if (quantity != null) {
-      _json[r'quantity'] = quantity;
+    if (this.quantity != null) {
+      json[r'quantity'] = this.quantity;
+    } else {
+      json[r'quantity'] = null;
     }
-    if (side != null) {
-      _json[r'side'] = side;
+    if (this.side != null) {
+      json[r'side'] = this.side;
+    } else {
+      json[r'side'] = null;
     }
-    if (unrealizedPnl != null) {
-      _json[r'unrealized_pnl'] = unrealizedPnl;
+    if (this.unrealizedPnl != null) {
+      json[r'unrealized_pnl'] = this.unrealizedPnl;
+    } else {
+      json[r'unrealized_pnl'] = null;
     }
-    if (leverage != null) {
-      _json[r'leverage'] = leverage;
+    if (this.leverage != null) {
+      json[r'leverage'] = this.leverage;
+    } else {
+      json[r'leverage'] = null;
     }
-    if (crossMargin != null) {
-      _json[r'cross_margin'] = crossMargin;
+    if (this.crossMargin != null) {
+      json[r'cross_margin'] = this.crossMargin;
+    } else {
+      json[r'cross_margin'] = null;
     }
-    if (liquidationPrice != null) {
-      _json[r'liquidation_price'] = liquidationPrice;
+    if (this.liquidationPrice != null) {
+      json[r'liquidation_price'] = this.liquidationPrice;
+    } else {
+      json[r'liquidation_price'] = null;
     }
-    if (rawData != null) {
-      _json[r'raw_data'] = rawData;
+    if (this.rawData != null) {
+      json[r'raw_data'] = this.rawData;
+    } else {
+      json[r'raw_data'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [PositionDataInner] instance and imports its values from

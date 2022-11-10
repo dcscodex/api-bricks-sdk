@@ -57,7 +57,7 @@ func (o *OrderCancelSingleRequest) GetExchangeId() string {
 // and a boolean to check if the value has been set.
 func (o *OrderCancelSingleRequest) GetExchangeIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ExchangeId, true
 }
@@ -69,7 +69,7 @@ func (o *OrderCancelSingleRequest) SetExchangeId(v string) {
 
 // GetExchangeOrderId returns the ExchangeOrderId field value if set, zero value otherwise.
 func (o *OrderCancelSingleRequest) GetExchangeOrderId() string {
-	if o == nil || o.ExchangeOrderId == nil {
+	if o == nil || isNil(o.ExchangeOrderId) {
 		var ret string
 		return ret
 	}
@@ -79,15 +79,15 @@ func (o *OrderCancelSingleRequest) GetExchangeOrderId() string {
 // GetExchangeOrderIdOk returns a tuple with the ExchangeOrderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderCancelSingleRequest) GetExchangeOrderIdOk() (*string, bool) {
-	if o == nil || o.ExchangeOrderId == nil {
-		return nil, false
+	if o == nil || isNil(o.ExchangeOrderId) {
+    return nil, false
 	}
 	return o.ExchangeOrderId, true
 }
 
 // HasExchangeOrderId returns a boolean if a field has been set.
 func (o *OrderCancelSingleRequest) HasExchangeOrderId() bool {
-	if o != nil && o.ExchangeOrderId != nil {
+	if o != nil && !isNil(o.ExchangeOrderId) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *OrderCancelSingleRequest) SetExchangeOrderId(v string) {
 
 // GetClientOrderId returns the ClientOrderId field value if set, zero value otherwise.
 func (o *OrderCancelSingleRequest) GetClientOrderId() string {
-	if o == nil || o.ClientOrderId == nil {
+	if o == nil || isNil(o.ClientOrderId) {
 		var ret string
 		return ret
 	}
@@ -111,15 +111,15 @@ func (o *OrderCancelSingleRequest) GetClientOrderId() string {
 // GetClientOrderIdOk returns a tuple with the ClientOrderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderCancelSingleRequest) GetClientOrderIdOk() (*string, bool) {
-	if o == nil || o.ClientOrderId == nil {
-		return nil, false
+	if o == nil || isNil(o.ClientOrderId) {
+    return nil, false
 	}
 	return o.ClientOrderId, true
 }
 
 // HasClientOrderId returns a boolean if a field has been set.
 func (o *OrderCancelSingleRequest) HasClientOrderId() bool {
-	if o != nil && o.ClientOrderId != nil {
+	if o != nil && !isNil(o.ClientOrderId) {
 		return true
 	}
 
@@ -136,10 +136,10 @@ func (o OrderCancelSingleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["exchange_id"] = o.ExchangeId
 	}
-	if o.ExchangeOrderId != nil {
+	if !isNil(o.ExchangeOrderId) {
 		toSerialize["exchange_order_id"] = o.ExchangeOrderId
 	}
-	if o.ClientOrderId != nil {
+	if !isNil(o.ClientOrderId) {
 		toSerialize["client_order_id"] = o.ClientOrderId
 	}
 	return json.Marshal(toSerialize)

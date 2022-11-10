@@ -56,7 +56,7 @@ func NewPositionDataInnerWithDefaults() *PositionDataInner {
 
 // GetSymbolIdExchange returns the SymbolIdExchange field value if set, zero value otherwise.
 func (o *PositionDataInner) GetSymbolIdExchange() string {
-	if o == nil || o.SymbolIdExchange == nil {
+	if o == nil || isNil(o.SymbolIdExchange) {
 		var ret string
 		return ret
 	}
@@ -66,15 +66,15 @@ func (o *PositionDataInner) GetSymbolIdExchange() string {
 // GetSymbolIdExchangeOk returns a tuple with the SymbolIdExchange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetSymbolIdExchangeOk() (*string, bool) {
-	if o == nil || o.SymbolIdExchange == nil {
-		return nil, false
+	if o == nil || isNil(o.SymbolIdExchange) {
+    return nil, false
 	}
 	return o.SymbolIdExchange, true
 }
 
 // HasSymbolIdExchange returns a boolean if a field has been set.
 func (o *PositionDataInner) HasSymbolIdExchange() bool {
-	if o != nil && o.SymbolIdExchange != nil {
+	if o != nil && !isNil(o.SymbolIdExchange) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *PositionDataInner) SetSymbolIdExchange(v string) {
 
 // GetSymbolIdCoinapi returns the SymbolIdCoinapi field value if set, zero value otherwise.
 func (o *PositionDataInner) GetSymbolIdCoinapi() string {
-	if o == nil || o.SymbolIdCoinapi == nil {
+	if o == nil || isNil(o.SymbolIdCoinapi) {
 		var ret string
 		return ret
 	}
@@ -98,15 +98,15 @@ func (o *PositionDataInner) GetSymbolIdCoinapi() string {
 // GetSymbolIdCoinapiOk returns a tuple with the SymbolIdCoinapi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetSymbolIdCoinapiOk() (*string, bool) {
-	if o == nil || o.SymbolIdCoinapi == nil {
-		return nil, false
+	if o == nil || isNil(o.SymbolIdCoinapi) {
+    return nil, false
 	}
 	return o.SymbolIdCoinapi, true
 }
 
 // HasSymbolIdCoinapi returns a boolean if a field has been set.
 func (o *PositionDataInner) HasSymbolIdCoinapi() bool {
-	if o != nil && o.SymbolIdCoinapi != nil {
+	if o != nil && !isNil(o.SymbolIdCoinapi) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *PositionDataInner) SetSymbolIdCoinapi(v string) {
 
 // GetAvgEntryPrice returns the AvgEntryPrice field value if set, zero value otherwise.
 func (o *PositionDataInner) GetAvgEntryPrice() float32 {
-	if o == nil || o.AvgEntryPrice == nil {
+	if o == nil || isNil(o.AvgEntryPrice) {
 		var ret float32
 		return ret
 	}
@@ -130,15 +130,15 @@ func (o *PositionDataInner) GetAvgEntryPrice() float32 {
 // GetAvgEntryPriceOk returns a tuple with the AvgEntryPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetAvgEntryPriceOk() (*float32, bool) {
-	if o == nil || o.AvgEntryPrice == nil {
-		return nil, false
+	if o == nil || isNil(o.AvgEntryPrice) {
+    return nil, false
 	}
 	return o.AvgEntryPrice, true
 }
 
 // HasAvgEntryPrice returns a boolean if a field has been set.
 func (o *PositionDataInner) HasAvgEntryPrice() bool {
-	if o != nil && o.AvgEntryPrice != nil {
+	if o != nil && !isNil(o.AvgEntryPrice) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *PositionDataInner) SetAvgEntryPrice(v float32) {
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
 func (o *PositionDataInner) GetQuantity() float32 {
-	if o == nil || o.Quantity == nil {
+	if o == nil || isNil(o.Quantity) {
 		var ret float32
 		return ret
 	}
@@ -162,15 +162,15 @@ func (o *PositionDataInner) GetQuantity() float32 {
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetQuantityOk() (*float32, bool) {
-	if o == nil || o.Quantity == nil {
-		return nil, false
+	if o == nil || isNil(o.Quantity) {
+    return nil, false
 	}
 	return o.Quantity, true
 }
 
 // HasQuantity returns a boolean if a field has been set.
 func (o *PositionDataInner) HasQuantity() bool {
-	if o != nil && o.Quantity != nil {
+	if o != nil && !isNil(o.Quantity) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *PositionDataInner) SetQuantity(v float32) {
 
 // GetSide returns the Side field value if set, zero value otherwise.
 func (o *PositionDataInner) GetSide() OrdSide {
-	if o == nil || o.Side == nil {
+	if o == nil || isNil(o.Side) {
 		var ret OrdSide
 		return ret
 	}
@@ -194,15 +194,15 @@ func (o *PositionDataInner) GetSide() OrdSide {
 // GetSideOk returns a tuple with the Side field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetSideOk() (*OrdSide, bool) {
-	if o == nil || o.Side == nil {
-		return nil, false
+	if o == nil || isNil(o.Side) {
+    return nil, false
 	}
 	return o.Side, true
 }
 
 // HasSide returns a boolean if a field has been set.
 func (o *PositionDataInner) HasSide() bool {
-	if o != nil && o.Side != nil {
+	if o != nil && !isNil(o.Side) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *PositionDataInner) SetSide(v OrdSide) {
 
 // GetUnrealizedPnl returns the UnrealizedPnl field value if set, zero value otherwise.
 func (o *PositionDataInner) GetUnrealizedPnl() float32 {
-	if o == nil || o.UnrealizedPnl == nil {
+	if o == nil || isNil(o.UnrealizedPnl) {
 		var ret float32
 		return ret
 	}
@@ -226,15 +226,15 @@ func (o *PositionDataInner) GetUnrealizedPnl() float32 {
 // GetUnrealizedPnlOk returns a tuple with the UnrealizedPnl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetUnrealizedPnlOk() (*float32, bool) {
-	if o == nil || o.UnrealizedPnl == nil {
-		return nil, false
+	if o == nil || isNil(o.UnrealizedPnl) {
+    return nil, false
 	}
 	return o.UnrealizedPnl, true
 }
 
 // HasUnrealizedPnl returns a boolean if a field has been set.
 func (o *PositionDataInner) HasUnrealizedPnl() bool {
-	if o != nil && o.UnrealizedPnl != nil {
+	if o != nil && !isNil(o.UnrealizedPnl) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *PositionDataInner) SetUnrealizedPnl(v float32) {
 
 // GetLeverage returns the Leverage field value if set, zero value otherwise.
 func (o *PositionDataInner) GetLeverage() float32 {
-	if o == nil || o.Leverage == nil {
+	if o == nil || isNil(o.Leverage) {
 		var ret float32
 		return ret
 	}
@@ -258,15 +258,15 @@ func (o *PositionDataInner) GetLeverage() float32 {
 // GetLeverageOk returns a tuple with the Leverage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetLeverageOk() (*float32, bool) {
-	if o == nil || o.Leverage == nil {
-		return nil, false
+	if o == nil || isNil(o.Leverage) {
+    return nil, false
 	}
 	return o.Leverage, true
 }
 
 // HasLeverage returns a boolean if a field has been set.
 func (o *PositionDataInner) HasLeverage() bool {
-	if o != nil && o.Leverage != nil {
+	if o != nil && !isNil(o.Leverage) {
 		return true
 	}
 
@@ -280,7 +280,7 @@ func (o *PositionDataInner) SetLeverage(v float32) {
 
 // GetCrossMargin returns the CrossMargin field value if set, zero value otherwise.
 func (o *PositionDataInner) GetCrossMargin() bool {
-	if o == nil || o.CrossMargin == nil {
+	if o == nil || isNil(o.CrossMargin) {
 		var ret bool
 		return ret
 	}
@@ -290,15 +290,15 @@ func (o *PositionDataInner) GetCrossMargin() bool {
 // GetCrossMarginOk returns a tuple with the CrossMargin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetCrossMarginOk() (*bool, bool) {
-	if o == nil || o.CrossMargin == nil {
-		return nil, false
+	if o == nil || isNil(o.CrossMargin) {
+    return nil, false
 	}
 	return o.CrossMargin, true
 }
 
 // HasCrossMargin returns a boolean if a field has been set.
 func (o *PositionDataInner) HasCrossMargin() bool {
-	if o != nil && o.CrossMargin != nil {
+	if o != nil && !isNil(o.CrossMargin) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *PositionDataInner) SetCrossMargin(v bool) {
 
 // GetLiquidationPrice returns the LiquidationPrice field value if set, zero value otherwise.
 func (o *PositionDataInner) GetLiquidationPrice() float32 {
-	if o == nil || o.LiquidationPrice == nil {
+	if o == nil || isNil(o.LiquidationPrice) {
 		var ret float32
 		return ret
 	}
@@ -322,15 +322,15 @@ func (o *PositionDataInner) GetLiquidationPrice() float32 {
 // GetLiquidationPriceOk returns a tuple with the LiquidationPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetLiquidationPriceOk() (*float32, bool) {
-	if o == nil || o.LiquidationPrice == nil {
-		return nil, false
+	if o == nil || isNil(o.LiquidationPrice) {
+    return nil, false
 	}
 	return o.LiquidationPrice, true
 }
 
 // HasLiquidationPrice returns a boolean if a field has been set.
 func (o *PositionDataInner) HasLiquidationPrice() bool {
-	if o != nil && o.LiquidationPrice != nil {
+	if o != nil && !isNil(o.LiquidationPrice) {
 		return true
 	}
 
@@ -344,7 +344,7 @@ func (o *PositionDataInner) SetLiquidationPrice(v float32) {
 
 // GetRawData returns the RawData field value if set, zero value otherwise.
 func (o *PositionDataInner) GetRawData() map[string]interface{} {
-	if o == nil || o.RawData == nil {
+	if o == nil || isNil(o.RawData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -354,15 +354,15 @@ func (o *PositionDataInner) GetRawData() map[string]interface{} {
 // GetRawDataOk returns a tuple with the RawData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PositionDataInner) GetRawDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.RawData == nil {
-		return nil, false
+	if o == nil || isNil(o.RawData) {
+    return map[string]interface{}{}, false
 	}
 	return o.RawData, true
 }
 
 // HasRawData returns a boolean if a field has been set.
 func (o *PositionDataInner) HasRawData() bool {
-	if o != nil && o.RawData != nil {
+	if o != nil && !isNil(o.RawData) {
 		return true
 	}
 
@@ -376,34 +376,34 @@ func (o *PositionDataInner) SetRawData(v map[string]interface{}) {
 
 func (o PositionDataInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SymbolIdExchange != nil {
+	if !isNil(o.SymbolIdExchange) {
 		toSerialize["symbol_id_exchange"] = o.SymbolIdExchange
 	}
-	if o.SymbolIdCoinapi != nil {
+	if !isNil(o.SymbolIdCoinapi) {
 		toSerialize["symbol_id_coinapi"] = o.SymbolIdCoinapi
 	}
-	if o.AvgEntryPrice != nil {
+	if !isNil(o.AvgEntryPrice) {
 		toSerialize["avg_entry_price"] = o.AvgEntryPrice
 	}
-	if o.Quantity != nil {
+	if !isNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
 	}
-	if o.Side != nil {
+	if !isNil(o.Side) {
 		toSerialize["side"] = o.Side
 	}
-	if o.UnrealizedPnl != nil {
+	if !isNil(o.UnrealizedPnl) {
 		toSerialize["unrealized_pnl"] = o.UnrealizedPnl
 	}
-	if o.Leverage != nil {
+	if !isNil(o.Leverage) {
 		toSerialize["leverage"] = o.Leverage
 	}
-	if o.CrossMargin != nil {
+	if !isNil(o.CrossMargin) {
 		toSerialize["cross_margin"] = o.CrossMargin
 	}
-	if o.LiquidationPrice != nil {
+	if !isNil(o.LiquidationPrice) {
 		toSerialize["liquidation_price"] = o.LiquidationPrice
 	}
-	if o.RawData != nil {
+	if !isNil(o.RawData) {
 		toSerialize["raw_data"] = o.RawData
 	}
 	return json.Marshal(toSerialize)

@@ -19,8 +19,6 @@ import org.openapitools.client.model.Fills;
 import org.openapitools.client.model.OrdSide;
 import org.openapitools.client.model.OrdStatus;
 import org.openapitools.client.model.OrdType;
-import org.openapitools.client.model.OrderExecutionReportAllOf;
-import org.openapitools.client.model.OrderNewSingleRequest;
 import org.openapitools.client.model.TimeInForce;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;

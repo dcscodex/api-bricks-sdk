@@ -124,7 +124,8 @@ func (a *PositionsApiService) V1PositionsGetExecute(r ApiV1PositionsGetRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

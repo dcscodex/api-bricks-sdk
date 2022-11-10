@@ -53,7 +53,7 @@ func (o *OrderCancelAllRequest) GetExchangeId() string {
 // and a boolean to check if the value has been set.
 func (o *OrderCancelAllRequest) GetExchangeIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ExchangeId, true
 }

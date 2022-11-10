@@ -55,7 +55,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Identifier of the exchange from which active orders should be canceled.
         /// </summary>
         /// <value>Identifier of the exchange from which active orders should be canceled.</value>
-        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "exchange_id", IsRequired = true, EmitDefaultValue = true)]
         public string ExchangeId { get; set; }
 
         /// <summary>

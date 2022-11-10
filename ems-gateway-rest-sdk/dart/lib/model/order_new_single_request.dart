@@ -107,25 +107,31 @@ class OrderNewSingleRequest {
   String toString() => 'OrderNewSingleRequest[exchangeId=$exchangeId, clientOrderId=$clientOrderId, symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, amountOrder=$amountOrder, price=$price, side=$side, orderType=$orderType, timeInForce=$timeInForce, expireTime=$expireTime, execInst=$execInst]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'exchange_id'] = exchangeId;
-      _json[r'client_order_id'] = clientOrderId;
-    if (symbolIdExchange != null) {
-      _json[r'symbol_id_exchange'] = symbolIdExchange;
+    final json = <String, dynamic>{};
+      json[r'exchange_id'] = this.exchangeId;
+      json[r'client_order_id'] = this.clientOrderId;
+    if (this.symbolIdExchange != null) {
+      json[r'symbol_id_exchange'] = this.symbolIdExchange;
+    } else {
+      json[r'symbol_id_exchange'] = null;
     }
-    if (symbolIdCoinapi != null) {
-      _json[r'symbol_id_coinapi'] = symbolIdCoinapi;
+    if (this.symbolIdCoinapi != null) {
+      json[r'symbol_id_coinapi'] = this.symbolIdCoinapi;
+    } else {
+      json[r'symbol_id_coinapi'] = null;
     }
-      _json[r'amount_order'] = amountOrder;
-      _json[r'price'] = price;
-      _json[r'side'] = side;
-      _json[r'order_type'] = orderType;
-      _json[r'time_in_force'] = timeInForce;
-    if (expireTime != null) {
-      _json[r'expire_time'] = expireTime;
+      json[r'amount_order'] = this.amountOrder;
+      json[r'price'] = this.price;
+      json[r'side'] = this.side;
+      json[r'order_type'] = this.orderType;
+      json[r'time_in_force'] = this.timeInForce;
+    if (this.expireTime != null) {
+      json[r'expire_time'] = this.expireTime;
+    } else {
+      json[r'expire_time'] = null;
     }
-      _json[r'exec_inst'] = execInst;
-    return _json;
+      json[r'exec_inst'] = this.execInst;
+    return json;
   }
 
   /// Returns a new [OrderNewSingleRequest] instance and imports its values from
@@ -280,7 +286,7 @@ class OrderExecutionReportExecInstEnumTypeTransformer {
   /// and users are still using an old app with the old code.
   OrderExecutionReportExecInstEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'MAKER_OR_CANCEL': return OrderExecutionReportExecInstEnum.MAKER_OR_CANCEL;
         case r'AUCTION_ONLY': return OrderExecutionReportExecInstEnum.AUCTION_ONLY;
         case r'INDICATION_OF_INTEREST': return OrderExecutionReportExecInstEnum.INDICATION_OF_INTEREST;

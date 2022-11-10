@@ -15,8 +15,6 @@ import { Fills } from './fills';
 import { OrdSide } from './ordSide';
 import { OrdStatus } from './ordStatus';
 import { OrdType } from './ordType';
-import { OrderExecutionReportAllOf } from './orderExecutionReportAllOf';
-import { OrderNewSingleRequest } from './orderNewSingleRequest';
 import { TimeInForce } from './timeInForce';
 
 /**

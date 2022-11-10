@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **order_type** | [**OrdType**](OrdType.md) |  | 
 **time_in_force** | [**TimeInForce**](TimeInForce.md) |  | 
 **expire_time** | **character** | Expiration time. Conditionaly required for orders with time_in_force &#x3D; &#x60;GOOD_TILL_TIME_EXCHANGE&#x60; or &#x60;GOOD_TILL_TIME_OEML&#x60;. | [optional] 
-**exec_inst** | **array[character]** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] 
+**exec_inst** | **array[character]** | Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt;  | [optional] [Enum: ] 
 
 

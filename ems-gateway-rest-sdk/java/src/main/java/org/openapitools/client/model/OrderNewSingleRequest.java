@@ -45,6 +45,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -55,7 +56,7 @@ import org.openapitools.client.JSON;
  * The new order message.
  */
 @ApiModel(description = "The new order message.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:17.634419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:01.685375Z[Etc/UTC]")
 public class OrderNewSingleRequest {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -150,7 +151,7 @@ public class OrderNewSingleRequest {
   @SerializedName(SERIALIZED_NAME_EXEC_INST)
   private List<ExecInstEnum> execInst = null;
 
-  public OrderNewSingleRequest() { 
+  public OrderNewSingleRequest() {
   }
 
   public OrderNewSingleRequest exchangeId(String exchangeId) {
@@ -510,9 +511,7 @@ public class OrderNewSingleRequest {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (OrderNewSingleRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!OrderNewSingleRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrderNewSingleRequest is not found in the empty JSON string", OrderNewSingleRequest.openapiRequiredFields.toString()));
         }
       }
@@ -531,19 +530,19 @@ public class OrderNewSingleRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+      if (!jsonObj.get("exchange_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
       }
-      if (jsonObj.get("client_order_id") != null && !jsonObj.get("client_order_id").isJsonPrimitive()) {
+      if (!jsonObj.get("client_order_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_order_id").toString()));
       }
-      if (jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
+      if ((jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonNull()) && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_exchange").toString()));
       }
-      if (jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
+      if ((jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonNull()) && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_coinapi").toString()));
       }
-      // ensure the json data is an array
+      // ensure the optional json data is an array if present
       if (jsonObj.get("exec_inst") != null && !jsonObj.get("exec_inst").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec_inst` to be an array in the JSON string but got `%s`", jsonObj.get("exec_inst").toString()));
       }

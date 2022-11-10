@@ -81,23 +81,33 @@ class ValidationError {
   String toString() => 'ValidationError[type=$type, title=$title, status=$status, traceId=$traceId, errors=$errors]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (type != null) {
-      _json[r'type'] = type;
+    final json = <String, dynamic>{};
+    if (this.type != null) {
+      json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
     }
-    if (title != null) {
-      _json[r'title'] = title;
+    if (this.title != null) {
+      json[r'title'] = this.title;
+    } else {
+      json[r'title'] = null;
     }
-    if (status != null) {
-      _json[r'status'] = status;
+    if (this.status != null) {
+      json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
     }
-    if (traceId != null) {
-      _json[r'traceId'] = traceId;
+    if (this.traceId != null) {
+      json[r'traceId'] = this.traceId;
+    } else {
+      json[r'traceId'] = null;
     }
-    if (errors != null) {
-      _json[r'errors'] = errors;
+    if (this.errors != null) {
+      json[r'errors'] = this.errors;
+    } else {
+      json[r'errors'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [ValidationError] instance and imports its values from

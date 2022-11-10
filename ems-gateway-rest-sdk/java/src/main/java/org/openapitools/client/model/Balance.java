@@ -41,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -50,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Balance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:17.634419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:01.685375Z[Etc/UTC]")
 public class Balance {
   public static final String SERIALIZED_NAME_EXCHANGE_ID = "exchange_id";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_ID)
@@ -60,7 +61,7 @@ public class Balance {
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<BalanceDataInner> data = null;
 
-  public Balance() { 
+  public Balance() {
   }
 
   public Balance exchangeId(String exchangeId) {
@@ -179,9 +180,7 @@ public class Balance {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Balance.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Balance.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Balance is not found in the empty JSON string", Balance.openapiRequiredFields.toString()));
         }
       }
@@ -193,20 +192,22 @@ public class Balance {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Balance` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonPrimitive()) {
+      if ((jsonObj.get("exchange_id") != null && !jsonObj.get("exchange_id").isJsonNull()) && !jsonObj.get("exchange_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exchange_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exchange_id").toString()));
       }
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      if (jsonArraydata != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("data").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-        }
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
 
-        // validate the optional field `data` (array)
-        for (int i = 0; i < jsonArraydata.size(); i++) {
-          BalanceDataInner.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
-        };
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            BalanceDataInner.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

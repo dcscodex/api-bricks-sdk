@@ -40,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -50,7 +51,7 @@ import org.openapitools.client.JSON;
  * The Position object.
  */
 @ApiModel(description = "The Position object.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:17.634419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:01.685375Z[Etc/UTC]")
 public class PositionDataInner {
   public static final String SERIALIZED_NAME_SYMBOL_ID_EXCHANGE = "symbol_id_exchange";
   @SerializedName(SERIALIZED_NAME_SYMBOL_ID_EXCHANGE)
@@ -92,7 +93,7 @@ public class PositionDataInner {
   @SerializedName(SERIALIZED_NAME_RAW_DATA)
   private Object rawData;
 
-  public PositionDataInner() { 
+  public PositionDataInner() {
   }
 
   public PositionDataInner symbolIdExchange(String symbolIdExchange) {
@@ -411,9 +412,7 @@ public class PositionDataInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PositionDataInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PositionDataInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PositionDataInner is not found in the empty JSON string", PositionDataInner.openapiRequiredFields.toString()));
         }
       }
@@ -425,10 +424,10 @@ public class PositionDataInner {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PositionDataInner` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
+      if ((jsonObj.get("symbol_id_exchange") != null && !jsonObj.get("symbol_id_exchange").isJsonNull()) && !jsonObj.get("symbol_id_exchange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol_id_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_exchange").toString()));
       }
-      if (jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
+      if ((jsonObj.get("symbol_id_coinapi") != null && !jsonObj.get("symbol_id_coinapi").isJsonNull()) && !jsonObj.get("symbol_id_coinapi").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol_id_coinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol_id_coinapi").toString()));
       }
   }

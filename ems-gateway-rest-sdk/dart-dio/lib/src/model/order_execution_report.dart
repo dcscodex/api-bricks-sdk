@@ -2,12 +2,13 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+// ignore_for_file: unused_element
 import 'package:openapi/src/model/fills.dart';
 import 'package:openapi/src/model/ord_type.dart';
 import 'package:openapi/src/model/ord_side.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/order_execution_report_all_of.dart';
 import 'package:openapi/src/model/order_new_single_request.dart';
+import 'package:openapi/src/model/order_execution_report_all_of.dart';
 import 'package:openapi/src/model/time_in_force.dart';
 import 'package:openapi/src/model/ord_status.dart';
 import 'package:openapi/src/model/date.dart';
@@ -39,327 +40,339 @@ part 'order_execution_report.g.dart';
 /// * [statusHistory] - Timestamped history of order status changes.
 /// * [errorMessage] - Error message.
 /// * [fills] - Relay fill information on working orders.
-abstract class OrderExecutionReport implements Built<OrderExecutionReport, OrderExecutionReportBuilder> {
-    /// Exchange identifier used to identify the routing destination.
-    @BuiltValueField(wireName: r'exchange_id')
-    String get exchangeId;
+@BuiltValue()
+abstract class OrderExecutionReport implements OrderExecutionReportAllOf, OrderNewSingleRequest, Built<OrderExecutionReport, OrderExecutionReportBuilder> {
+  OrderExecutionReport._();
 
-    /// The unique identifier of the order assigned by the client.
-    @BuiltValueField(wireName: r'client_order_id')
-    String get clientOrderId;
+  factory OrderExecutionReport([void updates(OrderExecutionReportBuilder b)]) = _$OrderExecutionReport;
 
-    /// Exchange symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
-    @BuiltValueField(wireName: r'symbol_id_exchange')
-    String? get symbolIdExchange;
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(OrderExecutionReportBuilder b) => b;
 
-    /// CoinAPI symbol. One of the properties (`symbol_id_exchange`, `symbol_id_coinapi`) is required to identify the market for the new order.
-    @BuiltValueField(wireName: r'symbol_id_coinapi')
-    String? get symbolIdCoinapi;
-
-    /// Order quantity.
-    @BuiltValueField(wireName: r'amount_order')
-    num get amountOrder;
-
-    /// Order price.
-    @BuiltValueField(wireName: r'price')
-    num get price;
-
-    @BuiltValueField(wireName: r'side')
-    OrdSide get side;
-    // enum sideEnum {  BUY,  SELL,  };
-
-    @BuiltValueField(wireName: r'order_type')
-    OrdType get orderType;
-    // enum orderTypeEnum {  LIMIT,  };
-
-    @BuiltValueField(wireName: r'time_in_force')
-    TimeInForce get timeInForce;
-    // enum timeInForceEnum {  GOOD_TILL_CANCEL,  GOOD_TILL_TIME_EXCHANGE,  GOOD_TILL_TIME_OMS,  FILL_OR_KILL,  IMMEDIATE_OR_CANCEL,  };
-
-    /// Expiration time. Conditionaly required for orders with time_in_force = `GOOD_TILL_TIME_EXCHANGE` or `GOOD_TILL_TIME_OEML`.
-    @BuiltValueField(wireName: r'expire_time')
-    Date? get expireTime;
-
-    /// Order execution instructions are documented in the separate section: <a href=\"#ems-order-params-exec\">EMS / Starter Guide / Order parameters / Execution instructions</a> 
-    @BuiltValueField(wireName: r'exec_inst')
-    BuiltList<OrderExecutionReportExecInstEnum>? get execInst;
-    // enum execInstEnum {  MAKER_OR_CANCEL,  AUCTION_ONLY,  INDICATION_OF_INTEREST,  };
-
-    /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
-    @BuiltValueField(wireName: r'client_order_id_format_exchange')
-    String get clientOrderIdFormatExchange;
-
-    /// Unique identifier of the order assigned by the exchange or executing system.
-    @BuiltValueField(wireName: r'exchange_order_id')
-    String? get exchangeOrderId;
-
-    /// Quantity open for further execution. `amount_open` = `amount_order` - `amount_filled`
-    @BuiltValueField(wireName: r'amount_open')
-    num get amountOpen;
-
-    /// Total quantity filled.
-    @BuiltValueField(wireName: r'amount_filled')
-    num get amountFilled;
-
-    /// Calculated average price of all fills on this order.
-    @BuiltValueField(wireName: r'avg_px')
-    num? get avgPx;
-
-    @BuiltValueField(wireName: r'status')
-    OrdStatus get status;
-    // enum statusEnum {  RECEIVED,  ROUTING,  ROUTED,  NEW,  PENDING_CANCEL,  PARTIALLY_FILLED,  FILLED,  CANCELED,  REJECTED,  };
-
-    /// Timestamped history of order status changes.
-    @BuiltValueField(wireName: r'status_history')
-    BuiltList<BuiltList<String>>? get statusHistory;
-
-    /// Error message.
-    @BuiltValueField(wireName: r'error_message')
-    String? get errorMessage;
-
-    /// Relay fill information on working orders.
-    @BuiltValueField(wireName: r'fills')
-    BuiltList<Fills>? get fills;
-
-    OrderExecutionReport._();
-
-    @BuiltValueHook(initializeBuilder: true)
-    static void _defaults(OrderExecutionReportBuilder b) => b;
-
-    factory OrderExecutionReport([void updates(OrderExecutionReportBuilder b)]) = _$OrderExecutionReport;
-
-    @BuiltValueSerializer(custom: true)
-    static Serializer<OrderExecutionReport> get serializer => _$OrderExecutionReportSerializer();
+  @BuiltValueSerializer(custom: true)
+  static Serializer<OrderExecutionReport> get serializer => _$OrderExecutionReportSerializer();
 }
 
-class _$OrderExecutionReportSerializer implements StructuredSerializer<OrderExecutionReport> {
-    @override
-    final Iterable<Type> types = const [OrderExecutionReport, _$OrderExecutionReport];
+class _$OrderExecutionReportSerializer implements PrimitiveSerializer<OrderExecutionReport> {
+  @override
+  final Iterable<Type> types = const [OrderExecutionReport, _$OrderExecutionReport];
 
-    @override
-    final String wireName = r'OrderExecutionReport';
+  @override
+  final String wireName = r'OrderExecutionReport';
 
-    @override
-    Iterable<Object?> serialize(Serializers serializers, OrderExecutionReport object,
-        {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object?>[];
-        result
-            ..add(r'exchange_id')
-            ..add(serializers.serialize(object.exchangeId,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'client_order_id')
-            ..add(serializers.serialize(object.clientOrderId,
-                specifiedType: const FullType(String)));
-        if (object.symbolIdExchange != null) {
-            result
-                ..add(r'symbol_id_exchange')
-                ..add(serializers.serialize(object.symbolIdExchange,
-                    specifiedType: const FullType(String)));
-        }
-        if (object.symbolIdCoinapi != null) {
-            result
-                ..add(r'symbol_id_coinapi')
-                ..add(serializers.serialize(object.symbolIdCoinapi,
-                    specifiedType: const FullType(String)));
-        }
-        result
-            ..add(r'amount_order')
-            ..add(serializers.serialize(object.amountOrder,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'price')
-            ..add(serializers.serialize(object.price,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'side')
-            ..add(serializers.serialize(object.side,
-                specifiedType: const FullType(OrdSide)));
-        result
-            ..add(r'order_type')
-            ..add(serializers.serialize(object.orderType,
-                specifiedType: const FullType(OrdType)));
-        result
-            ..add(r'time_in_force')
-            ..add(serializers.serialize(object.timeInForce,
-                specifiedType: const FullType(TimeInForce)));
-        if (object.expireTime != null) {
-            result
-                ..add(r'expire_time')
-                ..add(serializers.serialize(object.expireTime,
-                    specifiedType: const FullType(Date)));
-        }
-        if (object.execInst != null) {
-            result
-                ..add(r'exec_inst')
-                ..add(serializers.serialize(object.execInst,
-                    specifiedType: const FullType(BuiltList, [FullType(OrderExecutionReportExecInstEnum)])));
-        }
-        result
-            ..add(r'client_order_id_format_exchange')
-            ..add(serializers.serialize(object.clientOrderIdFormatExchange,
-                specifiedType: const FullType(String)));
-        if (object.exchangeOrderId != null) {
-            result
-                ..add(r'exchange_order_id')
-                ..add(serializers.serialize(object.exchangeOrderId,
-                    specifiedType: const FullType(String)));
-        }
-        result
-            ..add(r'amount_open')
-            ..add(serializers.serialize(object.amountOpen,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'amount_filled')
-            ..add(serializers.serialize(object.amountFilled,
-                specifiedType: const FullType(num)));
-        if (object.avgPx != null) {
-            result
-                ..add(r'avg_px')
-                ..add(serializers.serialize(object.avgPx,
-                    specifiedType: const FullType(num)));
-        }
-        result
-            ..add(r'status')
-            ..add(serializers.serialize(object.status,
-                specifiedType: const FullType(OrdStatus)));
-        if (object.statusHistory != null) {
-            result
-                ..add(r'status_history')
-                ..add(serializers.serialize(object.statusHistory,
-                    specifiedType: const FullType(BuiltList, [FullType(BuiltList, [FullType(String)])])));
-        }
-        if (object.errorMessage != null) {
-            result
-                ..add(r'error_message')
-                ..add(serializers.serialize(object.errorMessage,
-                    specifiedType: const FullType(String)));
-        }
-        if (object.fills != null) {
-            result
-                ..add(r'fills')
-                ..add(serializers.serialize(object.fills,
-                    specifiedType: const FullType(BuiltList, [FullType(Fills)])));
-        }
-        return result;
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    OrderExecutionReport object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'order_type';
+    yield serializers.serialize(
+      object.orderType,
+      specifiedType: const FullType(OrdType),
+    );
+    yield r'side';
+    yield serializers.serialize(
+      object.side,
+      specifiedType: const FullType(OrdSide),
+    );
+    if (object.symbolIdExchange != null) {
+      yield r'symbol_id_exchange';
+      yield serializers.serialize(
+        object.symbolIdExchange,
+        specifiedType: const FullType(String),
+      );
     }
-
-    @override
-    OrderExecutionReport deserialize(Serializers serializers, Iterable<Object?> serialized,
-        {FullType specifiedType = FullType.unspecified}) {
-        final result = OrderExecutionReportBuilder();
-
-        final iterator = serialized.iterator;
-        while (iterator.moveNext()) {
-            final key = iterator.current as String;
-            iterator.moveNext();
-            final Object? value = iterator.current;
-            
-            switch (key) {
-                case r'exchange_id':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.exchangeId = valueDes;
-                    break;
-                case r'client_order_id':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.clientOrderId = valueDes;
-                    break;
-                case r'symbol_id_exchange':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.symbolIdExchange = valueDes;
-                    break;
-                case r'symbol_id_coinapi':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.symbolIdCoinapi = valueDes;
-                    break;
-                case r'amount_order':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(num)) as num;
-                    result.amountOrder = valueDes;
-                    break;
-                case r'price':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(num)) as num;
-                    result.price = valueDes;
-                    break;
-                case r'side':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(OrdSide)) as OrdSide;
-                    result.side = valueDes;
-                    break;
-                case r'order_type':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(OrdType)) as OrdType;
-                    result.orderType = valueDes;
-                    break;
-                case r'time_in_force':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(TimeInForce)) as TimeInForce;
-                    result.timeInForce = valueDes;
-                    break;
-                case r'expire_time':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(Date)) as Date;
-                    result.expireTime = valueDes;
-                    break;
-                case r'exec_inst':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(OrderExecutionReportExecInstEnum)])) as BuiltList<OrderExecutionReportExecInstEnum>;
-                    result.execInst.replace(valueDes);
-                    break;
-                case r'client_order_id_format_exchange':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.clientOrderIdFormatExchange = valueDes;
-                    break;
-                case r'exchange_order_id':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.exchangeOrderId = valueDes;
-                    break;
-                case r'amount_open':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(num)) as num;
-                    result.amountOpen = valueDes;
-                    break;
-                case r'amount_filled':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(num)) as num;
-                    result.amountFilled = valueDes;
-                    break;
-                case r'avg_px':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(num)) as num;
-                    result.avgPx = valueDes;
-                    break;
-                case r'status':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(OrdStatus)) as OrdStatus;
-                    result.status = valueDes;
-                    break;
-                case r'status_history':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(BuiltList, [FullType(String)])])) as BuiltList<BuiltList<String>>;
-                    result.statusHistory.replace(valueDes);
-                    break;
-                case r'error_message':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
-                    result.errorMessage = valueDes;
-                    break;
-                case r'fills':
-                    final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(Fills)])) as BuiltList<Fills>;
-                    result.fills.replace(valueDes);
-                    break;
-            }
-        }
-        return result.build();
+    if (object.symbolIdCoinapi != null) {
+      yield r'symbol_id_coinapi';
+      yield serializers.serialize(
+        object.symbolIdCoinapi,
+        specifiedType: const FullType(String),
+      );
     }
+    yield r'amount_order';
+    yield serializers.serialize(
+      object.amountOrder,
+      specifiedType: const FullType(num),
+    );
+    if (object.execInst != null) {
+      yield r'exec_inst';
+      yield serializers.serialize(
+        object.execInst,
+        specifiedType: const FullType(BuiltList, [FullType(OrderExecutionReportExecInstEnum)]),
+      );
+    }
+    yield r'client_order_id';
+    yield serializers.serialize(
+      object.clientOrderId,
+      specifiedType: const FullType(String),
+    );
+    if (object.errorMessage != null) {
+      yield r'error_message';
+      yield serializers.serialize(
+        object.errorMessage,
+        specifiedType: const FullType(String),
+      );
+    }
+    yield r'amount_filled';
+    yield serializers.serialize(
+      object.amountFilled,
+      specifiedType: const FullType(num),
+    );
+    yield r'amount_open';
+    yield serializers.serialize(
+      object.amountOpen,
+      specifiedType: const FullType(num),
+    );
+    yield r'exchange_id';
+    yield serializers.serialize(
+      object.exchangeId,
+      specifiedType: const FullType(String),
+    );
+    if (object.statusHistory != null) {
+      yield r'status_history';
+      yield serializers.serialize(
+        object.statusHistory,
+        specifiedType: const FullType(BuiltList, [FullType(BuiltList, [FullType(String)])]),
+      );
+    }
+    if (object.expireTime != null) {
+      yield r'expire_time';
+      yield serializers.serialize(
+        object.expireTime,
+        specifiedType: const FullType(Date),
+      );
+    }
+    yield r'client_order_id_format_exchange';
+    yield serializers.serialize(
+      object.clientOrderIdFormatExchange,
+      specifiedType: const FullType(String),
+    );
+    if (object.avgPx != null) {
+      yield r'avg_px';
+      yield serializers.serialize(
+        object.avgPx,
+        specifiedType: const FullType(num),
+      );
+    }
+    yield r'price';
+    yield serializers.serialize(
+      object.price,
+      specifiedType: const FullType(num),
+    );
+    yield r'time_in_force';
+    yield serializers.serialize(
+      object.timeInForce,
+      specifiedType: const FullType(TimeInForce),
+    );
+    if (object.fills != null) {
+      yield r'fills';
+      yield serializers.serialize(
+        object.fills,
+        specifiedType: const FullType(BuiltList, [FullType(Fills)]),
+      );
+    }
+    if (object.exchangeOrderId != null) {
+      yield r'exchange_order_id';
+      yield serializers.serialize(
+        object.exchangeOrderId,
+        specifiedType: const FullType(String),
+      );
+    }
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(OrdStatus),
+    );
+  }
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    OrderExecutionReport object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required OrderExecutionReportBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'order_type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrdType),
+          ) as OrdType;
+          result.orderType = valueDes;
+          break;
+        case r'side':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrdSide),
+          ) as OrdSide;
+          result.side = valueDes;
+          break;
+        case r'symbol_id_exchange':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.symbolIdExchange = valueDes;
+          break;
+        case r'symbol_id_coinapi':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.symbolIdCoinapi = valueDes;
+          break;
+        case r'amount_order':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.amountOrder = valueDes;
+          break;
+        case r'exec_inst':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(OrderExecutionReportExecInstEnum)]),
+          ) as BuiltList<OrderExecutionReportExecInstEnum>;
+          result.execInst.replace(valueDes);
+          break;
+        case r'client_order_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.clientOrderId = valueDes;
+          break;
+        case r'error_message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.errorMessage = valueDes;
+          break;
+        case r'amount_filled':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.amountFilled = valueDes;
+          break;
+        case r'amount_open':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.amountOpen = valueDes;
+          break;
+        case r'exchange_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.exchangeId = valueDes;
+          break;
+        case r'status_history':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(BuiltList, [FullType(String)])]),
+          ) as BuiltList<BuiltList<String>>;
+          result.statusHistory.replace(valueDes);
+          break;
+        case r'expire_time':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(Date),
+          ) as Date;
+          result.expireTime = valueDes;
+          break;
+        case r'client_order_id_format_exchange':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.clientOrderIdFormatExchange = valueDes;
+          break;
+        case r'avg_px':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.avgPx = valueDes;
+          break;
+        case r'price':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.price = valueDes;
+          break;
+        case r'time_in_force':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(TimeInForce),
+          ) as TimeInForce;
+          result.timeInForce = valueDes;
+          break;
+        case r'fills':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(Fills)]),
+          ) as BuiltList<Fills>;
+          result.fills.replace(valueDes);
+          break;
+        case r'exchange_order_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.exchangeOrderId = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrdStatus),
+          ) as OrdStatus;
+          result.status = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  OrderExecutionReport deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = OrderExecutionReportBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
 }
 
 class OrderExecutionReportExecInstEnum extends EnumClass {

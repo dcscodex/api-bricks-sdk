@@ -41,7 +41,7 @@ func NewBalanceWithDefaults() *Balance {
 
 // GetExchangeId returns the ExchangeId field value if set, zero value otherwise.
 func (o *Balance) GetExchangeId() string {
-	if o == nil || o.ExchangeId == nil {
+	if o == nil || isNil(o.ExchangeId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *Balance) GetExchangeId() string {
 // GetExchangeIdOk returns a tuple with the ExchangeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Balance) GetExchangeIdOk() (*string, bool) {
-	if o == nil || o.ExchangeId == nil {
-		return nil, false
+	if o == nil || isNil(o.ExchangeId) {
+    return nil, false
 	}
 	return o.ExchangeId, true
 }
 
 // HasExchangeId returns a boolean if a field has been set.
 func (o *Balance) HasExchangeId() bool {
-	if o != nil && o.ExchangeId != nil {
+	if o != nil && !isNil(o.ExchangeId) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *Balance) SetExchangeId(v string) {
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *Balance) GetData() []BalanceDataInner {
-	if o == nil || o.Data == nil {
+	if o == nil || isNil(o.Data) {
 		var ret []BalanceDataInner
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *Balance) GetData() []BalanceDataInner {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Balance) GetDataOk() ([]BalanceDataInner, bool) {
-	if o == nil || o.Data == nil {
-		return nil, false
+	if o == nil || isNil(o.Data) {
+    return nil, false
 	}
 	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
 func (o *Balance) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !isNil(o.Data) {
 		return true
 	}
 
@@ -105,10 +105,10 @@ func (o *Balance) SetData(v []BalanceDataInner) {
 
 func (o Balance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ExchangeId != nil {
+	if !isNil(o.ExchangeId) {
 		toSerialize["exchange_id"] = o.ExchangeId
 	}
-	if o.Data != nil {
+	if !isNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	return json.Marshal(toSerialize)

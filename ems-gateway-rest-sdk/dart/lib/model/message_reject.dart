@@ -85,23 +85,33 @@ class MessageReject {
   String toString() => 'MessageReject[type=$type, rejectReason=$rejectReason, exchangeId=$exchangeId, message=$message, rejectedMessage=$rejectedMessage]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (type != null) {
-      _json[r'type'] = type;
+    final json = <String, dynamic>{};
+    if (this.type != null) {
+      json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
     }
-    if (rejectReason != null) {
-      _json[r'reject_reason'] = rejectReason;
+    if (this.rejectReason != null) {
+      json[r'reject_reason'] = this.rejectReason;
+    } else {
+      json[r'reject_reason'] = null;
     }
-    if (exchangeId != null) {
-      _json[r'exchange_id'] = exchangeId;
+    if (this.exchangeId != null) {
+      json[r'exchange_id'] = this.exchangeId;
+    } else {
+      json[r'exchange_id'] = null;
     }
-    if (message != null) {
-      _json[r'message'] = message;
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
     }
-    if (rejectedMessage != null) {
-      _json[r'rejected_message'] = rejectedMessage;
+    if (this.rejectedMessage != null) {
+      json[r'rejected_message'] = this.rejectedMessage;
+    } else {
+      json[r'rejected_message'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [MessageReject] instance and imports its values from

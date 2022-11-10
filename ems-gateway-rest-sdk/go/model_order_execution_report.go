@@ -97,7 +97,7 @@ func (o *OrderExecutionReport) GetExchangeId() string {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetExchangeIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ExchangeId, true
 }
@@ -121,7 +121,7 @@ func (o *OrderExecutionReport) GetClientOrderId() string {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetClientOrderIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ClientOrderId, true
 }
@@ -133,7 +133,7 @@ func (o *OrderExecutionReport) SetClientOrderId(v string) {
 
 // GetSymbolIdExchange returns the SymbolIdExchange field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetSymbolIdExchange() string {
-	if o == nil || o.SymbolIdExchange == nil {
+	if o == nil || isNil(o.SymbolIdExchange) {
 		var ret string
 		return ret
 	}
@@ -143,15 +143,15 @@ func (o *OrderExecutionReport) GetSymbolIdExchange() string {
 // GetSymbolIdExchangeOk returns a tuple with the SymbolIdExchange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetSymbolIdExchangeOk() (*string, bool) {
-	if o == nil || o.SymbolIdExchange == nil {
-		return nil, false
+	if o == nil || isNil(o.SymbolIdExchange) {
+    return nil, false
 	}
 	return o.SymbolIdExchange, true
 }
 
 // HasSymbolIdExchange returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasSymbolIdExchange() bool {
-	if o != nil && o.SymbolIdExchange != nil {
+	if o != nil && !isNil(o.SymbolIdExchange) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *OrderExecutionReport) SetSymbolIdExchange(v string) {
 
 // GetSymbolIdCoinapi returns the SymbolIdCoinapi field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetSymbolIdCoinapi() string {
-	if o == nil || o.SymbolIdCoinapi == nil {
+	if o == nil || isNil(o.SymbolIdCoinapi) {
 		var ret string
 		return ret
 	}
@@ -175,15 +175,15 @@ func (o *OrderExecutionReport) GetSymbolIdCoinapi() string {
 // GetSymbolIdCoinapiOk returns a tuple with the SymbolIdCoinapi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetSymbolIdCoinapiOk() (*string, bool) {
-	if o == nil || o.SymbolIdCoinapi == nil {
-		return nil, false
+	if o == nil || isNil(o.SymbolIdCoinapi) {
+    return nil, false
 	}
 	return o.SymbolIdCoinapi, true
 }
 
 // HasSymbolIdCoinapi returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasSymbolIdCoinapi() bool {
-	if o != nil && o.SymbolIdCoinapi != nil {
+	if o != nil && !isNil(o.SymbolIdCoinapi) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *OrderExecutionReport) GetAmountOrder() float32 {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetAmountOrderOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AmountOrder, true
 }
@@ -233,7 +233,7 @@ func (o *OrderExecutionReport) GetPrice() float32 {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetPriceOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Price, true
 }
@@ -257,7 +257,7 @@ func (o *OrderExecutionReport) GetSide() OrdSide {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetSideOk() (*OrdSide, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Side, true
 }
@@ -281,7 +281,7 @@ func (o *OrderExecutionReport) GetOrderType() OrdType {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetOrderTypeOk() (*OrdType, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.OrderType, true
 }
@@ -305,7 +305,7 @@ func (o *OrderExecutionReport) GetTimeInForce() TimeInForce {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetTimeInForceOk() (*TimeInForce, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.TimeInForce, true
 }
@@ -317,7 +317,7 @@ func (o *OrderExecutionReport) SetTimeInForce(v TimeInForce) {
 
 // GetExpireTime returns the ExpireTime field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetExpireTime() string {
-	if o == nil || o.ExpireTime == nil {
+	if o == nil || isNil(o.ExpireTime) {
 		var ret string
 		return ret
 	}
@@ -327,15 +327,15 @@ func (o *OrderExecutionReport) GetExpireTime() string {
 // GetExpireTimeOk returns a tuple with the ExpireTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetExpireTimeOk() (*string, bool) {
-	if o == nil || o.ExpireTime == nil {
-		return nil, false
+	if o == nil || isNil(o.ExpireTime) {
+    return nil, false
 	}
 	return o.ExpireTime, true
 }
 
 // HasExpireTime returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasExpireTime() bool {
-	if o != nil && o.ExpireTime != nil {
+	if o != nil && !isNil(o.ExpireTime) {
 		return true
 	}
 
@@ -349,7 +349,7 @@ func (o *OrderExecutionReport) SetExpireTime(v string) {
 
 // GetExecInst returns the ExecInst field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetExecInst() []string {
-	if o == nil || o.ExecInst == nil {
+	if o == nil || isNil(o.ExecInst) {
 		var ret []string
 		return ret
 	}
@@ -359,15 +359,15 @@ func (o *OrderExecutionReport) GetExecInst() []string {
 // GetExecInstOk returns a tuple with the ExecInst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetExecInstOk() ([]string, bool) {
-	if o == nil || o.ExecInst == nil {
-		return nil, false
+	if o == nil || isNil(o.ExecInst) {
+    return nil, false
 	}
 	return o.ExecInst, true
 }
 
 // HasExecInst returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasExecInst() bool {
-	if o != nil && o.ExecInst != nil {
+	if o != nil && !isNil(o.ExecInst) {
 		return true
 	}
 
@@ -393,7 +393,7 @@ func (o *OrderExecutionReport) GetClientOrderIdFormatExchange() string {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetClientOrderIdFormatExchangeOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ClientOrderIdFormatExchange, true
 }
@@ -405,7 +405,7 @@ func (o *OrderExecutionReport) SetClientOrderIdFormatExchange(v string) {
 
 // GetExchangeOrderId returns the ExchangeOrderId field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetExchangeOrderId() string {
-	if o == nil || o.ExchangeOrderId == nil {
+	if o == nil || isNil(o.ExchangeOrderId) {
 		var ret string
 		return ret
 	}
@@ -415,15 +415,15 @@ func (o *OrderExecutionReport) GetExchangeOrderId() string {
 // GetExchangeOrderIdOk returns a tuple with the ExchangeOrderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetExchangeOrderIdOk() (*string, bool) {
-	if o == nil || o.ExchangeOrderId == nil {
-		return nil, false
+	if o == nil || isNil(o.ExchangeOrderId) {
+    return nil, false
 	}
 	return o.ExchangeOrderId, true
 }
 
 // HasExchangeOrderId returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasExchangeOrderId() bool {
-	if o != nil && o.ExchangeOrderId != nil {
+	if o != nil && !isNil(o.ExchangeOrderId) {
 		return true
 	}
 
@@ -449,7 +449,7 @@ func (o *OrderExecutionReport) GetAmountOpen() float32 {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetAmountOpenOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AmountOpen, true
 }
@@ -473,7 +473,7 @@ func (o *OrderExecutionReport) GetAmountFilled() float32 {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetAmountFilledOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.AmountFilled, true
 }
@@ -485,7 +485,7 @@ func (o *OrderExecutionReport) SetAmountFilled(v float32) {
 
 // GetAvgPx returns the AvgPx field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetAvgPx() float32 {
-	if o == nil || o.AvgPx == nil {
+	if o == nil || isNil(o.AvgPx) {
 		var ret float32
 		return ret
 	}
@@ -495,15 +495,15 @@ func (o *OrderExecutionReport) GetAvgPx() float32 {
 // GetAvgPxOk returns a tuple with the AvgPx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetAvgPxOk() (*float32, bool) {
-	if o == nil || o.AvgPx == nil {
-		return nil, false
+	if o == nil || isNil(o.AvgPx) {
+    return nil, false
 	}
 	return o.AvgPx, true
 }
 
 // HasAvgPx returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasAvgPx() bool {
-	if o != nil && o.AvgPx != nil {
+	if o != nil && !isNil(o.AvgPx) {
 		return true
 	}
 
@@ -529,7 +529,7 @@ func (o *OrderExecutionReport) GetStatus() OrdStatus {
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetStatusOk() (*OrdStatus, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Status, true
 }
@@ -541,7 +541,7 @@ func (o *OrderExecutionReport) SetStatus(v OrdStatus) {
 
 // GetStatusHistory returns the StatusHistory field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetStatusHistory() [][]string {
-	if o == nil || o.StatusHistory == nil {
+	if o == nil || isNil(o.StatusHistory) {
 		var ret [][]string
 		return ret
 	}
@@ -551,15 +551,15 @@ func (o *OrderExecutionReport) GetStatusHistory() [][]string {
 // GetStatusHistoryOk returns a tuple with the StatusHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetStatusHistoryOk() ([][]string, bool) {
-	if o == nil || o.StatusHistory == nil {
-		return nil, false
+	if o == nil || isNil(o.StatusHistory) {
+    return nil, false
 	}
 	return o.StatusHistory, true
 }
 
 // HasStatusHistory returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasStatusHistory() bool {
-	if o != nil && o.StatusHistory != nil {
+	if o != nil && !isNil(o.StatusHistory) {
 		return true
 	}
 
@@ -573,7 +573,7 @@ func (o *OrderExecutionReport) SetStatusHistory(v [][]string) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetErrorMessage() string {
-	if o == nil || o.ErrorMessage == nil {
+	if o == nil || isNil(o.ErrorMessage) {
 		var ret string
 		return ret
 	}
@@ -583,15 +583,15 @@ func (o *OrderExecutionReport) GetErrorMessage() string {
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetErrorMessageOk() (*string, bool) {
-	if o == nil || o.ErrorMessage == nil {
-		return nil, false
+	if o == nil || isNil(o.ErrorMessage) {
+    return nil, false
 	}
 	return o.ErrorMessage, true
 }
 
 // HasErrorMessage returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasErrorMessage() bool {
-	if o != nil && o.ErrorMessage != nil {
+	if o != nil && !isNil(o.ErrorMessage) {
 		return true
 	}
 
@@ -605,7 +605,7 @@ func (o *OrderExecutionReport) SetErrorMessage(v string) {
 
 // GetFills returns the Fills field value if set, zero value otherwise.
 func (o *OrderExecutionReport) GetFills() []Fills {
-	if o == nil || o.Fills == nil {
+	if o == nil || isNil(o.Fills) {
 		var ret []Fills
 		return ret
 	}
@@ -615,15 +615,15 @@ func (o *OrderExecutionReport) GetFills() []Fills {
 // GetFillsOk returns a tuple with the Fills field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderExecutionReport) GetFillsOk() ([]Fills, bool) {
-	if o == nil || o.Fills == nil {
-		return nil, false
+	if o == nil || isNil(o.Fills) {
+    return nil, false
 	}
 	return o.Fills, true
 }
 
 // HasFills returns a boolean if a field has been set.
 func (o *OrderExecutionReport) HasFills() bool {
-	if o != nil && o.Fills != nil {
+	if o != nil && !isNil(o.Fills) {
 		return true
 	}
 
@@ -643,10 +643,10 @@ func (o OrderExecutionReport) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["client_order_id"] = o.ClientOrderId
 	}
-	if o.SymbolIdExchange != nil {
+	if !isNil(o.SymbolIdExchange) {
 		toSerialize["symbol_id_exchange"] = o.SymbolIdExchange
 	}
-	if o.SymbolIdCoinapi != nil {
+	if !isNil(o.SymbolIdCoinapi) {
 		toSerialize["symbol_id_coinapi"] = o.SymbolIdCoinapi
 	}
 	if true {
@@ -664,16 +664,16 @@ func (o OrderExecutionReport) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["time_in_force"] = o.TimeInForce
 	}
-	if o.ExpireTime != nil {
+	if !isNil(o.ExpireTime) {
 		toSerialize["expire_time"] = o.ExpireTime
 	}
-	if o.ExecInst != nil {
+	if !isNil(o.ExecInst) {
 		toSerialize["exec_inst"] = o.ExecInst
 	}
 	if true {
 		toSerialize["client_order_id_format_exchange"] = o.ClientOrderIdFormatExchange
 	}
-	if o.ExchangeOrderId != nil {
+	if !isNil(o.ExchangeOrderId) {
 		toSerialize["exchange_order_id"] = o.ExchangeOrderId
 	}
 	if true {
@@ -682,19 +682,19 @@ func (o OrderExecutionReport) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["amount_filled"] = o.AmountFilled
 	}
-	if o.AvgPx != nil {
+	if !isNil(o.AvgPx) {
 		toSerialize["avg_px"] = o.AvgPx
 	}
 	if true {
 		toSerialize["status"] = o.Status
 	}
-	if o.StatusHistory != nil {
+	if !isNil(o.StatusHistory) {
 		toSerialize["status_history"] = o.StatusHistory
 	}
-	if o.ErrorMessage != nil {
+	if !isNil(o.ErrorMessage) {
 		toSerialize["error_message"] = o.ErrorMessage
 	}
-	if o.Fills != nil {
+	if !isNil(o.Fills) {
 		toSerialize["fills"] = o.Fills
 	}
 	return json.Marshal(toSerialize)

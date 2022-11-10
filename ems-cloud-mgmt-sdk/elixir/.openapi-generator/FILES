@@ -1,7 +1,9 @@
+.formatter.exs
 .gitignore
 .openapi-generator-ignore
 README.md
 config/config.exs
+config/runtime.exs
 lib/ems_restapi/api/balances.ex
 lib/ems_restapi/api/orders.ex
 lib/ems_restapi/api/positions.ex

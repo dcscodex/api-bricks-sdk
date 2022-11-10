@@ -36,7 +36,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public OrdStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderExecutionReportAllOf" /> class.
@@ -77,7 +77,7 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.
         /// </summary>
         /// <value>The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.</value>
-        [DataMember(Name = "client_order_id_format_exchange", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "client_order_id_format_exchange", IsRequired = true, EmitDefaultValue = true)]
         public string ClientOrderIdFormatExchange { get; set; }
 
         /// <summary>
@@ -91,14 +91,14 @@ namespace CoinAPI.EMS.REST.V1.Model
         /// Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;
         /// </summary>
         /// <value>Quantity open for further execution. &#x60;amount_open&#x60; &#x3D; &#x60;amount_order&#x60; - &#x60;amount_filled&#x60;</value>
-        [DataMember(Name = "amount_open", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amount_open", IsRequired = true, EmitDefaultValue = true)]
         public decimal AmountOpen { get; set; }
 
         /// <summary>
         /// Total quantity filled.
         /// </summary>
         /// <value>Total quantity filled.</value>
-        [DataMember(Name = "amount_filled", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amount_filled", IsRequired = true, EmitDefaultValue = true)]
         public decimal AmountFilled { get; set; }
 
         /// <summary>

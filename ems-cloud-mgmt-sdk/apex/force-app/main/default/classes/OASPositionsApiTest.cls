@@ -30,5 +30,12 @@ private class OASPositionsApiTest {
         expectedResponse = List.getExample();
         response = (List<OASPosition>) api.v1PositionsGet(params);
         System.assertEquals(expectedResponse, response);
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'appliction/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASPosition>) api.v1PositionsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 }

@@ -40,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -49,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Fills
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:27.933192Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:05.874163Z[Etc/UTC]")
 public class Fills {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -63,7 +64,7 @@ public class Fills {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private BigDecimal amount;
 
-  public Fills() { 
+  public Fills() {
   }
 
   public Fills time(LocalDate time) {
@@ -200,9 +201,7 @@ public class Fills {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Fills.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Fills.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Fills is not found in the empty JSON string", Fills.openapiRequiredFields.toString()));
         }
       }

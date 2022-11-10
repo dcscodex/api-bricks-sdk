@@ -116,32 +116,48 @@ class BalanceDataInner {
   String toString() => 'BalanceDataInner[assetIdExchange=$assetIdExchange, assetIdCoinapi=$assetIdCoinapi, balance=$balance, available=$available, locked=$locked, lastUpdatedBy=$lastUpdatedBy, rateUsd=$rateUsd, traded=$traded]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (assetIdExchange != null) {
-      _json[r'asset_id_exchange'] = assetIdExchange;
+    final json = <String, dynamic>{};
+    if (this.assetIdExchange != null) {
+      json[r'asset_id_exchange'] = this.assetIdExchange;
+    } else {
+      json[r'asset_id_exchange'] = null;
     }
-    if (assetIdCoinapi != null) {
-      _json[r'asset_id_coinapi'] = assetIdCoinapi;
+    if (this.assetIdCoinapi != null) {
+      json[r'asset_id_coinapi'] = this.assetIdCoinapi;
+    } else {
+      json[r'asset_id_coinapi'] = null;
     }
-    if (balance != null) {
-      _json[r'balance'] = balance;
+    if (this.balance != null) {
+      json[r'balance'] = this.balance;
+    } else {
+      json[r'balance'] = null;
     }
-    if (available != null) {
-      _json[r'available'] = available;
+    if (this.available != null) {
+      json[r'available'] = this.available;
+    } else {
+      json[r'available'] = null;
     }
-    if (locked != null) {
-      _json[r'locked'] = locked;
+    if (this.locked != null) {
+      json[r'locked'] = this.locked;
+    } else {
+      json[r'locked'] = null;
     }
-    if (lastUpdatedBy != null) {
-      _json[r'last_updated_by'] = lastUpdatedBy;
+    if (this.lastUpdatedBy != null) {
+      json[r'last_updated_by'] = this.lastUpdatedBy;
+    } else {
+      json[r'last_updated_by'] = null;
     }
-    if (rateUsd != null) {
-      _json[r'rate_usd'] = rateUsd;
+    if (this.rateUsd != null) {
+      json[r'rate_usd'] = this.rateUsd;
+    } else {
+      json[r'rate_usd'] = null;
     }
-    if (traded != null) {
-      _json[r'traded'] = traded;
+    if (this.traded != null) {
+      json[r'traded'] = this.traded;
+    } else {
+      json[r'traded'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [BalanceDataInner] instance and imports its values from
@@ -282,7 +298,7 @@ class BalanceDataInnerLastUpdatedByEnumTypeTransformer {
   /// and users are still using an old app with the old code.
   BalanceDataInnerLastUpdatedByEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'INITIALIZATION': return BalanceDataInnerLastUpdatedByEnum.INITIALIZATION;
         case r'BALANCE_MANAGER': return BalanceDataInnerLastUpdatedByEnum.BALANCE_MANAGER;
         case r'EXCHANGE': return BalanceDataInnerLastUpdatedByEnum.EXCHANGE;

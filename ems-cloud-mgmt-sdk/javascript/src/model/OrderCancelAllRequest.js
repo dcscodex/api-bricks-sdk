@@ -57,8 +57,30 @@ class OrderCancelAllRequest {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>OrderCancelAllRequest</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OrderCancelAllRequest</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of OrderCancelAllRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['exchange_id'] && !(typeof data['exchange_id'] === 'string' || data['exchange_id'] instanceof String)) {
+            throw new Error("Expected the field `exchange_id` to be a primitive type in the JSON string but got " + data['exchange_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+OrderCancelAllRequest.RequiredProperties = ["exchange_id"];
 
 /**
  * Identifier of the exchange from which active orders should be canceled.

@@ -47,7 +47,7 @@ func NewMessageRejectWithDefaults() *MessageReject {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *MessageReject) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -57,15 +57,15 @@ func (o *MessageReject) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageReject) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *MessageReject) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *MessageReject) SetType(v string) {
 
 // GetRejectReason returns the RejectReason field value if set, zero value otherwise.
 func (o *MessageReject) GetRejectReason() RejectReason {
-	if o == nil || o.RejectReason == nil {
+	if o == nil || isNil(o.RejectReason) {
 		var ret RejectReason
 		return ret
 	}
@@ -89,15 +89,15 @@ func (o *MessageReject) GetRejectReason() RejectReason {
 // GetRejectReasonOk returns a tuple with the RejectReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageReject) GetRejectReasonOk() (*RejectReason, bool) {
-	if o == nil || o.RejectReason == nil {
-		return nil, false
+	if o == nil || isNil(o.RejectReason) {
+    return nil, false
 	}
 	return o.RejectReason, true
 }
 
 // HasRejectReason returns a boolean if a field has been set.
 func (o *MessageReject) HasRejectReason() bool {
-	if o != nil && o.RejectReason != nil {
+	if o != nil && !isNil(o.RejectReason) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *MessageReject) SetRejectReason(v RejectReason) {
 
 // GetExchangeId returns the ExchangeId field value if set, zero value otherwise.
 func (o *MessageReject) GetExchangeId() string {
-	if o == nil || o.ExchangeId == nil {
+	if o == nil || isNil(o.ExchangeId) {
 		var ret string
 		return ret
 	}
@@ -121,15 +121,15 @@ func (o *MessageReject) GetExchangeId() string {
 // GetExchangeIdOk returns a tuple with the ExchangeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageReject) GetExchangeIdOk() (*string, bool) {
-	if o == nil || o.ExchangeId == nil {
-		return nil, false
+	if o == nil || isNil(o.ExchangeId) {
+    return nil, false
 	}
 	return o.ExchangeId, true
 }
 
 // HasExchangeId returns a boolean if a field has been set.
 func (o *MessageReject) HasExchangeId() bool {
-	if o != nil && o.ExchangeId != nil {
+	if o != nil && !isNil(o.ExchangeId) {
 		return true
 	}
 
@@ -143,7 +143,7 @@ func (o *MessageReject) SetExchangeId(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *MessageReject) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil || isNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -153,15 +153,15 @@ func (o *MessageReject) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageReject) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
-		return nil, false
+	if o == nil || isNil(o.Message) {
+    return nil, false
 	}
 	return o.Message, true
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *MessageReject) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !isNil(o.Message) {
 		return true
 	}
 
@@ -175,7 +175,7 @@ func (o *MessageReject) SetMessage(v string) {
 
 // GetRejectedMessage returns the RejectedMessage field value if set, zero value otherwise.
 func (o *MessageReject) GetRejectedMessage() string {
-	if o == nil || o.RejectedMessage == nil {
+	if o == nil || isNil(o.RejectedMessage) {
 		var ret string
 		return ret
 	}
@@ -185,15 +185,15 @@ func (o *MessageReject) GetRejectedMessage() string {
 // GetRejectedMessageOk returns a tuple with the RejectedMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageReject) GetRejectedMessageOk() (*string, bool) {
-	if o == nil || o.RejectedMessage == nil {
-		return nil, false
+	if o == nil || isNil(o.RejectedMessage) {
+    return nil, false
 	}
 	return o.RejectedMessage, true
 }
 
 // HasRejectedMessage returns a boolean if a field has been set.
 func (o *MessageReject) HasRejectedMessage() bool {
-	if o != nil && o.RejectedMessage != nil {
+	if o != nil && !isNil(o.RejectedMessage) {
 		return true
 	}
 
@@ -207,19 +207,19 @@ func (o *MessageReject) SetRejectedMessage(v string) {
 
 func (o MessageReject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.RejectReason != nil {
+	if !isNil(o.RejectReason) {
 		toSerialize["reject_reason"] = o.RejectReason
 	}
-	if o.ExchangeId != nil {
+	if !isNil(o.ExchangeId) {
 		toSerialize["exchange_id"] = o.ExchangeId
 	}
-	if o.Message != nil {
+	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if o.RejectedMessage != nil {
+	if !isNil(o.RejectedMessage) {
 		toSerialize["rejected_message"] = o.RejectedMessage
 	}
 	return json.Marshal(toSerialize)

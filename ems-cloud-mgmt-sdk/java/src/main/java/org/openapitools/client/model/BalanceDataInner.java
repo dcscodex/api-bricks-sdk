@@ -38,6 +38,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * BalanceDataInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T04:34:27.933192Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-10T01:36:05.874163Z[Etc/UTC]")
 public class BalanceDataInner {
   public static final String SERIALIZED_NAME_ASSET_ID_EXCHANGE = "asset_id_exchange";
   @SerializedName(SERIALIZED_NAME_ASSET_ID_EXCHANGE)
@@ -130,7 +131,7 @@ public class BalanceDataInner {
   @SerializedName(SERIALIZED_NAME_TRADED)
   private Double traded;
 
-  public BalanceDataInner() { 
+  public BalanceDataInner() {
   }
 
   public BalanceDataInner assetIdExchange(String assetIdExchange) {
@@ -397,9 +398,7 @@ public class BalanceDataInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BalanceDataInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BalanceDataInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BalanceDataInner is not found in the empty JSON string", BalanceDataInner.openapiRequiredFields.toString()));
         }
       }
@@ -411,13 +410,13 @@ public class BalanceDataInner {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BalanceDataInner` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("asset_id_exchange") != null && !jsonObj.get("asset_id_exchange").isJsonPrimitive()) {
+      if ((jsonObj.get("asset_id_exchange") != null && !jsonObj.get("asset_id_exchange").isJsonNull()) && !jsonObj.get("asset_id_exchange").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `asset_id_exchange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_id_exchange").toString()));
       }
-      if (jsonObj.get("asset_id_coinapi") != null && !jsonObj.get("asset_id_coinapi").isJsonPrimitive()) {
+      if ((jsonObj.get("asset_id_coinapi") != null && !jsonObj.get("asset_id_coinapi").isJsonNull()) && !jsonObj.get("asset_id_coinapi").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `asset_id_coinapi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_id_coinapi").toString()));
       }
-      if (jsonObj.get("last_updated_by") != null && !jsonObj.get("last_updated_by").isJsonPrimitive()) {
+      if ((jsonObj.get("last_updated_by") != null && !jsonObj.get("last_updated_by").isJsonNull()) && !jsonObj.get("last_updated_by").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `last_updated_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("last_updated_by").toString()));
       }
   }

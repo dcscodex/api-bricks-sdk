@@ -24,6 +24,7 @@ Module : EMS-REST.Core
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TupleSections #-}
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing -fno-warn-unused-binds -fno-warn-unused-imports #-}
 
 module EMS-REST.Core where
@@ -429,7 +430,11 @@ _applyAuthMethods req config@(EMS-RESTConfig {configAuthMethods = as}) =
 -- * Utils
 
 -- | Removes Null fields.  (OpenAPI-Specification 2.0 does not allow Null in JSON)
+#if MIN_VERSION_aeson(2,0,0)
 _omitNulls :: [(A.Key, A.Value)] -> A.Value
+#else
+_omitNulls :: [(Text, A.Value)] -> A.Value
+#endif
 _omitNulls = A.object . P.filter notNull
   where
     notNull (_, A.Null) = False

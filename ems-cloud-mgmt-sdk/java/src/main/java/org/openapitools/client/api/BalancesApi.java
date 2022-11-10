@@ -117,7 +117,8 @@ public class BalancesApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json", "appliction/json"
+            "application/json",
+            "appliction/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -125,7 +126,6 @@ public class BalancesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -138,10 +138,7 @@ public class BalancesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1BalancesGetValidateBeforeCall(String exchangeId, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = v1BalancesGetCall(exchangeId, _callback);
-        return localVarCall;
+        return v1BalancesGetCall(exchangeId, _callback);
 
     }
 

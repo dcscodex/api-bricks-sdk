@@ -314,77 +314,119 @@ class OrderHistory {
   String toString() => 'OrderHistory[apikey=$apikey, exchangeId=$exchangeId, clientOrderId=$clientOrderId, symbolIdExchange=$symbolIdExchange, symbolIdCoinapi=$symbolIdCoinapi, amountOrder=$amountOrder, price=$price, side=$side, orderType=$orderType, timeInForce=$timeInForce, expireTime=$expireTime, execInst=$execInst, clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, avgPx=$avgPx, status=$status, statusHistoryStatus=$statusHistoryStatus, statusHistoryTime=$statusHistoryTime, errorMessageResult=$errorMessageResult, errorMessageReason=$errorMessageReason, errorMessageMessage=$errorMessageMessage, fillsTime=$fillsTime, fillsPrice=$fillsPrice, fillsAmount=$fillsAmount, createdTime=$createdTime]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (apikey != null) {
-      _json[r'apikey'] = apikey;
+    final json = <String, dynamic>{};
+    if (this.apikey != null) {
+      json[r'apikey'] = this.apikey;
+    } else {
+      json[r'apikey'] = null;
     }
-    if (exchangeId != null) {
-      _json[r'exchangeId'] = exchangeId;
+    if (this.exchangeId != null) {
+      json[r'exchangeId'] = this.exchangeId;
+    } else {
+      json[r'exchangeId'] = null;
     }
-    if (clientOrderId != null) {
-      _json[r'clientOrderId'] = clientOrderId;
+    if (this.clientOrderId != null) {
+      json[r'clientOrderId'] = this.clientOrderId;
+    } else {
+      json[r'clientOrderId'] = null;
     }
-    if (symbolIdExchange != null) {
-      _json[r'symbolIdExchange'] = symbolIdExchange;
+    if (this.symbolIdExchange != null) {
+      json[r'symbolIdExchange'] = this.symbolIdExchange;
+    } else {
+      json[r'symbolIdExchange'] = null;
     }
-    if (symbolIdCoinapi != null) {
-      _json[r'symbolIdCoinapi'] = symbolIdCoinapi;
+    if (this.symbolIdCoinapi != null) {
+      json[r'symbolIdCoinapi'] = this.symbolIdCoinapi;
+    } else {
+      json[r'symbolIdCoinapi'] = null;
     }
-    if (amountOrder != null) {
-      _json[r'amountOrder'] = amountOrder;
+    if (this.amountOrder != null) {
+      json[r'amountOrder'] = this.amountOrder;
+    } else {
+      json[r'amountOrder'] = null;
     }
-    if (price != null) {
-      _json[r'price'] = price;
+    if (this.price != null) {
+      json[r'price'] = this.price;
+    } else {
+      json[r'price'] = null;
     }
-    if (side != null) {
-      _json[r'side'] = side;
+    if (this.side != null) {
+      json[r'side'] = this.side;
+    } else {
+      json[r'side'] = null;
     }
-    if (orderType != null) {
-      _json[r'orderType'] = orderType;
+    if (this.orderType != null) {
+      json[r'orderType'] = this.orderType;
+    } else {
+      json[r'orderType'] = null;
     }
-    if (timeInForce != null) {
-      _json[r'timeInForce'] = timeInForce;
+    if (this.timeInForce != null) {
+      json[r'timeInForce'] = this.timeInForce;
+    } else {
+      json[r'timeInForce'] = null;
     }
-    if (expireTime != null) {
-      _json[r'expireTime'] = expireTime;
+    if (this.expireTime != null) {
+      json[r'expireTime'] = this.expireTime;
+    } else {
+      json[r'expireTime'] = null;
     }
-      _json[r'execInst'] = execInst;
-    if (clientOrderIdFormatExchange != null) {
-      _json[r'clientOrderIdFormatExchange'] = clientOrderIdFormatExchange;
+      json[r'execInst'] = this.execInst;
+    if (this.clientOrderIdFormatExchange != null) {
+      json[r'clientOrderIdFormatExchange'] = this.clientOrderIdFormatExchange;
+    } else {
+      json[r'clientOrderIdFormatExchange'] = null;
     }
-    if (exchangeOrderId != null) {
-      _json[r'exchangeOrderId'] = exchangeOrderId;
+    if (this.exchangeOrderId != null) {
+      json[r'exchangeOrderId'] = this.exchangeOrderId;
+    } else {
+      json[r'exchangeOrderId'] = null;
     }
-    if (amountOpen != null) {
-      _json[r'amountOpen'] = amountOpen;
+    if (this.amountOpen != null) {
+      json[r'amountOpen'] = this.amountOpen;
+    } else {
+      json[r'amountOpen'] = null;
     }
-    if (amountFilled != null) {
-      _json[r'amountFilled'] = amountFilled;
+    if (this.amountFilled != null) {
+      json[r'amountFilled'] = this.amountFilled;
+    } else {
+      json[r'amountFilled'] = null;
     }
-    if (avgPx != null) {
-      _json[r'avgPx'] = avgPx;
+    if (this.avgPx != null) {
+      json[r'avgPx'] = this.avgPx;
+    } else {
+      json[r'avgPx'] = null;
     }
-    if (status != null) {
-      _json[r'status'] = status;
+    if (this.status != null) {
+      json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
     }
-      _json[r'statusHistoryStatus'] = statusHistoryStatus;
-      _json[r'statusHistoryTime'] = statusHistoryTime;
-    if (errorMessageResult != null) {
-      _json[r'errorMessageResult'] = errorMessageResult;
+      json[r'statusHistoryStatus'] = this.statusHistoryStatus;
+      json[r'statusHistoryTime'] = this.statusHistoryTime;
+    if (this.errorMessageResult != null) {
+      json[r'errorMessageResult'] = this.errorMessageResult;
+    } else {
+      json[r'errorMessageResult'] = null;
     }
-    if (errorMessageReason != null) {
-      _json[r'errorMessageReason'] = errorMessageReason;
+    if (this.errorMessageReason != null) {
+      json[r'errorMessageReason'] = this.errorMessageReason;
+    } else {
+      json[r'errorMessageReason'] = null;
     }
-    if (errorMessageMessage != null) {
-      _json[r'errorMessageMessage'] = errorMessageMessage;
+    if (this.errorMessageMessage != null) {
+      json[r'errorMessageMessage'] = this.errorMessageMessage;
+    } else {
+      json[r'errorMessageMessage'] = null;
     }
-      _json[r'fillsTime'] = fillsTime;
-      _json[r'fillsPrice'] = fillsPrice;
-      _json[r'fillsAmount'] = fillsAmount;
-    if (createdTime != null) {
-      _json[r'createdTime'] = createdTime;
+      json[r'fillsTime'] = this.fillsTime;
+      json[r'fillsPrice'] = this.fillsPrice;
+      json[r'fillsAmount'] = this.fillsAmount;
+    if (this.createdTime != null) {
+      json[r'createdTime'] = this.createdTime;
+    } else {
+      json[r'createdTime'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [OrderHistory] instance and imports its values from

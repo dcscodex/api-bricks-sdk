@@ -10,8 +10,6 @@ import org.openapitools.model.Fills;
 import org.openapitools.model.OrdSide;
 import org.openapitools.model.OrdStatus;
 import org.openapitools.model.OrdType;
-import org.openapitools.model.OrderExecutionReportAllOf;
-import org.openapitools.model.OrderNewSingleRequest;
 import org.openapitools.model.TimeInForce;
 
 @Canonical

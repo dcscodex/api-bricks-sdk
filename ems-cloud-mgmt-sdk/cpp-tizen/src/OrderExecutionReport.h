@@ -14,8 +14,6 @@
 #include "OrdSide.h"
 #include "OrdStatus.h"
 #include "OrdType.h"
-#include "OrderExecutionReport_allOf.h"
-#include "OrderNewSingleRequest.h"
 #include "TimeInForce.h"
 #include <list>
 #include "Object.h"

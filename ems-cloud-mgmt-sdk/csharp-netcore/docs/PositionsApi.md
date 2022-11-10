@@ -2,10 +2,9 @@
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**V1PositionsGet**](PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**V1PositionsGet**](PositionsApi.md#v1positionsget) | **GET** /v1/positions | Get open positions |
 
 <a name="v1positionsget"></a>
 # **V1PositionsGet**
@@ -42,8 +41,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PositionsApi.V1PositionsGet: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling PositionsApi.V1PositionsGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -51,11 +50,31 @@ namespace Example
 }
 ```
 
+#### Using the V1PositionsGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get open positions
+    ApiResponse<List<Position>> response = apiInstance.V1PositionsGetWithHttpInfo(exchangeId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling PositionsApi.V1PositionsGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exchangeId** | **string**| Filter the balances to the specific exchange. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **exchangeId** | **string** | Filter the balances to the specific exchange. | [optional]  |
 
 ### Return type
 

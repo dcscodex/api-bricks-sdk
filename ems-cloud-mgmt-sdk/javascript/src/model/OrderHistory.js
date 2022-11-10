@@ -132,8 +132,96 @@ class OrderHistory {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>OrderHistory</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OrderHistory</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['apikey'] && !(typeof data['apikey'] === 'string' || data['apikey'] instanceof String)) {
+            throw new Error("Expected the field `apikey` to be a primitive type in the JSON string but got " + data['apikey']);
+        }
+        // ensure the json data is a string
+        if (data['exchangeId'] && !(typeof data['exchangeId'] === 'string' || data['exchangeId'] instanceof String)) {
+            throw new Error("Expected the field `exchangeId` to be a primitive type in the JSON string but got " + data['exchangeId']);
+        }
+        // ensure the json data is a string
+        if (data['clientOrderId'] && !(typeof data['clientOrderId'] === 'string' || data['clientOrderId'] instanceof String)) {
+            throw new Error("Expected the field `clientOrderId` to be a primitive type in the JSON string but got " + data['clientOrderId']);
+        }
+        // ensure the json data is a string
+        if (data['symbolIdExchange'] && !(typeof data['symbolIdExchange'] === 'string' || data['symbolIdExchange'] instanceof String)) {
+            throw new Error("Expected the field `symbolIdExchange` to be a primitive type in the JSON string but got " + data['symbolIdExchange']);
+        }
+        // ensure the json data is a string
+        if (data['symbolIdCoinapi'] && !(typeof data['symbolIdCoinapi'] === 'string' || data['symbolIdCoinapi'] instanceof String)) {
+            throw new Error("Expected the field `symbolIdCoinapi` to be a primitive type in the JSON string but got " + data['symbolIdCoinapi']);
+        }
+        // ensure the json data is a string
+        if (data['orderType'] && !(typeof data['orderType'] === 'string' || data['orderType'] instanceof String)) {
+            throw new Error("Expected the field `orderType` to be a primitive type in the JSON string but got " + data['orderType']);
+        }
+        // ensure the json data is a string
+        if (data['timeInForce'] && !(typeof data['timeInForce'] === 'string' || data['timeInForce'] instanceof String)) {
+            throw new Error("Expected the field `timeInForce` to be a primitive type in the JSON string but got " + data['timeInForce']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['execInst'])) {
+            throw new Error("Expected the field `execInst` to be an array in the JSON data but got " + data['execInst']);
+        }
+        // ensure the json data is a string
+        if (data['clientOrderIdFormatExchange'] && !(typeof data['clientOrderIdFormatExchange'] === 'string' || data['clientOrderIdFormatExchange'] instanceof String)) {
+            throw new Error("Expected the field `clientOrderIdFormatExchange` to be a primitive type in the JSON string but got " + data['clientOrderIdFormatExchange']);
+        }
+        // ensure the json data is a string
+        if (data['exchangeOrderId'] && !(typeof data['exchangeOrderId'] === 'string' || data['exchangeOrderId'] instanceof String)) {
+            throw new Error("Expected the field `exchangeOrderId` to be a primitive type in the JSON string but got " + data['exchangeOrderId']);
+        }
+        // ensure the json data is a string
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['statusHistoryStatus'])) {
+            throw new Error("Expected the field `statusHistoryStatus` to be an array in the JSON data but got " + data['statusHistoryStatus']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['statusHistoryTime'])) {
+            throw new Error("Expected the field `statusHistoryTime` to be an array in the JSON data but got " + data['statusHistoryTime']);
+        }
+        // ensure the json data is a string
+        if (data['errorMessageResult'] && !(typeof data['errorMessageResult'] === 'string' || data['errorMessageResult'] instanceof String)) {
+            throw new Error("Expected the field `errorMessageResult` to be a primitive type in the JSON string but got " + data['errorMessageResult']);
+        }
+        // ensure the json data is a string
+        if (data['errorMessageReason'] && !(typeof data['errorMessageReason'] === 'string' || data['errorMessageReason'] instanceof String)) {
+            throw new Error("Expected the field `errorMessageReason` to be a primitive type in the JSON string but got " + data['errorMessageReason']);
+        }
+        // ensure the json data is a string
+        if (data['errorMessageMessage'] && !(typeof data['errorMessageMessage'] === 'string' || data['errorMessageMessage'] instanceof String)) {
+            throw new Error("Expected the field `errorMessageMessage` to be a primitive type in the JSON string but got " + data['errorMessageMessage']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['fillsTime'])) {
+            throw new Error("Expected the field `fillsTime` to be an array in the JSON data but got " + data['fillsTime']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['fillsPrice'])) {
+            throw new Error("Expected the field `fillsPrice` to be an array in the JSON data but got " + data['fillsPrice']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['fillsAmount'])) {
+            throw new Error("Expected the field `fillsAmount` to be an array in the JSON data but got " + data['fillsAmount']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Apikey

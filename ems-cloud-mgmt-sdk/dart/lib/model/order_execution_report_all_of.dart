@@ -97,23 +97,29 @@ class OrderExecutionReportAllOf {
   String toString() => 'OrderExecutionReportAllOf[clientOrderIdFormatExchange=$clientOrderIdFormatExchange, exchangeOrderId=$exchangeOrderId, amountOpen=$amountOpen, amountFilled=$amountFilled, avgPx=$avgPx, status=$status, statusHistory=$statusHistory, errorMessage=$errorMessage, fills=$fills]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'client_order_id_format_exchange'] = clientOrderIdFormatExchange;
-    if (exchangeOrderId != null) {
-      _json[r'exchange_order_id'] = exchangeOrderId;
+    final json = <String, dynamic>{};
+      json[r'client_order_id_format_exchange'] = this.clientOrderIdFormatExchange;
+    if (this.exchangeOrderId != null) {
+      json[r'exchange_order_id'] = this.exchangeOrderId;
+    } else {
+      json[r'exchange_order_id'] = null;
     }
-      _json[r'amount_open'] = amountOpen;
-      _json[r'amount_filled'] = amountFilled;
-    if (avgPx != null) {
-      _json[r'avg_px'] = avgPx;
+      json[r'amount_open'] = this.amountOpen;
+      json[r'amount_filled'] = this.amountFilled;
+    if (this.avgPx != null) {
+      json[r'avg_px'] = this.avgPx;
+    } else {
+      json[r'avg_px'] = null;
     }
-      _json[r'status'] = status;
-      _json[r'status_history'] = statusHistory;
-    if (errorMessage != null) {
-      _json[r'error_message'] = errorMessage;
+      json[r'status'] = this.status;
+      json[r'status_history'] = this.statusHistory;
+    if (this.errorMessage != null) {
+      json[r'error_message'] = this.errorMessage;
+    } else {
+      json[r'error_message'] = null;
     }
-      _json[r'fills'] = fills;
-    return _json;
+      json[r'fills'] = this.fills;
+    return json;
   }
 
   /// Returns a new [OrderExecutionReportAllOf] instance and imports its values from

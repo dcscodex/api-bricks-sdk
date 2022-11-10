@@ -30,4 +30,5 @@ model/positionDataInner.ts
 model/rejectReason.ts
 model/timeInForce.ts
 model/validationError.ts
+param.ts
 variables.ts

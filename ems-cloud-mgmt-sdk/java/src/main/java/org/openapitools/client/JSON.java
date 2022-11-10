@@ -87,27 +87,27 @@ public class JSON {
     }
 
     {
-        gson = createGson()
-            .registerTypeAdapter(Date.class, dateTypeAdapter)
-            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
-            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            .registerTypeAdapter(byte[].class, byteArrayAdapter)
-            .registerTypeAdapterFactory(new org.openapitools.client.model.Balance.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.BalanceDataInner.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.Fills.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.MessageError.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.MessageReject.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderCancelAllRequest.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderCancelSingleRequest.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderExecutionReport.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderExecutionReportAllOf.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderHistory.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.OrderNewSingleRequest.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.Position.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.PositionDataInner.CustomTypeAdapterFactory())
-            .registerTypeAdapterFactory(new org.openapitools.client.model.ValidationError.CustomTypeAdapterFactory())
-            .create();
+        GsonBuilder gsonBuilder = createGson();
+        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
+        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.Balance.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.BalanceDataInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.Fills.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.MessageError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.MessageReject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderCancelAllRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderCancelSingleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderExecutionReport.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderExecutionReportAllOf.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderHistory.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.OrderNewSingleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.Position.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.PositionDataInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.ValidationError.CustomTypeAdapterFactory());
+        gson = gsonBuilder.create();
     }
 
     /**

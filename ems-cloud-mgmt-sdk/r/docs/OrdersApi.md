@@ -23,11 +23,15 @@ This request cancels all open orders on single specified exchange.
 ```R
 library(openapi)
 
-var.order_cancel_all_request <- OrderCancelAllRequest$new("exchange_id_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
+# Cancel all orders request
+#
+# prepare function argument(s)
+var_order_cancel_all_request <- OrderCancelAllRequest$new("exchange_id_example") # OrderCancelAllRequest | OrderCancelAllRequest object.
 
-#Cancel all orders request
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelAllPost(var.order_cancel_all_request)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersCancelAllPost(var_order_cancel_all_requestdata_file = "result.txt")
+result <- api_instance$V1OrdersCancelAllPost(var_order_cancel_all_request)
 dput(result)
 ```
 
@@ -68,11 +72,15 @@ Request cancel for an existing order. The order can be canceled using the `clien
 ```R
 library(openapi)
 
-var.order_cancel_single_request <- OrderCancelSingleRequest$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
+# Cancel order request
+#
+# prepare function argument(s)
+var_order_cancel_single_request <- OrderCancelSingleRequest$new("exchange_id_example", "exchange_order_id_example", "client_order_id_example") # OrderCancelSingleRequest | OrderCancelSingleRequest object.
 
-#Cancel order request
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersCancelPost(var.order_cancel_single_request)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersCancelPost(var_order_cancel_single_requestdata_file = "result.txt")
+result <- api_instance$V1OrdersCancelPost(var_order_cancel_single_request)
 dput(result)
 ```
 
@@ -103,7 +111,7 @@ No authorization required
 | **490** | Exchange is unreachable. |  -  |
 
 # **V1OrdersGet**
-> array[OrderExecutionReport] V1OrdersGet(exchange_id=var.exchange_id)
+> array[OrderExecutionReport] V1OrdersGet(exchange_id = var.exchange_id)
 
 Get open orders
 
@@ -113,11 +121,15 @@ Get last execution reports for open orders across all or single exchange.
 ```R
 library(openapi)
 
-var.exchange_id <- 'KRAKEN' # character | Filter the open orders to the specific exchange.
+# Get open orders
+#
+# prepare function argument(s)
+var_exchange_id <- "KRAKEN" # character | Filter the open orders to the specific exchange. (Optional)
 
-#Get open orders
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersGet(exchange_id=var.exchange_id)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersGet(exchange_id = var_exchange_iddata_file = "result.txt")
+result <- api_instance$V1OrdersGet(exchange_id = var_exchange_id)
 dput(result)
 ```
 
@@ -157,12 +169,16 @@ Based on the date range, all changes registered in the orderbook.
 ```R
 library(openapi)
 
-var.time_start <- '2022-05-01T00:00:00' # character | Start date
-var.time_end <- '2022-05-01T12:00:00' # character | End date
+# History of order changes
+#
+# prepare function argument(s)
+var_time_start <- "2022-05-01T00:00:00" # character | Start date
+var_time_end <- "2022-05-01T12:00:00" # character | End date
 
-#History of order changes
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersHistoryTimeStartTimeEndGet(var.time_start, var.time_end)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersHistoryTimeStartTimeEndGet(var_time_start, var_time_enddata_file = "result.txt")
+result <- api_instance$V1OrdersHistoryTimeStartTimeEndGet(var_time_start, var_time_end)
 dput(result)
 ```
 
@@ -203,11 +219,15 @@ This request creating new order for the specific exchange.
 ```R
 library(openapi)
 
-var.order_new_single_request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "symbol_id_exchange_example", "symbol_id_coinapi_example", "expire_time_example", list("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
+# Send new order
+#
+# prepare function argument(s)
+var_order_new_single_request <- OrderNewSingleRequest$new("exchange_id_example", "client_order_id_example", 123, 123, OrdSide$new(), OrdType$new(), TimeInForce$new(), "symbol_id_exchange_example", "symbol_id_coinapi_example", "expire_time_example", c("MAKER_OR_CANCEL")) # OrderNewSingleRequest | OrderNewSingleRequest object.
 
-#Send new order
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersPost(var.order_new_single_request)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersPost(var_order_new_single_requestdata_file = "result.txt")
+result <- api_instance$V1OrdersPost(var_order_new_single_request)
 dput(result)
 ```
 
@@ -249,11 +269,15 @@ Get the last order execution report for the specified order. The requested order
 ```R
 library(openapi)
 
-var.client_order_id <- '6ab36bc1-344d-432e-ac6d-0bf44ee64c2b' # character | The unique identifier of the order assigned by the client.
+# Get order execution report
+#
+# prepare function argument(s)
+var_client_order_id <- "6ab36bc1-344d-432e-ac6d-0bf44ee64c2b" # character | The unique identifier of the order assigned by the client.
 
-#Get order execution report
-api.instance <- OrdersApi$new()
-result <- api.instance$V1OrdersStatusClientOrderIdGet(var.client_order_id)
+api_instance <- OrdersApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$V1OrdersStatusClientOrderIdGet(var_client_order_iddata_file = "result.txt")
+result <- api_instance$V1OrdersStatusClientOrderIdGet(var_client_order_id)
 dput(result)
 ```
 

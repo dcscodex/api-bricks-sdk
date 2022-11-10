@@ -77,7 +77,7 @@ class RejectReasonTypeTransformer {
   /// and users are still using an old app with the old code.
   RejectReason? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'OTHER': return RejectReason.OTHER;
         case r'EXCHANGE_UNREACHABLE': return RejectReason.EXCHANGE_UNREACHABLE;
         case r'EXCHANGE_RESPONSE_TIMEOUT': return RejectReason.EXCHANGE_RESPONSE_TIMEOUT;

@@ -62,17 +62,23 @@ class Fills {
   String toString() => 'Fills[time=$time, price=$price, amount=$amount]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (time != null) {
-      _json[r'time'] = time;
+    final json = <String, dynamic>{};
+    if (this.time != null) {
+      json[r'time'] = this.time;
+    } else {
+      json[r'time'] = null;
     }
-    if (price != null) {
-      _json[r'price'] = price;
+    if (this.price != null) {
+      json[r'price'] = this.price;
+    } else {
+      json[r'price'] = null;
     }
-    if (amount != null) {
-      _json[r'amount'] = amount;
+    if (this.amount != null) {
+      json[r'amount'] = this.amount;
+    } else {
+      json[r'amount'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [Fills] instance and imports its values from

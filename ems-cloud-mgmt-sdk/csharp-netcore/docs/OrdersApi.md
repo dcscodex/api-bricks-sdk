@@ -2,15 +2,14 @@
 
 All URIs are relative to *https://ems-gateway-aws-eu-central-1-dev.coinapi.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**V1OrdersCancelAllPost**](OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request
-[**V1OrdersCancelPost**](OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request
-[**V1OrdersGet**](OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders
-[**V1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1ordershistorytimestarttimeendget) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes
-[**V1OrdersPost**](OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order
-[**V1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**V1OrdersCancelAllPost**](OrdersApi.md#v1orderscancelallpost) | **POST** /v1/orders/cancel/all | Cancel all orders request |
+| [**V1OrdersCancelPost**](OrdersApi.md#v1orderscancelpost) | **POST** /v1/orders/cancel | Cancel order request |
+| [**V1OrdersGet**](OrdersApi.md#v1ordersget) | **GET** /v1/orders | Get open orders |
+| [**V1OrdersHistoryTimeStartTimeEndGet**](OrdersApi.md#v1ordershistorytimestarttimeendget) | **GET** /v1/orders/history/{time_start}/{time_end} | History of order changes |
+| [**V1OrdersPost**](OrdersApi.md#v1orderspost) | **POST** /v1/orders | Send new order |
+| [**V1OrdersStatusClientOrderIdGet**](OrdersApi.md#v1ordersstatusclientorderidget) | **GET** /v1/orders/status/{client_order_id} | Get order execution report |
 
 <a name="v1orderscancelallpost"></a>
 # **V1OrdersCancelAllPost**
@@ -47,8 +46,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersCancelAllPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersCancelAllPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -56,11 +55,31 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersCancelAllPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Cancel all orders request
+    ApiResponse<MessageReject> response = apiInstance.V1OrdersCancelAllPostWithHttpInfo(orderCancelAllRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersCancelAllPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md)| OrderCancelAllRequest object. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **orderCancelAllRequest** | [**OrderCancelAllRequest**](OrderCancelAllRequest.md) | OrderCancelAllRequest object. |  |
 
 ### Return type
 
@@ -120,8 +139,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersCancelPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersCancelPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -129,11 +148,31 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersCancelPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Cancel order request
+    ApiResponse<OrderExecutionReport> response = apiInstance.V1OrdersCancelPostWithHttpInfo(orderCancelSingleRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersCancelPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md)| OrderCancelSingleRequest object. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **orderCancelSingleRequest** | [**OrderCancelSingleRequest**](OrderCancelSingleRequest.md) | OrderCancelSingleRequest object. |  |
 
 ### Return type
 
@@ -193,8 +232,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersGet: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -202,11 +241,31 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get open orders
+    ApiResponse<List<OrderExecutionReport>> response = apiInstance.V1OrdersGetWithHttpInfo(exchangeId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exchangeId** | **string**| Filter the open orders to the specific exchange. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **exchangeId** | **string** | Filter the open orders to the specific exchange. | [optional]  |
 
 ### Return type
 
@@ -266,8 +325,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersHistoryTimeStartTimeEndGet: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersHistoryTimeStartTimeEndGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -275,12 +334,32 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // History of order changes
+    ApiResponse<List<OrderHistory>> response = apiInstance.V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo(timeStart, timeEnd);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersHistoryTimeStartTimeEndGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **timeStart** | **string**| Start date | 
- **timeEnd** | **string**| End date | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **timeStart** | **string** | Start date |  |
+| **timeEnd** | **string** | End date |  |
 
 ### Return type
 
@@ -339,8 +418,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -348,11 +427,31 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Send new order
+    ApiResponse<OrderExecutionReport> response = apiInstance.V1OrdersPostWithHttpInfo(orderNewSingleRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md)| OrderNewSingleRequest object. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **orderNewSingleRequest** | [**OrderNewSingleRequest**](OrderNewSingleRequest.md) | OrderNewSingleRequest object. |  |
 
 ### Return type
 
@@ -413,8 +512,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.V1OrdersStatusClientOrderIdGet: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OrdersApi.V1OrdersStatusClientOrderIdGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -422,11 +521,31 @@ namespace Example
 }
 ```
 
+#### Using the V1OrdersStatusClientOrderIdGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get order execution report
+    ApiResponse<OrderExecutionReport> response = apiInstance.V1OrdersStatusClientOrderIdGetWithHttpInfo(clientOrderId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.V1OrdersStatusClientOrderIdGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **clientOrderId** | **string**| The unique identifier of the order assigned by the client. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **clientOrderId** | **string** | The unique identifier of the order assigned by the client. |  |
 
 ### Return type
 

@@ -71,13 +71,6 @@ namespace CoinAPI.EMS.REST.V1.Model
 
         }
 
-
-        /// <summary>
-        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
-        /// </summary>
-        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
-        [DataMember(Name="exec_inst", EmitDefaultValue=false)]
-        public List<ExecInstEnum> ExecInst { get; set; }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
@@ -286,6 +279,12 @@ namespace CoinAPI.EMS.REST.V1.Model
         [DataMember(Name="expire_time", EmitDefaultValue=false)]
         public DateTime ExpireTime { get; set; }
 
+        /// <summary>
+        /// Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; 
+        /// </summary>
+        /// <value>Order execution instructions are documented in the separate section: &lt;a href&#x3D;\&quot;#ems-order-params-exec\&quot;&gt;EMS / Starter Guide / Order parameters / Execution instructions&lt;/a&gt; </value>
+        [DataMember(Name="exec_inst", EmitDefaultValue=false)]
+        public List<OrderExecutionReport.ExecInstEnum> ExecInst { get; set; }
 
         /// <summary>
         /// The unique identifier of the order assigned by the client converted to the exchange order tag format for the purpose of tracking it.

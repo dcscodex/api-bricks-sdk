@@ -162,14 +162,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-10-30T07:09:56.2182498Z",
+  "time": "2023-10-30T09:04:29.9926544Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-10-29T07:09:56.2696777Z",
+  "time": "2023-10-29T09:04:30.0441938Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -180,14 +180,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-10-30T07:09:56.2182498Z",
+  "time": "2023-10-30T09:04:29.9926544Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-10-29T07:09:56.2696777Z",
+  "time": "2023-10-29T09:04:30.0441938Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -198,14 +198,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-10-30T07:09:56.2182498Z",
+  "time": "2023-10-30T09:04:29.9926544Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-10-29T07:09:56.2696777Z",
+  "time": "2023-10-29T09:04:30.0441938Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -216,14 +216,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-10-30T07:09:56.2182498Z",
+  "time": "2023-10-30T09:04:29.9926544Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-10-29T07:09:56.2696777Z",
+  "time": "2023-10-29T09:04:30.0441938Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -1002,7 +1002,7 @@ paths:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`, full list here), default value is `1SEC`'
+          description: 'Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`), default value is `1SEC`'
           schema:
             type: string
         - name: limit
@@ -1628,13 +1628,13 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries (full list available here)
+          description: Symbol identifier of requested timeseries
           required: true
           schema:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`, full list here)'
+          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
           schema:
             type: string
         - name: time_start
@@ -1693,13 +1693,13 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries (full list available here)
+          description: Symbol identifier of requested timeseries
           required: true
           schema:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`, full list here)'
+          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
           schema:
             type: string
         - name: limit

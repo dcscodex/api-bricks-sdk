@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-11-20T22:46:55.4603431Z",
+  "time": "2023-11-20T23:17:47.5851804Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-11-19T22:46:55.4608140Z",
+  "time": "2023-11-19T23:17:47.5854004Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-11-20T22:46:55.4603431Z",
+  "time": "2023-11-20T23:17:47.5851804Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-11-19T22:46:55.4608140Z",
+  "time": "2023-11-19T23:17:47.5854004Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-11-20T22:46:55.4603431Z",
+  "time": "2023-11-20T23:17:47.5851804Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-11-19T22:46:55.4608140Z",
+  "time": "2023-11-19T23:17:47.5854004Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2023-11-20T22:46:55.4603431Z",
+  "time": "2023-11-20T23:17:47.5851804Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2023-11-19T22:46:55.4608140Z",
+  "time": "2023-11-19T23:17:47.5854004Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -1133,6 +1133,41 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+  '/v1/orderbooks/{symbol_id}/current':
+    get:
+      tags:
+        - Order Book
+      summary: Get current order book
+      description: Retrieves the current order book for the specified symbol.
+      parameters:
+        - name: symbol_id
+          in: path
+          description: The symbol ID.
+          required: true
+          schema:
+            type: string
+        - name: limit_levels
+          in: query
+          description: The maximum number of levels to include in the response.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/v1.OrderBookBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1.OrderBookBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/v1.OrderBookBase'
+            application/x-msgpack:
+              schema:
+                $ref: '#/components/schemas/v1.OrderBookBase'
   '/v1/orderbooks/{symbol_id}/latest':
     get:
       tags:

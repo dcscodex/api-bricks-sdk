@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-01T11:50:45.7622202Z",
+  "time": "2024-02-01T12:07:40.8741043Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-01-31T11:50:45.7630478Z",
+  "time": "2024-01-31T12:07:40.8743058Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-01T11:50:45.7622202Z",
+  "time": "2024-02-01T12:07:40.8741043Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-01-31T11:50:45.7630478Z",
+  "time": "2024-01-31T12:07:40.8743058Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-01T11:50:45.7622202Z",
+  "time": "2024-02-01T12:07:40.8741043Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-01-31T11:50:45.7630478Z",
+  "time": "2024-01-31T12:07:40.8743058Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-01T11:50:45.7622202Z",
+  "time": "2024-02-01T12:07:40.8741043Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-01-31T11:50:45.7630478Z",
+  "time": "2024-01-31T12:07:40.8743058Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -487,6 +487,297 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+  /v1/indexes:
+    get:
+      tags:
+        - Indexes
+      summary: List of available indexes
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.Index'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.Index'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.Index'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.Index'
+    post:
+      tags:
+        - Indexes
+      summary: Create index
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          application/x-msgpack:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            application/x-msgpack:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+  '/v1/indexes/{index_id}':
+    get:
+      tags:
+        - Indexes
+      summary: Get index data
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/v1.IndexData'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexData'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexData'
+            application/x-msgpack:
+              schema:
+                $ref: '#/components/schemas/v1.IndexData'
+    put:
+      tags:
+        - Indexes
+      summary: Update index
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+          application/x-msgpack:
+            schema:
+              $ref: '#/components/schemas/v1.IndexData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+            application/x-msgpack:
+              schema:
+                $ref: '#/components/schemas/v1.IndexDataResponse'
+  '/v1/indexes/{index_id}/history':
+    get:
+      tags:
+        - Indexes
+      summary: Retrieve Historical Index Value and Composition
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: time_start
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: time_end
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 100
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexValue'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexValue'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexValue'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexValue'
+  '/v1/indexes/{index_id}/timeseries':
+    get:
+      tags:
+        - Indexes
+      summary: Retrieve Historical Index Value Timeseries
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: time_start
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: time_end
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 100
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+  '/v1/indexes/{index_id}/timeseries/TO_BE_ANNOUNCED':
+    get:
+      tags:
+        - Indexes
+      summary: "Retrieve Historical Composition Value Timeseries\r\nRetrieves historical timeseries for the specific composition value for an index"
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: source_id
+          in: query
+          schema:
+            type: string
+        - name: source_type
+          in: query
+          schema:
+            type: string
+        - name: time_start
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: time_end
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 100
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
   /v1/metadata:
     get:
       tags:
@@ -2299,6 +2590,165 @@ components:
           nullable: true
       additionalProperties: false
       description: Represents an icon.
+    v1.Index:
+      type: object
+      properties:
+        index_id:
+          type: string
+          description: Gets or sets the index ID associated with the index.
+          nullable: true
+        name:
+          type: string
+          description: Gets or sets the name associated with the index.
+          nullable: true
+        description:
+          type: string
+          description: Gets or sets the descripion of the index.
+          nullable: true
+      additionalProperties: false
+      description: Represents an index.
+    v1.IndexData:
+      type: object
+      properties:
+        index_id:
+          type: string
+          description: Gets or sets the index ID associated with the index.
+          nullable: true
+        name:
+          type: string
+          description: Gets or sets the name associated with the index.
+          nullable: true
+        description:
+          type: string
+          description: Gets or sets the descripion of the index.
+          nullable: true
+        index_method:
+          type: string
+          description: Gets or sets the index method.
+          nullable: true
+        index_method_parameters:
+          type: object
+          additionalProperties:
+            type: string
+          description: Gets or sets the parameters of the index method.
+          nullable: true
+        period_recalculation:
+          type: string
+          description: Gets or sets the period recalculation of the index.
+          nullable: true
+        visibility_public:
+          type: boolean
+          description: Gets or sets the visibility public of the index.
+          nullable: true
+        notify_emails:
+          type: string
+          description: Gets or sets the notify emails of the index.
+          nullable: true
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.IndexDataComponent'
+          description: Gets or sets the components of the index.
+          nullable: true
+      additionalProperties: false
+      description: Represents a data model for index data.
+    v1.IndexDataComponent:
+      type: object
+      properties:
+        component_id:
+          type: string
+          nullable: true
+        evaluation_method:
+          type: string
+          nullable: true
+        evaluation_method_parameters:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
+    v1.IndexDataResponse:
+      type: object
+      properties:
+        index_id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    v1.IndexTimeseriesItem:
+      type: object
+      properties:
+        time_period_start:
+          type: string
+          description: The start time of the time period.
+          format: date-time
+        time_period_end:
+          type: string
+          description: The end time of the time period.
+          format: date-time
+        time_open:
+          type: string
+          description: The time when the value opened.
+          format: date-time
+          nullable: true
+        time_close:
+          type: string
+          description: The time when the value closed.
+          format: date-time
+          nullable: true
+        value_open:
+          type: number
+          description: The opening value.
+          format: double
+          nullable: true
+        value_high:
+          type: number
+          description: The highest value during the time period.
+          format: double
+          nullable: true
+        value_low:
+          type: number
+          description: The lowest value during the time period.
+          format: double
+          nullable: true
+        value_close:
+          type: number
+          description: The closing value.
+          format: double
+          nullable: true
+        value_count:
+          type: integer
+          description: The number of values during the time period.
+          format: int64
+      additionalProperties: false
+      description: Represents a timeseries item with value information.
+    v1.IndexValue:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+          format: double
+        composition:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.IndexValueComponent'
+          nullable: true
+      additionalProperties: false
+    v1.IndexValueComponent:
+      type: object
+      properties:
+        component_id:
+          type: string
+          nullable: true
+        component_value:
+          type: number
+          format: double
+      additionalProperties: false
     v1.LastTrade:
       type: object
       properties:
@@ -2941,6 +3391,8 @@ tags:
     description: "\n<span data-status-page=\"28926\"></span>\n\nAPI calls described in this section are related to downloading OHLCV *(Open, High, Low, Close, Volume)* timeseries data.\nEach data point of this timeseries represents several indicators calculated from transactions activity inside a time range (period).\n\n:::info\nOHLCV data primary purpose is to present an overview of the market in human readable form. \nIt's often used to visualize market data on charts, websites, and various kinds of reports.\n:::\n\n:::tip\nCoinAPI expanded the standard OHLCV timeseries by including time of first and last trade and amount of trades executed inside period.\n:::\n    "
   - name: Assets
     description: Controller for accessing asset information.
+  - name: Indexes
+    description: Controller for accessing indexes
   - name: Metrics
     description: "<span data-status-page=\"28933\"></span>\r\nMetrics are quantitative measurements used to evaluate the performance and activity of cryptocurrency exchanges. These metrics include:\r\n\r\n1. Trading Volume: The total amount of cryptocurrency traded on an exchange within a specific time period, indicating liquidity and activity.\r\n1. Market Depth: The level of buy and sell orders at different price levels, providing insights into liquidity and potential price impact.\r\n1. Order Book: A record of outstanding buy and sell orders for a cryptocurrency, reflecting supply and demand dynamics.\r\n1. Spread: The difference between the highest bid and lowest ask prices, indicating liquidity and trading costs.\r\n1. Price Charts: Visual representations of cryptocurrency price movements over time, helping identify trends and inform trading decisions.\r\n1. Market Cap: The total value of a cryptocurrency calculated by its price multiplied by circulating supply, reflecting relative size and value.\r\n1. Trading Pairs: Combinations of cryptocurrencies available for trading, including volume, price, and spread for each pair.\r\n1. User Metrics: Data on active users, new registrations, user retention, and engagement, indicating platform popularity and growth.\r\n1. Trading Fees: Fees charged for executing trades, including fee structure, discounts, and revenue generated by the exchange.\r\n1. Security Metrics: Measures assessing the security of an exchange, such as past incidents, user fund protection, and security audits.\r\n\r\nThese metrics assist traders and investors in evaluating market activity, liquidity, and the reliability of crypto exchanges for informed decision-making."
   - name: OrderBooks3

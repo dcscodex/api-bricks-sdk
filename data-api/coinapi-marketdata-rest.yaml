@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-09T18:08:11.2394770Z",
+  "time": "2024-02-12T09:04:47.8360398Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-08T18:08:11.2396466Z",
+  "time": "2024-02-11T09:04:47.8462324Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-09T18:08:11.2394770Z",
+  "time": "2024-02-12T09:04:47.8360398Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-08T18:08:11.2396466Z",
+  "time": "2024-02-11T09:04:47.8462324Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-09T18:08:11.2394770Z",
+  "time": "2024-02-12T09:04:47.8360398Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-08T18:08:11.2396466Z",
+  "time": "2024-02-11T09:04:47.8462324Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-09T18:08:11.2394770Z",
+  "time": "2024-02-12T09:04:47.8360398Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-08T18:08:11.2396466Z",
+  "time": "2024-02-11T09:04:47.8462324Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -1988,6 +1988,58 @@ paths:
           schema:
             type: boolean
             default: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesItem'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesItem'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesItem'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesItem'
+  '/v1/ohlcv/exchanges/{exchange_id}/history':
+    get:
+      tags:
+        - Ohlcv
+      summary: '[ohlcv] Historical data by exchange'
+      description: "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`\r\n            \r\n:::info\r\nThe OHLCV Historical endpoint data can be delayed a few seconds.\r\n:::"
+      parameters:
+        - name: exchange_id
+          in: path
+          description: Exchange identifier of requested timeseries
+          required: true
+          schema:
+            type: string
+        - name: period_id
+          in: query
+          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
+          schema:
+            type: string
+        - name: time_start
+          in: query
+          description: Timeseries starting time in ISO 8601 (required)
+          schema:
+            type: string
+        - name: time_end
+          in: query
+          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when count of result elements reaches the limit)'
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation

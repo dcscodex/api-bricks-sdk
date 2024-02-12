@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T09:04:47.8360398Z",
+  "time": "2024-02-12T11:20:26.2059445Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T09:04:47.8462324Z",
+  "time": "2024-02-11T11:20:26.2385136Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T09:04:47.8360398Z",
+  "time": "2024-02-12T11:20:26.2059445Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T09:04:47.8462324Z",
+  "time": "2024-02-11T11:20:26.2385136Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T09:04:47.8360398Z",
+  "time": "2024-02-12T11:20:26.2059445Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T09:04:47.8462324Z",
+  "time": "2024-02-11T11:20:26.2385136Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T09:04:47.8360398Z",
+  "time": "2024-02-12T11:20:26.2059445Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T09:04:47.8462324Z",
+  "time": "2024-02-11T11:20:26.2385136Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -2017,7 +2017,7 @@ paths:
       tags:
         - Ohlcv
       summary: '[ohlcv] Historical data by exchange'
-      description: "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`\r\n            \r\n:::info\r\nThe OHLCV Historical endpoint data can be delayed a few seconds.\r\n:::"
+      description: "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`\r\n            \r\n:::info\r\nThe OHLCV Historical endpoint data can be delayed a few seconds.\r\n`time_start` and `time_end` must point to the same day\r\n:::"
       parameters:
         - name: exchange_id
           in: path
@@ -2028,16 +2028,19 @@ paths:
         - name: period_id
           in: query
           description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
+          required: true
           schema:
             type: string
         - name: time_start
           in: query
           description: Timeseries starting time in ISO 8601 (required)
+          required: true
           schema:
             type: string
         - name: time_end
           in: query
           description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when count of result elements reaches the limit)'
+          required: true
           schema:
             type: string
       responses:
@@ -2048,22 +2051,22 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/v1.TimeseriesItem'
+                  $ref: '#/components/schemas/Models.ExchangeTimeseriesItem'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/v1.TimeseriesItem'
+                  $ref: '#/components/schemas/Models.ExchangeTimeseriesItem'
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/v1.TimeseriesItem'
+                  $ref: '#/components/schemas/Models.ExchangeTimeseriesItem'
             application/x-msgpack:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/v1.TimeseriesItem'
+                  $ref: '#/components/schemas/Models.ExchangeTimeseriesItem'
   '/v1/ohlcv/{symbol_id}/latest':
     get:
       tags:
@@ -2296,6 +2299,63 @@ components:
           type: number
           format: double
       additionalProperties: false
+    Models.ExchangeTimeseriesItem:
+      type: object
+      properties:
+        time_period_start:
+          type: string
+          description: The start time of the time period.
+          format: date-time
+        time_period_end:
+          type: string
+          description: The end time of the time period.
+          format: date-time
+        time_open:
+          type: string
+          description: The time when the price opened.
+          format: date-time
+          nullable: true
+        time_close:
+          type: string
+          description: The time when the price closed.
+          format: date-time
+          nullable: true
+        price_open:
+          type: number
+          description: The opening price.
+          format: double
+          nullable: true
+        price_high:
+          type: number
+          description: The highest price during the time period.
+          format: double
+          nullable: true
+        price_low:
+          type: number
+          description: The lowest price during the time period.
+          format: double
+          nullable: true
+        price_close:
+          type: number
+          description: The closing price.
+          format: double
+          nullable: true
+        volume_traded:
+          type: number
+          description: The total volume traded during the time period.
+          format: double
+        trades_count:
+          type: integer
+          description: The number of trades executed during the time period.
+          format: int64
+        symbol_id_exchange:
+          type: string
+          nullable: true
+        symbol_id_coinapi:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Represents a timeseries item with price and volume information.
     v1.Asset:
       type: object
       properties:

@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T12:37:33.8212901Z",
+  "time": "2024-02-14T13:56:43.9890567Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T12:37:33.8215936Z",
+  "time": "2024-02-13T13:56:44.0164465Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T12:37:33.8212901Z",
+  "time": "2024-02-14T13:56:43.9890567Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T12:37:33.8215936Z",
+  "time": "2024-02-13T13:56:44.0164465Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T12:37:33.8212901Z",
+  "time": "2024-02-14T13:56:43.9890567Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T12:37:33.8215936Z",
+  "time": "2024-02-13T13:56:44.0164465Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-12T12:37:33.8212901Z",
+  "time": "2024-02-14T13:56:43.9890567Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-11T12:37:33.8215936Z",
+  "time": "2024-02-13T13:56:44.0164465Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -2027,19 +2027,19 @@ paths:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
+          description: Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`)
           required: true
           schema:
             type: string
         - name: time_start
           in: query
-          description: Timeseries starting time in ISO 8601 (required)
+          description: Timeseries starting time in ISO 8601
           required: true
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when count of result elements reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           required: true
           schema:
             type: string

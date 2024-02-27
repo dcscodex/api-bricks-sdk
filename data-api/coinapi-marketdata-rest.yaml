@@ -139,13 +139,13 @@ paths:
       parameters:
         - name: asset_id_base
           in: path
-          description: Requested exchange rate base asset identifier
+          description: Requested exchange rate base asset identifier (from the Metadata -> Assets)
           required: true
           schema:
             type: string
         - name: asset_id_quote
           in: path
-          description: Requested exchange rate quote asset identifier
+          description: Requested exchange rate quote asset identifier (from the Metadata -> Assets)
           required: true
           schema:
             type: string
@@ -164,14 +164,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-24T00:04:40.7926965Z",
+  "time": "2024-02-27T12:38:35.4363800Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-23T00:04:40.8152952Z",
+  "time": "2024-02-26T12:38:35.4365750Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -182,14 +182,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-24T00:04:40.7926965Z",
+  "time": "2024-02-27T12:38:35.4363800Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-23T00:04:40.8152952Z",
+  "time": "2024-02-26T12:38:35.4365750Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -200,14 +200,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-24T00:04:40.7926965Z",
+  "time": "2024-02-27T12:38:35.4363800Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-23T00:04:40.8152952Z",
+  "time": "2024-02-26T12:38:35.4365750Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -218,14 +218,14 @@ paths:
               examples:
                 Current rate:
                   value: {
-  "time": "2024-02-24T00:04:40.7926965Z",
+  "time": "2024-02-27T12:38:35.4363800Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
 }
                 Historical rate:
                   value: {
-  "time": "2024-02-23T00:04:40.8152952Z",
+  "time": "2024-02-26T12:38:35.4365750Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -239,7 +239,7 @@ paths:
       parameters:
         - name: asset_id_base
           in: path
-          description: Requested exchange rates base asset identifier
+          description: Requested exchange rates base asset identifier (from the Metadata -> Assets)
           required: true
           schema:
             type: string
@@ -313,22 +313,22 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
-  '/v1/exchangerate/{assetBase}/{assetQuote}/history':
+  '/v1/exchangerate/{asset_id_base}/{asset_id_quote}/history':
     get:
       tags:
         - Exchange Rates
       summary: '[exchange rates] Timeseries data'
       description: Get the historical exchange rates between two assets in the form of the timeseries.
       parameters:
-        - name: assetBase
+        - name: asset_id_base
           in: path
-          description: Requested exchange rates base asset identifier
+          description: Requested exchange rates base asset identifier (from the Metadata -> Assets)
           required: true
           schema:
             type: string
-        - name: assetQuote
+        - name: asset_id_quote
           in: path
-          description: Requested exchange rates base asset identifier
+          description: Requested exchange rates base asset identifier (from the Metadata -> Assets)
           required: true
           schema:
             type: string
@@ -825,12 +825,12 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: The metric identifier
+          description: The metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: The exchange identifier
+          description: The exchange identifier (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -867,12 +867,12 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: The metric identifier
+          description: The metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: The exchange identifier
+          description: The exchange identifier (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -909,13 +909,13 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           required: true
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange identifier
+          description: Exchange identifier (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -981,17 +981,17 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange identifier
+          description: Exchange identifier (from the Metadata -> Exchanges)
           schema:
             type: string
         - name: symbol_id
           in: query
-          description: Symbol identifier
+          description: Symbol identifier (from the Metadata -> Symbols)
           schema:
             type: string
       responses:
@@ -1027,17 +1027,17 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: symbol_id
           in: query
-          description: Symbol identifier
+          description: Symbol identifier (from the Metadata -> Symbols)
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange id.
+          description: Exchange id (from the Metadata -> Exchanges)
           schema:
             type: string
       responses:
@@ -1073,13 +1073,13 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           required: true
           schema:
             type: string
         - name: symbol_id
           in: query
-          description: Symbol identifier
+          description: Symbol identifier (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1145,12 +1145,12 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange identifier
+          description: Exchange identifier (from the Metadata -> Exchanges)
           schema:
             type: string
         - name: chain_id
@@ -1165,7 +1165,7 @@ paths:
             type: string
         - name: asset_id
           in: query
-          description: Asset identifier
+          description: Asset identifier (from the Metadata -> Assets)
           schema:
             type: string
         - name: asset_id_external
@@ -1206,12 +1206,12 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           schema:
             type: string
         - name: asset_id
           in: query
-          description: Asset identifier
+          description: Asset identifier (from the Metadata -> Assets)
           schema:
             type: string
         - name: asset_id_external
@@ -1221,7 +1221,7 @@ paths:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange identifier
+          description: Exchange identifier (from the Metadata -> Exchanges)
           schema:
             type: string
       responses:
@@ -1257,13 +1257,13 @@ paths:
       parameters:
         - name: metric_id
           in: query
-          description: Metric identifier
+          description: Metric identifier (from the Metrics -> Listing)
           required: true
           schema:
             type: string
         - name: asset_id
           in: query
-          description: Asset identifier
+          description: Asset identifier (from the Metadata -> Assets)
           schema:
             type: string
         - name: asset_id_external
@@ -1273,7 +1273,7 @@ paths:
             type: string
         - name: exchange_id
           in: query
-          description: Exchange identifier
+          description: Exchange identifier (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -1339,7 +1339,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: The symbol ID.
+          description: The symbol ID (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1374,7 +1374,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier for requested timeseries
+          description: Symbol identifier for requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1434,7 +1434,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: The symbol ID.
+          description: The symbol ID (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1469,7 +1469,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries
+          description: Symbol identifier of requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1560,7 +1560,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: The symbol ID.
+          description: The symbol ID (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1595,7 +1595,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier for requested timeseries
+          description: Symbol identifier for requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1684,7 +1684,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: The symbol identifier.
+          description: The symbol identifier (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1755,7 +1755,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries
+          description: Symbol identifier of requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -1844,7 +1844,7 @@ paths:
       parameters:
         - name: exchange_id
           in: path
-          description: The ID of the exchange.
+          description: The ID of the exchange (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -1880,7 +1880,7 @@ paths:
       parameters:
         - name: exchange_id
           in: path
-          description: The ID of the exchange.
+          description: The ID of the exchange (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -1957,7 +1957,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries
+          description: Symbol identifier of requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -2022,7 +2022,7 @@ paths:
       parameters:
         - name: exchange_id
           in: path
-          description: Exchange identifier of requested timeseries
+          description: Exchange identifier of requested timeseries (from the Metadata -> Exchanges)
           required: true
           schema:
             type: string
@@ -2077,7 +2077,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier of requested timeseries
+          description: Symbol identifier of requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -2132,7 +2132,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier for requested timeseries
+          description: Symbol identifier for requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string
@@ -2192,7 +2192,7 @@ paths:
       parameters:
         - name: symbol_id
           in: path
-          description: Symbol identifier for requested timeseries
+          description: Symbol identifier for requested timeseries (from the Metadata -> Symbols)
           required: true
           schema:
             type: string

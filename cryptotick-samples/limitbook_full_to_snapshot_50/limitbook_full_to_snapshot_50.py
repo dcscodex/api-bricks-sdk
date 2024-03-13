@@ -58,9 +58,6 @@ def process_reader(date_format, sr):
             
             last_processed_time = time_exchange  # Update the last processed time
             line_count += 1  # Increment line counter
-            # only for debugging
-            if line_count >= 10:  # Check if 10 lines have been processed
-                break  # Break the loop if 10 lines have been processed
 
         last_time_exchange = time_exchange
         last_time_coinapi = time_coinapi

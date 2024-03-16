@@ -18,7 +18,7 @@ dateFormat = "%H:%M:%S.%f"
 bufferSize = 1 * 1024 * 1024  # 1MB
 
 def main():
-    path = "cryptotick-samples/limitbook_full_to_snapshot_50/BITSTAMP_SPOT_BTC_USD limitbook_full 20240201.csv.gz"
+    path = "cryptotick-samples/limitbook_full_to_snapshot_50/BITSTAMP_SPOT_SOL_USD 20231130 [limitbook_full].csv.gz"
     with gzip.open(path, 'rt', encoding='utf-8') as file:
         process_reader(dateFormat, file)
 
@@ -28,7 +28,7 @@ def process_reader(date_format, sr):
     ask_sizes = defaultdict(Decimal)
     last_time_exchange = datetime.min
     last_time_coinapi = datetime.min
-    last_processed_time = datetime.min  # Initialize a variable to keep track of the last processed time
+    last_time_coinapi_sec = 0;
     prev_type = None
     line_count = 0  # Initialize a counter for the lines
 
@@ -47,20 +47,18 @@ def process_reader(date_format, sr):
         size = Decimal(columns[5])
         order_id = columns[6] if len(columns) > 6 else ""
 
-        if last_time_exchange == datetime.min:
-            last_time_exchange = time_exchange
-        if last_time_coinapi == datetime.min:
-            last_time_coinapi = time_coinapi
+        time_coinapi_sec = time_coinapi.hour * 3600 + time_coinapi.minute * 60 + time_coinapi.second
+        if last_time_coinapi_sec == 0:
+            last_time_coinapi_sec = time_coinapi_sec
 
         # process book feed forward
-        if time_exchange != last_time_exchange and time_exchange > (last_processed_time + timedelta(seconds=1)):
-            process_orderbook(last_time_exchange, last_time_coinapi, book, ask_sizes, bid_sizes)
-            
-            last_processed_time = time_exchange  # Update the last processed time
+        if last_time_coinapi_sec < time_coinapi_sec:
+            process_orderbook(last_time_exchange, last_time_coinapi, ask_sizes, bid_sizes)
             line_count += 1  # Increment line counter
 
         last_time_exchange = time_exchange
         last_time_coinapi = time_coinapi
+        last_time_coinapi_sec = time_coinapi_sec
 
         # process snapshot book cleaning
         if type == ELimitUpdateType.SNAPSHOT and prev_type and prev_type != ELimitUpdateType.SNAPSHOT:
@@ -99,8 +97,8 @@ def process_reader(date_format, sr):
         if book[key] <= 0:
             del book[key]
 
-def process_orderbook(time_exchange, time_coinapi, book, ask_sizes, bid_sizes):
-    recv_diff = time_coinapi - time_exchange
+def process_orderbook(time_exchange, time_coinapi, ask_sizes, bid_sizes):
+    #recv_diff = time_coinapi - time_exchange
     #print(f"{time_exchange} (recv: {int(recv_diff.total_seconds() * 1000)}): levels {len(book)}")
 
     if not ask_sizes or not bid_sizes:

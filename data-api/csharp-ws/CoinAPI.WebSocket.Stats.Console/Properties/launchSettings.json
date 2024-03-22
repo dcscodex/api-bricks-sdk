@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CoinAPI.WebSocket.Stats.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "--subscribe_data_type book --symbol COINBASE_SPOT_BTC_USD$"
+    }
+  }
+}

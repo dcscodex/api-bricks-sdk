@@ -75,7 +75,7 @@ internal class Program
 
     public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = null,
         string subscribe_data_type = null, string asset = null, string symbol = null,
-        string exchange = null, string apikey = null, string type = "hello")
+        string exchange = null, string apikey = null, string type = "hello", bool supressHb = false)
     {
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
@@ -93,6 +93,7 @@ internal class Program
         
         using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
         {
+            wsClient.SupressHeartbeat(supressHb);
             int msgCount = 0;
             int errorCount = 0;
 
@@ -149,7 +150,7 @@ internal class Program
 
             var hello = new Hello()
             {
-                apikey = new Guid(configuration["ApiKey"] ?? apikey ?? throw new ArgumentNullException("ApiKey is required")),
+                apikey = new Guid(apikey ?? configuration["ApiKey"] ?? throw new ArgumentNullException("ApiKey is required")),
                 type = type,
                 subscribe_data_type = new string[] { subscribe_data_type },
                 subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },

@@ -38,7 +38,7 @@ internal class Program
     {
         { global::Endpoints.emea.ToString(), "ws://api-emea.coinapi.net" },
         { global::Endpoints.apac.ToString(), "ws://api-apac.coinapi.net" },
-        { global::Endpoints.ncsa.ToString(), "ws://api.ncsa.coinapi.net" }
+        { global::Endpoints.ncsa.ToString(), "ws://api-ncsa.coinapi.net" }
     };
     static async Task Main(string[] args)
     {
@@ -80,19 +80,29 @@ internal class Program
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
         {
-            Console.WriteLine($"Invalid subscribe_data_type, valid values: {string.Join(",", typeNames)}");
+            Serilog.Log.Error($"Invalid subscribe_data_type, valid values: {string.Join(",", typeNames)}");
             return;
         }
 
         var endpointNames = Enum.GetNames<Endpoints>().ToList();
         if (!string.IsNullOrWhiteSpace(endpoint_name) && !endpointNames.Any(x => x == endpoint_name))
         {
-            Console.WriteLine($"Invalid endpoint_name, valid values: {string.Join(",", endpointNames)}");
+            Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", endpointNames)}");
             return;
         }
+        
         using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
         {
             int msgCount = 0;
+            int errorCount = 0;
+
+            void WsClient_Error(object? sender, Exception e)
+            {
+                Serilog.Log.Error(e, "Error in websocket client");
+                errorCount++;
+            }
+
+            wsClient.Error += WsClient_Error;
 
             List<(DateTime, DateTime)> latencyList = new List<(DateTime, DateTime)>();
 
@@ -103,6 +113,7 @@ internal class Program
                 {
                     latencyList.Add((time_exchange.Value, time_coinapi.Value));
                 }
+                //Thread.Sleep(100);
             }
 
             switch (subscribe_data_type)
@@ -152,10 +163,9 @@ internal class Program
                     if (!wsClient.ConnectedEvent.WaitOne(10000)) return;
 
                     var iterations = 0;
-
-                    Console.WriteLine($"Time: {DateTime.UtcNow}");
+                    var endpoint = (string.IsNullOrEmpty(endpoint_name) ? "global" : Endpoints[endpoint_name]);
+                    Serilog.Log.Information($"Time: {DateTime.UtcNow}");
                     var strbld = new StringBuilder();
-                    strbld.AppendLine($"Endpoint: {(string.IsNullOrEmpty(endpoint_name) ? "global" : Endpoints[endpoint_name])}");
 
                     strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
                     if (!string.IsNullOrWhiteSpace(exchange))
@@ -171,7 +181,7 @@ internal class Program
                         strbld.Append($", symbol = {symbol}");
                     }
 
-                    Console.WriteLine(strbld.ToString());
+                    Serilog.Log.Information(strbld.ToString());
 
                     var process = Process.GetCurrentProcess();
 
@@ -181,7 +191,7 @@ internal class Program
 
                         if (iterations % 10 == 0)
                         {
-                            strbld.AppendLine("");
+                            Serilog.Log.Information($"Endpoint {endpoint}, {iterations} iterations, {msgCount} messages received, {wsClient.TotalBytesReceived} bytes received, Error count {errorCount}");
                         }
                         iterations++;
 
@@ -223,13 +233,13 @@ internal class Program
 
                         if (latencies.Any())
                         {
-                            strbld.AppendFormat($"| Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
-                            strbld.AppendFormat($"| max: {latencies.Max().TotalMilliseconds,-8}ms");
+                            strbld.AppendFormat($" | Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
+                            strbld.AppendFormat($" | max: {latencies.Max().TotalMilliseconds,-8}ms");
 
                         }
 
 
-                        Console.WriteLine(strbld.ToString());
+                        Serilog.Log.Information(strbld.ToString());
 
                     }
                 }

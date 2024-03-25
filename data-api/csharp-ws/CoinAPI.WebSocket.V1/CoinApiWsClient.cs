@@ -61,6 +61,11 @@ namespace CoinAPI.WebSocket.V1
             _url = url;
         }
 
+        public void SupressHeartbeat(bool supress)
+        {
+            ForceOverrideHeartbeat = !supress;
+        }
+
         public void SendHelloMessage(Hello msg)
         {
             if (msg == null)

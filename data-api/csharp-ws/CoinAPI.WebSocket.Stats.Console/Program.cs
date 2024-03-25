@@ -75,7 +75,7 @@ internal class Program
 
     public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = null,
         string subscribe_data_type = null, string asset = null, string symbol = null,
-        string exchange = null, string apikey = null, string type = "hello", bool supressHb = false)
+        string exchange = null, string apikey = null, string type = "hello", bool supress_hb = false)
     {
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
@@ -93,7 +93,7 @@ internal class Program
         
         using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
         {
-            wsClient.SupressHeartbeat(supressHb);
+            wsClient.SupressHeartbeat(supress_hb);
             int msgCount = 0;
             int errorCount = 0;
 

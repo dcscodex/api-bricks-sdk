@@ -11,6 +11,10 @@ namespace CoinAPI.WebSocket.V1
 {
     public class CoinApiWsClient : ICoinApiWsClient, IDisposable
     {
+        private readonly Stopwatch _waitStopwatch = new Stopwatch();
+        private readonly Stopwatch _parseStopwatch = new Stopwatch();
+        private readonly Stopwatch _handleStopwatch = new Stopwatch();
+
         private static readonly int ReceiveBufferSize = 8192;
         private const string UrlProduction = "wss://ws.coinapi.io/";
 
@@ -24,20 +28,22 @@ namespace CoinAPI.WebSocket.V1
         private readonly TimeSpan _reconnectInterval = TimeSpan.FromSeconds(1);
         private int _hbLastAction;
         private int _hbLastActionMaxCount;
+        private Hello HelloMessage { get; set; }
 
         // client reference is leaked here only for testing purposes (forcing reconnects)
 #pragma warning disable IDE0069 // Disposable fields should be disposed
         protected ClientWebSocket _client = null;
 #pragma warning restore IDE0069 // Disposable fields should be disposed
 
-        private Hello HelloMessage { get; set; }
+        protected bool? ForceOverrideHeartbeat { get; set; } = true;
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
         public event EventHandler<Exception> Error;
         public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
         public DateTime? ConnectedTime { get; private set; }
-        protected bool? ForceOverrideHeartbeat { get; set; } = true;
-
-
+        public ulong TotalBytesReceived { get; private set; }
+        public TimeSpan TotalWaitTime => _waitStopwatch.Elapsed;
+        public TimeSpan TotalParseTime => _parseStopwatch.Elapsed;
+        public TimeSpan TotalHandleTime => _handleStopwatch.Elapsed;
         public CoinApiWsClient(double hbTimeoutSecs, double reconnectIntervalSecs) : this(UrlProduction)
         {
             _hbTimeout = TimeSpan.FromSeconds(hbTimeoutSecs);
@@ -78,8 +84,9 @@ namespace CoinAPI.WebSocket.V1
 
         private void _queueThread_ItemDequeuedEvent(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<MessageBase>(item.Data);
-
+            _parseStopwatch.Stop();
             if (!data.type.TryParse(out var messageType))
             {
                 // unknown type
@@ -129,65 +136,108 @@ namespace CoinAPI.WebSocket.V1
 
         private void HandleBookItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OrderBook>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OrderBookEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
         private void HandleBook5Item(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OrderBook>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OrderBook5Event?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
         private void HandleBook20Item(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OrderBook>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OrderBook20Event?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
         private void HandleBook50Item(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OrderBook>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OrderBook50Event?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
         private void HandleBookL3Item(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OrderBookL3>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OrderBookL3Event?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
-
 
         private void HandleOHLCVItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<OHLCV>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             OHLCVEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleQuoteItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<Quote>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             QuoteEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleTradeItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<Trade>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             TradeEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleVolumeItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<Volume>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             VolumeEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleExchangeRateItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<ExchangeRate>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             ExchangeRateEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleTickerItem(object sender, MessageData item)
         {
+            _parseStopwatch.Start();
             var data = JsonSerializer.Deserialize<Ticker>(item.Data);
+            _parseStopwatch.Stop();
+            _handleStopwatch.Start();
             TickerEvent?.Invoke(sender, data);
+            _handleStopwatch.Stop();
         }
 
         private void HandleErrorItem(object sender, MessageData item)
@@ -203,10 +253,16 @@ namespace CoinAPI.WebSocket.V1
                 using (var connectionCts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token))
                 {
                     await HandleConnection(connectionCts);
+                    
                     ConnectedTime = null;
+                    TotalBytesReceived = 0;
+                    _waitStopwatch.Reset();
+                    _parseStopwatch.Reset();
+                    _handleStopwatch.Reset();
+
                     connectionCts.Cancel();
                 }
-                
+
                 await Task.Delay(_reconnectInterval);
             }
         }
@@ -261,7 +317,11 @@ namespace CoinAPI.WebSocket.V1
                             await _client.SendAsync(helloAs, WebSocketMessageType.Text, true, connectionCts.Token);
                             Interlocked.Exchange(ref _hbLastAction, 0);
                         }
+                        _waitStopwatch.Start();
                         var messageData = await WSUtils.ReceiveMessage(_client, connectionCts.Token, bufferArray);
+                        _waitStopwatch.Stop();
+
+                        TotalBytesReceived += (ulong)messageData.Data.Length;
                         Interlocked.Exchange(ref _hbLastAction, 0);
 
                         if (messageData.MessageType == WebSocketMessageType.Close)

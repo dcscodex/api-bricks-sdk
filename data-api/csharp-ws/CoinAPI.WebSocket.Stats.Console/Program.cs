@@ -4,6 +4,7 @@ using CoinAPI.WebSocket.V1.DataModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using System.Xml;
@@ -22,9 +23,23 @@ internal enum SubType
     exrate,
 }
 
+internal enum Endpoints
+{
+    emea,
+    apac,
+    ncsa
+}
+
 internal class Program
 {
     public static IConfiguration Configuration { get; private set; }
+
+    public static Dictionary<string, string> Endpoints = new Dictionary<string, string>
+    {
+        { global::Endpoints.emea.ToString(), "ws://api-emea.coinapi.net" },
+        { global::Endpoints.apac.ToString(), "ws://api-apac.coinapi.net" },
+        { global::Endpoints.ncsa.ToString(), "ws://api.ncsa.coinapi.net" }
+    };
     static async Task Main(string[] args)
     {
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
@@ -58,7 +73,7 @@ internal class Program
         await coconaApp.RunAsync<Program>();
     }
 
-    public async Task MakeRequest([FromService] IConfiguration configuration,
+    public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = null,
         string subscribe_data_type = null, string asset = null, string symbol = null,
         string exchange = null, string apikey = null, string type = "hello")
     {
@@ -69,16 +84,23 @@ internal class Program
             return;
         }
 
-        using (var wsClient = new CoinApiWsClient())
+        var endpointNames = Enum.GetNames<Endpoints>().ToList();
+        if (!string.IsNullOrWhiteSpace(endpoint_name) && !endpointNames.Any(x => x == endpoint_name))
+        {
+            Console.WriteLine($"Invalid endpoint_name, valid values: {string.Join(",", endpointNames)}");
+            return;
+        }
+        using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
         {
             int msgCount = 0;
+
             List<(DateTime, DateTime)> latencyList = new List<(DateTime, DateTime)>();
 
             void ProcessMsg(DateTime? time_exchange, DateTime? time_coinapi)
             {
                 msgCount++;
                 if (time_coinapi.HasValue && time_exchange.HasValue)
-                { 
+                {
                     latencyList.Add((time_exchange.Value, time_coinapi.Value));
                 }
             }
@@ -112,13 +134,13 @@ internal class Program
                 case "exrate":
                     wsClient.ExchangeRateEvent += (s, i) => { msgCount++; };
                     break;
-            }   
+            }
 
             var hello = new Hello()
             {
                 apikey = new Guid(configuration["ApiKey"] ?? apikey ?? throw new ArgumentNullException("ApiKey is required")),
                 type = type,
-                subscribe_data_type = new string[] { subscribe_data_type  },
+                subscribe_data_type = new string[] { subscribe_data_type },
                 subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },
                 subscribe_filter_symbol_id = string.IsNullOrWhiteSpace(symbol) ? null : new string[] { symbol },
                 subscribe_filter_exchange_id = string.IsNullOrWhiteSpace(exchange) ? null : new string[] { exchange },
@@ -128,41 +150,87 @@ internal class Program
             Task.Run(async () =>
                 {
                     if (!wsClient.ConnectedEvent.WaitOne(10000)) return;
-                    
-                    msgCount = 0;
-                    latencyList.Clear();
-                    
+
+                    var iterations = 0;
+
+                    Console.WriteLine($"Time: {DateTime.UtcNow}");
+                    var strbld = new StringBuilder();
+                    strbld.AppendLine($"Endpoint: {(string.IsNullOrEmpty(endpoint_name) ? "global" : Endpoints[endpoint_name])}");
+
+                    strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
+                    if (!string.IsNullOrWhiteSpace(exchange))
+                    {
+                        strbld.Append($", exchange = {exchange}");
+                    }
+                    if (!string.IsNullOrWhiteSpace(asset))
+                    {
+                        strbld.Append($", asset = {asset}");
+                    }
+                    if (!string.IsNullOrWhiteSpace(symbol))
+                    {
+                        strbld.Append($", symbol = {symbol}");
+                    }
+
+                    Console.WriteLine(strbld.ToString());
+
+                    var process = Process.GetCurrentProcess();
+
                     while (true)
                     {
+                        strbld.Clear();
+
+                        if (iterations % 10 == 0)
+                        {
+                            strbld.AppendLine("");
+                        }
+                        iterations++;
+
+                        var msgCountPrev = msgCount;
+                        var totalBytesReceivedPrev = wsClient.TotalBytesReceived;
+
+                        (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsagePrev
+                            = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
+
+                        //TimeSpan totalCpuTimePrev = process.TotalProcessorTime;
+
                         await Task.Delay(1000);
-                        var count = msgCount;
-                        msgCount = 0;
+                        (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsage
+                            = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
+
+                        //TimeSpan totalCpuTime = process.TotalProcessorTime;
+
+                        var deltaCpuWaiting = cpuUsage.cpuWaiting - cpuUsagePrev.cpuWaiting;
+                        var deltaCpuParsing = cpuUsage.cpuParsing - cpuUsagePrev.cpuParsing;
+                        var deltaCpuHandling = cpuUsage.cpuHandling - cpuUsagePrev.cpuHandling;
+                        //var deltaCpuTime = totalCpuTime - totalCpuTimePrev;
+                        var deltaCpuTime = deltaCpuWaiting + deltaCpuParsing + deltaCpuHandling;
+
+
+                        var cpuWaitingPercent = 100 * deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+                        var cpuParsingPercent = 100 * deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+                        var cpuHandlingPercent = 100 * deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+
+
+                        var msgCountOnInterval = msgCount - msgCountPrev;
+                        var bytesCountOnInterval = wsClient.TotalBytesReceived - totalBytesReceivedPrev;
                         var latencies = latencyList.Select(x => x.Item2 - x.Item1).ToList();
                         latencyList.Clear();
-                        Console.WriteLine($"Time: {DateTime.UtcNow}");
-                        var strbld = new StringBuilder();
-                        strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
-                        if (!string.IsNullOrWhiteSpace(exchange))
-                        {
-                            strbld.Append($", exchange = {exchange}");
-                        }
-                        if (!string.IsNullOrWhiteSpace(asset))
-                        {
-                            strbld.Append($", asset = {asset}");
-                        }
-                        if (!string.IsNullOrWhiteSpace(symbol))
-                        {
-                            strbld.Append($", symbol = {symbol}");
-                        }
-                        strbld.AppendLine("");
-                        strbld.Append($"Processed messsages: {count}");
-                        
+
+
+                        strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
+                        strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
+                        strbld.Append($"| CPU: wait: {cpuWaitingPercent:F2}% | parse: {cpuParsingPercent:F2}% | process: {cpuHandlingPercent:F2}%");
+
                         if (latencies.Any())
                         {
-                            strbld.Append($"    Latency min: {latencies.Min().TotalMilliseconds}ms, Latency max: {latencies.Max().TotalMilliseconds}ms");
+                            strbld.AppendFormat($"| Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
+                            strbld.AppendFormat($"| max: {latencies.Max().TotalMilliseconds,-8}ms");
+
                         }
+
+
                         Console.WriteLine(strbld.ToString());
-                        
+
                     }
                 }
             );

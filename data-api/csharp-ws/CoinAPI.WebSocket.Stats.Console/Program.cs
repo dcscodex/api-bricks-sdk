@@ -114,7 +114,6 @@ internal class Program
                 {
                     latencyList.Add((time_exchange.Value, time_coinapi.Value));
                 }
-                //Thread.Sleep(100);
             }
 
             switch (subscribe_data_type)
@@ -209,7 +208,6 @@ internal class Program
                             = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
 
                         //TimeSpan totalCpuTime = process.TotalProcessorTime;
-
                         var deltaCpuWaiting = cpuUsage.cpuWaiting - cpuUsagePrev.cpuWaiting;
                         var deltaCpuParsing = cpuUsage.cpuParsing - cpuUsagePrev.cpuParsing;
                         var deltaCpuHandling = cpuUsage.cpuHandling - cpuUsagePrev.cpuHandling;
@@ -236,12 +234,9 @@ internal class Program
                         {
                             strbld.AppendFormat($" | Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
                             strbld.AppendFormat($" | max: {latencies.Max().TotalMilliseconds,-8}ms");
-
                         }
 
-
                         Serilog.Log.Information(strbld.ToString());
-
                     }
                 }
             );

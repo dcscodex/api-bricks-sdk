@@ -5,7 +5,7 @@ This application is a console-based tool for subscribing to various data types f
 
 ## Prerequisites
 
-- .NET 5.0 or higher
+- .NET 8.0 or higher
 - A valid CoinAPI API key
 
 ## Configuration

@@ -30,6 +30,13 @@ internal enum Endpoints
     ncsa
 }
 
+internal enum LatencyType
+{
+    nc, //Now-CoinAPI
+    ne, //Now-Exchange
+    ce, //CoinAPI-Exchange
+}
+
 internal class Program
 {
     public static IConfiguration Configuration { get; private set; }
@@ -75,7 +82,7 @@ internal class Program
 
     public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = null,
         string subscribe_data_type = null, string asset = null, string symbol = null,
-        string exchange = null, string apikey = null, string type = "hello", bool supress_hb = false)
+        string exchange = null, string apikey = null, string type = "hello", bool supress_hb = false, string latency_type = "ce")
     {
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
@@ -90,12 +97,19 @@ internal class Program
             Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", endpointNames)}");
             return;
         }
+        var latencyTypes = Enum.GetNames<LatencyType>().ToList();
+        if (!string.IsNullOrWhiteSpace(latency_type) && !latencyTypes.Any(x => x == latency_type))
+        {
+            Serilog.Log.Error($"Invalid latency_type, valid values: {string.Join(",", latencyTypes)}");
+            return;
+        }
         
         using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
         {
             wsClient.SupressHeartbeat(supress_hb);
             int msgCount = 0;
             int errorCount = 0;
+            LatencyType latencyType = Enum.GetValues<LatencyType>().FirstOrDefault(x => x.ToString() == latency_type);
 
             void WsClient_Error(object? sender, Exception e)
             {
@@ -112,7 +126,18 @@ internal class Program
                 msgCount++;
                 if (time_coinapi.HasValue && time_exchange.HasValue)
                 {
-                    latencyList.Add((time_exchange.Value, time_coinapi.Value));
+                    switch(latencyType)
+                    {
+                        case LatencyType.nc:
+                            latencyList.Add((DateTime.UtcNow, time_coinapi.Value));
+                            break;
+                        case LatencyType.ne:
+                            latencyList.Add((DateTime.UtcNow, time_exchange.Value));
+                            break;
+                        case LatencyType.ce:
+                            latencyList.Add((time_coinapi.Value, time_exchange.Value));
+                            break;
+                    }
                 }
             }
 
@@ -180,6 +205,8 @@ internal class Program
                     {
                         strbld.Append($", symbol = {symbol}");
                     }
+                    strbld.Append($", supress_hb = {supress_hb}");
+                    strbld.Append($", latency_type = {latency_type}");
 
                     Serilog.Log.Information(strbld.ToString());
 
@@ -222,7 +249,7 @@ internal class Program
 
                         var msgCountOnInterval = msgCount - msgCountPrev;
                         var bytesCountOnInterval = wsClient.TotalBytesReceived - totalBytesReceivedPrev;
-                        var latencies = latencyList.Select(x => x.Item2 - x.Item1).ToList();
+                        var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
                         latencyList.Clear();
 
 

@@ -54,7 +54,7 @@ dotnet run -- [options]
 
 ### Options
 
-- `--endpoint_name <NAME>`: The name of the endpoint (emea, apac, ncsa). Default is the global endpoint.
+- `--endpoint_name <NAME>`: The name of the endpoint (emea, apac, ncsa) or the uri like wss://ws.coinapi.io or ws://ws.coinapi.io etc. Default is the GeoDNS endpoint.
 - `--subscribe_data_type <TYPE>`: The type of data to subscribe to (e.g., book5, book20, quote, trade). Required.
 - `--asset <ASSET>`: The asset identifier to filter data by. Optional.
 - `--symbol <SYMBOL>`: The symbol identifier to filter data by. Optional.

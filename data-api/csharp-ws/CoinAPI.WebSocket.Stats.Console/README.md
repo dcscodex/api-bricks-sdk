@@ -103,6 +103,7 @@ This command subscribes to quote data for the BTC_USD spot symbol in Coinbase ex
 ## Logging
 
 The application logs detailed information to the console, including subscribed data types, message counts, CPU usage, and latencies.
+Furthermore, same data is written in CSV format to the `output.csv` file in the application's root directory.    
 
 ## Stopping the Application
 

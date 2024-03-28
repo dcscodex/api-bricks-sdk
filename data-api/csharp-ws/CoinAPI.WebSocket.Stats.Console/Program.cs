@@ -91,12 +91,28 @@ internal class Program
             return;
         }
 
-        var endpointNames = Enum.GetNames<Endpoints>().ToList();
-        if (!string.IsNullOrWhiteSpace(endpoint_name) && !endpointNames.Any(x => x == endpoint_name))
+        string endpointUri = null;
+        if (!string.IsNullOrWhiteSpace(endpoint_name))
         {
-            Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", endpointNames)}");
-            return;
+            // the user provided endpoint
+            if (Enum.GetNames<Endpoints>().ToList().Any(x => x == endpoint_name))
+            {
+                // it's site name
+                endpointUri = Endpoints[endpoint_name];
+            }
+            else if (endpoint_name.StartsWith("ws://") || !endpoint_name.StartsWith("wss://"))
+            {
+                // its uri
+                endpointUri = endpoint_name;
+            }
+            else
+            {
+                // eveyrhting else is invalid
+                Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", Enum.GetNames<Endpoints>().ToList())} or ws:// or wss:// uri");
+                return;
+            }
         }
+        
         var latencyTypes = Enum.GetNames<LatencyType>().ToList();
         if (!string.IsNullOrWhiteSpace(latency_type) && !latencyTypes.Any(x => x == latency_type))
         {
@@ -104,7 +120,7 @@ internal class Program
             return;
         }
         
-        using (var wsClient = string.IsNullOrWhiteSpace(endpoint_name) ? new CoinApiWsClient() : new CoinApiWsClient(Endpoints[endpoint_name]))
+        using (var wsClient = endpointUri == null ? new CoinApiWsClient() : new CoinApiWsClient(endpointUri))
         {
             wsClient.SupressHeartbeat(supress_hb);
             int msgCount = 0;

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using System.Diagnostics;
 using System.Globalization;
+using System.Net;
 using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
@@ -118,65 +119,35 @@ internal class Program
         using (var wsClient = new CoinApiWsClient(endpoint_name))
         {
             wsClient.SupressHeartbeat(supress_hb);
-            int msgCount = 0;
-            int errorCount = 0;
             LatencyType latencyType = Enum.GetValues<LatencyType>().FirstOrDefault(x => x.ToString() == latency_type);
 
-            void WsClient_Error(object? sender, Exception e)
-            {
-                Serilog.Log.Error(e, "Error in websocket client");
-                errorCount++;
-            }
-
             wsClient.Error += WsClient_Error;
-
-            List<(DateTime, DateTime)> latencyList = new List<(DateTime, DateTime)>();
-
-            void ProcessMsg(DateTime? time_exchange, DateTime? time_coinapi)
-            {
-                msgCount++;
-                if (time_coinapi.HasValue && time_exchange.HasValue)
-                {
-                    switch(latencyType)
-                    {
-                        case LatencyType.nc:
-                            latencyList.Add((DateTime.UtcNow, time_coinapi.Value));
-                            break;
-                        case LatencyType.ne:
-                            latencyList.Add((DateTime.UtcNow, time_exchange.Value));
-                            break;
-                        case LatencyType.ce:
-                            latencyList.Add((time_coinapi.Value, time_exchange.Value));
-                            break;
-                    }
-                }
-            }
 
             switch (subscribe_data_type)
             {
                 case "book5":
-                    wsClient.OrderBook5Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.OrderBook5Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "book20":
-                    wsClient.OrderBook20Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.OrderBook20Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "book50":
-                    wsClient.OrderBook50Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.OrderBook50Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "book":
-                    wsClient.OrderBookEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.OrderBookEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "book_l":
-                    wsClient.OrderBookL3Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.OrderBookL3Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "quote":
-                    wsClient.QuoteEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.QuoteEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "trade":
-                    wsClient.TradeEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi); };
+                    wsClient.TradeEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "ohlcv":
-                    wsClient.OHLCVEvent += (s, i) => { ProcessMsg(null, null); };
+                    wsClient.OHLCVEvent += (s, i) => { ProcessMsg(null, null, latencyType); };
                     break;
                 case "exrate":
                     wsClient.ExchangeRateEvent += (s, i) => { msgCount++; };
@@ -194,91 +165,126 @@ internal class Program
             };
             wsClient.SendHelloMessage(hello);
 
-            Task.Run(async () =>
-                {
-                    if (!wsClient.ConnectedEvent.WaitOne(10000)) return;
-
-                    var iterations = 0;
-                    Serilog.Log.Information($"Time: {DateTime.UtcNow}");
-                    var strbld = new StringBuilder();
-
-                    strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
-                    if (!string.IsNullOrWhiteSpace(exchange))
-                    {
-                        strbld.Append($", exchange = {exchange}");
-                    }
-                    if (!string.IsNullOrWhiteSpace(asset))
-                    {
-                        strbld.Append($", asset = {asset}");
-                    }
-                    if (!string.IsNullOrWhiteSpace(symbol))
-                    {
-                        strbld.Append($", symbol = {symbol}");
-                    }
-                    strbld.Append($", supress_hb = {supress_hb}");
-                    strbld.Append($", latency_type = {latency_type}");
-
-                    Serilog.Log.Information(strbld.ToString());
-
-                    var process = Process.GetCurrentProcess();
-
-                    while (true)
-                    {
-                        strbld.Clear();
-
-                        if (iterations % 10 == 0)
-                        {
-                            Serilog.Log.Information($"Endpoint {endpoint_name}, {iterations} iterations, {msgCount} messages received, {wsClient.TotalBytesReceived} bytes received, Error count {errorCount}");
-                        }
-                        iterations++;
-
-                        var msgCountPrev = msgCount;
-                        var totalBytesReceivedPrev = wsClient.TotalBytesReceived;
-
-                        (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsagePrev
-                            = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
-
-                        //TimeSpan totalCpuTimePrev = process.TotalProcessorTime;
-
-                        await Task.Delay(1000);
-                        (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsage
-                            = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
-
-                        //TimeSpan totalCpuTime = process.TotalProcessorTime;
-                        var deltaCpuWaiting = cpuUsage.cpuWaiting - cpuUsagePrev.cpuWaiting;
-                        var deltaCpuParsing = cpuUsage.cpuParsing - cpuUsagePrev.cpuParsing;
-                        var deltaCpuHandling = cpuUsage.cpuHandling - cpuUsagePrev.cpuHandling;
-                        //var deltaCpuTime = totalCpuTime - totalCpuTimePrev;
-                        var deltaCpuTime = deltaCpuWaiting + deltaCpuParsing + deltaCpuHandling;
-
-
-                        var cpuWaitingPercent = 100 * deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-                        var cpuParsingPercent = 100 * deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-                        var cpuHandlingPercent = 100 * deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-
-
-                        var msgCountOnInterval = msgCount - msgCountPrev;
-                        var bytesCountOnInterval = wsClient.TotalBytesReceived - totalBytesReceivedPrev;
-                        var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
-                        latencyList.Clear();
-
-
-                        strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
-                        strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
-                        strbld.Append($"| CPU: wait: {cpuWaitingPercent:F2}% | parse: {cpuParsingPercent:F2}% | process: {cpuHandlingPercent:F2}%");
-
-                        if (latencies.Any())
-                        {
-                            strbld.AppendFormat($" | Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
-                            strbld.AppendFormat($" | max: {latencies.Max().TotalMilliseconds,-8}ms");
-                        }
-
-                        Serilog.Log.Information(strbld.ToString());
-                    }
-                }
-            );
+            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange,latency_type);
 
             await Task.Run(() => Console.ReadKey());
+        }
+    }
+
+    private ulong errorCount = 0;
+    void WsClient_Error(object? sender, Exception e)
+    {
+        Serilog.Log.Error(e, "Error in websocket client");
+        errorCount++;
+    }
+
+    private ulong msgCount = 0;
+    private readonly List<(DateTime, DateTime)> latencyList = new List<(DateTime, DateTime)>();
+    private void ProcessMsg(DateTime? time_exchange, DateTime? time_coinapi, LatencyType latencyType)
+    {
+        msgCount++;
+        if (time_coinapi.HasValue && time_exchange.HasValue)
+        {
+            switch (latencyType)
+            {
+                case LatencyType.nc:
+                    latencyList.Add((DateTime.UtcNow, time_coinapi.Value));
+                    break;
+                case LatencyType.ne:
+                    latencyList.Add((DateTime.UtcNow, time_exchange.Value));
+                    break;
+                case LatencyType.ce:
+                    latencyList.Add((time_coinapi.Value, time_exchange.Value));
+                    break;
+            }
+        }
+    }
+
+    private async Task PrintingTaskLoopAsync(CoinApiWsClient wsClient, 
+        string endpoint_name, string subscribe_data_type, string asset, 
+        string symbol, string exchange, string latency_type)
+    {
+        var iterations = 0;
+        Serilog.Log.Information($"Time: {DateTime.UtcNow}");
+        var strbld = new StringBuilder();
+
+        strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
+        if (!string.IsNullOrWhiteSpace(exchange))
+        {
+            strbld.Append($", exchange = {exchange}");
+        }
+        if (!string.IsNullOrWhiteSpace(asset))
+        {
+            strbld.Append($", asset = {asset}");
+        }
+        if (!string.IsNullOrWhiteSpace(symbol))
+        {
+            strbld.Append($", symbol = {symbol}");
+        }
+        strbld.Append($", latency_type = {latency_type}");
+
+        Serilog.Log.Information(strbld.ToString());
+
+        var process = Process.GetCurrentProcess();
+
+        while (true)
+        {
+            if (!wsClient.IsConnected)
+            {
+                Log.Warning("Websocket is not connected.");
+                await Task.Delay(1000);
+                continue;
+            }
+            strbld.Clear();
+
+            if (iterations % 10 == 0)
+            {
+                Serilog.Log.Information($"Endpoint {endpoint_name}, {iterations} iterations, {msgCount} messages received, {wsClient.TotalBytesReceived} bytes received, Error count {errorCount}");
+            }
+            iterations++;
+
+            var msgCountPrev = msgCount;
+            var totalBytesReceivedPrev = wsClient.TotalBytesReceived;
+
+            (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsagePrev
+                = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
+
+            //TimeSpan totalCpuTimePrev = process.TotalProcessorTime;
+
+            await Task.Delay(1000);
+            (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsage
+                = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
+
+            //TimeSpan totalCpuTime = process.TotalProcessorTime;
+            var deltaCpuWaiting = cpuUsage.cpuWaiting - cpuUsagePrev.cpuWaiting;
+            var deltaCpuParsing = cpuUsage.cpuParsing - cpuUsagePrev.cpuParsing;
+            var deltaCpuHandling = cpuUsage.cpuHandling - cpuUsagePrev.cpuHandling;
+            //var deltaCpuTime = totalCpuTime - totalCpuTimePrev;
+            var deltaCpuTime = deltaCpuWaiting + deltaCpuParsing + deltaCpuHandling;
+
+
+            var cpuWaitingPercent = 100 * deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+            var cpuParsingPercent = 100 * deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+            var cpuHandlingPercent = 100 * deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+
+
+            var msgCountOnInterval = msgCount - msgCountPrev;
+            var bytesCountOnInterval = wsClient.TotalBytesReceived - totalBytesReceivedPrev;
+            var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
+            latencyList.Clear();
+
+
+            strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
+            strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
+            strbld.Append($"| CPU: wait: {cpuWaitingPercent:F2}% | parse: {cpuParsingPercent:F2}% | process: {cpuHandlingPercent:F2}%");
+
+            if (latencies.Any())
+            {
+                strbld.AppendFormat($" | Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
+                strbld.AppendFormat($" | max: {latencies.Max().TotalMilliseconds,-8}ms");
+            }
+
+            Serilog.Log.Information(strbld.ToString());
         }
     }
 

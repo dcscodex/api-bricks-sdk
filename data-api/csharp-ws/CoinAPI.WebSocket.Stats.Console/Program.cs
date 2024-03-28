@@ -288,9 +288,9 @@ internal class Program
             var deltaCpuTime = deltaCpuWaiting + deltaCpuParsing + deltaCpuHandling;
 
 
-            var cpuWaitingPercent = 100 * deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-            var cpuParsingPercent = 100 * deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-            var cpuHandlingPercent = 100 * deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+            var cpuWaitingPercent = deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+            var cpuParsingPercent = deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+            var cpuHandlingPercent = deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
 
 
             var msgCountOnInterval = msgCount - msgCountPrev;

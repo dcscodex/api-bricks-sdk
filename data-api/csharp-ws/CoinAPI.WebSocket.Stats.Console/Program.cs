@@ -80,7 +80,7 @@ internal class Program
         await coconaApp.RunAsync<Program>();
     }
 
-    public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = null,
+    public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = "wss://ws.coinapi.io/",
         string subscribe_data_type = null, string asset = null, string symbol = null,
         string exchange = null, string apikey = null, string type = "hello", bool supress_hb = false, string latency_type = "ce")
     {
@@ -91,26 +91,21 @@ internal class Program
             return;
         }
 
-        string endpointUri = null;
-        if (!string.IsNullOrWhiteSpace(endpoint_name))
+        // the user provided endpoint
+        if (Enum.GetNames<Endpoints>().ToList().Any(x => x == endpoint_name))
         {
-            // the user provided endpoint
-            if (Enum.GetNames<Endpoints>().ToList().Any(x => x == endpoint_name))
-            {
-                // it's site name
-                endpointUri = Endpoints[endpoint_name];
-            }
-            else if (endpoint_name.StartsWith("ws://") || !endpoint_name.StartsWith("wss://"))
-            {
-                // its uri
-                endpointUri = endpoint_name;
-            }
-            else
-            {
-                // eveyrhting else is invalid
-                Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", Enum.GetNames<Endpoints>().ToList())} or ws:// or wss:// uri");
-                return;
-            }
+            // it's site name translate
+            endpoint_name = Endpoints[endpoint_name];
+        }
+        else if (endpoint_name.StartsWith("ws://") || endpoint_name.StartsWith("wss://"))
+        {
+            // its uri OK
+        }
+        else
+        {
+            // eveyrhting else is invalid
+            Serilog.Log.Error($"Invalid endpoint_name, valid values: {string.Join(",", Enum.GetNames<Endpoints>().ToList())} or ws:// or wss:// uri");
+            return;
         }
         
         var latencyTypes = Enum.GetNames<LatencyType>().ToList();
@@ -120,7 +115,7 @@ internal class Program
             return;
         }
         
-        using (var wsClient = endpointUri == null ? new CoinApiWsClient() : new CoinApiWsClient(endpointUri))
+        using (var wsClient = new CoinApiWsClient(endpoint_name))
         {
             wsClient.SupressHeartbeat(supress_hb);
             int msgCount = 0;
@@ -204,7 +199,6 @@ internal class Program
                     if (!wsClient.ConnectedEvent.WaitOne(10000)) return;
 
                     var iterations = 0;
-                    var endpoint = (string.IsNullOrEmpty(endpoint_name) ? "global" : Endpoints[endpoint_name]);
                     Serilog.Log.Information($"Time: {DateTime.UtcNow}");
                     var strbld = new StringBuilder();
 
@@ -234,7 +228,7 @@ internal class Program
 
                         if (iterations % 10 == 0)
                         {
-                            Serilog.Log.Information($"Endpoint {endpoint}, {iterations} iterations, {msgCount} messages received, {wsClient.TotalBytesReceived} bytes received, Error count {errorCount}");
+                            Serilog.Log.Information($"Endpoint {endpoint_name}, {iterations} iterations, {msgCount} messages received, {wsClient.TotalBytesReceived} bytes received, Error count {errorCount}");
                         }
                         iterations++;
 

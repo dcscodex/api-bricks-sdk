@@ -83,7 +83,7 @@ internal class Program
 
     public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = "wss://ws.coinapi.io/",
         string subscribe_data_type = null, string asset = null, string symbol = null,
-        string exchange = null, string apikey = null, string type = "hello", bool supress_hb = false, string latency_type = "ce")
+        string exchange = null, string apikey = null, string type = "hello", string supress_hb = "false", string latency_type = "ce")
     {
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
@@ -115,10 +115,12 @@ internal class Program
             Serilog.Log.Error($"Invalid latency_type, valid values: {string.Join(",", latencyTypes)}");
             return;
         }
-        
+        bool.TryParse(supress_hb, out bool hb_supressed);
+
         using (var wsClient = new CoinApiWsClient(endpoint_name))
         {
-            wsClient.SupressHeartbeat(supress_hb);
+            wsClient.SupressHeartbeat(hb_supressed);
+
             LatencyType latencyType = Enum.GetValues<LatencyType>().FirstOrDefault(x => x.ToString() == latency_type);
 
             wsClient.Error += WsClient_Error;
@@ -165,7 +167,7 @@ internal class Program
             };
             wsClient.SendHelloMessage(hello);
 
-            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, supress_hb, latency_type);
+            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, hb_supressed, latency_type);
 
             await Task.Run(() => Console.ReadKey());
         }

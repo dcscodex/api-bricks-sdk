@@ -165,7 +165,7 @@ internal class Program
             };
             wsClient.SendHelloMessage(hello);
 
-            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange,latency_type);
+            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, supress_hb, latency_type);
 
             await Task.Run(() => Console.ReadKey());
         }
@@ -202,7 +202,7 @@ internal class Program
 
     private async Task PrintingTaskLoopAsync(CoinApiWsClient wsClient, 
         string endpoint_name, string subscribe_data_type, string asset, 
-        string symbol, string exchange, string latency_type)
+        string symbol, string exchange, bool supress_hb, string latency_type)
     {
         var iterations = 0;
         Serilog.Log.Information($"Time: {DateTime.UtcNow}");
@@ -225,7 +225,32 @@ internal class Program
 
         Serilog.Log.Information(strbld.ToString());
 
-        var process = Process.GetCurrentProcess();
+        string basePath = "output";
+        string extension = ".csv";
+
+        string csvFilePath = basePath + extension;
+        int counter = 1;
+
+        while (File.Exists(csvFilePath))
+        {
+            csvFilePath = $"{basePath}_{counter}{extension}";
+            counter++;
+        }
+
+        using (StreamWriter sw = File.CreateText(csvFilePath))
+        {
+            sw.WriteLine("Parameters:");
+            sw.WriteLine($"Endpoint Name: {endpoint_name}");
+            sw.WriteLine($"Subscribe Data Type: {subscribe_data_type}");
+            sw.WriteLine($"Asset: {asset}");
+            sw.WriteLine($"Symbol: {symbol}");
+            sw.WriteLine($"Exchange: {exchange}");
+            sw.WriteLine($"Supress heartbeat: {supress_hb}");
+            sw.WriteLine($"Latency type: {latency_type}");
+            sw.WriteLine();
+            sw.WriteLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
+        }
+
 
         while (true)
         {
@@ -276,7 +301,7 @@ internal class Program
 
             strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
             strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
-            strbld.Append($"| CPU: wait: {cpuWaitingPercent:F2}% | parse: {cpuParsingPercent:F2}% | process: {cpuHandlingPercent:F2}%");
+            strbld.Append($"| CPU: wait: {cpuWaitingPercent:P} | parse: {cpuParsingPercent:P} | process: {cpuHandlingPercent:P}");
 
             if (latencies.Any())
             {
@@ -285,6 +310,12 @@ internal class Program
             }
 
             Serilog.Log.Information(strbld.ToString());
+
+            using (StreamWriter sw = File.AppendText(csvFilePath))
+            {
+                sw.WriteLine($"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";{msgCountOnInterval};{bytesCountOnInterval};{cpuWaitingPercent:F2};{cpuParsingPercent:F2};{cpuHandlingPercent:F2};{(latencies.Any() ? latencies.Min().TotalMilliseconds : 0):F2};{(latencies.Any() ? latencies.Max().TotalMilliseconds : 0):F2}");
+            }
+
         }
     }
 

@@ -39,6 +39,7 @@ namespace CoinAPI.WebSocket.V1
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
         public event EventHandler<Exception> Error;
         public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
+        public bool IsConnected => _client?.State == WebSocketState.Open;   
         public DateTime? ConnectedTime { get; private set; }
         public ulong TotalBytesReceived { get; private set; }
         public TimeSpan TotalWaitTime => _waitStopwatch.Elapsed;

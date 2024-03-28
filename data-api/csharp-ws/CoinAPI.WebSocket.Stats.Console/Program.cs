@@ -2,6 +2,7 @@
 using CoinAPI.WebSocket.V1;
 using CoinAPI.WebSocket.V1.DataModels;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System.Diagnostics;
@@ -185,6 +186,32 @@ internal class Program
 
             Task.Run(async () =>
                 {
+                    string basePath = "output";
+                    string extension = ".csv";
+
+                    string csvFilePath = basePath + extension;
+                    int counter = 1;
+                    while (File.Exists(csvFilePath))
+                    {
+                        csvFilePath = $"{basePath}_{counter}{extension}";
+                        counter++;
+                    }
+
+                    using (StreamWriter sw = File.CreateText(csvFilePath))
+                    {
+                        sw.WriteLine("Parameters:");
+                        sw.WriteLine($"Endpoint Name: {endpoint_name}");
+                        sw.WriteLine($"Subscribe Data Type: {subscribe_data_type}");
+                        sw.WriteLine($"Asset: {asset}");
+                        sw.WriteLine($"Symbol: {symbol}");
+                        sw.WriteLine($"Exchange: {exchange}");
+                        sw.WriteLine($"Supress heartbeat: {supress_hb}");
+                        sw.WriteLine($"Latency type: {latency_type}");
+                        sw.WriteLine();
+                        sw.WriteLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
+                    }
+
+
                     if (!wsClient.ConnectedEvent.WaitOne(10000)) return;
 
                     var iterations = 0;
@@ -242,9 +269,9 @@ internal class Program
                         var deltaCpuTime = deltaCpuWaiting + deltaCpuParsing + deltaCpuHandling;
 
 
-                        var cpuWaitingPercent = 100 * deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-                        var cpuParsingPercent = 100 * deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
-                        var cpuHandlingPercent = 100 * deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+                        var cpuWaitingPercent = deltaCpuWaiting.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+                        var cpuParsingPercent = deltaCpuParsing.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
+                        var cpuHandlingPercent = deltaCpuHandling.TotalMilliseconds / deltaCpuTime.TotalMilliseconds;
 
 
                         var msgCountOnInterval = msgCount - msgCountPrev;
@@ -255,7 +282,7 @@ internal class Program
 
                         strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
                         strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
-                        strbld.Append($"| CPU: wait: {cpuWaitingPercent:F2}% | parse: {cpuParsingPercent:F2}% | process: {cpuHandlingPercent:F2}%");
+                        strbld.Append($"| CPU: wait: {cpuWaitingPercent:P} | parse: {cpuParsingPercent:P} | process: {cpuHandlingPercent:P}");
 
                         if (latencies.Any())
                         {
@@ -264,6 +291,13 @@ internal class Program
                         }
 
                         Serilog.Log.Information(strbld.ToString());
+
+                        using (StreamWriter sw = File.AppendText(csvFilePath))
+                        {
+                            sw.WriteLine($"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";{msgCountOnInterval};{bytesCountOnInterval};{cpuWaitingPercent:F2};{cpuParsingPercent:F2};{cpuHandlingPercent:F2};{(latencies.Any() ? latencies.Min().TotalMilliseconds : 0):F2};{(latencies.Any() ? latencies.Max().TotalMilliseconds : 0):F2}");
+                        }
+
+
                     }
                 }
             );

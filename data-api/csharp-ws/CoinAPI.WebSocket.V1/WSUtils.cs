@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 using CoinAPI.WebSocket.V1.DataModels;
-using Utf8Json;
+using System.Text.Json;
 
 namespace CoinAPI.WebSocket.V1
 {
@@ -46,9 +46,7 @@ namespace CoinAPI.WebSocket.V1
 
         public static T ParseMessage<T>(MessageData messageData)
         {
-            var jsonString = Encoding.ASCII.GetString(messageData.Data);
-            var messageObject = JsonSerializer.Deserialize<T>(jsonString);
-
+            var messageObject = JsonSerializer.Deserialize<T>(messageData.Data);
             return messageObject;
         }
 

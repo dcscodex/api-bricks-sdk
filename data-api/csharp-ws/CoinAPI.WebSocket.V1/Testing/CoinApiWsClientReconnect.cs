@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Net.WebSockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using CoinAPI.WebSocket.V1.DataModels;
-using Utf8Json;
 
 namespace CoinAPI.WebSocket.V1.Testing
 {

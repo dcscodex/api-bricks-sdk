@@ -149,7 +149,7 @@ internal class Program
                     wsClient.TradeEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
                     break;
                 case "ohlcv":
-                    wsClient.OHLCVEvent += (s, i) => { ProcessMsg(null, null, latencyType); };
+                    wsClient.OHLCVEvent += (s, i) => { ProcessMsg(i.time_close, null, latencyType); };
                     break;
                 case "exrate":
                     wsClient.ExchangeRateEvent += (s, i) => { msgCount++; };
@@ -185,20 +185,17 @@ internal class Program
     private void ProcessMsg(DateTime? time_exchange, DateTime? time_coinapi, LatencyType latencyType)
     {
         msgCount++;
-        if (time_coinapi.HasValue && time_exchange.HasValue)
+        if (latencyType == LatencyType.nc && time_coinapi.HasValue)
         {
-            switch (latencyType)
-            {
-                case LatencyType.nc:
-                    latencyList.Add((DateTime.UtcNow, time_coinapi.Value));
-                    break;
-                case LatencyType.ne:
-                    latencyList.Add((DateTime.UtcNow, time_exchange.Value));
-                    break;
-                case LatencyType.ce:
-                    latencyList.Add((time_coinapi.Value, time_exchange.Value));
-                    break;
-            }
+            latencyList.Add((DateTime.UtcNow, time_coinapi.Value));
+        }
+        else if (latencyType == LatencyType.ne && time_exchange.HasValue)
+        {
+            latencyList.Add((DateTime.UtcNow, time_exchange.Value));
+        }
+        else if (latencyType == LatencyType.ce && time_coinapi.HasValue && time_exchange.HasValue)
+        {
+            latencyList.Add((time_coinapi.Value, time_exchange.Value));
         }
     }
 

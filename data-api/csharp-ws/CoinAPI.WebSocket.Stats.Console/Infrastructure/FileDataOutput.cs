@@ -9,16 +9,10 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
 {
     public class FileDataOutput : IDataOutput
     {
-        private string _filePath;
-
-        public FileDataOutput(string filePath)
-        {
-            _filePath = filePath;
-        }
-
+        private string _filePath = string.Empty;
         public async Task InitializeAsync(InputData input)
         {
-            _filePath = _filePath ?? GenerateFilePath();
+            _filePath = GenerateFilePath();
             var sb = new StringBuilder();
 
             sb.AppendLine("Parameters:");
@@ -54,6 +48,7 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
 
         public async Task WriteAsync(string data)
         {
+            if (string.IsNullOrWhiteSpace(_filePath)) return;
             await File.AppendAllTextAsync(_filePath, data);
         }
 
@@ -63,9 +58,9 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
             sb.Append($"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";");
             sb.Append($"{data.Messages};");
             sb.Append($"{data.BytesReceived};");
-            sb.Append($"{data.CpuWaitingPercent:F2};");
-            sb.Append($"{data.CpuParsingPercent:F2};");
-            sb.Append($"{data.CpuHandlingPercent:F2};");
+            sb.Append($"{data.CpuWaitingPercent:F4};");
+            sb.Append($"{data.CpuParsingPercent:F4};");
+            sb.Append($"{data.CpuHandlingPercent:F4};");
             sb.Append($"{data.LatencyMinMilliseconds:F2};");
             sb.Append($"{data.LatencyMaxMilliseconds:F2}\n");
 

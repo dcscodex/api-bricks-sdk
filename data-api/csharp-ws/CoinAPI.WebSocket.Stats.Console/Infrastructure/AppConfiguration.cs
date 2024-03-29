@@ -9,16 +9,12 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
 {
     public class AppConfiguration
     {
-        public string Endpoint { get; set; }
+        public List<string> OutputType { get; set; } = new List<string>();
         public string ApiKey { get; set; }
 
         public static AppConfiguration LoadFromIConfiguration(IConfiguration configuration)
         {
-            return new AppConfiguration
-            {
-                Endpoint = configuration.GetValue<string>("FileName") ?? "output.csv",
-                ApiKey = configuration.GetValue<string>("ApiKey")
-            };
+            return (AppConfiguration)configuration.Get(typeof(AppConfiguration));
         }
     }
 }

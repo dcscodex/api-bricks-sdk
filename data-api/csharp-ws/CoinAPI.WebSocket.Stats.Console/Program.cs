@@ -72,9 +72,6 @@ internal class Program
         })
         .ConfigureAppConfiguration((context, config) =>
         {
-            
-            //config.AddJsonFile("appsettings.json", optional: true);
-            //config.AddEnvironmentVariables();
         })
         .ConfigureServices((context, services) =>
         {
@@ -85,9 +82,10 @@ internal class Program
         await coconaApp.RunAsync<Program>();
     }
 
-    public async Task MakeRequest([FromService] IConfiguration configuration, [FromService] IDataOutput dataOutput, string endpoint_name = "wss://ws.coinapi.io/",
-        string subscribe_data_type = null, string asset = null, string symbol = null,
-        string exchange = null, string apikey = null, string type = "hello", string supress_hb = "false", string latency_type = "ce")
+    public async Task MakeRequest([FromService] IConfiguration configuration, [FromService] IDataOutput dataOutput,
+        string endpoint_name = "wss://ws.coinapi.io/", string subscribe_data_type = null, string asset = null, 
+        string symbol = null, string exchange = null, string apikey = null, string type = "hello", 
+        string supress_hb = "false", string latency_type = "ce")
     {
         var appConfig = AppConfiguration.LoadFromIConfiguration(configuration);
 
@@ -131,51 +129,61 @@ internal class Program
 
             wsClient.Error += WsClient_Error;
 
-            switch (subscribe_data_type)
-            {
-                case "book5":
-                    wsClient.OrderBook5Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "book20":
-                    wsClient.OrderBook20Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "book50":
-                    wsClient.OrderBook50Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "book":
-                    wsClient.OrderBookEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "book_l":
-                    wsClient.OrderBookL3Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "quote":
-                    wsClient.QuoteEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "trade":
-                    wsClient.TradeEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
-                    break;
-                case "ohlcv":
-                    wsClient.OHLCVEvent += (s, i) => { ProcessMsg(null, null, latencyType); };
-                    break;
-                case "exrate":
-                    wsClient.ExchangeRateEvent += (s, i) => { msgCount++; };
-                    break;
-            }
-
-            var hello = new Hello()
-            {
-                apikey = new Guid(apikey ?? appConfig.ApiKey ?? throw new ArgumentNullException("ApiKey is required")),
-                type = type,
-                subscribe_data_type = new string[] { subscribe_data_type },
-                subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },
-                subscribe_filter_symbol_id = string.IsNullOrWhiteSpace(symbol) ? null : new string[] { symbol },
-                subscribe_filter_exchange_id = string.IsNullOrWhiteSpace(exchange) ? null : new string[] { exchange },
-            };
-            wsClient.SendHelloMessage(hello);
+            SubscribeToEvent(subscribe_data_type, wsClient, latencyType);
+            
+            SendHello(subscribe_data_type, asset, symbol, exchange, apikey, type, appConfig, wsClient);
 
             _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, hb_supressed, latency_type, dataOutput);
 
             await Task.Run(() => Console.ReadKey());
+        }
+    }
+
+    private static void SendHello(string subscribe_data_type, string asset, string symbol, string exchange, string apikey, string type, AppConfiguration appConfig, CoinApiWsClient wsClient)
+    {
+        var hello = new Hello()
+        {
+            apikey = new Guid(apikey ?? appConfig.ApiKey ?? throw new ArgumentNullException("ApiKey is required")),
+            type = type,
+            subscribe_data_type = new string[] { subscribe_data_type },
+            subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },
+            subscribe_filter_symbol_id = string.IsNullOrWhiteSpace(symbol) ? null : new string[] { symbol },
+            subscribe_filter_exchange_id = string.IsNullOrWhiteSpace(exchange) ? null : new string[] { exchange },
+        };
+        wsClient.SendHelloMessage(hello);
+    }
+
+    private void SubscribeToEvent(string subscribe_data_type, CoinApiWsClient wsClient, LatencyType latencyType)
+    {
+        switch (subscribe_data_type)
+        {
+            case "book5":
+                wsClient.OrderBook5Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "book20":
+                wsClient.OrderBook20Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "book50":
+                wsClient.OrderBook50Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "book":
+                wsClient.OrderBookEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "book_l":
+                wsClient.OrderBookL3Event += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "quote":
+                wsClient.QuoteEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "trade":
+                wsClient.TradeEvent += (s, i) => { ProcessMsg(i.time_exchange, i.time_coinapi, latencyType); };
+                break;
+            case "ohlcv":
+                wsClient.OHLCVEvent += (s, i) => { ProcessMsg(null, null, latencyType); };
+                break;
+            case "exrate":
+                wsClient.ExchangeRateEvent += (s, i) => { msgCount++; };
+                break;
         }
     }
 
@@ -223,25 +231,6 @@ internal class Program
             SupressHeartbeat = supress_hb, 
             LatencyType = latency_type 
         };    
-        Serilog.Log.Information($"Time: {DateTime.UtcNow}");
-        var strbld = new StringBuilder();
-
-        strbld.Append($"Subscribed to: subscribe_data_type = {subscribe_data_type}");
-        if (!string.IsNullOrWhiteSpace(exchange))
-        {
-            strbld.Append($", exchange = {exchange}");
-        }
-        if (!string.IsNullOrWhiteSpace(asset))
-        {
-            strbld.Append($", asset = {asset}");
-        }
-        if (!string.IsNullOrWhiteSpace(symbol))
-        {
-            strbld.Append($", symbol = {symbol}");
-        }
-        strbld.Append($", latency_type = {latency_type}");
-
-        Serilog.Log.Information(strbld.ToString());
 
         await dataOutput.InitializeAsync(inputData);
 
@@ -253,7 +242,6 @@ internal class Program
                 await Task.Delay(1000);
                 continue;
             }
-            strbld.Clear();
 
             if (iterations % 10 == 0)
             {
@@ -304,17 +292,6 @@ internal class Program
 
             await dataOutput.WriteAsync(outputData);
 
-            strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
-            strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
-            strbld.Append($"| CPU: wait: {cpuWaitingPercent:P} | parse: {cpuParsingPercent:P} | process: {cpuHandlingPercent:P}");
-
-            if (latencies.Any())
-            {
-                strbld.AppendFormat($" | Latency min: {latencies.Min().TotalMilliseconds,-8}ms");
-                strbld.AppendFormat($" | max: {latencies.Max().TotalMilliseconds,-8}ms");
-            }
-
-            Serilog.Log.Information(strbld.ToString());
         }
     }
     static void AppConfigureServices(IServiceCollection services, IConfiguration configuration)
@@ -324,20 +301,43 @@ internal class Program
         {
             throw new ArgumentNullException(nameof(configuration));
         }
-        if (configuration.GetValue<bool>("OutputToFile"))
+        IDataOutput dataOutput = null;
+        
+        var appConfig = AppConfiguration.LoadFromIConfiguration(configuration);
+        
+        List<IDataOutput> outputs = new List<IDataOutput>();
+        
+        foreach (var outputType in appConfig.OutputType)
         {
-            services.AddSingleton<IDataOutput, FileDataOutput>(provider =>
+            switch (outputType.ToLower())
             {
-                var configuration = provider.GetService<IConfiguration>();
-                var filePath = configuration.GetValue<string>("OutputFilePath");
-                return new FileDataOutput(filePath);
-            });
+                case "file":
+                    outputs.Add(new FileDataOutput());
+                    break;
+                case "console":
+                    outputs.Add(new ConsoleDataOutput());
+                    break;
+                default:
+                    throw new InvalidOperationException($"Invalid output type: {outputType}");
+            }
+        }
+
+        if (outputs.Count > 1)
+        {
+            var compositeDataOutput = new CompositeDataOutput();
+            foreach (var output in outputs)
+            {
+                compositeDataOutput.AddDataOutput(output);
+            }
+            dataOutput = compositeDataOutput;
         }
         else
         {
-            services.AddSingleton<IDataOutput, DummyDataOutput>();
+            dataOutput = outputs.FirstOrDefault();
         }
+        dataOutput = dataOutput ?? new ConsoleDataOutput(); //add default
 
+        services.AddSingleton(dataOutput);
     }
 
 }

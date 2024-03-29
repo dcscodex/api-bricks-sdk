@@ -340,10 +340,19 @@ namespace CoinAPI.WebSocket.V1
                 }
                 catch (TaskCanceledException)
                 {
-                    if (_client.State == WebSocketState.Open)
+                    try
                     {
-                        await _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Normal", CancellationToken.None);
+                        if (_client.State == WebSocketState.Open)
+                        {
+                            await _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Normal", CancellationToken.None);
 
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        OnError(ex);
                     }
                 }
                 catch (Exception ex)

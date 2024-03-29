@@ -23,6 +23,7 @@ Before running the application, ensure you have an `appsettings.json` file in th
 ```
 
 Replace `API_KEY_HERE` with your actual CoinAPI API key. The `OutputType` specifies the destinations for the output data. Valid options include `console` and `file`. You can specify one or both options in the array. If no option is provided, console output will be the default one.
+If `file` is specified, the output will be written to the `output.csv` file in the application's root directory.
 
 ## Building the Application
 

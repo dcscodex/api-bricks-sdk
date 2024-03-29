@@ -1,15 +1,21 @@
 ﻿using Cocona;
+using CoinAPI.WebSocket.Stats.Console.Infrastructure;
+using CoinAPI.WebSocket.Stats.Console.Interfaces;
 using CoinAPI.WebSocket.V1;
 using CoinAPI.WebSocket.V1.DataModels;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
+using static System.Net.Mime.MediaTypeNames;
 
 internal enum SubType
 {
@@ -37,10 +43,9 @@ internal enum LatencyType
     ne, //Now-Exchange
     ce, //CoinAPI-Exchange
 }
-
 internal class Program
 {
-    public static IConfiguration Configuration { get; private set; }
+    //public static IConfiguration Configuration { get; private set; }
 
     public static Dictionary<string, string> Endpoints = new Dictionary<string, string>
     {
@@ -59,32 +64,33 @@ internal class Program
            //.WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day)
            .CreateLogger();
 
-        var confBuilder = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-        Configuration = confBuilder.Build();
-
         var coconaBuilder = CoconaApp.CreateBuilder();
         var host = coconaBuilder.Host;
         host.ConfigureLogging(logging =>
         {
             logging.AddSerilog();
         })
+        .ConfigureAppConfiguration((context, config) =>
+        {
+            
+            //config.AddJsonFile("appsettings.json", optional: true);
+            //config.AddEnvironmentVariables();
+        })
         .ConfigureServices((context, services) =>
         {
-
-            //
+            AppConfigureServices(services, context.Configuration);
         });
         //host.Run<Program>(args);
         var coconaApp = coconaBuilder.Build();
         await coconaApp.RunAsync<Program>();
     }
 
-    public async Task MakeRequest([FromService] IConfiguration configuration, string endpoint_name = "wss://ws.coinapi.io/",
+    public async Task MakeRequest([FromService] IConfiguration configuration, [FromService] IDataOutput dataOutput, string endpoint_name = "wss://ws.coinapi.io/",
         string subscribe_data_type = null, string asset = null, string symbol = null,
         string exchange = null, string apikey = null, string type = "hello", string supress_hb = "false", string latency_type = "ce")
     {
+        var appConfig = AppConfiguration.LoadFromIConfiguration(configuration);
+
         var typeNames = Enum.GetNames<SubType>().ToList();
         if (!typeNames.Any(x => x == subscribe_data_type))
         {
@@ -158,7 +164,7 @@ internal class Program
 
             var hello = new Hello()
             {
-                apikey = new Guid(apikey ?? configuration["ApiKey"] ?? throw new ArgumentNullException("ApiKey is required")),
+                apikey = new Guid(apikey ?? appConfig.ApiKey ?? throw new ArgumentNullException("ApiKey is required")),
                 type = type,
                 subscribe_data_type = new string[] { subscribe_data_type },
                 subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },
@@ -167,7 +173,7 @@ internal class Program
             };
             wsClient.SendHelloMessage(hello);
 
-            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, hb_supressed, latency_type);
+            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, hb_supressed, latency_type, dataOutput);
 
             await Task.Run(() => Console.ReadKey());
         }
@@ -204,7 +210,7 @@ internal class Program
 
     private async Task PrintingTaskLoopAsync(CoinApiWsClient wsClient, 
         string endpoint_name, string subscribe_data_type, string asset, 
-        string symbol, string exchange, bool supress_hb, string latency_type)
+        string symbol, string exchange, bool supress_hb, string latency_type, IDataOutput dataOutput)
     {
         var iterations = 0;
         Serilog.Log.Information($"Time: {DateTime.UtcNow}");
@@ -227,32 +233,8 @@ internal class Program
 
         Serilog.Log.Information(strbld.ToString());
 
-        string basePath = "output";
-        string extension = ".csv";
-
-        string csvFilePath = basePath + extension;
-        int counter = 1;
-
-        while (File.Exists(csvFilePath))
-        {
-            csvFilePath = $"{basePath}_{counter}{extension}";
-            counter++;
-        }
-
-        using (StreamWriter sw = File.CreateText(csvFilePath))
-        {
-            sw.WriteLine("Parameters:");
-            sw.WriteLine($"Endpoint Name: {endpoint_name}");
-            sw.WriteLine($"Subscribe Data Type: {subscribe_data_type}");
-            sw.WriteLine($"Asset: {asset}");
-            sw.WriteLine($"Symbol: {symbol}");
-            sw.WriteLine($"Exchange: {exchange}");
-            sw.WriteLine($"Supress heartbeat: {supress_hb}");
-            sw.WriteLine($"Latency type: {latency_type}");
-            sw.WriteLine();
-            sw.WriteLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
-        }
-
+        await dataOutput.InitializeAsync();
+        await dataOutput.WriteAsync(CreateHeader(endpoint_name, subscribe_data_type, asset, symbol, exchange, supress_hb, latency_type));
 
         while (true)
         {
@@ -300,6 +282,7 @@ internal class Program
             var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
             latencyList.Clear();
 
+            await dataOutput.WriteAsync(CreateDataLine(cpuWaitingPercent, cpuParsingPercent, cpuHandlingPercent, msgCountOnInterval, bytesCountOnInterval, latencies));
 
             strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
             strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
@@ -313,12 +296,54 @@ internal class Program
 
             Serilog.Log.Information(strbld.ToString());
 
-            using (StreamWriter sw = File.AppendText(csvFilePath))
-            {
-                sw.WriteLine($"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";{msgCountOnInterval};{bytesCountOnInterval};{cpuWaitingPercent:F2};{cpuParsingPercent:F2};{cpuHandlingPercent:F2};{(latencies.Any() ? latencies.Min().TotalMilliseconds : 0):F2};{(latencies.Any() ? latencies.Max().TotalMilliseconds : 0):F2}");
-            }
 
         }
+    }
+
+    private static string CreateDataLine(double cpuWaitingPercent, double cpuParsingPercent, double cpuHandlingPercent, ulong msgCountOnInterval, ulong bytesCountOnInterval, List<TimeSpan> latencies)
+    {
+        return $"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";{msgCountOnInterval};{bytesCountOnInterval};{cpuWaitingPercent:F2};{cpuParsingPercent:F2};{cpuHandlingPercent:F2};{(latencies.Any() ? latencies.Min().TotalMilliseconds : 0):F2};{(latencies.Any() ? latencies.Max().TotalMilliseconds : 0):F2}\n";
+    }
+
+    private static string CreateHeader(string endpoint_name, string subscribe_data_type, string asset, string symbol, string exchange, bool supress_hb, string latency_type)
+    {
+        var sb = new StringBuilder();
+
+        sb.AppendLine("Parameters:");
+        sb.AppendLine($"Endpoint Name: {endpoint_name}");
+        sb.AppendLine($"Subscribe Data Type: {subscribe_data_type}");
+        sb.AppendLine($"Asset: {asset}");
+        sb.AppendLine($"Symbol: {symbol}");
+        sb.AppendLine($"Exchange: {exchange}");
+        sb.AppendLine($"Supress heartbeat: {supress_hb}");
+        sb.AppendLine($"Latency type: {latency_type}");
+        sb.AppendLine();
+        sb.AppendLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
+
+        return sb.ToString();
+    }
+
+    static void AppConfigureServices(IServiceCollection services, IConfiguration configuration)
+    {
+        // Add configuration, logging, and IDataOutput implementations
+        if (configuration == null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+        if (configuration.GetValue<bool>("OutputToFile"))
+        {
+            services.AddSingleton<IDataOutput, FileDataOutput>(provider =>
+            {
+                var configuration = provider.GetService<IConfiguration>();
+                var filePath = configuration.GetValue<string>("OutputFilePath");
+                return new FileDataOutput(filePath);
+            });
+        }
+        else
+        {
+            services.AddSingleton<IDataOutput, DummyDataOutput>();
+        }
+
     }
 
 }

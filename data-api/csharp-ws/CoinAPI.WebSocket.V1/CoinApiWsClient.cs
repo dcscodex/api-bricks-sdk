@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CoinAPI.WebSocket.V1.DataModels;
-using Utf8Json;
+using System.Text.Json;
 
 namespace CoinAPI.WebSocket.V1
 {
@@ -309,7 +309,7 @@ namespace CoinAPI.WebSocket.V1
                     Interlocked.Exchange(ref _hbLastAction, 0);
 
                     var currentHello = HelloMessage;
-                    var helloAs = new ArraySegment<byte>(JsonSerializer.Serialize(currentHello));
+                    var helloAs = new ArraySegment<byte>(JsonSerializer.SerializeToUtf8Bytes(currentHello));
                     await _client.SendAsync(helloAs, WebSocketMessageType.Text, true, connectionCts.Token);
                     Interlocked.Exchange(ref _hbLastAction, 0);
 
@@ -319,7 +319,7 @@ namespace CoinAPI.WebSocket.V1
                         if (currentHello != HelloMessage)
                         {
                             currentHello = HelloMessage;
-                            helloAs = new ArraySegment<byte>(JsonSerializer.Serialize(currentHello));
+                            helloAs = new ArraySegment<byte>(JsonSerializer.SerializeToUtf8Bytes(currentHello));
                             await _client.SendAsync(helloAs, WebSocketMessageType.Text, true, connectionCts.Token);
                             Interlocked.Exchange(ref _hbLastAction, 0);
                         }

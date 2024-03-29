@@ -213,6 +213,16 @@ internal class Program
         string symbol, string exchange, bool supress_hb, string latency_type, IDataOutput dataOutput)
     {
         var iterations = 0;
+
+        var inputData = new InputData() 
+        { 
+            Asset = asset, 
+            Exchange = exchange, 
+            Symbol = symbol, 
+            SubscribeDataType = subscribe_data_type, 
+            SupressHeartbeat = supress_hb, 
+            LatencyType = latency_type 
+        };    
         Serilog.Log.Information($"Time: {DateTime.UtcNow}");
         var strbld = new StringBuilder();
 
@@ -233,8 +243,7 @@ internal class Program
 
         Serilog.Log.Information(strbld.ToString());
 
-        await dataOutput.InitializeAsync();
-        await dataOutput.WriteAsync(CreateHeader(endpoint_name, subscribe_data_type, asset, symbol, exchange, supress_hb, latency_type));
+        await dataOutput.InitializeAsync(inputData);
 
         while (true)
         {
@@ -282,7 +291,18 @@ internal class Program
             var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
             latencyList.Clear();
 
-            await dataOutput.WriteAsync(CreateDataLine(cpuWaitingPercent, cpuParsingPercent, cpuHandlingPercent, msgCountOnInterval, bytesCountOnInterval, latencies));
+            var outputData = new OutputData()
+            {
+                Messages = msgCountOnInterval,
+                BytesReceived = bytesCountOnInterval,
+                CpuWaitingPercent = cpuWaitingPercent,
+                CpuParsingPercent = cpuParsingPercent,
+                CpuHandlingPercent = cpuHandlingPercent,
+                LatencyMaxMilliseconds = latencies.Any() ? latencies.Max().TotalMilliseconds : 0,
+                LatencyMinMilliseconds = latencies.Any() ? latencies.Min().TotalMilliseconds : 0
+            };
+
+            await dataOutput.WriteAsync(outputData);
 
             strbld.AppendFormat($"Messages: {msgCountOnInterval,-8}");
             strbld.AppendFormat($"| Recv bytes: {bytesCountOnInterval,-8}");
@@ -295,34 +315,8 @@ internal class Program
             }
 
             Serilog.Log.Information(strbld.ToString());
-
-
         }
     }
-
-    private static string CreateDataLine(double cpuWaitingPercent, double cpuParsingPercent, double cpuHandlingPercent, ulong msgCountOnInterval, ulong bytesCountOnInterval, List<TimeSpan> latencies)
-    {
-        return $"\"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}\";{msgCountOnInterval};{bytesCountOnInterval};{cpuWaitingPercent:F2};{cpuParsingPercent:F2};{cpuHandlingPercent:F2};{(latencies.Any() ? latencies.Min().TotalMilliseconds : 0):F2};{(latencies.Any() ? latencies.Max().TotalMilliseconds : 0):F2}\n";
-    }
-
-    private static string CreateHeader(string endpoint_name, string subscribe_data_type, string asset, string symbol, string exchange, bool supress_hb, string latency_type)
-    {
-        var sb = new StringBuilder();
-
-        sb.AppendLine("Parameters:");
-        sb.AppendLine($"Endpoint Name: {endpoint_name}");
-        sb.AppendLine($"Subscribe Data Type: {subscribe_data_type}");
-        sb.AppendLine($"Asset: {asset}");
-        sb.AppendLine($"Symbol: {symbol}");
-        sb.AppendLine($"Exchange: {exchange}");
-        sb.AppendLine($"Supress heartbeat: {supress_hb}");
-        sb.AppendLine($"Latency type: {latency_type}");
-        sb.AppendLine();
-        sb.AppendLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
-
-        return sb.ToString();
-    }
-
     static void AppConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         // Add configuration, logging, and IDataOutput implementations

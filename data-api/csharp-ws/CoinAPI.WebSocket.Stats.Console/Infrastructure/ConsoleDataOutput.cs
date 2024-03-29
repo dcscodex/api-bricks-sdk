@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
 {
-    public class DummyDataOutput : IDataOutput
+    public class ConsoleDataOutput : IDataOutput
     {
         public Task InitializeAsync(InputData input)
         {
-            return Task.CompletedTask;
+            throw new NotImplementedException();
         }
 
         public Task WriteAsync(string data)
         {
-            return Task.CompletedTask;
-        }   
-
+            throw new NotImplementedException();
+        }
         public Task WriteAsync(OutputData data)
         {
-            return Task.CompletedTask;
+            throw new NotImplementedException();
         }
     }
 }

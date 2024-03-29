@@ -19,7 +19,7 @@ namespace CoinAPI.WebSocket.V1
         private const string UrlProduction = "wss://ws.coinapi.io/";
 
         private readonly string _url = UrlProduction;
-        
+
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private readonly QueueThread<MessageData> _queueThread = null;
 
@@ -39,7 +39,7 @@ namespace CoinAPI.WebSocket.V1
         public long UnprocessedMessagesQueueSize => _queueThread.QueueSize;
         public event EventHandler<Exception> Error;
         public AutoResetEvent ConnectedEvent { get; } = new AutoResetEvent(false);
-        public bool IsConnected => _client?.State == WebSocketState.Open;   
+        public bool IsConnected => _client?.State == WebSocketState.Open;
         public DateTime? ConnectedTime { get; private set; }
         public ulong TotalBytesReceived { get; private set; }
         public TimeSpan TotalWaitTime => _waitStopwatch.Elapsed;
@@ -99,7 +99,7 @@ namespace CoinAPI.WebSocket.V1
                 return;
             }
 
-            switch(messageType)
+            switch (messageType)
             {
                 case MessageType.book:
                     HandleBookItem(sender, item);
@@ -259,7 +259,7 @@ namespace CoinAPI.WebSocket.V1
                 using (var connectionCts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token))
                 {
                     await HandleConnection(connectionCts);
-                    
+
                     ConnectedTime = null;
                     TotalBytesReceived = 0;
                     _waitStopwatch.Reset();
@@ -284,8 +284,8 @@ namespace CoinAPI.WebSocket.V1
                 if (Interlocked.Increment(ref _hbLastAction) >= _hbLastActionMaxCount)
                 {
                     connectionCts.Cancel();
-                    await client.CloseAsync(WebSocketCloseStatus.NormalClosure, 
-                        nameof(HeartbeatWatcher), 
+                    await client.CloseAsync(WebSocketCloseStatus.NormalClosure,
+                        nameof(HeartbeatWatcher),
                         CancellationToken.None);
                     continue;
                 }
@@ -338,9 +338,22 @@ namespace CoinAPI.WebSocket.V1
                         _queueThread.Enqueue(messageData);
                     }
                 }
-                catch (TaskCanceledException) 
+                catch (TaskCanceledException)
                 {
-                    await _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Normal", CancellationToken.None);
+                    try
+                    {
+                        if (_client.State == WebSocketState.Open)
+                        {
+                            await _client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Normal", CancellationToken.None);
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        OnError(ex);
+                    }
                 }
                 catch (Exception ex)
                 {

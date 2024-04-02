@@ -14,6 +14,7 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
         public string Asset { get; set; }
         public string Symbol { get; set; }
         public string Exchange { get; set; }
+        public string Period { get; set; }  
         public bool SupressHeartbeat { get; set; }
         public string LatencyType { get; set; }
     }

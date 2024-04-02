@@ -43,6 +43,53 @@ internal enum LatencyType
     ne, //Now-Exchange
     ce, //CoinAPI-Exchange
 }
+    public enum TimeseriesPeriodShortcode
+    {
+        _1SEC,
+        _2SEC,
+        _3SEC,
+        _4SEC,
+        _5SEC,
+        _6SEC,
+        _10SEC,
+        _15SEC,
+        _20SEC,
+        _30SEC,
+        _1MIN,
+        _2MIN,
+        _3MIN,
+        _4MIN,
+        _5MIN,
+        _6MIN,
+        _10MIN,
+        _15MIN,
+        _20MIN,
+        _30MIN,
+        _1HRS,
+        _2HRS,
+        _3HRS,
+        _4HRS,
+        _6HRS,
+        _8HRS,
+        _12HRS,
+        _1DAY,
+        _2DAY,
+        _3DAY,
+        _5DAY,
+        _7DAY,
+        _10DAY,
+        _1MTH,
+        _2MTH,
+        _3MTH,
+        _4MTH,
+        _6MTH,
+        _1YRS,
+        _2YRS,
+        _3YRS,
+        _4YRS,
+        _5YRS
+    }
+
 internal class Program
 {
     //public static IConfiguration Configuration { get; private set; }
@@ -84,7 +131,7 @@ internal class Program
 
     public async Task MakeRequest([FromService] IConfiguration configuration, [FromService] IDataOutput dataOutput,
         string endpoint_name = "wss://ws.coinapi.io/", string subscribe_data_type = null, string asset = null, 
-        string symbol = null, string exchange = null, string apikey = null, string type = "hello", 
+        string symbol = null, string exchange = null, string period_id = null, string apikey = null, string type = "hello", 
         string supress_hb = "false", string latency_type = "ce")
     {
         var appConfig = AppConfiguration.LoadFromIConfiguration(configuration);
@@ -119,6 +166,14 @@ internal class Program
             Serilog.Log.Error($"Invalid latency_type, valid values: {string.Join(",", latencyTypes)}");
             return;
         }
+
+        var period_ids = Enum.GetNames<TimeseriesPeriodShortcode>().Select(x => x.Replace("_", "")).ToList();
+        if (!string.IsNullOrWhiteSpace(period_id) && !period_ids.Any(x => x == period_id))
+        {
+            Serilog.Log.Error($"Invalid period_id, valid values: {string.Join(",", period_ids)}");
+            return;
+        }
+
         bool.TryParse(supress_hb, out bool hb_supressed);
 
         using (var wsClient = new CoinApiWsClient(endpoint_name))
@@ -131,15 +186,15 @@ internal class Program
 
             SubscribeToEvent(subscribe_data_type, wsClient, latencyType);
             
-            SendHello(subscribe_data_type, asset, symbol, exchange, apikey, type, appConfig, wsClient);
+            SendHello(subscribe_data_type, asset, symbol, exchange, period_id, apikey, type, appConfig, wsClient);
 
-            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, hb_supressed, latency_type, dataOutput);
+            _ = PrintingTaskLoopAsync(wsClient, endpoint_name, subscribe_data_type, asset, symbol, exchange, period_id, hb_supressed, latency_type, dataOutput);
 
             await Task.Run(() => Console.ReadKey());
         }
     }
 
-    private static void SendHello(string subscribe_data_type, string asset, string symbol, string exchange, string apikey, string type, AppConfiguration appConfig, CoinApiWsClient wsClient)
+    private static void SendHello(string subscribe_data_type, string asset, string symbol, string exchange, string period_id, string apikey, string type, AppConfiguration appConfig, CoinApiWsClient wsClient)
     {
         var hello = new Hello()
         {
@@ -149,6 +204,7 @@ internal class Program
             subscribe_filter_asset_id = string.IsNullOrWhiteSpace(asset) ? null : new string[] { asset },
             subscribe_filter_symbol_id = string.IsNullOrWhiteSpace(symbol) ? null : new string[] { symbol },
             subscribe_filter_exchange_id = string.IsNullOrWhiteSpace(exchange) ? null : new string[] { exchange },
+            subscribe_filter_period_id = string.IsNullOrEmpty(period_id) ? null : new string[] { period_id }
         };
         wsClient.SendHelloMessage(hello);
     }
@@ -215,7 +271,7 @@ internal class Program
 
     private async Task PrintingTaskLoopAsync(CoinApiWsClient wsClient, 
         string endpoint_name, string subscribe_data_type, string asset, 
-        string symbol, string exchange, bool supress_hb, string latency_type, IDataOutput dataOutput)
+        string symbol, string exchange, string period_id, bool supress_hb, string latency_type, IDataOutput dataOutput)
     {
         var iterations = 0;
 
@@ -224,6 +280,7 @@ internal class Program
             Asset = asset, 
             Exchange = exchange, 
             Symbol = symbol, 
+            Period = period_id,
             SubscribeDataType = subscribe_data_type, 
             SupressHeartbeat = supress_hb, 
             LatencyType = latency_type 

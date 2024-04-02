@@ -21,6 +21,7 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
             sb.AppendLine($"Asset: {input.Asset}");
             sb.AppendLine($"Symbol: {input.Symbol}");
             sb.AppendLine($"Exchange: {input.Exchange}");
+            sb.AppendLine($"Period: {input.Period}");
             sb.AppendLine($"Supress heartbeat: {input.SupressHeartbeat}");
             sb.AppendLine($"Latency type: {input.LatencyType}");
             sb.AppendLine();

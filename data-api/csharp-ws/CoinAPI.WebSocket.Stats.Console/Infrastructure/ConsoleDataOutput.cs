@@ -27,6 +27,10 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
             {
                 strbld.Append($", symbol = {input.Symbol}");
             }
+            if (!string.IsNullOrWhiteSpace(input.Period))
+            {
+                strbld.Append($", period = {input.Period}");
+            }
             strbld.Append($", latency_type = {input.LatencyType}");
 
             Serilog.Log.Information(strbld.ToString());

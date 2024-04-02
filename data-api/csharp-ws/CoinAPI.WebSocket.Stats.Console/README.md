@@ -64,6 +64,7 @@ dotnet run -- [options]
 - `--asset <ASSET>`: The asset identifier to filter data by. Optional.
 - `--symbol <SYMBOL>`: The symbol identifier to filter data by. Optional.
 - `--exchange <EXCHANGE>`: The exchange identifier to filter data by. Optional.
+- `--period_id <PERIOD_ID>`: The period identifier to filter data by. Optional. Valid values are: 1SEC, 1MIN, 1HRS, 1DAY, .. etc.
 - `--apikey <APIKEY>`: Your CoinAPI API key. Optional if specified in `appsettings.json`.
 - `--type <TYPE>`: The type of message to send. Default is "hello".
 - `--supress_hb <BOOL>`: Whether to suppress heartbeat messages. Default is false.

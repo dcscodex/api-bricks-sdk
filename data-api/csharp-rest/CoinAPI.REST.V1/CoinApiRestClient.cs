@@ -155,10 +155,9 @@ namespace CoinAPI.REST.V1
             var url = CoinApiEndpointUrls.Ohlcv_Asset_Latest(assetBase, assetQuote, periodId);
             return GetData<List<OHLCV>>(url);
         }
-
-        public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start, DateTime end, int limit)
+        public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string exchangeId, string periodId, DateTime start, DateTime end, int limit)
         {
-            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat), end.ToString(DateFormat), limit);
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(exchangeId, periodId, start.ToString(DateFormat), end.ToString(DateFormat), limit);
             return GetData<List<OHLCV>>(url);
         }
         public Task<List<OHLCV>> Ohlcv_historical_dataAsync(string symbolId, string periodId, DateTime start, DateTime end)
@@ -175,6 +174,11 @@ namespace CoinAPI.REST.V1
         {
             var url = CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat));
             return GetData<List<OHLCV>>(url);
+        }
+        public Task<List<ExchangeOHLCV>> Ohlcv_historical_exchange_dataAsync(string echangeId, string periodId, DateTime start, DateTime end)
+        {
+            var url = CoinApiEndpointUrls.Ohlcv_HistoricalDataExchange(echangeId, periodId, start.ToString(DateFormat), end.ToString(DateFormat));
+            return GetData<List<ExchangeOHLCV>>(url);
         }
 
         public Task<List<Trade>> Trades_latest_data_allAsync()

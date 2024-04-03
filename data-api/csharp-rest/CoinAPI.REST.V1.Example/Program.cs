@@ -253,6 +253,41 @@ namespace CoinAPI.REST.V1.Example
                 Console.Write(Environment.NewLine);
             }
 
+            Console.Write("Ohlcv by exchange last year:");
+            Console.Write(Environment.NewLine);
+            var exchangeId = "BITSTAMP";
+            var start_of_2016_exchange = new DateTime(2016, 1, 1);
+            var ohlcv_historical_exchange = coinApiEndpointTester.Ohlcv_historical_exchange_dataAsync(exchangeId, "1MIN", start_of_2016_exchange, start_of_2016_exchange.AddMinutes(100)).GetAwaiter().GetResult().Data;
+            foreach (var item in ohlcv_historical_exchange)
+            {
+                Console.Write("symbol_id_coinapi:" + item.symbol_id_coinapi);
+                Console.Write(Environment.NewLine);
+                Console.Write("time_period_start:" + item.time_period_start);
+                Console.Write(Environment.NewLine);
+                Console.Write("time_period_end:" + item.time_period_end);
+                Console.Write(Environment.NewLine);
+                Console.Write("time_open:" + item.time_open);
+                Console.Write(Environment.NewLine);
+                Console.Write("time_close:" + item.time_close);
+                Console.Write(Environment.NewLine);
+                Console.Write("price_open:" + item.price_open);
+                Console.Write(Environment.NewLine);
+                Console.Write("price_high:" + item.price_high);
+                Console.Write(Environment.NewLine);
+                Console.Write("price_low:" + item.price_low);
+                Console.Write(Environment.NewLine);
+                Console.Write("price_close:" + item.price_close);
+                Console.Write(Environment.NewLine);
+                Console.Write("volume_traded:" + item.volume_traded);
+                Console.Write(Environment.NewLine);
+                Console.Write("trades_count:" + item.trades_count);
+                Console.Write(Environment.NewLine);
+                Console.Write("--------------------------------------------------------------------------------------------------------");
+                Console.Write(Environment.NewLine);
+            }
+
+
+
             Console.Write("Trades latest data all:");
             Console.Write(Environment.NewLine);
             var latest_trades =  coinApiEndpointTester.Trades_latest_data_allAsync().GetAwaiter().GetResult().Data;

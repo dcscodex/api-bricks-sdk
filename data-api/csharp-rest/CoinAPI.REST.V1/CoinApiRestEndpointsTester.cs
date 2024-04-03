@@ -72,6 +72,11 @@ namespace CoinAPI.REST.V1
         {
             return HandleCheck(CoinApiEndpointUrls.Ohlcv_HistoricalData(symbolId, periodId, start.ToString(DateFormat)), _coinApi.Ohlcv_historical_dataAsync(symbolId, periodId, start));
         }
+        public Task<EndpointCheckResult<List<ExchangeOHLCV>>> Ohlcv_historical_exchange_dataAsync(string exchangeId, string periodId, DateTime start, DateTime end)
+        {
+            return HandleCheck(CoinApiEndpointUrls.Ohlcv_HistoricalDataExchange(exchangeId, periodId, start.ToString(DateFormat), end.ToString(DateFormat)), _coinApi.Ohlcv_historical_exchange_dataAsync(exchangeId, periodId, start, end));
+        }
+
         public Task<EndpointCheckResult<List<Trade>>> Trades_latest_data_allAsync()
         {
             return HandleCheck(CoinApiEndpointUrls.Trades_Latest(), _coinApi.Trades_latest_data_allAsync());

@@ -19,6 +19,9 @@
         public static string Ohlcv_HistoricalData(string symbolId, string periodId, string start, string end) => string.Format("/v1/ohlcv/{0}/history?period_id={1}&time_start={2}&time_end={3}", symbolId, periodId, start, end);
         public static string Ohlcv_HistoricalData(string symbolId, string periodId, string start, int limit) => string.Format("/v1/ohlcv/{0}/history?period_id={1}&time_start={2}&limit={3}", symbolId, periodId, start, limit);
         public static string Ohlcv_HistoricalData(string symbolId, string periodId, string start) => string.Format("/v1/ohlcv/{0}/history?period_id={1}&time_start={2}", symbolId, periodId, start);
+        public static string Ohlcv_HistoricalDataExchange(string exchangeId, string periodId, string start, string end) => string.Format("/v1/ohlcv/exchanges/{0}/history?period_id={1}&time_start={2}&time_end={3}", exchangeId, periodId, start, end);
+//        public static string Ohlcv_HistoricalDataExchange(string exchangeId, string periodId, string start) => string.Format("/v1/ohlcv/exchanges/{0}/history?period_id={1}&time_start={2}", exchangeId, periodId, start);
+
         public static string Trades_Latest() => "/v1/trades/latest";
         public static string Trades_Latest(int limit) => string.Format("/v1/trades/latest?limit={0}", limit);
         public static string Trades_LatestSymbol(string symbolId) => string.Format("/v1/trades/{0}/latest", symbolId);

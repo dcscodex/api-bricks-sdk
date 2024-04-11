@@ -333,6 +333,16 @@ internal class Program
             var latencies = latencyList.Select(x => x.Item1 - x.Item2).ToList();
             latencyList.Clear();
 
+            var average = 0.0;
+            var standardDeviation = 0.0;
+
+            if (latencies.Any())
+            {
+                average = latencies.Average(x => x.TotalMilliseconds);
+                double sumOfSquaredDifferences = latencies.Select(x => Math.Pow(x.TotalMilliseconds - average, 2)).Sum();
+                standardDeviation = Math.Sqrt(sumOfSquaredDifferences / latencies.Count);
+            }
+
             var outputData = new OutputData()
             {
                 Messages = msgCountOnInterval,
@@ -341,7 +351,9 @@ internal class Program
                 CpuParsingPercent = cpuParsingPercent,
                 CpuHandlingPercent = cpuHandlingPercent,
                 LatencyMaxMilliseconds = latencies.Any() ? latencies.Max().TotalMilliseconds : 0,
-                LatencyMinMilliseconds = latencies.Any() ? latencies.Min().TotalMilliseconds : 0
+                LatencyMinMilliseconds = latencies.Any() ? latencies.Min().TotalMilliseconds : 0,
+                LatencyAverage = average,
+                LatencyStdDev = standardDeviation
             };
 
             await dataOutput.WriteAsync(outputData);

@@ -50,8 +50,11 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
 
             if (data.LatencyMinMilliseconds.HasValue && data.LatencyMaxMilliseconds.HasValue)
             {
-                strbld.AppendFormat($" | Latency min: {data.LatencyMinMilliseconds,-8}ms");
-                strbld.AppendFormat($" | max: {data.LatencyMaxMilliseconds,-8}ms");
+                strbld.AppendFormat($" | Latency min: {data.LatencyMinMilliseconds,-6:F1}ms");
+                strbld.AppendFormat($" | max: {data.LatencyMaxMilliseconds,-6:F1}ms");
+                strbld.AppendFormat($" | avg: {data.LatencyAverage,-6:F1}ms");
+                strbld.AppendFormat($" | stdDev: {data.LatencyStdDev,-6:F1}ms");
+
             }
 
             Serilog.Log.Information(strbld.ToString());

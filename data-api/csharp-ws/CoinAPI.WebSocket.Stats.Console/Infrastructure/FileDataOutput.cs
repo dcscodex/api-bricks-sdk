@@ -25,7 +25,7 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
             sb.AppendLine($"Supress heartbeat: {input.SupressHeartbeat}");
             sb.AppendLine($"Latency type: {input.LatencyType}");
             sb.AppendLine();
-            sb.AppendLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms)");
+            sb.AppendLine("Timestamp;Messages;BytesReceived;WaitingCPU%;ParsingCPU%;ProcessingCPU%;LatencyMin(ms);LatencyMax(ms);LatencyAvg(ms);LatencyStdDev(ms)");
             await WriteAsync(sb.ToString());
 
         }
@@ -63,7 +63,9 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
             sb.Append($"{data.CpuParsingPercent:F4};");
             sb.Append($"{data.CpuHandlingPercent:F4};");
             sb.Append($"{data.LatencyMinMilliseconds:F2};");
-            sb.Append($"{data.LatencyMaxMilliseconds:F2}\n");
+            sb.Append($"{data.LatencyMaxMilliseconds:F2};");
+            sb.Append($"{data.LatencyAverage:F2};");
+            sb.Append($"{data.LatencyStdDev:F2}\n");
 
             return WriteAsync(sb.ToString());
         }

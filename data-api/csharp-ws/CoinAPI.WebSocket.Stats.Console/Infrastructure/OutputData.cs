@@ -16,5 +16,7 @@ namespace CoinAPI.WebSocket.Stats.Console.Infrastructure
         public double CpuHandlingPercent { get; set; }
         public double? LatencyMinMilliseconds { get; set; }
         public double? LatencyMaxMilliseconds { get; set; }
+        public double? LatencyStdDev { get; internal set; }
+        public double? LatencyAverage { get; internal set; }
     }
 }

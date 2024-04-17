@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: REST API
-  description: "\nRESTful endpoint provides the widest range of data, based on HTTP protocol which works in Request-Reply scheme.\n\nImplemented Standards:\n\n * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)\n * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)\n * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)\n * [OpenAPI v3](https://www.openapis.org/)\n\n> **Note:** We adhere to the OpenAPI standards for documenting our API.\n\n## OpenAPI Specification\n\nTo access our API's OpenAPI specification, you can use the following link: [OpenAPI v3](https://raw.githubusercontent.com/coinapi/coinapi-sdk/master/data-api/coinapi-marketdata-rest.yaml)\n\nIf you need to import the OpenAPI file into software like Postman, simply copy and paste the link below:\n```shell\nhttps://raw.githubusercontent.com/coinapi/coinapi-sdk/master/data-api/coinapi-marketdata-rest.yaml\n```\n\n## Endpoints\n\nEnviroment | Encryption | Value \n--- | --- | ---\nProduction | Yes | `https://rest.coinapi.io/`\nProduction | No | `http://rest.coinapi.io/`\n\n:::info\n\nFor real-time market data streaming, you should use WebSockets. REST API only supports pooling, meaning you can periodically request the current market data state. In streaming, you subscribe and data or updates are delivered to you continuously.\n\n:::\n\n## General\n\nIf you want to learn how to authenticate to this API, you can find detailed instructions and guidance in\n[authentication section](/authentication) of this documentation.\n\n### HTTP Requests\n\nEach HTTP request must contain the header ``Accept: application/json`` as all our responses are in JSON format.\n\nWe encourage you to use the HTTP request header ``Accept-Encoding: deflate, gzip`` for all requests. \nThis will indicate to us that we can deliver compressed data to you which on your side should be decompressed transparently.\n\n:::tip\n\nBy allowing data compression you are lowering bandwidth requirements by approximately 80%. \nThis is important for requesting large amounts of data or using WebSocket Streaming API, \nas we can deliver data to you faster and more effectively.\n\n:::\n\n#### HTTP Success\n\nSuccessful HTTP responses have the status code `200` and the body in a format according to documentation of the requested resource.\n\n:::info\n\nYou should always check that your HTTP response status code is equal to 200, otherwise the requested was not successful.\n\n:::\n\n#### HTTP Errors\n\n> Error message is returned in JSON structured like this:\n\n```json\n{\n    \"error\": \"Invalid API key\"\n}\n```\n\nAll HTTP requests with response status codes different to `200` must be considered as failed \nand you should expect additional JSON inside the body of the response with the error message encapsulated inside it as shown in the example.\nWe use the following error codes:\n\nError Code | Meaning\n---------- | -------\n400 | Bad Request -- There is something wrong with your request\n401 | Unauthorized -- Your API key is wrong\n403 | Forbidden -- Your API key doesnt't have enough privileges to access this resource\n429 | Too many requests -- You have exceeded your API key rate limits\n550 | No data -- You requested specific single item that we don't have at this moment.\n\n:::info\n\nGood practice is to store all error messages somewhere along with request data for further manual review.\n\n:::\n\n### Limits\n\nAny authenticated endpoint is providing (in HTTP response headers) information about the current state of the limits associated with API Key. In this section we will describe each limit.\n\n#### Request limit / APIKey\n\n```html\nX-RateLimit-Limit: 1000000\nX-RateLimit-Remaining: 999989\nX-RateLimit-Request-Cost: 1\n```\n\nThe request limit define number of maximum requests that could be executed in the 24 hours period (sliding/rollowing window - always last 24 hours from specific moment) for your subscription.\n\nWe define request as data request credits and this is not always equal to the number of API calls executed against the API. A request is deemed to be a single one if the limit query parameter on the endpoint isn’t available, isn’t used or it's stated otherwise in the API documentation. Otherwise — if the limit query parameter is available and is used — then each of the 100 data points returned in the response is counted as one request.\n\nFor example at the 2019-08-22 13:00 UTC value of the requests remaining (X-RateLimit-Remaining) will be equal to the allocated quota (X-RateLimit-Limit) decreased by the sum of the request costs (SUM(X-RateLimit-Request-Cost)) executed in the period 2019-08-21 13:00 UTC - 2019-08-22 13:00 UTC (last 24 hours).\n\n\nHTTP Header | Type | Description\n---------- | ------- | ---\nX-RateLimit-Used | int | Provides information about the request limit that has been used within the last 24-hour period. This header indicates the amount of request capacity consumed based on the usage history. It is important to note that the header is not always appended to every request to optimize the operation of the API.\nX-RateLimit-Limit | int | Is an optional feature that can be enabled via the customer portal to impose a limit on the capabilities of a specific API key. It allows you to define a threshold for the number of requests that can be made using a single API key within a 24-hour time frame.\nX-RateLimit-Remaining | int | Provides information about the number of requests that can still be made within the last 24-hour period based on the usage history. This header serves as a helpful indicator of the remaining request capacity, allowing API consumers to manage their usage effectively. It is important to note that the header is not always appended to every request to optimize the operation of the API.\nX-RateLimit-Request-Cost | int | The number of requests used to generate current HTTP response.\nX-RateLimit-Quota-Overage | string | Provides information about whether a given API key may exceed the plan quota within a 24-hour time frame, which could result in additional charges. This header is fully defined and configured in the customer portal.\nX-RateLimit-Quota-Allocated | string |  Total number of requests that can be made within a specific subscription during a 24-hour time frame. This quota allocation is determined based on the user's subscription purchase.\nX-RateLimit-Quota-Remaining | string | Provides valuable information about the remaining quota within the subscription for making requests within a 24-hour time frame. This header indicates the number of requests that can still be made within the allocated quota for the current 24-hour period.\n\n```json\nGET v1/exchanges/ECB/apiKey-ED802AF4-E855-YOUR-API-KEY\nHost: coinapi.io\nX-RateLimit-Used: 1000\nX-RateLimit-Limit: 5000\nX-RateLimit-Remaining: 4000\nX-RateLimit-Request-Cost: 1\nX-RateLimit-Quota-Overage: ENABLED\nX-RateLimit-Quota-Allocated: 10000\nX-RateLimit-Quota-Remaining: 5000\n```\n\nExplanation:\n\n- X-RateLimit-Used: 1000 (requests used in the last 24 hours)\n- X-RateLimit-Limit: 5000 (total request limit within a 24-hour time frame)\n- X-RateLimit-Remaining: 4000 (requests remaining within the last 24 hours)\n- X-RateLimit-Request-Cost: 1 (cost or \"weight\" of each individual request)\n- X-RateLimit-Overage: ENABLED (API key may exceed the plan quota within a 24-hour time frame)\n- X-RateLimit-Quota-Allocated: 10000 (total number of requests allowed for all API keys within the subscription within a 24-hour time frame)\n- X-RateLimit-Quota-Remaining: 5000 (requests remaining within the subscription's allocated quota within the last 24 hours)\n\n#### Concurrency limit / APIKey\n\n```html\nX-ConcurrencyLimit-Limit: 10\nX-ConcurrencyLimit-Remaining: 5\n```\n\nThe concurrency limit defines the number of maximum concurrent API calls/requests that the API could process for your subscription at the current moment. Every API call/request increases the Concurrency limit against quota, and when it finishes, decreases it.\n\nHTTP Header | Type | Description\n---------- | ------- | ---\nX-ConcurrencyLimit-Limit | int | Concurrency limit allocated for your API key.\nX-ConcurrencyLimit-Remaining | int | The number of concurrent API calls/requests available to be executed in this moment for your API key.\n\n### Output data format\n\nBy default we are using JSON output data format for all of our endpoints, you can control format of data by using `output_format` variable in query string parameters.\n\n#### URL Parameters\n\nParameter | Type | Description\n---------- | ------- | -------\noutput_format | string | Output data format *(optional, default value is `json`, possible values are `json`, `xml` or `csv`)*\ncsv_include_header | bool | Ignore header line in CSV output? *(optional, default value is `true`, `true` to include CSV header line, `false` otherwise)*\ncsv_include_quotes | bool | Encapsulate strings with quotes in CSV output? *(optional, default value is `false`, `true` to encapsulate all strings with `\"`, `false` to leave them unquoted)*\ncsv_exclude_col | string | Comma delimited list of column names to ignore in CSV output *(optional, by default all columns are included)*\ncsv_set_delimiter | string | Character that will be used as column delimiter in CSV output *(optional, default value is `;`)*\ncsv_set_dec_mark | string | Character that will be used as decimal separator in CSV output *(optional, default value is `.`)*\ncsv_set_timeformat | string | Format for datetime type in CSV output or `unix` for unix timestamp *(optional, default value is `yyyy-MM-ddTHH:mm:ss.fffffffZ`)*\ncsv_set_newline | string | New line type *(optional, default value is `unix`, possible values `win`, `mac`, `unix`)*\n\n### Excel / G-Sheets\n\nThere are several ways to use data from our REST API inside the Excel, Google Sheets, or similar calculation sheet application. This section will do as best as possible to keep all information up to date on how you could load the data into these applications. Feel free to contact support if we are missing an option.\n\n#### CSV download, import:\n\n 1. Open the data in the CSV format from the browser eg. ```https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv```\n 2. Save the data to the file with the .csv extension.\n 3. Use the file saved and import it into the software.\n 4. When configuring import, refer to the parameters like delimiter from the [Output data format](#output-data-format)\n\nThe platform-independent way described above is based on CSV but could also be used in other formats like JSON and XML as long as the software support it, but the import procedure needs to be adjusted accordingly.\n\n#### Microsoft Excel\n\n * Use [PowerQuery](https://docs.microsoft.com/en-us/power-query/power-query-what-is-power-query) to load the URL directly into the CSV import without saving the file locally. \n * Use the [=WEBSERVICE](https://support.office.com/en-us/article/webservice-function-0546a35a-ecc6-4739-aed7-c0b7ce1562c4) function to load the API response directly into the sheet, but this will not parse the data; additional processing is required.\n\n#### Google Sheets\n\n * Use [=IMPORT](https://support.google.com/docs/answer/3093335?hl=en) function to load the REST API endpoint and automatically parse the CSV format data into the cells. eg. ```=IMPORTDATA(\"https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv```\n\n#### OpenOffice Calc\n\n * Select the menu Insert -> Sheet From File, 2. In the Insert dialog, put the URL eg. ```https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv``` in the File Name box at the bottom. Set the drop-down list next to that to Web Page Query and click Open. The Text Import dialog opens where you can change the defaults if needed.\n                    "
+  description: "\nRESTful endpoint provides the widest range of data, based on HTTP protocol which works in Request-Reply scheme.\n\nImplemented Standards:\n\n * [HTTP1.0](https://datatracker.ietf.org/doc/html/rfc1945)\n * [HTTP1.1](https://datatracker.ietf.org/doc/html/rfc2616)\n * [HTTP2.0](https://datatracker.ietf.org/doc/html/rfc7540)\n * [OpenAPI v3](https://www.openapis.org/)\n\n> **Note:** We adhere to the OpenAPI standards for documenting our API.\n\n## OpenAPI Specification\n\nTo access our API's OpenAPI specification, you can use the following link: [OpenAPI v3](https://raw.githubusercontent.com/coinapi/coinapi-sdk/master/data-api/coinapi-marketdata-rest.yaml)\n\nIf you need to import the OpenAPI file into software like Postman, simply copy and paste the link below:\n```shell\nhttps://raw.githubusercontent.com/coinapi/coinapi-sdk/master/data-api/coinapi-marketdata-rest.yaml\n```\n\n## Endpoints\n\nEnviroment | Encryption | Value \n--- | --- | ---\nProduction | Yes | `https://rest.coinapi.io/`\nProduction | No | `http://rest.coinapi.io/`\n\n:::info\n\nFor real-time market data streaming, you should use WebSockets. REST API only supports pooling, meaning you can periodically request the current market data state. In streaming, you subscribe and data or updates are delivered to you continuously.\n\n:::\n\n## General\n\nIf you want to learn how to authenticate to this API, you can find detailed instructions and guidance in\n[authentication section](/authentication) of this documentation.\n\n### HTTP Requests\n\nEach HTTP request must contain the header ``Accept: application/json`` as all our responses are in JSON format.\n\nWe encourage you to use the HTTP request header ``Accept-Encoding: deflate, gzip`` for all requests. \nThis will indicate to us that we can deliver compressed data to you which on your side should be decompressed transparently.\n\n:::tip\n\nBy allowing data compression you are lowering bandwidth requirements by approximately 80%. \nThis is important for requesting large amounts of data or using WebSocket Streaming API, \nas we can deliver data to you faster and more effectively.\n\n:::\n\n#### HTTP Success\n\nSuccessful HTTP responses have the status code `200` and the body in a format according to documentation of the requested resource.\n\n:::info\n\nYou should always check that your HTTP response status code is equal to 200, otherwise the requested was not successful.\n\n:::\n\n#### HTTP Errors\n\n> Error message is returned in JSON structured like this:\n\n```json\n{\n    \"error\": \"Invalid API key\"\n}\n```\n\nAll HTTP requests with response status codes different to `200` must be considered as failed \nand you should expect additional JSON inside the body of the response with the error message encapsulated inside it as shown in the example.\nWe use the following error codes:\n\nError Code | Meaning\n---------- | -------\n400 | Bad Request -- There is something wrong with your request\n401 | Unauthorized -- Your API key is wrong\n403 | Forbidden -- Your API key doesnt't have enough privileges to access this resource\n429 | Too many requests -- You have exceeded your API key rate limits\n550 | No data -- You requested specific single item that we don't have at this moment.\n\n:::info\n\nGood practice is to store all error messages somewhere along with request data for further manual review.\n\n:::\n\n### Output data format\n\nBy default we are using JSON output data format for all of our endpoints, you can control format of data by using `output_format` variable in query string parameters.\n\n#### URL Parameters\n\nParameter | Type | Description\n---------- | ------- | -------\noutput_format | string | Output data format *(optional, default value is `json`, possible values are `json`, `xml` or `csv`)*\ncsv_include_header | bool | Ignore header line in CSV output? *(optional, default value is `true`, `true` to include CSV header line, `false` otherwise)*\ncsv_include_quotes | bool | Encapsulate strings with quotes in CSV output? *(optional, default value is `false`, `true` to encapsulate all strings with `\"`, `false` to leave them unquoted)*\ncsv_exclude_col | string | Comma delimited list of column names to ignore in CSV output *(optional, by default all columns are included)*\ncsv_set_delimiter | string | Character that will be used as column delimiter in CSV output *(optional, default value is `;`)*\ncsv_set_dec_mark | string | Character that will be used as decimal separator in CSV output *(optional, default value is `.`)*\ncsv_set_timeformat | string | Format for datetime type in CSV output or `unix` for unix timestamp *(optional, default value is `yyyy-MM-ddTHH:mm:ss.fffffffZ`)*\ncsv_set_newline | string | New line type *(optional, default value is `unix`, possible values `win`, `mac`, `unix`)*\n\n### Excel / G-Sheets\n\nThere are several ways to use data from our REST API inside the Excel, Google Sheets, or similar calculation sheet application. This section will do as best as possible to keep all information up to date on how you could load the data into these applications. Feel free to contact support if we are missing an option.\n\n#### CSV download, import:\n\n 1. Open the data in the CSV format from the browser eg. ```https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv```\n 2. Save the data to the file with the .csv extension.\n 3. Use the file saved and import it into the software.\n 4. When configuring import, refer to the parameters like delimiter from the [Output data format](#output-data-format)\n\nThe platform-independent way described above is based on CSV but could also be used in other formats like JSON and XML as long as the software support it, but the import procedure needs to be adjusted accordingly.\n\n#### Microsoft Excel\n\n * Use [PowerQuery](https://docs.microsoft.com/en-us/power-query/power-query-what-is-power-query) to load the URL directly into the CSV import without saving the file locally. \n * Use the [=WEBSERVICE](https://support.office.com/en-us/article/webservice-function-0546a35a-ecc6-4739-aed7-c0b7ce1562c4) function to load the API response directly into the sheet, but this will not parse the data; additional processing is required.\n\n#### Google Sheets\n\n * Use [=IMPORT](https://support.google.com/docs/answer/3093335?hl=en) function to load the REST API endpoint and automatically parse the CSV format data into the cells. eg. ```=IMPORTDATA(\"https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv```\n\n#### OpenOffice Calc\n\n * Select the menu Insert -> Sheet From File, 2. In the Insert dialog, put the URL eg. ```https://rest.coinapi.io/v1/exchangerate/USD?apikey=YOUR_API_KEY&invert=true&output_format=csv``` in the File Name box at the bottom. Set the drop-down list next to that to Web Page Query and click Open. The Text Import dialog opens where you can change the defaults if needed.\n                    "
   contact:
     name: COINAPI LTD
     url: https://www.coinapi.io
@@ -40,21 +40,181 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
   '/v1/assets/{asset_id}':
     get:
       tags:
@@ -76,21 +236,181 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Asset'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "name": "Bitcoin",
+    "type_is_crypto": 1,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:55:07.6724523Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:17.8592413Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:11.8220000Z",
+    "data_symbols_count": 22711,
+    "volume_1hrs_usd": 102894431436.49,
+    "volume_1day_usd": 2086392323256.16,
+    "volume_1mth_usd": 57929168359984.54,
+    "price_usd": 9166.207274778093436220194944,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  },
+  {
+    "asset_id": "USD",
+    "name": "US Dollar",
+    "type_is_crypto": 0,
+    "data_quote_start": "2014-02-24T17:43:05.0000000Z",
+    "data_quote_end": "2019-11-03T17:54:49.3807706Z",
+    "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+    "data_orderbook_end": "2019-11-03T17:55:13.1863931Z",
+    "data_trade_start": "2010-07-17T23:09:17.0000000Z",
+    "data_trade_end": "2019-11-03T17:55:07.7870000Z",
+    "data_symbols_count": 10728,
+    "volume_1hrs_usd": 9466454016.52,
+    "volume_1day_usd": 221580758173.49,
+    "volume_1mth_usd": 11816685174661.70,
+    "price_usd": 1.0,
+    "data_start": "2010-07-17",
+    "data_end": "2019-11-03"
+  }
+]
   '/v1/assets/icons/{size}':
     get:
       tags:
@@ -114,21 +434,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+  },
+  {
+    "asset_id": "ETH",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png"
+  },
+  {
+    "asset_id": "USD",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+  },
+  {
+    "asset_id": "ETH",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png"
+  },
+  {
+    "asset_id": "USD",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+  },
+  {
+    "asset_id": "ETH",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png"
+  },
+  {
+    "asset_id": "USD",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "asset_id": "BTC",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png"
+  },
+  {
+    "asset_id": "ETH",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png"
+  },
+  {
+    "asset_id": "USD",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png"
+  }
+]
   '/v1/exchangerate/{asset_id_base}/{asset_id_quote}':
     get:
       tags:
@@ -162,16 +546,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1.ExchangeRate'
               examples:
-                Current rate:
+                Example response:
                   value: {
-  "time": "2024-02-27T12:38:35.4363800Z",
-  "asset_id_base": "BTC",
-  "asset_id_quote": "USD",
-  "rate": 10000.0
-}
-                Historical rate:
-                  value: {
-  "time": "2024-02-26T12:38:35.4365750Z",
+  "time": "2024-04-17T11:55:52.4873909Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -180,16 +557,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1.ExchangeRate'
               examples:
-                Current rate:
+                Example response:
                   value: {
-  "time": "2024-02-27T12:38:35.4363800Z",
-  "asset_id_base": "BTC",
-  "asset_id_quote": "USD",
-  "rate": 10000.0
-}
-                Historical rate:
-                  value: {
-  "time": "2024-02-26T12:38:35.4365750Z",
+  "time": "2024-04-17T11:55:52.4873909Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -198,16 +568,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1.ExchangeRate'
               examples:
-                Current rate:
+                Example response:
                   value: {
-  "time": "2024-02-27T12:38:35.4363800Z",
-  "asset_id_base": "BTC",
-  "asset_id_quote": "USD",
-  "rate": 10000.0
-}
-                Historical rate:
-                  value: {
-  "time": "2024-02-26T12:38:35.4365750Z",
+  "time": "2024-04-17T11:55:52.4873909Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -216,16 +579,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1.ExchangeRate'
               examples:
-                Current rate:
+                Example response:
                   value: {
-  "time": "2024-02-27T12:38:35.4363800Z",
-  "asset_id_base": "BTC",
-  "asset_id_quote": "USD",
-  "rate": 10000.0
-}
-                Historical rate:
-                  value: {
-  "time": "2024-02-26T12:38:35.4365750Z",
+  "time": "2024-04-17T11:55:52.4873909Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -265,24 +621,124 @@ paths:
           content:
             text/plain:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.ExchangeRatesRate'
+                $ref: '#/components/schemas/v1.ExchangeRates`1'
+              examples:
+                Example response:
+                  value: {
+  "asset_id_base": "BTC",
+  "rates": [
+    {
+      "time": "2017-08-09T14:31:37.0520000Z",
+      "asset_id_quote": "USD",
+      "rate": 3258.8875417798037784035133948
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "EUR",
+      "rate": 2782.5255080599273092901331567
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "CNY",
+      "rate": 21756.295595926054627342411501
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "GBP",
+      "rate": 2509.6024203799580199765804823
+    }
+  ]
+}
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.ExchangeRatesRate'
+                $ref: '#/components/schemas/v1.ExchangeRates`1'
+              examples:
+                Example response:
+                  value: {
+  "asset_id_base": "BTC",
+  "rates": [
+    {
+      "time": "2017-08-09T14:31:37.0520000Z",
+      "asset_id_quote": "USD",
+      "rate": 3258.8875417798037784035133948
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "EUR",
+      "rate": 2782.5255080599273092901331567
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "CNY",
+      "rate": 21756.295595926054627342411501
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "GBP",
+      "rate": 2509.6024203799580199765804823
+    }
+  ]
+}
             text/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.ExchangeRatesRate'
+                $ref: '#/components/schemas/v1.ExchangeRates`1'
+              examples:
+                Example response:
+                  value: {
+  "asset_id_base": "BTC",
+  "rates": [
+    {
+      "time": "2017-08-09T14:31:37.0520000Z",
+      "asset_id_quote": "USD",
+      "rate": 3258.8875417798037784035133948
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "EUR",
+      "rate": 2782.5255080599273092901331567
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "CNY",
+      "rate": 21756.295595926054627342411501
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "GBP",
+      "rate": 2509.6024203799580199765804823
+    }
+  ]
+}
             application/x-msgpack:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.ExchangeRatesRate'
+                $ref: '#/components/schemas/v1.ExchangeRates`1'
+              examples:
+                Example response:
+                  value: {
+  "asset_id_base": "BTC",
+  "rates": [
+    {
+      "time": "2017-08-09T14:31:37.0520000Z",
+      "asset_id_quote": "USD",
+      "rate": 3258.8875417798037784035133948
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "EUR",
+      "rate": 2782.5255080599273092901331567
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "CNY",
+      "rate": 21756.295595926054627342411501
+    },
+    {
+      "time": "2017-08-09T14:31:36.7570000Z",
+      "asset_id_quote": "GBP",
+      "rate": 2509.6024203799580199765804823
+    }
+  ]
+}
   /v1/exchangerate/history/periods:
     get:
       tags:
@@ -298,21 +754,133 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "30MIN",
+    "length_seconds": 1800,
+    "length_months": 0,
+    "unit_count": 30,
+    "unit_name": "minute",
+    "display_name": "30 Minutes"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "30MIN",
+    "length_seconds": 1800,
+    "length_months": 0,
+    "unit_count": 30,
+    "unit_name": "minute",
+    "display_name": "30 Minutes"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "30MIN",
+    "length_seconds": 1800,
+    "length_months": 0,
+    "unit_count": 30,
+    "unit_name": "minute",
+    "display_name": "30 Minutes"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "30MIN",
+    "length_seconds": 1800,
+    "length_months": 0,
+    "unit_count": 30,
+    "unit_name": "minute",
+    "display_name": "30 Minutes"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  }
+]
   '/v1/exchangerate/{asset_id_base}/{asset_id_quote}/history':
     get:
       tags:
@@ -363,21 +931,157 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2016-01-01T00:00:00.0000000Z",
+    "time_period_end": "0001-01-01T00:00:00.0000000Z",
+    "time_open": "2016-01-01T00:00:00.0000000Z",
+    "time_close": "2016-01-01T00:00:00.0000000Z",
+    "rate_open": 430.586617904731,
+    "rate_high": 430.586617904731,
+    "rate_low": 430.586617904731,
+    "rate_close": 430.586617904731
+  },
+  {
+    "time_period_start": "2016-01-01T00:01:00.0000000Z",
+    "time_period_end": "2016-01-01T00:02:00.0000000Z",
+    "time_open": "2016-01-01T00:01:00.0000000Z",
+    "time_close": "2016-01-01T00:01:00.0000000Z",
+    "rate_open": 430.38999999999993,
+    "rate_high": 430.38999999999993,
+    "rate_low": 430.38999999999993,
+    "rate_close": 430.38999999999993
+  },
+  {
+    "time_period_start": "2016-01-01T00:02:00.0000000Z",
+    "time_period_end": "2016-01-01T00:03:00.0000000Z",
+    "time_open": "2016-01-01T00:02:00.0000000Z",
+    "time_close": "2016-01-01T00:02:00.0000000Z",
+    "rate_open": 430.6522189770523,
+    "rate_high": 430.6522189770523,
+    "rate_low": 430.6522189770523,
+    "rate_close": 430.6522189770523
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2016-01-01T00:00:00.0000000Z",
+    "time_period_end": "0001-01-01T00:00:00.0000000Z",
+    "time_open": "2016-01-01T00:00:00.0000000Z",
+    "time_close": "2016-01-01T00:00:00.0000000Z",
+    "rate_open": 430.586617904731,
+    "rate_high": 430.586617904731,
+    "rate_low": 430.586617904731,
+    "rate_close": 430.586617904731
+  },
+  {
+    "time_period_start": "2016-01-01T00:01:00.0000000Z",
+    "time_period_end": "2016-01-01T00:02:00.0000000Z",
+    "time_open": "2016-01-01T00:01:00.0000000Z",
+    "time_close": "2016-01-01T00:01:00.0000000Z",
+    "rate_open": 430.38999999999993,
+    "rate_high": 430.38999999999993,
+    "rate_low": 430.38999999999993,
+    "rate_close": 430.38999999999993
+  },
+  {
+    "time_period_start": "2016-01-01T00:02:00.0000000Z",
+    "time_period_end": "2016-01-01T00:03:00.0000000Z",
+    "time_open": "2016-01-01T00:02:00.0000000Z",
+    "time_close": "2016-01-01T00:02:00.0000000Z",
+    "rate_open": 430.6522189770523,
+    "rate_high": 430.6522189770523,
+    "rate_low": 430.6522189770523,
+    "rate_close": 430.6522189770523
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2016-01-01T00:00:00.0000000Z",
+    "time_period_end": "0001-01-01T00:00:00.0000000Z",
+    "time_open": "2016-01-01T00:00:00.0000000Z",
+    "time_close": "2016-01-01T00:00:00.0000000Z",
+    "rate_open": 430.586617904731,
+    "rate_high": 430.586617904731,
+    "rate_low": 430.586617904731,
+    "rate_close": 430.586617904731
+  },
+  {
+    "time_period_start": "2016-01-01T00:01:00.0000000Z",
+    "time_period_end": "2016-01-01T00:02:00.0000000Z",
+    "time_open": "2016-01-01T00:01:00.0000000Z",
+    "time_close": "2016-01-01T00:01:00.0000000Z",
+    "rate_open": 430.38999999999993,
+    "rate_high": 430.38999999999993,
+    "rate_low": 430.38999999999993,
+    "rate_close": 430.38999999999993
+  },
+  {
+    "time_period_start": "2016-01-01T00:02:00.0000000Z",
+    "time_period_end": "2016-01-01T00:03:00.0000000Z",
+    "time_open": "2016-01-01T00:02:00.0000000Z",
+    "time_close": "2016-01-01T00:02:00.0000000Z",
+    "rate_open": 430.6522189770523,
+    "rate_high": 430.6522189770523,
+    "rate_low": 430.6522189770523,
+    "rate_close": 430.6522189770523
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2016-01-01T00:00:00.0000000Z",
+    "time_period_end": "0001-01-01T00:00:00.0000000Z",
+    "time_open": "2016-01-01T00:00:00.0000000Z",
+    "time_close": "2016-01-01T00:00:00.0000000Z",
+    "rate_open": 430.586617904731,
+    "rate_high": 430.586617904731,
+    "rate_low": 430.586617904731,
+    "rate_close": 430.586617904731
+  },
+  {
+    "time_period_start": "2016-01-01T00:01:00.0000000Z",
+    "time_period_end": "2016-01-01T00:02:00.0000000Z",
+    "time_open": "2016-01-01T00:01:00.0000000Z",
+    "time_close": "2016-01-01T00:01:00.0000000Z",
+    "rate_open": 430.38999999999993,
+    "rate_high": 430.38999999999993,
+    "rate_low": 430.38999999999993,
+    "rate_close": 430.38999999999993
+  },
+  {
+    "time_period_start": "2016-01-01T00:02:00.0000000Z",
+    "time_period_end": "2016-01-01T00:03:00.0000000Z",
+    "time_open": "2016-01-01T00:02:00.0000000Z",
+    "time_close": "2016-01-01T00:02:00.0000000Z",
+    "rate_open": 430.6522189770523,
+    "rate_high": 430.6522189770523,
+    "rate_low": 430.6522189770523,
+    "rate_close": 430.6522189770523
+  }
+]
   /v1/exchanges:
     get:
       tags:
@@ -399,21 +1103,157 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
   '/v1/exchanges/{exchange_id}':
     get:
       tags:
@@ -435,21 +1275,157 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Exchange'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "OKCOIN_CNY",
+    "website": "https://www.okcoin.cn/",
+    "name": "OKCoin CNY",
+    "data_quote_start": "2015-02-15T12:53:50.3430000Z",
+    "data_quote_end": "2018-03-09T23:34:52.5800000Z",
+    "data_orderbook_start": "2015-02-15T12:53:50.3430000Z",
+    "data_orderbook_end": "2018-03-09T23:34:52.5800000Z",
+    "data_trade_start": "2013-06-12T14:24:24.0000000Z",
+    "data_trade_end": "2017-11-01T16:30:39.7077259Z",
+    "data_symbols_count": 2,
+    "volume_1hrs_usd": 0.0,
+    "volume_1day_usd": 0.0,
+    "volume_1mth_usd": 0.0
+  },
+  {
+    "exchange_id": "HUOBI",
+    "website": "https://www.huobi.com/",
+    "name": "Huobi (HBUS)",
+    "data_quote_start": "2015-03-29T21:46:06.2630000Z",
+    "data_quote_end": "2019-11-03T18:22:29.1837496Z",
+    "data_orderbook_start": "2015-03-29T21:46:06.2630000Z",
+    "data_orderbook_end": "2019-11-03T18:23:53.2859878Z",
+    "data_trade_start": "2015-03-29T21:46:08.7030000Z",
+    "data_trade_end": "2019-11-03T18:21:48.2770000Z",
+    "data_symbols_count": 403,
+    "volume_1hrs_usd": 1605.80,
+    "volume_1day_usd": 59957.44,
+    "volume_1mth_usd": 1259508.43
+  }
+]
   '/v1/exchanges/icons/{size}':
     get:
       tags:
@@ -472,26 +1448,90 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "CHAINCE",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/204e55dd8dab4a0d823c21f04be6be4b.png"
+  },
+  {
+    "exchange_id": "BILAXY",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4958c92dbddd4936b1f655e5063dc782.png"
+  },
+  {
+    "exchange_id": "BCOINSG",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/b7c77041cdef4f359b4044b2d73c7741.png"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "CHAINCE",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/204e55dd8dab4a0d823c21f04be6be4b.png"
+  },
+  {
+    "exchange_id": "BILAXY",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4958c92dbddd4936b1f655e5063dc782.png"
+  },
+  {
+    "exchange_id": "BCOINSG",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/b7c77041cdef4f359b4044b2d73c7741.png"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "CHAINCE",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/204e55dd8dab4a0d823c21f04be6be4b.png"
+  },
+  {
+    "exchange_id": "BILAXY",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4958c92dbddd4936b1f655e5063dc782.png"
+  },
+  {
+    "exchange_id": "BCOINSG",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/b7c77041cdef4f359b4044b2d73c7741.png"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Icon'
+              examples:
+                Example response:
+                  value: [
+  {
+    "exchange_id": "CHAINCE",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/204e55dd8dab4a0d823c21f04be6be4b.png"
+  },
+  {
+    "exchange_id": "BILAXY",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4958c92dbddd4936b1f655e5063dc782.png"
+  },
+  {
+    "exchange_id": "BCOINSG",
+    "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/b7c77041cdef4f359b4044b2d73c7741.png"
+  }
+]
   /v1/indexes:
     get:
       tags:
         - Indexes
-      summary: List of available indexes
+      summary: List indexes
       responses:
         '200':
           description: successful operation
@@ -516,112 +1556,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Index'
-    post:
-      tags:
-        - Indexes
-      summary: Create index
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          application/x-msgpack:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-      responses:
-        '201':
-          description: successful operation
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            application/x-msgpack:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-  '/v1/indexes/{index_id}':
-    get:
-      tags:
-        - Indexes
-      summary: Get index data
-      parameters:
-        - name: index_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/v1.IndexData'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexData'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexData'
-            application/x-msgpack:
-              schema:
-                $ref: '#/components/schemas/v1.IndexData'
-    put:
-      tags:
-        - Indexes
-      summary: Update index
-      parameters:
-        - name: index_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-          application/x-msgpack:
-            schema:
-              $ref: '#/components/schemas/v1.IndexData'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
-            application/x-msgpack:
-              schema:
-                $ref: '#/components/schemas/v1.IndexDataResponse'
   '/v1/indexes/{index_id}/history':
     get:
       tags:
         - Indexes
-      summary: Retrieve Historical Index Value and Composition
+      summary: Historical Index Value w/Composition
       parameters:
         - name: index_id
           in: path
@@ -672,84 +1611,35 @@ paths:
     get:
       tags:
         - Indexes
-      summary: Retrieve Historical Index Value Timeseries
+      summary: Timeseries Index Value
       parameters:
         - name: index_id
           in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: period_id
+          in: query
+          description: Identifier of requested timeseries period (e.g. `5SEC` or `1DAY`)
           required: true
           schema:
             type: string
         - name: time_start
           in: query
-          schema:
-            type: string
-            format: date-time
-        - name: time_end
-          in: query
-          schema:
-            type: string
-            format: date-time
-        - name: limit
-          in: query
-          schema:
-            type: integer
-            format: int32
-            default: 100
-      responses:
-        '200':
-          description: successful operation
-          content:
-            text/plain:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
-            text/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
-            application/x-msgpack:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/v1.IndexTimeseriesItem'
-  '/v1/indexes/{index_id}/timeseries/TO_BE_ANNOUNCED':
-    get:
-      tags:
-        - Indexes
-      summary: "Retrieve Historical Composition Value Timeseries\r\nRetrieves historical timeseries for the specific composition value for an index"
-      parameters:
-        - name: index_id
-          in: path
+          description: Timeseries starting time in ISO 8601
           required: true
           schema:
             type: string
-        - name: source_id
-          in: query
-          schema:
-            type: string
-        - name: source_type
-          in: query
-          schema:
-            type: string
-        - name: time_start
-          in: query
-          schema:
-            type: string
-            format: date-time
         - name: time_end
           in: query
+          description: Timeseries ending time in ISO 8601
+          required: true
           schema:
             type: string
-            format: date-time
         - name: limit
           in: query
+          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
@@ -801,21 +1691,69 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Metric'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_QUANTITY",
+    "description": "The liquidation quantity metric calculates the specific amount of the asset that must be sold to settle the trader's obligations and bring their position back to a manageable level. It helps ensure that the trader's losses are covered and that their account remains in good standing."
+  },
+  {
+    "metric_id": "DERIVATIVES_LAST_PRICE",
+    "description": "The last price represents the price at which the most recent trade of the derivative contract occurred. It provides traders and investors with the latest information on the market value of the derivative, allowing them to assess the current market sentiment, track price movements, and make informed decisions regarding their derivative positions. The derivatives last price metric is crucial for monitoring real-time market conditions and managing derivative trading strategies effectively."
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Metric'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_QUANTITY",
+    "description": "The liquidation quantity metric calculates the specific amount of the asset that must be sold to settle the trader's obligations and bring their position back to a manageable level. It helps ensure that the trader's losses are covered and that their account remains in good standing."
+  },
+  {
+    "metric_id": "DERIVATIVES_LAST_PRICE",
+    "description": "The last price represents the price at which the most recent trade of the derivative contract occurred. It provides traders and investors with the latest information on the market value of the derivative, allowing them to assess the current market sentiment, track price movements, and make informed decisions regarding their derivative positions. The derivatives last price metric is crucial for monitoring real-time market conditions and managing derivative trading strategies effectively."
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Metric'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_QUANTITY",
+    "description": "The liquidation quantity metric calculates the specific amount of the asset that must be sold to settle the trader's obligations and bring their position back to a manageable level. It helps ensure that the trader's losses are covered and that their account remains in good standing."
+  },
+  {
+    "metric_id": "DERIVATIVES_LAST_PRICE",
+    "description": "The last price represents the price at which the most recent trade of the derivative contract occurred. It provides traders and investors with the latest information on the market value of the derivative, allowing them to assess the current market sentiment, track price movements, and make informed decisions regarding their derivative positions. The derivatives last price metric is crucial for monitoring real-time market conditions and managing derivative trading strategies effectively."
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Metric'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_QUANTITY",
+    "description": "The liquidation quantity metric calculates the specific amount of the asset that must be sold to settle the trader's obligations and bring their position back to a manageable level. It helps ensure that the trader's losses are covered and that their account remains in good standing."
+  },
+  {
+    "metric_id": "DERIVATIVES_LAST_PRICE",
+    "description": "The last price represents the price at which the most recent trade of the derivative contract occurred. It provides traders and investors with the latest information on the market value of the derivative, allowing them to assess the current market sentiment, track price movements, and make informed decisions regarding their derivative positions. The derivatives last price metric is crucial for monitoring real-time market conditions and managing derivative trading strategies effectively."
+  }
+]
   /v1/metrics/exchange/listing:
     get:
       tags:
@@ -843,21 +1781,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "exchange_id": "BINANCEFTS"
+  }
+]
   /v1/metrics/exchange/current:
     get:
       tags:
@@ -885,21 +1887,121 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
   /v1/metrics/exchange/history:
     get:
       tags:
@@ -957,21 +2059,181 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
   /v1/metrics/symbol/listing:
     get:
       tags:
@@ -1003,21 +2265,97 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
   /v1/metrics/symbol/current:
     get:
       tags:
@@ -1049,21 +2387,165 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBITUAT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_RHO",
+    "value_decimal": -594.10357
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_VEGA",
+    "value_decimal": 49.31013
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_THETA",
+    "value_decimal": -6.14104
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "DERIVATIVES_INDEX_PRICE",
+    "value_decimal": 30027.74
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBITUAT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_RHO",
+    "value_decimal": -594.10357
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_VEGA",
+    "value_decimal": 49.31013
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_THETA",
+    "value_decimal": -6.14104
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "DERIVATIVES_INDEX_PRICE",
+    "value_decimal": 30027.74
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBITUAT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_RHO",
+    "value_decimal": -594.10357
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_VEGA",
+    "value_decimal": 49.31013
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_THETA",
+    "value_decimal": -6.14104
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "DERIVATIVES_INDEX_PRICE",
+    "value_decimal": 30027.74
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBITUAT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_RHO",
+    "value_decimal": -594.10357
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_VEGA",
+    "value_decimal": 49.31013
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "GREEKS_THETA",
+    "value_decimal": -6.14104
+  },
+  {
+    "entry_time": "2023-06-23T12:38:48.2782698Z",
+    "recv_time": "2023-06-23T12:38:48.0140000Z",
+    "exchange_id": "DERIBIT",
+    "symbol_id": "DERIBIT_OPT_BTC_USD_240329_80000_P",
+    "metric_id": "DERIVATIVES_INDEX_PRICE",
+    "value_decimal": 30027.74
+  }
+]
   /v1/metrics/symbol/history:
     get:
       tags:
@@ -1121,21 +2603,181 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.MetricData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2023-07-03T14:29:02.0000000Z",
+    "time_period_end": "2023-07-03T14:29:03.0000000Z",
+    "time_open": "2023-07-03T14:29:02.5699837Z",
+    "time_close": "2023-07-03T14:29:02.5699837Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 30668.476938
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:03.0000000Z",
+    "time_period_end": "2023-07-03T14:29:04.0000000Z",
+    "time_open": "2023-07-03T14:29:03.1076159Z",
+    "time_close": "2023-07-03T14:29:03.1076159Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 0.05485331
+  },
+  {
+    "time_period_start": "2023-07-03T14:29:04.0000000Z",
+    "time_period_end": "2023-07-03T14:29:05.0000000Z",
+    "time_open": "2023-07-03T14:29:04.5792149Z",
+    "time_close": "2023-07-03T14:29:04.9459786Z",
+    "first": 0,
+    "last": 0,
+    "min": 0,
+    "max": 0,
+    "count": 0,
+    "sum": 7.0257000000000005
+  }
+]
   /v1/metrics/asset/listing:
     get:
       tags:
@@ -1182,21 +2824,97 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.ListingItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "metric_id": "LIQUIDATION_TIME_IN_FORCE",
+    "symbol_id": "BINANCEFTS_PERP_ETC_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_TYPE",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  },
+  {
+    "metric_id": "LIQUIDATION_ORDER_STATUS",
+    "symbol_id": "BINANCEFTS_PERP_EOS_USDT",
+    "exchange_id": "BINANCEFTS"
+  }
+]
   /v1/metrics/asset/current:
     get:
       tags:
@@ -1233,21 +2951,121 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.GeneralData'
+              examples:
+                Example response:
+                  value: [
+  {
+    "entry_time": "2023-06-16T07:55:07.2787756Z",
+    "recv_time": "2023-06-16T07:55:07.0010000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE",
+    "value_decimal": 0.0086
+  },
+  {
+    "entry_time": "2023-06-26T07:05:39.9865633Z",
+    "recv_time": "2023-06-26T07:05:39.9000000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "IV_UNDERLYING_PRICE",
+    "value_decimal": 30743.29
+  },
+  {
+    "entry_time": "2023-06-26T07:05:17.0768012Z",
+    "recv_time": "2023-06-26T07:05:16.8420000Z",
+    "exchange_id": "DERIBIT",
+    "metric_id": "DERIVATIVES_MARK_PRICE_IV",
+    "value_decimal": 60.77
+  }
+]
   /v1/metrics/asset/history:
     get:
       tags:
@@ -1410,21 +3228,137 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
   '/v1/orderbooks/{symbol_id}/current':
     get:
       tags:
@@ -1451,15 +3385,139 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             application/json:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             text/json:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             application/x-msgpack:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
   '/v1/orderbooks/{symbol_id}/latest':
     get:
       tags:
@@ -1495,21 +3553,137 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.OrderBook'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "asks": [
+      {
+        "price": 456.35,
+        "size": 123
+      },
+      {
+        "price": 456.36,
+        "size": 23
+      }
+    ],
+    "bids": [
+      {
+        "price": 456.1,
+        "size": 42
+      },
+      {
+        "price": 456.09,
+        "size": 5
+      }
+    ]
+  }
+]
   /v1/orderbooks3/current:
     get:
       tags:
@@ -1577,15 +3751,139 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             application/json:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             text/json:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
             application/x-msgpack:
               schema:
                 $ref: '#/components/schemas/v1.OrderBookBase'
+              examples:
+                Example response:
+                  value: {
+  "symbol_id": "COINBASE_SPOT_BCH_USD",
+  "time_exchange": "2020-08-27T10:28:35.6111130Z",
+  "time_coinapi": "2020-08-27T10:28:35.6766461Z",
+  "asks": [
+    {
+      "id": "3c5e789c-4c84-448a-9c5d-50532ea1ccbb",
+      "price": 272.89,
+      "size": 1
+    },
+    {
+      "id": "c64a76ba-5107-4c1b-b788-271ee88df318",
+      "price": 272.9,
+      "size": 18
+    }
+  ],
+  "bids": [
+    {
+      "id": "100d5004-f4e0-4e92-a571-392403d5b073",
+      "price": 272.83,
+      "size": 18
+    },
+    {
+      "id": "0889cf06-4a9d-4519-98e6-fac5dcb7afbf",
+      "price": 272.83,
+      "size": 0.64185083
+    }
+  ]
+}
   '/v1/quotes/{symbol_id}/history':
     get:
       tags:
@@ -1625,21 +3923,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
   /v1/quotes/current:
     get:
       tags:
@@ -1661,21 +4047,173 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
   '/v1/quotes/{symbol_id}/current':
     get:
       tags:
@@ -1695,15 +4233,167 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             application/json:
               schema:
                 $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             text/json:
               schema:
                 $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
             application/x-msgpack:
               schema:
                 $ref: '#/components/schemas/v1.QuoteTrade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124,
+    "last_trade": {
+      "time_exchange": "2017-03-18T22:42:21.3763342Z",
+      "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+      "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+      "price": 770.0,
+      "size": 0.05,
+      "taker_side": "SELL"
+    }
+  }
+]
   /v1/quotes/latest:
     get:
       tags:
@@ -1732,21 +4422,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
   '/v1/quotes/{symbol_id}/latest':
     get:
       tags:
@@ -1775,21 +4553,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Quote'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "ask_price": 770.0,
+    "ask_size": 3252,
+    "bid_price": 760,
+    "bid_size": 124
+  }
+]
   /v1/symbols:
     get:
       tags:
@@ -1821,21 +4687,261 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
   '/v1/symbols/map/{exchange_id}':
     get:
       tags:
@@ -1903,21 +5009,261 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Symbol'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "KRAKENFTS_PERP_BTC_USD",
+    "exchange_id": "KRAKENFTS",
+    "symbol_type": "PERPETUAL",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "asset_id_unit": "USD",
+    "future_contract_unit": 1.000000000,
+    "future_contract_unit_asset": "USD",
+    "data_start": "2019-10-30",
+    "data_end": "2021-03-03",
+    "data_quote_start": "2019-10-30T16:53:10.3262317Z",
+    "data_quote_end": "2021-03-03T13:51:45.6970000Z",
+    "data_orderbook_start": "2019-10-30T16:53:10.3262317Z",
+    "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
+    "data_trade_start": "2019-10-30T16:38:52.1620000Z",
+    "data_trade_end": "2021-03-03T13:46:25.7810000Z",
+    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs_usd": 22897091.00,
+    "volume_1day": 459390289.000000000,
+    "volume_1day_usd": 459390289.00,
+    "volume_1mth": 12875674995.000000000,
+    "volume_1mth_usd": 12875674995.00,
+    "price": 51266,
+    "symbol_id_exchange": "pi_xbtusd",
+    "asset_id_base_exchange": "XBT",
+    "asset_id_quote_exchange": "USD",
+    "price_precision": 0.100000000,
+    "size_precision": 1.000000000
+  },
+  {
+    "symbol_id": "POLONIEX_SPOT_LTC_USDC",
+    "exchange_id": "POLONIEX",
+    "symbol_type": "SPOT",
+    "asset_id_base": "LTC",
+    "asset_id_quote": "USDC",
+    "data_start": "2018-11-20",
+    "data_end": "2021-03-01",
+    "data_quote_start": "2018-11-20T15:24:58.4128803Z",
+    "data_quote_end": "2021-03-01T16:07:09.3475456Z",
+    "data_orderbook_start": "2018-11-20T15:24:58.4128803Z",
+    "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
+    "data_trade_start": "2018-11-20T15:25:38.0000000Z",
+    "data_trade_end": "2021-03-01T16:03:18.0000000Z",
+    "volume_1hrs": 51.686458990,
+    "volume_1hrs_usd": 9036.44,
+    "volume_1day": 465.568863000,
+    "volume_1day_usd": 81396.28,
+    "volume_1mth": 22528.276384950,
+    "volume_1mth_usd": 3938661.00,
+    "symbol_id_exchange": "USDC_LTC",
+    "asset_id_base_exchange": "LTC",
+    "asset_id_quote_exchange": "USDC",
+    "price_precision": 0.000000010,
+    "size_precision": 0.000000010
+  }
+]
   /v1/ohlcv/periods:
     get:
       tags:
@@ -1933,21 +5279,133 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  },
+  {
+    "period_id": "2YRS",
+    "length_seconds": 0,
+    "length_months": 24,
+    "unit_count": 2,
+    "unit_name": "year",
+    "display_name": "2 Years"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  },
+  {
+    "period_id": "2YRS",
+    "length_seconds": 0,
+    "length_months": 24,
+    "unit_count": 2,
+    "unit_name": "year",
+    "display_name": "2 Years"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  },
+  {
+    "period_id": "2YRS",
+    "length_seconds": 0,
+    "length_months": 24,
+    "unit_count": 2,
+    "unit_name": "year",
+    "display_name": "2 Years"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesPeriod'
+              examples:
+                Example response:
+                  value: [
+  {
+    "period_id": "1SEC",
+    "length_seconds": 1,
+    "length_months": 0,
+    "unit_count": 1,
+    "unit_name": "second",
+    "display_name": "1 Second"
+  },
+  {
+    "period_id": "10DAY",
+    "length_seconds": 864000,
+    "length_months": 0,
+    "unit_count": 10,
+    "unit_name": "day",
+    "display_name": "10 Days"
+  },
+  {
+    "period_id": "2YRS",
+    "length_seconds": 0,
+    "length_months": 24,
+    "unit_count": 2,
+    "unit_name": "year",
+    "display_name": "2 Years"
+  }
+]
   '/v1/ohlcv/{symbol_id}/history':
     get:
       tags:
@@ -1998,27 +5456,139 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-01-01T00:00:00.0000000Z",
+    "time_period_end": "2017-01-02T00:00:00.0000000Z",
+    "time_open": "2017-01-01T00:01:08.0000000Z",
+    "time_close": "2017-01-01T23:59:46.0000000Z",
+    "price_open": 966.34,
+    "price_high": 1005.0,
+    "price_low": 960.53,
+    "price_close": 997.75,
+    "volume_traded": 6850.59330859,
+    "trades_count": 7815
+  },
+  {
+    "time_period_start": "2017-01-02T00:00:00.0000000Z",
+    "time_period_end": "2017-01-03T00:00:00.0000000Z",
+    "time_open": "2017-01-02T00:00:05.0000000Z",
+    "time_close": "2017-01-02T23:59:37.0000000Z",
+    "price_open": 997.75,
+    "price_high": 1032.0,
+    "price_low": 990.01,
+    "price_close": 1012.54,
+    "volume_traded": 8167.38103018,
+    "trades_count": 7871
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-01-01T00:00:00.0000000Z",
+    "time_period_end": "2017-01-02T00:00:00.0000000Z",
+    "time_open": "2017-01-01T00:01:08.0000000Z",
+    "time_close": "2017-01-01T23:59:46.0000000Z",
+    "price_open": 966.34,
+    "price_high": 1005.0,
+    "price_low": 960.53,
+    "price_close": 997.75,
+    "volume_traded": 6850.59330859,
+    "trades_count": 7815
+  },
+  {
+    "time_period_start": "2017-01-02T00:00:00.0000000Z",
+    "time_period_end": "2017-01-03T00:00:00.0000000Z",
+    "time_open": "2017-01-02T00:00:05.0000000Z",
+    "time_close": "2017-01-02T23:59:37.0000000Z",
+    "price_open": 997.75,
+    "price_high": 1032.0,
+    "price_low": 990.01,
+    "price_close": 1012.54,
+    "volume_traded": 8167.38103018,
+    "trades_count": 7871
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-01-01T00:00:00.0000000Z",
+    "time_period_end": "2017-01-02T00:00:00.0000000Z",
+    "time_open": "2017-01-01T00:01:08.0000000Z",
+    "time_close": "2017-01-01T23:59:46.0000000Z",
+    "price_open": 966.34,
+    "price_high": 1005.0,
+    "price_low": 960.53,
+    "price_close": 997.75,
+    "volume_traded": 6850.59330859,
+    "trades_count": 7815
+  },
+  {
+    "time_period_start": "2017-01-02T00:00:00.0000000Z",
+    "time_period_end": "2017-01-03T00:00:00.0000000Z",
+    "time_open": "2017-01-02T00:00:05.0000000Z",
+    "time_close": "2017-01-02T23:59:37.0000000Z",
+    "price_open": 997.75,
+    "price_high": 1032.0,
+    "price_low": 990.01,
+    "price_close": 1012.54,
+    "volume_traded": 8167.38103018,
+    "trades_count": 7871
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-01-01T00:00:00.0000000Z",
+    "time_period_end": "2017-01-02T00:00:00.0000000Z",
+    "time_open": "2017-01-01T00:01:08.0000000Z",
+    "time_close": "2017-01-01T23:59:46.0000000Z",
+    "price_open": 966.34,
+    "price_high": 1005.0,
+    "price_low": 960.53,
+    "price_close": 997.75,
+    "volume_traded": 6850.59330859,
+    "trades_count": 7815
+  },
+  {
+    "time_period_start": "2017-01-02T00:00:00.0000000Z",
+    "time_period_end": "2017-01-03T00:00:00.0000000Z",
+    "time_open": "2017-01-02T00:00:05.0000000Z",
+    "time_close": "2017-01-02T23:59:37.0000000Z",
+    "price_open": 997.75,
+    "price_high": 1032.0,
+    "price_low": 990.01,
+    "price_close": 1012.54,
+    "volume_traded": 8167.38103018,
+    "trades_count": 7871
+  }
+]
   '/v1/ohlcv/exchanges/{exchange_id}/history':
     get:
       tags:
         - Ohlcv
       summary: '[ohlcv] Historical data by exchange'
-      description: "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`\r\n            \r\n:::info\r\nThe OHLCV Historical endpoint data can be delayed a few seconds.\r\n`time_start` and `time_end` must point to the same day\r\n:::"
+      description: "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`\r\n            \r\n:::info\r\nThe OHLCV Historical endpoint data can be delayed a few seconds.\r\nThe difference between `time_end` and `time_start` cannot be higher than 1 day.\r\nThe `period_id` cannot be higher than `1DAY`.\r\n:::"
       parameters:
         - name: exchange_id
           in: path
@@ -2028,7 +5598,7 @@ paths:
             type: string
         - name: period_id
           in: query
-          description: Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`)
+          description: Identifier of requested timeseries period (e.g. `5SEC` or `1DAY`)
           required: true
           schema:
             type: string
@@ -2108,21 +5678,133 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-08-09T14:31:00.0000000Z",
+    "time_period_end": "2017-08-09T14:32:00.0000000Z",
+    "time_open": "2017-08-09T14:31:01.0000000Z",
+    "time_close": "2017-08-09T14:31:46.0000000Z",
+    "price_open": 3255.59,
+    "price_high": 3255.59,
+    "price_low": 3244.74,
+    "price_close": 3244.74,
+    "volume_traded": 16.90327455,
+    "trades_count": 31
+  },
+  {
+    "time_period_start": "2017-08-09T14:30:00.0000000Z",
+    "time_period_end": "2017-08-09T14:31:00.0000000Z",
+    "time_open": "2017-08-09T14:30:05.0000000Z",
+    "time_close": "2017-08-09T14:30:35.0000000Z",
+    "price_open": 3256.0,
+    "price_high": 3256.01,
+    "price_low": 3247.0,
+    "price_close": 3255.6,
+    "volume_traded": 58.13139792,
+    "trades_count": 33
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-08-09T14:31:00.0000000Z",
+    "time_period_end": "2017-08-09T14:32:00.0000000Z",
+    "time_open": "2017-08-09T14:31:01.0000000Z",
+    "time_close": "2017-08-09T14:31:46.0000000Z",
+    "price_open": 3255.59,
+    "price_high": 3255.59,
+    "price_low": 3244.74,
+    "price_close": 3244.74,
+    "volume_traded": 16.90327455,
+    "trades_count": 31
+  },
+  {
+    "time_period_start": "2017-08-09T14:30:00.0000000Z",
+    "time_period_end": "2017-08-09T14:31:00.0000000Z",
+    "time_open": "2017-08-09T14:30:05.0000000Z",
+    "time_close": "2017-08-09T14:30:35.0000000Z",
+    "price_open": 3256.0,
+    "price_high": 3256.01,
+    "price_low": 3247.0,
+    "price_close": 3255.6,
+    "volume_traded": 58.13139792,
+    "trades_count": 33
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-08-09T14:31:00.0000000Z",
+    "time_period_end": "2017-08-09T14:32:00.0000000Z",
+    "time_open": "2017-08-09T14:31:01.0000000Z",
+    "time_close": "2017-08-09T14:31:46.0000000Z",
+    "price_open": 3255.59,
+    "price_high": 3255.59,
+    "price_low": 3244.74,
+    "price_close": 3244.74,
+    "volume_traded": 16.90327455,
+    "trades_count": 31
+  },
+  {
+    "time_period_start": "2017-08-09T14:30:00.0000000Z",
+    "time_period_end": "2017-08-09T14:31:00.0000000Z",
+    "time_open": "2017-08-09T14:30:05.0000000Z",
+    "time_close": "2017-08-09T14:30:35.0000000Z",
+    "price_open": 3256.0,
+    "price_high": 3256.01,
+    "price_low": 3247.0,
+    "price_close": 3255.6,
+    "volume_traded": 58.13139792,
+    "trades_count": 33
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.TimeseriesItem'
+              examples:
+                Example response:
+                  value: [
+  {
+    "time_period_start": "2017-08-09T14:31:00.0000000Z",
+    "time_period_end": "2017-08-09T14:32:00.0000000Z",
+    "time_open": "2017-08-09T14:31:01.0000000Z",
+    "time_close": "2017-08-09T14:31:46.0000000Z",
+    "price_open": 3255.59,
+    "price_high": 3255.59,
+    "price_low": 3244.74,
+    "price_close": 3244.74,
+    "volume_traded": 16.90327455,
+    "trades_count": 31
+  },
+  {
+    "time_period_start": "2017-08-09T14:30:00.0000000Z",
+    "time_period_end": "2017-08-09T14:31:00.0000000Z",
+    "time_open": "2017-08-09T14:30:05.0000000Z",
+    "time_close": "2017-08-09T14:30:35.0000000Z",
+    "price_open": 3256.0,
+    "price_high": 3256.01,
+    "price_low": 3247.0,
+    "price_close": 3255.6,
+    "volume_traded": 58.13139792,
+    "trades_count": 33
+  }
+]
   '/v1/trades/{symbol_id}/history':
     get:
       tags:
@@ -2168,21 +5850,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
   '/v1/trades/{symbol_id}/latest':
     get:
       tags:
@@ -2218,21 +5988,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
   /v1/trades/latest:
     get:
       tags:
@@ -2267,21 +6125,109 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             text/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
             application/x-msgpack:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/v1.Trade'
+              examples:
+                Example response:
+                  value: [
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T22:40:50.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "770c7a3b-7258-4441-8182-83740f3e2457",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "BUY"
+  },
+  {
+    "symbol_id": "BITSTAMP_SPOT_BTC_USD",
+    "time_exchange": "2013-09-28T23:12:59.0000000Z",
+    "time_coinapi": "2017-03-18T22:42:21.3763342Z",
+    "uuid": "1ea8adc5-6459-47ca-adbf-0c3f8c729bb2",
+    "price": 770.0,
+    "size": 0.05,
+    "taker_side": "SELL"
+  }
+]
 components:
   schemas:
     Model.VWAP24RefRate:
@@ -2643,6 +6589,21 @@ components:
           nullable: true
       additionalProperties: false
       description: Represents an item in the exchange rate timeseries.
+    v1.ExchangeRates`1:
+      type: object
+      properties:
+        asset_id_base:
+          type: string
+          description: Gets or sets the base asset ID.
+          nullable: true
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.ExchangeRatesRate'
+          description: Gets or sets the list of exchange rates.
+          nullable: true
+      additionalProperties: false
+      description: Represents exchange rates for a specific base asset.
     v1.GeneralData:
       type: object
       properties:
@@ -2720,76 +6681,6 @@ components:
           nullable: true
       additionalProperties: false
       description: Represents an index.
-    v1.IndexData:
-      type: object
-      properties:
-        index_id:
-          type: string
-          description: Gets or sets the index ID associated with the index.
-          nullable: true
-        name:
-          type: string
-          description: Gets or sets the name associated with the index.
-          nullable: true
-        description:
-          type: string
-          description: Gets or sets the descripion of the index.
-          nullable: true
-        index_method:
-          type: string
-          description: Gets or sets the index method.
-          nullable: true
-        index_method_parameters:
-          type: object
-          additionalProperties:
-            type: string
-          description: Gets or sets the parameters of the index method.
-          nullable: true
-        period_recalculation:
-          type: string
-          description: Gets or sets the period recalculation of the index.
-          nullable: true
-        visibility_public:
-          type: boolean
-          description: Gets or sets the visibility public of the index.
-          nullable: true
-        notify_emails:
-          type: string
-          description: Gets or sets the notify emails of the index.
-          nullable: true
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1.IndexDataComponent'
-          description: Gets or sets the components of the index.
-          nullable: true
-      additionalProperties: false
-      description: Represents a data model for index data.
-    v1.IndexDataComponent:
-      type: object
-      properties:
-        component_id:
-          type: string
-          nullable: true
-        evaluation_method:
-          type: string
-          nullable: true
-        evaluation_method_parameters:
-          type: object
-          additionalProperties:
-            type: string
-          nullable: true
-      additionalProperties: false
-    v1.IndexDataResponse:
-      type: object
-      properties:
-        index_id:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-      additionalProperties: false
     v1.IndexTimeseriesItem:
       type: object
       properties:

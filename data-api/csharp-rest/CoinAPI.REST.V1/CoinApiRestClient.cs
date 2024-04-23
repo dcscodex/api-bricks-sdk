@@ -60,7 +60,8 @@ namespace CoinAPI.REST.V1
 
         private static async Task RaiseError(HttpResponseMessage response)
         {
-            var message = (await Deserialize<ErrorMessage>(response).ConfigureAwait(false)).message;
+            var responseString = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var message = (await DeserializeFromString<ErrorMessage>(responseString).ConfigureAwait(false))?.message ?? responseString;
 
             switch ((int)response.StatusCode)
             {
@@ -77,6 +78,12 @@ namespace CoinAPI.REST.V1
                 default:
                     throw new CoinApiException(message);
             }
+        }
+
+        private static async Task<T> DeserializeFromString<T>(string responseString)
+        {
+            var data = JsonConvert.DeserializeObject<T>(responseString);
+            return data;
         }
 
         private static async Task<T> Deserialize<T>(HttpResponseMessage responseMessage)

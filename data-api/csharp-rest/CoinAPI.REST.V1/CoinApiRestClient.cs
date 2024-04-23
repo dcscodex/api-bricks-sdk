@@ -60,7 +60,7 @@ namespace CoinAPI.REST.V1
 
         private static async Task RaiseError(HttpResponseMessage response)
         {
-            var responseString = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var message = (await DeserializeFromString<ErrorMessage>(responseString).ConfigureAwait(false))?.message ?? responseString;
 
             switch ((int)response.StatusCode)

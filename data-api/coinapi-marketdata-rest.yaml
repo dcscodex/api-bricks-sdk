@@ -58,6 +58,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -76,6 +88,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -103,6 +122,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -121,6 +152,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -148,6 +186,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -166,6 +216,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -193,6 +250,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -211,6 +280,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -254,6 +330,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -272,6 +360,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -299,6 +394,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -317,6 +424,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -344,6 +458,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -362,6 +488,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -389,6 +522,18 @@ paths:
     "volume_1day_usd": 2086392323256.16,
     "volume_1mth_usd": 57929168359984.54,
     "price_usd": 9166.207274778093436220194944,
+    "chain_addresses": [
+      {
+        "chain_id": "ARBITRUM",
+        "network_id": "MAINNET",
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+      },
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   },
@@ -407,6 +552,13 @@ paths:
     "volume_1day_usd": 221580758173.49,
     "volume_1mth_usd": 11816685174661.70,
     "price_usd": 1.0,
+    "chain_addresses": [
+      {
+        "chain_id": "ETHEREUM",
+        "network_id": "MAINNET",
+        "address": "0xd233d1f6fd11640081abb8db125f722b5dc729dc"
+      }
+    ],
     "data_start": "2010-07-17",
     "data_end": "2019-11-03"
   }
@@ -548,7 +700,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-04-17T11:55:52.4873909Z",
+  "time": "2024-04-29T10:40:19.1488249Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -559,7 +711,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-04-17T11:55:52.4873909Z",
+  "time": "2024-04-29T10:40:19.1488249Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -570,7 +722,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-04-17T11:55:52.4873909Z",
+  "time": "2024-04-29T10:40:19.1488249Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -581,7 +733,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-04-17T11:55:52.4873909Z",
+  "time": "2024-04-29T10:40:19.1488249Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -6393,6 +6545,12 @@ components:
           description: Gets or sets the maximum supply of the asset.
           format: double
           nullable: true
+        chain_addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1.ChainNetworkAddress'
+          description: ''
+          nullable: true
         data_start:
           type: string
           nullable: true
@@ -6403,6 +6561,23 @@ components:
           readOnly: true
       additionalProperties: false
       description: Represents an asset.
+    v1.ChainNetworkAddress:
+      type: object
+      properties:
+        chain_id:
+          type: string
+          description: Gets or sets chain id
+          nullable: true
+        network_id:
+          type: string
+          description: Gets or sets network id
+          nullable: true
+        address:
+          type: string
+          description: Gets or sets chain address
+          nullable: true
+      additionalProperties: false
+      description: Contains information about assets' chain network addresses
     v1.Exchange:
       type: object
       properties:

@@ -700,7 +700,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-08T14:20:10.2965472Z",
+  "time": "2024-05-10T11:23:13.6344988Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -711,7 +711,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-08T14:20:10.2965472Z",
+  "time": "2024-05-10T11:23:13.6344988Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -722,7 +722,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-08T14:20:10.2965472Z",
+  "time": "2024-05-10T11:23:13.6344988Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -733,7 +733,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-08T14:20:10.2965472Z",
+  "time": "2024-05-10T11:23:13.6344988Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -5565,29 +5565,30 @@ paths:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
+          description: Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`)
+          required: true
           schema:
             type: string
         - name: time_start
           in: query
-          description: Timeseries starting time in ISO 8601 (required)
+          description: Timeseries starting time in ISO 8601
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when count of result elements reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
             default: 100
         - name: include_empty_items
           in: query
-          description: 'Include items with no activity? (optional, default value is `false`, possible values are `true` or `false`)'
+          description: 'Include items with no activity? (default value is `false`, possible values are `true` or `false`)'
           schema:
             type: boolean
             default: false
@@ -5797,19 +5798,20 @@ paths:
             type: string
         - name: period_id
           in: query
-          description: 'Identifier of requested timeseries period (required, e.g. `5SEC` or `2MTH`)'
+          description: Identifier of requested timeseries period (e.g. `5SEC` or `2MTH`)
+          required: true
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
             default: 100
         - name: include_empty_items
           in: query
-          description: 'Include items with no activity? (optional, default value is `false`, possible values are `true` or `false`)'
+          description: 'Include items with no activity? (default value is `false`, possible values are `true` or `false`)'
           schema:
             type: boolean
             default: false

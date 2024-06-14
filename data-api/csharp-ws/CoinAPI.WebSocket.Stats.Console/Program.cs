@@ -293,7 +293,7 @@ internal class Program
             if (!wsClient.IsConnected)
             {
                 Log.Warning("Websocket is not connected.");
-                await Task.Delay(1000);
+                await DelayToNextFullSecond();
                 continue;
             }
 
@@ -311,7 +311,7 @@ internal class Program
 
             //TimeSpan totalCpuTimePrev = process.TotalProcessorTime;
 
-            await Task.Delay(1000);
+            await DelayToNextFullSecond();
             (TimeSpan cpuWaiting, TimeSpan cpuParsing, TimeSpan cpuHandling) cpuUsage
                 = (wsClient.TotalWaitTime, wsClient.TotalParseTime, wsClient.TotalHandleTime);
 
@@ -360,6 +360,15 @@ internal class Program
 
         }
     }
+
+    private static async Task DelayToNextFullSecond()
+    {
+        var now = DateTime.Now;
+        var nextFullSecond = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second).AddSeconds(1);
+        var delay = nextFullSecond - now;
+        await Task.Delay(delay);
+    }
+
     static void AppConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         // Add configuration, logging, and IDataOutput implementations

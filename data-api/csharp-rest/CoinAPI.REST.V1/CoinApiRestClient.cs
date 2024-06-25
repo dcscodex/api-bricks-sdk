@@ -39,12 +39,13 @@ namespace CoinAPI.REST.V1
                     {
                         client.DefaultRequestHeaders.Add("X-CoinAPI-Key", apikey);
 
-                        HttpResponseMessage response = await client.GetAsync(WebUrl + url).ConfigureAwait(false);
+                        using (HttpResponseMessage response = await client.GetAsync(WebUrl + url).ConfigureAwait(false))
+                        {
+                            if (!response.IsSuccessStatusCode)
+                                await RaiseError(response).ConfigureAwait(false);
 
-                        if (!response.IsSuccessStatusCode)
-                            await RaiseError(response).ConfigureAwait(false);
-
-                        return await Deserialize<T>(response).ConfigureAwait(false);
+                            return await Deserialize<T>(response).ConfigureAwait(false);
+                        }
                     }
                 }
             }
@@ -291,7 +292,11 @@ namespace CoinAPI.REST.V1
             var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId);
             return GetData<Orderbook>(url);
         }
-
+        public Task<Orderbook> Orderbooks_current_data_symbolAsync(string symbolId, int limit)
+        {
+            var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId, limit);
+            return GetData<Orderbook>(url);
+        }
         public Task<List<Orderbook>> Orderbooks_last_dataAsync(string symbolId, int limit)
         {
             var url = CoinApiEndpointUrls.Orderbooks_LatestData(symbolId, limit);

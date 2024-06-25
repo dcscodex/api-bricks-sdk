@@ -558,6 +558,41 @@ namespace CoinAPI.REST.V1.Example
             Console.Write("--------------------------------------------------------------------------------------------------------");
             Console.Write(Environment.NewLine);
 
+            Console.Write("Orderbooks current data symbol (limit 10):");
+            Console.Write(Environment.NewLine);
+            var orderbooks_current_data_btc_usd_2 = coinApiEndpointTester.Orderbooks_current_data_symbolAsync(symbolId, 10).GetAwaiter().GetResult().Data;
+            Console.Write("symbol_id:" + orderbooks_current_data_btc_usd_2.symbol_id);
+            Console.Write(Environment.NewLine);
+            Console.Write("time_exchange:" + orderbooks_current_data_btc_usd.time_exchange);
+            Console.Write(Environment.NewLine);
+            Console.Write("time_coinapi:" + orderbooks_current_data_btc_usd_2.time_coinapi);
+            Console.Write(Environment.NewLine);
+
+            Console.Write("Asks:");
+            Console.Write(Environment.NewLine);
+            foreach (var itm in orderbooks_current_data_btc_usd_2.asks)
+            {
+                Console.Write("price:" + itm.price);
+                Console.Write(Environment.NewLine);
+                Console.Write("size:" + itm.size);
+                Console.Write(Environment.NewLine);
+
+            }
+            Console.Write("Bids:");
+            Console.Write(Environment.NewLine);
+            foreach (var itm in orderbooks_current_data_btc_usd_2.bids)
+            {
+                Console.Write("price:" + itm.price);
+                Console.Write(Environment.NewLine);
+                Console.Write("size:" + itm.size);
+                Console.Write(Environment.NewLine);
+
+            }
+
+            Console.Write("--------------------------------------------------------------------------------------------------------");
+            Console.Write(Environment.NewLine);
+
+
             Console.Write("Orderbooks last data:");
             Console.Write(Environment.NewLine);
             var orderbooks_latest_data_btc_usd =  coinApiEndpointTester.Orderbooks_last_dataAsync(symbolId).GetAwaiter().GetResult().Data;

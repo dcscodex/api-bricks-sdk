@@ -42,7 +42,7 @@
         public static string Quotes_HistoricalData(string symbolId, string start, int limit) => string.Format("/v1/quotes/{0}/history?time_start={1}&limit={2}", symbolId, start, limit);
         public static string Orderbooks_CurrentFilteredBitstamp() => "/v1/orderbooks/current?filter_symbol_id=BITSTAMP";
         public static string Orderbooks_CurrentSymbol(string symbolId) => string.Format("/v1/orderbooks/{0}/current", symbolId);
-        public static string Orderbooks_CurrentSymbol(string symbolId, int limit) => string.Format("/v1/orderbooks/{0}/current?limit={1}", symbolId, limit);
+        public static string Orderbooks_CurrentSymbol(string symbolId, int limit_levels) => string.Format("/v1/orderbooks/{0}/current?limit_levels={1}", symbolId, limit_levels);
         public static string Orderbooks_LatestData(string symbolId, int limit) => string.Format("/v1/orderbooks/{0}/latest?limit={1}", symbolId, limit);
         public static string Orderbooks_LatestData(string symbolId) => string.Format("/v1/orderbooks/{0}/latest", symbolId);
         public static string Orderbooks_HistoricalData(string symbolId, string start, string end, int limit) => string.Format("/v1/orderbooks/{0}/history?time_start={1}&time_end={2}&limit={3}", symbolId, start, end, limit);

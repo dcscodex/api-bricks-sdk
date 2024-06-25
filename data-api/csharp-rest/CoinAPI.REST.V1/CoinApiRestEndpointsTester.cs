@@ -126,7 +126,7 @@ namespace CoinAPI.REST.V1
         {
             return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId), _coinApi.Orderbooks_current_data_symbolAsync(symbolId));
         }
-        public Task<EndpointCheckResult<Orderbook>> Orderbooks_current_data_symbolAsync(string symbolId, int limit)
+        public Task<EndpointCheckResult<Orderbook>> Orderbooks_current_data_symbolAsync(string symbolId, int limit_levels)
         {
             return HandleCheck(CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId, 10), _coinApi.Orderbooks_current_data_symbolAsync(symbolId, 10));
         }

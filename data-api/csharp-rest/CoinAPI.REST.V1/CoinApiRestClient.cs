@@ -301,9 +301,9 @@ namespace CoinAPI.REST.V1
             var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId);
             return GetData<Orderbook>(url);
         }
-        public Task<Orderbook> Orderbooks_current_data_symbolAsync(string symbolId, int limit)
+        public Task<Orderbook> Orderbooks_current_data_symbolAsync(string symbolId, int limit_levels)
         {
-            var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId, limit);
+            var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId, limit_levels);
             return GetData<Orderbook>(url);
         }
         public Task<List<Orderbook>> Orderbooks_last_dataAsync(string symbolId, int limit)

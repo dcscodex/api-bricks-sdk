@@ -694,7 +694,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-07-11T13:26:45.4983751Z",
+  "time": "2024-08-05T13:28:13.3342305Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -705,7 +705,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-07-11T13:26:45.4983751Z",
+  "time": "2024-08-05T13:28:13.3342305Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -716,7 +716,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-07-11T13:26:45.4983751Z",
+  "time": "2024-08-05T13:28:13.3342305Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -727,7 +727,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-07-11T13:26:45.4983751Z",
+  "time": "2024-08-05T13:28:13.3342305Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -3326,7 +3326,7 @@ paths:
       tags:
         - Order Book
       summary: '[order book] Historical data'
-      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::"
+      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -3334,19 +3334,24 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (preferred method, required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: 'Starting time in ISO 8601 (deprecated, use ''date'' instead)'
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: 'Timeseries ending time in ISO 8601 (deprecated, use ''date'' instead)'
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (optional, minimum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
@@ -4035,14 +4040,19 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (preferred method, required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: Starting time in ISO 8601
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           schema:
             type: string
         - name: limit
@@ -4845,11 +4855,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -4872,11 +4882,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -4910,11 +4920,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -4937,11 +4947,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -4975,11 +4985,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5002,11 +5012,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5040,11 +5050,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5067,11 +5077,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5167,11 +5177,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5194,11 +5204,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5232,11 +5242,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5259,11 +5269,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5297,11 +5307,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5324,11 +5334,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5362,11 +5372,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5389,11 +5399,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5950,7 +5960,7 @@ paths:
       tags:
         - Trades
       summary: '[trades] Historical data'
-      description: 'Get history transactions from specific symbol, returned in time ascending order.'
+      description: "Get history transactions from specific symbol, returned in time ascending order.\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -5958,19 +5968,24 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: Starting time in ISO 8601
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (optional, minimum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32

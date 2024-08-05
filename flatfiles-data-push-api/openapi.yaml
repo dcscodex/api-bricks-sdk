@@ -13,6 +13,49 @@ info:
 servers:
   - url: https://data-push-api.flatfiles.coinapi.io
 paths:
+  /api/data-storage/types:
+    get:
+      tags:
+        - DataStorageEndpoint
+      responses:
+        '200':
+          description: OK
+  /api/data-storage/endpoint:
+    get:
+      tags:
+        - DataStorageEndpoint
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - DataStorageEndpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataStorageEndpoint'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataStorageEndpoint'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataStorageEndpoint'
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+        - DataStorageEndpoint
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
   /api/metadata/exchanges:
     get:
       tags:
@@ -251,14 +294,76 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FlatFiles.DataOrder'
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
           text/json:
             schema:
-              $ref: '#/components/schemas/FlatFiles.DataOrder'
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/FlatFiles.DataOrder'
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
         required: true
+      responses:
+        '200':
+          description: OK
+  /api/push-orders/estimate-daily-price:
+    post:
+      tags:
+        - FlatFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /api/push-orders:
+    post:
+      tags:
+        - FlatFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Coinapi.DataDeliveryTask'
+      responses:
+        '200':
+          description: OK
+    get:
+      tags:
+        - FlatFiles
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+        - FlatFiles
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+  /api/push-orders/account-balance:
+    get:
+      tags:
+        - FlatFiles
       responses:
         '200':
           description: OK
@@ -453,20 +558,27 @@ paths:
 ]
 components:
   schemas:
-    FlatFiles.DataOrder:
+    Coinapi.DataDeliveryTask:
       required:
         - exchange
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
+        idOrganization:
+          type: string
+          format: uuid
         exchange:
-          minLength: 1
+          maxLength: 255
+          minLength: 0
           type: string
         symbols:
-          type: array
-          items:
-            type: string
+          type: string
           nullable: true
         schema:
+          maxLength: 255
+          minLength: 0
           type: string
           nullable: true
         date_from:
@@ -477,15 +589,204 @@ components:
           type: string
           format: date-time
           nullable: true
+        priceHistorical:
+          type: number
+          format: double
+        priceDailyUpdates:
+          type: number
+          format: double
         encoding:
+          maxLength: 50
+          minLength: 0
           type: string
           nullable: true
         compression:
+          maxLength: 50
+          minLength: 0
           type: string
           nullable: true
-        delivery:
+        idDataStorageEndpoint:
+          maxLength: 255
+          minLength: 0
           type: string
           nullable: true
+        status:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        statusDescription:
+          type: string
+          nullable: true
+        isDeleted:
+          type: integer
+          format: int32
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Coinapi.DataStorageEndpoint:
+      required:
+        - name
+        - type
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organizationId:
+          type: string
+          format: uuid
+        type:
+          maxLength: 255
+          minLength: 0
+          type: string
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        url:
+          maxLength: 500
+          minLength: 0
+          type: string
+          nullable: true
+        username:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+        bucket:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        prefix:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        region:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        port:
+          type: integer
+          format: int32
+          nullable: true
+        useSFTP:
+          type: boolean
+        privateKey:
+          type: string
+          nullable: true
+        createdTime:
+          type: string
+          format: date-time
+        updatedTime:
+          type: string
+          format: date-time
+        status:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        statusDescription:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        timeoutSeconds:
+          type: integer
+          format: int32
+          nullable: true
+        maxConcurrentConnections:
+          type: integer
+          format: int32
+          nullable: true
+        organization:
+          $ref: '#/components/schemas/Coinapi.Organization'
+      additionalProperties: false
+    Coinapi.Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        stripeId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        quickNodeId:
+          type: string
+          nullable: true
+        isDeleting:
+          type: integer
+          format: int32
+        company:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
+        vatIdType:
+          type: string
+          nullable: true
+        vatIdValue:
+          type: string
+          nullable: true
+        purchaseOrder:
+          type: string
+          nullable: true
+        coupon:
+          type: string
+          nullable: true
+        billingEmail:
+          type: string
+          nullable: true
+        autoRechargeEnabled:
+          type: integer
+          format: int32
+        autoRechargeBalanceGoesBelowUsd:
+          type: integer
+          format: int32
+        autoRechargeBalanceBackUpToUsd:
+          type: integer
+          format: int32
+        paygEnabled:
+          type: integer
+          format: int32
+        creditBalance:
+          type: integer
+          format: int32
+        creditUninvoicedCurrent:
+          type: integer
+          format: int32
+        creditUninvoicedLimit:
+          type: integer
+          format: int32
       additionalProperties: false
     Metadata.Exchange:
       type: object

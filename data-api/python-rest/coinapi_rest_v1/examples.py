@@ -22,11 +22,11 @@ for asset in assets:
         print('Can not find name')
     print('Asset type (crypto?): %s' % asset['type_is_crypto'])
 
-symbols = api.metadata_list_symbols()
-print('Symbols')
+# Update the symbols section
+print('Symbols for a specific exchange (e.g., BITSTAMP)')
+symbols = api.metadata_list_symbols(exchange_id='BITSTAMP')
 for symbol in symbols:
     print('Symbol ID: %s' % symbol['symbol_id'])
-    print('Exchange ID: %s' % symbol['exchange_id'])
     print('Symbol type: %s' % symbol['symbol_type'])
     try:
         print('Asset ID base: %s' % symbol['asset_id_base'])
@@ -263,4 +263,3 @@ for data in orderbooks_historical_data_btc_usd:
     for bid in data['bids']:
         print('- Price: %s' % bid['price'])
         print('- Size: %s' % bid['size'])
-

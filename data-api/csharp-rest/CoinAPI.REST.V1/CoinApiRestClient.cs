@@ -10,42 +10,53 @@ using System.Threading.Tasks;
 
 namespace CoinAPI.REST.V1
 {
+    public static class HttpClientFactory
+    {
+        private static readonly Dictionary<string, HttpClient> clients = new Dictionary<string, HttpClient>();
+
+        public static HttpClient GetClient(string apiKey)
+        {
+            if (!clients.TryGetValue(apiKey, out HttpClient client))
+            {
+                var handler = new HttpClientHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+                };
+                client = new HttpClient(handler);
+                client.DefaultRequestHeaders.Add("X-CoinAPI-Key", apiKey);
+                clients[apiKey] = client;
+            }
+            return client;
+        }
+    }
     public class CoinApiRestClient
-    {              
-        private string apikey;
+    {
+        private string apiKey;
         public string DateFormat => "yyyy-MM-ddTHH:mm:ss.fff";
         private string WebUrl = "https://rest.coinapi.io";
 
         public CoinApiRestClient(string apikey)
         {
-            this.apikey = apikey;
-            this.WebUrl = WebUrl.TrimEnd('/');
+            apiKey = apikey;
+            WebUrl = WebUrl.TrimEnd('/');
         }
 
         public CoinApiRestClient(string apikey, string url)
         {
-            this.apikey = apikey;
-            this.WebUrl = url.TrimEnd('/');
+            apiKey = apikey;
+            WebUrl = url.TrimEnd('/');
         }
 
         private async Task<T> GetData<T>(string url)
         {
             try
             {
-                using (var handler = new HttpClientHandler())
+                using (HttpResponseMessage response = await HttpClientFactory.GetClient(apiKey).GetAsync(WebUrl + url).ConfigureAwait(false))
                 {
-                    handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-                    using (var client = new HttpClient(handler, false))
-                    {
-                        client.DefaultRequestHeaders.Add("X-CoinAPI-Key", apikey);
+                    if (!response.IsSuccessStatusCode)
+                        await RaiseError(response).ConfigureAwait(false);
 
-                        HttpResponseMessage response = await client.GetAsync(WebUrl + url).ConfigureAwait(false);
-
-                        if (!response.IsSuccessStatusCode)
-                            await RaiseError(response).ConfigureAwait(false);
-
-                        return await Deserialize<T>(response).ConfigureAwait(false);
-                    }
+                    return await Deserialize<T>(response).ConfigureAwait(false);
                 }
             }
             catch (CoinApiException)
@@ -112,7 +123,6 @@ namespace CoinAPI.REST.V1
         {
             return GetData<List<Symbol>>(CoinApiEndpointUrls.Symbols(exchangeId));
         }
-
         public Task<List<Icon>> Metadata_list_assets_iconsAsync(int iconSize)
         {
             return GetData<List<Icon>>(CoinApiEndpointUrls.Assests_Icons(iconSize));
@@ -291,7 +301,11 @@ namespace CoinAPI.REST.V1
             var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId);
             return GetData<Orderbook>(url);
         }
-
+        public Task<Orderbook> Orderbooks_current_data_symbolAsync(string symbolId, int limit_levels)
+        {
+            var url = CoinApiEndpointUrls.Orderbooks_CurrentSymbol(symbolId, limit_levels);
+            return GetData<Orderbook>(url);
+        }
         public Task<List<Orderbook>> Orderbooks_last_dataAsync(string symbolId, int limit)
         {
             var url = CoinApiEndpointUrls.Orderbooks_LatestData(symbolId, limit);

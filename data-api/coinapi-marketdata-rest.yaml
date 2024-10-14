@@ -25,12 +25,6 @@ paths:
           description: 'Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. `BTC;ETH`).'
           schema:
             type: string
-        - name: include_supply
-          in: query
-          description: Flag indicating whether to include supply information.
-          schema:
-            type: boolean
-            default: false
       responses:
         '200':
           description: successful operation
@@ -700,7 +694,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-10T11:23:13.6344988Z",
+  "time": "2024-08-05T13:35:42.7231389Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -711,7 +705,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-10T11:23:13.6344988Z",
+  "time": "2024-08-05T13:35:42.7231389Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -722,7 +716,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-10T11:23:13.6344988Z",
+  "time": "2024-08-05T13:35:42.7231389Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -733,7 +727,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2024-05-10T11:23:13.6344988Z",
+  "time": "2024-08-05T13:35:42.7231389Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -3332,7 +3326,7 @@ paths:
       tags:
         - Order Book
       summary: '[order book] Historical data'
-      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::"
+      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -3340,19 +3334,24 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (preferred method, required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: 'Starting time in ISO 8601 (deprecated, use ''date'' instead)'
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: 'Timeseries ending time in ISO 8601 (deprecated, use ''date'' instead)'
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (optional, minimum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
@@ -4041,14 +4040,19 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (preferred method, required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: Starting time in ISO 8601
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           schema:
             type: string
         - name: limit
@@ -4851,11 +4855,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -4878,11 +4882,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -4916,11 +4920,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -4943,11 +4947,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -4981,11 +4985,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5008,11 +5012,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5046,11 +5050,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5073,11 +5077,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5173,11 +5177,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5200,11 +5204,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5238,11 +5242,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5265,11 +5269,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5303,11 +5307,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5330,11 +5334,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5368,11 +5372,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:32.0080000Z",
     "data_trade_start": "2019-10-30T16:38:52.1620000Z",
     "data_trade_end": "2021-03-03T13:46:25.7810000Z",
-    "volume_1hrs": 22897091.000000000,
+    "volume_1hrs": 22897091,
     "volume_1hrs_usd": 22897091.00,
-    "volume_1day": 459390289.000000000,
+    "volume_1day": 459390289,
     "volume_1day_usd": 459390289.00,
-    "volume_1mth": 12875674995.000000000,
+    "volume_1mth": 12875674995,
     "volume_1mth_usd": 12875674995.00,
     "price": 51266,
     "symbol_id_exchange": "pi_xbtusd",
@@ -5395,11 +5399,11 @@ paths:
     "data_orderbook_end": "2020-08-05T14:37:20.2695780Z",
     "data_trade_start": "2018-11-20T15:25:38.0000000Z",
     "data_trade_end": "2021-03-01T16:03:18.0000000Z",
-    "volume_1hrs": 51.686458990,
+    "volume_1hrs": 51.68645899,
     "volume_1hrs_usd": 9036.44,
-    "volume_1day": 465.568863000,
+    "volume_1day": 465.568863,
     "volume_1day_usd": 81396.28,
-    "volume_1mth": 22528.276384950,
+    "volume_1mth": 22528.27638495,
     "volume_1mth_usd": 3938661.00,
     "symbol_id_exchange": "USDC_LTC",
     "asset_id_base_exchange": "LTC",
@@ -5956,7 +5960,7 @@ paths:
       tags:
         - Trades
       summary: '[trades] Historical data'
-      description: 'Get history transactions from specific symbol, returned in time ascending order.'
+      description: "Get history transactions from specific symbol, returned in time ascending order.\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -5964,19 +5968,24 @@ paths:
           required: true
           schema:
             type: string
+        - name: date
+          in: query
+          description: 'Date in ISO 8601, returned data is for the whole given day (required if ''time_start'' is not provided)'
+          schema:
+            type: string
         - name: time_start
           in: query
-          description: Starting time in ISO 8601 (required)
+          description: Starting time in ISO 8601
           schema:
             type: string
         - name: time_end
           in: query
-          description: 'Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)'
+          description: Timeseries ending time in ISO 8601
           schema:
             type: string
         - name: limit
           in: query
-          description: 'Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
+          description: 'Amount of items to return (optional, minimum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)'
           schema:
             type: integer
             format: int32
@@ -7553,21 +7562,17 @@ security:
   - ApiKey: [ ]
 tags:
   - name: Exchange Rates
-    description: "\r\n<span data-status-page=\"28924\"></span>\r\nExchange rate is defined as (VWAP-24H) last 24 hour (rolling window over time) Volume Weighted Average Price across multiple data sources listed on our platform. We are selecting and managing the data sources that are used in the calculation based on multiple factors to provide data of highest quality. \r\n\r\nAlgorithm is described below:\r\n\r\n  1. Exchange rates are produced from quotes, trades, and metadata datasets.\r\n  1. Symbols that are not data_type = \"SPOT\" are excluded from the calculation.\r\n  1. Symbols from the data sources that were marked by us as not legitimate are excluded from the calculation.\r\n  1. Quotes data where the spread is outside the range of ```<0$; 67%>``` are discarded. `spreadPrc = (ask - bid) / ((ask + bid) / 2)`\r\n  1. The midpoint from the quote data is used as a pricing reference and it's weighted by the passive cumulative volume resting on the best prices.\r\n  1. Volume from the trades is used to weight the midpoint prices in the VWAP24 algorithm.\r\n  1. Midpoint data that has not been updated in the last 5 minutes and 1 second is discarded.\r\n  1. The last 24-hour volume for each symbol is updated every 4 hours when approximately 20% of the data in the sliding window changes (also, the list of eligible markets is updated at the same time).\r\n  1. Everywhere in the algorithm below, we are using asset pairs only from exchanges that have the highest legitimacy rank, and the rest of the exchanges are discarded. As we establish the highest-ranking exchanges that have this data for each asset pair, we ensure that the highest quality data is used for each of them. The rank used for asset pairing is carried over to the following steps.\r\n  1. Every 1 second, we update VWAP24 data for every asset pair across all data sources.\r\n  1. For each asset pair, we also discard data that is outside the 3 sigma range if there are at least 3 exchanges for this asset pair.\r\n  1. From the VWAP24 data, we are creating a tree structure where node/vertex = asset and edge = rate.\r\n  1. By traversing the tree structure using the BFS algorithm and our secret sauce, we are able to establish the final exchange rates.\r\n    "
-  - name: Metadata
-    description: <span data-status-page="28923"></span>
+    description: "\n<span data-status-page=\"28924\"></span>\nExchange rate is defined as (VWAP-24H) last 24 hour (rolling window over time) Volume Weighted Average Price across multiple data sources listed on our platform. We are selecting and managing the data sources that are used in the calculation based on multiple factors to provide data of highest quality. \n\nAlgorithm is described below:\n\n  1. Exchange rates are produced from quotes, trades, and metadata datasets.\n  1. Symbols that are not data_type = \"SPOT\" are excluded from the calculation.\n  1. Symbols from the data sources that were marked by us as not legitimate are excluded from the calculation.\n  1. Quotes data where the spread is outside the range of ```<0$; 67%>``` are discarded. `spreadPrc = (ask - bid) / ((ask + bid) / 2)`\n  1. The midpoint from the quote data is used as a pricing reference and it's weighted by the passive cumulative volume resting on the best prices.\n  1. Volume from the trades is used to weight the midpoint prices in the VWAP24 algorithm.\n  1. Midpoint data that has not been updated in the last 5 minutes and 1 second is discarded.\n  1. The last 24-hour volume for each symbol is updated every 4 hours when approximately 20% of the data in the sliding window changes (also, the list of eligible markets is updated at the same time).\n  1. Everywhere in the algorithm below, we are using asset pairs only from exchanges that have the highest legitimacy rank, and the rest of the exchanges are discarded. As we establish the highest-ranking exchanges that have this data for each asset pair, we ensure that the highest quality data is used for each of them. The rank used for asset pairing is carried over to the following steps.\n  1. Every 1 second, we update VWAP24 data for every asset pair across all data sources.\n  1. For each asset pair, we also discard data that is outside the 3 sigma range if there are at least 3 exchanges for this asset pair.\n  1. From the VWAP24 data, we are creating a tree structure where node/vertex = asset and edge = rate.\n  1. By traversing the tree structure using the BFS algorithm and our secret sauce, we are able to establish the final exchange rates.\n    "
   - name: Order Book L3
     description: "\n<span data-status-page=\"28929\"></span>\nThis section describes calls related to order book data, also known as books or passive level 3 data."
   - name: Order Book
     description: "\n<span data-status-page=\"28929\"></span>\nThis section describes calls related to order book data, also known as books or passive level 2 data.\n\n:::info\nWhen requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.\n:::\n\n:::info\nGET `/v1/orderbooks/current` endpoint is charged one request per 100 data points returned after applying a filter defined by filter_symbol_id parameter. If filter symbols target more than one exchange, error is returned.\n:::\n\n:::info\nWhen requesting current order book data limited to a single level, then quotes are actually used. This information is important from the perspective that quotes data could be faster than order book data (behavior is dependent solely one the data source) and they can have the size equal to 0 when the size is unknown. Some data sources publish order books and separately quote data (without the sizes) at a higher frequency. In that case, we will merge the order book feed with quotes feed to make sure that our updates are as fast as possible. The quotes will have the size equal to 0 as the value is unknown and the customer can decide if these higher frequency updates without the sizes are valuable or if not then can discard them or ask for at least 2 order book levels (in case of a REST API call). For the data sources that publish order books only or order books and quotes with the sizes then this will not happen.\n:::"
   - name: Ohlcv
     description: "\n<span data-status-page=\"28926\"></span>\n\nAPI calls described in this section are related to downloading OHLCV *(Open, High, Low, Close, Volume)* timeseries data.\nEach data point of this timeseries represents several indicators calculated from transactions activity inside a time range (period).\n\n:::info\nOHLCV data primary purpose is to present an overview of the market in human readable form. \nIt's often used to visualize market data on charts, websites, and various kinds of reports.\n:::\n\n:::tip\nCoinAPI expanded the standard OHLCV timeseries by including time of first and last trade and amount of trades executed inside period.\n:::\n    "
+  - name: Metadata
+    description: <span data-status-page="28923"></span>
   - name: Indexes
     description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluaton and feedback.'
-  - name: Assets
-    description: Controller for accessing asset information.
-  - name: Symbols
-    description: Controller for retrieving symbol information.
   - name: Metrics
     description: "<span data-status-page=\"28933\"></span>\r\nMetrics are quantitative measurements used to evaluate the performance and activity of cryptocurrency exchanges. These metrics include:\r\n\r\n1. Trading Volume: The total amount of cryptocurrency traded on an exchange within a specific time period, indicating liquidity and activity.\r\n1. Market Depth: The level of buy and sell orders at different price levels, providing insights into liquidity and potential price impact.\r\n1. Order Book: A record of outstanding buy and sell orders for a cryptocurrency, reflecting supply and demand dynamics.\r\n1. Spread: The difference between the highest bid and lowest ask prices, indicating liquidity and trading costs.\r\n1. Price Charts: Visual representations of cryptocurrency price movements over time, helping identify trends and inform trading decisions.\r\n1. Market Cap: The total value of a cryptocurrency calculated by its price multiplied by circulating supply, reflecting relative size and value.\r\n1. Trading Pairs: Combinations of cryptocurrencies available for trading, including volume, price, and spread for each pair.\r\n1. User Metrics: Data on active users, new registrations, user retention, and engagement, indicating platform popularity and growth.\r\n1. Trading Fees: Fees charged for executing trades, including fee structure, discounts, and revenue generated by the exchange.\r\n1. Security Metrics: Measures assessing the security of an exchange, such as past incidents, user fund protection, and security audits.\r\n\r\nThese metrics assist traders and investors in evaluating market activity, liquidity, and the reliability of crypto exchanges for informed decision-making."
   - name: OrderBooks3
@@ -7580,3 +7585,7 @@ tags:
     description: 'Controller for retrieving OHLCV (Open, High, Low, Close, Volume) timeseries data.'
   - name: Trades
     description: Controller for retrieving trade data related to executed transactions.
+  - name: Assets
+    description: Controller for accessing asset information.
+  - name: Symbols
+    description: Controller for retrieving symbol information.

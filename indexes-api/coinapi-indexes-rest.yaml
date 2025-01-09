@@ -724,6 +724,70 @@ paths:
     "value_count": 0
   }
 ]
+  /v1/indexdef/multiasset:
+    get:
+      tags:
+        - Indexes
+      summary: Get all multi-asset weights
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+  '/v1/indexdef/multiasset/{index_id}':
+    get:
+      tags:
+        - Indexes
+      summary: Get multi-asset weights for specific index
+      parameters:
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
   '/v1/indexdef/input-data/{index_definition_id}':
     get:
       tags:
@@ -930,6 +994,19 @@ components:
           nullable: true
       additionalProperties: false
       description: Represents an index id
+    Indexes.IndexMultiAssetWeight:
+      type: object
+      properties:
+        indexId:
+          type: string
+          nullable: true
+        assetId:
+          type: string
+          nullable: true
+        weight:
+          type: number
+          format: double
+      additionalProperties: false
     Indexes.IndexTimeseriesItem:
       type: object
       properties:
@@ -1064,6 +1141,8 @@ tags:
     description: <span data-status-page="28923"></span>
   - name: Indexes
     description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluaton and feedback.'
+  - name: IndexMultiAsset
+    description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluation and feedback.'
   - name: InputData
     description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluaton and feedback.'
   - name: Period

@@ -1139,11 +1139,5 @@ tags:
     description: <span data-status-page="28926"></span>
   - name: Metadata
     description: <span data-status-page="28923"></span>
-  - name: Indexes
-    description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluaton and feedback.'
-  - name: IndexMultiAsset
-    description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluation and feedback.'
-  - name: InputData
-    description: 'Indexes section of the API is in the Alpha release cycle. Use only for testing, evaluaton and feedback.'
   - name: Period
     description: Controller for periods.

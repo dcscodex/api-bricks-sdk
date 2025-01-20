@@ -1,0 +1,23 @@
+openapi: 3.0.1
+info:
+  title: REST API
+  contact:
+    name: COINAPI LTD
+    url: https://www.coinapi.io
+    email: support@coinapi.io
+  license:
+    name: MIT License
+    url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+  version: v1
+servers:
+  - url: https://rest-api.exrates.coinapi.io
+paths: { }
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      description: CoinAPI API key needed to access the endpoints
+      name: X-CoinAPI-Key
+      in: header
+security:
+  - APIKey: [ ]

@@ -10,7 +10,7 @@ info:
     url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
   version: v1
 servers:
-  - url: https://rest-realtime.exrates.coinapi.io
+  - url: https://api-realtime.exrates.coinapi.io
 paths:
   /v1/assets:
     get:
@@ -658,33 +658,6 @@ paths:
     "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png"
   }
 ]
-  /internal/connections/list:
-    get:
-      tags:
-        - Connections
-      responses:
-        '200':
-          description: OK
-  /internal/connections/all:
-    get:
-      tags:
-        - Connections
-      responses:
-        '200':
-          description: OK
-  /internal/connections/get:
-    get:
-      tags:
-        - Connections
-      parameters:
-        - name: id
-          in: query
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: OK
   '/v1/exchangerate/{asset_id_base}/{asset_id_quote}':
     get:
       tags:
@@ -715,7 +688,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-01-23T10:43:50.1195547Z",
+  "time": "2025-01-24T10:09:16.2833700Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -726,7 +699,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-01-23T10:43:50.1195547Z",
+  "time": "2025-01-24T10:09:16.2833700Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -737,7 +710,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-01-23T10:43:50.1195547Z",
+  "time": "2025-01-24T10:09:16.2833700Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -748,7 +721,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-01-23T10:43:50.1195547Z",
+  "time": "2025-01-24T10:09:16.2833700Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -901,27 +874,6 @@ paths:
     }
   ]
 }
-  /internal/ratelimit/wsreq/ip:
-    get:
-      tags:
-        - RateLimit
-      responses:
-        '200':
-          description: OK
-  /internal/ratelimit/wshello/ip:
-    get:
-      tags:
-        - RateLimit
-      responses:
-        '200':
-          description: OK
-  /internal/ratelimit/wsconcon/apikey:
-    get:
-      tags:
-        - RateLimit
-      responses:
-        '200':
-          description: OK
 components:
   schemas:
     v1.Asset:

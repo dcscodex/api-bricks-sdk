@@ -515,6 +515,46 @@ paths:
     "composition": []
   }
 ]
+  '/v1/indexes/{index_definition_id}/historySnapshot':
+    get:
+      tags:
+        - Indexes
+      summary: Historical Index Values for index definition
+      parameters:
+        - name: index_definition_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: time
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
   '/v1/indexes/{index_id}/timeseries':
     get:
       tags:
@@ -804,6 +844,10 @@ paths:
           schema:
             type: string
             format: date-time
+        - name: filter_asset_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation

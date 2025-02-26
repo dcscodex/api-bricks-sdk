@@ -844,10 +844,20 @@ paths:
           schema:
             type: string
             format: date-time
+        - name: enabled_only
+          in: query
+          schema:
+            type: boolean
+            default: false
         - name: filter_asset_id
           in: query
           schema:
             type: string
+        - name: with_status_info
+          in: query
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: successful operation

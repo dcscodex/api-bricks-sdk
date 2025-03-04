@@ -849,6 +849,11 @@ paths:
           schema:
             type: boolean
             default: false
+        - name: pending_only
+          in: query
+          schema:
+            type: boolean
+            default: false
         - name: filter_asset_id
           in: query
           schema:

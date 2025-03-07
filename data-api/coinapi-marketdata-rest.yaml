@@ -693,7 +693,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-06T10:05:51.6879099Z",
+  "time": "2025-03-07T10:05:16.9648471Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -704,7 +704,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-06T10:05:51.6879099Z",
+  "time": "2025-03-07T10:05:16.9648471Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -715,7 +715,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-06T10:05:51.6879099Z",
+  "time": "2025-03-07T10:05:16.9648471Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -726,7 +726,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-06T10:05:51.6879099Z",
+  "time": "2025-03-07T10:05:16.9648471Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -1252,7 +1252,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1293,7 +1293,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1334,7 +1334,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1375,7 +1375,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1432,7 +1432,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1473,7 +1473,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1514,7 +1514,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -1555,7 +1555,7 @@ paths:
                 Example response:
                   value: [
   {
-    "exchange_id": "OKCOIN_CNY",
+    "exchange_id": "OKCOINCNY",
     "website": "https://www.okcoin.cn/",
     "name": "OKCoin CNY",
     "data_quote_start": "2015-02-15T12:53:50.3430000Z",
@@ -6808,6 +6808,10 @@ components:
           type: number
           description: Rank of the exchange.
           format: double
+        integration_status:
+          type: string
+          description: Status of the integration
+          nullable: true
       additionalProperties: false
       description: Represents an exchange.
     v1.ExchangeRate:

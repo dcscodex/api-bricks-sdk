@@ -693,7 +693,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-18T10:03:50.6548950Z",
+  "time": "2025-03-19T10:04:23.7045491Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -704,7 +704,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-18T10:03:50.6548950Z",
+  "time": "2025-03-19T10:04:23.7045491Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -715,7 +715,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-18T10:03:50.6548950Z",
+  "time": "2025-03-19T10:04:23.7045491Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -726,7 +726,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-03-18T10:03:50.6548950Z",
+  "time": "2025-03-19T10:04:23.7045491Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -3433,7 +3433,7 @@ paths:
       tags:
         - Order Book
       summary: Historical data
-      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
+      description: "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the 'date' parameter instead for querying data for a specific day without filter.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -4139,7 +4139,7 @@ paths:
       tags:
         - Quotes
       summary: Historical data
-      description: 'Get historical quote updates within requested time range, returned in time ascending order.'
+      description: "Get historical quote updates within requested time range, returned in time ascending order.\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the 'date' parameter instead for querying data for a specific day without filter.\r\n:::"
       parameters:
         - name: symbol_id
           in: path
@@ -6067,7 +6067,7 @@ paths:
       tags:
         - Trades
       summary: Historical data
-      description: "Get history transactions from specific symbol, returned in time ascending order.\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters are deprecated and will be removed in future versions. \r\nPlease use the 'date' parameter instead for querying data for a specific day.\r\n:::"
+      description: "Get history transactions from specific symbol, returned in time ascending order.\r\n\r\n:::warning\r\nThe 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the 'date' parameter instead for querying data for a specific day without filter.\r\n:::"
       parameters:
         - name: symbol_id
           in: path

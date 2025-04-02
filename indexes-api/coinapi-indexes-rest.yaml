@@ -3,9 +3,9 @@ info:
   title: Indexes REST API
   description: ''
   contact:
-    name: COINAPI LTD
+    name: API BRICKS LTD
     url: https://www.coinapi.io
-    email: support@coinapi.io
+    email: support@apibricks.io
   license:
     name: MIT License
     url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE

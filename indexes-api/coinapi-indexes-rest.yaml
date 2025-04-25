@@ -887,6 +887,41 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+  '/v1/indexdef/input-data/{index_definition_id}/all':
+    get:
+      tags:
+        - Indexes
+      summary: Returns all data inputs for a specific index definition
+      parameters:
+        - name: index_definition_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+            application/x-msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
   /v1/metadata/periods:
     get:
       tags:
@@ -1031,6 +1066,39 @@ paths:
 ]
 components:
   schemas:
+    Indexes.IndexDefinitionInputData:
+      type: object
+      properties:
+        exchangeId:
+          type: string
+          nullable: true
+        exchangeSymbolId:
+          type: string
+          nullable: true
+        baseAssetId:
+          type: string
+          nullable: true
+        quoteAssetId:
+          type: string
+          nullable: true
+        beginDate:
+          type: string
+          format: date-time
+          nullable: true
+        endDate:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        statusInfo:
+          type: string
+          nullable: true
+        lastModificationTime:
+          type: string
+          format: date-time
+      additionalProperties: false
     Indexes.IndexDefinitionSnapshotEntry:
       type: object
       properties:

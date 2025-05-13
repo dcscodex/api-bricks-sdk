@@ -1,0 +1,1 @@
+Examples related to processing the flat files acquired from the www.cryptotick.com website.

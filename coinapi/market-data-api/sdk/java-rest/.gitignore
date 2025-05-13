@@ -1,0 +1,6 @@
+.idea/*
+target/
+java-rest-v2.iml
+pom.xml.releaseBackup
+release.properties
+src/main/resources/config.properties

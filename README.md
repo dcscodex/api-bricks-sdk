@@ -1,8 +1,8 @@
-# CoinAPI-SDK 
+# API BRICKS SDK 
 
 ![GitHub language count](https://img.shields.io/github/languages/count/api-bricks/api-bricks-sdk)
 
-Welcome to the CoinAPI SDK. This repository contain SDK for our API documented at https://docs.coinapi.io/ 
+Welcome to the API BRICKS SDK. This repository contain SDK for our API's.
 
 ## Our Products
 

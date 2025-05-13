@@ -1,0 +1,76 @@
+name: Generate SEC API Historical Python SDK
+
+on:
+  push:
+    branches:
+      - master # Adjust to your default branch (e.g., main) if different
+    paths:
+      - 'finfeedapi/sec-api/spec/sec-api-historical.yaml'
+  pull_request:
+    branches:
+      - master # Adjust to your default branch (e.g., main) if different
+    paths:
+      - 'finfeedapi/sec-api/spec/sec-api-historical.yaml'
+
+jobs:
+  build-and-commit-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          # This token is needed to push changes back to the repository.
+          # Create a PAT with 'repo' scope and add it as a secret 
+          # in your repository settings (e.g., Settings > Secrets > Actions).
+          # Replace 'PAT_TOKEN' with the name of your secret.
+          token: ${{ secrets.PAT_TOKEN }} 
+
+      - name: Install OpenAPI Generator CLI
+        run: sudo npm install -g @openapitools/openapi-generator-cli@latest
+
+      - name: Generate Python SDK
+        run: |
+          echo "Generating Python SDK for finfeedapi/sec-api/spec/sec-api-historical.yaml"
+          # Create the output directory if it doesn't exist
+          mkdir -p finfeedapi/sec-api/sdk
+          openapi-generator-cli generate \
+            -i finfeedapi/sec-api/spec/sec-api-historical.yaml \
+            -g python \
+            -o finfeedapi/sec-api/sdk/ \
+            -v
+          echo "SDK generation complete."
+
+      - name: Commit and Push SDK
+        # Only run this step for push events to the specified branch
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') # Adjust branch names as needed
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions-bot@users.noreply.github.com'
+          
+          # Navigate to repository root
+          cd "${{ github.workspace }}"
+
+          echo "Adding files from finfeedapi/sec-api/sdk/"
+          # Add all changes within the SDK directory (new, modified, deleted)
+          git add finfeedapi/sec-api/sdk/
+
+          # Check if there are actual changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit in SDK."
+          else
+            echo "Changes detected, committing..."
+            git commit -m "Auto-generate Python SDK for SEC API Historical [skip ci]"
+            
+            # Configure pull strategy (merge by default if not rebase)
+            # The example you provided used 'git config pull.rebase false' implicitly by not setting rebase.
+            # This ensures a merge commit if the remote has diverged.
+            git config pull.rebase false 
+            
+            CURRENT_BRANCH=$(echo "${{ github.ref }}" | sed 's!refs/heads/!!')
+            echo "Pulling latest changes from origin/${CURRENT_BRANCH}..."
+            git pull origin ${CURRENT_BRANCH}
+            
+            echo "Pushing changes to origin/${CURRENT_BRANCH}..."
+            git push origin ${CURRENT_BRANCH}
+            echo "Push complete."
+          fi 

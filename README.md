@@ -4,15 +4,56 @@
 
 Welcome to the CoinAPI SDK. This repository contain SDK for our API documented at https://docs.coinapi.io/ 
 
+## Our Products
+
+This repository provides SDKs for our main product families: CoinAPI and FinFeedAPI.
+
+### CoinAPI
+
+**Main Website:** [www.coinapi.io](https://www.coinapi.io/)
+**Documentation Hub:** [https://docs.coinapi.io/](https://docs.coinapi.io/)
+
+The CoinAPI family includes the following specific APIs and SDKs present in this repository:
+
+| Product Name                        | Description                                                        | Protocols       |
+| ----------------------------------- | ------------------------------------------------------------------ | --------------- |
+| Market Data API                     | SDK for CoinAPI Market Data API                                    | REST, WebSocket, FIX |
+| EMS Cloud Management SDK            | SDK for CoinAPI Execution Management System Managed Cloud REST API | REST            |
+| EMS Gateway REST SDK                | SDK for CoinAPI Execution Management System REST API               | REST, WS            |
+| EMS Gateway FIX SDK                 | SDK for CoinAPI Execution Management System FIX API                | FIX             |
+| Indexes API                         | SDK for CoinAPI Indexes API                                        | REST, WS            |
+| Exchange Rates API                  | SDK for CoinAPI Exchange Rates API                                 | REST, WS            |
+| Flat Files API Processing Samples   | Examples related to processing GZIP+CSV flat files      | GZIP+CSV        |
+
+*For detailed documentation on each specific API, please refer to the [CoinAPI Documentation Hub](https://docs.coinapi.io/).*
+
+### FinFeedAPI
+
+**Main Website:** [www.finfeedapi.com](https://www.finfeedapi.com/)
+**Documentation Hub:** [https://docs.finfeedapi.com/](https://docs.finfeedapi.com/)
+
+The FinFeedAPI family includes the following specific APIs and SDKs present in this repository:
+
+| Product Name                        | Description                                 | Protocols       |
+| ----------------------------------- | ------------------------------------------- | --------------- |
+| Stock API                           | SDK for FinFeed API Stock API               | REST            |
+| SEC API                             | SDK for FinFeed API SEC API                 | REST            |
+
+*For detailed documentation on each specific API, please refer to the [FinFeedAPI Documentation Hub](https://docs.finfeedapi.com/).*
+
 ## Repository organization
 
 Directory | Description |
 --- | --- |
-data-api | SDK for CoinAPI Market Data API
-ems-cloud-mgmt-sdk | SDK for CoinAPI Execution Management System Managed Cloud REST API
-ems-gateway-rest-sdk | SDK for CoinAPI Execution Management System REST API 
-ems-gateway-fix | SDK for CoinAPI Execution Management System FIX API 
-cryptotick-samples | Examples related to processing CryptoTick GZIP+CSV flat files
+`coinapi/market-data-api` | SDK for CoinAPI Market Data API |
+`coinapi/ems-cloud-mgmt-sdk` | SDK for CoinAPI Execution Management System Managed Cloud REST API |
+`coinapi/ems-gateway-rest-sdk` | SDK for CoinAPI Execution Management System REST API |
+`coinapi/ems-gateway-fix` | SDK for CoinAPI Execution Management System FIX API |
+`coinapi/flat-files-api-processing-samples` | Examples related to processing CryptoTick GZIP+CSV flat files |
+`coinapi/indexes-api` | SDK for CoinAPI Indexes API |
+`coinapi/exchange-rates-api` | SDK for CoinAPI Exchange Rates API |
+`finfeedapi/stock-api` | SDK for FinFeed API Stock API |
+`finfeedapi/sec-api` | SDK for FinFeed API SEC API |
 
 ## Package managers coverage
 

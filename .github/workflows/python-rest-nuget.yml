@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: data-api/python-rest
+        working-directory: coinapi/market-data-api/python-rest
     steps:
       - uses: actions/checkout@v2
         

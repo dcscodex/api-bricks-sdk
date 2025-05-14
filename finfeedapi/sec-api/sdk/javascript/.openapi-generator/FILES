@@ -1,5 +1,6 @@
 .babelrc
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 docs/ContentExtractionApi.md
@@ -29,3 +30,14 @@ src/model/DTOFilingSortBy.js
 src/model/DTOSecFilingResultDto.js
 src/model/MvcProblemDetails.js
 src/model/MvcValidationProblemDetails.js
+test/api/ContentExtractionApi.spec.js
+test/api/FilingMetadataApi.spec.js
+test/api/FullTextSearchApi.spec.js
+test/model/DTOExtractorType.spec.js
+test/model/DTOFilingExtractResultDto.spec.js
+test/model/DTOFilingItemDto.spec.js
+test/model/DTOFilingMetadataDto.spec.js
+test/model/DTOFilingSortBy.spec.js
+test/model/DTOSecFilingResultDto.spec.js
+test/model/MvcProblemDetails.spec.js
+test/model/MvcValidationProblemDetails.spec.js

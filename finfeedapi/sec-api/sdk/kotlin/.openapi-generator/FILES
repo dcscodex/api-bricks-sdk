@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 build.gradle
 docs/ContentExtractionApi.md
@@ -44,3 +45,14 @@ src/main/kotlin/org/openapitools/client/models/DTOFilingSortBy.kt
 src/main/kotlin/org/openapitools/client/models/DTOSecFilingResultDto.kt
 src/main/kotlin/org/openapitools/client/models/MvcProblemDetails.kt
 src/main/kotlin/org/openapitools/client/models/MvcValidationProblemDetails.kt
+src/test/kotlin/org/openapitools/client/apis/ContentExtractionApiTest.kt
+src/test/kotlin/org/openapitools/client/apis/FilingMetadataApiTest.kt
+src/test/kotlin/org/openapitools/client/apis/FullTextSearchApiTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOExtractorTypeTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOFilingExtractResultDtoTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOFilingItemDtoTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOFilingMetadataDtoTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOFilingSortByTest.kt
+src/test/kotlin/org/openapitools/client/models/DTOSecFilingResultDtoTest.kt
+src/test/kotlin/org/openapitools/client/models/MvcProblemDetailsTest.kt
+src/test/kotlin/org/openapitools/client/models/MvcValidationProblemDetailsTest.kt

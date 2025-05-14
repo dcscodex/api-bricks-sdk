@@ -1,5 +1,6 @@
 .github/workflows/maven.yml
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -54,3 +55,14 @@ src/main/java/org/openapitools/client/model/DTOFilingSortBy.java
 src/main/java/org/openapitools/client/model/DTOSecFilingResultDto.java
 src/main/java/org/openapitools/client/model/MvcProblemDetails.java
 src/main/java/org/openapitools/client/model/MvcValidationProblemDetails.java
+src/test/java/org/openapitools/client/api/ContentExtractionApiTest.java
+src/test/java/org/openapitools/client/api/FilingMetadataApiTest.java
+src/test/java/org/openapitools/client/api/FullTextSearchApiTest.java
+src/test/java/org/openapitools/client/model/DTOExtractorTypeTest.java
+src/test/java/org/openapitools/client/model/DTOFilingExtractResultDtoTest.java
+src/test/java/org/openapitools/client/model/DTOFilingItemDtoTest.java
+src/test/java/org/openapitools/client/model/DTOFilingMetadataDtoTest.java
+src/test/java/org/openapitools/client/model/DTOFilingSortByTest.java
+src/test/java/org/openapitools/client/model/DTOSecFilingResultDtoTest.java
+src/test/java/org/openapitools/client/model/MvcProblemDetailsTest.java
+src/test/java/org/openapitools/client/model/MvcValidationProblemDetailsTest.java

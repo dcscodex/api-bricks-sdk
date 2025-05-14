@@ -1,0 +1,23 @@
+name: FinFeedAPI SEC API OpenAPI to SDK
+
+on:
+  push:
+    branches:
+      - master # Adjust to your default branch (e.g., main) if different
+    paths:
+      - 'finfeedapi/sec-api-rest/spec/openapi.json'
+  pull_request:
+    branches:
+      - master # Adjust to your default branch (e.g., main) if different
+    paths:
+      - 'finfeedapi/sec-api-rest/spec/openapi.json'
+
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-openapi-to-sdk.yaml
+    with:
+      product_line_slug: "finfeedapi"
+      api_type_slug: "sec-api-rest"
+      commit_message_subject: "FinFeedAPI SEC API REST Historical"
+    secrets:
+      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

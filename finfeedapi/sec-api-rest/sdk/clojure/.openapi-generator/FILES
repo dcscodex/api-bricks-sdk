@@ -1,0 +1,16 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/rest_api/api/content_extraction.clj
+src/rest_api/api/filing_metadata.clj
+src/rest_api/api/full_text_search.clj
+src/rest_api/core.clj
+src/rest_api/specs/dto/extractor_type.clj
+src/rest_api/specs/dto/filing_extract_result_dto.clj
+src/rest_api/specs/dto/filing_item_dto.clj
+src/rest_api/specs/dto/filing_metadata_dto.clj
+src/rest_api/specs/dto/filing_sort_by.clj
+src/rest_api/specs/dto/sec_filing_result_dto.clj
+src/rest_api/specs/mvc/problem_details.clj
+src/rest_api/specs/mvc/validation_problem_details.clj

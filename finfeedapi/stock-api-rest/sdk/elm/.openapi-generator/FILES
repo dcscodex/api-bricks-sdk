@@ -1,0 +1,10 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+elm.json
+src/Api.elm
+src/Api/Data.elm
+src/Api/Request/Metadata.elm
+src/Api/Request/NativeIEX.elm
+src/Api/Request/Ohlcv.elm
+src/Api/Time.elm

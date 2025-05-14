@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+README.md
+build.gradle
+src/main/groovy/org/openapitools/api/ApiUtils.groovy
+src/main/groovy/org/openapitools/api/ContentExtractionApi.groovy
+src/main/groovy/org/openapitools/api/FilingMetadataApi.groovy
+src/main/groovy/org/openapitools/api/FullTextSearchApi.groovy
+src/main/groovy/org/openapitools/model/DTOExtractorType.groovy
+src/main/groovy/org/openapitools/model/DTOFilingExtractResultDto.groovy
+src/main/groovy/org/openapitools/model/DTOFilingItemDto.groovy
+src/main/groovy/org/openapitools/model/DTOFilingMetadataDto.groovy
+src/main/groovy/org/openapitools/model/DTOFilingSortBy.groovy
+src/main/groovy/org/openapitools/model/DTOSecFilingResultDto.groovy
+src/main/groovy/org/openapitools/model/MvcProblemDetails.groovy
+src/main/groovy/org/openapitools/model/MvcValidationProblemDetails.groovy

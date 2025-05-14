@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CoinAPI.WebSocket.Stats.Console": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

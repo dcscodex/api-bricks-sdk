@@ -1,0 +1,7 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/python
+generatorName: python
+additionalProperties:
+  packageName: api_bricks_stock_api_rest
+  projectName: API Bricks Stock API REST
+  generateSourceCodeOnly: true

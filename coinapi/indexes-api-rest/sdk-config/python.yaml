@@ -1,0 +1,7 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/python
+generatorName: python
+additionalProperties:
+  packageName: api_bricks_coinapi_indexes_api_rest	
+  projectName: API Bricks CoinAPI Indexes API REST
+  generateSourceCodeOnly: true

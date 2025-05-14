@@ -750,7 +750,7 @@
   "tags": [
     {
       "name": "Extractor",
-      "description": "Provides endpoints for extracting and classifying content from SEC filing HTML documents."
+      "description": "Provides endpoints for extracting and classifying content from SEC filing HTML documents. "
     },
     {
       "name": "Filings",

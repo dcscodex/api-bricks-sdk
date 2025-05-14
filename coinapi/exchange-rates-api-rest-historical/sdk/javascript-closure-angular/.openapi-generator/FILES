@@ -1,0 +1,11 @@
+.openapi-generator-ignore
+API/Client/ExchangeRatesApi.js
+API/Client/MetadataApi.js
+API/Client/V1Asset.js
+API/Client/V1ChainNetworkAddress.js
+API/Client/V1ExchangeRate.js
+API/Client/V1ExchangeRates.js
+API/Client/V1ExchangeRatesRate.js
+API/Client/V1ExchangeRatesTimeseriesItem.js
+API/Client/V1Icon.js
+API/Client/V1TimeseriesPeriod.js

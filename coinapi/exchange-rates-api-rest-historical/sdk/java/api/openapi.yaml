@@ -1,0 +1,1281 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@apibricks.io
+    name: API BRICKS LTD
+    url: https://www.coinapi.io
+  license:
+    name: MIT License
+    url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
+  title: Exchange Rates Historical REST API
+  version: v1
+servers:
+- url: https://api-historical.exrates.coinapi.io
+security:
+- APIKey: []
+tags:
+- description: "\n<span data-status-page=\"28924\"></span>\nExchange rate is defined\
+    \ as (VWAP-24H) last 24 hour (rolling window over time) Volume Weighted Average\
+    \ Price across multiple data sources listed on our platform. We are selecting\
+    \ and managing the data sources that are used in the calculation based on multiple\
+    \ factors to provide data of highest quality. \n\nAlgorithm is described below:\n\
+    \n  1. Exchange rates are produced from quotes, trades, and metadata datasets.\n\
+    \  1. Symbols that are not data_type = \"SPOT\" are excluded from the calculation.\n\
+    \  1. Symbols from the data sources that were marked by us as not legitimate are\
+    \ excluded from the calculation.\n  1. Quotes data where the spread is outside\
+    \ the range of ```<0$; 67%>``` are discarded. `spreadPrc = (ask - bid) / ((ask\
+    \ + bid) / 2)`\n  1. The midpoint from the quote data is used as a pricing reference\
+    \ and it's weighted by the passive cumulative volume resting on the best prices.\n\
+    \  1. Volume from the trades is used to weight the midpoint prices in the VWAP24\
+    \ algorithm.\n  1. Midpoint data that has not been updated in the last 5 minutes\
+    \ and 1 second is discarded.\n  1. The last 24-hour volume for each symbol is\
+    \ updated every 4 hours when approximately 20% of the data in the sliding window\
+    \ changes (also, the list of eligible markets is updated at the same time).\n\
+    \  1. Everywhere in the algorithm below, we are using asset pairs only from exchanges\
+    \ that have the highest legitimacy rank, and the rest of the exchanges are discarded.\
+    \ As we establish the highest-ranking exchanges that have this data for each asset\
+    \ pair, we ensure that the highest quality data is used for each of them. The\
+    \ rank used for asset pairing is carried over to the following steps.\n  1. Every\
+    \ 1 second, we update VWAP24 data for every asset pair across all data sources.\n\
+    \  1. For each asset pair, we also discard data that is outside the 3 sigma range\
+    \ if there are at least 3 exchanges for this asset pair.\n  1. From the VWAP24\
+    \ data, we are creating a tree structure where node/vertex = asset and edge =\
+    \ rate.\n  1. By traversing the tree structure using the BFS algorithm and our\
+    \ secret sauce, we are able to establish the final exchange rates.\n    "
+  name: Exchange Rates
+- description: <span data-status-page="28923"></span>
+  name: Metadata
+- description: Controller for accessing asset information.
+  name: Assets
+paths:
+  /v1/assets:
+    get:
+      description: "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset\
+        \ identifiers are aligned with the ISO 4217 currency codes standard only for\
+        \ fiat money (government or law regulated currency).\r\n:::\r\n          \
+        \  \r\n:::info\r\nProperties of the output are providing aggregated information\
+        \ from across all symbols related to the specific asset. If you need to calculate\
+        \ your aggregation (e.g., limiting only the particular type of symbols), you\
+        \ should use /v1/symbols endpoint as a data source.\r\n:::"
+      parameters:
+      - description: "Comma or semicolon delimited asset identifiers used to filter\
+          \ response. (optional, eg. `BTC;ETH`)."
+        explode: true
+        in: query
+        name: filter_asset_id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+          description: successful operation
+      summary: List all assets
+      tags:
+      - Metadata
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/assets/{asset_id}:
+    get:
+      parameters:
+      - description: The asset ID.
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    name: Bitcoin
+                    type_is_crypto: 1
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:55:07.6724523Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:17.8592413Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:11.8220000Z
+                    data_symbols_count: 22711
+                    volume_1hrs_usd: 1.0289443143649E11
+                    volume_1day_usd: 2.08639232325616E12
+                    volume_1mth_usd: 5.792916835998454E13
+                    price_usd: 9166.207274778093
+                    chain_addresses:
+                    - chain_id: ARBITRUM
+                      network_id: MAINNET
+                      address: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+                  - asset_id: USD
+                    name: US Dollar
+                    type_is_crypto: 0
+                    data_quote_start: 2014-02-24T17:43:05.0000000Z
+                    data_quote_end: 2019-11-03T17:54:49.3807706Z
+                    data_orderbook_start: 2014-02-24T17:43:05.0000000Z
+                    data_orderbook_end: 2019-11-03T17:55:13.1863931Z
+                    data_trade_start: 2010-07-17T23:09:17.0000000Z
+                    data_trade_end: 2019-11-03T17:55:07.7870000Z
+                    data_symbols_count: 10728
+                    volume_1hrs_usd: 9.46645401652E9
+                    volume_1day_usd: 2.2158075817349E11
+                    volume_1mth_usd: 1.18166851746617E13
+                    price_usd: 1.0
+                    chain_addresses:
+                    - chain_id: ETHEREUM
+                      network_id: MAINNET
+                      address: 0xd233d1f6fd11640081abb8db125f722b5dc729dc
+                    data_start: 2010-07-17
+                    data_end: 2019-11-03
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Asset'
+                type: array
+          description: successful operation
+      summary: List all assets by asset ID
+      tags:
+      - Metadata
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/assets/icons/{size}:
+    get:
+      description: Gets the list of icons (of the given size) for all the assets.
+      parameters:
+      - description: The size of the icons.
+        explode: false
+        in: path
+        name: size
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png
+                  - asset_id: ETH
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png
+                  - asset_id: USD
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Icon'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png
+                  - asset_id: ETH
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png
+                  - asset_id: USD
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Icon'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - asset_id: BTC
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png
+                  - asset_id: ETH
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/04836ff3bc4d4d95820e0155594dca86.png
+                  - asset_id: USD
+                    url: https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/4873707f25fe4de3b4bca6fa5c631011.png
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.Icon'
+                type: array
+          description: successful operation
+      summary: List all asset icons
+      tags:
+      - Metadata
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/exchangerate/{asset_id_base}/{asset_id_quote}:
+    get:
+      description: "Retrieves the exchange rate for a specific base and quote asset\
+        \ at a given time or the current rate.\r\n            \r\n:::info\r\nIf you\
+        \ are using an exchange rate for mission-critical operations, then for best\
+        \ reliability, you should measure the difference between current time and\
+        \ the time returned from the response to ensure that value of the difference\
+        \ between those meets your internal requirements.\r\n:::"
+      operationId: Get specific rate
+      parameters:
+      - description: Requested exchange rate base asset identifier (from the Metadata
+          -> Assets)
+        explode: false
+        in: path
+        name: asset_id_base
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Requested exchange rate quote asset identifier (from the Metadata
+          -> Assets)
+        explode: false
+        in: path
+        name: asset_id_quote
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Time at which exchange rate is calculated (optional, if not\
+          \ supplied then current rate is returned)"
+        explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                    time: 2025-05-14T13:03:29.4970763Z
+                    asset_id_base: BTC
+                    asset_id_quote: USD
+                    rate: 10000.0
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRate'
+            application/json:
+              examples:
+                Example response:
+                  value:
+                    time: 2025-05-14T13:03:29.4970763Z
+                    asset_id_base: BTC
+                    asset_id_quote: USD
+                    rate: 10000.0
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRate'
+            text/json:
+              examples:
+                Example response:
+                  value:
+                    time: 2025-05-14T13:03:29.4970763Z
+                    asset_id_base: BTC
+                    asset_id_quote: USD
+                    rate: 10000.0
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRate'
+          description: successful operation
+      summary: Get specific rate
+      tags:
+      - Exchange Rates
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/exchangerate/{asset_id_base}:
+    get:
+      description: "Get the current exchange rate between requested asset and all\
+        \ other assets.\r\n            \r\n:::info\r\nIf you are using an exchange\
+        \ rate for mission-critical operations, then for best reliability, you should\
+        \ measure the difference between current time and the time returned from the\
+        \ response to ensure that value of the difference between those meets your\
+        \ internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert\
+        \ the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\
+        \n:::"
+      parameters:
+      - description: Requested exchange rates base asset identifier (from the Metadata
+          -> Assets)
+        explode: false
+        in: path
+        name: asset_id_base
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Comma or semicolon delimited asset identifiers used to filter
+          response (optional)
+        explode: true
+        in: query
+        name: filter_asset_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "True will invert all the rates (optional, if true then rates\
+          \ will be calculated as `rate = 1 / actual_rate` eg. `USD/BTC` as `BTC/USD`)"
+        explode: true
+        in: query
+        name: invert
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Time for historical rates (optional)
+        explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                    asset_id_base: BTC
+                    rates:
+                    - time: 2017-08-09T14:31:37.0520000Z
+                      asset_id_quote: USD
+                      rate: 3258.887541779804
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: EUR
+                      rate: 2782.5255080599272
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: CNY
+                      rate: 21756.295595926054
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: GBP
+                      rate: 2509.602420379958
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRates'
+            application/json:
+              examples:
+                Example response:
+                  value:
+                    asset_id_base: BTC
+                    rates:
+                    - time: 2017-08-09T14:31:37.0520000Z
+                      asset_id_quote: USD
+                      rate: 3258.887541779804
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: EUR
+                      rate: 2782.5255080599272
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: CNY
+                      rate: 21756.295595926054
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: GBP
+                      rate: 2509.602420379958
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRates'
+            text/json:
+              examples:
+                Example response:
+                  value:
+                    asset_id_base: BTC
+                    rates:
+                    - time: 2017-08-09T14:31:37.0520000Z
+                      asset_id_quote: USD
+                      rate: 3258.887541779804
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: EUR
+                      rate: 2782.5255080599272
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: CNY
+                      rate: 21756.295595926054
+                    - time: 2017-08-09T14:31:36.7570000Z
+                      asset_id_quote: GBP
+                      rate: 2509.602420379958
+              schema:
+                $ref: '#/components/schemas/v1.ExchangeRates'
+          description: successful operation
+      summary: Get all current rates
+      tags:
+      - Exchange Rates
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/exchangerate/history/periods:
+    get:
+      description: "You can also obtain historical exchange rates of any asset pair,\
+        \ grouped into time periods.\r\nGet full list of supported time periods available\
+        \ for requesting exchange rates historical timeseries data.\r\n          \
+        \  \r\n## Timeseries periods\r\nTime unit |\tPeriod identifiers\r\n--- | ---\r\
+        \nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\r\
+        \nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\r\
+        \nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\nDay | 1DAY, 2DAY, 3DAY,\
+        \ 5DAY, 7DAY, 10DAY"
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 30MIN
+                    length_seconds: 1800
+                    length_months: 0
+                    unit_count: 30
+                    unit_name: minute
+                    display_name: 30 Minutes
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesPeriod'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 30MIN
+                    length_seconds: 1800
+                    length_months: 0
+                    unit_count: 30
+                    unit_name: minute
+                    display_name: 30 Minutes
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesPeriod'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 30MIN
+                    length_seconds: 1800
+                    length_months: 0
+                    unit_count: 30
+                    unit_name: minute
+                    display_name: 30 Minutes
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.TimeseriesPeriod'
+                type: array
+          description: successful operation
+      summary: Timeseries periods
+      tags:
+      - Exchange Rates
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+  /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history:
+    get:
+      description: Get the historical exchange rates between two assets in the form
+        of the timeseries.
+      parameters:
+      - description: Requested exchange rates base asset identifier (from the Metadata
+          -> Assets)
+        explode: false
+        in: path
+        name: asset_id_base
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Requested exchange rates base asset identifier (from the Metadata
+          -> Assets)
+        explode: false
+        in: path
+        name: asset_id_quote
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Identifier of requested timeseries period (required, e.g. `5SEC`\
+          \ or `1HRS`)"
+        explode: true
+        in: query
+        name: period_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Timeseries starting time in ISO 8601 (required)
+        explode: true
+        in: query
+        name: time_start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Timeseries ending time in ISO 8601 (required)
+        explode: true
+        in: query
+        name: time_end
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Amount of items to return (optional, mininum is 1, maximum is\
+          \ 100000, default value is 100, if the parameter is used then every 100\
+          \ output items are counted as one request)"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2016-01-01T00:00:00.0000000Z
+                    time_period_end: 2016-01-01T00:01:00.0000000Z
+                    time_open: 2016-01-01T00:00:00.0000000Z
+                    time_close: 2016-01-01T00:00:00.0000000Z
+                    rate_open: 430.586617904731
+                    rate_high: 430.586617904731
+                    rate_low: 430.586617904731
+                    rate_close: 430.586617904731
+                  - time_period_start: 2016-01-01T00:01:00.0000000Z
+                    time_period_end: 2016-01-01T00:02:00.0000000Z
+                    time_open: 2016-01-01T00:01:00.0000000Z
+                    time_close: 2016-01-01T00:01:00.0000000Z
+                    rate_open: 430.38999999999993
+                    rate_high: 430.38999999999993
+                    rate_low: 430.38999999999993
+                    rate_close: 430.38999999999993
+                  - time_period_start: 2016-01-01T00:02:00.0000000Z
+                    time_period_end: 2016-01-01T00:03:00.0000000Z
+                    time_open: 2016-01-01T00:02:00.0000000Z
+                    time_close: 2016-01-01T00:02:00.0000000Z
+                    rate_open: 430.6522189770523
+                    rate_high: 430.6522189770523
+                    rate_low: 430.6522189770523
+                    rate_close: 430.6522189770523
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2016-01-01T00:00:00.0000000Z
+                    time_period_end: 2016-01-01T00:01:00.0000000Z
+                    time_open: 2016-01-01T00:00:00.0000000Z
+                    time_close: 2016-01-01T00:00:00.0000000Z
+                    rate_open: 430.586617904731
+                    rate_high: 430.586617904731
+                    rate_low: 430.586617904731
+                    rate_close: 430.586617904731
+                  - time_period_start: 2016-01-01T00:01:00.0000000Z
+                    time_period_end: 2016-01-01T00:02:00.0000000Z
+                    time_open: 2016-01-01T00:01:00.0000000Z
+                    time_close: 2016-01-01T00:01:00.0000000Z
+                    rate_open: 430.38999999999993
+                    rate_high: 430.38999999999993
+                    rate_low: 430.38999999999993
+                    rate_close: 430.38999999999993
+                  - time_period_start: 2016-01-01T00:02:00.0000000Z
+                    time_period_end: 2016-01-01T00:03:00.0000000Z
+                    time_open: 2016-01-01T00:02:00.0000000Z
+                    time_close: 2016-01-01T00:02:00.0000000Z
+                    rate_open: 430.6522189770523
+                    rate_high: 430.6522189770523
+                    rate_low: 430.6522189770523
+                    rate_close: 430.6522189770523
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2016-01-01T00:00:00.0000000Z
+                    time_period_end: 2016-01-01T00:01:00.0000000Z
+                    time_open: 2016-01-01T00:00:00.0000000Z
+                    time_close: 2016-01-01T00:00:00.0000000Z
+                    rate_open: 430.586617904731
+                    rate_high: 430.586617904731
+                    rate_low: 430.586617904731
+                    rate_close: 430.586617904731
+                  - time_period_start: 2016-01-01T00:01:00.0000000Z
+                    time_period_end: 2016-01-01T00:02:00.0000000Z
+                    time_open: 2016-01-01T00:01:00.0000000Z
+                    time_close: 2016-01-01T00:01:00.0000000Z
+                    rate_open: 430.38999999999993
+                    rate_high: 430.38999999999993
+                    rate_low: 430.38999999999993
+                    rate_close: 430.38999999999993
+                  - time_period_start: 2016-01-01T00:02:00.0000000Z
+                    time_period_end: 2016-01-01T00:03:00.0000000Z
+                    time_open: 2016-01-01T00:02:00.0000000Z
+                    time_close: 2016-01-01T00:02:00.0000000Z
+                    rate_open: 430.6522189770523
+                    rate_high: 430.6522189770523
+                    rate_low: 430.6522189770523
+                    rate_close: 430.6522189770523
+              schema:
+                items:
+                  $ref: '#/components/schemas/v1.ExchangeRatesTimeseriesItem'
+                type: array
+          description: successful operation
+      summary: Timeseries data
+      tags:
+      - Exchange Rates
+      x-accepts:
+      - application/json
+      - text/json
+      - text/plain
+components:
+  schemas:
+    v1.Asset:
+      additionalProperties: false
+      description: Represents an asset.
+      example:
+        price_usd: 2.3021358869347655
+        volume_1mth_usd: 5.637376656633329
+        data_end: data_end
+        id_icon: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        data_orderbook_end: 2000-01-23T04:56:07.000+00:00
+        data_start: data_start
+        type_is_crypto: 0
+        data_quote_start: 2000-01-23T04:56:07.000+00:00
+        asset_id: asset_id
+        volume_1hrs_usd: 1.4658129805029452
+        supply_current: 7.061401241503109
+        data_quote_end: 2000-01-23T04:56:07.000+00:00
+        data_orderbook_start: 2000-01-23T04:56:07.000+00:00
+        data_trade_start: 2000-01-23T04:56:07.000+00:00
+        supply_max: 3.616076749251911
+        name: name
+        data_symbols_count: 6
+        chain_addresses:
+        - network_id: network_id
+          address: address
+          chain_id: chain_id
+        - network_id: network_id
+          address: address
+          chain_id: chain_id
+        supply_total: 9.301444243932576
+        data_trade_end: 2000-01-23T04:56:07.000+00:00
+        volume_1day_usd: 5.962133916683182
+      properties:
+        asset_id:
+          description: Gets or sets the asset ID.
+          nullable: true
+          type: string
+        name:
+          description: Gets or sets the name of the asset.
+          nullable: true
+          type: string
+        type_is_crypto:
+          description: Gets or sets a value indicating whether the asset is a cryptocurrency.
+          format: int32
+          type: integer
+        data_quote_start:
+          description: Gets or sets the start date of quote data.
+          format: date-time
+          nullable: true
+          type: string
+        data_quote_end:
+          description: Gets or sets the end date of quote data.
+          format: date-time
+          nullable: true
+          type: string
+        data_orderbook_start:
+          description: Gets or sets the start date of order book data.
+          format: date-time
+          nullable: true
+          type: string
+        data_orderbook_end:
+          description: Gets or sets the end date of order book data.
+          format: date-time
+          nullable: true
+          type: string
+        data_trade_start:
+          description: Gets or sets the start date of trade data.
+          format: date-time
+          nullable: true
+          type: string
+        data_trade_end:
+          description: Gets or sets the end date of trade data.
+          format: date-time
+          nullable: true
+          type: string
+        data_symbols_count:
+          description: Gets or sets the number of symbols.
+          format: int64
+          nullable: true
+          type: integer
+        volume_1hrs_usd:
+          description: Gets or sets the USD volume in the last 1 hour.
+          format: double
+          nullable: true
+          type: number
+        volume_1day_usd:
+          description: Gets or sets the USD volume in the last 1 day.
+          format: double
+          nullable: true
+          type: number
+        volume_1mth_usd:
+          description: Gets or sets the USD volume in the last 1 month.
+          format: double
+          nullable: true
+          type: number
+        price_usd:
+          description: Gets or sets the USD price of the asset.
+          format: double
+          nullable: true
+          type: number
+        id_icon:
+          description: Gets or sets the ID of the icon for the asset.
+          format: uuid
+          nullable: true
+          type: string
+        supply_current:
+          description: Gets or sets the current supply of the asset.
+          format: double
+          nullable: true
+          type: number
+        supply_total:
+          description: Gets or sets the total supply of the asset.
+          format: double
+          nullable: true
+          type: number
+        supply_max:
+          description: Gets or sets the maximum supply of the asset.
+          format: double
+          nullable: true
+          type: number
+        chain_addresses:
+          description: ""
+          items:
+            $ref: '#/components/schemas/v1.ChainNetworkAddress'
+          nullable: true
+          type: array
+        data_start:
+          nullable: true
+          readOnly: true
+          type: string
+        data_end:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    v1.ChainNetworkAddress:
+      additionalProperties: false
+      description: Contains information about assets' chain network addresses
+      example:
+        network_id: network_id
+        address: address
+        chain_id: chain_id
+      properties:
+        chain_id:
+          description: Gets or sets chain id
+          nullable: true
+          type: string
+        network_id:
+          description: Gets or sets network id
+          nullable: true
+          type: string
+        address:
+          description: Gets or sets chain address
+          nullable: true
+          type: string
+      type: object
+    v1.ExchangeRate:
+      additionalProperties: false
+      description: Represents an exchange rate.
+      example:
+        asset_id_base: asset_id_base
+        rate: 0.8008281904610115
+        asset_id_quote: asset_id_quote
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          description: Gets or sets the time of the exchange rate.
+          format: date-time
+          type: string
+        asset_id_base:
+          description: Gets or sets the base asset ID of the exchange rate.
+          nullable: true
+          type: string
+        asset_id_quote:
+          description: Gets or sets the quote asset ID of the exchange rate.
+          nullable: true
+          type: string
+        rate:
+          description: Gets or sets the exchange rate value.
+          format: double
+          type: number
+      type: object
+    v1.ExchangeRates:
+      additionalProperties: false
+      description: Represents exchange rates for a specific base asset.
+      example:
+        asset_id_base: asset_id_base
+        rates:
+        - rate: 0.8008281904610115
+          asset_id_quote: asset_id_quote
+          time: 2000-01-23T04:56:07.000+00:00
+        - rate: 0.8008281904610115
+          asset_id_quote: asset_id_quote
+          time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        asset_id_base:
+          description: Gets or sets the base asset ID.
+          nullable: true
+          type: string
+        rates:
+          description: Gets or sets the list of exchange rates.
+          items:
+            $ref: '#/components/schemas/v1.ExchangeRatesRate'
+          nullable: true
+          type: array
+      type: object
+    v1.ExchangeRatesRate:
+      additionalProperties: false
+      description: Represents an exchange rate within a collection of exchange rates.
+      example:
+        rate: 0.8008281904610115
+        asset_id_quote: asset_id_quote
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          description: Gets or sets the time of the exchange rate.
+          format: date-time
+          type: string
+        asset_id_quote:
+          description: Gets or sets the quote asset ID of the exchange rate.
+          nullable: true
+          type: string
+        rate:
+          description: Gets or sets the exchange rate value.
+          format: double
+          type: number
+      type: object
+    v1.ExchangeRatesTimeseriesItem:
+      additionalProperties: false
+      description: Represents an item in the exchange rate timeseries.
+      example:
+        time_period_end: 2000-01-23T04:56:07.000+00:00
+        time_open: 2000-01-23T04:56:07.000+00:00
+        rate_high: 6.027456183070403
+        rate_low: 1.4658129805029452
+        time_close: 2000-01-23T04:56:07.000+00:00
+        rate_close: 5.962133916683182
+        time_period_start: 2000-01-23T04:56:07.000+00:00
+        rate_open: 0.8008281904610115
+      properties:
+        time_period_start:
+          description: Gets or sets the start time of the period.
+          format: date-time
+          type: string
+        time_period_end:
+          description: Gets or sets the end time of the period.
+          format: date-time
+          type: string
+        time_open:
+          description: Gets or sets the opening time of the period.
+          format: date-time
+          nullable: true
+          type: string
+        time_close:
+          description: Gets or sets the closing time of the period.
+          format: date-time
+          nullable: true
+          type: string
+        rate_open:
+          description: Gets or sets the opening rate for the period.
+          format: double
+          nullable: true
+          type: number
+        rate_high:
+          description: Gets or sets the highest rate for the period.
+          format: double
+          nullable: true
+          type: number
+        rate_low:
+          description: Gets or sets the lowest rate for the period.
+          format: double
+          nullable: true
+          type: number
+        rate_close:
+          description: Gets or sets the closing rate for the period.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    v1.Icon:
+      additionalProperties: false
+      description: Represents an icon.
+      example:
+        exchange_id: exchange_id
+        asset_id: asset_id
+        url: url
+      properties:
+        exchange_id:
+          description: Gets or sets the exchange ID associated with the icon.
+          nullable: true
+          type: string
+        asset_id:
+          description: Gets or sets the asset ID associated with the icon.
+          nullable: true
+          type: string
+        url:
+          description: Gets or sets the URL of the icon.
+          nullable: true
+          type: string
+      type: object
+    v1.TimeseriesPeriod:
+      additionalProperties: false
+      description: Represents a timeseries period used in exchange rate data.
+      example:
+        unit_name: unit_name
+        length_months: 6
+        length_seconds: 0
+        period_id: period_id
+        display_name: display_name
+        unit_count: 1
+      properties:
+        period_id:
+          description: The period ID.
+          nullable: true
+          type: string
+        length_seconds:
+          description: The length of the period in seconds.
+          format: int32
+          type: integer
+        length_months:
+          description: The length of the period in months.
+          format: int32
+          type: integer
+        unit_count:
+          description: The unit count.
+          format: int32
+          nullable: true
+          type: integer
+        unit_name:
+          description: The unit name.
+          nullable: true
+          type: string
+        display_name:
+          description: The display name of the timeseries period.
+          nullable: true
+          type: string
+      type: object
+  securitySchemes:
+    APIKey:
+      description: CoinAPI API key needed to access the endpoints
+      in: header
+      name: X-CoinAPI-Key
+      type: apiKey
+

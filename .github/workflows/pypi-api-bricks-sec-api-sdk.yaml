@@ -1,1 +1,48 @@
- 
+name: Publish Python SEC API SDK to PyPI
+
+on:
+  push:
+    branches:
+      - main # Or your primary branch name
+    paths:
+      - 'finfeedapi/sec-api/sdk/python/**' # Watch for changes in the Python SDK directory
+
+jobs:
+  pypi-publish:
+    name: upload release to PyPI
+    runs-on: ubuntu-latest
+    # Ensure this environment is configured in your GitHub settings for PyPI trusted publishing
+    # It should be configured to allow deployments from this repository and branch/tag.
+    environment: pypi 
+    permissions:
+      id-token: write # Required for OIDC trusted publishing
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # Specify your desired Python version (e.g., 3.8, 3.9, 3.10, 3.11)
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build wheel setuptools
+
+      - name: Build package distributions
+        # Change working directory to where your pyproject.toml or setup.py is located
+        working-directory: finfeedapi/sec-api/sdk/python 
+        run: python -m build --sdist --wheel --outdir dist/ .
+        # This command builds the package and places the .tar.gz and .whl files 
+        # into finfeedapi/sec-api/sdk/python/dist/
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # packages-dir should point to the directory containing the built distributions
+          packages-dir: finfeedapi/sec-api/sdk/python/dist/
+          # For trusted publishing, user and password/token are not needed here.
+          # The action will automatically use the OIDC token obtained via the id-token permission.
+          # Ensure your PyPI project is configured to trust publishes from this GitHub repository/workflow. 

@@ -47,7 +47,7 @@ func (r ApiV1ExtractorGetRequest) Execute() (*DTOFilingExtractResultDto, *http.R
 }
 
 /*
-V1ExtractorGet Extract and classify SEC filing content 
+V1ExtractorGet Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.
 

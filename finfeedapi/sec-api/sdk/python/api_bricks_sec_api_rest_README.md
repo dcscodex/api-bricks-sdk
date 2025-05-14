@@ -51,7 +51,7 @@ with api_bricks_sec_api_rest.ApiClient(configuration) as api_client:
     type = api_bricks_sec_api_rest.DTOExtractorType() # DTOExtractorType | Result type (text or html, default: text) (optional)
 
     try:
-        # Extract and classify SEC filing content 
+        # Extract and classify SEC filing content
         api_response = api_instance.v1_extractor_get(accession_number, type=type)
         print("The response of ContentExtractionApi->v1_extractor_get:\n")
         pprint(api_response)
@@ -66,7 +66,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ContentExtractionApi* | [**v1_extractor_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content 
+*ContentExtractionApi* | [**v1_extractor_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 *ContentExtractionApi* | [**v1_extractor_item_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**v1_filings_get**](api_bricks_sec_api_rest/docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**v1_full_text_get**](api_bricks_sec_api_rest/docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents

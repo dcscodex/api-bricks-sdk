@@ -42,8 +42,8 @@ All URIs are relative to https://api-historical.sec.finfeedapi.comhttps://api-hi
 ### ContentExtractionManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-*v1ExtractorGetSync* | *GET* /v1/extractor | Extract and classify SEC filing content .
-*v1ExtractorGetASync* | *GET* /v1/extractor | Extract and classify SEC filing content .
+*v1ExtractorGetSync* | *GET* /v1/extractor | Extract and classify SEC filing content.
+*v1ExtractorGetASync* | *GET* /v1/extractor | Extract and classify SEC filing content.
 *v1ExtractorItemGetSync* | *GET* /v1/extractor/item | Extract specific item content from SEC filing.
 *v1ExtractorItemGetASync* | *GET* /v1/extractor/item | Extract specific item content from SEC filing.
 

@@ -20,7 +20,7 @@
 #' var_accession_number <- "accession_number_example" # character | The SEC filing accession number used to retrieve the filing from EDGAR database.
 #' var_type <- DTO.ExtractorType$new() # DTOExtractorType | Result type (text or html, default: text) (Optional)
 #'
-#' #Extract and classify SEC filing content 
+#' #Extract and classify SEC filing content
 #' api_instance <- ContentExtractionApi$new()
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -67,7 +67,7 @@ ContentExtractionApi <- R6::R6Class(
     },
 
     #' @description
-    #' Extract and classify SEC filing content 
+    #' Extract and classify SEC filing content
     #'
     #' @param accession_number The SEC filing accession number used to retrieve the filing from EDGAR database.
     #' @param type (optional) Result type (text or html, default: text)
@@ -89,7 +89,7 @@ ContentExtractionApi <- R6::R6Class(
     },
 
     #' @description
-    #' Extract and classify SEC filing content 
+    #' Extract and classify SEC filing content
     #'
     #' @param accession_number The SEC filing accession number used to retrieve the filing from EDGAR database.
     #' @param type (optional) Result type (text or html, default: text)

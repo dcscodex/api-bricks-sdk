@@ -30,7 +30,7 @@ class TestContentExtractionApi(unittest.TestCase):
     def test_v1_extractor_get(self) -> None:
         """Test case for v1_extractor_get
 
-        Extract and classify SEC filing content 
+        Extract and classify SEC filing content
         """
         pass
 

@@ -4,14 +4,14 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content 
+[**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 [**v1_extractor_item_get**](ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 
 
 # **v1_extractor_get**
 > DTOFilingExtractResultDto v1_extractor_get(accession_number, type=type)
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.
 
@@ -56,7 +56,7 @@ with api_bricks_sec_api_rest.ApiClient(configuration) as api_client:
     type = api_bricks_sec_api_rest.DTOExtractorType() # DTOExtractorType | Result type (text or html, default: text) (optional)
 
     try:
-        # Extract and classify SEC filing content 
+        # Extract and classify SEC filing content
         api_response = api_instance.v1_extractor_get(accession_number, type=type)
         print("The response of ContentExtractionApi->v1_extractor_get:\n")
         pprint(api_response)

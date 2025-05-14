@@ -9,7 +9,7 @@
 <#
 .SYNOPSIS
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 .DESCRIPTION
 

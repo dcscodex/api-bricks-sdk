@@ -4,7 +4,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ExtractorGet**](ContentExtractionAPI.md#V1ExtractorGet) | **Get** /v1/extractor | Extract and classify SEC filing content 
+[**V1ExtractorGet**](ContentExtractionAPI.md#V1ExtractorGet) | **Get** /v1/extractor | Extract and classify SEC filing content
 [**V1ExtractorItemGet**](ContentExtractionAPI.md#V1ExtractorItemGet) | **Get** /v1/extractor/item | Extract specific item content from SEC filing
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > DTOFilingExtractResultDto V1ExtractorGet(ctx).AccessionNumber(accessionNumber).Type_(type_).Execute()
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 
 

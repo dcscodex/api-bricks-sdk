@@ -5,7 +5,7 @@
 
 -define(BASE_URL, <<"">>).
 
-%% @doc Extract and classify SEC filing content 
+%% @doc Extract and classify SEC filing content
 %% Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 -spec v1_extractor_get(ctx:ctx(), binary()) -> {ok, openapi_d_to_filing_extract_result_dto:openapi_d_to_filing_extract_result_dto(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_extractor_get(Ctx, AccessionNumber) ->

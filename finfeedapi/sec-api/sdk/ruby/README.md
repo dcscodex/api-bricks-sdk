@@ -65,7 +65,7 @@ opts = {
 }
 
 begin
-  #Extract and classify SEC filing content 
+  #Extract and classify SEC filing content
   result = api_instance.v1_extractor_get(accession_number, opts)
   p result
 rescue OpenapiClient::ApiError => e
@@ -80,7 +80,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OpenapiClient::ContentExtractionApi* | [**v1_extractor_get**](docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content 
+*OpenapiClient::ContentExtractionApi* | [**v1_extractor_get**](docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 *OpenapiClient::ContentExtractionApi* | [**v1_extractor_item_get**](docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *OpenapiClient::FilingMetadataApi* | [**v1_filings_get**](docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *OpenapiClient::FullTextSearchApi* | [**v1_full_text_get**](docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents

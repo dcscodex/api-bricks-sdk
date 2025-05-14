@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+api/ExchangeRatesApi.ts
+api/MetadataApi.ts
+api/api.ts
+configuration.ts
+git_push.sh
+index.ts
+model/V1Asset.ts
+model/V1ChainNetworkAddress.ts
+model/V1ExchangeRate.ts
+model/V1ExchangeRates.ts
+model/V1ExchangeRatesRate.ts
+model/V1Icon.ts
+model/models.ts
+variables.ts

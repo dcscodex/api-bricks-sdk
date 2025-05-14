@@ -1,15 +1,15 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "REST API",
+    "title": "Exchange Rates Realtime REST API",
     "contact": {
-      "name": "COINAPI LTD",
+      "name": "API BRICKS LTD",
       "url": "https://www.coinapi.io",
-      "email": "support@coinapi.io"
+      "email": "support@apibricks.io"
     },
     "license": {
       "name": "MIT License",
-      "url": "https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE"
+      "url": "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"
     },
     "version": "v1"
   },
@@ -794,7 +794,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:53:07.6984803Z",
+  "time": "2025-05-14T13:05:24.2729133Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -809,7 +809,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:53:07.6984803Z",
+  "time": "2025-05-14T13:05:24.2729133Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -824,7 +824,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:53:07.6984803Z",
+  "time": "2025-05-14T13:05:24.2729133Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -839,7 +839,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:53:07.6984803Z",
+  "time": "2025-05-14T13:05:24.2729133Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -893,7 +893,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -927,7 +927,7 @@
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -961,7 +961,7 @@
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -995,7 +995,7 @@
               },
               "application/x-msgpack": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -1214,6 +1214,26 @@
         "additionalProperties": false,
         "description": "Represents an exchange rate."
       },
+      "v1.ExchangeRates": {
+        "type": "object",
+        "properties": {
+          "asset_id_base": {
+            "type": "string",
+            "description": "Gets or sets the base asset ID.",
+            "nullable": true
+          },
+          "rates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1.ExchangeRatesRate"
+            },
+            "description": "Gets or sets the list of exchange rates.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents exchange rates for a specific base asset."
+      },
       "v1.ExchangeRatesRate": {
         "type": "object",
         "properties": {
@@ -1235,26 +1255,6 @@
         },
         "additionalProperties": false,
         "description": "Represents an exchange rate within a collection of exchange rates."
-      },
-      "v1.ExchangeRates`1": {
-        "type": "object",
-        "properties": {
-          "asset_id_base": {
-            "type": "string",
-            "description": "Gets or sets the base asset ID.",
-            "nullable": true
-          },
-          "rates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/v1.ExchangeRatesRate"
-            },
-            "description": "Gets or sets the list of exchange rates.",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Represents exchange rates for a specific base asset."
       },
       "v1.Icon": {
         "type": "object",

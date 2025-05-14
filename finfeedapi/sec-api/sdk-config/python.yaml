@@ -2,3 +2,6 @@
 outputDir: sdk/python
 generatorName: python
 additionalProperties:
+  packageName: api-bricks-sec-api-rest
+  projectName: API Bricks SEC API REST
+  generateSourceCodeOnly: true

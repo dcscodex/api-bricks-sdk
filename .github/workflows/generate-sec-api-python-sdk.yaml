@@ -92,7 +92,7 @@ jobs:
           # outputDir like '../sdk/python' (relative to the config file) or
           # an absolute path like '${{ github.workspace }}/finfeedapi/sec-api/sdk/python'.
           echo "Running OpenAPI Generator CLI batch process..."
-          openapi-generator-cli batch --includes-base-dir ./finfeedapi/sec-api/ ./sdk-config/*.yaml -v 
+          openapi-generator-cli batch ./finfeedapi/sec-api/sdk-config/*.yaml -v 
 
           echo "SDKs generation complete."
 

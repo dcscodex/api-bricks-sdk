@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1", 
+  "openapi": "3.0.1",
   "info": {
     "title": "REST API",
     "contact": {
@@ -794,7 +794,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:19:46.8467095Z",
+  "time": "2025-05-14T12:53:07.6984803Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -809,7 +809,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:19:46.8467095Z",
+  "time": "2025-05-14T12:53:07.6984803Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -824,7 +824,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:19:46.8467095Z",
+  "time": "2025-05-14T12:53:07.6984803Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -839,7 +839,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-14T12:19:46.8467095Z",
+  "time": "2025-05-14T12:53:07.6984803Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0

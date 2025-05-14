@@ -1,0 +1,4 @@
+'!include': 'shared/common.yaml'
+outputDir: out/elm
+generatorName: elm
+additionalProperties:

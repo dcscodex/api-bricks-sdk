@@ -1,10 +1,11 @@
 name: Publish java-websocket package to the GitHub Packages
-on:
-  release:
-    types: [created]
-  push:
-    branches:
-      - master
+on: []
+#  release:
+#    types: [created]
+#  push:
+#    branches:
+#      - master
+
 jobs:
   publish:
     runs-on: ubuntu-latest

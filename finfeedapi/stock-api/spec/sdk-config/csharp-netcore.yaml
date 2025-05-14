@@ -1,0 +1,6 @@
+'!include': 'shared/common.yaml'
+outputDir: out/csharp-netcore
+generatorName: csharp-netcore
+additionalProperties:
+  targetFramework: netcoreapp3.1
+  packageName: CoinAPI.EMSCloudMgmt.REST.V1

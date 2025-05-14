@@ -66,33 +66,35 @@ jobs:
           # You can list available versions with: openapi-generator-cli version-manager list
           openapi-generator-cli version-manager set 7.5.0 # Example: Set to a specific stable version
 
-      - name: Generate Python SDK
+      - name: Generate SDKs
         run: |
           set -e # Exit immediately if a command exits with a non-zero status.
 
-          echo "Generating Python SDK for finfeedapi/sec-api/spec/sec-api-historical.yaml"
-          # Define output directory
+          echo "Generating SDKs using configurations in finfeedapi/sec-api/sdk-config/"
+          # Define base output directory for all SDKs
           SDK_OUTPUT_DIR="finfeedapi/sec-api/sdk"
 
-          # Create the output directory if it doesn't exist
+          # Create the base output directory if it doesn't exist
           mkdir -p "${SDK_OUTPUT_DIR}"
 
-          # It's a good practice to clear the SDK directory before generation
-          # to ensure no stale files are left if the generator doesn't clean up.
-          # Be careful with 'rm -rf' - ensure the path is correct.
-          # Consider if your generator has a 'clean' option.
-          # If the generator overwrites and removes old files, this might not be strictly necessary.
-          echo "Cleaning previous SDK (if any) from ${SDK_OUTPUT_DIR}..."
+          # Clean the base SDK directory before generation.
+          # This ensures no stale files are left. The batch process, guided by
+          # the config files, should then create language-specific subdirectories
+          # (e.g., ${SDK_OUTPUT_DIR}/python, ${SDK_OUTPUT_DIR}/java)
+          # within this cleaned directory.
+          echo "Cleaning previous SDKs (if any) from ${SDK_OUTPUT_DIR}..."
           rm -rf "${SDK_OUTPUT_DIR:?}"/* # The :? ensures the variable is set, preventing accidental deletion of root if empty
 
-          openapi-generator-cli generate \
-            -i finfeedapi/sec-api/spec/sec-api-historical.yaml \
-            -g python \
-            -o "${SDK_OUTPUT_DIR}" \
-            --additional-properties=packageName=sec_api_historical_sdk,projectName=sec-api-historical-sdk \
-            -v # Verbose output
+          # IMPORTANT: Ensure your *.yaml config files in finfeedapi/sec-api/sdk-config/
+          # have their 'outputDir' property correctly set to create language-specific
+          # subdirectories under "${SDK_OUTPUT_DIR}".
+          # For example, a config file 'sdk-config/python.yaml' should specify an
+          # outputDir like '../sdk/python' (relative to the config file) or
+          # an absolute path like '${{ github.workspace }}/finfeedapi/sec-api/sdk/python'.
+          echo "Running OpenAPI Generator CLI batch process..."
+          openapi-generator-cli batch finfeedapi/sec-api/sdk-config/*.yaml -v
 
-          echo "SDK generation complete."
+          echo "SDKs generation complete."
 
       - name: Commit and Push SDK
         # Only run this step for push events to the specified branch

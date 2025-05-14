@@ -1,0 +1,89 @@
+name: Reusable OpenAPI to SDK Generation
+
+on:
+  workflow_call:
+    inputs:
+      product_line_slug:
+        description: 'Slug for the product line (e.g., "finfeedapi")'
+        required: true
+        type: string
+      api_type_slug:
+        description: 'Slug for the API type (e.g., "sec-api", "stock-api")'
+        required: true
+        type: string
+      commit_message_subject:
+        description: 'Subject for the commit message (e.g., "FinFeedAPI SEC API Historical")'
+        required: true
+        type: string
+    secrets:
+      PAT_TOKEN:
+        description: 'PAT token for committing changes'
+        required: true
+
+jobs:
+  build-and-commit-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install OpenAPI Generator CLI
+        run: |
+          npm install -g @openapitools/openapi-generator-cli
+          openapi-generator-cli version-manager set 7.5.0 
+
+      - name: Generate SDKs
+        run: |
+          set -e
+
+          echo "Generating SDKs using configurations for ${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}"
+          SDK_OUTPUT_DIR="${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}/sdk"
+
+          # Create the base output directory if it doesn't exist
+          mkdir -p "${SDK_OUTPUT_DIR}"
+
+          echo "Cleaning previous SDKs (if any) from ${SDK_OUTPUT_DIR}..."
+          rm -rf "${SDK_OUTPUT_DIR:?}"/*
+
+          echo "Running OpenAPI Generator CLI batch process..."
+          cd "${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}/"
+          openapi-generator-cli batch ./sdk-config/*.yaml -v 
+
+          echo "SDKs generation complete for ${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}."
+
+      - name: Commit and Push SDK
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions-bot@users.noreply.github.com'
+          
+          # Navigate to repository root
+          cd "${{ github.workspace }}"
+
+          git add "${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}/sdk/"
+
+          # Check if there are actual changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit in SDK for ${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}."
+          else
+            echo "Changes detected, committing for ${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}..."
+            git commit -m "Auto-generate SDK for ${{ inputs.commit_message_subject }}"
+            
+            git config pull.rebase false 
+            
+            CURRENT_BRANCH=$(echo "${{ github.ref }}" | sed 's!refs/heads/!!')
+            echo "Pulling latest changes from origin/${CURRENT_BRANCH}..."
+            git pull origin ${CURRENT_BRANCH}
+            
+            echo "Pushing changes to origin/${CURRENT_BRANCH}..."
+            git push origin ${CURRENT_BRANCH}
+            echo "Push complete for ${{ inputs.product_line_slug }}/${{ inputs.api_type_slug }}."
+          fi 

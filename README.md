@@ -43,17 +43,41 @@ The FinFeedAPI family includes the following specific APIs and SDKs present in t
 
 ## Repository organization
 
+The repository is organized into two main product families, `coinapi` and `finfeedapi`. Each of these contains subdirectories for specific APIs and their associated SDKs or samples.
+
+### CoinAPI Directories
+
 Directory | Description |
 --- | --- |
-`coinapi/market-data-api` | SDK for CoinAPI Market Data API |
-`coinapi/ems-cloud-mgmt-sdk` | SDK for CoinAPI Execution Management System Managed Cloud REST API |
-`coinapi/ems-gateway-rest-sdk` | SDK for CoinAPI Execution Management System REST API |
-`coinapi/ems-gateway-fix` | SDK for CoinAPI Execution Management System FIX API |
-`coinapi/flat-files-api-processing-samples` | Examples related to processing CryptoTick GZIP+CSV flat files |
-`coinapi/indexes-api` | SDK for CoinAPI Indexes API |
-`coinapi/exchange-rates-api` | SDK for CoinAPI Exchange Rates API |
-`finfeedapi/stock-api` | SDK for FinFeed API Stock API |
-`finfeedapi/sec-api` | SDK for FinFeed API SEC API |
+`coinapi/market-data-api-rest` | SDK for CoinAPI Market Data REST API |
+`coinapi/market-data-api-ws` | SDK for CoinAPI Market Data WebSocket API |
+`coinapi/market-data-api-fix` | SDK for CoinAPI Market Data FIX API |
+`coinapi/ems-cloud-mgmt-api` | SDK for CoinAPI Execution Management System Managed Cloud REST API |
+`coinapi/ems-api-rest` | SDK for CoinAPI Execution Management System REST API |
+`coinapi/ems-api-fix` | SDK for CoinAPI Execution Management System FIX API |
+`coinapi/indexes-api-rest` | SDK for CoinAPI Indexes REST API |
+`coinapi/exchange-rates-api-historical` | SDK for CoinAPI Exchange Rates Historical REST API |
+`coinapi/exchange-rates-api-realtime` | SDK for CoinAPI Exchange Rates Realtime REST API (this might also cover WebSocket or be split, TBC) |
+`coinapi/exchange-rates-api-rest-historical` | SDK for CoinAPI Exchange Rates REST Historical API (potentially redundant or more specific version of `exchange-rates-api-historical`) |
+`coinapi/exchange-rates-api-rest-realtime` | SDK for CoinAPI Exchange Rates REST Realtime API (potentially redundant or more specific version of `exchange-rates-api-realtime`) |
+`coinapi/flat-files-api-processing-samples` | Examples related to processing GZIP+CSV flat files |
+
+### FinFeedAPI Directories
+
+Directory | Description |
+--- | --- |
+`finfeedapi/stock-api-rest` | SDK for FinFeed API Stock REST API |
+`finfeedapi/sec-api-rest` | SDK for FinFeed API SEC REST API |
+
+## OpenAPI Specifications
+
+OpenAPI (formerly Swagger) specification files, typically named `openapi.yaml` or `openapi.json`, are provided for many of the RESTful APIs in this repository. These files define the API's structure and can be used with various tools for documentation generation, client SDK creation, and testing.
+
+You can generally find these specification files within the respective API's directory. Common locations include:
+* A `spec/` subdirectory directly within the API's folder (e.g., `coinapi/market-data-api-rest/spec/openapi.yaml`).
+* Within language-specific SDK directories, often under an `api/` or similar subdirectory (e.g., `finfeedapi/sec-api-rest/sdk/java/api/openapi.yaml`).
+
+Please explore the individual API directories for the most up-to-date and specific locations of these files.
 
 ## Package managers coverage
 

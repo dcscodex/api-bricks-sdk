@@ -1,4 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: sdk/typescript-rxjs
-generatorName: typescript-rxjs
-additionalProperties:

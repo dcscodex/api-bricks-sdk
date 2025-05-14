@@ -1,7 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: sdk/python
-generatorName: python
-additionalProperties:
-  packageName: api_bricks_sec_api_rest	
-  projectName: API Bricks SEC API REST
-  generateSourceCodeOnly: true

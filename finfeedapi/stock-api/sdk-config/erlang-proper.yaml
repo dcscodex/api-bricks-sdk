@@ -1,4 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: sdk/erlang-proper
-generatorName: erlang-proper
-additionalProperties:

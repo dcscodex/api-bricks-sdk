@@ -1,3 +1,0 @@
-inputSpec: "./spec/stock-api-historical.json"
-additionalProperties:
-  x-ext-name: "Tomasz Przybysz"

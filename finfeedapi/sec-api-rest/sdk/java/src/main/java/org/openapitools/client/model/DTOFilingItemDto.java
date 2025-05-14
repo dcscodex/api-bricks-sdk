@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * DTOFilingItemDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-14T11:28:00.070213808Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-14T12:27:07.443534521Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class DTOFilingItemDto {
   public static final String SERIALIZED_NAME_ITEM_NUMBER = "item_number";
   @SerializedName(SERIALIZED_NAME_ITEM_NUMBER)

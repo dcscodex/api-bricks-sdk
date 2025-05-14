@@ -1,17 +1,19 @@
 name: Publish java-websocket package to the GitHub Packages
-on: []
-#  release:
-#    types: [created]
-#  push:
-#    branches:
-#      - master
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+    paths:
+      - 'coinapi/market-data-api/sdk/java-websocket/**'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: coinapi/market-data-api/java-websocket
+        working-directory: coinapi/market-data-api/sdk/java-websocket
     steps:
       - uses: actions/checkout@v2
           

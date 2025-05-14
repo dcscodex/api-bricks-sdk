@@ -1,17 +1,19 @@
 name: Publish java-rest package to the GitHub Packages
-on: []
-#  workflow_dispatch:
-#  release:
-#    types: [created]
-#  push:
-#    branches:
-#      - master
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+    paths:
+      - 'coinapi/market-data-api/sdk/java-rest/**'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: coinapi/market-data-api/java-rest
+        working-directory: coinapi/market-data-api/sdk/java-rest
     steps:
       - uses: actions/checkout@v2
         

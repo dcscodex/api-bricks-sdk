@@ -1,17 +1,19 @@
 name: Publish csharp-rest package
-#on: []
-#on:
-#  release:
-#    types: [created]
-#  push:
-#    branches:
-#      - master
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - master
+    paths:
+      - 'coinapi/market-data-api/sdk/csharp-rest/**'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: coinapi/market-data-api/csharp-rest
+        working-directory: coinapi/market-data-api/sdk/csharp-rest
     steps:
       - uses: actions/checkout@v2
         

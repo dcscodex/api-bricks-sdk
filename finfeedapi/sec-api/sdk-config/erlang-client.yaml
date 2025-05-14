@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/erlang-client
+outputDir: sdk/erlang-client
 generatorName: erlang-client
 additionalProperties:

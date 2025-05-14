@@ -1,0 +1,695 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@apibricks.io
+    name: API BRICKS LTD
+    url: https://www.finfeedapi.com
+  title: REST API
+  version: v1
+servers:
+- url: https://api-historical.sec.finfeedapi.com
+security:
+- Basic: []
+tags:
+- description: Provides endpoints for extracting and classifying content from SEC
+    filing HTML documents.
+  name: Extractor
+- description: "Provides endpoints for querying historical SEC filing metadata.\r\n\
+    Allows users to filter filings based on criteria like CIK, form type, date ranges,\
+    \ etc."
+  name: Filings
+- description: "Provides endpoints for performing full-text searches on historical\
+    \ SEC filing documents.\r\nAllows users to query filings based on various criteria\
+    \ such as form type, date ranges, and text content."
+  name: FullText
+paths:
+  /v1/extractor:
+    get:
+      description: "Retrieves filing content from the EDGAR database and intelligently\
+        \ classifies it according to form type and item categories.\r\n\r\n### Supported\
+        \ Form Types\r\n\r\nForm Type | Description\r\n----------|------------\r\n\
+        8-K      | Current report filing\r\n10-K     | Annual report filing\r\n10-Q\
+        \     | Quarterly report filing\r\n\r\n### Content Classification\r\n- 8-K\
+        \ forms: Content classified by item numbers (e.g., 1.01, 2.01)\r\n- 10-K/10-Q\
+        \ forms: Items categorized by their respective part and item structure\r\n\
+        \r\n:::note\r\nBoth HTML and plain text documents are supported for content\
+        \ extraction.\r\n:::"
+      parameters:
+      - description: The SEC filing accession number used to retrieve the filing from
+          EDGAR database.
+        explode: true
+        in: query
+        name: accession_number
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: "Result type (text or html, default: text)"
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          $ref: '#/components/schemas/DTO.ExtractorType'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Example Filing Extract:
+                  value:
+                    accession_number: 0001140361-21-012345
+                    form_type: 10-K
+                    items:
+                    - item_number: Item 1
+                      item_title: Business
+                      content: Description of business operations...
+                    - item_number: Item 1A
+                      item_title: Risk Factors
+                      content: Discussion of potential risks and uncertainties...
+                    - item_number: Item 2
+                      item_title: Properties
+                      content: Description of company properties and facilities...
+              schema:
+                $ref: '#/components/schemas/DTO.FilingExtractResultDto'
+          description: Successful extraction
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+          description: Invalid request
+        "404":
+          description: Filing not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+          description: Server error
+      summary: 'Extract and classify SEC filing content '
+      tags:
+      - Content Extraction
+  /v1/extractor/item:
+    get:
+      description: "Retrieves filing content from the EDGAR database and returns only\
+        \ the text content of the specified item number.\r\n\r\n### Item Number Format\r\
+        \n\r\nForm Type | Item Format Examples\r\n-----------|-------------------\r\
+        \n8-K       | 1.01, 2.01, 7.01\r\n10-K      | 1, 2, 3\r\n10-K/10-Q | PartI\
+        \ 1, PartII 2\r\n\r\n:::tip\r\nFor best results, ensure the item number matches\
+        \ exactly with the filing's structure.\r\n:::"
+      parameters:
+      - description: The SEC filing accession number used to retrieve the filing from
+          EDGAR database.
+        explode: true
+        in: query
+        name: accession_number
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: "The specific item number to extract (e.g., \"1.01\", \"2.01\"\
+          , \"7.01\")."
+        explode: true
+        in: query
+        name: item_number
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: "Result type (text or html, default: text)"
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          $ref: '#/components/schemas/DTO.ExtractorType'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Successful extraction
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+          description: Invalid request
+        "404":
+          description: Filing or item not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+          description: Server error
+      summary: Extract specific item content from SEC filing
+      tags:
+      - Content Extraction
+  /v1/filings:
+    get:
+      description: "Retrieves metadata for SEC filings based on various filter criteria\
+        \ with pagination and sorting support.\r\n\r\n### Available Sort Fields\r\n\
+        \r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber\
+        \ | SEC filing accession number\r\nFilingDate | Date when filing was submitted\r\
+        \nAcceptanceDateTime | Date and time of filing acceptance\r\nReportDate |\
+        \ Date of the report\r\nSize | Size of the filing document\r\n\r\n### Date\
+        \ Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n### Form\
+        \ Types\r\nForm types can be provided as comma-separated values, e.g.: \"\
+        10-K,8-K,10-Q\"\r\n\r\n:::tip\r\nFor optimal performance, use date ranges\
+        \ and form types to narrow down your search\r\n:::"
+      parameters:
+      - description: Filter by Central Index Key (CIK)
+        explode: true
+        in: query
+        name: cik
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values\
+          \ can be comma-separated"
+        explode: true
+        in: query
+        name: form_type
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter by filling date start (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: filling_date_start
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: "Filter by filling date end (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: filling_date_end
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: "Filter by report date start (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: report_date_start
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: "Filter by report date end (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: report_date_end
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: Filter filings where the 'Items' field contains the specified
+          text
+        explode: true
+        in: query
+        name: items_contain
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Number of results per page (default: 50, max: 200)"
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int32
+          maximum: 200
+          minimum: 1
+          type: integer
+        style: form
+      - description: "Page number to retrieve (default: 1)"
+        explode: true
+        in: query
+        name: page_number
+        required: false
+        schema:
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: form
+      - description: "Field to sort results by (default: AccessionNumber)"
+        explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          $ref: '#/components/schemas/DTO.FilingSortBy'
+        style: form
+      - description: "Sort order (asc or desc, default: desc)"
+        explode: true
+        in: query
+        name: sort_order
+        required: false
+        schema:
+          default: desc
+          pattern: ^(asc|desc)$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Example Filing Metadata:
+                  value:
+                    cik: 1234567890
+                    accession_number: 0001140361-21-012345
+                    filing_date: 2021-03-15
+                    report_date: 2020-12-31
+                    acceptance_date_time: 2021-03-15T16:30:00.0000000Z
+                    act: "34"
+                    form: 10-K
+                    file_number: 001-12345
+                    film_number: "21654321"
+                    items: "1,1A,2"
+                    core_type: 10-K
+                    size: 15000000
+                    is_xbrl: true
+                    is_inline_xbrl: true
+                    primary_document: form10k.htm
+                    primary_doc_description: Form 10-K Annual Report
+                    source_file: edgar/data/1234567890/0001140361-21-012345.txt
+              schema:
+                items:
+                  $ref: '#/components/schemas/DTO.FilingMetadataDto'
+                type: array
+          description: Successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+          description: Invalid request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+          description: Server error
+      summary: Query SEC filing metadata
+      tags:
+      - Filing Metadata
+  /v1/full-text:
+    get:
+      description: "Search across SEC filing documents with advanced filtering and\
+        \ sorting capabilities.\r\n\r\n### Available Sort Fields\r\n\r\nField Name\
+        \ | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing\
+        \ accession number\r\nFormType | Type of the filing document\r\nFilingDate\
+        \ | Date when filing was submitted\r\nCompanyName | Name of the company\r\n\
+        CIK | Central Index Key\r\nDocumentFilename | Name of the filing document\r\
+        \nDocumentDescription | Description of the document\r\n\r\n### Search Options\r\
+        \n\r\nOption | Description\r\n--------|-------------\r\ntext_contains | Keywords\
+        \ that must appear in the document\r\ntext_not_contain | Keywords that must\
+        \ not appear in the document\r\n\r\n### Date Format\r\nAll dates must be provided\
+        \ in YYYY-MM-DD format\r\n\r\n:::tip\r\nUse text_contains and text_not_contain\
+        \ with multiple keywords separated by commas for more precise searches\r\n\
+        :::\r\n\r\n:::note\r\nThe search is case-insensitive and supports partial\
+        \ word matches\r\n:::"
+      parameters:
+      - description: "Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values\
+          \ can be comma-separated"
+        explode: true
+        in: query
+        name: form_type
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter by filling date start (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: filling_date_start
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: "Filter by filling date end (inclusive), format YYYY-MM-DD"
+        explode: true
+        in: query
+        name: filling_date_end
+        required: false
+        schema:
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          type: string
+        style: form
+      - description: Keywords that the text must contain. Multiple values can be comma-separated
+        explode: true
+        in: query
+        name: text_contains
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Keywords that the text must not contain. Multiple values can
+          be comma-separated
+        explode: true
+        in: query
+        name: text_not_contain
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Number of results per page (default: 100)"
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: "Page number to retrieve (default: 1)"
+        explode: true
+        in: query
+        name: page_number
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: "Field to sort by (default: AccessionNumber)"
+        explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: AccessionNumber
+          pattern: ^(AccessionNumber|FormType|FilingDate|CompanyName|CIK|DocumentFilename|DocumentDescription)$
+          type: string
+        style: form
+      - description: Sort order (asc or desc). Defaults to asc
+        explode: true
+        in: query
+        name: sort_order
+        required: false
+        schema:
+          default: asc
+          pattern: ^(asc|desc)$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Example SEC Filing Result:
+                  value:
+                    accession_number: 0001140361-21-012345
+                    form_type: 10-K
+                    filing_date: 2021-03-15
+                    company_name: Example Corporation
+                    cik: 1234567890
+                    document_filename: form10k.htm
+                    document_description: Form 10-K Annual Report
+                    source_file: edgar/data/1234567890/0001140361-21-012345.txt
+              schema:
+                items:
+                  $ref: '#/components/schemas/DTO.SecFilingResultDto'
+                type: array
+          description: Successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+          description: Invalid request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+          description: Server error
+      summary: Full-text search of SEC filing documents
+      tags:
+      - Full Text Search
+components:
+  schemas:
+    DTO.ExtractorType:
+      enum:
+      - text
+      - html
+      type: string
+    DTO.FilingExtractResultDto:
+      additionalProperties: false
+      description: Represents the result of a filing extraction.
+      example:
+        accession_number: accession_number
+        form_type: form_type
+        items:
+        - item_number: item_number
+          item_title: item_title
+          content: content
+        - item_number: item_number
+          item_title: item_title
+          content: content
+      properties:
+        accession_number:
+          nullable: true
+          type: string
+        form_type:
+          nullable: true
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/DTO.FilingItemDto'
+          nullable: true
+          type: array
+      type: object
+    DTO.FilingItemDto:
+      additionalProperties: false
+      example:
+        item_number: item_number
+        item_title: item_title
+        content: content
+      properties:
+        item_number:
+          nullable: true
+          type: string
+        item_title:
+          nullable: true
+          type: string
+        content:
+          nullable: true
+          type: string
+      type: object
+    DTO.FilingMetadataDto:
+      additionalProperties: false
+      description: "Represents the response for a single SEC filing metadata record.\r\
+        \nMaps fields from the edgar_submissions table."
+      example:
+        film_number: film_number
+        cik: 0
+        filing_date: 2000-01-23
+        acceptance_date_time: 2000-01-23T04:56:07.000+00:00
+        is_xbrl: true
+        source_file: source_file
+        accession_number: accession_number
+        file_number: file_number
+        core_type: core_type
+        act: act
+        form: form
+        size: 6
+        is_inline_xbrl: true
+        primary_doc_description: primary_doc_description
+        items: items
+        report_date: 2000-01-23
+        primary_document: primary_document
+      properties:
+        cik:
+          format: int64
+          type: integer
+        accession_number:
+          nullable: true
+          type: string
+        filing_date:
+          format: date
+          type: string
+        report_date:
+          format: date
+          nullable: true
+          type: string
+        acceptance_date_time:
+          format: date-time
+          nullable: true
+          type: string
+        act:
+          nullable: true
+          type: string
+        form:
+          nullable: true
+          type: string
+        file_number:
+          nullable: true
+          type: string
+        film_number:
+          nullable: true
+          type: string
+        items:
+          nullable: true
+          type: string
+        core_type:
+          nullable: true
+          type: string
+        size:
+          format: int32
+          nullable: true
+          type: integer
+        is_xbrl:
+          nullable: true
+          type: boolean
+        is_inline_xbrl:
+          nullable: true
+          type: boolean
+        primary_document:
+          nullable: true
+          type: string
+        primary_doc_description:
+          nullable: true
+          type: string
+        source_file:
+          nullable: true
+          type: string
+      type: object
+    DTO.FilingSortBy:
+      description: Defines sorting options for the filing query.
+      enum:
+      - AccessionNumber
+      - FilingDate
+      - ReportDate
+      - AcceptanceDateTime
+      - Size
+      type: string
+    DTO.SecFilingResultDto:
+      additionalProperties: false
+      example:
+        accession_number: accession_number
+        cik: 0
+        document_description: document_description
+        filing_date: 2000-01-23
+        company_name: company_name
+        form_type: form_type
+        document_filename: document_filename
+        source_file: source_file
+      properties:
+        accession_number:
+          nullable: true
+          type: string
+        form_type:
+          nullable: true
+          type: string
+        filing_date:
+          format: date
+          type: string
+        company_name:
+          nullable: true
+          type: string
+        cik:
+          format: int64
+          type: integer
+        document_filename:
+          nullable: true
+          type: string
+        document_description:
+          nullable: true
+          type: string
+        source_file:
+          nullable: true
+          type: string
+      type: object
+    Mvc.ProblemDetails:
+      additionalProperties: {}
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        status: 6
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+      type: object
+    Mvc.ValidationProblemDetails:
+      additionalProperties: {}
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        errors:
+          key:
+          - errors
+          - errors
+        status: 0
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+        errors:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      type: object
+  securitySchemes:
+    APIKey:
+      description: API Key is required to access the API endpoints.
+      in: header
+      name: Authorization
+      type: apiKey
+    Bearer:
+      bearerFormat: JWT
+      description: "JWT Authorization header using the Bearer scheme. Example: \"\
+        Bearer {token}\""
+      scheme: bearer
+      type: http

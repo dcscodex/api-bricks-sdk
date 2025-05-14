@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/javascript-closure-angular
+outputDir: sdk/javascript-closure-angular
 generatorName: javascript-closure-angular
 additionalProperties:

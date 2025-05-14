@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/r
+outputDir: sdk/r
 generatorName: r
 additionalProperties:

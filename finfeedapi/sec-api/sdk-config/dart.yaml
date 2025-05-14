@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/dart
+outputDir: sdk/dart
 generatorName: dart
 additionalProperties:

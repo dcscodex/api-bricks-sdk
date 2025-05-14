@@ -1,4 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: out/haskell-http-client
-generatorName: haskell-http-client
-additionalProperties:

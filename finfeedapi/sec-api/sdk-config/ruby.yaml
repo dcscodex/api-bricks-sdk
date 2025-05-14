@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/ruby
+outputDir: sdk/ruby
 generatorName: ruby
 additionalProperties:

@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/javascript-flowtyped
+outputDir: sdk/javascript-flowtyped
 generatorName: javascript-flowtyped
 additionalProperties:

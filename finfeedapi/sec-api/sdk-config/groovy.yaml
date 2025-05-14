@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/groovy
+outputDir: sdk/groovy
 generatorName: groovy
 additionalProperties:

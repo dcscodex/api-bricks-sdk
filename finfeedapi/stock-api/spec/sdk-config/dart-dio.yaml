@@ -1,4 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: out/dart-dio
-generatorName: dart-dio
-additionalProperties:

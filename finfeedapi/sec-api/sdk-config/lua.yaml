@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/lua
+outputDir: sdk/lua
 generatorName: lua
 additionalProperties:

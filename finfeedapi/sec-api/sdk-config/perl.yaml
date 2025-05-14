@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/perl
+outputDir: sdk/perl
 generatorName: perl
 additionalProperties:

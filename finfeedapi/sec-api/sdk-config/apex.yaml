@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/apex
+outputDir: sdk/apex
 generatorName: apex
 additionalProperties:

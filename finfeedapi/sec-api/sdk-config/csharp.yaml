@@ -1,5 +1,5 @@
 '!include': 'shared/common.yaml'
-outputDir: out/csharp
+outputDir: sdk/csharp
 generatorName: csharp
 additionalProperties:
   useCompareNetObjects: "true"

@@ -1,4 +1,0 @@
-'!include': 'shared/common.yaml'
-outputDir: out/typescript-angular
-generatorName: typescript-angular
-additionalProperties:

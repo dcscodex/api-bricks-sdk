@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/cpp-tizen
+outputDir: sdk/cpp-tizen
 generatorName: cpp-tizen
 additionalProperties:

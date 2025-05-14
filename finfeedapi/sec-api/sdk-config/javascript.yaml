@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/javascript
+outputDir: sdk/javascript
 generatorName: javascript
 additionalProperties:

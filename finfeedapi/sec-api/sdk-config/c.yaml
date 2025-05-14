@@ -1,4 +1,4 @@
 '!include': 'shared/common.yaml'
-outputDir: out/c
+outputDir: sdk/c
 generatorName: c
 additionalProperties:

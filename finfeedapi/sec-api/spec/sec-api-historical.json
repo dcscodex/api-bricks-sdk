@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "REST API",
-    "contact": {
+    "contact": { 
       "name": "API BRICKS LTD",
       "url": "https://www.finfeedapi.com",
       "email": "support@apibricks.io"

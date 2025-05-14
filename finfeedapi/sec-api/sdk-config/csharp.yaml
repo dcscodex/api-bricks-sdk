@@ -3,4 +3,4 @@ outputDir: out/csharp
 generatorName: csharp
 additionalProperties:
   useCompareNetObjects: "true"
-  packageName: CoinAPI.EMSCloudMgmt.REST.V1
+  packageName: APIBricks.FinFeedAPI.SECAPI.REST.V1

@@ -7,7 +7,7 @@ setuptools.setup(
     name="api-bricks-sec-api-rest",
     version="1.0",
     author="Tomasz Przybysz",
-    author_email="tom.przybysz@gmail.com",
+    author_email="tprzybysz@apibricks.io",
     description="SDKs for API BRICKS SEC API",
     long_description=long_description,
     long_description_content_type="text/markdown",

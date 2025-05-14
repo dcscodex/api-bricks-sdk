@@ -178,7 +178,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {23FF52E1-DE7B-40EB-B2D1-A6A8163D2ADD}
+- packageGuid: {18F2FB34-BD14-46CA-A0D8-59F0C771186C}
 - packageName: APIBricks.FinFeedAPI.STOCKAPI.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

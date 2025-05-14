@@ -1,9 +1,9 @@
 {
-  "openapi": "3.0.1",    
+  "openapi": "3.0.1",
   "info": {
-    "title": "REST API",        
+    "title": "REST API",
     "contact": {
-      "name": "API BRICKS LTD", 
+      "name": "API BRICKS LTD",
       "url": "https://www.finfeedapi.com",
       "email": "support@apibricks.io"
     },
@@ -20,7 +20,7 @@
         "tags": [
           "Content Extraction"
         ],
-        "summary": "Extract and classify SEC filing content ",
+        "summary": "Extract and classify SEC filing content",
         "description": "Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.\r\n\r\n### Supported Form Types\r\n\r\nForm Type | Description\r\n----------|------------\r\n8-K      | Current report filing\r\n10-K     | Annual report filing\r\n10-Q     | Quarterly report filing\r\n\r\n### Content Classification\r\n- 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)\r\n- 10-K/10-Q forms: Items categorized by their respective part and item structure\r\n\r\n:::note\r\nBoth HTML and plain text documents are supported for content extraction.\r\n:::",
         "parameters": [
           {

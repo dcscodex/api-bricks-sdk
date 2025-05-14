@@ -1,23 +1,23 @@
-name: CoinAPI Market Data API REST OpenAPI to SDK
+name: CoinAPI Exchange Rates Historical API REST OpenAPI to SDK
 
 on:
   push:
     branches:
       - master # Adjust to your default branch (e.g., main) if different
     paths:
-      - 'coinapi/market-data-api-rest/spec/openapi.json'
+      - 'coinapi/exchange-rates-api-rest-historical/spec/openapi.json'
   pull_request:
     branches:
       - master # Adjust to your default branch (e.g., main) if different
     paths:
-      - 'coinapi/market-data-api-rest/spec/openapi.json'
+      - 'coinapi/exchange-rates-api-rest-historical/spec/openapi.json'
 
 jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-openapi-to-sdk.yaml
     with:
       product_line_slug: "coinapi"
-      api_type_slug: "market-data-api-rest"
-      commit_message_subject: "CoinAPI Market Data API REST Historical"
+      api_type_slug: "exchange-rates-api-rest-historical"
+      commit_message_subject: "CoinAPI Exchange Rates Historical API REST Historical"
     secrets:
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

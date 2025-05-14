@@ -1,0 +1,4 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/scala-akka
+generatorName: scala-akka
+additionalProperties:

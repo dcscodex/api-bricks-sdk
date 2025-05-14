@@ -1,0 +1,6 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/csharp
+generatorName: csharp
+additionalProperties:
+  useCompareNetObjects: "true"
+  packageName: APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1

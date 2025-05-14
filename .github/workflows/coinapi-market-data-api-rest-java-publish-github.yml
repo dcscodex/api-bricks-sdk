@@ -6,14 +6,14 @@ on:
     branches:
       - master
     paths:
-      - 'coinapi/market-data-api-rest/sdk/java-rest/**'
+      - 'coinapi/market-data-api-rest/sdk-handcrafted/java-rest/**'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: coinapi/market-data-api-rest/sdk/java-rest
+        working-directory: coinapi/market-data-api-rest/sdk-handcrafted/java-rest
     steps:
       - uses: actions/checkout@v2
         

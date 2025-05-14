@@ -1,0 +1,4 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/go
+generatorName: go
+additionalProperties:

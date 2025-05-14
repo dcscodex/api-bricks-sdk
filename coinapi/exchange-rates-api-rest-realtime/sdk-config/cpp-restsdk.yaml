@@ -1,0 +1,4 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/cpp-restsdk
+generatorName: cpp-restsdk
+additionalProperties:

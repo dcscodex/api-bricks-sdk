@@ -1,0 +1,7 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/python
+generatorName: python
+additionalProperties:
+  packageName: api_bricks_coinapi_exchange_rates_api_rest_realtime	
+  projectName: API Bricks CoinAPI Exchange Rates API REST Realtime
+  generateSourceCodeOnly: true

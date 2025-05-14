@@ -2,6 +2,7 @@
 .github/workflows/r-client.yaml
 .gitignore
 .lintr
+.openapi-generator-ignore
 .travis.yml
 DESCRIPTION
 NAMESPACE
@@ -32,3 +33,14 @@ docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
 git_push.sh
 tests/testthat.R
+tests/testthat/test_content_extraction_api.R
+tests/testthat/test_dto_extractor_type.R
+tests/testthat/test_dto_filing_extract_result_dto.R
+tests/testthat/test_dto_filing_item_dto.R
+tests/testthat/test_dto_filing_metadata_dto.R
+tests/testthat/test_dto_filing_sort_by.R
+tests/testthat/test_dto_sec_filing_result_dto.R
+tests/testthat/test_filing_metadata_api.R
+tests/testthat/test_full_text_search_api.R
+tests/testthat/test_mvc_problem_details.R
+tests/testthat/test_mvc_validation_problem_details.R

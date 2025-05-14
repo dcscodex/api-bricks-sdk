@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -35,3 +36,14 @@ lib/model/dto_sec_filing_result_dto.dart
 lib/model/mvc_problem_details.dart
 lib/model/mvc_validation_problem_details.dart
 pubspec.yaml
+test/content_extraction_api_test.dart
+test/dto_extractor_type_test.dart
+test/dto_filing_extract_result_dto_test.dart
+test/dto_filing_item_dto_test.dart
+test/dto_filing_metadata_dto_test.dart
+test/dto_filing_sort_by_test.dart
+test/dto_sec_filing_result_dto_test.dart
+test/filing_metadata_api_test.dart
+test/full_text_search_api_test.dart
+test/mvc_problem_details_test.dart
+test/mvc_validation_problem_details_test.dart

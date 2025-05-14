@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Build.ps1
 README.md
 appveyor.yml
@@ -31,3 +32,14 @@ src/PSOpenAPITools/Private/HttpSignatureAuth.ps1
 src/PSOpenAPITools/Private/Out-DebugParameter.ps1
 src/PSOpenAPITools/Private/RSAEncryptionProvider.cs
 src/PSOpenAPITools/en-US/about_PSOpenAPITools.help.txt
+tests/Api/ContentExtractionApi.Tests.ps1
+tests/Api/FilingMetadataApi.Tests.ps1
+tests/Api/FullTextSearchApi.Tests.ps1
+tests/Model/DTOExtractorType.Tests.ps1
+tests/Model/DTOFilingExtractResultDto.Tests.ps1
+tests/Model/DTOFilingItemDto.Tests.ps1
+tests/Model/DTOFilingMetadataDto.Tests.ps1
+tests/Model/DTOFilingSortBy.Tests.ps1
+tests/Model/DTOSecFilingResultDto.Tests.ps1
+tests/Model/MvcProblemDetails.Tests.ps1
+tests/Model/MvcValidationProblemDetails.Tests.ps1

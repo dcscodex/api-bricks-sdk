@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -33,3 +34,14 @@ lib/Model/MvcProblemDetails.php
 lib/Model/MvcValidationProblemDetails.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/ContentExtractionApiTest.php
+test/Api/FilingMetadataApiTest.php
+test/Api/FullTextSearchApiTest.php
+test/Model/DTOExtractorTypeTest.php
+test/Model/DTOFilingExtractResultDtoTest.php
+test/Model/DTOFilingItemDtoTest.php
+test/Model/DTOFilingMetadataDtoTest.php
+test/Model/DTOFilingSortByTest.php
+test/Model/DTOSecFilingResultDtoTest.php
+test/Model/MvcProblemDetailsTest.php
+test/Model/MvcValidationProblemDetailsTest.php

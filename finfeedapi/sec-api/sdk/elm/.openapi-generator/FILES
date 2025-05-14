@@ -1,0 +1,9 @@
+.gitignore
+README.md
+elm.json
+src/Api.elm
+src/Api/Data.elm
+src/Api/Request/ContentExtraction.elm
+src/Api/Request/FilingMetadata.elm
+src/Api/Request/FullTextSearch.elm
+src/Api/Time.elm

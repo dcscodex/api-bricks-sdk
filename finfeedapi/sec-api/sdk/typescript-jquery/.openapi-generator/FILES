@@ -1,0 +1,17 @@
+api/ContentExtractionApi.ts
+api/FilingMetadataApi.ts
+api/FullTextSearchApi.ts
+api/api.ts
+configuration.ts
+git_push.sh
+index.ts
+model/DTOExtractorType.ts
+model/DTOFilingExtractResultDto.ts
+model/DTOFilingItemDto.ts
+model/DTOFilingMetadataDto.ts
+model/DTOFilingSortBy.ts
+model/DTOSecFilingResultDto.ts
+model/MvcProblemDetails.ts
+model/MvcValidationProblemDetails.ts
+model/models.ts
+variables.ts

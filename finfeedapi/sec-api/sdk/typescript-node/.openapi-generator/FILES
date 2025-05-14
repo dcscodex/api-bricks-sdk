@@ -1,0 +1,16 @@
+.gitignore
+api.ts
+api/apis.ts
+api/contentExtractionApi.ts
+api/filingMetadataApi.ts
+api/fullTextSearchApi.ts
+git_push.sh
+model/dTOExtractorType.ts
+model/dTOFilingExtractResultDto.ts
+model/dTOFilingItemDto.ts
+model/dTOFilingMetadataDto.ts
+model/dTOFilingSortBy.ts
+model/dTOSecFilingResultDto.ts
+model/models.ts
+model/mvcProblemDetails.ts
+model/mvcValidationProblemDetails.ts

@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+API/Client/IndexesApi.js
+API/Client/IndexesIndexDefinitionInputData.js
+API/Client/IndexesIndexDefinitionSnapshotEntry.js
+API/Client/IndexesIndexIdentifier.js
+API/Client/IndexesIndexMultiAssetWeight.js
+API/Client/IndexesIndexTimeseriesItem.js
+API/Client/IndexesIndexValue.js
+API/Client/IndexesIndexValueComponent.js
+API/Client/MetadataApi.js
+API/Client/MetadataExchange.js
+API/Client/MetadataTimeseriesPeriod.js
+API/Client/PeriodsApi.js

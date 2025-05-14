@@ -1,0 +1,1289 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@apibricks.io
+    name: API BRICKS LTD
+    url: https://www.coinapi.io
+  description: ""
+  license:
+    name: MIT License
+    url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+  title: Indexes REST API
+  version: v1
+servers:
+- url: https://rest-api.indexes.coinapi.io
+security:
+- ApiKey: []
+tags:
+- description: <span data-status-page="28926"></span>
+  name: Periods
+- description: <span data-status-page="28923"></span>
+  name: Metadata
+- description: Controller for periods.
+  name: Period
+paths:
+  /api/metadata/exchanges:
+    get:
+      description: "Get a detailed list of exchanges provided by the system.\r\n \
+        \           \r\n:::info\r\nProperties of the output are providing aggregated\
+        \ information from across all symbols related to the specific exchange. If\
+        \ you need to calculate your aggregation (e.g., limiting only the particular\
+        \ type of symbols), you should use /v1/symbols endpoint as a data source.\r\
+        \n:::"
+      parameters:
+      - description: "Comma or semicolon delimited exchange identifiers used to filter\
+          \ response. (optional, eg. `BITSTAMP;GEMINI`)"
+        explode: true
+        in: query
+        name: filter_exchange_id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+          description: successful operation
+      summary: List all exchanges
+      tags:
+      - Metadata
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /api/metadata/exchanges/{exchange_id}:
+    get:
+      parameters:
+      - description: The ID of the exchange.
+        explode: false
+        in: path
+        name: exchange_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                  - exchange_id: OKCOIN_CNY
+                    website: https://www.okcoin.cn/
+                    name: OKCoin CNY
+                  - exchange_id: HUOBI
+                    website: https://www.huobi.com/
+                    name: Huobi (HBUS)
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.Exchange'
+                type: array
+          description: successful operation
+      summary: List all exchanges by exchange_id
+      tags:
+      - Metadata
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes:
+    get:
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Sample Index List:
+                  value:
+                  - id: IDX_REFRATE_VWAP_BTC
+                  - id: IDX_REFRATE_VWAP_ETH
+                  - id: IDX_REFRATE_VWAP_LTC
+                  - id: IDX_REFRATE_VWAP_XRP
+                  - id: IDX_REFRATE_VWAP_ADA
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexIdentifier'
+                type: array
+            application/json:
+              examples:
+                Sample Index List:
+                  value:
+                  - id: IDX_REFRATE_VWAP_BTC
+                  - id: IDX_REFRATE_VWAP_ETH
+                  - id: IDX_REFRATE_VWAP_LTC
+                  - id: IDX_REFRATE_VWAP_XRP
+                  - id: IDX_REFRATE_VWAP_ADA
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexIdentifier'
+                type: array
+            text/json:
+              examples:
+                Sample Index List:
+                  value:
+                  - id: IDX_REFRATE_VWAP_BTC
+                  - id: IDX_REFRATE_VWAP_ETH
+                  - id: IDX_REFRATE_VWAP_LTC
+                  - id: IDX_REFRATE_VWAP_XRP
+                  - id: IDX_REFRATE_VWAP_ADA
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexIdentifier'
+                type: array
+            application/x-msgpack:
+              examples:
+                Sample Index List:
+                  value:
+                  - id: IDX_REFRATE_VWAP_BTC
+                  - id: IDX_REFRATE_VWAP_ETH
+                  - id: IDX_REFRATE_VWAP_LTC
+                  - id: IDX_REFRATE_VWAP_XRP
+                  - id: IDX_REFRATE_VWAP_ADA
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexIdentifier'
+                type: array
+          description: successful operation
+      summary: List indexes
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes/{index_id}/current:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                    timestamp: 2024-09-01T09:00:00
+                    value: 56787.5997300339
+              schema:
+                $ref: '#/components/schemas/Indexes.IndexValue'
+            application/json:
+              examples:
+                Example response:
+                  value:
+                    timestamp: 2024-09-01T09:00:00
+                    value: 56787.5997300339
+              schema:
+                $ref: '#/components/schemas/Indexes.IndexValue'
+            text/json:
+              examples:
+                Example response:
+                  value:
+                    timestamp: 2024-09-01T09:00:00
+                    value: 56787.5997300339
+              schema:
+                $ref: '#/components/schemas/Indexes.IndexValue'
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                    timestamp: 2024-09-01T09:00:00
+                    value: 56787.5997300339
+              schema:
+                $ref: '#/components/schemas/Indexes.IndexValue'
+          description: successful operation
+      summary: Current Index Value
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes/{index_definition_id}/currentSnapshot:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_definition_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+          description: successful operation
+      summary: Current Index Values for index definition
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes/{index_id}/history:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: time_start
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: time_end
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - timestamp: 2024-09-05T11:29:04+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:03+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:02+00:00
+                    value: 56786.84840020827
+                    composition: []
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexValue'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - timestamp: 2024-09-05T11:29:04+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:03+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:02+00:00
+                    value: 56786.84840020827
+                    composition: []
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexValue'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - timestamp: 2024-09-05T11:29:04+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:03+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:02+00:00
+                    value: 56786.84840020827
+                    composition: []
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexValue'
+                type: array
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                  - timestamp: 2024-09-05T11:29:04+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:03+00:00
+                    value: 56786.84840020827
+                    composition: []
+                  - timestamp: 2024-09-05T11:29:02+00:00
+                    value: 56786.84840020827
+                    composition: []
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexValue'
+                type: array
+          description: successful operation
+      summary: Historical Index Value w/Composition
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes/{index_definition_id}/historySnapshot:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_definition_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+          description: successful operation
+      summary: Historical Index Values for index definition
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexes/{index_id}/timeseries:
+    get:
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: index_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of requested timeseries period (e.g. `5SEC` or `1DAY`)
+        explode: true
+        in: query
+        name: period_id
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Timeseries starting time in ISO 8601
+        explode: true
+        in: query
+        name: time_start
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Timeseries ending time in ISO 8601
+        explode: true
+        in: query
+        name: time_end
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: "Amount of items to return (optional, mininum is 1, maximum is\
+          \ 100000, default value is 100, if the parameter is used then every 100\
+          \ output items are counted as one request)"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2024-09-05T08:00:00+00:00
+                    time_period_end: 2024-09-05T09:00:00+00:00
+                    time_open: 2024-09-05T08:00:44+00:00
+                    time_close: 2024-09-05T08:59:44+00:00
+                    value_open: 57146.1153570673
+                    value_high: 57210.0651836076
+                    value_low: 56950.4558254606
+                    value_close: 56993.5152800002
+                    value_count: 0
+                  - time_period_start: 2024-09-05T09:00:00+00:00
+                    time_period_end: 2024-09-05T10:00:00+00:00
+                    time_open: 2024-09-05T09:00:44+00:00
+                    time_close: 2024-09-05T09:59:59.9+00:00
+                    value_open: 57000.6574615287
+                    value_high: 57000.6574615287
+                    value_low: 56650.5866347198
+                    value_close: 56787.2920819528
+                    value_count: 0
+                  - time_period_start: 2024-09-05T10:00:00+00:00
+                    time_period_end: 2024-09-05T11:00:00+00:00
+                    time_open: 2024-09-05T10:00:00+00:00
+                    time_close: 2024-09-05T10:59:59.9+00:00
+                    value_open: 56787.2920819528
+                    value_high: 56788.3686345929
+                    value_low: 56786.7251004355
+                    value_close: 56787.2066526585
+                    value_count: 0
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexTimeseriesItem'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2024-09-05T08:00:00+00:00
+                    time_period_end: 2024-09-05T09:00:00+00:00
+                    time_open: 2024-09-05T08:00:44+00:00
+                    time_close: 2024-09-05T08:59:44+00:00
+                    value_open: 57146.1153570673
+                    value_high: 57210.0651836076
+                    value_low: 56950.4558254606
+                    value_close: 56993.5152800002
+                    value_count: 0
+                  - time_period_start: 2024-09-05T09:00:00+00:00
+                    time_period_end: 2024-09-05T10:00:00+00:00
+                    time_open: 2024-09-05T09:00:44+00:00
+                    time_close: 2024-09-05T09:59:59.9+00:00
+                    value_open: 57000.6574615287
+                    value_high: 57000.6574615287
+                    value_low: 56650.5866347198
+                    value_close: 56787.2920819528
+                    value_count: 0
+                  - time_period_start: 2024-09-05T10:00:00+00:00
+                    time_period_end: 2024-09-05T11:00:00+00:00
+                    time_open: 2024-09-05T10:00:00+00:00
+                    time_close: 2024-09-05T10:59:59.9+00:00
+                    value_open: 56787.2920819528
+                    value_high: 56788.3686345929
+                    value_low: 56786.7251004355
+                    value_close: 56787.2066526585
+                    value_count: 0
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexTimeseriesItem'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2024-09-05T08:00:00+00:00
+                    time_period_end: 2024-09-05T09:00:00+00:00
+                    time_open: 2024-09-05T08:00:44+00:00
+                    time_close: 2024-09-05T08:59:44+00:00
+                    value_open: 57146.1153570673
+                    value_high: 57210.0651836076
+                    value_low: 56950.4558254606
+                    value_close: 56993.5152800002
+                    value_count: 0
+                  - time_period_start: 2024-09-05T09:00:00+00:00
+                    time_period_end: 2024-09-05T10:00:00+00:00
+                    time_open: 2024-09-05T09:00:44+00:00
+                    time_close: 2024-09-05T09:59:59.9+00:00
+                    value_open: 57000.6574615287
+                    value_high: 57000.6574615287
+                    value_low: 56650.5866347198
+                    value_close: 56787.2920819528
+                    value_count: 0
+                  - time_period_start: 2024-09-05T10:00:00+00:00
+                    time_period_end: 2024-09-05T11:00:00+00:00
+                    time_open: 2024-09-05T10:00:00+00:00
+                    time_close: 2024-09-05T10:59:59.9+00:00
+                    value_open: 56787.2920819528
+                    value_high: 56788.3686345929
+                    value_low: 56786.7251004355
+                    value_close: 56787.2066526585
+                    value_count: 0
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexTimeseriesItem'
+                type: array
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                  - time_period_start: 2024-09-05T08:00:00+00:00
+                    time_period_end: 2024-09-05T09:00:00+00:00
+                    time_open: 2024-09-05T08:00:44+00:00
+                    time_close: 2024-09-05T08:59:44+00:00
+                    value_open: 57146.1153570673
+                    value_high: 57210.0651836076
+                    value_low: 56950.4558254606
+                    value_close: 56993.5152800002
+                    value_count: 0
+                  - time_period_start: 2024-09-05T09:00:00+00:00
+                    time_period_end: 2024-09-05T10:00:00+00:00
+                    time_open: 2024-09-05T09:00:44+00:00
+                    time_close: 2024-09-05T09:59:59.9+00:00
+                    value_open: 57000.6574615287
+                    value_high: 57000.6574615287
+                    value_low: 56650.5866347198
+                    value_close: 56787.2920819528
+                    value_count: 0
+                  - time_period_start: 2024-09-05T10:00:00+00:00
+                    time_period_end: 2024-09-05T11:00:00+00:00
+                    time_open: 2024-09-05T10:00:00+00:00
+                    time_close: 2024-09-05T10:59:59.9+00:00
+                    value_open: 56787.2920819528
+                    value_high: 56788.3686345929
+                    value_low: 56786.7251004355
+                    value_close: 56787.2066526585
+                    value_count: 0
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexTimeseriesItem'
+                type: array
+          description: successful operation
+      summary: Timeseries Index Value
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexdef/multiasset:
+    get:
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+          description: successful operation
+      summary: Get all multi-asset weights
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexdef/multiasset/{index_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexMultiAssetWeight'
+                type: array
+          description: successful operation
+      summary: Get multi-asset weights for specific index
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexdef/input-data/{index_definition_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_definition_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: enabled_only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: pending_only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: filter_asset_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: with_status_info
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionSnapshotEntry'
+                type: array
+          description: successful operation
+      summary: Returns data inputs for certain index definition and time
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/indexdef/input-data/{index_definition_id}/all:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: index_definition_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+                type: array
+            application/x-msgpack:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Indexes.IndexDefinitionInputData'
+                type: array
+          description: successful operation
+      summary: Returns all data inputs for a specific index definition
+      tags:
+      - Indexes
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+  /v1/metadata/periods:
+    get:
+      description: "Get full list of supported time periods\r\n            \r\n###\
+        \ Available periods\r\n            \r\nTime unit | Period identifiers\r\n\
+        --------- | -----------\r\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC,\
+        \ 15SEC, 20SEC, 30SEC\r\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN,\
+        \ 15MIN, 20MIN, 30MIN\r\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\
+        \nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY\r\nMonth | 1MTH, 2MTH, 3MTH, 4MTH,\
+        \ 6MTH\r\nYear | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS\r\n            \r\n:::tip\r\n\
+        You can assume that we will not remove any periods from this response, however,\
+        \ we may add new ones.\r\n:::"
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+                  - period_id: 2YRS
+                    length_seconds: 0
+                    length_months: 24
+                    unit_count: 2
+                    unit_name: year
+                    display_name: 2 Years
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.TimeseriesPeriod'
+                type: array
+            application/json:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+                  - period_id: 2YRS
+                    length_seconds: 0
+                    length_months: 24
+                    unit_count: 2
+                    unit_name: year
+                    display_name: 2 Years
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.TimeseriesPeriod'
+                type: array
+            text/json:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+                  - period_id: 2YRS
+                    length_seconds: 0
+                    length_months: 24
+                    unit_count: 2
+                    unit_name: year
+                    display_name: 2 Years
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.TimeseriesPeriod'
+                type: array
+            application/x-msgpack:
+              examples:
+                Example response:
+                  value:
+                  - period_id: 1SEC
+                    length_seconds: 1
+                    length_months: 0
+                    unit_count: 1
+                    unit_name: second
+                    display_name: 1 Second
+                  - period_id: 10DAY
+                    length_seconds: 864000
+                    length_months: 0
+                    unit_count: 10
+                    unit_name: day
+                    display_name: 10 Days
+                  - period_id: 2YRS
+                    length_seconds: 0
+                    length_months: 24
+                    unit_count: 2
+                    unit_name: year
+                    display_name: 2 Years
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metadata.TimeseriesPeriod'
+                type: array
+          description: successful operation
+      summary: List all periods
+      tags:
+      - Periods
+      x-accepts:
+      - application/json
+      - application/x-msgpack
+      - text/json
+      - text/plain
+components:
+  schemas:
+    Indexes.IndexDefinitionInputData:
+      additionalProperties: false
+      example:
+        exchangeId: exchangeId
+        baseAssetId: baseAssetId
+        beginDate: 2000-01-23T04:56:07.000+00:00
+        statusInfo: statusInfo
+        exchangeSymbolId: exchangeSymbolId
+        endDate: 2000-01-23T04:56:07.000+00:00
+        lastModificationTime: 2000-01-23T04:56:07.000+00:00
+        quoteAssetId: quoteAssetId
+        status: status
+      properties:
+        exchangeId:
+          nullable: true
+          type: string
+        exchangeSymbolId:
+          nullable: true
+          type: string
+        baseAssetId:
+          nullable: true
+          type: string
+        quoteAssetId:
+          nullable: true
+          type: string
+        beginDate:
+          format: date-time
+          nullable: true
+          type: string
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        statusInfo:
+          nullable: true
+          type: string
+        lastModificationTime:
+          format: date-time
+          type: string
+      type: object
+    Indexes.IndexDefinitionSnapshotEntry:
+      additionalProperties: false
+      example:
+        index_id: index_id
+        value: 0.8008281904610115
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        index_id:
+          nullable: true
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+        value:
+          format: double
+          type: number
+      type: object
+    Indexes.IndexIdentifier:
+      additionalProperties: false
+      description: Represents an index id
+      example:
+        id: id
+      properties:
+        id:
+          description: Index ID
+          nullable: true
+          type: string
+      type: object
+    Indexes.IndexMultiAssetWeight:
+      additionalProperties: false
+      example:
+        assetId: assetId
+        indexId: indexId
+        weight: 0.8008281904610115
+      properties:
+        indexId:
+          nullable: true
+          type: string
+        assetId:
+          nullable: true
+          type: string
+        weight:
+          format: double
+          type: number
+      type: object
+    Indexes.IndexTimeseriesItem:
+      additionalProperties: false
+      description: Represents a timeseries item with value information.
+      example:
+        time_period_end: 2000-01-23T04:56:07.000+00:00
+        value_open: 0.8008281904610115
+        time_open: 2000-01-23T04:56:07.000+00:00
+        value_close: 5.962133916683182
+        value_high: 6.027456183070403
+        time_close: 2000-01-23T04:56:07.000+00:00
+        value_low: 1.4658129805029452
+        time_period_start: 2000-01-23T04:56:07.000+00:00
+        value_count: 5
+      properties:
+        time_period_start:
+          description: Gets or sets the start time of the time period.
+          format: date-time
+          type: string
+        time_period_end:
+          description: Gets or sets the end time of the time period.
+          format: date-time
+          type: string
+        time_open:
+          description: Gets or sets the time when the value opened.
+          format: date-time
+          nullable: true
+          type: string
+        time_close:
+          description: Gets or sets the time when the value closed.
+          format: date-time
+          nullable: true
+          type: string
+        value_open:
+          description: Gets or sets the opening value.
+          format: double
+          nullable: true
+          type: number
+        value_high:
+          description: Gets or sets the highest value during the time period.
+          format: double
+          nullable: true
+          type: number
+        value_low:
+          description: Gets or sets the lowest value during the time period.
+          format: double
+          nullable: true
+          type: number
+        value_close:
+          description: Gets or sets the closing value.
+          format: double
+          nullable: true
+          type: number
+        value_count:
+          description: Gets or sets the number of values during the time period.
+          format: int64
+          type: integer
+      type: object
+    Indexes.IndexValue:
+      additionalProperties: false
+      example:
+        composition:
+        - component_id: component_id
+          component_value: 6.027456183070403
+        - component_id: component_id
+          component_value: 6.027456183070403
+        value: 0.8008281904610115
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        timestamp:
+          format: date-time
+          type: string
+        value:
+          format: double
+          type: number
+        composition:
+          items:
+            $ref: '#/components/schemas/Indexes.IndexValueComponent'
+          nullable: true
+          type: array
+      type: object
+    Indexes.IndexValueComponent:
+      additionalProperties: false
+      example:
+        component_id: component_id
+        component_value: 6.027456183070403
+      properties:
+        component_id:
+          nullable: true
+          type: string
+        component_value:
+          format: double
+          type: number
+      type: object
+    Metadata.Exchange:
+      additionalProperties: false
+      description: Represents an exchange.
+      example:
+        exchange_id: exchange_id
+        website: website
+        name: name
+      properties:
+        exchange_id:
+          description: Gets or sets the exchange ID.
+          nullable: true
+          type: string
+        website:
+          description: Gets or sets the website URL of the exchange.
+          nullable: true
+          type: string
+        name:
+          description: Gets or sets the name of the exchange.
+          nullable: true
+          type: string
+      type: object
+    Metadata.TimeseriesPeriod:
+      additionalProperties: false
+      description: Represents a timeseries period used in exchange rate data.
+      example:
+        unit_name: unit_name
+        length_months: 6
+        length_seconds: 0
+        period_id: period_id
+        display_name: display_name
+        unit_count: 1
+      properties:
+        period_id:
+          description: Gets or sets the period ID.
+          nullable: true
+          type: string
+        length_seconds:
+          description: Gets or sets the length of the period in seconds.
+          format: int32
+          type: integer
+        length_months:
+          description: Gets or sets the length of the period in months.
+          format: int32
+          type: integer
+        unit_count:
+          description: Gets or sets the unit count.
+          format: int32
+          nullable: true
+          type: integer
+        unit_name:
+          description: Gets or sets the unit name.
+          nullable: true
+          type: string
+        display_name:
+          description: Gets or sets the display name of the timeseries period.
+          nullable: true
+          type: string
+      type: object
+  securitySchemes:
+    ApiKey:
+      description: CoinApi API key needed to access the endpoints
+      in: header
+      name: X-CoinAPI-Key
+      type: apiKey
+

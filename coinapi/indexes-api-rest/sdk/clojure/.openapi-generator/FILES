@@ -1,0 +1,17 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/indexes_rest_api/api/indexes.clj
+src/indexes_rest_api/api/metadata.clj
+src/indexes_rest_api/api/periods.clj
+src/indexes_rest_api/core.clj
+src/indexes_rest_api/specs/indexes/index_definition_input_data.clj
+src/indexes_rest_api/specs/indexes/index_definition_snapshot_entry.clj
+src/indexes_rest_api/specs/indexes/index_identifier.clj
+src/indexes_rest_api/specs/indexes/index_multi_asset_weight.clj
+src/indexes_rest_api/specs/indexes/index_timeseries_item.clj
+src/indexes_rest_api/specs/indexes/index_value.clj
+src/indexes_rest_api/specs/indexes/index_value_component.clj
+src/indexes_rest_api/specs/metadata/exchange.clj
+src/indexes_rest_api/specs/metadata/timeseries_period.clj

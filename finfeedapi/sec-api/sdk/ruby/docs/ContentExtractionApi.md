@@ -4,7 +4,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content  |
+| [**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content |
 | [**v1_extractor_item_get**](ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing |
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 > <DTOFilingExtractResultDto> v1_extractor_get(accession_number, opts)
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 
@@ -29,7 +29,7 @@ opts = {
 }
 
 begin
-  # Extract and classify SEC filing content 
+  # Extract and classify SEC filing content
   result = api_instance.v1_extractor_get(accession_number, opts)
   p result
 rescue OpenapiClient::ApiError => e
@@ -45,7 +45,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Extract and classify SEC filing content 
+  # Extract and classify SEC filing content
   data, status_code, headers = api_instance.v1_extractor_get_with_http_info(accession_number, opts)
   p status_code # => 2xx
   p headers # => { ... }

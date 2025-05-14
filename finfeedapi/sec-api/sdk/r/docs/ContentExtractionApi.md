@@ -4,14 +4,14 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ExtractorGet**](ContentExtractionApi.md#V1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content 
+[**V1ExtractorGet**](ContentExtractionApi.md#V1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content
 [**V1ExtractorItemGet**](ContentExtractionApi.md#V1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 
 
 # **V1ExtractorGet**
 > DTOFilingExtractResultDto V1ExtractorGet(accession_number, type = var.type)
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 
@@ -19,7 +19,7 @@ Retrieves filing content from the EDGAR database and intelligently classifies it
 ```R
 library(openapi)
 
-# Extract and classify SEC filing content 
+# Extract and classify SEC filing content
 #
 # prepare function argument(s)
 var_accession_number <- "accession_number_example" # character | The SEC filing accession number used to retrieve the filing from EDGAR database.

@@ -9,14 +9,14 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content 
+[**v1_extractor_get**](ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 [**v1_extractor_item_get**](ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 
 
 # **v1_extractor_get**
 > DTOFilingExtractResultDto v1_extractor_get(accession_number => $accession_number, type => $type)
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 

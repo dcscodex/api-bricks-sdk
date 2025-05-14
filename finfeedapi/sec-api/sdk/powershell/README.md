@@ -53,7 +53,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ContentExtractionApi* | [**Invoke-V1ExtractorGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content 
+*ContentExtractionApi* | [**Invoke-V1ExtractorGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content
 *ContentExtractionApi* | [**Invoke-V1ExtractorItemGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**Invoke-V1FilingsGet**](docs/FilingMetadataApi.md#Invoke-V1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**Invoke-V1FullTextGet**](docs/FullTextSearchApi.md#Invoke-V1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents

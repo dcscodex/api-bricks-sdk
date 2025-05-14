@@ -64,7 +64,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OASContentExtractionApi* | [**v1ExtractorGet**](OASContentExtractionApi.md#v1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content 
+*OASContentExtractionApi* | [**v1ExtractorGet**](OASContentExtractionApi.md#v1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content
 *OASContentExtractionApi* | [**v1ExtractorItemGet**](OASContentExtractionApi.md#v1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *OASFilingMetadataApi* | [**v1FilingsGet**](OASFilingMetadataApi.md#v1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *OASFullTextSearchApi* | [**v1FullTextGet**](OASFullTextSearchApi.md#v1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents

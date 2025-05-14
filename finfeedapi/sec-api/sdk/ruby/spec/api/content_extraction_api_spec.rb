@@ -33,7 +33,7 @@ describe 'ContentExtractionApi' do
   end
 
   # unit tests for v1_extractor_get
-  # Extract and classify SEC filing content 
+  # Extract and classify SEC filing content
   # Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
   # @param accession_number The SEC filing accession number used to retrieve the filing from EDGAR database.
   # @param [Hash] opts the optional parameters

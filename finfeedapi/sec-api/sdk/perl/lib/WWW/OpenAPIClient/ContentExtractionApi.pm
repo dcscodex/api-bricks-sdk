@@ -51,7 +51,7 @@ sub new {
 #
 # v1_extractor_get
 #
-# Extract and classify SEC filing content 
+# Extract and classify SEC filing content
 #
 # @param string $accession_number The SEC filing accession number used to retrieve the filing from EDGAR database. (required)
 # @param DTOExtractorType $type Result type (text or html, default: text) (optional)
@@ -69,7 +69,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'v1_extractor_get' } = {
-        summary => 'Extract and classify SEC filing content ',
+        summary => 'Extract and classify SEC filing content',
         params => $params,
         returns => 'DTOFilingExtractResultDto',
         };

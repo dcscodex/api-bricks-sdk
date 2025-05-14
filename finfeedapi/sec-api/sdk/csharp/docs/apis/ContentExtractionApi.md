@@ -4,14 +4,14 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**V1ExtractorGet**](ContentExtractionApi.md#v1extractorget) | **GET** /v1/extractor | Extract and classify SEC filing content  |
+| [**V1ExtractorGet**](ContentExtractionApi.md#v1extractorget) | **GET** /v1/extractor | Extract and classify SEC filing content |
 | [**V1ExtractorItemGet**](ContentExtractionApi.md#v1extractoritemget) | **GET** /v1/extractor/item | Extract specific item content from SEC filing |
 
 <a id="v1extractorget"></a>
 # **V1ExtractorGet**
 > DTOFilingExtractResultDto V1ExtractorGet (string accessionNumber, DTOExtractorType type = null)
 
-Extract and classify SEC filing content 
+Extract and classify SEC filing content
 
 Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  - -- -- -- -- -|- -- -- -- -- -- -  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 
@@ -37,7 +37,7 @@ namespace Example
 
             try
             {
-                // Extract and classify SEC filing content 
+                // Extract and classify SEC filing content
                 DTOFilingExtractResultDto result = apiInstance.V1ExtractorGet(accessionNumber, type);
                 Debug.WriteLine(result);
             }
@@ -58,7 +58,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Extract and classify SEC filing content 
+    // Extract and classify SEC filing content
     ApiResponse<DTOFilingExtractResultDto> response = apiInstance.V1ExtractorGetWithHttpInfo(accessionNumber, type);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);

@@ -3,7 +3,7 @@ name: Publish Python SEC API SDK to PyPI
 on:
   push:
     branches:
-      - main # Or your primary branch name
+      - master # Or your primary branch name
     paths:
       - 'finfeedapi/sec-api/sdk/python/**' # Watch for changes in the Python SDK directory
 

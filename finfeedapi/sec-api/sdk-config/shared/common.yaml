@@ -1,3 +1,4 @@
 inputSpec: "./finfeedapi/sec-api/spec/sec-api-historical.json"
+outputDir: "./finfeedapi/sec-api/sdk"
 additionalProperties:
   x-ext-name: "Tomasz Przybysz"

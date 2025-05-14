@@ -16,28 +16,82 @@ jobs:
   build-and-commit-sdk:
     runs-on: ubuntu-latest
     steps:
+      # - name: Checkout repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     # This token is needed to push changes back to the repository.
+      #     # Create a PAT with 'repo' scope and add it as a secret 
+      #     # in your repository settings (e.g., Settings > Secrets > Actions).
+      #     # Replace 'PAT_TOKEN' with the name of your secret.
+      #     token: ${{ secrets.PAT_TOKEN }} 
+
+      # - name: Install OpenAPI Generator CLI
+      #   run: sudo npm install -g @openapitools/openapi-generator-cli@latest
+
+      # - name: Generate Python SDK
+      #   run: |
+      #     echo "Generating Python SDK for finfeedapi/sec-api/spec/sec-api-historical.yaml"
+      #     # Create the output directory if it doesn't exist
+      #     mkdir -p finfeedapi/sec-api/sdk
+      #     openapi-generator-cli generate \
+      #       -i finfeedapi/sec-api/spec/sec-api-historical.yaml \
+      #       -g python \
+      #       -o finfeedapi/sec-api/sdk/ \
+      #       -v
+      #     echo "SDK generation complete."
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4 # Updated to a newer version
         with:
           # This token is needed to push changes back to the repository.
-          # Create a PAT with 'repo' scope and add it as a secret 
+          # Create a PAT with 'repo' (or 'contents: write') scope and add it as a secret
           # in your repository settings (e.g., Settings > Secrets > Actions).
           # Replace 'PAT_TOKEN' with the name of your secret.
-          token: ${{ secrets.PAT_TOKEN }} 
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # Eclipse Temurin is a popular OpenJDK distribution
+          java-version: '17'      # Or '11'. OpenAPI Generator generally requires Java 11+
 
       - name: Install OpenAPI Generator CLI
-        run: sudo npm install -g @openapitools/openapi-generator-cli@latest
+        run: |
+          npm install -g @openapitools/openapi-generator-cli # Removed sudo, it's generally not needed and safer
+          # Optionally, pin to a specific version to avoid unexpected updates:
+          # npm install -g @openapitools/openapi-generator-cli@7.5.0 # Example version
+          echo "OpenAPI Generator CLI installed."
+          # Ensure the correct JAR is downloaded and selected, especially after a fresh install
+          # This helps prevent the "undefined.jar" error.
+          # Replace '7.5.0' with the version you intend to use or the latest stable one.
+          # You can list available versions with: openapi-generator-cli version-manager list
+          openapi-generator-cli version-manager set 7.5.0 # Example: Set to a specific stable version
 
       - name: Generate Python SDK
         run: |
+          set -e # Exit immediately if a command exits with a non-zero status.
+
           echo "Generating Python SDK for finfeedapi/sec-api/spec/sec-api-historical.yaml"
+          # Define output directory
+          SDK_OUTPUT_DIR="finfeedapi/sec-api/sdk"
+
           # Create the output directory if it doesn't exist
-          mkdir -p finfeedapi/sec-api/sdk
+          mkdir -p "${SDK_OUTPUT_DIR}"
+
+          # It's a good practice to clear the SDK directory before generation
+          # to ensure no stale files are left if the generator doesn't clean up.
+          # Be careful with 'rm -rf' - ensure the path is correct.
+          # Consider if your generator has a 'clean' option.
+          # If the generator overwrites and removes old files, this might not be strictly necessary.
+          echo "Cleaning previous SDK (if any) from ${SDK_OUTPUT_DIR}..."
+          rm -rf "${SDK_OUTPUT_DIR:?}"/* # The :? ensures the variable is set, preventing accidental deletion of root if empty
+
           openapi-generator-cli generate \
             -i finfeedapi/sec-api/spec/sec-api-historical.yaml \
             -g python \
-            -o finfeedapi/sec-api/sdk/ \
-            -v
+            -o "${SDK_OUTPUT_DIR}" \
+            --additional-properties=packageName=sec_api_historical_sdk,projectName=sec-api-historical-sdk \
+            -v # Verbose output
+
           echo "SDK generation complete."
 
       - name: Commit and Push SDK

@@ -116,7 +116,7 @@ jobs:
             echo "No changes to commit in SDK."
           else
             echo "Changes detected, committing..."
-            git commit -m "Auto-generate Python SDK for SEC API Historical [skip ci]"
+            git commit -m "Auto-generate Python SDK for SEC API Historical"
             
             # Configure pull strategy (merge by default if not rebase)
             # The example you provided used 'git config pull.rebase false' implicitly by not setting rebase.

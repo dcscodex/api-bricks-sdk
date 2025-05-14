@@ -1,0 +1,6 @@
+'!include': 'shared/common.yaml'
+outputDir: out/csharp
+generatorName: csharp
+additionalProperties:
+  useCompareNetObjects: "true"
+  packageName: CoinAPI.EMSCloudMgmt.REST.V1

@@ -1,0 +1,3 @@
+inputSpec: "./openapi/ems-cloud-mgmt-rest-v1.yaml"
+additionalProperties:
+  x-ext-name: "Tomasz Przybysz"

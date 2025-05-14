@@ -1,0 +1,4 @@
+'!include': 'shared/common.yaml'
+outputDir: out/php
+generatorName: php
+additionalProperties:

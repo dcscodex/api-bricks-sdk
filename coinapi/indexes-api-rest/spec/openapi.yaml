@@ -8,7 +8,7 @@ info:
     email: support@apibricks.io
   license:
     name: MIT License
-    url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+    url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
   version: v1
 servers:
   - url: https://rest-api.indexes.coinapi.io

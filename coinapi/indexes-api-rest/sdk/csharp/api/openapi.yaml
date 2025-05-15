@@ -7,7 +7,7 @@ info:
   description: ""
   license:
     name: MIT License
-    url: https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+    url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
   title: Indexes REST API
   version: v1
 servers:

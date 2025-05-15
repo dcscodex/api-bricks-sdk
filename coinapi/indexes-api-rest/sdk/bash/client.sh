@@ -16,7 +16,7 @@
 # This is a Bash client for Indexes REST API.
 #
 # LICENSE:
-# https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+# https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
 #
 # CONTACT:
 # support@apibricks.io

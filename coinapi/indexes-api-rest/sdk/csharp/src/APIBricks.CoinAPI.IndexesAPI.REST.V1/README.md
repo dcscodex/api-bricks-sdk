@@ -173,7 +173,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {242BE8D3-81FA-4A80-ADB9-40F71BCA790A}
+- packageGuid: {FCA78943-9A3E-4C18-A0B6-05215FA40C1E}
 - packageName: APIBricks.CoinAPI.IndexesAPI.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

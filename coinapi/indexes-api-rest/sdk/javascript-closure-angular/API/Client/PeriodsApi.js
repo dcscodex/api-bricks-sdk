@@ -10,7 +10,7 @@
  */
 /**
  * @license MIT License
- * https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE
+ * https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
  */
 
 goog.provide('API.Client.PeriodsApi');

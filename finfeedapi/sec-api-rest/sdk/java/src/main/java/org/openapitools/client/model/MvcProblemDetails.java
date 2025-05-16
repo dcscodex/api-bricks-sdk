@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * MvcProblemDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-14T12:27:07.443534521Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-16T06:10:51.316833191Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class MvcProblemDetails {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

@@ -18,6 +18,6 @@ jobs:
     with:
       product_line_slug: "coinapi"
       api_type_slug: "exchange-rates-api-rest-historical"
-      commit_message_subject: "CoinAPI Exchange Rates Historical API REST Historical"
+      commit_message_subject: "CoinAPI Exchange Rates API REST Historical"
     secrets:
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

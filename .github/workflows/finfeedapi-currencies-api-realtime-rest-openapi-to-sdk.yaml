@@ -1,23 +1,23 @@
-name: CoinAPI Exchange Rates Realtime API REST OpenAPI to SDK
+name: FinFeedAPI Currencies API Realtime API REST OpenAPI to SDK
 
 on:
   push:
     branches:
       - master # Adjust to your default branch (e.g., main) if different
     paths:
-      - 'coinapi/exchange-rates-api-rest-realtime/spec/openapi.json'
+      - 'finfeedapi/currencies-api-rest-realtime/spec/openapi.json'
   pull_request:
     branches:
       - master # Adjust to your default branch (e.g., main) if different
     paths:
-      - 'coinapi/exchange-rates-api-rest-realtime/spec/openapi.json'
+      - 'finfeedapi/currencies-api-rest-realtime/spec/openapi.json'
 
 jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-openapi-to-sdk.yaml
     with:
-      product_line_slug: "coinapi"
-      api_type_slug: "exchange-rates-api-rest-realtime"
-      commit_message_subject: "CoinAPI Exchange Rates API REST Realtime"
+      product_line_slug: "finfeedapi"
+      api_type_slug: "currencies-api-rest-realtime"
+      commit_message_subject: "FinFeedAPI Currencies API REST Realtime"
     secrets:
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

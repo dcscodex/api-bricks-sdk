@@ -1,0 +1,11 @@
+# # V1ChainNetworkAddress
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**chain_id** | **string** | Gets or sets chain id | [optional]
+**network_id** | **string** | Gets or sets network id | [optional]
+**address** | **string** | Gets or sets chain address | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

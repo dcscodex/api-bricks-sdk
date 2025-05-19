@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+README.md
+rebar.config
+src/openapi.app.src
+src/openapi_exchange_rates_api.erl
+src/openapi_metadata_api.erl
+src/openapi_utils.erl
+src/openapi_v1_asset.erl
+src/openapi_v1_chain_network_address.erl
+src/openapi_v1_exchange_rate.erl
+src/openapi_v1_exchange_rates.erl
+src/openapi_v1_exchange_rates_rate.erl
+src/openapi_v1_exchange_rates_timeseries_item.erl
+src/openapi_v1_icon.erl
+src/openapi_v1_timeseries_period.erl

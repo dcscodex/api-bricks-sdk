@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+README.md
+build.gradle
+src/main/groovy/org/openapitools/api/ApiUtils.groovy
+src/main/groovy/org/openapitools/api/ExchangeRatesApi.groovy
+src/main/groovy/org/openapitools/api/MetadataApi.groovy
+src/main/groovy/org/openapitools/model/V1Asset.groovy
+src/main/groovy/org/openapitools/model/V1ChainNetworkAddress.groovy
+src/main/groovy/org/openapitools/model/V1ExchangeRate.groovy
+src/main/groovy/org/openapitools/model/V1ExchangeRates.groovy
+src/main/groovy/org/openapitools/model/V1ExchangeRatesRate.groovy
+src/main/groovy/org/openapitools/model/V1ExchangeRatesTimeseriesItem.groovy
+src/main/groovy/org/openapitools/model/V1Icon.groovy
+src/main/groovy/org/openapitools/model/V1TimeseriesPeriod.groovy

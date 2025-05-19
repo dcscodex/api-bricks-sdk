@@ -1,0 +1,15 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/fx_historical_rest_api/api/exchange_rates.clj
+src/fx_historical_rest_api/api/metadata.clj
+src/fx_historical_rest_api/core.clj
+src/fx_historical_rest_api/specs/v1/asset.clj
+src/fx_historical_rest_api/specs/v1/chain_network_address.clj
+src/fx_historical_rest_api/specs/v1/exchange_rate.clj
+src/fx_historical_rest_api/specs/v1/exchange_rates.clj
+src/fx_historical_rest_api/specs/v1/exchange_rates_rate.clj
+src/fx_historical_rest_api/specs/v1/exchange_rates_timeseries_item.clj
+src/fx_historical_rest_api/specs/v1/icon.clj
+src/fx_historical_rest_api/specs/v1/timeseries_period.clj

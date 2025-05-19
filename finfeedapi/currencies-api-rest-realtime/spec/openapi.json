@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "FX Realtime REST API",
+    "title": "FX Realtime REST API", 
     "contact": {
       "name": "API BRICKS LTD",
       "url": "https://www.finfeedapi.com",

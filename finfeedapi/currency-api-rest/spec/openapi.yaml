@@ -1,16 +1,16 @@
 openapi: 3.0.1
 info:
-  title: Exchange Rates Historical REST API
+  title: FX Historical REST API
   contact:
     name: API BRICKS LTD
-    url: https://www.coinapi.io
+    url: https://www.finfeedapi.com
     email: support@apibricks.io
   license:
     name: MIT License
     url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
   version: v1
 servers:
-  - url: https://api-historical.exrates.coinapi.io
+  - url: https://api-historical.fx.finfeedapi.com
 paths:
   /v1/assets:
     get:
@@ -544,7 +544,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-05-19T06:14:15.2137074Z",
+  "time": "2025-05-19T14:16:32.0651392Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -555,7 +555,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-05-19T06:14:15.2137074Z",
+  "time": "2025-05-19T14:16:32.0651392Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -566,7 +566,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-05-19T06:14:15.2137074Z",
+  "time": "2025-05-19T14:16:32.0651392Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0

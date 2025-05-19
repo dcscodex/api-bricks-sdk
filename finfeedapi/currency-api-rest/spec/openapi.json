@@ -1,10 +1,10 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Exchange Rates Historical REST API",
+    "title": "FX Historical REST API",
     "contact": {
       "name": "API BRICKS LTD",
-      "url": "https://www.coinapi.io",
+      "url": "https://www.finfeedapi.com",
       "email": "support@apibricks.io"
     },
     "license": {
@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://api-historical.exrates.coinapi.io"
+      "url": "https://api-historical.fx.finfeedapi.com"
     }
   ],
   "paths": {
@@ -638,7 +638,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T06:14:15.0864858Z",
+  "time": "2025-05-19T14:16:31.8947981Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -653,7 +653,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T06:14:15.0864858Z",
+  "time": "2025-05-19T14:16:31.8947981Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -668,7 +668,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T06:14:15.0864858Z",
+  "time": "2025-05-19T14:16:31.8947981Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0

@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+README.md
+rebar.config
+src/openapi.app.src
+src/openapi_indexes_api.erl
+src/openapi_indexes_index_definition_input_data.erl
+src/openapi_indexes_index_definition_snapshot_entry.erl
+src/openapi_indexes_index_identifier.erl
+src/openapi_indexes_index_multi_asset_weight.erl
+src/openapi_indexes_index_timeseries_item.erl
+src/openapi_indexes_index_value.erl
+src/openapi_indexes_index_value_component.erl
+src/openapi_metadata_api.erl
+src/openapi_metadata_exchange.erl
+src/openapi_metadata_timeseries_period.erl
+src/openapi_periods_api.erl
+src/openapi_utils.erl

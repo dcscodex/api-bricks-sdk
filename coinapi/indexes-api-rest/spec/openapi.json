@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1", 
+  "openapi": "3.0.1",
   "info": {
     "title": "Indexes REST API",
     "description": "",
@@ -10,7 +10,7 @@
     },
     "license": {
       "name": "MIT License",
-      "url": "https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE"
+      "url": "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"
     },
     "version": "v1"
   },

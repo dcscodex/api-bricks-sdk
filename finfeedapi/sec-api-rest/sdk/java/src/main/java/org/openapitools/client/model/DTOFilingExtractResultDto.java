@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents the result of a filing extraction.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-14T11:28:00.070213808Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-16T06:10:51.316833191Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class DTOFilingExtractResultDto {
   public static final String SERIALIZED_NAME_ACCESSION_NUMBER = "accession_number";
   @SerializedName(SERIALIZED_NAME_ACCESSION_NUMBER)

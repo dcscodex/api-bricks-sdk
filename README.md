@@ -38,6 +38,8 @@ The FinFeedAPI family includes the following specific APIs and SDKs present in t
 | ----------------------------------- | ------------------------------------------- | --------------- |
 | Stock API                           | SDK for FinFeed API Stock API               | REST            |
 | SEC API                             | SDK for FinFeed API SEC API                 | REST            |
+| Currencies Realtime API             | SDK for FinFeed API Currencies Realtime API | REST            |
+| Currencies Historical API           | SDK for FinFeed API Currencies Historical API | REST            |
 
 *For detailed documentation on each specific API, please refer to the [FinFeedAPI Documentation Hub](https://docs.finfeedapi.com/).*
 
@@ -68,6 +70,8 @@ Directory | Description |
 --- | --- |
 `finfeedapi/stock-api-rest` | SDK for FinFeed API Stock REST API |
 `finfeedapi/sec-api-rest` | SDK for FinFeed API SEC REST API |
+`finfeedapi/currencies-api-rest-realtime` | SDK for FinFeed API Currencies Realtime REST API |
+`finfeedapi/currencies-api-rest-historical` | SDK for FinFeed API Currencies Historical REST API |
 
 ## OpenAPI Specifications
 

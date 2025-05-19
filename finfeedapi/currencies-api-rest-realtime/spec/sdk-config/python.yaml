@@ -1,0 +1,7 @@
+'!include': 'shared/common.yaml'
+outputDir: sdk/python
+generatorName: python
+additionalProperties:
+  packageName: api_bricks_currencies_api_rest_realtime
+  projectName: API Bricks Currencies API REST Realtime
+  generateSourceCodeOnly: true

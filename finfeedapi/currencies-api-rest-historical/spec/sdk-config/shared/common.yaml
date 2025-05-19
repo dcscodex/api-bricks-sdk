@@ -1,0 +1,3 @@
+inputSpec: "./spec/openapi.json"
+additionalProperties:
+  x-ext-name: "Tomasz Przybysz"

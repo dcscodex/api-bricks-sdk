@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",  
+  "openapi": "3.0.1",
   "info": {
     "title": "FX Historical REST API",
     "contact": {
@@ -638,7 +638,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T16:19:05.1569296Z",
+  "time": "2025-05-20T06:13:03.3492813Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -653,7 +653,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T16:19:05.1569296Z",
+  "time": "2025-05-20T06:13:03.3492813Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -668,7 +668,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-05-19T16:19:05.1569296Z",
+  "time": "2025-05-20T06:13:03.3492813Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0

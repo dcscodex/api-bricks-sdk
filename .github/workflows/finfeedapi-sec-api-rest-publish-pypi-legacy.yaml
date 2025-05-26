@@ -5,7 +5,7 @@ on:
     branches:
       - master # Or your primary branch name
     paths:
-      - 'finfeedapi/sec-api/sdk/python/**' # Watch for changes in the Python SDK directory
+      - 'finfeedapi/sec-api-rest/sdk/python/**' # Watch for changes in the Python SDK directory
 
 jobs:
   pypi-publish:

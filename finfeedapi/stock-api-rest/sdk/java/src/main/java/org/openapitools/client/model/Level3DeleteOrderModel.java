@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents the response DTO for order delete information
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-26T06:08:45.086077096Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-26T11:12:54.742835494Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class Level3DeleteOrderModel {
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)

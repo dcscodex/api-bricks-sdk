@@ -18,8 +18,6 @@ require 'openapi_client/configuration'
 
 # Models
 require 'openapi_client/models/dto_extractor_type'
-require 'openapi_client/models/dto_filing_extract_result_dto'
-require 'openapi_client/models/dto_filing_item_dto'
 require 'openapi_client/models/dto_filing_metadata_dto'
 require 'openapi_client/models/dto_filing_sort_by'
 require 'openapi_client/models/dto_sec_filing_result_dto'
@@ -30,6 +28,7 @@ require 'openapi_client/models/mvc_validation_problem_details'
 require 'openapi_client/api/content_extraction_api'
 require 'openapi_client/api/filing_metadata_api'
 require 'openapi_client/api/full_text_search_api'
+require 'openapi_client/api/xbrl_conversion_api'
 
 module OpenapiClient
   class << self

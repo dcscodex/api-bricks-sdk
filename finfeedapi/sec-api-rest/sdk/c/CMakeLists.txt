@@ -49,8 +49,6 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/dto_extractor_type.c
-    model/dto_filing_extract_result_dto.c
-    model/dto_filing_item_dto.c
     model/dto_filing_metadata_dto.c
     model/dto_filing_sort_by.c
     model/dto_sec_filing_result_dto.c
@@ -59,6 +57,7 @@ set(SRCS
     api/ContentExtractionAPI.c
     api/FilingMetadataAPI.c
     api/FullTextSearchAPI.c
+    api/XBRLConversionAPI.c
 
 )
 
@@ -71,8 +70,6 @@ set(HDRS
     model/object.h
     model/any_type.h
     model/dto_extractor_type.h
-    model/dto_filing_extract_result_dto.h
-    model/dto_filing_item_dto.h
     model/dto_filing_metadata_dto.h
     model/dto_filing_sort_by.h
     model/dto_sec_filing_result_dto.h
@@ -81,6 +78,7 @@ set(HDRS
     api/ContentExtractionAPI.h
     api/FilingMetadataAPI.h
     api/FullTextSearchAPI.h
+    api/XBRLConversionAPI.h
 
 )
 
@@ -165,6 +163,7 @@ set(HDRS "")
 #    unit-tests/manual-ContentExtractionAPI.c
 #    unit-tests/manual-FilingMetadataAPI.c
 #    unit-tests/manual-FullTextSearchAPI.c
+#    unit-tests/manual-XBRLConversionAPI.c
 #)
 
 ##set header files

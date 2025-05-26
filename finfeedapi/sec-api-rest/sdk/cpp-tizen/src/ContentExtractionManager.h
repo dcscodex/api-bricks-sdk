@@ -5,10 +5,11 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "AnyType.h"
 #include "DTO.ExtractorType.h"
-#include "DTO.FilingExtractResultDto.h"
 #include "Mvc.ProblemDetails.h"
 #include "Mvc.ValidationProblemDetails.h"
+#include <map>
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -38,7 +39,7 @@ public:
  */
 bool v1ExtractorGetSync(char * accessToken,
 	std::string accessionNumber, DTO.ExtractorType type, 
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
+	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
 /*! \brief Extract and classify SEC filing content. *Asynchronous*
@@ -52,7 +53,7 @@ bool v1ExtractorGetSync(char * accessToken,
  */
 bool v1ExtractorGetAsync(char * accessToken,
 	std::string accessionNumber, DTO.ExtractorType type, 
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
+	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
 

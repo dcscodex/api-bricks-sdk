@@ -17,8 +17,10 @@ module REST.API
   ( module REST.API.ContentExtraction
   , module REST.API.FilingMetadata
   , module REST.API.FullTextSearch
+  , module REST.API.XBRLConversion
   ) where
 
 import REST.API.ContentExtraction
 import REST.API.FilingMetadata
 import REST.API.FullTextSearch
+import REST.API.XBRLConversion

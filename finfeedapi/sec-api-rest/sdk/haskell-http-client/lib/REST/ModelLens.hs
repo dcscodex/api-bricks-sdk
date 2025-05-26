@@ -41,44 +41,6 @@ import REST.Core
 
 
 
--- * DTOFilingExtractResultDto
-
--- | 'dTOFilingExtractResultDtoAccessionNumber' Lens
-dTOFilingExtractResultDtoAccessionNumberL :: Lens_' DTOFilingExtractResultDto (Maybe Text)
-dTOFilingExtractResultDtoAccessionNumberL f DTOFilingExtractResultDto{..} = (\dTOFilingExtractResultDtoAccessionNumber -> DTOFilingExtractResultDto { dTOFilingExtractResultDtoAccessionNumber, ..} ) <$> f dTOFilingExtractResultDtoAccessionNumber
-{-# INLINE dTOFilingExtractResultDtoAccessionNumberL #-}
-
--- | 'dTOFilingExtractResultDtoFormType' Lens
-dTOFilingExtractResultDtoFormTypeL :: Lens_' DTOFilingExtractResultDto (Maybe Text)
-dTOFilingExtractResultDtoFormTypeL f DTOFilingExtractResultDto{..} = (\dTOFilingExtractResultDtoFormType -> DTOFilingExtractResultDto { dTOFilingExtractResultDtoFormType, ..} ) <$> f dTOFilingExtractResultDtoFormType
-{-# INLINE dTOFilingExtractResultDtoFormTypeL #-}
-
--- | 'dTOFilingExtractResultDtoItems' Lens
-dTOFilingExtractResultDtoItemsL :: Lens_' DTOFilingExtractResultDto (Maybe [DTOFilingItemDto])
-dTOFilingExtractResultDtoItemsL f DTOFilingExtractResultDto{..} = (\dTOFilingExtractResultDtoItems -> DTOFilingExtractResultDto { dTOFilingExtractResultDtoItems, ..} ) <$> f dTOFilingExtractResultDtoItems
-{-# INLINE dTOFilingExtractResultDtoItemsL #-}
-
-
-
--- * DTOFilingItemDto
-
--- | 'dTOFilingItemDtoItemNumber' Lens
-dTOFilingItemDtoItemNumberL :: Lens_' DTOFilingItemDto (Maybe Text)
-dTOFilingItemDtoItemNumberL f DTOFilingItemDto{..} = (\dTOFilingItemDtoItemNumber -> DTOFilingItemDto { dTOFilingItemDtoItemNumber, ..} ) <$> f dTOFilingItemDtoItemNumber
-{-# INLINE dTOFilingItemDtoItemNumberL #-}
-
--- | 'dTOFilingItemDtoItemTitle' Lens
-dTOFilingItemDtoItemTitleL :: Lens_' DTOFilingItemDto (Maybe Text)
-dTOFilingItemDtoItemTitleL f DTOFilingItemDto{..} = (\dTOFilingItemDtoItemTitle -> DTOFilingItemDto { dTOFilingItemDtoItemTitle, ..} ) <$> f dTOFilingItemDtoItemTitle
-{-# INLINE dTOFilingItemDtoItemTitleL #-}
-
--- | 'dTOFilingItemDtoContent' Lens
-dTOFilingItemDtoContentL :: Lens_' DTOFilingItemDto (Maybe Text)
-dTOFilingItemDtoContentL f DTOFilingItemDto{..} = (\dTOFilingItemDtoContent -> DTOFilingItemDto { dTOFilingItemDtoContent, ..} ) <$> f dTOFilingItemDtoContent
-{-# INLINE dTOFilingItemDtoContentL #-}
-
-
-
 -- * DTOFilingMetadataDto
 
 -- | 'dTOFilingMetadataDtoCik' Lens

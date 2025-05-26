@@ -10,7 +10,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1ExtractorGet"></a>
 # **v1ExtractorGet**
-> DTOFilingExtractResultDto v1ExtractorGet(accessionNumber, type)
+> Map&lt;String, Object&gt; v1ExtractorGet(accessionNumber, type)
 
 Extract and classify SEC filing content
 
@@ -34,7 +34,7 @@ public class Example {
     String accessionNumber = "accessionNumber_example"; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
     DTOExtractorType type = DTOExtractorType.fromValue("text"); // DTOExtractorType | Result type (text or html, default: text)
     try {
-      DTOFilingExtractResultDto result = apiInstance.v1ExtractorGet(accessionNumber, type);
+      Map<String, Object> result = apiInstance.v1ExtractorGet(accessionNumber, type);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ContentExtractionApi#v1ExtractorGet");
@@ -56,7 +56,7 @@ public class Example {
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**Map&lt;String, Object&gt;**
 
 ### Authorization
 

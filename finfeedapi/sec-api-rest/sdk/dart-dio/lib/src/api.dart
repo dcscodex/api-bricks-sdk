@@ -12,6 +12,7 @@ import 'package:openapi/src/auth/oauth.dart';
 import 'package:openapi/src/api/content_extraction_api.dart';
 import 'package:openapi/src/api/filing_metadata_api.dart';
 import 'package:openapi/src/api/full_text_search_api.dart';
+import 'package:openapi/src/api/xbrl_conversion_api.dart';
 
 class Openapi {
   static const String basePath = r'https://api-historical.sec.finfeedapi.com';
@@ -83,5 +84,11 @@ class Openapi {
   /// by doing that all interceptors will not be executed
   FullTextSearchApi getFullTextSearchApi() {
     return FullTextSearchApi(dio, serializers);
+  }
+
+  /// Get XBRLConversionApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  XBRLConversionApi getXBRLConversionApi() {
+    return XBRLConversionApi(dio, serializers);
   }
 }

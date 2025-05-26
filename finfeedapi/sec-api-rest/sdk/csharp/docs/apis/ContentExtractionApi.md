@@ -9,7 +9,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1extractorget"></a>
 # **V1ExtractorGet**
-> DTOFilingExtractResultDto V1ExtractorGet (string accessionNumber, DTOExtractorType type = null)
+> Dictionary&lt;string, Object&gt; V1ExtractorGet (string accessionNumber, DTOExtractorType type = null)
 
 Extract and classify SEC filing content
 
@@ -38,7 +38,7 @@ namespace Example
             try
             {
                 // Extract and classify SEC filing content
-                DTOFilingExtractResultDto result = apiInstance.V1ExtractorGet(accessionNumber, type);
+                Dictionary<string, Object> result = apiInstance.V1ExtractorGet(accessionNumber, type);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -59,7 +59,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Extract and classify SEC filing content
-    ApiResponse<DTOFilingExtractResultDto> response = apiInstance.V1ExtractorGetWithHttpInfo(accessionNumber, type);
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.V1ExtractorGetWithHttpInfo(accessionNumber, type);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**Dictionary<string, Object>**
 
 ### Authorization
 

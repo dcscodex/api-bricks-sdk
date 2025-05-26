@@ -42,7 +42,7 @@ func (r ApiV1ExtractorGetRequest) Type_(type_ DTOExtractorType) ApiV1ExtractorGe
 	return r
 }
 
-func (r ApiV1ExtractorGetRequest) Execute() (*DTOFilingExtractResultDto, *http.Response, error) {
+func (r ApiV1ExtractorGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.V1ExtractorGetExecute(r)
 }
 
@@ -78,13 +78,13 @@ func (a *ContentExtractionAPIService) V1ExtractorGet(ctx context.Context) ApiV1E
 }
 
 // Execute executes the request
-//  @return DTOFilingExtractResultDto
-func (a *ContentExtractionAPIService) V1ExtractorGetExecute(r ApiV1ExtractorGetRequest) (*DTOFilingExtractResultDto, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ContentExtractionAPIService) V1ExtractorGetExecute(r ApiV1ExtractorGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DTOFilingExtractResultDto
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContentExtractionAPIService.V1ExtractorGet")

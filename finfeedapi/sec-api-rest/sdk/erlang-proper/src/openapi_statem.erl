@@ -58,12 +58,12 @@ cleanup() -> ok.
 initial_state() -> #{}.
 
 %%==============================================================================
-%% v1_full_text_get
+%% v1_xbrl_converter_get
 %%==============================================================================
 
-v1_full_text_get() ->
-  openapi_api:v1_full_text_get().
+v1_xbrl_converter_get() ->
+  openapi_api:v1_xbrl_converter_get().
 
-v1_full_text_get_args(_S) ->
+v1_xbrl_converter_get_args(_S) ->
   [].
 

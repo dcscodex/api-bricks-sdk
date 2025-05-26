@@ -16,8 +16,8 @@ local dkjson = require "dkjson"
 local basexx = require "basexx"
 
 -- model import
+local openapiclient_any_type = require "openapiclient.model.any_type"
 local openapiclient_dto_extractor_type = require "openapiclient.model.dto_extractor_type"
-local openapiclient_dto_filing_extract_result_dto = require "openapiclient.model.dto_filing_extract_result_dto"
 local openapiclient_mvc_problem_details = require "openapiclient.model.mvc_problem_details"
 local openapiclient_mvc_validation_problem_details = require "openapiclient.model.mvc_validation_problem_details"
 
@@ -81,7 +81,7 @@ function content_extraction_api:v1_extractor_get(accession_number, type)
 		if result == nil then
 			return nil, err3
 		end
-		return openapiclient_dto_filing_extract_result_dto.cast(result), headers
+		return result, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

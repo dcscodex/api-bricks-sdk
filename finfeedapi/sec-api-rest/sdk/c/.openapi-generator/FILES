@@ -9,12 +9,13 @@ api/FilingMetadataAPI.c
 api/FilingMetadataAPI.h
 api/FullTextSearchAPI.c
 api/FullTextSearchAPI.h
+api/XBRLConversionAPI.c
+api/XBRLConversionAPI.h
 docs/ContentExtractionAPI.md
 docs/FilingMetadataAPI.md
 docs/FullTextSearchAPI.md
+docs/XBRLConversionAPI.md
 docs/dto_extractor_type.md
-docs/dto_filing_extract_result_dto.md
-docs/dto_filing_item_dto.md
 docs/dto_filing_metadata_dto.md
 docs/dto_filing_sort_by.md
 docs/dto_sec_filing_result_dto.md
@@ -31,10 +32,6 @@ libcurl.licence
 model/any_type.h
 model/dto_extractor_type.c
 model/dto_extractor_type.h
-model/dto_filing_extract_result_dto.c
-model/dto_filing_extract_result_dto.h
-model/dto_filing_item_dto.c
-model/dto_filing_item_dto.h
 model/dto_filing_metadata_dto.c
 model/dto_filing_metadata_dto.h
 model/dto_filing_sort_by.c
@@ -53,8 +50,6 @@ src/binary.c
 src/list.c
 uncrustify-rules.cfg
 unit-test/test_dto_extractor_type.c
-unit-test/test_dto_filing_extract_result_dto.c
-unit-test/test_dto_filing_item_dto.c
 unit-test/test_dto_filing_metadata_dto.c
 unit-test/test_dto_filing_sort_by.c
 unit-test/test_dto_sec_filing_result_dto.c

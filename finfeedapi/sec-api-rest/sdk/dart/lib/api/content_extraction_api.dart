@@ -70,7 +70,7 @@ class ContentExtractionApi {
   ///
   /// * [DTOExtractorType] type:
   ///   Result type (text or html, default: text)
-  Future<DTOFilingExtractResultDto?> v1ExtractorGet(String accessionNumber, { DTOExtractorType? type, }) async {
+  Future<Map<String, Object>?> v1ExtractorGet(String accessionNumber, { DTOExtractorType? type, }) async {
     final response = await v1ExtractorGetWithHttpInfo(accessionNumber,  type: type, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -79,8 +79,8 @@ class ContentExtractionApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DTOFilingExtractResultDto',) as DTOFilingExtractResultDto;
-    
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
     }
     return null;
   }

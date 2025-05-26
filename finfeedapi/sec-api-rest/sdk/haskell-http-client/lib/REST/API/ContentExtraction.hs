@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- 
 v1ExtractorGet
   :: AccessionNumber -- ^ "accessionNumber" -  The SEC filing accession number used to retrieve the filing from EDGAR database.
-  -> RESTRequest V1ExtractorGet MimeNoContent DTOFilingExtractResultDto MimeJSON
+  -> RESTRequest V1ExtractorGet MimeNoContent ((Map.Map String AnyType)) MimeJSON
 v1ExtractorGet (AccessionNumber accessionNumber) =
   _mkRequest "GET" ["/v1/extractor"]
     `addQuery` toQuery ("accession_number", Just accessionNumber)

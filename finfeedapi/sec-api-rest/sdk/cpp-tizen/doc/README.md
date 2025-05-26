@@ -62,12 +62,17 @@ Method | HTTP request | Description
 *v1FullTextGetASync* | *GET* /v1/full-text | Full-text search of SEC filing documents.
 
 
+### XBRLConversionManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*v1XbrlConverterGetSync* | *GET* /v1/xbrl-converter | Convert XBRL data to JSON format.
+*v1XbrlConverterGetASync* | *GET* /v1/xbrl-converter | Convert XBRL data to JSON format.
+
+
 ## What are the Model files for the data structures/objects?
 Class | Description
 ------------- | -------------
  *DTO.ExtractorType* | 
- *DTO.FilingExtractResultDto* | Represents the result of a filing extraction.
- *DTO.FilingItemDto* | 
  *DTO.FilingMetadataDto* | Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
  *DTO.FilingSortBy* | Defines sorting options for the filing query.
  *DTO.SecFilingResultDto* | 

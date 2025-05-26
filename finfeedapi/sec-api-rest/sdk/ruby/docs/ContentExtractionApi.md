@@ -10,7 +10,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 ## v1_extractor_get
 
-> <DTOFilingExtractResultDto> v1_extractor_get(accession_number, opts)
+> Hash&lt;String, Object&gt; v1_extractor_get(accession_number, opts)
 
 Extract and classify SEC filing content
 
@@ -41,7 +41,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DTOFilingExtractResultDto>, Integer, Hash)> v1_extractor_get_with_http_info(accession_number, opts)
+> <Array(Hash&lt;String, Object&gt;, Integer, Hash)> v1_extractor_get_with_http_info(accession_number, opts)
 
 ```ruby
 begin
@@ -49,7 +49,7 @@ begin
   data, status_code, headers = api_instance.v1_extractor_get_with_http_info(accession_number, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DTOFilingExtractResultDto>
+  p data # => Hash&lt;String, Object&gt;
 rescue OpenapiClient::ApiError => e
   puts "Error when calling ContentExtractionApi->v1_extractor_get_with_http_info: #{e}"
 end
@@ -64,7 +64,7 @@ end
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**Hash&lt;String, Object&gt;**
 
 ### Authorization
 

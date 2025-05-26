@@ -71,13 +71,12 @@ Class | Method | HTTP request | Description
 [*ContentExtractionApi*](doc/ContentExtractionApi.md) | [**v1ExtractorItemGet**](doc/ContentExtractionApi.md#v1extractoritemget) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 [*FilingMetadataApi*](doc/FilingMetadataApi.md) | [**v1FilingsGet**](doc/FilingMetadataApi.md#v1filingsget) | **GET** /v1/filings | Query SEC filing metadata
 [*FullTextSearchApi*](doc/FullTextSearchApi.md) | [**v1FullTextGet**](doc/FullTextSearchApi.md#v1fulltextget) | **GET** /v1/full-text | Full-text search of SEC filing documents
+[*XBRLConversionApi*](doc/XBRLConversionApi.md) | [**v1XbrlConverterGet**](doc/XBRLConversionApi.md#v1xbrlconverterget) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 ## Documentation For Models
 
  - [DTOExtractorType](doc/DTOExtractorType.md)
- - [DTOFilingExtractResultDto](doc/DTOFilingExtractResultDto.md)
- - [DTOFilingItemDto](doc/DTOFilingItemDto.md)
  - [DTOFilingMetadataDto](doc/DTOFilingMetadataDto.md)
  - [DTOFilingSortBy](doc/DTOFilingSortBy.md)
  - [DTOSecFilingResultDto](doc/DTOSecFilingResultDto.md)

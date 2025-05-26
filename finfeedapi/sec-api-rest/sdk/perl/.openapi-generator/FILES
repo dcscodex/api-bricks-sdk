@@ -6,8 +6,6 @@ bin/autodoc
 cpanfile
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -15,6 +13,7 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionApi.md
 git_push.sh
 lib/WWW/OpenAPIClient/ApiClient.pm
 lib/WWW/OpenAPIClient/ApiFactory.pm
@@ -23,8 +22,6 @@ lib/WWW/OpenAPIClient/ContentExtractionApi.pm
 lib/WWW/OpenAPIClient/FilingMetadataApi.pm
 lib/WWW/OpenAPIClient/FullTextSearchApi.pm
 lib/WWW/OpenAPIClient/Object/DTOExtractorType.pm
-lib/WWW/OpenAPIClient/Object/DTOFilingExtractResultDto.pm
-lib/WWW/OpenAPIClient/Object/DTOFilingItemDto.pm
 lib/WWW/OpenAPIClient/Object/DTOFilingMetadataDto.pm
 lib/WWW/OpenAPIClient/Object/DTOFilingSortBy.pm
 lib/WWW/OpenAPIClient/Object/DTOSecFilingResultDto.pm
@@ -32,10 +29,9 @@ lib/WWW/OpenAPIClient/Object/MvcProblemDetails.pm
 lib/WWW/OpenAPIClient/Object/MvcValidationProblemDetails.pm
 lib/WWW/OpenAPIClient/Role.pm
 lib/WWW/OpenAPIClient/Role/AutoDoc.pm
+lib/WWW/OpenAPIClient/XBRLConversionApi.pm
 t/ContentExtractionApiTest.t
 t/DTOExtractorTypeTest.t
-t/DTOFilingExtractResultDtoTest.t
-t/DTOFilingItemDtoTest.t
 t/DTOFilingMetadataDtoTest.t
 t/DTOFilingSortByTest.t
 t/DTOSecFilingResultDtoTest.t
@@ -43,3 +39,4 @@ t/FilingMetadataApiTest.t
 t/FullTextSearchApiTest.t
 t/MvcProblemDetailsTest.t
 t/MvcValidationProblemDetailsTest.t
+t/XBRLConversionApiTest.t

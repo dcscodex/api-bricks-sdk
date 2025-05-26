@@ -2,8 +2,6 @@
 README.md
 rebar.config
 src/model/openapi_dto_extractor_type.erl
-src/model/openapi_dto_filing_extract_result_dto.erl
-src/model/openapi_dto_filing_item_dto.erl
 src/model/openapi_dto_filing_metadata_dto.erl
 src/model/openapi_dto_filing_sort_by.erl
 src/model/openapi_dto_sec_filing_result_dto.erl
@@ -14,7 +12,9 @@ src/openapi.hrl
 src/openapi_api.erl
 src/openapi_api.erl
 src/openapi_api.erl
+src/openapi_api.erl
 src/openapi_gen.erl
+src/openapi_statem.erl
 src/openapi_statem.erl
 src/openapi_statem.erl
 src/openapi_statem.erl

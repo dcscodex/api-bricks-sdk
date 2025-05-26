@@ -5,8 +5,8 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/any_type.h"
 #include "../model/dto_extractor_type.h"
-#include "../model/dto_filing_extract_result_dto.h"
 #include "../model/mvc_problem_details.h"
 #include "../model/mvc_validation_problem_details.h"
 
@@ -21,7 +21,7 @@ typedef enum  { rest_api_v1ExtractorItemGet__NULL = 0, rest_api_v1ExtractorItemG
 //
 // Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 //
-dto_filing_extract_result_dto_t*
+list_t*_t*
 ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_number, dto_extractor_type_e type);
 
 

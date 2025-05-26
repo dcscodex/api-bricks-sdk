@@ -38,7 +38,7 @@ describe 'ContentExtractionApi' do
   # @param accession_number The SEC filing accession number used to retrieve the filing from EDGAR database.
   # @param [Hash] opts the optional parameters
   # @option opts [DTOExtractorType] :type Result type (text or html, default: text)
-  # @return [DTOFilingExtractResultDto]
+  # @return [Hash<String, Object>]
   describe 'v1_extractor_get test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

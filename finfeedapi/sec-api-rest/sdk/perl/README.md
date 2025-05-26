@@ -235,14 +235,13 @@ To load the API packages:
 use WWW::OpenAPIClient::ContentExtractionApi;
 use WWW::OpenAPIClient::FilingMetadataApi;
 use WWW::OpenAPIClient::FullTextSearchApi;
+use WWW::OpenAPIClient::XBRLConversionApi;
 
 ```
 
 To load the models:
 ```perl
 use WWW::OpenAPIClient::Object::DTOExtractorType;
-use WWW::OpenAPIClient::Object::DTOFilingExtractResultDto;
-use WWW::OpenAPIClient::Object::DTOFilingItemDto;
 use WWW::OpenAPIClient::Object::DTOFilingMetadataDto;
 use WWW::OpenAPIClient::Object::DTOFilingSortBy;
 use WWW::OpenAPIClient::Object::DTOSecFilingResultDto;
@@ -262,11 +261,10 @@ use warnings;
 use WWW::OpenAPIClient::ContentExtractionApi;
 use WWW::OpenAPIClient::FilingMetadataApi;
 use WWW::OpenAPIClient::FullTextSearchApi;
+use WWW::OpenAPIClient::XBRLConversionApi;
 
 # load the models
 use WWW::OpenAPIClient::Object::DTOExtractorType;
-use WWW::OpenAPIClient::Object::DTOFilingExtractResultDto;
-use WWW::OpenAPIClient::Object::DTOFilingItemDto;
 use WWW::OpenAPIClient::Object::DTOFilingMetadataDto;
 use WWW::OpenAPIClient::Object::DTOFilingSortBy;
 use WWW::OpenAPIClient::Object::DTOSecFilingResultDto;
@@ -303,12 +301,11 @@ Class | Method | HTTP request | Description
 *ContentExtractionApi* | [**v1_extractor_item_get**](docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**v1_filings_get**](docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**v1_full_text_get**](docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents
+*XBRLConversionApi* | [**v1_xbrl_converter_get**](docs/XBRLConversionApi.md#v1_xbrl_converter_get) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 # DOCUMENTATION FOR MODELS
  - [WWW::OpenAPIClient::Object::DTOExtractorType](docs/DTOExtractorType.md)
- - [WWW::OpenAPIClient::Object::DTOFilingExtractResultDto](docs/DTOFilingExtractResultDto.md)
- - [WWW::OpenAPIClient::Object::DTOFilingItemDto](docs/DTOFilingItemDto.md)
  - [WWW::OpenAPIClient::Object::DTOFilingMetadataDto](docs/DTOFilingMetadataDto.md)
  - [WWW::OpenAPIClient::Object::DTOFilingSortBy](docs/DTOFilingSortBy.md)
  - [WWW::OpenAPIClient::Object::DTOSecFilingResultDto](docs/DTOSecFilingResultDto.md)

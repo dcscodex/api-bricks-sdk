@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **v1_extractor_get**
-> DTOFilingExtractResultDto v1_extractor_get(accession_number => $accession_number, type => $type)
+> HASH[string,object] v1_extractor_get(accession_number => $accession_number, type => $type)
 
 Extract and classify SEC filing content
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**HASH[string,object]**
 
 ### Authorization
 

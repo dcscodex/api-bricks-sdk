@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## v1ExtractorGet
 
-> DTOFilingExtractResultDto v1ExtractorGet(accessionNumber, opts)
+> {String: Object} v1ExtractorGet(accessionNumber, opts)
 
 Extract and classify SEC filing content
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**{String: Object}**
 
 ### Authorization
 

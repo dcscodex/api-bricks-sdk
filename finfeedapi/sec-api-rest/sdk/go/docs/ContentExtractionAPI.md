@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1ExtractorGet
 
-> DTOFilingExtractResultDto V1ExtractorGet(ctx).AccessionNumber(accessionNumber).Type_(type_).Execute()
+> map[string]interface{} V1ExtractorGet(ctx).AccessionNumber(accessionNumber).Type_(type_).Execute()
 
 Extract and classify SEC filing content
 
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContentExtractionAPI.V1ExtractorGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1ExtractorGet`: DTOFilingExtractResultDto
+	// response from `V1ExtractorGet`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `ContentExtractionAPI.V1ExtractorGet`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**map[string]interface{}**
 
 ### Authorization
 

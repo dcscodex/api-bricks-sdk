@@ -6,8 +6,6 @@ client.sh
 client.sh.bash-completion
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -15,3 +13,4 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionApi.md

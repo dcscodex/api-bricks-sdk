@@ -24,7 +24,7 @@ module OpenapiClient
     # @param accession_number [String] The SEC filing accession number used to retrieve the filing from EDGAR database.
     # @param [Hash] opts the optional parameters
     # @option opts [DTOExtractorType] :type Result type (text or html, default: text)
-    # @return [DTOFilingExtractResultDto]
+    # @return [Hash<String, Object>]
     def v1_extractor_get(accession_number, opts = {})
       data, _status_code, _headers = v1_extractor_get_with_http_info(accession_number, opts)
       data
@@ -35,7 +35,7 @@ module OpenapiClient
     # @param accession_number [String] The SEC filing accession number used to retrieve the filing from EDGAR database.
     # @param [Hash] opts the optional parameters
     # @option opts [DTOExtractorType] :type Result type (text or html, default: text)
-    # @return [Array<(DTOFilingExtractResultDto, Integer, Hash)>] DTOFilingExtractResultDto data, response status code and response headers
+    # @return [Array<(Hash<String, Object>, Integer, Hash)>] Hash<String, Object> data, response status code and response headers
     def v1_extractor_get_with_http_info(accession_number, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentExtractionApi.v1_extractor_get ...'
@@ -64,7 +64,7 @@ module OpenapiClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DTOFilingExtractResultDto'
+      return_type = opts[:debug_return_type] || 'Hash<String, Object>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || []

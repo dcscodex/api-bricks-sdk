@@ -4,8 +4,6 @@ README.md
 build.gradle
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -13,6 +11,7 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionApi.md
 git_push.sh
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -28,12 +27,11 @@ src/main/java/org/openapitools/client/Pair.java
 src/main/java/org/openapitools/client/api/ContentExtractionApi.java
 src/main/java/org/openapitools/client/api/FilingMetadataApi.java
 src/main/java/org/openapitools/client/api/FullTextSearchApi.java
+src/main/java/org/openapitools/client/api/XBRLConversionApi.java
 src/main/java/org/openapitools/client/auth/ApiKeyAuth.java
 src/main/java/org/openapitools/client/auth/Authentication.java
 src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/model/DTOExtractorType.java
-src/main/java/org/openapitools/client/model/DTOFilingExtractResultDto.java
-src/main/java/org/openapitools/client/model/DTOFilingItemDto.java
 src/main/java/org/openapitools/client/model/DTOFilingMetadataDto.java
 src/main/java/org/openapitools/client/model/DTOFilingSortBy.java
 src/main/java/org/openapitools/client/model/DTOSecFilingResultDto.java

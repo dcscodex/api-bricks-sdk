@@ -51,7 +51,7 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    OASDTOFilingExtractResultDto result = api.v1ExtractorGet(params);
+    Map<String, oas_any_type_not_mapped> result = api.v1ExtractorGet(params);
     System.debug(result);
 } catch (OAS.ApiException e) {
     // ...handle your exceptions
@@ -68,13 +68,12 @@ Class | Method | HTTP request | Description
 *OASContentExtractionApi* | [**v1ExtractorItemGet**](OASContentExtractionApi.md#v1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *OASFilingMetadataApi* | [**v1FilingsGet**](OASFilingMetadataApi.md#v1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *OASFullTextSearchApi* | [**v1FullTextGet**](OASFullTextSearchApi.md#v1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents
+*OASXBRLConversionApi* | [**v1XbrlConverterGet**](OASXBRLConversionApi.md#v1XbrlConverterGet) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 ## Documentation for Models
 
  - [OASDTOExtractorType](OASDTOExtractorType.md)
- - [OASDTOFilingExtractResultDto](OASDTOFilingExtractResultDto.md)
- - [OASDTOFilingItemDto](OASDTOFilingItemDto.md)
  - [OASDTOFilingMetadataDto](OASDTOFilingMetadataDto.md)
  - [OASDTOFilingSortBy](OASDTOFilingSortBy.md)
  - [OASDTOSecFilingResultDto](OASDTOSecFilingResultDto.md)

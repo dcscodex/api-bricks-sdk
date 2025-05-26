@@ -1,8 +1,6 @@
 import localVarRequest from 'request';
 
 export * from './dTOExtractorType';
-export * from './dTOFilingExtractResultDto';
-export * from './dTOFilingItemDto';
 export * from './dTOFilingMetadataDto';
 export * from './dTOFilingSortBy';
 export * from './dTOSecFilingResultDto';
@@ -23,8 +21,6 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
 import { DTOExtractorType } from './dTOExtractorType';
-import { DTOFilingExtractResultDto } from './dTOFilingExtractResultDto';
-import { DTOFilingItemDto } from './dTOFilingItemDto';
 import { DTOFilingMetadataDto } from './dTOFilingMetadataDto';
 import { DTOFilingSortBy } from './dTOFilingSortBy';
 import { DTOSecFilingResultDto } from './dTOSecFilingResultDto';
@@ -49,8 +45,6 @@ let enumsMap: {[index: string]: any} = {
 }
 
 let typeMap: {[index: string]: any} = {
-    "DTOFilingExtractResultDto": DTOFilingExtractResultDto,
-    "DTOFilingItemDto": DTOFilingItemDto,
     "DTOFilingMetadataDto": DTOFilingMetadataDto,
     "DTOSecFilingResultDto": DTOSecFilingResultDto,
     "MvcProblemDetails": MvcProblemDetails,

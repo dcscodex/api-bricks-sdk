@@ -14,7 +14,7 @@ Method | HTTP request | Description
 //
 // Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 //
-dto_filing_extract_result_dto_t* ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_number, dto_extractor_type_e type);
+list_t*_t* ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_number, dto_extractor_type_e type);
 ```
 
 ### Parameters
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[dto_filing_extract_result_dto_t](dto_filing_extract_result_dto.md) *
+[list_t*_t](any_type.md) *
 
 
 ### Authorization

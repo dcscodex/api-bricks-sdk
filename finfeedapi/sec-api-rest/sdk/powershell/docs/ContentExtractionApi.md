@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a id="Invoke-V1ExtractorGet"></a>
 # **Invoke-V1ExtractorGet**
-> DTOFilingExtractResultDto Invoke-V1ExtractorGet<br>
+> System.Collections.Hashtable Invoke-V1ExtractorGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AccessionNumber] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Type] <PSCustomObject><br>
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md) (PSCustomObject)
+[**System.Collections.Hashtable**](AnyType.md) (PSCustomObject)
 
 ### Authorization
 

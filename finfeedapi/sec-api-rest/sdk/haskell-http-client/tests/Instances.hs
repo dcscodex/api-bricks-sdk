@@ -113,26 +113,6 @@ arbitraryReducedMaybeValue n = do
 
 -- * Models
 
-instance Arbitrary DTOFilingExtractResultDto where
-  arbitrary = sized genDTOFilingExtractResultDto
-
-genDTOFilingExtractResultDto :: Int -> Gen DTOFilingExtractResultDto
-genDTOFilingExtractResultDto n =
-  DTOFilingExtractResultDto
-    <$> arbitraryReducedMaybe n -- dTOFilingExtractResultDtoAccessionNumber :: Maybe Text
-    <*> arbitraryReducedMaybe n -- dTOFilingExtractResultDtoFormType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- dTOFilingExtractResultDtoItems :: Maybe [DTOFilingItemDto]
-  
-instance Arbitrary DTOFilingItemDto where
-  arbitrary = sized genDTOFilingItemDto
-
-genDTOFilingItemDto :: Int -> Gen DTOFilingItemDto
-genDTOFilingItemDto n =
-  DTOFilingItemDto
-    <$> arbitraryReducedMaybe n -- dTOFilingItemDtoItemNumber :: Maybe Text
-    <*> arbitraryReducedMaybe n -- dTOFilingItemDtoItemTitle :: Maybe Text
-    <*> arbitraryReducedMaybe n -- dTOFilingItemDtoContent :: Maybe Text
-  
 instance Arbitrary DTOFilingMetadataDto where
   arbitrary = sized genDTOFilingMetadataDto
 

@@ -4,8 +4,6 @@ README.md
 appveyor.yml
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -13,13 +11,13 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionApi.md
 src/PSOpenAPITools/Api/ContentExtractionApi.ps1
 src/PSOpenAPITools/Api/FilingMetadataApi.ps1
 src/PSOpenAPITools/Api/FullTextSearchApi.ps1
+src/PSOpenAPITools/Api/XBRLConversionApi.ps1
 src/PSOpenAPITools/Client/Configuration.ps1
 src/PSOpenAPITools/Model/DTOExtractorType.ps1
-src/PSOpenAPITools/Model/DTOFilingExtractResultDto.ps1
-src/PSOpenAPITools/Model/DTOFilingItemDto.ps1
 src/PSOpenAPITools/Model/DTOFilingMetadataDto.ps1
 src/PSOpenAPITools/Model/DTOFilingSortBy.ps1
 src/PSOpenAPITools/Model/DTOSecFilingResultDto.ps1
@@ -35,9 +33,8 @@ src/PSOpenAPITools/en-US/about_PSOpenAPITools.help.txt
 tests/Api/ContentExtractionApi.Tests.ps1
 tests/Api/FilingMetadataApi.Tests.ps1
 tests/Api/FullTextSearchApi.Tests.ps1
+tests/Api/XBRLConversionApi.Tests.ps1
 tests/Model/DTOExtractorType.Tests.ps1
-tests/Model/DTOFilingExtractResultDto.Tests.ps1
-tests/Model/DTOFilingItemDto.Tests.ps1
 tests/Model/DTOFilingMetadataDto.Tests.ps1
 tests/Model/DTOFilingSortBy.Tests.ps1
 tests/Model/DTOSecFilingResultDto.Tests.ps1

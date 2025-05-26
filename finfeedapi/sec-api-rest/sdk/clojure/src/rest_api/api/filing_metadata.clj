@@ -7,9 +7,7 @@
             [rest-api.specs.dto/filing-metadata-dto :refer :all]
             [rest-api.specs.dto/filing-sort-by :refer :all]
             [rest-api.specs.mvc/problem-details :refer :all]
-            [rest-api.specs.dto/filing-extract-result-dto :refer :all]
             [rest-api.specs.mvc/validation-problem-details :refer :all]
-            [rest-api.specs.dto/filing-item-dto :refer :all]
             [rest-api.specs.dto/extractor-type :refer :all]
             )
   (:import (java.io File)))

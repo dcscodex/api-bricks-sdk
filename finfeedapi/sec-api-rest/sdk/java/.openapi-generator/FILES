@@ -8,8 +8,6 @@ build.gradle
 build.sbt
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -17,6 +15,7 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XbrlConversionApi.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -42,14 +41,13 @@ src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/ContentExtractionApi.java
 src/main/java/org/openapitools/client/api/FilingMetadataApi.java
 src/main/java/org/openapitools/client/api/FullTextSearchApi.java
+src/main/java/org/openapitools/client/api/XbrlConversionApi.java
 src/main/java/org/openapitools/client/auth/ApiKeyAuth.java
 src/main/java/org/openapitools/client/auth/Authentication.java
 src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/auth/HttpBearerAuth.java
 src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
 src/main/java/org/openapitools/client/model/DTOExtractorType.java
-src/main/java/org/openapitools/client/model/DTOFilingExtractResultDto.java
-src/main/java/org/openapitools/client/model/DTOFilingItemDto.java
 src/main/java/org/openapitools/client/model/DTOFilingMetadataDto.java
 src/main/java/org/openapitools/client/model/DTOFilingSortBy.java
 src/main/java/org/openapitools/client/model/DTOSecFilingResultDto.java
@@ -58,9 +56,8 @@ src/main/java/org/openapitools/client/model/MvcValidationProblemDetails.java
 src/test/java/org/openapitools/client/api/ContentExtractionApiTest.java
 src/test/java/org/openapitools/client/api/FilingMetadataApiTest.java
 src/test/java/org/openapitools/client/api/FullTextSearchApiTest.java
+src/test/java/org/openapitools/client/api/XbrlConversionApiTest.java
 src/test/java/org/openapitools/client/model/DTOExtractorTypeTest.java
-src/test/java/org/openapitools/client/model/DTOFilingExtractResultDtoTest.java
-src/test/java/org/openapitools/client/model/DTOFilingItemDtoTest.java
 src/test/java/org/openapitools/client/model/DTOFilingMetadataDtoTest.java
 src/test/java/org/openapitools/client/model/DTOFilingSortByTest.java
 src/test/java/org/openapitools/client/model/DTOSecFilingResultDtoTest.java

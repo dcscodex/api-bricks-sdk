@@ -92,7 +92,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
     /// <summary>
     /// The <see cref="IV1ExtractorGetApiResponse"/>
     /// </summary>
-    public interface IV1ExtractorGetApiResponse : APIBricks.FinFeedAPI.SECAPI.REST.V1.Client.IApiResponse, IOk<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.DTOFilingExtractResultDto?>, IBadRequest<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.MvcValidationProblemDetails?>, IInternalServerError<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.MvcProblemDetails?>
+    public interface IV1ExtractorGetApiResponse : APIBricks.FinFeedAPI.SECAPI.REST.V1.Client.IApiResponse, IOk<Dictionary<string, Object>?>, IBadRequest<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.MvcValidationProblemDetails?>, IInternalServerError<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.MvcProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -444,11 +444,11 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.DTOFilingExtractResultDto? Ok()
+            public Dictionary<string, Object>? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.DTOFilingExtractResultDto>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Object>>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -457,7 +457,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out APIBricks.FinFeedAPI.SECAPI.REST.V1.Model.DTOFilingExtractResultDto? result)
+            public bool TryOk([NotNullWhen(true)]out Dictionary<string, Object>? result)
             {
                 result = null;
 

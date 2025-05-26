@@ -19,8 +19,6 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { DTOExtractorType } from '../model/dTOExtractorType';
 // @ts-ignore
-import { DTOFilingExtractResultDto } from '../model/dTOFilingExtractResultDto';
-// @ts-ignore
 import { MvcProblemDetails } from '../model/mvcProblemDetails';
 // @ts-ignore
 import { MvcValidationProblemDetails } from '../model/mvcValidationProblemDetails';
@@ -49,9 +47,9 @@ export class ContentExtractionService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DTOFilingExtractResultDto>;
-    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DTOFilingExtractResultDto>>;
-    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DTOFilingExtractResultDto>>;
+    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<{ [key: string]: any; }>;
+    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<{ [key: string]: any; }>>;
+    public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<{ [key: string]: any; }>>;
     public v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (accessionNumber === null || accessionNumber === undefined) {
             throw new Error('Required parameter accessionNumber was null or undefined when calling v1ExtractorGet.');
@@ -90,7 +88,7 @@ export class ContentExtractionService extends BaseService {
 
         let localVarPath = `/v1/extractor`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DTOFilingExtractResultDto>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<{ [key: string]: any; }>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

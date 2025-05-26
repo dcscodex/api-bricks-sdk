@@ -121,6 +121,9 @@ operation_parameters_minimum_occurrences["v1FullTextGet:::page_size"]=0
 operation_parameters_minimum_occurrences["v1FullTextGet:::page_number"]=0
 operation_parameters_minimum_occurrences["v1FullTextGet:::sort_by"]=0
 operation_parameters_minimum_occurrences["v1FullTextGet:::sort_order"]=0
+operation_parameters_minimum_occurrences["v1XbrlConverterGet:::htm-url"]=0
+operation_parameters_minimum_occurrences["v1XbrlConverterGet:::xbrl-url"]=0
+operation_parameters_minimum_occurrences["v1XbrlConverterGet:::accession-no"]=0
 
 ##
 # This array stores the maximum number of allowed occurrences for parameter
@@ -154,6 +157,9 @@ operation_parameters_maximum_occurrences["v1FullTextGet:::page_size"]=0
 operation_parameters_maximum_occurrences["v1FullTextGet:::page_number"]=0
 operation_parameters_maximum_occurrences["v1FullTextGet:::sort_by"]=0
 operation_parameters_maximum_occurrences["v1FullTextGet:::sort_order"]=0
+operation_parameters_maximum_occurrences["v1XbrlConverterGet:::htm-url"]=0
+operation_parameters_maximum_occurrences["v1XbrlConverterGet:::xbrl-url"]=0
+operation_parameters_maximum_occurrences["v1XbrlConverterGet:::accession-no"]=0
 
 ##
 # The type of collection for specifying multiple values for parameter:
@@ -184,6 +190,9 @@ operation_parameters_collection_type["v1FullTextGet:::page_size"]=""
 operation_parameters_collection_type["v1FullTextGet:::page_number"]=""
 operation_parameters_collection_type["v1FullTextGet:::sort_by"]=""
 operation_parameters_collection_type["v1FullTextGet:::sort_order"]=""
+operation_parameters_collection_type["v1XbrlConverterGet:::htm-url"]=""
+operation_parameters_collection_type["v1XbrlConverterGet:::xbrl-url"]=""
+operation_parameters_collection_type["v1XbrlConverterGet:::accession-no"]=""
 
 
 ##
@@ -610,6 +619,12 @@ read -r -d '' ops <<EOF
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
+    echo -e "${BOLD}${WHITE}[xBRLConversion]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}v1XbrlConverterGet${OFF};Convert XBRL data to JSON format
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
     echo -e "${BOLD}${WHITE}Options${OFF}"
     echo -e "  -h,--help\\t\\t\\t\\tPrint this help"
     echo -e "  -V,--version\\t\\t\\t\\tPrint API version"
@@ -876,6 +891,93 @@ The search is case-insensitive and supports partial word matches
     code=500
     echo -e "${result_color_table[${code:0:1}]}  500;Server error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
+##############################################################################
+#
+# Print help for v1XbrlConverterGet operation
+#
+##############################################################################
+print_v1XbrlConverterGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1XbrlConverterGet - Convert XBRL data to JSON format${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Converts XBRL data to JSON format using one of three possible input methods.
+
+### Input Methods
+
+1. HTML URL (htm-url)
+   - URL of the filing ending with .htm or .html
+   - Both filing URLs and index page URLs are accepted
+   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm
+
+2. XBRL URL (xbrl-url)
+   - URL of the XBRL file ending with .xml
+   - Can be found in the dataFiles array from Query API
+   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml
+
+3. Accession Number (accession-no)
+   - The SEC filing accession number
+   - Example: 0001564590-21-004599
+
+:::note
+Only one of the three parameters should be provided. If multiple parameters are provided, the priority order is:
+1. htm-url
+2. xbrl-url
+3. accession-no
+:::
+
+### Supported Filing Types
+
+- Annual Reports (10-K)
+- Quarterly Reports (10-Q)
+- Current Reports (8-K)
+- Registration Statements (S-1, S-3)
+- Foreign Private Issuer Reports (20-F, 40-F)
+
+### Response Format
+
+The API returns a JSON object containing:
+- Financial statements (Income Statement, Balance Sheet, Cash Flow Statement)
+- Accounting policies and footnotes
+- Company information
+- Filing metadata
+
+### Example Response
+'''json
+{
+  \"StatementsOfIncome\": {
+    \"RevenueFromContractWithCustomerExcludingAssessedTax\": [
+      {
+        \"decimals\": \"-6\",
+        \"unitRef\": \"U_USD\",
+        \"period\": {
+          \"startDate\": \"2023-07-01\",
+          \"endDate\": \"2024-06-30\"
+        },
+        \"value\": \"245122000000\"
+      }
+    ]
+  }
+}
+'''" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}htm-url${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - URL of the filing ending with .htm or .html${YELLOW} Specify as: htm-url=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}xbrl-url${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - URL of the XBRL file ending with .xml${YELLOW} Specify as: xbrl-url=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}accession-no${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - SEC filing accession number${YELLOW} Specify as: accession-no=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Successful conversion${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid request - check parameter format${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Filing or XBRL data not found${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Server error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
 
 
 ##############################################################################
@@ -1022,6 +1124,42 @@ call_v1FullTextGet() {
     fi
 }
 
+##############################################################################
+#
+# Call v1XbrlConverterGet operation
+#
+##############################################################################
+call_v1XbrlConverterGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(htm-url xbrl-url accession-no)
+    local path
+
+    if ! path=$(build_request_path "/v1/xbrl-converter" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
 
 
 ##############################################################################
@@ -1131,6 +1269,9 @@ case $key in
     v1FullTextGet)
     operation="v1FullTextGet"
     ;;
+    v1XbrlConverterGet)
+    operation="v1XbrlConverterGet"
+    ;;
     *==*)
     # Parse body arguments and convert them into top level
     # JSON properties passed in the body content as strings
@@ -1236,6 +1377,9 @@ case $operation in
     ;;
     v1FullTextGet)
     call_v1FullTextGet
+    ;;
+    v1XbrlConverterGet)
+    call_v1XbrlConverterGet
     ;;
     *)
     ERROR_MSG="ERROR: Unknown operation: $operation"

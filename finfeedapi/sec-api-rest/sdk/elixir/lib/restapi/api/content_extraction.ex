@@ -22,10 +22,10 @@ defmodule RESTAPI.Api.ContentExtraction do
 
   ### Returns
 
-  - `{:ok, RESTAPI.Model.DtoFilingExtractResultDto.t}` on success
+  - `{:ok, %{}}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec v1_extractor_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:ok, RESTAPI.Model.DtoFilingExtractResultDto.t} | {:ok, RESTAPI.Model.MvcValidationProblemDetails.t} | {:ok, RESTAPI.Model.MvcProblemDetails.t} | {:error, Tesla.Env.t}
+  @spec v1_extractor_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:ok, RESTAPI.Model.MvcValidationProblemDetails.t} | {:ok, %{optional(String.t) => any()}} | {:ok, RESTAPI.Model.MvcProblemDetails.t} | {:error, Tesla.Env.t}
   def v1_extractor_get(connection, accession_number, opts \\ []) do
     optional_params = %{
       :type => :query
@@ -42,7 +42,7 @@ defmodule RESTAPI.Api.ContentExtraction do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, RESTAPI.Model.DtoFilingExtractResultDto},
+      {200, false},
       {400, RESTAPI.Model.MvcValidationProblemDetails},
       {404, false},
       {500, RESTAPI.Model.MvcProblemDetails}

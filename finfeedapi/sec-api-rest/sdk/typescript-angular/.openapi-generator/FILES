@@ -7,13 +7,12 @@ api/api.ts
 api/contentExtraction.service.ts
 api/filingMetadata.service.ts
 api/fullTextSearch.service.ts
+api/xBRLConversion.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
 model/dTOExtractorType.ts
-model/dTOFilingExtractResultDto.ts
-model/dTOFilingItemDto.ts
 model/dTOFilingMetadataDto.ts
 model/dTOFilingSortBy.ts
 model/dTOSecFilingResultDto.ts

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## v1ExtractorGet
 
-> DTOFilingExtractResultDto v1ExtractorGet(accessionNumber, type)
+> Map&lt;String, OasAnyTypeNotMapped&gt; v1ExtractorGet(accessionNumber, type)
 
 Extract and classify SEC filing content
 
@@ -27,7 +27,7 @@ ContentExtractionApi apiInstance = new ContentExtractionApi();
 String accessionNumber = null; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
 DTOExtractorType type = null; // DTOExtractorType | Result type (text or html, default: text)
 try {
-    DTOFilingExtractResultDto result = apiInstance.v1ExtractorGet(accessionNumber, type);
+    Map<String, OasAnyTypeNotMapped> result = apiInstance.v1ExtractorGet(accessionNumber, type);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentExtractionApi#v1ExtractorGet");
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+[**Map&lt;String, OasAnyTypeNotMapped&gt;**](OasAnyTypeNotMapped.md)
 
 ### Authorization
 

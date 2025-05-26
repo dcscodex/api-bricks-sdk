@@ -4,8 +4,6 @@ README.md
 api_client.ecf
 docs/CONTENTEXTRACTION_API.md
 docs/DTO_EXTRACTOR_TYPE.md
-docs/DTO_FILING_EXTRACT_RESULT_DTO.md
-docs/DTO_FILING_ITEM_DTO.md
 docs/DTO_FILING_METADATA_DTO.md
 docs/DTO_FILING_SORT_BY.md
 docs/DTO_SEC_FILING_RESULT_DTO.md
@@ -13,13 +11,13 @@ docs/FILINGMETADATA_API.md
 docs/FULLTEXTSEARCH_API.md
 docs/MVC_PROBLEM_DETAILS.md
 docs/MVC_VALIDATION_PROBLEM_DETAILS.md
+docs/XBRLCONVERSION_API.md
 src/api/content_extraction_api.e
 src/api/filing_metadata_api.e
 src/api/full_text_search_api.e
+src/api/xbrl_conversion_api.e
 src/api_client.e
 src/domain/dto_extractor_type.e
-src/domain/dto_filing_extract_result_dto.e
-src/domain/dto_filing_item_dto.e
 src/domain/dto_filing_metadata_dto.e
 src/domain/dto_filing_sort_by.e
 src/domain/dto_sec_filing_result_dto.e
@@ -44,4 +42,5 @@ test/api_test.ecf
 test/apis/contentextraction_api_test.e
 test/apis/filingmetadata_api_test.e
 test/apis/fulltextsearch_api_test.e
+test/apis/xbrlconversion_api_test.e
 test/application.e

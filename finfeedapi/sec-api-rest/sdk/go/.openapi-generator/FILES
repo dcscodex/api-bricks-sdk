@@ -6,12 +6,11 @@ api/openapi.yaml
 api_content_extraction.go
 api_filing_metadata.go
 api_full_text_search.go
+api_xbrl_conversion.go
 client.go
 configuration.go
 docs/ContentExtractionAPI.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -19,12 +18,11 @@ docs/FilingMetadataAPI.md
 docs/FullTextSearchAPI.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionAPI.md
 git_push.sh
 go.mod
 go.sum
 model_dto_extractor_type.go
-model_dto_filing_extract_result_dto.go
-model_dto_filing_item_dto.go
 model_dto_filing_metadata_dto.go
 model_dto_filing_sort_by.go
 model_dto_sec_filing_result_dto.go
@@ -34,4 +32,5 @@ response.go
 test/api_content_extraction_test.go
 test/api_filing_metadata_test.go
 test/api_full_text_search_test.go
+test/api_xbrl_conversion_test.go
 utils.go

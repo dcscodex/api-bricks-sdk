@@ -16,16 +16,12 @@
 
 module Api.Data exposing
     ( DTOExtractorType(..), dTOExtractorTypeVariants
-    , DTOFilingExtractResultDto
-    , DTOFilingItemDto
     , DTOFilingMetadataDto
     , DTOFilingSortBy(..), dTOFilingSortByVariants
     , DTOSecFilingResultDto
     , MvcProblemDetails
     , MvcValidationProblemDetails
     , encodeDTOExtractorType
-    , encodeDTOFilingExtractResultDto
-    , encodeDTOFilingItemDto
     , encodeDTOFilingMetadataDto
     , encodeDTOFilingSortBy
     , encodeDTOSecFilingResultDto
@@ -34,8 +30,6 @@ module Api.Data exposing
     , stringFromDTOExtractorType
     , stringFromDTOFilingSortBy
     , dTOExtractorTypeDecoder
-    , dTOFilingExtractResultDtoDecoder
-    , dTOFilingItemDtoDecoder
     , dTOFilingMetadataDtoDecoder
     , dTOFilingSortByDecoder
     , dTOSecFilingResultDtoDecoder
@@ -63,22 +57,6 @@ dTOExtractorTypeVariants =
     [ DTOExtractorTypeText
     , DTOExtractorTypeHtml
     ]
-
-
-{-| Represents the result of a filing extraction.
--}
-type alias DTOFilingExtractResultDto =
-    { accessionNumber : Maybe String
-    , formType : Maybe String
-    , items : Maybe ( List DTOFilingItemDto )
-    }
-
-
-type alias DTOFilingItemDto =
-    { itemNumber : Maybe String
-    , itemTitle : Maybe String
-    , content : Maybe String
-    }
 
 
 {-| Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
@@ -171,50 +149,6 @@ stringFromDTOExtractorType model =
 encodeDTOExtractorType : DTOExtractorType -> Json.Encode.Value
 encodeDTOExtractorType =
     Json.Encode.string << stringFromDTOExtractorType
-
-
-encodeDTOFilingExtractResultDto : DTOFilingExtractResultDto -> Json.Encode.Value
-encodeDTOFilingExtractResultDto =
-    encodeObject << encodeDTOFilingExtractResultDtoPairs
-
-
-encodeDTOFilingExtractResultDtoWithTag : ( String, String ) -> DTOFilingExtractResultDto -> Json.Encode.Value
-encodeDTOFilingExtractResultDtoWithTag (tagField, tag) model =
-    encodeObject (encodeDTOFilingExtractResultDtoPairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeDTOFilingExtractResultDtoPairs : DTOFilingExtractResultDto -> List EncodedField
-encodeDTOFilingExtractResultDtoPairs model =
-    let
-        pairs =
-            [ maybeEncodeNullable "accession_number" Json.Encode.string model.accessionNumber
-            , maybeEncodeNullable "form_type" Json.Encode.string model.formType
-            , maybeEncodeNullable "items" (Json.Encode.list encodeDTOFilingItemDto) model.items
-            ]
-    in
-    pairs
-
-
-encodeDTOFilingItemDto : DTOFilingItemDto -> Json.Encode.Value
-encodeDTOFilingItemDto =
-    encodeObject << encodeDTOFilingItemDtoPairs
-
-
-encodeDTOFilingItemDtoWithTag : ( String, String ) -> DTOFilingItemDto -> Json.Encode.Value
-encodeDTOFilingItemDtoWithTag (tagField, tag) model =
-    encodeObject (encodeDTOFilingItemDtoPairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeDTOFilingItemDtoPairs : DTOFilingItemDto -> List EncodedField
-encodeDTOFilingItemDtoPairs model =
-    let
-        pairs =
-            [ maybeEncodeNullable "item_number" Json.Encode.string model.itemNumber
-            , maybeEncodeNullable "item_title" Json.Encode.string model.itemTitle
-            , maybeEncodeNullable "content" Json.Encode.string model.content
-            ]
-    in
-    pairs
 
 
 encodeDTOFilingMetadataDto : DTOFilingMetadataDto -> Json.Encode.Value
@@ -371,22 +305,6 @@ dTOExtractorTypeDecoder =
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
             )
-
-
-dTOFilingExtractResultDtoDecoder : Json.Decode.Decoder DTOFilingExtractResultDto
-dTOFilingExtractResultDtoDecoder =
-    Json.Decode.succeed DTOFilingExtractResultDto
-        |> maybeDecodeNullable "accession_number" Json.Decode.string Nothing
-        |> maybeDecodeNullable "form_type" Json.Decode.string Nothing
-        |> maybeDecodeNullable "items" (Json.Decode.list dTOFilingItemDtoDecoder) Nothing
-
-
-dTOFilingItemDtoDecoder : Json.Decode.Decoder DTOFilingItemDto
-dTOFilingItemDtoDecoder =
-    Json.Decode.succeed DTOFilingItemDto
-        |> maybeDecodeNullable "item_number" Json.Decode.string Nothing
-        |> maybeDecodeNullable "item_title" Json.Decode.string Nothing
-        |> maybeDecodeNullable "content" Json.Decode.string Nothing
 
 
 dTOFilingMetadataDtoDecoder : Json.Decode.Decoder DTOFilingMetadataDto

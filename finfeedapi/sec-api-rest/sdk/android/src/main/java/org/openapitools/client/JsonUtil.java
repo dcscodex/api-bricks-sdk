@@ -61,14 +61,6 @@ public class JsonUtil {
       return new TypeToken<List<DTOExtractorType>>(){}.getType();
     }
     
-    if ("DTOFilingExtractResultDto".equalsIgnoreCase(className)) {
-      return new TypeToken<List<DTOFilingExtractResultDto>>(){}.getType();
-    }
-    
-    if ("DTOFilingItemDto".equalsIgnoreCase(className)) {
-      return new TypeToken<List<DTOFilingItemDto>>(){}.getType();
-    }
-    
     if ("DTOFilingMetadataDto".equalsIgnoreCase(className)) {
       return new TypeToken<List<DTOFilingMetadataDto>>(){}.getType();
     }
@@ -97,14 +89,6 @@ public class JsonUtil {
     
     if ("DTOExtractorType".equalsIgnoreCase(className)) {
       return new TypeToken<DTOExtractorType>(){}.getType();
-    }
-    
-    if ("DTOFilingExtractResultDto".equalsIgnoreCase(className)) {
-      return new TypeToken<DTOFilingExtractResultDto>(){}.getType();
-    }
-    
-    if ("DTOFilingItemDto".equalsIgnoreCase(className)) {
-      return new TypeToken<DTOFilingItemDto>(){}.getType();
     }
     
     if ("DTOFilingMetadataDto".equalsIgnoreCase(className)) {

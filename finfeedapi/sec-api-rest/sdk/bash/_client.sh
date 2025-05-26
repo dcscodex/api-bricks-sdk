@@ -298,7 +298,7 @@ case $state in
     # Operations
     _values "Operations" \
             "v1ExtractorGet[Extract and classify SEC filing content]" \
-            "v1ExtractorItemGet[Extract specific item content from SEC filing]"             "v1FilingsGet[Query SEC filing metadata]"             "v1FullTextGet[Full-text search of SEC filing documents]" \
+            "v1ExtractorItemGet[Extract specific item content from SEC filing]"             "v1FilingsGet[Query SEC filing metadata]"             "v1FullTextGet[Full-text search of SEC filing documents]"             "v1XbrlConverterGet[Convert XBRL data to JSON format]" \
 
     _arguments "(--help)--help[Print information about operation]"
 
@@ -352,6 +352,15 @@ case $state in
 "page_number=:[QUERY] Page number to retrieve (default: 1)"
 "sort_by=:[QUERY] Field to sort by (default: AccessionNumber)"
 "sort_order=:[QUERY] Sort order (asc or desc). Defaults to asc"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1XbrlConverterGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "htm-url=:[QUERY] URL of the filing ending with .htm or .html"
+"xbrl-url=:[QUERY] URL of the XBRL file ending with .xml"
+"accession-no=:[QUERY] SEC filing accession number"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;

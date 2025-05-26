@@ -51,14 +51,14 @@ static gpointer __ContentExtractionManagerthreadFunc(gpointer data)
 static bool v1ExtractorGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
-	= reinterpret_cast<void(*)(DTO.FilingExtractResultDto, Error, void* )> (voidHandler);
+	void(* handler)(std::map<string,string>, Error, void* )
+	= reinterpret_cast<void(*)(std::map<string,string>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
+	std::map<string,string> out;
 	
-	DTO.FilingExtractResultDto out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,38 +66,6 @@ static bool v1ExtractorGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("DTO.FilingExtractResultDto")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DTO.FilingExtractResultDto", "DTO.FilingExtractResultDto");
-			json_node_free(pJson);
-
-			if ("DTO.FilingExtractResultDto" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -115,7 +83,7 @@ static bool v1ExtractorGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool v1ExtractorGetHelper(char * accessToken,
 	std::string accessionNumber, DTO.ExtractorType type, 
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
+	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -197,7 +165,7 @@ static bool v1ExtractorGetHelper(char * accessToken,
 
 bool ContentExtractionManager::v1ExtractorGetAsync(char * accessToken,
 	std::string accessionNumber, DTO.ExtractorType type, 
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
+	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
 	return v1ExtractorGetHelper(accessToken,
@@ -207,7 +175,7 @@ bool ContentExtractionManager::v1ExtractorGetAsync(char * accessToken,
 
 bool ContentExtractionManager::v1ExtractorGetSync(char * accessToken,
 	std::string accessionNumber, DTO.ExtractorType type, 
-	void(* handler)(DTO.FilingExtractResultDto, Error, void* )
+	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
 	return v1ExtractorGetHelper(accessToken,

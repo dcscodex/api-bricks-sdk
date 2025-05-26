@@ -140,7 +140,7 @@ class ContentExtractionApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DTOFilingExtractResultDto|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails
+     * @return array<string,mixed>|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails
      */
     public function v1ExtractorGet($accession_number, $type = null, string $contentType = self::contentTypes['v1ExtractorGet'][0])
     {
@@ -159,7 +159,7 @@ class ContentExtractionApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DTOFilingExtractResultDto|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1ExtractorGetWithHttpInfo($accession_number, $type = null, string $contentType = self::contentTypes['v1ExtractorGet'][0])
     {
@@ -191,7 +191,7 @@ class ContentExtractionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\DTOFilingExtractResultDto',
+                        'array<string,mixed>',
                         $request,
                         $response,
                     );
@@ -225,7 +225,7 @@ class ContentExtractionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\DTOFilingExtractResultDto',
+                'array<string,mixed>',
                 $request,
                 $response,
             );
@@ -234,7 +234,7 @@ class ContentExtractionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\DTOFilingExtractResultDto',
+                        'array<string,mixed>',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,7 +298,7 @@ class ContentExtractionApi
      */
     public function v1ExtractorGetAsyncWithHttpInfo($accession_number, $type = null, string $contentType = self::contentTypes['v1ExtractorGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\DTOFilingExtractResultDto';
+        $returnType = 'array<string,mixed>';
         $request = $this->v1ExtractorGetRequest($accession_number, $type, $contentType);
 
         return $this->client

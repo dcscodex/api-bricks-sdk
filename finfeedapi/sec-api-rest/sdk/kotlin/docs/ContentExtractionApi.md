@@ -10,7 +10,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1ExtractorGet"></a>
 # **v1ExtractorGet**
-> DTOFilingExtractResultDto v1ExtractorGet(accessionNumber, type)
+> kotlin.collections.Map&lt;kotlin.String, kotlin.Any&gt; v1ExtractorGet(accessionNumber, type)
 
 Extract and classify SEC filing content
 
@@ -26,7 +26,7 @@ val apiInstance = ContentExtractionApi()
 val accessionNumber : kotlin.String = accessionNumber_example // kotlin.String | The SEC filing accession number used to retrieve the filing from EDGAR database.
 val type : DTOExtractorType =  // DTOExtractorType | Result type (text or html, default: text)
 try {
-    val result : DTOFilingExtractResultDto = apiInstance.v1ExtractorGet(accessionNumber, type)
+    val result : kotlin.collections.Map<kotlin.String, kotlin.Any> = apiInstance.v1ExtractorGet(accessionNumber, type)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentExtractionApi#v1ExtractorGet")
@@ -45,7 +45,7 @@ try {
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+[**kotlin.collections.Map&lt;kotlin.String, kotlin.Any&gt;**](kotlin.Any.md)
 
 ### Authorization
 

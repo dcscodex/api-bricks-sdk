@@ -71,10 +71,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'v1_extractor_get' } = {
         summary => 'Extract and classify SEC filing content',
         params => $params,
-        returns => 'DTOFilingExtractResultDto',
+        returns => 'HASH[string,object]',
         };
 }
-# @return DTOFilingExtractResultDto
+# @return HASH[string,object]
 #
 sub v1_extractor_get {
     my ($self, %args) = @_;
@@ -120,7 +120,7 @@ sub v1_extractor_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('DTOFilingExtractResultDto', $response);
+    my $_response_object = $self->{api_client}->deserialize('HASH[string,object]', $response);
     return $_response_object;
 }
 

@@ -55,6 +55,8 @@ type APIClient struct {
 	FilingMetadataAPI *FilingMetadataAPIService
 
 	FullTextSearchAPI *FullTextSearchAPIService
+
+	XBRLConversionAPI *XBRLConversionAPIService
 }
 
 type service struct {
@@ -76,6 +78,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContentExtractionAPI = (*ContentExtractionAPIService)(&c.common)
 	c.FilingMetadataAPI = (*FilingMetadataAPIService)(&c.common)
 	c.FullTextSearchAPI = (*FullTextSearchAPIService)(&c.common)
+	c.XBRLConversionAPI = (*XBRLConversionAPIService)(&c.common)
 
 	return c
 }

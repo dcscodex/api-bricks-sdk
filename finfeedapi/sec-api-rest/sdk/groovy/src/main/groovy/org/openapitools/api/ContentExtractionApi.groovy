@@ -2,7 +2,6 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.DTOExtractorType
-import org.openapitools.model.DTOFilingExtractResultDto
 import org.openapitools.model.MvcProblemDetails
 import org.openapitools.model.MvcValidationProblemDetails
 
@@ -36,8 +35,8 @@ class ContentExtractionApi {
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "GET", "",
-                    DTOFilingExtractResultDto.class )
+                    "GET", "map",
+                    Object.class )
 
     }
 

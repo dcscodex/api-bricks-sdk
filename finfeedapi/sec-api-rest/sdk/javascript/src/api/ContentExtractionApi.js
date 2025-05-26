@@ -14,7 +14,6 @@
 
 import ApiClient from "../ApiClient";
 import DTOExtractorType from '../model/DTOExtractorType';
-import DTOFilingExtractResultDto from '../model/DTOFilingExtractResultDto';
 import MvcProblemDetails from '../model/MvcProblemDetails';
 import MvcValidationProblemDetails from '../model/MvcValidationProblemDetails';
 
@@ -41,7 +40,7 @@ export default class ContentExtractionApi {
      * Callback function to receive the result of the v1ExtractorGet operation.
      * @callback module:api/ContentExtractionApi~v1ExtractorGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/DTOFilingExtractResultDto} data The data returned by the service call.
+     * @param {Object.<String, {String: Object}>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -52,7 +51,7 @@ export default class ContentExtractionApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/DTOExtractorType} [type] Result type (text or html, default: text)
      * @param {module:api/ContentExtractionApi~v1ExtractorGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DTOFilingExtractResultDto}
+     * data is of type: {@link Object.<String, {String: Object}>}
      */
     v1ExtractorGet(accessionNumber, opts, callback) {
       opts = opts || {};
@@ -76,7 +75,7 @@ export default class ContentExtractionApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = DTOFilingExtractResultDto;
+      let returnType = {'String': Object};
       return this.apiClient.callApi(
         '/v1/extractor', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

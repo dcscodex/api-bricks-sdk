@@ -19,31 +19,24 @@ private class OASContentExtractionApiTest {
 
         OASClient client;
         OASContentExtractionApi api;
-        OASDTOFilingExtractResultDto response;
-        OASDTOFilingExtractResultDto expectedResponse;
+        Map<String, oas_any_type_not_mapped> response;
+        Map<String, oas_any_type_not_mapped> expectedResponse;
         String js = '';
 
         api = new OASContentExtractionApi(new OASClient());
 
-        js = JSON.serialize(OASDTOFilingExtractResultDto.getExample());
+        js = JSON.serialize(new Map<String, oas_any_type_not_mapped>{'key'=>oas_any_type_not_mapped.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDTOFilingExtractResultDto.getExample();
-        response = (OASDTOFilingExtractResultDto) api.v1ExtractorGet(params);
+        expectedResponse = new Map<String, oas_any_type_not_mapped>{'key'=>oas_any_type_not_mapped.getExample()};
+        response = (Map<String, oas_any_type_not_mapped>) api.v1ExtractorGet(params);
         System.assertEquals(expectedResponse, response);
 
-        js = JSON.serialize(OASDTOFilingExtractResultDto.getExample());
+        js = JSON.serialize(new Map<String, oas_any_type_not_mapped>{'key'=>oas_any_type_not_mapped.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDTOFilingExtractResultDto.getExample();
-        response = (OASDTOFilingExtractResultDto) api.v1ExtractorGet(params);
-        System.assertEquals(expectedResponse, response);
-
-        js = JSON.serialize(OASDTOFilingExtractResultDto.getExample());
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody(js);
-        expectedResponse = OASDTOFilingExtractResultDto.getExample();
-        response = (OASDTOFilingExtractResultDto) api.v1ExtractorGet(params);
+        expectedResponse = new Map<String, oas_any_type_not_mapped>{'key'=>oas_any_type_not_mapped.getExample()};
+        response = (Map<String, oas_any_type_not_mapped>) api.v1ExtractorGet(params);
         System.assertEquals(expectedResponse, response);
     }
 

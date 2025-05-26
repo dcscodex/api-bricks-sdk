@@ -50,14 +50,13 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 | *ContentExtractionApi* | [**v1ExtractorItemGet**](docs/ContentExtractionApi.md#v1extractoritemget) | **GET** /v1/extractor/item | Extract specific item content from SEC filing |
 | *FilingMetadataApi* | [**v1FilingsGet**](docs/FilingMetadataApi.md#v1filingsget) | **GET** /v1/filings | Query SEC filing metadata |
 | *FullTextSearchApi* | [**v1FullTextGet**](docs/FullTextSearchApi.md#v1fulltextget) | **GET** /v1/full-text | Full-text search of SEC filing documents |
+| *XBRLConversionApi* | [**v1XbrlConverterGet**](docs/XBRLConversionApi.md#v1xbrlconverterget) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format |
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
  - [org.openapitools.client.models.DTOExtractorType](docs/DTOExtractorType.md)
- - [org.openapitools.client.models.DTOFilingExtractResultDto](docs/DTOFilingExtractResultDto.md)
- - [org.openapitools.client.models.DTOFilingItemDto](docs/DTOFilingItemDto.md)
  - [org.openapitools.client.models.DTOFilingMetadataDto](docs/DTOFilingMetadataDto.md)
  - [org.openapitools.client.models.DTOFilingSortBy](docs/DTOFilingSortBy.md)
  - [org.openapitools.client.models.DTOSecFilingResultDto](docs/DTOSecFilingResultDto.md)

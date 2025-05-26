@@ -67,7 +67,7 @@ public class ContentExtractionApiExample {
         String accessionNumber = null; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
         DTOExtractorType type = null; // DTOExtractorType | Result type (text or html, default: text)
         try {
-            DTOFilingExtractResultDto result = apiInstance.v1ExtractorGet(accessionNumber, type);
+            Map<String, OasAnyTypeNotMapped> result = apiInstance.v1ExtractorGet(accessionNumber, type);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentExtractionApi#v1ExtractorGet");
@@ -88,13 +88,12 @@ Class | Method | HTTP request | Description
 *ContentExtractionApi* | [**v1ExtractorItemGet**](docs/ContentExtractionApi.md#v1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**v1FilingsGet**](docs/FilingMetadataApi.md#v1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**v1FullTextGet**](docs/FullTextSearchApi.md#v1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents
+*XBRLConversionApi* | [**v1XbrlConverterGet**](docs/XBRLConversionApi.md#v1XbrlConverterGet) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 ## Documentation for Models
 
  - [DTOExtractorType](docs/DTOExtractorType.md)
- - [DTOFilingExtractResultDto](docs/DTOFilingExtractResultDto.md)
- - [DTOFilingItemDto](docs/DTOFilingItemDto.md)
  - [DTOFilingMetadataDto](docs/DTOFilingMetadataDto.md)
  - [DTOFilingSortBy](docs/DTOFilingSortBy.md)
  - [DTOSecFilingResultDto](docs/DTOSecFilingResultDto.md)

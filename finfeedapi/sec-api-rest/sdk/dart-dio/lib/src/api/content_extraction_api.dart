@@ -8,9 +8,10 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/dto_extractor_type.dart';
-import 'package:openapi/src/model/dto_filing_extract_result_dto.dart';
 import 'package:openapi/src/model/mvc_problem_details.dart';
 import 'package:openapi/src/model/mvc_validation_problem_details.dart';
 
@@ -35,9 +36,9 @@ class ContentExtractionApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DTOFilingExtractResultDto] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltMap<String, JsonObject>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DTOFilingExtractResultDto>> v1ExtractorGet({ 
+  Future<Response<BuiltMap<String, JsonObject>>> v1ExtractorGet({ 
     required String accessionNumber,
     DTOExtractorType? type,
     CancelToken? cancelToken,
@@ -74,14 +75,14 @@ class ContentExtractionApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DTOFilingExtractResultDto? _responseData;
+    BuiltMap<String, JsonObject>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DTOFilingExtractResultDto),
-      ) as DTOFilingExtractResultDto;
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
+      ) as BuiltMap<String, JsonObject>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -93,7 +94,7 @@ class ContentExtractionApi {
       );
     }
 
-    return Response<DTOFilingExtractResultDto>(
+    return Response<BuiltMap<String, JsonObject>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

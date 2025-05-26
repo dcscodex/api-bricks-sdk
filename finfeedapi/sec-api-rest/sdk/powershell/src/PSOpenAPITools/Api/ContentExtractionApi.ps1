@@ -27,7 +27,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-DTOFilingExtractResultDto
+System.Collections.Hashtable
 #>
 function Invoke-V1ExtractorGet {
     [CmdletBinding()]
@@ -79,7 +79,7 @@ function Invoke-V1ExtractorGet {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "DTOFilingExtractResultDto" `
+                                -ReturnType "System.Collections.Hashtable" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {

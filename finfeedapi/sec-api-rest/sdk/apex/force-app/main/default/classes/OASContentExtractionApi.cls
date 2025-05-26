@@ -30,10 +30,10 @@ public class OASContentExtractionApi {
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.\r\n\r\n### Supported Form Types\r\n\r\nForm Type | Description\r\n----------|------------\r\n8-K      | Current report filing\r\n10-K     | Annual report filing\r\n10-Q     | Quarterly report filing\r\n\r\n### Content Classification\r\n- 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)\r\n- 10-K/10-Q forms: Items categorized by their respective part and item structure\r\n\r\n:::note\r\nBoth HTML and plain text documents are supported for content extraction.\r\n:::
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database. (required)
      * @param type Result type (text or html, default: text) (optional)
-     * @return OASDTOFilingExtractResultDto
+     * @return Map<String, oas_any_type_not_mapped>
      * @throws OAS.ApiException if fails to make API call
      */
-    public OASDTOFilingExtractResultDto v1ExtractorGet(Map<String, Object> params) {
+    public Map<String, oas_any_type_not_mapped> v1ExtractorGet(Map<String, Object> params) {
         client.assertNotNull(params.get('accessionNumber'), 'accessionNumber');
         List<OAS.Param> query = new List<OAS.Param>();
 
@@ -43,7 +43,7 @@ public class OASContentExtractionApi {
 
         List<OAS.Param> form = new List<OAS.Param>();
 
-        return (OASDTOFilingExtractResultDto) client.invoke(
+        return (Map<String, oas_any_type_not_mapped>) client.invoke(
             'GET', '/v1/extractor', '',
             query, form,
             new Map<String, Object>(),
@@ -51,7 +51,7 @@ public class OASContentExtractionApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String>(),
-            OASDTOFilingExtractResultDto.class
+            Map<String, oas_any_type_not_mapped>.class
         );
     }
     /**

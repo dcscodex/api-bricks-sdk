@@ -68,6 +68,9 @@ import qualified Prelude as P
 -- * Parameter newtypes
 
 
+-- ** AccessionNo
+newtype AccessionNo = AccessionNo { unAccessionNo :: Text } deriving (P.Eq, P.Show)
+
 -- ** AccessionNumber
 newtype AccessionNumber = AccessionNumber { unAccessionNumber :: Text } deriving (P.Eq, P.Show)
 
@@ -82,6 +85,9 @@ newtype FillingDateStart = FillingDateStart { unFillingDateStart :: Text } deriv
 
 -- ** FormType
 newtype FormType = FormType { unFormType :: Text } deriving (P.Eq, P.Show)
+
+-- ** HtmUrl
+newtype HtmUrl = HtmUrl { unHtmUrl :: Text } deriving (P.Eq, P.Show)
 
 -- ** ItemNumber
 newtype ItemNumber = ItemNumber { unItemNumber :: Text } deriving (P.Eq, P.Show)
@@ -119,81 +125,11 @@ newtype TextContains = TextContains { unTextContains :: Text } deriving (P.Eq, P
 -- ** TextNotContain
 newtype TextNotContain = TextNotContain { unTextNotContain :: Text } deriving (P.Eq, P.Show)
 
+-- ** XbrlUrl
+newtype XbrlUrl = XbrlUrl { unXbrlUrl :: Text } deriving (P.Eq, P.Show)
+
 -- * Models
 
-
--- ** DTOFilingExtractResultDto
--- | DTOFilingExtractResultDto
--- Represents the result of a filing extraction.
-data DTOFilingExtractResultDto = DTOFilingExtractResultDto
-  { dTOFilingExtractResultDtoAccessionNumber :: !(Maybe Text) -- ^ "accession_number"
-  , dTOFilingExtractResultDtoFormType :: !(Maybe Text) -- ^ "form_type"
-  , dTOFilingExtractResultDtoItems :: !(Maybe [DTOFilingItemDto]) -- ^ "items"
-  } deriving (P.Show, P.Eq, P.Typeable)
-
--- | FromJSON DTOFilingExtractResultDto
-instance A.FromJSON DTOFilingExtractResultDto where
-  parseJSON = A.withObject "DTOFilingExtractResultDto" $ \o ->
-    DTOFilingExtractResultDto
-      <$> (o .:? "accession_number")
-      <*> (o .:? "form_type")
-      <*> (o .:? "items")
-
--- | ToJSON DTOFilingExtractResultDto
-instance A.ToJSON DTOFilingExtractResultDto where
-  toJSON DTOFilingExtractResultDto {..} =
-   _omitNulls
-      [ "accession_number" .= dTOFilingExtractResultDtoAccessionNumber
-      , "form_type" .= dTOFilingExtractResultDtoFormType
-      , "items" .= dTOFilingExtractResultDtoItems
-      ]
-
-
--- | Construct a value of type 'DTOFilingExtractResultDto' (by applying it's required fields, if any)
-mkDTOFilingExtractResultDto
-  :: DTOFilingExtractResultDto
-mkDTOFilingExtractResultDto =
-  DTOFilingExtractResultDto
-  { dTOFilingExtractResultDtoAccessionNumber = Nothing
-  , dTOFilingExtractResultDtoFormType = Nothing
-  , dTOFilingExtractResultDtoItems = Nothing
-  }
-
--- ** DTOFilingItemDto
--- | DTOFilingItemDto
-data DTOFilingItemDto = DTOFilingItemDto
-  { dTOFilingItemDtoItemNumber :: !(Maybe Text) -- ^ "item_number"
-  , dTOFilingItemDtoItemTitle :: !(Maybe Text) -- ^ "item_title"
-  , dTOFilingItemDtoContent :: !(Maybe Text) -- ^ "content"
-  } deriving (P.Show, P.Eq, P.Typeable)
-
--- | FromJSON DTOFilingItemDto
-instance A.FromJSON DTOFilingItemDto where
-  parseJSON = A.withObject "DTOFilingItemDto" $ \o ->
-    DTOFilingItemDto
-      <$> (o .:? "item_number")
-      <*> (o .:? "item_title")
-      <*> (o .:? "content")
-
--- | ToJSON DTOFilingItemDto
-instance A.ToJSON DTOFilingItemDto where
-  toJSON DTOFilingItemDto {..} =
-   _omitNulls
-      [ "item_number" .= dTOFilingItemDtoItemNumber
-      , "item_title" .= dTOFilingItemDtoItemTitle
-      , "content" .= dTOFilingItemDtoContent
-      ]
-
-
--- | Construct a value of type 'DTOFilingItemDto' (by applying it's required fields, if any)
-mkDTOFilingItemDto
-  :: DTOFilingItemDto
-mkDTOFilingItemDto =
-  DTOFilingItemDto
-  { dTOFilingItemDtoItemNumber = Nothing
-  , dTOFilingItemDtoItemTitle = Nothing
-  , dTOFilingItemDtoContent = Nothing
-  }
 
 -- ** DTOFilingMetadataDto
 -- | DTOFilingMetadataDto

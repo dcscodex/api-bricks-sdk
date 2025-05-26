@@ -9,6 +9,7 @@ lib/REST/API.hs
 lib/REST/API/ContentExtraction.hs
 lib/REST/API/FilingMetadata.hs
 lib/REST/API/FullTextSearch.hs
+lib/REST/API/XBRLConversion.hs
 lib/REST/Client.hs
 lib/REST/Core.hs
 lib/REST/Logging.hs

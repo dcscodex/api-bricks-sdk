@@ -36,7 +36,7 @@ ContentExtractionApi::~ContentExtractionApi()
 {
 }
 
-pplx::task<std::shared_ptr<DTO_FilingExtractResultDto>> ContentExtractionApi::v1ExtractorGet(utility::string_t accessionNumber, boost::optional<std::shared_ptr<DTO_ExtractorType>> type) const
+pplx::task<std::map<utility::string_t, std::shared_ptr<AnyType>>> ContentExtractionApi::v1ExtractorGet(utility::string_t accessionNumber, boost::optional<std::shared_ptr<DTO_ExtractorType>> type) const
 {
 
 
@@ -144,13 +144,18 @@ pplx::task<std::shared_ptr<DTO_FilingExtractResultDto>> ContentExtractionApi::v1
     })
     .then([=, this](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DTO_FilingExtractResultDto> localVarResult(new DTO_FilingExtractResultDto());
+        std::map<utility::string_t, std::shared_ptr<AnyType>> localVarResult;
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value localVarJson = web::json::value::parse(localVarResponse);
 
-            ModelBase::fromJson(localVarJson, localVarResult);
+            for( auto& localVarItem : localVarJson.as_object() )
+            {
+                std::shared_ptr<AnyType> localVarItemObj;
+                ModelBase::fromJson(localVarItem.second, localVarItemObj);
+                localVarResult[localVarItem.first] = localVarItemObj;
+            }
         }
         // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {

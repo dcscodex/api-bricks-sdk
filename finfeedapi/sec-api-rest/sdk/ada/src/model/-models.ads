@@ -41,33 +41,6 @@ package .Models is
 
 
 
-   type DTOFilingItemDto_Type is
-     record
-       Item_Number : Swagger.Nullable_UString;
-       Item_Title : Swagger.Nullable_UString;
-       Content : Swagger.Nullable_UString;
-     end record;
-
-
-   package DTOFilingItemDto_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.DTOFilingItemDto_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DTOFilingItemDto_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DTOFilingItemDto_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DTOFilingItemDto_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DTOFilingItemDto_Type_Vectors.Vector);
-
-
-
    type DTOFilingMetadataDto_Type is
      record
        Cik : Swagger.Nullable_Long;
@@ -223,33 +196,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out MvcValidationProblemDetails_Type_Vectors.Vector);
-
-
-
-   type DTOFilingExtractResultDto_Type is
-     record
-       Accession_Number : Swagger.Nullable_UString;
-       Form_Type : Swagger.Nullable_UString;
-       Items : .Models.DTOFilingItemDto_Type_Vectors.Vector;
-     end record;
-
-
-   package DTOFilingExtractResultDto_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.DTOFilingExtractResultDto_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DTOFilingExtractResultDto_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DTOFilingExtractResultDto_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DTOFilingExtractResultDto_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DTOFilingExtractResultDto_Type_Vectors.Vector);
 
 
 end .Models;

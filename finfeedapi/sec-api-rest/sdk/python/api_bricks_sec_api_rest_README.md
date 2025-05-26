@@ -70,13 +70,12 @@ Class | Method | HTTP request | Description
 *ContentExtractionApi* | [**v1_extractor_item_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**v1_filings_get**](api_bricks_sec_api_rest/docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**v1_full_text_get**](api_bricks_sec_api_rest/docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents
+*XBRLConversionApi* | [**v1_xbrl_converter_get**](api_bricks_sec_api_rest/docs/XBRLConversionApi.md#v1_xbrl_converter_get) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 ## Documentation For Models
 
  - [DTOExtractorType](api_bricks_sec_api_rest/docs/DTOExtractorType.md)
- - [DTOFilingExtractResultDto](api_bricks_sec_api_rest/docs/DTOFilingExtractResultDto.md)
- - [DTOFilingItemDto](api_bricks_sec_api_rest/docs/DTOFilingItemDto.md)
  - [DTOFilingMetadataDto](api_bricks_sec_api_rest/docs/DTOFilingMetadataDto.md)
  - [DTOFilingSortBy](api_bricks_sec_api_rest/docs/DTOFilingSortBy.md)
  - [DTOSecFilingResultDto](api_bricks_sec_api_rest/docs/DTOSecFilingResultDto.md)

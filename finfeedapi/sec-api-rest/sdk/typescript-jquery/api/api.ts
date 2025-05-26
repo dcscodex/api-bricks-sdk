@@ -4,4 +4,6 @@ export * from './FilingMetadataApi';
 import { FilingMetadataApi } from './FilingMetadataApi';
 export * from './FullTextSearchApi';
 import { FullTextSearchApi } from './FullTextSearchApi';
-export const APIS = [ContentExtractionApi, FilingMetadataApi, FullTextSearchApi];
+export * from './XBRLConversionApi';
+import { XBRLConversionApi } from './XBRLConversionApi';
+export const APIS = [ContentExtractionApi, FilingMetadataApi, FullTextSearchApi, XBRLConversionApi];

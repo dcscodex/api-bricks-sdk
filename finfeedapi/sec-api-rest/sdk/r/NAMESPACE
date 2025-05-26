@@ -14,8 +14,6 @@ export(ApiResponse)
 
 # Models
 export(DTOExtractorType)
-export(DTOFilingExtractResultDto)
-export(DTOFilingItemDto)
 export(DTOFilingMetadataDto)
 export(DTOFilingSortBy)
 export(DTOSecFilingResultDto)
@@ -26,3 +24,4 @@ export(MvcValidationProblemDetails)
 export(ContentExtractionApi)
 export(FilingMetadataApi)
 export(FullTextSearchApi)
+export(XBRLConversionApi)

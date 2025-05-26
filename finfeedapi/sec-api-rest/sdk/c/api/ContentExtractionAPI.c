@@ -97,7 +97,7 @@ end:
 //
 // Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 //
-dto_filing_extract_result_dto_t*
+list_t*_t*
 ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_number, dto_extractor_type_e type)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -170,17 +170,27 @@ ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_numb
     //if (apiClient->response_code == 500) {
     //    printf("%s\n","Server error");
     //}
-    //nonprimitive not container
-    dto_filing_extract_result_dto_t *elementToReturn = NULL;
+    list_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *ContentExtractionAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = dto_filing_extract_result_dto_parseFromJSON(ContentExtractionAPIlocalVarJSON);
-        cJSON_Delete(ContentExtractionAPIlocalVarJSON);
-        if(elementToReturn == NULL) {
-            // return 0;
+        if(!cJSON_IsArray(ContentExtractionAPIlocalVarJSON)) {
+            return 0;//nonprimitive container
         }
-    }
+        elementToReturn = list_createList();
+        cJSON *VarJSON;
+        cJSON_ArrayForEach(VarJSON, ContentExtractionAPIlocalVarJSON)
+        {
+            if(!cJSON_IsObject(VarJSON))
+            {
+               // return 0;
+            }
+            char *localVarJSONToChar = cJSON_Print(VarJSON);
+            list_addElement(elementToReturn , localVarJSONToChar);
+        }
 
+        cJSON_Delete( ContentExtractionAPIlocalVarJSON);
+        cJSON_Delete( VarJSON);
+    }
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);

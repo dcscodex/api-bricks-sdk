@@ -46,8 +46,6 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
             _jsonOptions.Converters.Add(new DateOnlyNullableJsonConverter());
             _jsonOptions.Converters.Add(new DTOExtractorTypeJsonConverter());
             _jsonOptions.Converters.Add(new DTOExtractorTypeNullableJsonConverter());
-            _jsonOptions.Converters.Add(new DTOFilingExtractResultDtoJsonConverter());
-            _jsonOptions.Converters.Add(new DTOFilingItemDtoJsonConverter());
             _jsonOptions.Converters.Add(new DTOFilingMetadataDtoJsonConverter());
             _jsonOptions.Converters.Add(new DTOFilingSortByJsonConverter());
             _jsonOptions.Converters.Add(new DTOFilingSortByNullableJsonConverter());
@@ -63,6 +61,8 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
             _services.AddTransient<IFilingMetadataApi, FilingMetadataApi>();
             _services.AddSingleton<FullTextSearchApiEvents>();
             _services.AddTransient<IFullTextSearchApi, FullTextSearchApi>();
+            _services.AddSingleton<XBRLConversionApiEvents>();
+            _services.AddTransient<IXBRLConversionApi, XBRLConversionApi>();
         }
 
         /// <summary>
@@ -83,6 +83,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
             builders.Add(_services.AddHttpClient<IContentExtractionApi, ContentExtractionApi>(client));
             builders.Add(_services.AddHttpClient<IFilingMetadataApi, FilingMetadataApi>(client));
             builders.Add(_services.AddHttpClient<IFullTextSearchApi, FullTextSearchApi>(client));
+            builders.Add(_services.AddHttpClient<IXBRLConversionApi, XBRLConversionApi>(client));
             
             if (builder != null)
                 foreach (IHttpClientBuilder instance in builders)

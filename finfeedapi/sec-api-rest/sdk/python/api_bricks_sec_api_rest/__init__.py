@@ -21,6 +21,7 @@ __version__ = "1.0.0"
 from api_bricks_sec_api_rest.api.content_extraction_api import ContentExtractionApi
 from api_bricks_sec_api_rest.api.filing_metadata_api import FilingMetadataApi
 from api_bricks_sec_api_rest.api.full_text_search_api import FullTextSearchApi
+from api_bricks_sec_api_rest.api.xbrl_conversion_api import XBRLConversionApi
 
 # import ApiClient
 from api_bricks_sec_api_rest.api_response import ApiResponse
@@ -35,8 +36,6 @@ from api_bricks_sec_api_rest.exceptions import ApiException
 
 # import models into sdk package
 from api_bricks_sec_api_rest.models.dto_extractor_type import DTOExtractorType
-from api_bricks_sec_api_rest.models.dto_filing_extract_result_dto import DTOFilingExtractResultDto
-from api_bricks_sec_api_rest.models.dto_filing_item_dto import DTOFilingItemDto
 from api_bricks_sec_api_rest.models.dto_filing_metadata_dto import DTOFilingMetadataDto
 from api_bricks_sec_api_rest.models.dto_filing_sort_by import DTOFilingSortBy
 from api_bricks_sec_api_rest.models.dto_sec_filing_result_dto import DTOSecFilingResultDto

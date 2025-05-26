@@ -14,8 +14,6 @@
 
 import ApiClient from './ApiClient';
 import DTOExtractorType from './model/DTOExtractorType';
-import DTOFilingExtractResultDto from './model/DTOFilingExtractResultDto';
-import DTOFilingItemDto from './model/DTOFilingItemDto';
 import DTOFilingMetadataDto from './model/DTOFilingMetadataDto';
 import DTOFilingSortBy from './model/DTOFilingSortBy';
 import DTOSecFilingResultDto from './model/DTOSecFilingResultDto';
@@ -24,6 +22,7 @@ import MvcValidationProblemDetails from './model/MvcValidationProblemDetails';
 import ContentExtractionApi from './api/ContentExtractionApi';
 import FilingMetadataApi from './api/FilingMetadataApi';
 import FullTextSearchApi from './api/FullTextSearchApi';
+import XBRLConversionApi from './api/XBRLConversionApi';
 
 
 /**
@@ -71,18 +70,6 @@ export {
     DTOExtractorType,
 
     /**
-     * The DTOFilingExtractResultDto model constructor.
-     * @property {module:model/DTOFilingExtractResultDto}
-     */
-    DTOFilingExtractResultDto,
-
-    /**
-     * The DTOFilingItemDto model constructor.
-     * @property {module:model/DTOFilingItemDto}
-     */
-    DTOFilingItemDto,
-
-    /**
      * The DTOFilingMetadataDto model constructor.
      * @property {module:model/DTOFilingMetadataDto}
      */
@@ -128,5 +115,11 @@ export {
     * The FullTextSearchApi service constructor.
     * @property {module:api/FullTextSearchApi}
     */
-    FullTextSearchApi
+    FullTextSearchApi,
+
+    /**
+    * The XBRLConversionApi service constructor.
+    * @property {module:api/XBRLConversionApi}
+    */
+    XBRLConversionApi
 };

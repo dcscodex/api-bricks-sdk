@@ -17,7 +17,6 @@ import { BaseAPI, throwIfNullOrUndefined } from '../runtime';
 import type { OperationOpts, HttpQuery } from '../runtime';
 import type {
     DTOExtractorType,
-    DTOFilingExtractResultDto,
     MvcProblemDetails,
     MvcValidationProblemDetails,
 } from '../models';
@@ -42,9 +41,9 @@ export class ContentExtractionApi extends BaseAPI {
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
      * Extract and classify SEC filing content
      */
-    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest): Observable<DTOFilingExtractResultDto>
-    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest, opts?: OperationOpts): Observable<AjaxResponse<DTOFilingExtractResultDto>>
-    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest, opts?: OperationOpts): Observable<DTOFilingExtractResultDto | AjaxResponse<DTOFilingExtractResultDto>> {
+    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest): Observable<{ [key: string]: any; }>
+    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest, opts?: OperationOpts): Observable<AjaxResponse<{ [key: string]: any; }>>
+    v1ExtractorGet({ accessionNumber, type }: V1ExtractorGetRequest, opts?: OperationOpts): Observable<{ [key: string]: any; } | AjaxResponse<{ [key: string]: any; }>> {
         throwIfNullOrUndefined(accessionNumber, 'accessionNumber', 'v1ExtractorGet');
 
         const query: HttpQuery = { // required parameters are used directly since they are already checked by throwIfNullOrUndefined
@@ -53,7 +52,7 @@ export class ContentExtractionApi extends BaseAPI {
 
         if (type != null) { query['type'] = type; }
 
-        return this.request<DTOFilingExtractResultDto>({
+        return this.request<{ [key: string]: any; }>({
             url: '/v1/extractor',
             method: 'GET',
             query,

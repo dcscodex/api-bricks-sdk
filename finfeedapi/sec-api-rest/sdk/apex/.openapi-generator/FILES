@@ -13,14 +13,6 @@ force-app/main/default/classes/OASDTOExtractorType.cls
 force-app/main/default/classes/OASDTOExtractorType.cls-meta.xml
 force-app/main/default/classes/OASDTOExtractorTypeTest.cls
 force-app/main/default/classes/OASDTOExtractorTypeTest.cls-meta.xml
-force-app/main/default/classes/OASDTOFilingExtractResultDto.cls
-force-app/main/default/classes/OASDTOFilingExtractResultDto.cls-meta.xml
-force-app/main/default/classes/OASDTOFilingExtractResultDtoTest.cls
-force-app/main/default/classes/OASDTOFilingExtractResultDtoTest.cls-meta.xml
-force-app/main/default/classes/OASDTOFilingItemDto.cls
-force-app/main/default/classes/OASDTOFilingItemDto.cls-meta.xml
-force-app/main/default/classes/OASDTOFilingItemDtoTest.cls
-force-app/main/default/classes/OASDTOFilingItemDtoTest.cls-meta.xml
 force-app/main/default/classes/OASDTOFilingMetadataDto.cls
 force-app/main/default/classes/OASDTOFilingMetadataDto.cls-meta.xml
 force-app/main/default/classes/OASDTOFilingMetadataDtoTest.cls
@@ -53,5 +45,9 @@ force-app/main/default/classes/OASResponseMock.cls
 force-app/main/default/classes/OASResponseMock.cls-meta.xml
 force-app/main/default/classes/OASTest.cls
 force-app/main/default/classes/OASTest.cls-meta.xml
+force-app/main/default/classes/OASXBRLConversionApi.cls
+force-app/main/default/classes/OASXBRLConversionApi.cls-meta.xml
+force-app/main/default/classes/OASXBRLConversionApiTest.cls
+force-app/main/default/classes/OASXBRLConversionApiTest.cls-meta.xml
 force-app/main/default/namedCredentials/REST_API.namedCredential-meta.xml
 sfdx-project.json

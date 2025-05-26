@@ -17,9 +17,8 @@ include/CppRestOpenAPIClient/Object.h
 include/CppRestOpenAPIClient/api/ContentExtractionApi.h
 include/CppRestOpenAPIClient/api/FilingMetadataApi.h
 include/CppRestOpenAPIClient/api/FullTextSearchApi.h
+include/CppRestOpenAPIClient/api/XBRLConversionApi.h
 include/CppRestOpenAPIClient/model/DTO_ExtractorType.h
-include/CppRestOpenAPIClient/model/DTO_FilingExtractResultDto.h
-include/CppRestOpenAPIClient/model/DTO_FilingItemDto.h
 include/CppRestOpenAPIClient/model/DTO_FilingMetadataDto.h
 include/CppRestOpenAPIClient/model/DTO_FilingSortBy.h
 include/CppRestOpenAPIClient/model/DTO_SecFilingResultDto.h
@@ -37,9 +36,8 @@ src/Object.cpp
 src/api/ContentExtractionApi.cpp
 src/api/FilingMetadataApi.cpp
 src/api/FullTextSearchApi.cpp
+src/api/XBRLConversionApi.cpp
 src/model/DTO_ExtractorType.cpp
-src/model/DTO_FilingExtractResultDto.cpp
-src/model/DTO_FilingItemDto.cpp
 src/model/DTO_FilingMetadataDto.cpp
 src/model/DTO_FilingSortBy.cpp
 src/model/DTO_SecFilingResultDto.cpp

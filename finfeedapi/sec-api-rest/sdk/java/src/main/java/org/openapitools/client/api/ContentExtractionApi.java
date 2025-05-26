@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.DTOExtractorType;
-import org.openapitools.client.model.DTOFilingExtractResultDto;
 import org.openapitools.client.model.MvcProblemDetails;
 import org.openapitools.client.model.MvcValidationProblemDetails;
 
@@ -160,7 +159,7 @@ public class ContentExtractionApi {
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database. (required)
      * @param type Result type (text or html, default: text) (optional)
-     * @return DTOFilingExtractResultDto
+     * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -172,8 +171,8 @@ public class ContentExtractionApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public DTOFilingExtractResultDto v1ExtractorGet(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type) throws ApiException {
-        ApiResponse<DTOFilingExtractResultDto> localVarResp = v1ExtractorGetWithHttpInfo(accessionNumber, type);
+    public Map<String, Object> v1ExtractorGet(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = v1ExtractorGetWithHttpInfo(accessionNumber, type);
         return localVarResp.getData();
     }
 
@@ -182,7 +181,7 @@ public class ContentExtractionApi {
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database. (required)
      * @param type Result type (text or html, default: text) (optional)
-     * @return ApiResponse&lt;DTOFilingExtractResultDto&gt;
+     * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -194,9 +193,9 @@ public class ContentExtractionApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DTOFilingExtractResultDto> v1ExtractorGetWithHttpInfo(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type) throws ApiException {
+    public ApiResponse<Map<String, Object>> v1ExtractorGetWithHttpInfo(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type) throws ApiException {
         okhttp3.Call localVarCall = v1ExtractorGetValidateBeforeCall(accessionNumber, type, null);
-        Type localVarReturnType = new TypeToken<DTOFilingExtractResultDto>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -218,10 +217,10 @@ public class ContentExtractionApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1ExtractorGetAsync(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type, final ApiCallback<DTOFilingExtractResultDto> _callback) throws ApiException {
+    public okhttp3.Call v1ExtractorGetAsync(@javax.annotation.Nonnull String accessionNumber, @javax.annotation.Nullable DTOExtractorType type, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1ExtractorGetValidateBeforeCall(accessionNumber, type, _callback);
-        Type localVarReturnType = new TypeToken<DTOFilingExtractResultDto>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

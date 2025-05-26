@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## v1ExtractorGet
 
-> v1ExtractorGet(v1ExtractorGetRequest): ApiRequest[FilingExtractResultDto]
+> v1ExtractorGet(v1ExtractorGetRequest): ApiRequest[Map[String, AnyType]]
 
 Extract and classify SEC filing content
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**FilingExtractResultDto**](FilingExtractResultDto.md)]
+ApiRequest[[**Map[String, AnyType]**](AnyType.md)]
 
 
 ### Authorization

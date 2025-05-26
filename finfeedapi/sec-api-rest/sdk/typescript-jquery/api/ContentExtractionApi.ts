@@ -53,7 +53,7 @@ export class ContentExtractionApi {
      * @param type Result type (text or html, default: text)
      */
     public v1ExtractorGet(accessionNumber: string, type?: models.DTOExtractorType, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.DTOFilingExtractResultDto;  },
+    { response: JQueryXHR; body: { [key: string]: any; };  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/v1/extractor';
@@ -103,11 +103,11 @@ export class ContentExtractionApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.DTOFilingExtractResultDto;  },
+            { response: JQueryXHR; body: { [key: string]: any; };  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.DTOFilingExtractResultDto, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: { [key: string]: any; }, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

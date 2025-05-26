@@ -20,7 +20,6 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.DTOExtractorType
-import org.openapitools.client.models.DTOFilingExtractResultDto
 import org.openapitools.client.models.MvcProblemDetails
 import org.openapitools.client.models.MvcValidationProblemDetails
 
@@ -54,7 +53,7 @@ class ContentExtractionApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
      * @param type Result type (text or html, default: text) (optional)
-     * @return DTOFilingExtractResultDto
+     * @return kotlin.collections.Map<kotlin.String, kotlin.Any>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -63,11 +62,11 @@ class ContentExtractionApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1ExtractorGet(accessionNumber: kotlin.String, type: DTOExtractorType? = null) : DTOFilingExtractResultDto {
+    fun v1ExtractorGet(accessionNumber: kotlin.String, type: DTOExtractorType? = null) : kotlin.collections.Map<kotlin.String, kotlin.Any> {
         val localVarResponse = v1ExtractorGetWithHttpInfo(accessionNumber = accessionNumber, type = type)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as DTOFilingExtractResultDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.Any>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -87,16 +86,16 @@ class ContentExtractionApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
      * @param type Result type (text or html, default: text) (optional)
-     * @return ApiResponse<DTOFilingExtractResultDto?>
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.Any>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun v1ExtractorGetWithHttpInfo(accessionNumber: kotlin.String, type: DTOExtractorType?) : ApiResponse<DTOFilingExtractResultDto?> {
+    fun v1ExtractorGetWithHttpInfo(accessionNumber: kotlin.String, type: DTOExtractorType?) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.Any>?> {
         val localVariableConfig = v1ExtractorGetRequestConfig(accessionNumber = accessionNumber, type = type)
 
-        return request<Unit, DTOFilingExtractResultDto>(
+        return request<Unit, kotlin.collections.Map<kotlin.String, kotlin.Any>>(
             localVariableConfig
         )
     }

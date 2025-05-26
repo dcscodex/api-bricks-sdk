@@ -11,8 +11,8 @@
  */
 package org.openapitools.client.api
 
+import org.openapitools.client.model.AnyType
 import org.openapitools.client.model.ExtractorType
-import org.openapitools.client.model.FilingExtractResultDto
 import org.openapitools.client.model.ProblemDetails
 import org.openapitools.client.model.ValidationProblemDetails
 import org.openapitools.client.core._
@@ -30,7 +30,7 @@ class ContentExtractionApi(baseUrl: String) {
    * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
    * 
    * Expected answers:
-   *   code 200 : FilingExtractResultDto (Successful extraction)
+   *   code 200 : Map[String, AnyType] (Successful extraction)
    *   code 400 : ValidationProblemDetails (Invalid request)
    *   code 404 :  (Filing not found)
    *   code 500 : ProblemDetails (Server error)
@@ -38,11 +38,11 @@ class ContentExtractionApi(baseUrl: String) {
    * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
    * @param `type` Result type (text or html, default: text)
    */
-  def v1ExtractorGet(accessionNumber: String, `type`: Option[ExtractorType] = None): ApiRequest[FilingExtractResultDto] =
-    ApiRequest[FilingExtractResultDto](ApiMethods.GET, baseUrl, "/v1/extractor", "application/json")
+  def v1ExtractorGet(accessionNumber: String, `type`: Option[ExtractorType] = None): ApiRequest[Map[String, AnyType]] =
+    ApiRequest[Map[String, AnyType]](ApiMethods.GET, baseUrl, "/v1/extractor", "application/json")
       .withQueryParam("accession_number", accessionNumber)
       .withQueryParam("type", `type`)
-      .withSuccessResponse[FilingExtractResultDto](200)
+      .withSuccessResponse[Map[String, AnyType]](200)
       .withErrorResponse[ValidationProblemDetails](400)
       .withErrorResponse[Unit](404)
       .withErrorResponse[ProblemDetails](500)

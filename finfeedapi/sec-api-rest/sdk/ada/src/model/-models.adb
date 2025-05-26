@@ -80,53 +80,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.DTOFilingItemDto_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("item_number", Value.Item_Number);
-      Into.Write_Entity ("item_title", Value.Item_Title);
-      Into.Write_Entity ("content", Value.Content);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DTOFilingItemDto_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DTOFilingItemDto_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "item_number", Value.Item_Number);
-      Swagger.Streams.Deserialize (Object, "item_title", Value.Item_Title);
-      Swagger.Streams.Deserialize (Object, "content", Value.Content);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DTOFilingItemDto_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.DTOFilingItemDto_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.DTOFilingMetadataDto_Type) is
    begin
       Into.Start_Entity (Name);
@@ -441,53 +394,6 @@ package body .Models is
                           Value : in out MvcValidationProblemDetails_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.MvcValidationProblemDetails_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.DTOFilingExtractResultDto_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("accession_number", Value.Accession_Number);
-      Into.Write_Entity ("form_type", Value.Form_Type);
-      Serialize (Into, "items", Value.Items);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DTOFilingExtractResultDto_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.DTOFilingExtractResultDto_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "accession_number", Value.Accession_Number);
-      Swagger.Streams.Deserialize (Object, "form_type", Value.Form_Type);
-      Deserialize (Object, "items", Value.Items);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out DTOFilingExtractResultDto_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.DTOFilingExtractResultDto_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

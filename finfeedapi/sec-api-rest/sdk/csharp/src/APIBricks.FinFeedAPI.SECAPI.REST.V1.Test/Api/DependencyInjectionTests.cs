@@ -91,6 +91,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
 
             var fullTextSearchApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IFullTextSearchApi>();
             Assert.True(fullTextSearchApi.HttpClient.BaseAddress != null);
+
+            var xBRLConversionApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IXBRLConversionApi>();
+            Assert.True(xBRLConversionApi.HttpClient.BaseAddress != null);
         }
 
         /// <summary>
@@ -107,6 +110,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
 
             var fullTextSearchApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IFullTextSearchApi>();
             Assert.True(fullTextSearchApi.HttpClient.BaseAddress != null);
+
+            var xBRLConversionApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IXBRLConversionApi>();
+            Assert.True(xBRLConversionApi.HttpClient.BaseAddress != null);
         }
 
         /// <summary>
@@ -123,6 +129,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
             
             var fullTextSearchApi = _hostUsingAddWithAClient.Services.GetRequiredService<IFullTextSearchApi>();
             Assert.True(fullTextSearchApi.HttpClient.BaseAddress != null);
+            
+            var xBRLConversionApi = _hostUsingAddWithAClient.Services.GetRequiredService<IXBRLConversionApi>();
+            Assert.True(xBRLConversionApi.HttpClient.BaseAddress != null);
         }
 
         /// <summary>
@@ -139,6 +148,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
 
             var fullTextSearchApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IFullTextSearchApi>();
             Assert.True(fullTextSearchApi.HttpClient.BaseAddress != null);
+
+            var xBRLConversionApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IXBRLConversionApi>();
+            Assert.True(xBRLConversionApi.HttpClient.BaseAddress != null);
         }
     }
 }

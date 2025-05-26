@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	v1_extractor_get (accession_number: STRING_32; type: detachable DTO_EXTRACTOR_TYPE): detachable DTO_FILING_EXTRACT_RESULT_DTO
+	v1_extractor_get (accession_number: STRING_32; type: detachable DTO_EXTRACTOR_TYPE): detachable STRING_TABLE [ANY]
 			-- Extract and classify SEC filing content
 			-- Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
 			-- 
@@ -33,7 +33,7 @@ feature -- API Access
 			-- argument: type Result type (text or html, default: text) (optional, default to null)
 			-- 
 			-- 
-			-- Result DTO_FILING_EXTRACT_RESULT_DTO
+			-- Result STRING_TABLE [ANY]
 		require
 		local
   			l_path: STRING
@@ -56,7 +56,7 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { DTO_FILING_EXTRACT_RESULT_DTO } l_response.data ({ DTO_FILING_EXTRACT_RESULT_DTO }) as l_data then
+			elseif attached { STRING_TABLE [ANY] } l_response.data ({ STRING_TABLE [ANY] }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")

@@ -18,10 +18,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from api_bricks_sec_api_rest.models.dto_extractor_type import DTOExtractorType
-from api_bricks_sec_api_rest.models.dto_filing_extract_result_dto import DTOFilingExtractResultDto
 
 from api_bricks_sec_api_rest.api_client import ApiClient, RequestSerialized
 from api_bricks_sec_api_rest.api_response import ApiResponse
@@ -58,7 +57,7 @@ class ContentExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DTOFilingExtractResultDto:
+    ) -> Dict[str, object]:
         """Extract and classify SEC filing content
 
         Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
@@ -99,7 +98,7 @@ class ContentExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DTOFilingExtractResultDto",
+            '200': "Dict[str, object]",
             '400': "MvcValidationProblemDetails",
             '404': None,
             '500': "MvcProblemDetails",
@@ -132,7 +131,7 @@ class ContentExtractionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DTOFilingExtractResultDto]:
+    ) -> ApiResponse[Dict[str, object]]:
         """Extract and classify SEC filing content
 
         Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
@@ -173,7 +172,7 @@ class ContentExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DTOFilingExtractResultDto",
+            '200': "Dict[str, object]",
             '400': "MvcValidationProblemDetails",
             '404': None,
             '500': "MvcProblemDetails",
@@ -247,7 +246,7 @@ class ContentExtractionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DTOFilingExtractResultDto",
+            '200': "Dict[str, object]",
             '400': "MvcValidationProblemDetails",
             '404': None,
             '500': "MvcProblemDetails",

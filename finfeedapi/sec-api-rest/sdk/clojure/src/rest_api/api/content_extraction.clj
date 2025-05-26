@@ -7,9 +7,7 @@
             [rest-api.specs.dto/filing-metadata-dto :refer :all]
             [rest-api.specs.dto/filing-sort-by :refer :all]
             [rest-api.specs.mvc/problem-details :refer :all]
-            [rest-api.specs.dto/filing-extract-result-dto :refer :all]
             [rest-api.specs.mvc/validation-problem-details :refer :all]
-            [rest-api.specs.dto/filing-item-dto :refer :all]
             [rest-api.specs.dto/extractor-type :refer :all]
             )
   (:import (java.io File)))
@@ -46,7 +44,7 @@ Both HTML and plain text documents are supported for content extraction.
               :accepts       ["application/json"]
               :auth-names    []})))
 
-(defn-spec v1-extractor-get dto/filing-extract-result-dto-spec
+(defn-spec v1-extractor-get (s/map-of string? any-type-spec)
   "Extract and classify SEC filing content
   Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.
 
@@ -69,7 +67,7 @@ Both HTML and plain text documents are supported for content extraction.
   ([accession_number string?, optional-params any?]
    (let [res (:data (v1-extractor-get-with-http-info accession_number optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode dto/filing-extract-result-dto-spec res st/string-transformer)
+        (st/decode (s/map-of string? any-type-spec) res st/string-transformer)
         res))))
 
 

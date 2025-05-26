@@ -15,7 +15,6 @@ package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.DTOExtractorType;
-import org.openapitools.client.model.DTOFilingExtractResultDto;
 import org.openapitools.client.model.MvcProblemDetails;
 import org.openapitools.client.model.MvcValidationProblemDetails;
 import org.junit.jupiter.api.Disabled;
@@ -45,7 +44,7 @@ public class ContentExtractionApiTest {
     public void v1ExtractorGetTest() throws ApiException {
         String accessionNumber = null;
         DTOExtractorType type = null;
-        DTOFilingExtractResultDto response = api.v1ExtractorGet(accessionNumber, type);
+        Map<String, Object> response = api.v1ExtractorGet(accessionNumber, type);
         // TODO: test validations
     }
 

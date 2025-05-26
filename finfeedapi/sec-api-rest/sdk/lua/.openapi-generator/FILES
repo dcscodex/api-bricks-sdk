@@ -5,9 +5,8 @@ openapiclient-1.0.0-1.rockspec
 openapiclient/api/content_extraction_api.lua
 openapiclient/api/filing_metadata_api.lua
 openapiclient/api/full_text_search_api.lua
+openapiclient/api/xbrl_conversion_api.lua
 openapiclient/model/dto_extractor_type.lua
-openapiclient/model/dto_filing_extract_result_dto.lua
-openapiclient/model/dto_filing_item_dto.lua
 openapiclient/model/dto_filing_metadata_dto.lua
 openapiclient/model/dto_filing_sort_by.lua
 openapiclient/model/dto_sec_filing_result_dto.lua
@@ -15,8 +14,6 @@ openapiclient/model/mvc_problem_details.lua
 openapiclient/model/mvc_validation_problem_details.lua
 spec/content_extraction_api_spec.lua
 spec/dto_extractor_type_spec.lua
-spec/dto_filing_extract_result_dto_spec.lua
-spec/dto_filing_item_dto_spec.lua
 spec/dto_filing_metadata_dto_spec.lua
 spec/dto_filing_sort_by_spec.lua
 spec/dto_sec_filing_result_dto_spec.lua
@@ -24,3 +21,4 @@ spec/filing_metadata_api_spec.lua
 spec/full_text_search_api_spec.lua
 spec/mvc_problem_details_spec.lua
 spec/mvc_validation_problem_details_spec.lua
+spec/xbrl_conversion_api_spec.lua

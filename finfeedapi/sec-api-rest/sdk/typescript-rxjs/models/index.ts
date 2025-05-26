@@ -1,6 +1,4 @@
 export * from './DTOExtractorType';
-export * from './DTOFilingExtractResultDto';
-export * from './DTOFilingItemDto';
 export * from './DTOFilingMetadataDto';
 export * from './DTOFilingSortBy';
 export * from './DTOSecFilingResultDto';

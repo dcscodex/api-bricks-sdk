@@ -11,7 +11,7 @@ All URIs are relative to https://api-historical.sec.finfeedapi.com, except if th
 ## `v1ExtractorGet()`
 
 ```php
-v1ExtractorGet($accession_number, $type): \OpenAPI\Client\Model\DTOFilingExtractResultDto
+v1ExtractorGet($accession_number, $type): array<string,mixed>
 ```
 
 Extract and classify SEC filing content
@@ -51,7 +51,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DTOFilingExtractResultDto**](../Model/DTOFilingExtractResultDto.md)
+**array<string,mixed>**
 
 ### Authorization
 

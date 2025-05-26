@@ -10,8 +10,8 @@
  */
 goog.provide('API.Client.ContentExtractionApi');
 
+goog.require('API.Client.AnyType');
 goog.require('API.Client.DTO.ExtractorType');
-goog.require('API.Client.DTO.FilingExtractResultDto');
 goog.require('API.Client.Mvc.ProblemDetails');
 goog.require('API.Client.Mvc.ValidationProblemDetails');
 
@@ -48,7 +48,7 @@ API.Client.ContentExtractionApi.$inject = ['$http', '$httpParamSerializer', '$in
  * @param {!string} accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
  * @param {!DTOExtractorType=} opt_type Result type (text or html, default: text)
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!API.Client.DTO.FilingExtractResultDto>}
+ * @return {!angular.$q.Promise<!Object<!string, API.Client.AnyType>>}
  */
 API.Client.ContentExtractionApi.prototype.v1ExtractorGet = function(accessionNumber, opt_type, opt_extraHttpRequestParams) {
   /** @const {string} */

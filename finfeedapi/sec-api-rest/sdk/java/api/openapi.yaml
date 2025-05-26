@@ -22,6 +22,9 @@ tags:
     \ SEC filing documents.\r\nAllows users to query filings based on various criteria\
     \ such as form type, date ranges, and text content."
   name: FullText
+- description: Provides endpoints for converting XBRL data to JSON format from various
+    SEC filing sources.
+  name: XbrlConverter
 paths:
   /v1/extractor:
     get:
@@ -72,7 +75,8 @@ paths:
                       item_title: Properties
                       content: Description of company properties and facilities...
               schema:
-                $ref: '#/components/schemas/DTO.FilingExtractResultDto'
+                additionalProperties: {}
+                type: object
           description: Successful extraction
         "400":
           content:
@@ -452,6 +456,210 @@ paths:
       - Full Text Search
       x-accepts:
       - application/json
+  /v1/xbrl-converter:
+    get:
+      description: "Converts XBRL data to JSON format using one of three possible\
+        \ input methods.\r\n\r\n### Input Methods\r\n\r\n1. HTML URL (htm-url)\r\n\
+        \   - URL of the filing ending with .htm or .html\r\n   - Both filing URLs\
+        \ and index page URLs are accepted\r\n   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm\r\
+        \n\r\n2. XBRL URL (xbrl-url)\r\n   - URL of the XBRL file ending with .xml\r\
+        \n   - Can be found in the dataFiles array from Query API\r\n   - Example:\
+        \ https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml\r\
+        \n\r\n3. Accession Number (accession-no)\r\n   - The SEC filing accession\
+        \ number\r\n   - Example: 0001564590-21-004599\r\n\r\n:::note\r\nOnly one\
+        \ of the three parameters should be provided. If multiple parameters are provided,\
+        \ the priority order is:\r\n1. htm-url\r\n2. xbrl-url\r\n3. accession-no\r\
+        \n:::\r\n\r\n### Supported Filing Types\r\n\r\n- Annual Reports (10-K)\r\n\
+        - Quarterly Reports (10-Q)\r\n- Current Reports (8-K)\r\n- Registration Statements\
+        \ (S-1, S-3)\r\n- Foreign Private Issuer Reports (20-F, 40-F)\r\n\r\n### Response\
+        \ Format\r\n\r\nThe API returns a JSON object containing:\r\n- Financial statements\
+        \ (Income Statement, Balance Sheet, Cash Flow Statement)\r\n- Accounting policies\
+        \ and footnotes\r\n- Company information\r\n- Filing metadata\r\n\r\n### Example\
+        \ Response\r\n```json\r\n{\r\n  \"StatementsOfIncome\": {\r\n    \"RevenueFromContractWithCustomerExcludingAssessedTax\"\
+        : [\r\n      {\r\n        \"decimals\": \"-6\",\r\n        \"unitRef\": \"\
+        U_USD\",\r\n        \"period\": {\r\n          \"startDate\": \"2023-07-01\"\
+        ,\r\n          \"endDate\": \"2024-06-30\"\r\n        },\r\n        \"value\"\
+        : \"245122000000\"\r\n      }\r\n    ]\r\n  }\r\n}\r\n```"
+      parameters:
+      - description: URL of the filing ending with .htm or .html
+        explode: true
+        in: query
+        name: htm-url
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: URL of the XBRL file ending with .xml
+        explode: true
+        in: query
+        name: xbrl-url
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: SEC filing accession number
+        explode: true
+        in: query
+        name: accession-no
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Example XBRL Filing Extract:
+                  value:
+                    CoverPage:
+                      DocumentType: 10-K
+                      DocumentAnnualReport: "true"
+                      DocumentPeriodEndDate: 2020-09-26
+                      DocumentTransitionReport: "false"
+                      EntityFileNumber: 001-36743
+                      EntityRegistrantName: Apple Inc.
+                      EntityIncorporationStateCountryCode: CA
+                      EntityTaxIdentificationNumber: 94-2404110
+                      EntityAddressAddressLine1: One Apple Park Way
+                      EntityAddressCityOrTown: Cupertino
+                      EntityAddressStateOrProvince: CA
+                      EntityAddressPostalZipCode: "95014"
+                      CityAreaCode: "408"
+                      LocalPhoneNumber: 996-1010
+                      Security12bTitle:
+                      - period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        segment:
+                          dimension: us-gaap:StatementClassOfStockAxis
+                          value: us-gaap:CommonStockMember
+                        value: "Common Stock, $0.00001 par value per share"
+                      TradingSymbol:
+                        period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        segment:
+                          dimension: us-gaap:StatementClassOfStockAxis
+                          value: us-gaap:CommonStockMember
+                        value: AAPL
+                      NoTradingSymbolFlag:
+                      - period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        segment:
+                          dimension: us-gaap:StatementClassOfStockAxis
+                          value: aapl:A1.000NotesDue2022Member
+                        value: "true"
+                      SecurityExchangeName:
+                      - period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        segment:
+                          dimension: us-gaap:StatementClassOfStockAxis
+                          value: us-gaap:CommonStockMember
+                        value: NASDAQ
+                      EntityWellKnownSeasonedIssuer: "Yes"
+                      EntityVoluntaryFilers: "No"
+                      EntityCurrentReportingStatus: "Yes"
+                      EntityInteractiveDataCurrent: "Yes"
+                      EntityFilerCategory: Large Accelerated Filer
+                      EntitySmallBusiness: "false"
+                      EntityEmergingGrowthCompany: "false"
+                      IcfrAuditorAttestationFlag: "true"
+                      EntityShellCompany: "false"
+                      EntityPublicFloat:
+                        decimals: "-6"
+                        unitRef: usd
+                        period:
+                          instant: 2020-03-27
+                        value: "1070633000000"
+                      EntityCommonStockSharesOutstanding:
+                        decimals: "-3"
+                        unitRef: shares
+                        period:
+                          instant: 2020-10-16
+                        value: "17001802000"
+                      AmendmentFlag: "false"
+                      DocumentFiscalYearFocus: "2020"
+                      DocumentFiscalPeriodFocus: FY
+                      EntityCentralIndexKey: "0000320193"
+                      CurrentFiscalYearEndDate: --09-26
+                    StatementsOfIncome:
+                      RevenueFromContractWithCustomerExcludingAssessedTax:
+                      - decimals: "-6"
+                        unitRef: usd
+                        period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        segment:
+                          dimension: srt:ProductOrServiceAxis
+                          value: us-gaap:ProductMember
+                        value: "220747000000"
+                      CostOfGoodsAndServicesSold: []
+                      GrossProfit: []
+                      ResearchAndDevelopmentExpense: []
+                      SellingGeneralAndAdministrativeExpense: []
+                      OperatingExpenses: []
+                      OperatingIncomeLoss: []
+                      NonoperatingIncomeExpense: []
+                      IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest: []
+                      IncomeTaxExpenseBenefit: []
+                      NetIncomeLoss: []
+                      EarningsPerShareBasic: []
+                      EarningsPerShareDiluted: []
+                      WeightedAverageNumberOfSharesOutstandingBasic: []
+                      WeightedAverageNumberOfDilutedSharesOutstanding: []
+                    StatementsOfComprehensiveIncome:
+                      NetIncomeLoss: []
+                      OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax: []
+                      OtherComprehensiveIncomeLossDerivativeInstrumentGainLossbeforeReclassificationafterTax:
+                        decimals: "-6"
+                        unitRef: usd
+                        period:
+                          startDate: 2019-09-29
+                          endDate: 2020-09-26
+                        value: "79000000"
+                    BalanceSheets: {}
+                    BalanceSheetsParenthetical: {}
+                    StatementsOfShareholdersEquity: {}
+                    StatementsOfCashFlows: {}
+                    SummaryofSignificantAccountingPolicies: {}
+                    SummaryofSignificantAccountingPoliciesPolicies: {}
+                    SummaryofSignificantAccountingPoliciesTables: {}
+                    SummaryofSignificantAccountingPoliciesAdditionalInformationDetails: {}
+                    SummaryofSignificantAccountingPoliciesComputationofBasicandDilutedEarningsPerShareDetails: {}
+                    RevenueRecognition: {}
+                    RevenueRecognitionTables: {}
+                    RevenueRecognitionAdditionalInformationDetails: {}
+                    RevenueRecognitionDeferredRevenueExpectedTimingofRealizationDetails: {}
+                    RevenueRecognitionNetSalesDisaggregatedbySignificantProductsandServicesDetails: {}
+                    FinancialInstruments: {}
+                    FinancialInstrumentsTables: {}
+                    FinancialInstrumentsCashCashEquivalentsandMarketableSecuritiesDetails: {}
+              schema:
+                additionalProperties: {}
+                type: object
+          description: Successful conversion
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+          description: Invalid request - check parameter format
+        "404":
+          description: Filing or XBRL data not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+          description: Server error
+      summary: Convert XBRL data to JSON format
+      tags:
+      - XBRL Conversion
+      x-accepts:
+      - application/json
 components:
   schemas:
     DTO.ExtractorType:
@@ -459,49 +667,6 @@ components:
       - text
       - html
       type: string
-    DTO.FilingExtractResultDto:
-      additionalProperties: false
-      description: Represents the result of a filing extraction.
-      example:
-        accession_number: accession_number
-        form_type: form_type
-        items:
-        - item_number: item_number
-          item_title: item_title
-          content: content
-        - item_number: item_number
-          item_title: item_title
-          content: content
-      properties:
-        accession_number:
-          nullable: true
-          type: string
-        form_type:
-          nullable: true
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/DTO.FilingItemDto'
-          nullable: true
-          type: array
-      type: object
-    DTO.FilingItemDto:
-      additionalProperties: false
-      example:
-        item_number: item_number
-        item_title: item_title
-        content: content
-      properties:
-        item_number:
-          nullable: true
-          type: string
-        item_title:
-          nullable: true
-          type: string
-        content:
-          nullable: true
-          type: string
-      type: object
     DTO.FilingMetadataDto:
       additionalProperties: false
       description: "Represents the response for a single SEC filing metadata record.\r\

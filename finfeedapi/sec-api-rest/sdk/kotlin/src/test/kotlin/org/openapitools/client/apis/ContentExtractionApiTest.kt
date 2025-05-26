@@ -20,7 +20,6 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ContentExtractionApi
 import org.openapitools.client.models.DTOExtractorType
-import org.openapitools.client.models.DTOFilingExtractResultDto
 import org.openapitools.client.models.MvcProblemDetails
 import org.openapitools.client.models.MvcValidationProblemDetails
 
@@ -34,7 +33,7 @@ class ContentExtractionApiTest : ShouldSpec() {
             // uncomment below to test v1ExtractorGet
             //val accessionNumber : kotlin.String = accessionNumber_example // kotlin.String | The SEC filing accession number used to retrieve the filing from EDGAR database.
             //val type : DTOExtractorType =  // DTOExtractorType | Result type (text or html, default: text)
-            //val result : DTOFilingExtractResultDto = apiInstance.v1ExtractorGet(accessionNumber, type)
+            //val result : kotlin.collections.Map<kotlin.String, kotlin.Any> = apiInstance.v1ExtractorGet(accessionNumber, type)
             //result shouldBe ("TODO")
         }
 

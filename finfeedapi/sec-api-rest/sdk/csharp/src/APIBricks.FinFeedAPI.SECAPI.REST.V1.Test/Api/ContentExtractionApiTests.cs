@@ -61,7 +61,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
             Client.Option<DTOExtractorType> type = default!;
             var response = await _instance.V1ExtractorGetAsync(accessionNumber, type);
             var model = response.Ok();
-            Assert.IsType<DTOFilingExtractResultDto>(model);
+            Assert.IsType<Dictionary<string, Object>>(model);
         }
 
         /// <summary>

@@ -57,13 +57,12 @@ Class | Method | HTTP request | Description
 *ContentExtractionApi* | [**Invoke-V1ExtractorItemGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
 *FilingMetadataApi* | [**Invoke-V1FilingsGet**](docs/FilingMetadataApi.md#Invoke-V1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**Invoke-V1FullTextGet**](docs/FullTextSearchApi.md#Invoke-V1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents
+*XBRLConversionApi* | [**Invoke-V1XbrlConverterGet**](docs/XBRLConversionApi.md#Invoke-V1XbrlConverterGet) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format
 
 
 ## Documentation for Models
 
  - [PSOpenAPITools\Model.DTOExtractorType](docs/DTOExtractorType.md)
- - [PSOpenAPITools\Model.DTOFilingExtractResultDto](docs/DTOFilingExtractResultDto.md)
- - [PSOpenAPITools\Model.DTOFilingItemDto](docs/DTOFilingItemDto.md)
  - [PSOpenAPITools\Model.DTOFilingMetadataDto](docs/DTOFilingMetadataDto.md)
  - [PSOpenAPITools\Model.DTOFilingSortBy](docs/DTOFilingSortBy.md)
  - [PSOpenAPITools\Model.DTOSecFilingResultDto](docs/DTOSecFilingResultDto.md)

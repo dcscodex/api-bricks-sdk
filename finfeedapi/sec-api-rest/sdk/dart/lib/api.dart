@@ -31,10 +31,9 @@ part 'auth/http_bearer_auth.dart';
 part 'api/content_extraction_api.dart';
 part 'api/filing_metadata_api.dart';
 part 'api/full_text_search_api.dart';
+part 'api/xbrl_conversion_api.dart';
 
 part 'model/dto_extractor_type.dart';
-part 'model/dto_filing_extract_result_dto.dart';
-part 'model/dto_filing_item_dto.dart';
 part 'model/dto_filing_metadata_dto.dart';
 part 'model/dto_filing_sort_by.dart';
 part 'model/dto_sec_filing_result_dto.dart';

@@ -16,8 +16,6 @@
 
 # import models into model package
 from api_bricks_sec_api_rest.models.dto_extractor_type import DTOExtractorType
-from api_bricks_sec_api_rest.models.dto_filing_extract_result_dto import DTOFilingExtractResultDto
-from api_bricks_sec_api_rest.models.dto_filing_item_dto import DTOFilingItemDto
 from api_bricks_sec_api_rest.models.dto_filing_metadata_dto import DTOFilingMetadataDto
 from api_bricks_sec_api_rest.models.dto_filing_sort_by import DTOFilingSortBy
 from api_bricks_sec_api_rest.models.dto_sec_filing_result_dto import DTOSecFilingResultDto

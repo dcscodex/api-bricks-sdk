@@ -16,7 +16,6 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { DTOExtractorType } from '../model/dTOExtractorType';
-import { DTOFilingExtractResultDto } from '../model/dTOFilingExtractResultDto';
 import { MvcProblemDetails } from '../model/mvcProblemDetails';
 import { MvcValidationProblemDetails } from '../model/mvcValidationProblemDetails';
 
@@ -103,7 +102,7 @@ export class ContentExtractionApi {
      * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
      * @param type Result type (text or html, default: text)
      */
-    public async v1ExtractorGet (accessionNumber: string, type?: DTOExtractorType, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: DTOFilingExtractResultDto;  }> {
+    public async v1ExtractorGet (accessionNumber: string, type?: DTOExtractorType, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: { [key: string]: any; };  }> {
         const localVarPath = this.basePath + '/v1/extractor';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -158,13 +157,13 @@ export class ContentExtractionApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: DTOFilingExtractResultDto;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: { [key: string]: any; };  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "DTOFilingExtractResultDto");
+                            body = ObjectSerializer.deserialize(body, "{ [key: string]: any; }");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

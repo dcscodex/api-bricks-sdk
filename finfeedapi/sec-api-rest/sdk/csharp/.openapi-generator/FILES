@@ -7,9 +7,8 @@ appveyor.yml
 docs/apis/ContentExtractionApi.md
 docs/apis/FilingMetadataApi.md
 docs/apis/FullTextSearchApi.md
+docs/apis/XBRLConversionApi.md
 docs/models/DTOExtractorType.md
-docs/models/DTOFilingExtractResultDto.md
-docs/models/DTOFilingItemDto.md
 docs/models/DTOFilingMetadataDto.md
 docs/models/DTOFilingSortBy.md
 docs/models/DTOSecFilingResultDto.md
@@ -23,9 +22,8 @@ src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/ContentExtractionApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/DependencyInjectionTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/FilingMetadataApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/FullTextSearchApiTests.cs
+src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/XBRLConversionApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOExtractorTypeTests.cs
-src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOFilingExtractResultDtoTests.cs
-src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOFilingItemDtoTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOFilingMetadataDtoTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOFilingSortByTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/DTOSecFilingResultDtoTests.cs
@@ -37,6 +35,7 @@ src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/ContentExtractionApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/FilingMetadataApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/FullTextSearchApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/IApi.cs
+src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/XBRLConversionApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Client/ApiException.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Client/ApiFactory.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Client/ApiKeyToken.cs
@@ -61,8 +60,6 @@ src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Extensions/IHostBuilderExtensions.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Extensions/IHttpClientBuilderExtensions.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Extensions/IServiceCollectionExtensions.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOExtractorType.cs
-src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOFilingExtractResultDto.cs
-src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOFilingItemDto.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOFilingMetadataDto.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOFilingSortBy.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Model/DTOSecFilingResultDto.cs

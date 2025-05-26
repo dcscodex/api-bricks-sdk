@@ -24,9 +24,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import org.openapitools.client.model.DTOExtractorType;
-import org.openapitools.client.model.DTOFilingExtractResultDto;
+import java.util.Map;
 import org.openapitools.client.model.MvcProblemDetails;
 import org.openapitools.client.model.MvcValidationProblemDetails;
+import org.openapitools.client.model.OasAnyTypeNotMapped;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -63,9 +64,9 @@ public class ContentExtractionApi {
   * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
    * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.
    * @param type Result type (text or html, default: text)
-   * @return DTOFilingExtractResultDto
+   * @return Map<String, OasAnyTypeNotMapped>
   */
-  public DTOFilingExtractResultDto v1ExtractorGet (String accessionNumber, DTOExtractorType type) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Map<String, OasAnyTypeNotMapped> v1ExtractorGet (String accessionNumber, DTOExtractorType type) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'accessionNumber' is set
     if (accessionNumber == null) {
@@ -102,7 +103,7 @@ public class ContentExtractionApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (DTOFilingExtractResultDto) ApiInvoker.deserialize(localVarResponse, "", DTOFilingExtractResultDto.class);
+         return (Map<String, OasAnyTypeNotMapped>) ApiInvoker.deserialize(localVarResponse, "map", OasAnyTypeNotMapped.class);
       } else {
          return null;
       }
@@ -128,7 +129,7 @@ public class ContentExtractionApi {
    * Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
    * @param accessionNumber The SEC filing accession number used to retrieve the filing from EDGAR database.   * @param type Result type (text or html, default: text)
   */
-  public void v1ExtractorGet (String accessionNumber, DTOExtractorType type, final Response.Listener<DTOFilingExtractResultDto> responseListener, final Response.ErrorListener errorListener) {
+  public void v1ExtractorGet (String accessionNumber, DTOExtractorType type, final Response.Listener<Map<String, OasAnyTypeNotMapped>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'accessionNumber' is set
@@ -175,7 +176,7 @@ public class ContentExtractionApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((DTOFilingExtractResultDto) ApiInvoker.deserialize(localVarResponse,  "", DTOFilingExtractResultDto.class));
+              responseListener.onResponse((Map<String, OasAnyTypeNotMapped>) ApiInvoker.deserialize(localVarResponse,  "map", OasAnyTypeNotMapped.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

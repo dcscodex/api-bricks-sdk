@@ -6,10 +6,6 @@ src/ContentExtractionManager.cpp
 src/ContentExtractionManager.h
 src/DTOExtractorType.cpp
 src/DTOExtractorType.h
-src/DTOFilingExtractResultDto.cpp
-src/DTOFilingExtractResultDto.h
-src/DTOFilingItemDto.cpp
-src/DTOFilingItemDto.h
 src/DTOFilingMetadataDto.cpp
 src/DTOFilingMetadataDto.h
 src/DTOFilingSortBy.cpp
@@ -32,3 +28,5 @@ src/NetClient.cpp
 src/NetClient.h
 src/Object.h
 src/RequestInfo.h
+src/XBRLConversionManager.cpp
+src/XBRLConversionManager.h

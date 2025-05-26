@@ -77,56 +77,6 @@ export class RequiredError extends Error {
 export type DTOExtractorType = 'text' | 'html';
 
 /**
- * Represents the result of a filing extraction.
- * @export
- */
-export type DTOFilingExtractResultDto = {
-    /**
-     * 
-     * @type {string}
-     * @memberof DTOFilingExtractResultDto
-     */
-    accession_number?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DTOFilingExtractResultDto
-     */
-    form_type?: string;
-    /**
-     * 
-     * @type {Array<DTOFilingItemDto>}
-     * @memberof DTOFilingExtractResultDto
-     */
-    items?: Array<DTOFilingItemDto>;
-}
-
-/**
- * 
- * @export
- */
-export type DTOFilingItemDto = {
-    /**
-     * 
-     * @type {string}
-     * @memberof DTOFilingItemDto
-     */
-    item_number?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DTOFilingItemDto
-     */
-    item_title?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DTOFilingItemDto
-     */
-    content?: string;
-}
-
-/**
  * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
  * @export
  */
@@ -469,7 +419,7 @@ export const ContentExtractionApiFetchParamCreator = function (configuration?: C
 };
 
 export type ContentExtractionApiType = { 
-    v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, options?: RequestOptions): Promise<DTOFilingExtractResultDto>,
+    v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, options?: RequestOptions): Promise<{ [key: string]: AnyType; }>,
 
     v1ExtractorItemGet(accessionNumber: string, itemNumber: string, type?: DTOExtractorType, options?: RequestOptions): Promise<string>,
 }
@@ -486,7 +436,7 @@ export const ContentExtractionApi = function(configuration?: Configuration, fetc
          * @summary Extract and classify SEC filing content
          * @throws {RequiredError}
          */
-        v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, options?: RequestOptions = {}): Promise<DTOFilingExtractResultDto> {
+        v1ExtractorGet(accessionNumber: string, type?: DTOExtractorType, options?: RequestOptions = {}): Promise<{ [key: string]: AnyType; }> {
             const localVarFetchArgs = ContentExtractionApiFetchParamCreator(configuration).v1ExtractorGet(accessionNumber, type, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -717,10 +667,85 @@ export const FullTextSearchApi = function(configuration?: Configuration, fetch: 
 };
 
 
+/**
+ * XBRLConversionApi - fetch parameter creator
+ * @export
+ */
+export const XBRLConversionApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Converts XBRL data to JSON format using one of three possible input methods.    ### Input Methods    1. HTML URL (htm-url)     - URL of the filing ending with .htm or .html     - Both filing URLs and index page URLs are accepted     - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm    2. XBRL URL (xbrl-url)     - URL of the XBRL file ending with .xml     - Can be found in the dataFiles array from Query API     - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml    3. Accession Number (accession-no)     - The SEC filing accession number     - Example: 0001564590-21-004599    :::note  Only one of the three parameters should be provided. If multiple parameters are provided, the priority order is:  1. htm-url  2. xbrl-url  3. accession-no  :::    ### Supported Filing Types    - Annual Reports (10-K)  - Quarterly Reports (10-Q)  - Current Reports (8-K)  - Registration Statements (S-1, S-3)  - Foreign Private Issuer Reports (20-F, 40-F)    ### Response Format    The API returns a JSON object containing:  - Financial statements (Income Statement, Balance Sheet, Cash Flow Statement)  - Accounting policies and footnotes  - Company information  - Filing metadata    ### Example Response  ```json  {    \"StatementsOfIncome\": {      \"RevenueFromContractWithCustomerExcludingAssessedTax\": [        {          \"decimals\": \"-6\",          \"unitRef\": \"U_USD\",          \"period\": {            \"startDate\": \"2023-07-01\",            \"endDate\": \"2024-06-30\"          },          \"value\": \"245122000000\"        }      ]    }  }  ```
+         * @summary Convert XBRL data to JSON format
+         * @throws {RequiredError}
+         */
+        v1XbrlConverterGet(htmUrl?: string, xbrlUrl?: string, accessionNo?: string, options: RequestOptions): FetchArgs {
+            const localVarPath = `/v1/xbrl-converter`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            if (htmUrl !== undefined) {
+                localVarQueryParameter['htm-url'] = ((htmUrl:any):string);
+            }
+
+            if (xbrlUrl !== undefined) {
+                localVarQueryParameter['xbrl-url'] = ((xbrlUrl:any):string);
+            }
+
+            if (accessionNo !== undefined) {
+                localVarQueryParameter['accession-no'] = ((accessionNo:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+export type XBRLConversionApiType = { 
+    v1XbrlConverterGet(htmUrl?: string, xbrlUrl?: string, accessionNo?: string, options?: RequestOptions): Promise<{ [key: string]: AnyType; }>,
+}
+
+/**
+ * XBRLConversionApi - factory function to inject configuration 
+ * @export
+ */
+export const XBRLConversionApi = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): XBRLConversionApiType {
+    const basePath: string = (configuration && configuration.basePath) || BASE_PATH;
+    return {
+        /**
+         * Converts XBRL data to JSON format using one of three possible input methods.    ### Input Methods    1. HTML URL (htm-url)     - URL of the filing ending with .htm or .html     - Both filing URLs and index page URLs are accepted     - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm    2. XBRL URL (xbrl-url)     - URL of the XBRL file ending with .xml     - Can be found in the dataFiles array from Query API     - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml    3. Accession Number (accession-no)     - The SEC filing accession number     - Example: 0001564590-21-004599    :::note  Only one of the three parameters should be provided. If multiple parameters are provided, the priority order is:  1. htm-url  2. xbrl-url  3. accession-no  :::    ### Supported Filing Types    - Annual Reports (10-K)  - Quarterly Reports (10-Q)  - Current Reports (8-K)  - Registration Statements (S-1, S-3)  - Foreign Private Issuer Reports (20-F, 40-F)    ### Response Format    The API returns a JSON object containing:  - Financial statements (Income Statement, Balance Sheet, Cash Flow Statement)  - Accounting policies and footnotes  - Company information  - Filing metadata    ### Example Response  ```json  {    \"StatementsOfIncome\": {      \"RevenueFromContractWithCustomerExcludingAssessedTax\": [        {          \"decimals\": \"-6\",          \"unitRef\": \"U_USD\",          \"period\": {            \"startDate\": \"2023-07-01\",            \"endDate\": \"2024-06-30\"          },          \"value\": \"245122000000\"        }      ]    }  }  ```
+         * @summary Convert XBRL data to JSON format
+         * @throws {RequiredError}
+         */
+        v1XbrlConverterGet(htmUrl?: string, xbrlUrl?: string, accessionNo?: string, options?: RequestOptions = {}): Promise<{ [key: string]: AnyType; }> {
+            const localVarFetchArgs = XBRLConversionApiFetchParamCreator(configuration).v1XbrlConverterGet(htmUrl, xbrlUrl, accessionNo, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+    }
+};
+
+
 export type ApiTypes = { 
     ContentExtractionApi: ContentExtractionApiType,
 
     FilingMetadataApi: FilingMetadataApiType,
 
     FullTextSearchApi: FullTextSearchApiType,
+
+    XBRLConversionApi: XBRLConversionApiType,
  }

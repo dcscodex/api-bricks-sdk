@@ -69,6 +69,7 @@ library
       REST.API.ContentExtraction
       REST.API.FilingMetadata
       REST.API.FullTextSearch
+      REST.API.XBRLConversion
       REST.Client
       REST.Core
       REST.Logging

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **V1ExtractorGet**
-> DTOFilingExtractResultDto V1ExtractorGet(accession_number, type = var.type)
+> map(AnyType) V1ExtractorGet(accession_number, type = var.type)
 
 Extract and classify SEC filing content
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTO.FilingExtractResultDto.md)
+[**map(AnyType)**](AnyType.md)
 
 ### Authorization
 

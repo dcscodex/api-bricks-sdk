@@ -74,7 +74,7 @@ ContentExtractionApi <- R6::R6Class(
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return DTOFilingExtractResultDto
+    #' @return map(AnyType)
     V1ExtractorGet = function(accession_number, type = NULL, data_file = NULL, ...) {
       local_var_response <- self$V1ExtractorGetWithHttpInfo(accession_number, type, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
@@ -96,7 +96,7 @@ ContentExtractionApi <- R6::R6Class(
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return API response (DTOFilingExtractResultDto) with additional information such as HTTP status code, headers
+    #' @return API response (map(AnyType)) with additional information such as HTTP status code, headers
     V1ExtractorGetWithHttpInfo = function(accession_number, type = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
@@ -145,7 +145,7 @@ ContentExtractionApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "DTOFilingExtractResultDto"),
+          self$api_client$DeserializeResponse(local_var_resp, "map(AnyType)"),
           error = function(e) {
             stop("Failed to deserialize response")
           }

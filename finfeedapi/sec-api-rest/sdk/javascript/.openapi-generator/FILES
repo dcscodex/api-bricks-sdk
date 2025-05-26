@@ -5,8 +5,6 @@
 README.md
 docs/ContentExtractionApi.md
 docs/DTOExtractorType.md
-docs/DTOFilingExtractResultDto.md
-docs/DTOFilingItemDto.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
@@ -14,6 +12,7 @@ docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
+docs/XBRLConversionApi.md
 git_push.sh
 mocha.opts
 package.json
@@ -21,10 +20,9 @@ src/ApiClient.js
 src/api/ContentExtractionApi.js
 src/api/FilingMetadataApi.js
 src/api/FullTextSearchApi.js
+src/api/XBRLConversionApi.js
 src/index.js
 src/model/DTOExtractorType.js
-src/model/DTOFilingExtractResultDto.js
-src/model/DTOFilingItemDto.js
 src/model/DTOFilingMetadataDto.js
 src/model/DTOFilingSortBy.js
 src/model/DTOSecFilingResultDto.js
@@ -33,9 +31,8 @@ src/model/MvcValidationProblemDetails.js
 test/api/ContentExtractionApi.spec.js
 test/api/FilingMetadataApi.spec.js
 test/api/FullTextSearchApi.spec.js
+test/api/XBRLConversionApi.spec.js
 test/model/DTOExtractorType.spec.js
-test/model/DTOFilingExtractResultDto.spec.js
-test/model/DTOFilingItemDto.spec.js
 test/model/DTOFilingMetadataDto.spec.js
 test/model/DTOFilingSortBy.spec.js
 test/model/DTOSecFilingResultDto.spec.js

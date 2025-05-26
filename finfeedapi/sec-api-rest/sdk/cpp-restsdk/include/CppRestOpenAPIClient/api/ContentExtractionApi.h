@@ -23,10 +23,11 @@
 
 #include "CppRestOpenAPIClient/ApiClient.h"
 
+#include "CppRestOpenAPIClient/AnyType.h"
 #include "CppRestOpenAPIClient/model/DTO_ExtractorType.h"
-#include "CppRestOpenAPIClient/model/DTO_FilingExtractResultDto.h"
 #include "CppRestOpenAPIClient/model/Mvc_ProblemDetails.h"
 #include "CppRestOpenAPIClient/model/Mvc_ValidationProblemDetails.h"
+#include <map>
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -55,7 +56,7 @@ public:
     /// </remarks>
     /// <param name="accessionNumber">The SEC filing accession number used to retrieve the filing from EDGAR database.</param>
     /// <param name="type">Result type (text or html, default: text) (optional, default to new DTO_ExtractorType())</param>
-    pplx::task<std::shared_ptr<DTO_FilingExtractResultDto>> v1ExtractorGet(
+    pplx::task<std::map<utility::string_t, std::shared_ptr<AnyType>>> v1ExtractorGet(
         utility::string_t accessionNumber,
         boost::optional<std::shared_ptr<DTO_ExtractorType>> type
     ) const;

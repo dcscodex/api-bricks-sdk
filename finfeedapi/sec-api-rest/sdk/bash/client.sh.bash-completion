@@ -73,6 +73,7 @@ _()
     operations["v1ExtractorItemGet"]=1
     operations["v1FilingsGet"]=1
     operations["v1FullTextGet"]=1
+    operations["v1XbrlConverterGet"]=1
 
     # An associative array of operations to their parameters
     # Only include path, query and header parameters
@@ -81,6 +82,7 @@ _()
     operation_parameters["v1ExtractorItemGet"]="accession_number= item_number= type= "
     operation_parameters["v1FilingsGet"]="cik= form_type= filling_date_start= filling_date_end= report_date_start= report_date_end= items_contain= page_size= page_number= sort_by= sort_order= "
     operation_parameters["v1FullTextGet"]="form_type= filling_date_start= filling_date_end= text_contains= text_not_contain= page_size= page_number= sort_by= sort_order= "
+    operation_parameters["v1XbrlConverterGet"]="htm-url= xbrl-url= accession-no= "
 
     # An associative array of possible values for enum parameters
     declare -A operation_parameters_enum_values

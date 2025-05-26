@@ -13,10 +13,9 @@ export 'package:openapi/src/model/date.dart';
 export 'package:openapi/src/api/content_extraction_api.dart';
 export 'package:openapi/src/api/filing_metadata_api.dart';
 export 'package:openapi/src/api/full_text_search_api.dart';
+export 'package:openapi/src/api/xbrl_conversion_api.dart';
 
 export 'package:openapi/src/model/dto_extractor_type.dart';
-export 'package:openapi/src/model/dto_filing_extract_result_dto.dart';
-export 'package:openapi/src/model/dto_filing_item_dto.dart';
 export 'package:openapi/src/model/dto_filing_metadata_dto.dart';
 export 'package:openapi/src/model/dto_filing_sort_by.dart';
 export 'package:openapi/src/model/dto_sec_filing_result_dto.dart';

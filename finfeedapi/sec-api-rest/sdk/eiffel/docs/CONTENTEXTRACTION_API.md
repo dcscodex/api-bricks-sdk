@@ -9,7 +9,7 @@ Feature | HTTP request | Description
 
 
 # **v1_extractor_get**
-> v1_extractor_get (accession_number: STRING_32 ; type:  detachable DTO_EXTRACTOR_TYPE ): detachable DTO_FILING_EXTRACT_RESULT_DTO
+> v1_extractor_get (accession_number: STRING_32 ; type:  detachable DTO_EXTRACTOR_TYPE ): detachable STRING_TABLE [ANY]
 
 
 Extract and classify SEC filing content
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTO_FILING_EXTRACT_RESULT_DTO**](DTO.FilingExtractResultDto.md)
+[**STRING_TABLE [ANY]**](ANY.md)
 
 ### Authorization
 

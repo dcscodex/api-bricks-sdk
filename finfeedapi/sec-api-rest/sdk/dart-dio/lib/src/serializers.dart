@@ -15,8 +15,6 @@ import 'package:openapi/src/date_serializer.dart';
 import 'package:openapi/src/model/date.dart';
 
 import 'package:openapi/src/model/dto_extractor_type.dart';
-import 'package:openapi/src/model/dto_filing_extract_result_dto.dart';
-import 'package:openapi/src/model/dto_filing_item_dto.dart';
 import 'package:openapi/src/model/dto_filing_metadata_dto.dart';
 import 'package:openapi/src/model/dto_filing_sort_by.dart';
 import 'package:openapi/src/model/dto_sec_filing_result_dto.dart';
@@ -27,8 +25,6 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   DTOExtractorType,
-  DTOFilingExtractResultDto,
-  DTOFilingItemDto,
   DTOFilingMetadataDto,
   DTOFilingSortBy,
   DTOSecFilingResultDto,
@@ -39,6 +35,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(DTOFilingMetadataDto)]),
         () => ListBuilder<DTOFilingMetadataDto>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
+        () => MapBuilder<String, JsonObject>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(DTOSecFilingResultDto)]),

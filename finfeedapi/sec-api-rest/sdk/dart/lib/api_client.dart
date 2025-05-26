@@ -184,10 +184,6 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'DTOExtractorType':
           return DTOExtractorTypeTypeTransformer().decode(value);
-        case 'DTOFilingExtractResultDto':
-          return DTOFilingExtractResultDto.fromJson(value);
-        case 'DTOFilingItemDto':
-          return DTOFilingItemDto.fromJson(value);
         case 'DTOFilingMetadataDto':
           return DTOFilingMetadataDto.fromJson(value);
         case 'DTOFilingSortBy':

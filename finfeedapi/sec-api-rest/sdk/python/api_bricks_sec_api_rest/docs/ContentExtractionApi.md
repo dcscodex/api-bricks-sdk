@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **v1_extractor_get**
-> DTOFilingExtractResultDto v1_extractor_get(accession_number, type=type)
+> Dict[str, object] v1_extractor_get(accession_number, type=type)
 
 Extract and classify SEC filing content
 
@@ -37,7 +37,6 @@ Both HTML and plain text documents are supported for content extraction.
 ```python
 import api_bricks_sec_api_rest
 from api_bricks_sec_api_rest.models.dto_extractor_type import DTOExtractorType
-from api_bricks_sec_api_rest.models.dto_filing_extract_result_dto import DTOFilingExtractResultDto
 from api_bricks_sec_api_rest.rest import ApiException
 from pprint import pprint
 
@@ -76,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DTOFilingExtractResultDto**](DTOFilingExtractResultDto.md)
+**Dict[str, object]**
 
 ### Authorization
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="openapi_eiffel_client" uuid="47bd5b4a-69ae-494f-a996-139dcb66ccc5" library_target="openapi_eiffel_client">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="openapi_eiffel_client" uuid="d06a3a02-6df4-4cbd-9785-60dd0e73f405" library_target="openapi_eiffel_client">
 	<target name="openapi_eiffel_client">
 		<root all_classes="true"/>
 		<file_rule>

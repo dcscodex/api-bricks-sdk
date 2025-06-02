@@ -194,6 +194,14 @@
             }
           },
           {
+            "name": "ticker",
+            "in": "query",
+            "description": "Filter by stock ticker symbol",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "form_type",
             "in": "query",
             "description": "Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated",

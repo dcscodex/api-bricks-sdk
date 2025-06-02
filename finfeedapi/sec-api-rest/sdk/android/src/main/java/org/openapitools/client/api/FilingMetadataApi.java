@@ -63,6 +63,7 @@ public class FilingMetadataApi {
   * Query SEC filing metadata
   * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
    * @param cik Filter by Central Index Key (CIK)
+   * @param ticker Filter by stock ticker symbol
    * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
    * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
    * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -75,7 +76,7 @@ public class FilingMetadataApi {
    * @param sortOrder Sort order (asc or desc, default: desc)
    * @return List<DTOFilingMetadataDto>
   */
-  public List<DTOFilingMetadataDto> v1FilingsGet (Long cik, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<DTOFilingMetadataDto> v1FilingsGet (Long cik, String ticker, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -88,6 +89,7 @@ public class FilingMetadataApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
     queryParams.addAll(ApiInvoker.parameterToPairs("", "cik", cik));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ticker", ticker));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "form_type", formType));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filling_date_start", fillingDateStart));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filling_date_end", fillingDateEnd));
@@ -140,9 +142,9 @@ public class FilingMetadataApi {
       /**
    * Query SEC filing metadata
    * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
-   * @param cik Filter by Central Index Key (CIK)   * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated   * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD   * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD   * @param reportDateStart Filter by report date start (inclusive), format YYYY-MM-DD   * @param reportDateEnd Filter by report date end (inclusive), format YYYY-MM-DD   * @param itemsContain Filter filings where the &#39;Items&#39; field contains the specified text   * @param pageSize Number of results per page (default: 50, max: 200)   * @param pageNumber Page number to retrieve (default: 1)   * @param sortBy Field to sort results by (default: AccessionNumber)   * @param sortOrder Sort order (asc or desc, default: desc)
+   * @param cik Filter by Central Index Key (CIK)   * @param ticker Filter by stock ticker symbol   * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated   * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD   * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD   * @param reportDateStart Filter by report date start (inclusive), format YYYY-MM-DD   * @param reportDateEnd Filter by report date end (inclusive), format YYYY-MM-DD   * @param itemsContain Filter filings where the &#39;Items&#39; field contains the specified text   * @param pageSize Number of results per page (default: 50, max: 200)   * @param pageNumber Page number to retrieve (default: 1)   * @param sortBy Field to sort results by (default: AccessionNumber)   * @param sortOrder Sort order (asc or desc, default: desc)
   */
-  public void v1FilingsGet (Long cik, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder, final Response.Listener<List<DTOFilingMetadataDto>> responseListener, final Response.ErrorListener errorListener) {
+  public void v1FilingsGet (Long cik, String ticker, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder, final Response.Listener<List<DTOFilingMetadataDto>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -157,6 +159,7 @@ public class FilingMetadataApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     queryParams.addAll(ApiInvoker.parameterToPairs("", "cik", cik));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ticker", ticker));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "form_type", formType));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filling_date_start", fillingDateStart));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filling_date_end", fillingDateEnd));

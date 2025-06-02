@@ -44,6 +44,7 @@ public class FilingMetadataApiTest {
     @Test
     public void v1FilingsGetTest() throws ApiException {
         Long cik = null;
+        String ticker = null;
         String formType = null;
         String fillingDateStart = null;
         String fillingDateEnd = null;
@@ -54,7 +55,7 @@ public class FilingMetadataApiTest {
         Integer pageNumber = null;
         DTOFilingSortBy sortBy = null;
         String sortOrder = null;
-        List<DTOFilingMetadataDto> response = api.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+        List<DTOFilingMetadataDto> response = api.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
         // TODO: test validations
     }
 

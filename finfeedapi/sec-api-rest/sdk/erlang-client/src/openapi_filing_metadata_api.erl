@@ -17,7 +17,7 @@ v1_filings_get(Ctx, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/v1/filings"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['cik', 'form_type', 'filling_date_start', 'filling_date_end', 'report_date_start', 'report_date_end', 'items_contain', 'page_size', 'page_number', 'sort_by', 'sort_order'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['cik', 'ticker', 'form_type', 'filling_date_start', 'filling_date_end', 'report_date_start', 'report_date_end', 'items_contain', 'page_size', 'page_number', 'sort_by', 'sort_order'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

@@ -125,6 +125,9 @@ newtype TextContains = TextContains { unTextContains :: Text } deriving (P.Eq, P
 -- ** TextNotContain
 newtype TextNotContain = TextNotContain { unTextNotContain :: Text } deriving (P.Eq, P.Show)
 
+-- ** Ticker
+newtype Ticker = Ticker { unTicker :: Text } deriving (P.Eq, P.Show)
+
 -- ** XbrlUrl
 newtype XbrlUrl = XbrlUrl { unXbrlUrl :: Text } deriving (P.Eq, P.Show)
 

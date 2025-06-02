@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1FilingsGet
 
-> []DTOFilingMetadataDto V1FilingsGet(ctx).Cik(cik).FormType(formType).FillingDateStart(fillingDateStart).FillingDateEnd(fillingDateEnd).ReportDateStart(reportDateStart).ReportDateEnd(reportDateEnd).ItemsContain(itemsContain).PageSize(pageSize).PageNumber(pageNumber).SortBy(sortBy).SortOrder(sortOrder).Execute()
+> []DTOFilingMetadataDto V1FilingsGet(ctx).Cik(cik).Ticker(ticker).FormType(formType).FillingDateStart(fillingDateStart).FillingDateEnd(fillingDateEnd).ReportDateStart(reportDateStart).ReportDateEnd(reportDateEnd).ItemsContain(itemsContain).PageSize(pageSize).PageNumber(pageNumber).SortBy(sortBy).SortOrder(sortOrder).Execute()
 
 Query SEC filing metadata
 
@@ -30,6 +30,7 @@ import (
 
 func main() {
 	cik := int64(789) // int64 | Filter by Central Index Key (CIK) (optional)
+	ticker := "ticker_example" // string | Filter by stock ticker symbol (optional)
 	formType := "formType_example" // string | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional)
 	fillingDateStart := "fillingDateStart_example" // string | Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
 	fillingDateEnd := "fillingDateEnd_example" // string | Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -43,7 +44,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FilingMetadataAPI.V1FilingsGet(context.Background()).Cik(cik).FormType(formType).FillingDateStart(fillingDateStart).FillingDateEnd(fillingDateEnd).ReportDateStart(reportDateStart).ReportDateEnd(reportDateEnd).ItemsContain(itemsContain).PageSize(pageSize).PageNumber(pageNumber).SortBy(sortBy).SortOrder(sortOrder).Execute()
+	resp, r, err := apiClient.FilingMetadataAPI.V1FilingsGet(context.Background()).Cik(cik).Ticker(ticker).FormType(formType).FillingDateStart(fillingDateStart).FillingDateEnd(fillingDateEnd).ReportDateStart(reportDateStart).ReportDateEnd(reportDateEnd).ItemsContain(itemsContain).PageSize(pageSize).PageNumber(pageNumber).SortBy(sortBy).SortOrder(sortOrder).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FilingMetadataAPI.V1FilingsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,6 +66,7 @@ Other parameters are passed through a pointer to a apiV1FilingsGetRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **int64** | Filter by Central Index Key (CIK) | 
+ **ticker** | **string** | Filter by stock ticker symbol | 
  **formType** | **string** | Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | 
  **fillingDateStart** | **string** | Filter by filling date start (inclusive), format YYYY-MM-DD | 
  **fillingDateEnd** | **string** | Filter by filling date end (inclusive), format YYYY-MM-DD | 

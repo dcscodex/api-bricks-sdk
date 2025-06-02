@@ -132,6 +132,7 @@ class FilingMetadataApi
      * Query SEC filing metadata
      *
      * @param  int|null $cik Filter by Central Index Key (CIK) (optional)
+     * @param  string|null $ticker Filter by stock ticker symbol (optional)
      * @param  string|null $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param  string|null $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param  string|null $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -148,9 +149,9 @@ class FilingMetadataApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\DTOFilingMetadataDto[]|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails
      */
-    public function v1FilingsGet($cik = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
+    public function v1FilingsGet($cik = null, $ticker = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
     {
-        list($response) = $this->v1FilingsGetWithHttpInfo($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
+        list($response) = $this->v1FilingsGetWithHttpInfo($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
         return $response;
     }
 
@@ -160,6 +161,7 @@ class FilingMetadataApi
      * Query SEC filing metadata
      *
      * @param  int|null $cik Filter by Central Index Key (CIK) (optional)
+     * @param  string|null $ticker Filter by stock ticker symbol (optional)
      * @param  string|null $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param  string|null $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param  string|null $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -176,9 +178,9 @@ class FilingMetadataApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\DTOFilingMetadataDto[]|\OpenAPI\Client\Model\MvcValidationProblemDetails|\OpenAPI\Client\Model\MvcProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1FilingsGetWithHttpInfo($cik = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
+    public function v1FilingsGetWithHttpInfo($cik = null, $ticker = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
     {
-        $request = $this->v1FilingsGetRequest($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
+        $request = $this->v1FilingsGetRequest($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -283,6 +285,7 @@ class FilingMetadataApi
      * Query SEC filing metadata
      *
      * @param  int|null $cik Filter by Central Index Key (CIK) (optional)
+     * @param  string|null $ticker Filter by stock ticker symbol (optional)
      * @param  string|null $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param  string|null $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param  string|null $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -298,9 +301,9 @@ class FilingMetadataApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1FilingsGetAsync($cik = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
+    public function v1FilingsGetAsync($cik = null, $ticker = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
     {
-        return $this->v1FilingsGetAsyncWithHttpInfo($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType)
+        return $this->v1FilingsGetAsyncWithHttpInfo($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -314,6 +317,7 @@ class FilingMetadataApi
      * Query SEC filing metadata
      *
      * @param  int|null $cik Filter by Central Index Key (CIK) (optional)
+     * @param  string|null $ticker Filter by stock ticker symbol (optional)
      * @param  string|null $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param  string|null $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param  string|null $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -329,10 +333,10 @@ class FilingMetadataApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1FilingsGetAsyncWithHttpInfo($cik = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
+    public function v1FilingsGetAsyncWithHttpInfo($cik = null, $ticker = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\DTOFilingMetadataDto[]';
-        $request = $this->v1FilingsGetRequest($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
+        $request = $this->v1FilingsGetRequest($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -374,6 +378,7 @@ class FilingMetadataApi
      * Create request for operation 'v1FilingsGet'
      *
      * @param  int|null $cik Filter by Central Index Key (CIK) (optional)
+     * @param  string|null $ticker Filter by stock ticker symbol (optional)
      * @param  string|null $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param  string|null $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param  string|null $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -389,8 +394,9 @@ class FilingMetadataApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1FilingsGetRequest($cik = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
+    public function v1FilingsGetRequest($cik = null, $ticker = null, $form_type = null, $filling_date_start = null, $filling_date_end = null, $report_date_start = null, $report_date_end = null, $items_contain = null, $page_size = null, $page_number = null, $sort_by = null, $sort_order = 'desc', string $contentType = self::contentTypes['v1FilingsGet'][0])
     {
+
 
 
 
@@ -443,6 +449,15 @@ class FilingMetadataApi
             $cik,
             'cik', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ticker,
+            'ticker', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -18,6 +18,9 @@ No description available.
 .PARAMETER Cik
 Filter by Central Index Key (CIK)
 
+.PARAMETER Ticker
+Filter by stock ticker symbol
+
 .PARAMETER FormType
 Filter by form type(s) (e.g., ""10-K"", ""8-K""). Multiple values can be comma-separated
 
@@ -64,32 +67,35 @@ function Invoke-V1FilingsGet {
         ${Cik},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${FormType},
+        ${Ticker},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${FillingDateStart},
+        ${FormType},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${FillingDateEnd},
+        ${FillingDateStart},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${ReportDateStart},
+        ${FillingDateEnd},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${ReportDateEnd},
+        ${ReportDateStart},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${ItemsContain},
+        ${ReportDateEnd},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[Int32]]
-        ${PageSize},
+        [String]
+        ${ItemsContain},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
-        ${PageNumber},
+        ${PageSize},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Int32]]
+        ${PageNumber},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${SortBy},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${SortOrder},
         [Switch]
@@ -117,6 +123,10 @@ function Invoke-V1FilingsGet {
 
         if ($Cik) {
             $LocalVarQueryParameters['cik'] = $Cik
+        }
+
+        if ($Ticker) {
+            $LocalVarQueryParameters['ticker'] = $Ticker
         }
 
         if ($FormType) {

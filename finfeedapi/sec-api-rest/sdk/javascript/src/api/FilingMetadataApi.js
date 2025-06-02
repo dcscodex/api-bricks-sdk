@@ -50,6 +50,7 @@ export default class FilingMetadataApi {
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param {Object} opts Optional parameters
      * @param {Number} [cik] Filter by Central Index Key (CIK)
+     * @param {String} [ticker] Filter by stock ticker symbol
      * @param {String} [formType] Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
      * @param {String} [fillingDateStart] Filter by filling date start (inclusive), format YYYY-MM-DD
      * @param {String} [fillingDateEnd] Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -71,6 +72,7 @@ export default class FilingMetadataApi {
       };
       let queryParams = {
         'cik': opts['cik'],
+        'ticker': opts['ticker'],
         'form_type': opts['formType'],
         'filling_date_start': opts['fillingDateStart'],
         'filling_date_end': opts['fillingDateEnd'],

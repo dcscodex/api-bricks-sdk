@@ -29,6 +29,7 @@ public class OASFilingMetadataApi {
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.\r\n\r\n### Available Sort Fields\r\n\r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing accession number\r\nFilingDate | Date when filing was submitted\r\nAcceptanceDateTime | Date and time of filing acceptance\r\nReportDate | Date of the report\r\nSize | Size of the filing document\r\n\r\n### Date Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n### Form Types\r\nForm types can be provided as comma-separated values, e.g.: &quot;10-K,8-K,10-Q&quot;\r\n\r\n:::tip\r\nFor optimal performance, use date ranges and form types to narrow down your search\r\n:::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., &quot;10-K&quot;, &quot;8-K&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -47,6 +48,7 @@ public class OASFilingMetadataApi {
 
         // cast query params to verify their expected type
         query.addAll(client.makeParam('cik', (Long) params.get('cik')));
+        query.addAll(client.makeParam('ticker', (String) params.get('ticker')));
         query.addAll(client.makeParam('form_type', (String) params.get('formType')));
         query.addAll(client.makeParam('filling_date_start', (String) params.get('fillingDateStart')));
         query.addAll(client.makeParam('filling_date_end', (String) params.get('fillingDateEnd')));

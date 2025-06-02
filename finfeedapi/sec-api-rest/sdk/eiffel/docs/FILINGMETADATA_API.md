@@ -8,7 +8,7 @@ Feature | HTTP request | Description
 
 
 # **v1_filings_get**
-> v1_filings_get (cik:  detachable INTEGER_64 ; form_type:  detachable STRING_32 ; filling_date_start:  detachable STRING_32 ; filling_date_end:  detachable STRING_32 ; report_date_start:  detachable STRING_32 ; report_date_end:  detachable STRING_32 ; items_contain:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; page_number:  detachable INTEGER_32 ; sort_by:  detachable DTO_FILING_SORT_BY ; sort_order:  detachable STRING_32 ): detachable LIST [DTO_FILING_METADATA_DTO]
+> v1_filings_get (cik:  detachable INTEGER_64 ; ticker:  detachable STRING_32 ; form_type:  detachable STRING_32 ; filling_date_start:  detachable STRING_32 ; filling_date_end:  detachable STRING_32 ; report_date_start:  detachable STRING_32 ; report_date_end:  detachable STRING_32 ; items_contain:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; page_number:  detachable INTEGER_32 ; sort_by:  detachable DTO_FILING_SORT_BY ; sort_order:  detachable STRING_32 ): detachable LIST [DTO_FILING_METADATA_DTO]
 
 
 Query SEC filing metadata
@@ -21,6 +21,7 @@ Retrieves metadata for SEC filings based on various filter criteria with paginat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **INTEGER_64**| Filter by Central Index Key (CIK) | [optional] [default to null]
+ **ticker** | **STRING_32**| Filter by stock ticker symbol | [optional] [default to null]
  **form_type** | **STRING_32**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] [default to null]
  **filling_date_start** | **STRING_32**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] [default to null]
  **filling_date_end** | **STRING_32**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] [default to null]

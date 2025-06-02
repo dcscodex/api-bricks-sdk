@@ -44,6 +44,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cik">Filter by Central Index Key (CIK) (optional)</param>
+        /// <param name="ticker">Filter by stock ticker symbol (optional)</param>
         /// <param name="formType">Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)</param>
         /// <param name="fillingDateStart">Filter by filling date start (inclusive), format YYYY-MM-DD (optional)</param>
         /// <param name="fillingDateEnd">Filter by filling date end (inclusive), format YYYY-MM-DD (optional)</param>
@@ -56,7 +57,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="sortOrder">Sort order (asc or desc, default: desc) (optional, default to &quot;desc&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IV1FilingsGetApiResponse"/>&gt;</returns>
-        Task<IV1FilingsGetApiResponse> V1FilingsGetAsync(Option<long> cik = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IV1FilingsGetApiResponse> V1FilingsGetAsync(Option<long> cik = default, Option<string> ticker = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Query SEC filing metadata
@@ -65,6 +66,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  - -- -- -- -- --|- -- -- -- -- -- --  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
         /// </remarks>
         /// <param name="cik">Filter by Central Index Key (CIK) (optional)</param>
+        /// <param name="ticker">Filter by stock ticker symbol (optional)</param>
         /// <param name="formType">Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)</param>
         /// <param name="fillingDateStart">Filter by filling date start (inclusive), format YYYY-MM-DD (optional)</param>
         /// <param name="fillingDateEnd">Filter by filling date end (inclusive), format YYYY-MM-DD (optional)</param>
@@ -77,7 +79,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="sortOrder">Sort order (asc or desc, default: desc) (optional, default to &quot;desc&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IV1FilingsGetApiResponse"/>?&gt;</returns>
-        Task<IV1FilingsGetApiResponse?> V1FilingsGetOrDefaultAsync(Option<long> cik = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IV1FilingsGetApiResponse?> V1FilingsGetOrDefaultAsync(Option<long> cik = default, Option<string> ticker = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -184,11 +186,12 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
             BearerTokenProvider = bearerTokenProvider;
         }
 
-        partial void FormatV1FilingsGet(ref Option<long> cik, ref Option<string> formType, ref Option<string> fillingDateStart, ref Option<string> fillingDateEnd, ref Option<string> reportDateStart, ref Option<string> reportDateEnd, ref Option<string> itemsContain, ref Option<int> pageSize, ref Option<int> pageNumber, ref Option<DTOFilingSortBy> sortBy, ref Option<string> sortOrder);
+        partial void FormatV1FilingsGet(ref Option<long> cik, ref Option<string> ticker, ref Option<string> formType, ref Option<string> fillingDateStart, ref Option<string> fillingDateEnd, ref Option<string> reportDateStart, ref Option<string> reportDateEnd, ref Option<string> itemsContain, ref Option<int> pageSize, ref Option<int> pageNumber, ref Option<DTOFilingSortBy> sortBy, ref Option<string> sortOrder);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
+        /// <param name="ticker"></param>
         /// <param name="formType"></param>
         /// <param name="fillingDateStart"></param>
         /// <param name="fillingDateEnd"></param>
@@ -197,8 +200,11 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="itemsContain"></param>
         /// <param name="sortOrder"></param>
         /// <returns></returns>
-        private void ValidateV1FilingsGet(Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<string> sortOrder)
+        private void ValidateV1FilingsGet(Option<string> ticker, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<string> sortOrder)
         {
+            if (ticker.IsSet && ticker.Value == null)
+                throw new ArgumentNullException(nameof(ticker));
+
             if (formType.IsSet && formType.Value == null)
                 throw new ArgumentNullException(nameof(formType));
 
@@ -226,6 +232,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="cik"></param>
+        /// <param name="ticker"></param>
         /// <param name="formType"></param>
         /// <param name="fillingDateStart"></param>
         /// <param name="fillingDateEnd"></param>
@@ -236,10 +243,10 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pageNumber"></param>
         /// <param name="sortBy"></param>
         /// <param name="sortOrder"></param>
-        private void AfterV1FilingsGetDefaultImplementation(IV1FilingsGetApiResponse apiResponseLocalVar, Option<long> cik, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder)
+        private void AfterV1FilingsGetDefaultImplementation(IV1FilingsGetApiResponse apiResponseLocalVar, Option<long> cik, Option<string> ticker, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder)
         {
             bool suppressDefaultLog = false;
-            AfterV1FilingsGet(ref suppressDefaultLog, apiResponseLocalVar, cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+            AfterV1FilingsGet(ref suppressDefaultLog, apiResponseLocalVar, cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -250,6 +257,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="cik"></param>
+        /// <param name="ticker"></param>
         /// <param name="formType"></param>
         /// <param name="fillingDateStart"></param>
         /// <param name="fillingDateEnd"></param>
@@ -260,7 +268,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pageNumber"></param>
         /// <param name="sortBy"></param>
         /// <param name="sortOrder"></param>
-        partial void AfterV1FilingsGet(ref bool suppressDefaultLog, IV1FilingsGetApiResponse apiResponseLocalVar, Option<long> cik, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder);
+        partial void AfterV1FilingsGet(ref bool suppressDefaultLog, IV1FilingsGetApiResponse apiResponseLocalVar, Option<long> cik, Option<string> ticker, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -269,6 +277,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="cik"></param>
+        /// <param name="ticker"></param>
         /// <param name="formType"></param>
         /// <param name="fillingDateStart"></param>
         /// <param name="fillingDateEnd"></param>
@@ -279,10 +288,10 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pageNumber"></param>
         /// <param name="sortBy"></param>
         /// <param name="sortOrder"></param>
-        private void OnErrorV1FilingsGetDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<long> cik, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder)
+        private void OnErrorV1FilingsGetDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<long> cik, Option<string> ticker, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorV1FilingsGet(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+            OnErrorV1FilingsGet(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -295,6 +304,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="cik"></param>
+        /// <param name="ticker"></param>
         /// <param name="formType"></param>
         /// <param name="fillingDateStart"></param>
         /// <param name="fillingDateEnd"></param>
@@ -305,12 +315,13 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="pageNumber"></param>
         /// <param name="sortBy"></param>
         /// <param name="sortOrder"></param>
-        partial void OnErrorV1FilingsGet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<long> cik, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder);
+        partial void OnErrorV1FilingsGet(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<long> cik, Option<string> ticker, Option<string> formType, Option<string> fillingDateStart, Option<string> fillingDateEnd, Option<string> reportDateStart, Option<string> reportDateEnd, Option<string> itemsContain, Option<int> pageSize, Option<int> pageNumber, Option<DTOFilingSortBy> sortBy, Option<string> sortOrder);
 
         /// <summary>
         /// Query SEC filing metadata Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  - -- -- -- -- --|- -- -- -- -- -- --  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
         /// </summary>
         /// <param name="cik">Filter by Central Index Key (CIK) (optional)</param>
+        /// <param name="ticker">Filter by stock ticker symbol (optional)</param>
         /// <param name="formType">Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)</param>
         /// <param name="fillingDateStart">Filter by filling date start (inclusive), format YYYY-MM-DD (optional)</param>
         /// <param name="fillingDateEnd">Filter by filling date end (inclusive), format YYYY-MM-DD (optional)</param>
@@ -323,11 +334,11 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="sortOrder">Sort order (asc or desc, default: desc) (optional, default to &quot;desc&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IV1FilingsGetApiResponse"/>&gt;</returns>
-        public async Task<IV1FilingsGetApiResponse?> V1FilingsGetOrDefaultAsync(Option<long> cik = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IV1FilingsGetApiResponse?> V1FilingsGetOrDefaultAsync(Option<long> cik = default, Option<string> ticker = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await V1FilingsGetAsync(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, cancellationToken).ConfigureAwait(false);
+                return await V1FilingsGetAsync(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -340,6 +351,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cik">Filter by Central Index Key (CIK) (optional)</param>
+        /// <param name="ticker">Filter by stock ticker symbol (optional)</param>
         /// <param name="formType">Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)</param>
         /// <param name="fillingDateStart">Filter by filling date start (inclusive), format YYYY-MM-DD (optional)</param>
         /// <param name="fillingDateEnd">Filter by filling date end (inclusive), format YYYY-MM-DD (optional)</param>
@@ -352,15 +364,15 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
         /// <param name="sortOrder">Sort order (asc or desc, default: desc) (optional, default to &quot;desc&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IV1FilingsGetApiResponse"/>&gt;</returns>
-        public async Task<IV1FilingsGetApiResponse> V1FilingsGetAsync(Option<long> cik = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IV1FilingsGetApiResponse> V1FilingsGetAsync(Option<long> cik = default, Option<string> ticker = default, Option<string> formType = default, Option<string> fillingDateStart = default, Option<string> fillingDateEnd = default, Option<string> reportDateStart = default, Option<string> reportDateEnd = default, Option<string> itemsContain = default, Option<int> pageSize = default, Option<int> pageNumber = default, Option<DTOFilingSortBy> sortBy = default, Option<string> sortOrder = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateV1FilingsGet(formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, sortOrder);
+                ValidateV1FilingsGet(ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, sortOrder);
 
-                FormatV1FilingsGet(ref cik, ref formType, ref fillingDateStart, ref fillingDateEnd, ref reportDateStart, ref reportDateEnd, ref itemsContain, ref pageSize, ref pageNumber, ref sortBy, ref sortOrder);
+                FormatV1FilingsGet(ref cik, ref ticker, ref formType, ref fillingDateStart, ref fillingDateEnd, ref reportDateStart, ref reportDateEnd, ref itemsContain, ref pageSize, ref pageNumber, ref sortBy, ref sortOrder);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -375,6 +387,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
 
                     if (cik.IsSet)
                         parseQueryStringLocalVar["cik"] = ClientUtils.ParameterToString(cik.Value);
+
+                    if (ticker.IsSet)
+                        parseQueryStringLocalVar["ticker"] = ClientUtils.ParameterToString(ticker.Value);
 
                     if (formType.IsSet)
                         parseQueryStringLocalVar["form_type"] = ClientUtils.ParameterToString(formType.Value);
@@ -431,7 +446,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
 
                         V1FilingsGetApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/v1/filings", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterV1FilingsGetDefaultImplementation(apiResponseLocalVar, cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+                        AfterV1FilingsGetDefaultImplementation(apiResponseLocalVar, cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
 
                         Events.ExecuteOnV1FilingsGet(apiResponseLocalVar);
 
@@ -441,7 +456,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Api
             }
             catch(Exception e)
             {
-                OnErrorV1FilingsGetDefaultImplementation(e, "/v1/filings", uriBuilderLocalVar.Path, cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+                OnErrorV1FilingsGetDefaultImplementation(e, "/v1/filings", uriBuilderLocalVar.Path, cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
                 Events.ExecuteOnErrorV1FilingsGet(e);
                 throw;
             }

@@ -11,6 +11,7 @@ test_that("V1FilingsGet", {
   # Query SEC filing metadata
   # Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
   # @param cik integer Filter by Central Index Key (CIK) (optional)
+  # @param ticker character Filter by stock ticker symbol (optional)
   # @param form_type character Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional)
   # @param filling_date_start character Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
   # @param filling_date_end character Filter by filling date end (inclusive), format YYYY-MM-DD (optional)

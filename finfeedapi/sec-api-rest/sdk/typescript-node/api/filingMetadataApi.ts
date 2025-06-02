@@ -101,6 +101,7 @@ export class FilingMetadataApi {
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @summary Query SEC filing metadata
      * @param cik Filter by Central Index Key (CIK)
+     * @param ticker Filter by stock ticker symbol
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -112,7 +113,7 @@ export class FilingMetadataApi {
      * @param sortBy Field to sort results by (default: AccessionNumber)
      * @param sortOrder Sort order (asc or desc, default: desc)
      */
-    public async v1FilingsGet (cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<DTOFilingMetadataDto>;  }> {
+    public async v1FilingsGet (cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<DTOFilingMetadataDto>;  }> {
         const localVarPath = this.basePath + '/v1/filings';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -127,6 +128,10 @@ export class FilingMetadataApi {
 
         if (cik !== undefined) {
             localVarQueryParameters['cik'] = ObjectSerializer.serialize(cik, "number");
+        }
+
+        if (ticker !== undefined) {
+            localVarQueryParameters['ticker'] = ObjectSerializer.serialize(ticker, "string");
         }
 
         if (formType !== undefined) {

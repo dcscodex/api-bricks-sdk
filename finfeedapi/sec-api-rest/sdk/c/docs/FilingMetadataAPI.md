@@ -13,7 +13,7 @@ Method | HTTP request | Description
 //
 // Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
 //
-list_t* FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *form_type, char *filling_date_start, char *filling_date_end, char *report_date_start, char *report_date_end, char *items_contain, int *page_size, int *page_number, dto_filing_sort_by_e sort_by, char *sort_order);
+list_t* FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *ticker, char *form_type, char *filling_date_start, char *filling_date_end, char *report_date_start, char *report_date_end, char *items_contain, int *page_size, int *page_number, dto_filing_sort_by_e sort_by, char *sort_order);
 ```
 
 ### Parameters
@@ -21,6 +21,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **cik** | **long** | Filter by Central Index Key (CIK) | [optional] 
+**ticker** | **char \*** | Filter by stock ticker symbol | [optional] 
 **form_type** | **char \*** | Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] 
 **filling_date_start** | **char \*** | Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
 **filling_date_end** | **char \*** | Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

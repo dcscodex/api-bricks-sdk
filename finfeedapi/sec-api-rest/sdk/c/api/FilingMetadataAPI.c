@@ -55,7 +55,7 @@ end:
 // Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
 //
 list_t*
-FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *form_type, char *filling_date_start, char *filling_date_end, char *report_date_start, char *report_date_end, char *items_contain, int *page_size, int *page_number, dto_filing_sort_by_e sort_by, char *sort_order)
+FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *ticker, char *form_type, char *filling_date_start, char *filling_date_end, char *report_date_start, char *report_date_end, char *items_contain, int *page_size, int *page_number, dto_filing_sort_by_e sort_by, char *sort_order)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -85,6 +85,18 @@ FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *form_type
         valueQuery_cik = (cik);
         keyPairQuery_cik = keyValuePair_create(keyQuery_cik, &valueQuery_cik);
         list_addElement(localVarQueryParameters,keyPairQuery_cik);
+    }
+
+    // query parameters
+    char *keyQuery_ticker = NULL;
+    char * valueQuery_ticker = NULL;
+    keyValuePair_t *keyPairQuery_ticker = 0;
+    if (ticker)
+    {
+        keyQuery_ticker = strdup("ticker");
+        valueQuery_ticker = strdup((ticker));
+        keyPairQuery_ticker = keyValuePair_create(keyQuery_ticker, valueQuery_ticker);
+        list_addElement(localVarQueryParameters,keyPairQuery_ticker);
     }
 
     // query parameters
@@ -273,6 +285,18 @@ FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *form_type
     if(keyPairQuery_cik){
         keyValuePair_free(keyPairQuery_cik);
         keyPairQuery_cik = NULL;
+    }
+    if(keyQuery_ticker){
+        free(keyQuery_ticker);
+        keyQuery_ticker = NULL;
+    }
+    if(valueQuery_ticker){
+        free(valueQuery_ticker);
+        valueQuery_ticker = NULL;
+    }
+    if(keyPairQuery_ticker){
+        keyValuePair_free(keyPairQuery_ticker);
+        keyPairQuery_ticker = NULL;
     }
     if(keyQuery_form_type){
         free(keyQuery_form_type);

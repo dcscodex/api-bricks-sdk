@@ -8,7 +8,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1filingsget"></a>
 # **V1FilingsGet**
-> List&lt;DTOFilingMetadataDto&gt; V1FilingsGet (long cik = null, string formType = null, string fillingDateStart = null, string fillingDateEnd = null, string reportDateStart = null, string reportDateEnd = null, string itemsContain = null, int pageSize = null, int pageNumber = null, DTOFilingSortBy sortBy = null, string sortOrder = null)
+> List&lt;DTOFilingMetadataDto&gt; V1FilingsGet (long cik = null, string ticker = null, string formType = null, string fillingDateStart = null, string fillingDateEnd = null, string reportDateStart = null, string reportDateEnd = null, string itemsContain = null, int pageSize = null, int pageNumber = null, DTOFilingSortBy sortBy = null, string sortOrder = null)
 
 Query SEC filing metadata
 
@@ -32,6 +32,7 @@ namespace Example
             config.BasePath = "https://api-historical.sec.finfeedapi.com";
             var apiInstance = new FilingMetadataApi(config);
             var cik = 789L;  // long | Filter by Central Index Key (CIK) (optional) 
+            var ticker = "ticker_example";  // string | Filter by stock ticker symbol (optional) 
             var formType = "formType_example";  // string | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional) 
             var fillingDateStart = "fillingDateStart_example";  // string | Filter by filling date start (inclusive), format YYYY-MM-DD (optional) 
             var fillingDateEnd = "fillingDateEnd_example";  // string | Filter by filling date end (inclusive), format YYYY-MM-DD (optional) 
@@ -46,7 +47,7 @@ namespace Example
             try
             {
                 // Query SEC filing metadata
-                List<DTOFilingMetadataDto> result = apiInstance.V1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+                List<DTOFilingMetadataDto> result = apiInstance.V1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -67,7 +68,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Query SEC filing metadata
-    ApiResponse<List<DTOFilingMetadataDto>> response = apiInstance.V1FilingsGetWithHttpInfo(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+    ApiResponse<List<DTOFilingMetadataDto>> response = apiInstance.V1FilingsGetWithHttpInfo(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -85,6 +86,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **cik** | **long** | Filter by Central Index Key (CIK) | [optional]  |
+| **ticker** | **string** | Filter by stock ticker symbol | [optional]  |
 | **formType** | **string** | Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional]  |
 | **fillingDateStart** | **string** | Filter by filling date start (inclusive), format YYYY-MM-DD | [optional]  |
 | **fillingDateEnd** | **string** | Filter by filling date end (inclusive), format YYYY-MM-DD | [optional]  |

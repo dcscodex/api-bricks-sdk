@@ -24,6 +24,7 @@ import RestApi from 'rest_api';
 let apiInstance = new RestApi.FilingMetadataApi();
 let opts = {
   'cik': 789, // Number | Filter by Central Index Key (CIK)
+  'ticker': "ticker_example", // String | Filter by stock ticker symbol
   'formType': "formType_example", // String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   'fillingDateStart': "fillingDateStart_example", // String | Filter by filling date start (inclusive), format YYYY-MM-DD
   'fillingDateEnd': "fillingDateEnd_example", // String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -50,6 +51,7 @@ apiInstance.v1FilingsGet(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **Number**| Filter by Central Index Key (CIK) | [optional] 
+ **ticker** | **String**| Filter by stock ticker symbol | [optional] 
  **formType** | **String**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] 
  **fillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **fillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

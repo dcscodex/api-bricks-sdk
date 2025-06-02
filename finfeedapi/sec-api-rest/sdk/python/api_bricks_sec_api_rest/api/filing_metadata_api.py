@@ -45,6 +45,7 @@ class FilingMetadataApi:
     def v1_filings_get(
         self,
         cik: Annotated[Optional[StrictInt], Field(description="Filter by Central Index Key (CIK)")] = None,
+        ticker: Annotated[Optional[StrictStr], Field(description="Filter by stock ticker symbol")] = None,
         form_type: Annotated[Optional[StrictStr], Field(description="Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated")] = None,
         filling_date_start: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date start (inclusive), format YYYY-MM-DD")] = None,
         filling_date_end: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date end (inclusive), format YYYY-MM-DD")] = None,
@@ -74,6 +75,8 @@ class FilingMetadataApi:
 
         :param cik: Filter by Central Index Key (CIK)
         :type cik: int
+        :param ticker: Filter by stock ticker symbol
+        :type ticker: str
         :param form_type: Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
         :type form_type: str
         :param filling_date_start: Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -118,6 +121,7 @@ class FilingMetadataApi:
 
         _param = self._v1_filings_get_serialize(
             cik=cik,
+            ticker=ticker,
             form_type=form_type,
             filling_date_start=filling_date_start,
             filling_date_end=filling_date_end,
@@ -154,6 +158,7 @@ class FilingMetadataApi:
     def v1_filings_get_with_http_info(
         self,
         cik: Annotated[Optional[StrictInt], Field(description="Filter by Central Index Key (CIK)")] = None,
+        ticker: Annotated[Optional[StrictStr], Field(description="Filter by stock ticker symbol")] = None,
         form_type: Annotated[Optional[StrictStr], Field(description="Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated")] = None,
         filling_date_start: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date start (inclusive), format YYYY-MM-DD")] = None,
         filling_date_end: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date end (inclusive), format YYYY-MM-DD")] = None,
@@ -183,6 +188,8 @@ class FilingMetadataApi:
 
         :param cik: Filter by Central Index Key (CIK)
         :type cik: int
+        :param ticker: Filter by stock ticker symbol
+        :type ticker: str
         :param form_type: Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
         :type form_type: str
         :param filling_date_start: Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -227,6 +234,7 @@ class FilingMetadataApi:
 
         _param = self._v1_filings_get_serialize(
             cik=cik,
+            ticker=ticker,
             form_type=form_type,
             filling_date_start=filling_date_start,
             filling_date_end=filling_date_end,
@@ -263,6 +271,7 @@ class FilingMetadataApi:
     def v1_filings_get_without_preload_content(
         self,
         cik: Annotated[Optional[StrictInt], Field(description="Filter by Central Index Key (CIK)")] = None,
+        ticker: Annotated[Optional[StrictStr], Field(description="Filter by stock ticker symbol")] = None,
         form_type: Annotated[Optional[StrictStr], Field(description="Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated")] = None,
         filling_date_start: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date start (inclusive), format YYYY-MM-DD")] = None,
         filling_date_end: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter by filling date end (inclusive), format YYYY-MM-DD")] = None,
@@ -292,6 +301,8 @@ class FilingMetadataApi:
 
         :param cik: Filter by Central Index Key (CIK)
         :type cik: int
+        :param ticker: Filter by stock ticker symbol
+        :type ticker: str
         :param form_type: Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
         :type form_type: str
         :param filling_date_start: Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -336,6 +347,7 @@ class FilingMetadataApi:
 
         _param = self._v1_filings_get_serialize(
             cik=cik,
+            ticker=ticker,
             form_type=form_type,
             filling_date_start=filling_date_start,
             filling_date_end=filling_date_end,
@@ -367,6 +379,7 @@ class FilingMetadataApi:
     def _v1_filings_get_serialize(
         self,
         cik,
+        ticker,
         form_type,
         filling_date_start,
         filling_date_end,
@@ -402,6 +415,10 @@ class FilingMetadataApi:
         if cik is not None:
             
             _query_params.append(('cik', cik))
+            
+        if ticker is not None:
+            
+            _query_params.append(('ticker', ticker))
             
         if form_type is not None:
             

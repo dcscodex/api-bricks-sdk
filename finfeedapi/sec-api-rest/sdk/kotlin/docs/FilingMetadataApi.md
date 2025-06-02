@@ -9,7 +9,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1FilingsGet"></a>
 # **v1FilingsGet**
-> kotlin.collections.List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+> kotlin.collections.List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
 
 Query SEC filing metadata
 
@@ -23,6 +23,7 @@ Retrieves metadata for SEC filings based on various filter criteria with paginat
 
 val apiInstance = FilingMetadataApi()
 val cik : kotlin.Long = 789 // kotlin.Long | Filter by Central Index Key (CIK)
+val ticker : kotlin.String = ticker_example // kotlin.String | Filter by stock ticker symbol
 val formType : kotlin.String = formType_example // kotlin.String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 val fillingDateStart : kotlin.String = fillingDateStart_example // kotlin.String | Filter by filling date start (inclusive), format YYYY-MM-DD
 val fillingDateEnd : kotlin.String = fillingDateEnd_example // kotlin.String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -34,7 +35,7 @@ val pageNumber : kotlin.Int = 56 // kotlin.Int | Page number to retrieve (defaul
 val sortBy : DTOFilingSortBy =  // DTOFilingSortBy | Field to sort results by (default: AccessionNumber)
 val sortOrder : kotlin.String = sortOrder_example // kotlin.String | Sort order (asc or desc, default: desc)
 try {
-    val result : kotlin.collections.List<DTOFilingMetadataDto> = apiInstance.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+    val result : kotlin.collections.List<DTOFilingMetadataDto> = apiInstance.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling FilingMetadataApi#v1FilingsGet")
@@ -47,6 +48,7 @@ try {
 
 ### Parameters
 | **cik** | **kotlin.Long**| Filter by Central Index Key (CIK) | [optional] |
+| **ticker** | **kotlin.String**| Filter by stock ticker symbol | [optional] |
 | **formType** | **kotlin.String**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] |
 | **fillingDateStart** | **kotlin.String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] |
 | **fillingDateEnd** | **kotlin.String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] |

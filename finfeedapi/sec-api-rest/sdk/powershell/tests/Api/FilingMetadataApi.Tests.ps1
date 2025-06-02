@@ -9,7 +9,7 @@
 Describe -tag 'PSOpenAPITools' -name 'FilingMetadataApi' {
     Context 'Invoke-V1FilingsGet' {
         It 'Test Invoke-V1FilingsGet' {
-            #$TestResult = Invoke-V1FilingsGet -Cik "TEST_VALUE" -FormType "TEST_VALUE" -FillingDateStart "TEST_VALUE" -FillingDateEnd "TEST_VALUE" -ReportDateStart "TEST_VALUE" -ReportDateEnd "TEST_VALUE" -ItemsContain "TEST_VALUE" -PageSize "TEST_VALUE" -PageNumber "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE"
+            #$TestResult = Invoke-V1FilingsGet -Cik "TEST_VALUE" -Ticker "TEST_VALUE" -FormType "TEST_VALUE" -FillingDateStart "TEST_VALUE" -FillingDateEnd "TEST_VALUE" -ReportDateStart "TEST_VALUE" -ReportDateEnd "TEST_VALUE" -ItemsContain "TEST_VALUE" -PageSize "TEST_VALUE" -PageNumber "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

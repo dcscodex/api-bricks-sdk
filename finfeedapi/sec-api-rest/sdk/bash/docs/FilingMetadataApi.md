@@ -37,7 +37,7 @@ For optimal performance, use date ranges and form types to narrow down your sear
 ### Example
 
 ```bash
- v1FilingsGet  cik=value  form_type=value  filling_date_start=value  filling_date_end=value  report_date_start=value  report_date_end=value  items_contain=value  page_size=value  page_number=value  sort_by=value  sort_order=value
+ v1FilingsGet  cik=value  ticker=value  form_type=value  filling_date_start=value  filling_date_end=value  report_date_start=value  report_date_end=value  items_contain=value  page_size=value  page_number=value  sort_by=value  sort_order=value
 ```
 
 ### Parameters
@@ -46,6 +46,7 @@ For optimal performance, use date ranges and form types to narrow down your sear
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **integer** | Filter by Central Index Key (CIK) | [optional] [default to null]
+ **ticker** | **string** | Filter by stock ticker symbol | [optional] [default to null]
  **formType** | **string** | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated | [optional] [default to null]
  **fillingDateStart** | **string** | Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] [default to null]
  **fillingDateEnd** | **string** | Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] [default to null]

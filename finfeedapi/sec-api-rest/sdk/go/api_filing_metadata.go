@@ -27,6 +27,7 @@ type ApiV1FilingsGetRequest struct {
 	ctx context.Context
 	ApiService *FilingMetadataAPIService
 	cik *int64
+	ticker *string
 	formType *string
 	fillingDateStart *string
 	fillingDateEnd *string
@@ -42,6 +43,12 @@ type ApiV1FilingsGetRequest struct {
 // Filter by Central Index Key (CIK)
 func (r ApiV1FilingsGetRequest) Cik(cik int64) ApiV1FilingsGetRequest {
 	r.cik = &cik
+	return r
+}
+
+// Filter by stock ticker symbol
+func (r ApiV1FilingsGetRequest) Ticker(ticker string) ApiV1FilingsGetRequest {
+	r.ticker = &ticker
 	return r
 }
 
@@ -167,6 +174,9 @@ func (a *FilingMetadataAPIService) V1FilingsGetExecute(r ApiV1FilingsGetRequest)
 
 	if r.cik != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cik", r.cik, "form", "")
+	}
+	if r.ticker != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ticker", r.ticker, "form", "")
 	}
 	if r.formType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "form_type", r.formType, "form", "")

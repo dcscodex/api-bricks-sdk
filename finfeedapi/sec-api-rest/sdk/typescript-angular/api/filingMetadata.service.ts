@@ -45,6 +45,7 @@ export class FilingMetadataService extends BaseService {
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK)
+     * @param ticker Filter by stock ticker symbol
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -58,14 +59,16 @@ export class FilingMetadataService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<DTOFilingMetadataDto>>;
-    public v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<DTOFilingMetadataDto>>>;
-    public v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<DTOFilingMetadataDto>>>;
-    public v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<DTOFilingMetadataDto>>;
+    public v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<DTOFilingMetadataDto>>>;
+    public v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<DTOFilingMetadataDto>>>;
+    public v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
           <any>cik, 'cik');
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>ticker, 'ticker');
         localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
           <any>formType, 'form_type');
         localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,

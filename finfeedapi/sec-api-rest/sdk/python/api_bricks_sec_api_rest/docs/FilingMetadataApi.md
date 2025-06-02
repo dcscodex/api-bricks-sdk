@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **v1_filings_get**
-> List[DTOFilingMetadataDto] v1_filings_get(cik=cik, form_type=form_type, filling_date_start=filling_date_start, filling_date_end=filling_date_end, report_date_start=report_date_start, report_date_end=report_date_end, items_contain=items_contain, page_size=page_size, page_number=page_number, sort_by=sort_by, sort_order=sort_order)
+> List[DTOFilingMetadataDto] v1_filings_get(cik=cik, ticker=ticker, form_type=form_type, filling_date_start=filling_date_start, filling_date_end=filling_date_end, report_date_start=report_date_start, report_date_end=report_date_end, items_contain=items_contain, page_size=page_size, page_number=page_number, sort_by=sort_by, sort_order=sort_order)
 
 Query SEC filing metadata
 
@@ -56,6 +56,7 @@ with api_bricks_sec_api_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = api_bricks_sec_api_rest.FilingMetadataApi(api_client)
     cik = 56 # int | Filter by Central Index Key (CIK) (optional)
+    ticker = 'ticker_example' # str | Filter by stock ticker symbol (optional)
     form_type = 'form_type_example' # str | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional)
     filling_date_start = 'filling_date_start_example' # str | Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
     filling_date_end = 'filling_date_end_example' # str | Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -69,7 +70,7 @@ with api_bricks_sec_api_rest.ApiClient(configuration) as api_client:
 
     try:
         # Query SEC filing metadata
-        api_response = api_instance.v1_filings_get(cik=cik, form_type=form_type, filling_date_start=filling_date_start, filling_date_end=filling_date_end, report_date_start=report_date_start, report_date_end=report_date_end, items_contain=items_contain, page_size=page_size, page_number=page_number, sort_by=sort_by, sort_order=sort_order)
+        api_response = api_instance.v1_filings_get(cik=cik, ticker=ticker, form_type=form_type, filling_date_start=filling_date_start, filling_date_end=filling_date_end, report_date_start=report_date_start, report_date_end=report_date_end, items_contain=items_contain, page_size=page_size, page_number=page_number, sort_by=sort_by, sort_order=sort_order)
         print("The response of FilingMetadataApi->v1_filings_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -84,6 +85,7 @@ with api_bricks_sec_api_rest.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **int**| Filter by Central Index Key (CIK) | [optional] 
+ **ticker** | **str**| Filter by stock ticker symbol | [optional] 
  **form_type** | **str**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] 
  **filling_date_start** | **str**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **filling_date_end** | **str**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

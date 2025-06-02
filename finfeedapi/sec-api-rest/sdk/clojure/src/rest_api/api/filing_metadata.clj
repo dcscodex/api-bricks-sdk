@@ -37,11 +37,11 @@ Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"
 For optimal performance, use date ranges and form types to narrow down your search
 :::"
   ([] (v1-filings-get-with-http-info nil))
-  ([{:keys [cik form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order]} (s/map-of keyword? any?)]
+  ([{:keys [cik ticker form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order]} (s/map-of keyword? any?)]
    (call-api "/v1/filings" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"cik" cik "form_type" form_type "filling_date_start" filling_date_start "filling_date_end" filling_date_end "report_date_start" report_date_start "report_date_end" report_date_end "items_contain" items_contain "page_size" page_size "page_number" page_number "sort_by" sort_by "sort_order" sort_order }
+              :query-params  {"cik" cik "ticker" ticker "form_type" form_type "filling_date_start" filling_date_start "filling_date_end" filling_date_end "report_date_start" report_date_start "report_date_end" report_date_end "items_contain" items_contain "page_size" page_size "page_number" page_number "sort_by" sort_by "sort_order" sort_order }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

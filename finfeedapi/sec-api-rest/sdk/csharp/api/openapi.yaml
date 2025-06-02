@@ -176,6 +176,14 @@ paths:
           format: int64
           type: integer
         style: form
+      - description: Filter by stock ticker symbol
+        explode: true
+        in: query
+        name: ticker
+        required: false
+        schema:
+          type: string
+        style: form
       - description: "Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values\
           \ can be comma-separated"
         explode: true

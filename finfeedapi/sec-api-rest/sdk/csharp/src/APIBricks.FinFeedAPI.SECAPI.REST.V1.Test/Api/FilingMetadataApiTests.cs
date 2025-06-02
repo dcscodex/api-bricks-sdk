@@ -58,6 +58,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
         public async Task V1FilingsGetAsyncTest()
         {
             Client.Option<long> cik = default!;
+            Client.Option<string> ticker = default!;
             Client.Option<string> formType = default!;
             Client.Option<string> fillingDateStart = default!;
             Client.Option<string> fillingDateEnd = default!;
@@ -68,7 +69,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
             Client.Option<int> pageNumber = default!;
             Client.Option<DTOFilingSortBy> sortBy = default!;
             Client.Option<string> sortOrder = default!;
-            var response = await _instance.V1FilingsGetAsync(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+            var response = await _instance.V1FilingsGetAsync(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
             var model = response.Ok();
             Assert.IsType<List<DTOFilingMetadataDto>>(model);
         }

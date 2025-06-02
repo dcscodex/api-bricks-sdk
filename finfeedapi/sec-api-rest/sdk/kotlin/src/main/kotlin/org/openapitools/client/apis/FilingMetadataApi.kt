@@ -53,6 +53,7 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -72,8 +73,8 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1FilingsGet(cik: kotlin.Long? = null, formType: kotlin.String? = null, fillingDateStart: kotlin.String? = null, fillingDateEnd: kotlin.String? = null, reportDateStart: kotlin.String? = null, reportDateEnd: kotlin.String? = null, itemsContain: kotlin.String? = null, pageSize: kotlin.Int? = null, pageNumber: kotlin.Int? = null, sortBy: DTOFilingSortBy? = null, sortOrder: kotlin.String? = "desc") : kotlin.collections.List<DTOFilingMetadataDto> {
-        val localVarResponse = v1FilingsGetWithHttpInfo(cik = cik, formType = formType, fillingDateStart = fillingDateStart, fillingDateEnd = fillingDateEnd, reportDateStart = reportDateStart, reportDateEnd = reportDateEnd, itemsContain = itemsContain, pageSize = pageSize, pageNumber = pageNumber, sortBy = sortBy, sortOrder = sortOrder)
+    fun v1FilingsGet(cik: kotlin.Long? = null, ticker: kotlin.String? = null, formType: kotlin.String? = null, fillingDateStart: kotlin.String? = null, fillingDateEnd: kotlin.String? = null, reportDateStart: kotlin.String? = null, reportDateEnd: kotlin.String? = null, itemsContain: kotlin.String? = null, pageSize: kotlin.Int? = null, pageNumber: kotlin.Int? = null, sortBy: DTOFilingSortBy? = null, sortOrder: kotlin.String? = "desc") : kotlin.collections.List<DTOFilingMetadataDto> {
+        val localVarResponse = v1FilingsGetWithHttpInfo(cik = cik, ticker = ticker, formType = formType, fillingDateStart = fillingDateStart, fillingDateEnd = fillingDateEnd, reportDateStart = reportDateStart, reportDateEnd = reportDateEnd, itemsContain = itemsContain, pageSize = pageSize, pageNumber = pageNumber, sortBy = sortBy, sortOrder = sortOrder)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<DTOFilingMetadataDto>
@@ -95,6 +96,7 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -111,8 +113,8 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun v1FilingsGetWithHttpInfo(cik: kotlin.Long?, formType: kotlin.String?, fillingDateStart: kotlin.String?, fillingDateEnd: kotlin.String?, reportDateStart: kotlin.String?, reportDateEnd: kotlin.String?, itemsContain: kotlin.String?, pageSize: kotlin.Int?, pageNumber: kotlin.Int?, sortBy: DTOFilingSortBy?, sortOrder: kotlin.String?) : ApiResponse<kotlin.collections.List<DTOFilingMetadataDto>?> {
-        val localVariableConfig = v1FilingsGetRequestConfig(cik = cik, formType = formType, fillingDateStart = fillingDateStart, fillingDateEnd = fillingDateEnd, reportDateStart = reportDateStart, reportDateEnd = reportDateEnd, itemsContain = itemsContain, pageSize = pageSize, pageNumber = pageNumber, sortBy = sortBy, sortOrder = sortOrder)
+    fun v1FilingsGetWithHttpInfo(cik: kotlin.Long?, ticker: kotlin.String?, formType: kotlin.String?, fillingDateStart: kotlin.String?, fillingDateEnd: kotlin.String?, reportDateStart: kotlin.String?, reportDateEnd: kotlin.String?, itemsContain: kotlin.String?, pageSize: kotlin.Int?, pageNumber: kotlin.Int?, sortBy: DTOFilingSortBy?, sortOrder: kotlin.String?) : ApiResponse<kotlin.collections.List<DTOFilingMetadataDto>?> {
+        val localVariableConfig = v1FilingsGetRequestConfig(cik = cik, ticker = ticker, formType = formType, fillingDateStart = fillingDateStart, fillingDateEnd = fillingDateEnd, reportDateStart = reportDateStart, reportDateEnd = reportDateEnd, itemsContain = itemsContain, pageSize = pageSize, pageNumber = pageNumber, sortBy = sortBy, sortOrder = sortOrder)
 
         return request<Unit, kotlin.collections.List<DTOFilingMetadataDto>>(
             localVariableConfig
@@ -123,6 +125,7 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * To obtain the request config of the operation v1FilingsGet
      *
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -135,12 +138,15 @@ class FilingMetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.
      * @param sortOrder Sort order (asc or desc, default: desc) (optional, default to "desc")
      * @return RequestConfig
      */
-    fun v1FilingsGetRequestConfig(cik: kotlin.Long?, formType: kotlin.String?, fillingDateStart: kotlin.String?, fillingDateEnd: kotlin.String?, reportDateStart: kotlin.String?, reportDateEnd: kotlin.String?, itemsContain: kotlin.String?, pageSize: kotlin.Int?, pageNumber: kotlin.Int?, sortBy: DTOFilingSortBy?, sortOrder: kotlin.String?) : RequestConfig<Unit> {
+    fun v1FilingsGetRequestConfig(cik: kotlin.Long?, ticker: kotlin.String?, formType: kotlin.String?, fillingDateStart: kotlin.String?, fillingDateEnd: kotlin.String?, reportDateStart: kotlin.String?, reportDateEnd: kotlin.String?, itemsContain: kotlin.String?, pageSize: kotlin.Int?, pageNumber: kotlin.Int?, sortBy: DTOFilingSortBy?, sortOrder: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (cik != null) {
                     put("cik", listOf(cik.toString()))
+                }
+                if (ticker != null) {
+                    put("ticker", listOf(ticker.toString()))
                 }
                 if (formType != null) {
                     put("form_type", listOf(formType.toString()))

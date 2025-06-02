@@ -42,6 +42,8 @@ object Example extends App {
     val apiInstance = FilingMetadataApi("https://api-historical.sec.finfeedapi.com")
     val cik: Long = 789 // Long | Filter by Central Index Key (CIK)
 
+    val ticker: String = ticker_example // String | Filter by stock ticker symbol
+
     val formType: String = formType_example // String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 
     val fillingDateStart: String = fillingDateStart_example // String | Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -62,7 +64,7 @@ object Example extends App {
 
     val sortOrder: String = sortOrder_example // String | Sort order (asc or desc, default: desc)
     
-    val request = apiInstance.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+    val request = apiInstance.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -91,6 +93,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **Long**| Filter by Central Index Key (CIK) | [optional]
+ **ticker** | **String**| Filter by stock ticker symbol | [optional]
  **formType** | **String**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional]
  **fillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional]
  **fillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional]

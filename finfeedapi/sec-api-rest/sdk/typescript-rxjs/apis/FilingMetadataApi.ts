@@ -24,6 +24,7 @@ import type {
 
 export interface V1FilingsGetRequest {
     cik?: number;
+    ticker?: string;
     formType?: string;
     fillingDateStart?: string;
     fillingDateEnd?: string;
@@ -45,13 +46,14 @@ export class FilingMetadataApi extends BaseAPI {
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * Query SEC filing metadata
      */
-    v1FilingsGet({ cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest): Observable<Array<DTOFilingMetadataDto>>
-    v1FilingsGet({ cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<DTOFilingMetadataDto>>>
-    v1FilingsGet({ cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest, opts?: OperationOpts): Observable<Array<DTOFilingMetadataDto> | AjaxResponse<Array<DTOFilingMetadataDto>>> {
+    v1FilingsGet({ cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest): Observable<Array<DTOFilingMetadataDto>>
+    v1FilingsGet({ cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest, opts?: OperationOpts): Observable<AjaxResponse<Array<DTOFilingMetadataDto>>>
+    v1FilingsGet({ cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder }: V1FilingsGetRequest, opts?: OperationOpts): Observable<Array<DTOFilingMetadataDto> | AjaxResponse<Array<DTOFilingMetadataDto>>> {
 
         const query: HttpQuery = {};
 
         if (cik != null) { query['cik'] = cik; }
+        if (ticker != null) { query['ticker'] = ticker; }
         if (formType != null) { query['form_type'] = formType; }
         if (fillingDateStart != null) { query['filling_date_start'] = fillingDateStart; }
         if (fillingDateEnd != null) { query['filling_date_end'] = fillingDateEnd; }

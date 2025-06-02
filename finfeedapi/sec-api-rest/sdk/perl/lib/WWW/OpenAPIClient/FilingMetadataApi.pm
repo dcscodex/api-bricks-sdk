@@ -54,6 +54,7 @@ sub new {
 # Query SEC filing metadata
 #
 # @param int $cik Filter by Central Index Key (CIK) (optional)
+# @param string $ticker Filter by stock ticker symbol (optional)
 # @param string $form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
 # @param string $filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
 # @param string $filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -69,6 +70,11 @@ sub new {
     'cik' => {
         data_type => 'int',
         description => 'Filter by Central Index Key (CIK)',
+        required => '0',
+    },
+    'ticker' => {
+        data_type => 'string',
+        description => 'Filter by stock ticker symbol',
         required => '0',
     },
     'form_type' => {
@@ -151,6 +157,11 @@ sub v1_filings_get {
     # query params
     if ( exists $args{'cik'}) {
         $query_params->{'cik'} = $self->{api_client}->to_query_value($args{'cik'});
+    }
+
+    # query params
+    if ( exists $args{'ticker'}) {
+        $query_params->{'ticker'} = $self->{api_client}->to_query_value($args{'ticker'});
     }
 
     # query params

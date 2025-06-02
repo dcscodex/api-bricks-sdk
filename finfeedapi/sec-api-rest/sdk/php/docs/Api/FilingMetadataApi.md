@@ -10,7 +10,7 @@ All URIs are relative to https://api-historical.sec.finfeedapi.com, except if th
 ## `v1FilingsGet()`
 
 ```php
-v1FilingsGet($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order): \OpenAPI\Client\Model\DTOFilingMetadataDto[]
+v1FilingsGet($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order): \OpenAPI\Client\Model\DTOFilingMetadataDto[]
 ```
 
 Query SEC filing metadata
@@ -31,6 +31,7 @@ $apiInstance = new OpenAPI\Client\Api\FilingMetadataApi(
     new GuzzleHttp\Client()
 );
 $cik = 56; // int | Filter by Central Index Key (CIK)
+$ticker = 'ticker_example'; // string | Filter by stock ticker symbol
 $form_type = 'form_type_example'; // string | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 $filling_date_start = 'filling_date_start_example'; // string | Filter by filling date start (inclusive), format YYYY-MM-DD
 $filling_date_end = 'filling_date_end_example'; // string | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -43,7 +44,7 @@ $sort_by = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\DTOFilingSortBy(); //
 $sort_order = 'desc'; // string | Sort order (asc or desc, default: desc)
 
 try {
-    $result = $apiInstance->v1FilingsGet($cik, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order);
+    $result = $apiInstance->v1FilingsGet($cik, $ticker, $form_type, $filling_date_start, $filling_date_end, $report_date_start, $report_date_end, $items_contain, $page_size, $page_number, $sort_by, $sort_order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilingMetadataApi->v1FilingsGet: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **cik** | **int**| Filter by Central Index Key (CIK) | [optional] |
+| **ticker** | **string**| Filter by stock ticker symbol | [optional] |
 | **form_type** | **string**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] |
 | **filling_date_start** | **string**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] |
 | **filling_date_end** | **string**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] |

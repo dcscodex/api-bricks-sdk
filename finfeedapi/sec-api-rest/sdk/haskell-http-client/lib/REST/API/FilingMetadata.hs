@@ -78,6 +78,11 @@ instance HasOptionalParam V1FilingsGet Cik where
   applyOptionalParam req (Cik xs) =
     req `addQuery` toQuery ("cik", Just xs)
 
+-- | /Optional Param/ "ticker" - Filter by stock ticker symbol
+instance HasOptionalParam V1FilingsGet Ticker where
+  applyOptionalParam req (Ticker xs) =
+    req `addQuery` toQuery ("ticker", Just xs)
+
 -- | /Optional Param/ "form_type" - Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 instance HasOptionalParam V1FilingsGet FormType where
   applyOptionalParam req (FormType xs) =

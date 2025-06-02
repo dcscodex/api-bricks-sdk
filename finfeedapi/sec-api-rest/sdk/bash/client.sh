@@ -102,6 +102,7 @@ operation_parameters_minimum_occurrences["v1ExtractorItemGet:::accession_number"
 operation_parameters_minimum_occurrences["v1ExtractorItemGet:::item_number"]=1
 operation_parameters_minimum_occurrences["v1ExtractorItemGet:::type"]=0
 operation_parameters_minimum_occurrences["v1FilingsGet:::cik"]=0
+operation_parameters_minimum_occurrences["v1FilingsGet:::ticker"]=0
 operation_parameters_minimum_occurrences["v1FilingsGet:::form_type"]=0
 operation_parameters_minimum_occurrences["v1FilingsGet:::filling_date_start"]=0
 operation_parameters_minimum_occurrences["v1FilingsGet:::filling_date_end"]=0
@@ -138,6 +139,7 @@ operation_parameters_maximum_occurrences["v1ExtractorItemGet:::accession_number"
 operation_parameters_maximum_occurrences["v1ExtractorItemGet:::item_number"]=0
 operation_parameters_maximum_occurrences["v1ExtractorItemGet:::type"]=0
 operation_parameters_maximum_occurrences["v1FilingsGet:::cik"]=0
+operation_parameters_maximum_occurrences["v1FilingsGet:::ticker"]=0
 operation_parameters_maximum_occurrences["v1FilingsGet:::form_type"]=0
 operation_parameters_maximum_occurrences["v1FilingsGet:::filling_date_start"]=0
 operation_parameters_maximum_occurrences["v1FilingsGet:::filling_date_end"]=0
@@ -171,6 +173,7 @@ operation_parameters_collection_type["v1ExtractorItemGet:::accession_number"]=""
 operation_parameters_collection_type["v1ExtractorItemGet:::item_number"]=""
 operation_parameters_collection_type["v1ExtractorItemGet:::type"]=""
 operation_parameters_collection_type["v1FilingsGet:::cik"]=""
+operation_parameters_collection_type["v1FilingsGet:::ticker"]=""
 operation_parameters_collection_type["v1FilingsGet:::form_type"]=""
 operation_parameters_collection_type["v1FilingsGet:::filling_date_start"]=""
 operation_parameters_collection_type["v1FilingsGet:::filling_date_end"]=""
@@ -793,6 +796,8 @@ For optimal performance, use date ranges and form types to narrow down your sear
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}cik${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: null)${OFF} - Filter by Central Index Key (CIK)${YELLOW} Specify as: cik=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ticker${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by stock ticker symbol${YELLOW} Specify as: ticker=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}form_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated${YELLOW} Specify as: form_type=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}filling_date_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter by filling date start (inclusive), format YYYY-MM-DD${YELLOW} Specify as: filling_date_start=value${OFF}" \
@@ -1063,7 +1068,7 @@ call_v1FilingsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(cik form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order)
+    local query_parameter_names=(cik ticker form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order)
     local path
 
     if ! path=$(build_request_path "/v1/filings" path_parameter_names query_parameter_names); then

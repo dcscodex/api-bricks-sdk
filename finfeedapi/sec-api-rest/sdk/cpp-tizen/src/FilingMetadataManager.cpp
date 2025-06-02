@@ -96,7 +96,7 @@ static bool v1FilingsGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool v1FilingsGetHelper(char * accessToken,
-	long long cik, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
+	long long cik, std::string ticker, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
 	void(* handler)(std::list<DTO.FilingMetadataDto>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -118,6 +118,13 @@ static bool v1FilingsGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("cik", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("cik");
+	}
+
+
+	itemAtq = stringify(&ticker, "std::string");
+	queryParams.insert(pair<string, string>("ticker", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ticker");
 	}
 
 
@@ -244,22 +251,22 @@ static bool v1FilingsGetHelper(char * accessToken,
 
 
 bool FilingMetadataManager::v1FilingsGetAsync(char * accessToken,
-	long long cik, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
+	long long cik, std::string ticker, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
 	void(* handler)(std::list<DTO.FilingMetadataDto>, Error, void* )
 	, void* userData)
 {
 	return v1FilingsGetHelper(accessToken,
-	cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, 
+	cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, 
 	handler, userData, true);
 }
 
 bool FilingMetadataManager::v1FilingsGetSync(char * accessToken,
-	long long cik, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
+	long long cik, std::string ticker, std::string formType, std::string fillingDateStart, std::string fillingDateEnd, std::string reportDateStart, std::string reportDateEnd, std::string itemsContain, int pageSize, int pageNumber, DTO.FilingSortBy sortBy, std::string sortOrder, 
 	void(* handler)(std::list<DTO.FilingMetadataDto>, Error, void* )
 	, void* userData)
 {
 	return v1FilingsGetHelper(accessToken,
-	cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, 
+	cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, 
 	handler, userData, false);
 }
 

@@ -327,6 +327,7 @@ case $state in
         local -a _op_arguments
         _op_arguments=(
                     "cik=:[QUERY] Filter by Central Index Key (CIK)"
+"ticker=:[QUERY] Filter by stock ticker symbol"
 "form_type=:[QUERY] Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated"
 "filling_date_start=:[QUERY] Filter by filling date start (inclusive), format YYYY-MM-DD"
 "filling_date_end=:[QUERY] Filter by filling date end (inclusive), format YYYY-MM-DD"

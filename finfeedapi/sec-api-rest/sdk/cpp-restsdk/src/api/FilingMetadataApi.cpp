@@ -36,7 +36,7 @@ FilingMetadataApi::~FilingMetadataApi()
 {
 }
 
-pplx::task<std::vector<std::shared_ptr<DTO_FilingMetadataDto>>> FilingMetadataApi::v1FilingsGet(boost::optional<int64_t> cik, boost::optional<utility::string_t> formType, boost::optional<utility::string_t> fillingDateStart, boost::optional<utility::string_t> fillingDateEnd, boost::optional<utility::string_t> reportDateStart, boost::optional<utility::string_t> reportDateEnd, boost::optional<utility::string_t> itemsContain, boost::optional<int32_t> pageSize, boost::optional<int32_t> pageNumber, boost::optional<std::shared_ptr<DTO_FilingSortBy>> sortBy, boost::optional<utility::string_t> sortOrder) const
+pplx::task<std::vector<std::shared_ptr<DTO_FilingMetadataDto>>> FilingMetadataApi::v1FilingsGet(boost::optional<int64_t> cik, boost::optional<utility::string_t> ticker, boost::optional<utility::string_t> formType, boost::optional<utility::string_t> fillingDateStart, boost::optional<utility::string_t> fillingDateEnd, boost::optional<utility::string_t> reportDateStart, boost::optional<utility::string_t> reportDateEnd, boost::optional<utility::string_t> itemsContain, boost::optional<int32_t> pageSize, boost::optional<int32_t> pageNumber, boost::optional<std::shared_ptr<DTO_FilingSortBy>> sortBy, boost::optional<utility::string_t> sortOrder) const
 {
 
 
@@ -80,6 +80,10 @@ pplx::task<std::vector<std::shared_ptr<DTO_FilingMetadataDto>>> FilingMetadataAp
     if (cik)
     {
         localVarQueryParams[utility::conversions::to_string_t("cik")] = ApiClient::parameterToString(*cik);
+    }
+    if (ticker)
+    {
+        localVarQueryParams[utility::conversions::to_string_t("ticker")] = ApiClient::parameterToString(*ticker);
     }
     if (formType)
     {

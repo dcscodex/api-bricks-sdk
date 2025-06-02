@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **v1_filings_get**
-> ARRAY[DTOFilingMetadataDto] v1_filings_get(cik => $cik, form_type => $form_type, filling_date_start => $filling_date_start, filling_date_end => $filling_date_end, report_date_start => $report_date_start, report_date_end => $report_date_end, items_contain => $items_contain, page_size => $page_size, page_number => $page_number, sort_by => $sort_by, sort_order => $sort_order)
+> ARRAY[DTOFilingMetadataDto] v1_filings_get(cik => $cik, ticker => $ticker, form_type => $form_type, filling_date_start => $filling_date_start, filling_date_end => $filling_date_end, report_date_start => $report_date_start, report_date_end => $report_date_end, items_contain => $items_contain, page_size => $page_size, page_number => $page_number, sort_by => $sort_by, sort_order => $sort_order)
 
 Query SEC filing metadata
 
@@ -27,6 +27,7 @@ my $api_instance = WWW::OpenAPIClient::FilingMetadataApi->new(
 );
 
 my $cik = 789; # int | Filter by Central Index Key (CIK)
+my $ticker = "ticker_example"; # string | Filter by stock ticker symbol
 my $form_type = "form_type_example"; # string | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 my $filling_date_start = "filling_date_start_example"; # string | Filter by filling date start (inclusive), format YYYY-MM-DD
 my $filling_date_end = "filling_date_end_example"; # string | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -39,7 +40,7 @@ my $sort_by = new WWW::OpenAPIClient.DTOFilingSortBy(); # DTOFilingSortBy | Fiel
 my $sort_order = 'desc'; # string | Sort order (asc or desc, default: desc)
 
 eval {
-    my $result = $api_instance->v1_filings_get(cik => $cik, form_type => $form_type, filling_date_start => $filling_date_start, filling_date_end => $filling_date_end, report_date_start => $report_date_start, report_date_end => $report_date_end, items_contain => $items_contain, page_size => $page_size, page_number => $page_number, sort_by => $sort_by, sort_order => $sort_order);
+    my $result = $api_instance->v1_filings_get(cik => $cik, ticker => $ticker, form_type => $form_type, filling_date_start => $filling_date_start, filling_date_end => $filling_date_end, report_date_start => $report_date_start, report_date_end => $report_date_end, items_contain => $items_contain, page_size => $page_size, page_number => $page_number, sort_by => $sort_by, sort_order => $sort_order);
     print Dumper($result);
 };
 if ($@) {
@@ -52,6 +53,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **int**| Filter by Central Index Key (CIK) | [optional] 
+ **ticker** | **string**| Filter by stock ticker symbol | [optional] 
  **form_type** | **string**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] 
  **filling_date_start** | **string**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **filling_date_end** | **string**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

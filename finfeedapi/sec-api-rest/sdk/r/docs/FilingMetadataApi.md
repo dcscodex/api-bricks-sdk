@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **V1FilingsGet**
-> array[DTOFilingMetadataDto] V1FilingsGet(cik = var.cik, form_type = var.form_type, filling_date_start = var.filling_date_start, filling_date_end = var.filling_date_end, report_date_start = var.report_date_start, report_date_end = var.report_date_end, items_contain = var.items_contain, page_size = var.page_size, page_number = var.page_number, sort_by = var.sort_by, sort_order = "desc")
+> array[DTOFilingMetadataDto] V1FilingsGet(cik = var.cik, ticker = var.ticker, form_type = var.form_type, filling_date_start = var.filling_date_start, filling_date_end = var.filling_date_end, report_date_start = var.report_date_start, report_date_end = var.report_date_end, items_contain = var.items_contain, page_size = var.page_size, page_number = var.page_number, sort_by = var.sort_by, sort_order = "desc")
 
 Query SEC filing metadata
 
@@ -22,6 +22,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_cik <- 56 # integer | Filter by Central Index Key (CIK) (Optional)
+var_ticker <- "ticker_example" # character | Filter by stock ticker symbol (Optional)
 var_form_type <- "form_type_example" # character | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (Optional)
 var_filling_date_start <- "filling_date_start_example" # character | Filter by filling date start (inclusive), format YYYY-MM-DD (Optional)
 var_filling_date_end <- "filling_date_end_example" # character | Filter by filling date end (inclusive), format YYYY-MM-DD (Optional)
@@ -35,8 +36,8 @@ var_sort_order <- "desc" # character | Sort order (asc or desc, default: desc) (
 
 api_instance <- FilingMetadataApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$V1FilingsGet(cik = var_cik, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_orderdata_file = "result.txt")
-result <- api_instance$V1FilingsGet(cik = var_cik, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_order)
+# result <- api_instance$V1FilingsGet(cik = var_cik, ticker = var_ticker, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_orderdata_file = "result.txt")
+result <- api_instance$V1FilingsGet(cik = var_cik, ticker = var_ticker, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_order)
 dput(result)
 ```
 
@@ -45,6 +46,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **integer**| Filter by Central Index Key (CIK) | [optional] 
+ **ticker** | **character**| Filter by stock ticker symbol | [optional] 
  **form_type** | **character**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] 
  **filling_date_start** | **character**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **filling_date_end** | **character**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

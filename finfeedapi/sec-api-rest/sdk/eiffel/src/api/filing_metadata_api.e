@@ -24,11 +24,13 @@ inherit
 feature -- API Access
 
 
-	v1_filings_get (cik: INTEGER_64; form_type: STRING_32; filling_date_start: STRING_32; filling_date_end: STRING_32; report_date_start: STRING_32; report_date_end: STRING_32; items_contain: STRING_32; page_size: INTEGER_32; page_number: INTEGER_32; sort_by: detachable DTO_FILING_SORT_BY; sort_order: STRING_32): detachable LIST [DTO_FILING_METADATA_DTO]
+	v1_filings_get (cik: INTEGER_64; ticker: STRING_32; form_type: STRING_32; filling_date_start: STRING_32; filling_date_end: STRING_32; report_date_start: STRING_32; report_date_end: STRING_32; items_contain: STRING_32; page_size: INTEGER_32; page_number: INTEGER_32; sort_by: detachable DTO_FILING_SORT_BY; sort_order: STRING_32): detachable LIST [DTO_FILING_METADATA_DTO]
 			-- Query SEC filing metadata
 			-- Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
 			-- 
 			-- argument: cik Filter by Central Index Key (CIK) (optional, default to null)
+			-- 
+			-- argument: ticker Filter by stock ticker symbol (optional, default to null)
 			-- 
 			-- argument: form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional, default to null)
 			-- 
@@ -67,6 +69,7 @@ feature -- API Access
 			
 			l_path := "/v1/filings"
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "cik", cik));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ticker", ticker));
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "form_type", form_type));
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "filling_date_start", filling_date_start));
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "filling_date_end", filling_date_end));

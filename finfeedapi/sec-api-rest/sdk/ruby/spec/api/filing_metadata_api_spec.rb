@@ -37,6 +37,7 @@ describe 'FilingMetadataApi' do
   # Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :cik Filter by Central Index Key (CIK)
+  # @option opts [String] :ticker Filter by stock ticker symbol
   # @option opts [String] :form_type Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
   # @option opts [String] :filling_date_start Filter by filling date start (inclusive), format YYYY-MM-DD
   # @option opts [String] :filling_date_end Filter by filling date end (inclusive), format YYYY-MM-DD

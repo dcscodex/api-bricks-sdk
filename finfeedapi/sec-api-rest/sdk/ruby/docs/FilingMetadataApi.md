@@ -24,6 +24,7 @@ require 'openapi_client'
 api_instance = OpenapiClient::FilingMetadataApi.new
 opts = {
   cik: 789, # Integer | Filter by Central Index Key (CIK)
+  ticker: 'ticker_example', # String | Filter by stock ticker symbol
   form_type: 'form_type_example', # String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   filling_date_start: 'filling_date_start_example', # String | Filter by filling date start (inclusive), format YYYY-MM-DD
   filling_date_end: 'filling_date_end_example', # String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -68,6 +69,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cik** | **Integer** | Filter by Central Index Key (CIK) | [optional] |
+| **ticker** | **String** | Filter by stock ticker symbol | [optional] |
 | **form_type** | **String** | Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] |
 | **filling_date_start** | **String** | Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] |
 | **filling_date_end** | **String** | Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] |

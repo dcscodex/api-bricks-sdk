@@ -31,13 +31,13 @@ import Json.Encode
 Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
 
 -}
-v1FilingsGet : Maybe Int -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe Int -> Maybe Int -> Maybe DTOFilingSortBy -> Maybe String -> Api.Request (List Api.Data.DTOFilingMetadataDto)
-v1FilingsGet cik_query formType_query fillingDateStart_query fillingDateEnd_query reportDateStart_query reportDateEnd_query itemsContain_query pageSize_query pageNumber_query sortBy_query sortOrder_query =
+v1FilingsGet : Maybe Int -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe Int -> Maybe Int -> Maybe DTOFilingSortBy -> Maybe String -> Api.Request (List Api.Data.DTOFilingMetadataDto)
+v1FilingsGet cik_query ticker_query formType_query fillingDateStart_query fillingDateEnd_query reportDateStart_query reportDateEnd_query itemsContain_query pageSize_query pageNumber_query sortBy_query sortOrder_query =
     Api.request
         "GET"
         "/v1/filings"
         []
-        [ ( "cik", Maybe.map String.fromInt cik_query ), ( "form_type", Maybe.map identity formType_query ), ( "filling_date_start", Maybe.map identity fillingDateStart_query ), ( "filling_date_end", Maybe.map identity fillingDateEnd_query ), ( "report_date_start", Maybe.map identity reportDateStart_query ), ( "report_date_end", Maybe.map identity reportDateEnd_query ), ( "items_contain", Maybe.map identity itemsContain_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "page_number", Maybe.map String.fromInt pageNumber_query ), ( "sort_by", Maybe.map Api.Data.stringFromDTOFilingSortBy sortBy_query ), ( "sort_order", Maybe.map identity sortOrder_query ) ]
+        [ ( "cik", Maybe.map String.fromInt cik_query ), ( "ticker", Maybe.map identity ticker_query ), ( "form_type", Maybe.map identity formType_query ), ( "filling_date_start", Maybe.map identity fillingDateStart_query ), ( "filling_date_end", Maybe.map identity fillingDateEnd_query ), ( "report_date_start", Maybe.map identity reportDateStart_query ), ( "report_date_end", Maybe.map identity reportDateEnd_query ), ( "items_contain", Maybe.map identity itemsContain_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "page_number", Maybe.map String.fromInt pageNumber_query ), ( "sort_by", Maybe.map Api.Data.stringFromDTOFilingSortBy sortBy_query ), ( "sort_order", Maybe.map identity sortOrder_query ) ]
         []
         Nothing
         (Json.Decode.list Api.Data.dTOFilingMetadataDtoDecoder)

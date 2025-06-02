@@ -20,6 +20,7 @@ feature -- Test routines
         local
             l_response: LIST [DTO_FILING_METADATA_DTO]
             l_cik: INTEGER_64
+            l_ticker: STRING_32
             l_form_type: STRING_32
             l_filling_date_start: STRING_32
             l_filling_date_end: STRING_32
@@ -33,7 +34,7 @@ feature -- Test routines
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.v1_filings_get(l_cik, l_form_type, l_filling_date_start, l_filling_date_end, l_report_date_start, l_report_date_end, l_items_contain, l_page_size, l_page_number, l_sort_by, l_sort_order)
+            -- l_response := api.v1_filings_get(l_cik, l_ticker, l_form_type, l_filling_date_start, l_filling_date_end, l_report_date_start, l_report_date_end, l_items_contain, l_page_size, l_page_number, l_sort_by, l_sort_order)
             assert ("not_implemented", False)
         end
 

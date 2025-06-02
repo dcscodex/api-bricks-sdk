@@ -50,6 +50,7 @@ export class FilingMetadataApi {
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @summary Query SEC filing metadata
      * @param cik Filter by Central Index Key (CIK)
+     * @param ticker Filter by stock ticker symbol
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -61,7 +62,7 @@ export class FilingMetadataApi {
      * @param sortBy Field to sort results by (default: AccessionNumber)
      * @param sortOrder Sort order (asc or desc, default: desc)
      */
-    public v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: models.DTOFilingSortBy, sortOrder?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    public v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: models.DTOFilingSortBy, sortOrder?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
     { response: JQueryXHR; body: Array<models.DTOFilingMetadataDto>;  },
     { response: JQueryXHR; errorThrown: string }
     > {
@@ -71,6 +72,9 @@ export class FilingMetadataApi {
         let headerParams: any = {};
         if (cik !== null && cik !== undefined) {
             queryParameters['cik'] = <string><any>cik;
+        }
+        if (ticker !== null && ticker !== undefined) {
+            queryParameters['ticker'] = <string><any>ticker;
         }
         if (formType !== null && formType !== undefined) {
             queryParameters['form_type'] = <string><any>formType;

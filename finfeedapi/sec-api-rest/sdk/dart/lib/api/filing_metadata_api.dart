@@ -27,6 +27,9 @@ class FilingMetadataApi {
   /// * [int] cik:
   ///   Filter by Central Index Key (CIK)
   ///
+  /// * [String] ticker:
+  ///   Filter by stock ticker symbol
+  ///
   /// * [String] formType:
   ///   Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   ///
@@ -56,7 +59,7 @@ class FilingMetadataApi {
   ///
   /// * [String] sortOrder:
   ///   Sort order (asc or desc, default: desc)
-  Future<Response> v1FilingsGetWithHttpInfo({ int? cik, String? formType, String? fillingDateStart, String? fillingDateEnd, String? reportDateStart, String? reportDateEnd, String? itemsContain, int? pageSize, int? pageNumber, DTOFilingSortBy? sortBy, String? sortOrder, }) async {
+  Future<Response> v1FilingsGetWithHttpInfo({ int? cik, String? ticker, String? formType, String? fillingDateStart, String? fillingDateEnd, String? reportDateStart, String? reportDateEnd, String? itemsContain, int? pageSize, int? pageNumber, DTOFilingSortBy? sortBy, String? sortOrder, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/filings';
 
@@ -69,6 +72,9 @@ class FilingMetadataApi {
 
     if (cik != null) {
       queryParams.addAll(_queryParams('', 'cik', cik));
+    }
+    if (ticker != null) {
+      queryParams.addAll(_queryParams('', 'ticker', ticker));
     }
     if (formType != null) {
       queryParams.addAll(_queryParams('', 'form_type', formType));
@@ -124,6 +130,9 @@ class FilingMetadataApi {
   /// * [int] cik:
   ///   Filter by Central Index Key (CIK)
   ///
+  /// * [String] ticker:
+  ///   Filter by stock ticker symbol
+  ///
   /// * [String] formType:
   ///   Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   ///
@@ -153,8 +162,8 @@ class FilingMetadataApi {
   ///
   /// * [String] sortOrder:
   ///   Sort order (asc or desc, default: desc)
-  Future<List<DTOFilingMetadataDto>?> v1FilingsGet({ int? cik, String? formType, String? fillingDateStart, String? fillingDateEnd, String? reportDateStart, String? reportDateEnd, String? itemsContain, int? pageSize, int? pageNumber, DTOFilingSortBy? sortBy, String? sortOrder, }) async {
-    final response = await v1FilingsGetWithHttpInfo( cik: cik, formType: formType, fillingDateStart: fillingDateStart, fillingDateEnd: fillingDateEnd, reportDateStart: reportDateStart, reportDateEnd: reportDateEnd, itemsContain: itemsContain, pageSize: pageSize, pageNumber: pageNumber, sortBy: sortBy, sortOrder: sortOrder, );
+  Future<List<DTOFilingMetadataDto>?> v1FilingsGet({ int? cik, String? ticker, String? formType, String? fillingDateStart, String? fillingDateEnd, String? reportDateStart, String? reportDateEnd, String? itemsContain, int? pageSize, int? pageNumber, DTOFilingSortBy? sortBy, String? sortOrder, }) async {
+    final response = await v1FilingsGetWithHttpInfo( cik: cik, ticker: ticker, formType: formType, fillingDateStart: fillingDateStart, fillingDateEnd: fillingDateEnd, reportDateStart: reportDateStart, reportDateEnd: reportDateEnd, itemsContain: itemsContain, pageSize: pageSize, pageNumber: pageNumber, sortBy: sortBy, sortOrder: sortOrder, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

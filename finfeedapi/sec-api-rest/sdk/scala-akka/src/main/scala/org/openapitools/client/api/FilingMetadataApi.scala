@@ -35,6 +35,7 @@ class FilingMetadataApi(baseUrl: String) {
    *   code 500 : ProblemDetails (Server error)
    * 
    * @param cik Filter by Central Index Key (CIK)
+   * @param ticker Filter by stock ticker symbol
    * @param formType Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
    * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
    * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -46,9 +47,10 @@ class FilingMetadataApi(baseUrl: String) {
    * @param sortBy Field to sort results by (default: AccessionNumber)
    * @param sortOrder Sort order (asc or desc, default: desc)
    */
-  def v1FilingsGet(cik: Option[Long] = None, formType: Option[String] = None, fillingDateStart: Option[String] = None, fillingDateEnd: Option[String] = None, reportDateStart: Option[String] = None, reportDateEnd: Option[String] = None, itemsContain: Option[String] = None, pageSize: Option[Int] = None, pageNumber: Option[Int] = None, sortBy: Option[FilingSortBy] = None, sortOrder: Option[String] = None): ApiRequest[Seq[FilingMetadataDto]] =
+  def v1FilingsGet(cik: Option[Long] = None, ticker: Option[String] = None, formType: Option[String] = None, fillingDateStart: Option[String] = None, fillingDateEnd: Option[String] = None, reportDateStart: Option[String] = None, reportDateEnd: Option[String] = None, itemsContain: Option[String] = None, pageSize: Option[Int] = None, pageNumber: Option[Int] = None, sortBy: Option[FilingSortBy] = None, sortOrder: Option[String] = None): ApiRequest[Seq[FilingMetadataDto]] =
     ApiRequest[Seq[FilingMetadataDto]](ApiMethods.GET, baseUrl, "/v1/filings", "application/json")
       .withQueryParam("cik", cik)
+      .withQueryParam("ticker", ticker)
       .withQueryParam("form_type", formType)
       .withQueryParam("filling_date_start", fillingDateStart)
       .withQueryParam("filling_date_end", fillingDateEnd)

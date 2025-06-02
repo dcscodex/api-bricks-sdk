@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## v1FilingsGet
 
-> List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+> List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
 
 Query SEC filing metadata
 
@@ -24,6 +24,7 @@ Retrieves metadata for SEC filings based on various filter criteria with paginat
 
 FilingMetadataApi apiInstance = new FilingMetadataApi();
 Long cik = null; // Long | Filter by Central Index Key (CIK)
+String ticker = null; // String | Filter by stock ticker symbol
 String formType = null; // String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 String fillingDateStart = null; // String | Filter by filling date start (inclusive), format YYYY-MM-DD
 String fillingDateEnd = null; // String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -35,7 +36,7 @@ Integer pageNumber = null; // Integer | Page number to retrieve (default: 1)
 DTOFilingSortBy sortBy = null; // DTOFilingSortBy | Field to sort results by (default: AccessionNumber)
 String sortOrder = desc; // String | Sort order (asc or desc, default: desc)
 try {
-    List<DTOFilingMetadataDto> result = apiInstance.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+    List<DTOFilingMetadataDto> result = apiInstance.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FilingMetadataApi#v1FilingsGet");
@@ -49,6 +50,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **Long**| Filter by Central Index Key (CIK) | [optional] [default to null]
+ **ticker** | **String**| Filter by stock ticker symbol | [optional] [default to null]
  **formType** | **String**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] [default to null]
  **fillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] [default to null]
  **fillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] [default to null]

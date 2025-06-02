@@ -11,7 +11,7 @@ class FilingMetadataApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def v1FilingsGet ( Long cik, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder, Closure onSuccess, Closure onFailure)  {
+    def v1FilingsGet ( Long cik, String ticker, String formType, String fillingDateStart, String fillingDateEnd, String reportDateStart, String reportDateEnd, String itemsContain, Integer pageSize, Integer pageNumber, DTOFilingSortBy sortBy, String sortOrder, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/v1/filings"
 
         // params
@@ -23,6 +23,9 @@ class FilingMetadataApi {
 
         if (cik != null) {
             queryParams.put("cik", cik)
+        }
+        if (ticker != null) {
+            queryParams.put("ticker", ticker)
         }
         if (formType != null) {
             queryParams.put("form_type", formType)

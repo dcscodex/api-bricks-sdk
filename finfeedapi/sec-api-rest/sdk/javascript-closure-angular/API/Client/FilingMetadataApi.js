@@ -46,6 +46,7 @@ API.Client.FilingMetadataApi.$inject = ['$http', '$httpParamSerializer', '$injec
  * Query SEC filing metadata
  * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
  * @param {!number=} opt_cik Filter by Central Index Key (CIK)
+ * @param {!string=} opt_ticker Filter by stock ticker symbol
  * @param {!string=} opt_formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
  * @param {!string=} opt_fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD
  * @param {!string=} opt_fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -59,7 +60,7 @@ API.Client.FilingMetadataApi.$inject = ['$http', '$httpParamSerializer', '$injec
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!Array<!API.Client.DTO.FilingMetadataDto>>}
  */
-API.Client.FilingMetadataApi.prototype.v1FilingsGet = function(opt_cik, opt_formType, opt_fillingDateStart, opt_fillingDateEnd, opt_reportDateStart, opt_reportDateEnd, opt_itemsContain, opt_pageSize, opt_pageNumber, opt_sortBy, opt_sortOrder, opt_extraHttpRequestParams) {
+API.Client.FilingMetadataApi.prototype.v1FilingsGet = function(opt_cik, opt_ticker, opt_formType, opt_fillingDateStart, opt_fillingDateEnd, opt_reportDateStart, opt_reportDateEnd, opt_itemsContain, opt_pageSize, opt_pageNumber, opt_sortBy, opt_sortOrder, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/v1/filings';
 
@@ -70,6 +71,10 @@ API.Client.FilingMetadataApi.prototype.v1FilingsGet = function(opt_cik, opt_form
   var headerParams = angular.extend({}, this.defaultHeaders_);
   if (opt_cik !== undefined) {
     queryParameters['cik'] = opt_cik;
+  }
+
+  if (opt_ticker !== undefined) {
+    queryParameters['ticker'] = opt_ticker;
   }
 
   if (opt_formType !== undefined) {

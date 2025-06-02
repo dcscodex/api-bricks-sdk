@@ -11,6 +11,7 @@ Method | HTTP request | Description
 # **Invoke-V1FilingsGet**
 > DTOFilingMetadataDto[] Invoke-V1FilingsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Cik] <System.Nullable[Int64]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Ticker] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FormType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FillingDateStart] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FillingDateEnd] <String><br>
@@ -29,6 +30,7 @@ Retrieves metadata for SEC filings based on various filter criteria with paginat
 ### Example
 ```powershell
 $Cik = 789 # Int64 | Filter by Central Index Key (CIK) (optional)
+$Ticker = "MyTicker" # String | Filter by stock ticker symbol (optional)
 $FormType = "MyFormType" # String | Filter by form type(s) (e.g., ""10-K"", ""8-K""). Multiple values can be comma-separated (optional)
 $FillingDateStart = "MyFillingDateStart" # String | Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
 $FillingDateEnd = "MyFillingDateEnd" # String | Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -42,7 +44,7 @@ $SortOrder = "MySortOrder" # String | Sort order (asc or desc, default: desc) (o
 
 # Query SEC filing metadata
 try {
-    $Result = Invoke-V1FilingsGet -Cik $Cik -FormType $FormType -FillingDateStart $FillingDateStart -FillingDateEnd $FillingDateEnd -ReportDateStart $ReportDateStart -ReportDateEnd $ReportDateEnd -ItemsContain $ItemsContain -PageSize $PageSize -PageNumber $PageNumber -SortBy $SortBy -SortOrder $SortOrder
+    $Result = Invoke-V1FilingsGet -Cik $Cik -Ticker $Ticker -FormType $FormType -FillingDateStart $FillingDateStart -FillingDateEnd $FillingDateEnd -ReportDateStart $ReportDateStart -ReportDateEnd $ReportDateEnd -ItemsContain $ItemsContain -PageSize $PageSize -PageNumber $PageNumber -SortBy $SortBy -SortOrder $SortOrder
 } catch {
     Write-Host ("Exception occurred when calling Invoke-V1FilingsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -54,6 +56,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Cik** | **Int64**| Filter by Central Index Key (CIK) | [optional] 
+ **Ticker** | **String**| Filter by stock ticker symbol | [optional] 
  **FormType** | **String**| Filter by form type(s) (e.g., &quot;&quot;10-K&quot;&quot;, &quot;&quot;8-K&quot;&quot;). Multiple values can be comma-separated | [optional] 
  **FillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **FillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

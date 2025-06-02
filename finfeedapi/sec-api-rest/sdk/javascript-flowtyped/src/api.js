@@ -476,7 +476,7 @@ export const FilingMetadataApiFetchParamCreator = function (configuration?: Conf
          * @summary Query SEC filing metadata
          * @throws {RequiredError}
          */
-        v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options: RequestOptions): FetchArgs {
+        v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options: RequestOptions): FetchArgs {
             const localVarPath = `/v1/filings`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
@@ -485,6 +485,10 @@ export const FilingMetadataApiFetchParamCreator = function (configuration?: Conf
 
             if (cik !== undefined) {
                 localVarQueryParameter['cik'] = ((cik:any):string);
+            }
+
+            if (ticker !== undefined) {
+                localVarQueryParameter['ticker'] = ((ticker:any):string);
             }
 
             if (formType !== undefined) {
@@ -541,7 +545,7 @@ export const FilingMetadataApiFetchParamCreator = function (configuration?: Conf
 };
 
 export type FilingMetadataApiType = { 
-    v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options?: RequestOptions): Promise<Array<DTOFilingMetadataDto>>,
+    v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options?: RequestOptions): Promise<Array<DTOFilingMetadataDto>>,
 }
 
 /**
@@ -556,8 +560,8 @@ export const FilingMetadataApi = function(configuration?: Configuration, fetch: 
          * @summary Query SEC filing metadata
          * @throws {RequiredError}
          */
-        v1FilingsGet(cik?: number, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options?: RequestOptions = {}): Promise<Array<DTOFilingMetadataDto>> {
-            const localVarFetchArgs = FilingMetadataApiFetchParamCreator(configuration).v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, options);
+        v1FilingsGet(cik?: number, ticker?: string, formType?: string, fillingDateStart?: string, fillingDateEnd?: string, reportDateStart?: string, reportDateEnd?: string, itemsContain?: string, pageSize?: number, pageNumber?: number, sortBy?: DTOFilingSortBy, sortOrder?: string, options?: RequestOptions = {}): Promise<Array<DTOFilingMetadataDto>> {
+            const localVarFetchArgs = FilingMetadataApiFetchParamCreator(configuration).v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();

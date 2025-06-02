@@ -9,7 +9,7 @@ All URIs are relative to *https://api-historical.sec.finfeedapi.com*
 
 <a id="v1FilingsGet"></a>
 # **v1FilingsGet**
-> List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+> List&lt;DTOFilingMetadataDto&gt; v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
 
 Query SEC filing metadata
 
@@ -31,6 +31,7 @@ public class Example {
 
     FilingMetadataApi apiInstance = new FilingMetadataApi(defaultClient);
     Long cik = 56L; // Long | Filter by Central Index Key (CIK)
+    String ticker = "ticker_example"; // String | Filter by stock ticker symbol
     String formType = "formType_example"; // String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
     String fillingDateStart = "fillingDateStart_example"; // String | Filter by filling date start (inclusive), format YYYY-MM-DD
     String fillingDateEnd = "fillingDateEnd_example"; // String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -42,7 +43,7 @@ public class Example {
     DTOFilingSortBy sortBy = DTOFilingSortBy.fromValue("AccessionNumber"); // DTOFilingSortBy | Field to sort results by (default: AccessionNumber)
     String sortOrder = "desc"; // String | Sort order (asc or desc, default: desc)
     try {
-      List<DTOFilingMetadataDto> result = apiInstance.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+      List<DTOFilingMetadataDto> result = apiInstance.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FilingMetadataApi#v1FilingsGet");
@@ -60,6 +61,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **cik** | **Long**| Filter by Central Index Key (CIK) | [optional] |
+| **ticker** | **String**| Filter by stock ticker symbol | [optional] |
 | **formType** | **String**| Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated | [optional] |
 | **fillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] |
 | **fillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] |

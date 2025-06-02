@@ -18,6 +18,7 @@ defmodule RESTAPI.Api.FilingMetadata do
   - `connection` (RESTAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
     - `:cik` (integer()): Filter by Central Index Key (CIK)
+    - `:ticker` (String.t): Filter by stock ticker symbol
     - `:form_type` (String.t): Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
     - `:filling_date_start` (String.t): Filter by filling date start (inclusive), format YYYY-MM-DD
     - `:filling_date_end` (String.t): Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -38,6 +39,7 @@ defmodule RESTAPI.Api.FilingMetadata do
   def v1_filings_get(connection, opts \\ []) do
     optional_params = %{
       :cik => :query,
+      :ticker => :query,
       :form_type => :query,
       :filling_date_start => :query,
       :filling_date_end => :query,

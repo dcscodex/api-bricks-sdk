@@ -85,6 +85,7 @@ package .Clients is
    procedure V_1Filings_Get
       (Client : in out Client_Type;
        Cik : in Swagger.Nullable_Long;
+       Ticker : in Swagger.Nullable_UString;
        Form_Type : in Swagger.Nullable_UString;
        Filling_Date_Start : in Swagger.Nullable_UString;
        Filling_Date_End : in Swagger.Nullable_UString;

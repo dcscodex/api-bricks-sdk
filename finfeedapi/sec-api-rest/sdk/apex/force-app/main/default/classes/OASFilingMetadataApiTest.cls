@@ -14,6 +14,7 @@ private class OASFilingMetadataApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'cik' => 2147483648L,
+            'ticker' => 'null',
             'formType' => 'null',
             'fillingDateStart' => 'null',
             'fillingDateEnd' => 'null',

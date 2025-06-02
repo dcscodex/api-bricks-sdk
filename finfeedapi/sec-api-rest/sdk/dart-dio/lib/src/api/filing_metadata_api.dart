@@ -28,6 +28,7 @@ class FilingMetadataApi {
   ///
   /// Parameters:
   /// * [cik] - Filter by Central Index Key (CIK)
+  /// * [ticker] - Filter by stock ticker symbol
   /// * [formType] - Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   /// * [fillingDateStart] - Filter by filling date start (inclusive), format YYYY-MM-DD
   /// * [fillingDateEnd] - Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -49,6 +50,7 @@ class FilingMetadataApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<DTOFilingMetadataDto>>> v1FilingsGet({ 
     int? cik,
+    String? ticker,
     String? formType,
     String? fillingDateStart,
     String? fillingDateEnd,
@@ -81,6 +83,7 @@ class FilingMetadataApi {
 
     final _queryParameters = <String, dynamic>{
       if (cik != null) r'cik': encodeQueryParameter(_serializers, cik, const FullType(int)),
+      if (ticker != null) r'ticker': encodeQueryParameter(_serializers, ticker, const FullType(String)),
       if (formType != null) r'form_type': encodeQueryParameter(_serializers, formType, const FullType(String)),
       if (fillingDateStart != null) r'filling_date_start': encodeQueryParameter(_serializers, fillingDateStart, const FullType(String)),
       if (fillingDateEnd != null) r'filling_date_end': encodeQueryParameter(_serializers, fillingDateEnd, const FullType(String)),

@@ -78,6 +78,7 @@ public class FilingMetadataApi {
     /**
      * Build call for v1FilingsGet
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -100,7 +101,7 @@ public class FilingMetadataApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1FilingsGetCall(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1FilingsGetCall(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String ticker, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,6 +128,10 @@ public class FilingMetadataApi {
 
         if (cik != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("cik", cik));
+        }
+
+        if (ticker != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ticker", ticker));
         }
 
         if (formType != null) {
@@ -189,8 +194,8 @@ public class FilingMetadataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1FilingsGetValidateBeforeCall(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback _callback) throws ApiException {
-        return v1FilingsGetCall(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, _callback);
+    private okhttp3.Call v1FilingsGetValidateBeforeCall(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String ticker, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback _callback) throws ApiException {
+        return v1FilingsGetCall(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, _callback);
 
     }
 
@@ -198,6 +203,7 @@ public class FilingMetadataApi {
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -219,8 +225,8 @@ public class FilingMetadataApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<DTOFilingMetadataDto> v1FilingsGet(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder) throws ApiException {
-        ApiResponse<List<DTOFilingMetadataDto>> localVarResp = v1FilingsGetWithHttpInfo(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+    public List<DTOFilingMetadataDto> v1FilingsGet(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String ticker, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder) throws ApiException {
+        ApiResponse<List<DTOFilingMetadataDto>> localVarResp = v1FilingsGetWithHttpInfo(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
         return localVarResp.getData();
     }
 
@@ -228,6 +234,7 @@ public class FilingMetadataApi {
      * Query SEC filing metadata
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -249,8 +256,8 @@ public class FilingMetadataApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<DTOFilingMetadataDto>> v1FilingsGetWithHttpInfo(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder) throws ApiException {
-        okhttp3.Call localVarCall = v1FilingsGetValidateBeforeCall(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, null);
+    public ApiResponse<List<DTOFilingMetadataDto>> v1FilingsGetWithHttpInfo(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String ticker, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder) throws ApiException {
+        okhttp3.Call localVarCall = v1FilingsGetValidateBeforeCall(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, null);
         Type localVarReturnType = new TypeToken<List<DTOFilingMetadataDto>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -259,6 +266,7 @@ public class FilingMetadataApi {
      * Query SEC filing metadata (asynchronously)
      * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
      * @param cik Filter by Central Index Key (CIK) (optional)
+     * @param ticker Filter by stock ticker symbol (optional)
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated (optional)
      * @param fillingDateStart Filter by filling date start (inclusive), format YYYY-MM-DD (optional)
      * @param fillingDateEnd Filter by filling date end (inclusive), format YYYY-MM-DD (optional)
@@ -281,9 +289,9 @@ public class FilingMetadataApi {
         <tr><td> 500 </td><td> Server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1FilingsGetAsync(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback<List<DTOFilingMetadataDto>> _callback) throws ApiException {
+    public okhttp3.Call v1FilingsGetAsync(@javax.annotation.Nullable Long cik, @javax.annotation.Nullable String ticker, @javax.annotation.Nullable String formType, @javax.annotation.Nullable String fillingDateStart, @javax.annotation.Nullable String fillingDateEnd, @javax.annotation.Nullable String reportDateStart, @javax.annotation.Nullable String reportDateEnd, @javax.annotation.Nullable String itemsContain, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer pageNumber, @javax.annotation.Nullable DTOFilingSortBy sortBy, @javax.annotation.Nullable String sortOrder, final ApiCallback<List<DTOFilingMetadataDto>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1FilingsGetValidateBeforeCall(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, _callback);
+        okhttp3.Call localVarCall = v1FilingsGetValidateBeforeCall(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder, _callback);
         Type localVarReturnType = new TypeToken<List<DTOFilingMetadataDto>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

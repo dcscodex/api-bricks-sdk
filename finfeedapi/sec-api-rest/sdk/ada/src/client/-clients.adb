@@ -112,6 +112,7 @@ package body .Clients is
    procedure V_1Filings_Get
       (Client : in out Client_Type;
        Cik : in Swagger.Nullable_Long;
+       Ticker : in Swagger.Nullable_UString;
        Form_Type : in Swagger.Nullable_UString;
        Filling_Date_Start : in Swagger.Nullable_UString;
        Filling_Date_End : in Swagger.Nullable_UString;
@@ -130,6 +131,7 @@ package body .Clients is
 
 
       URI.Add_Param ("cik", Cik);
+      URI.Add_Param ("ticker", Ticker);
       URI.Add_Param ("form_type", Form_Type);
       URI.Add_Param ("filling_date_start", Filling_Date_Start);
       URI.Add_Param ("filling_date_end", Filling_Date_End);

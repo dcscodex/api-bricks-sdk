@@ -34,6 +34,7 @@ isa_ok($api, 'WWW::OpenAPIClient::FilingMetadataApi');
 #
 # uncomment below and update the test
 #my $v1_filings_get_cik = undef; # replace NULL with a proper value
+#my $v1_filings_get_ticker = undef; # replace NULL with a proper value
 #my $v1_filings_get_form_type = undef; # replace NULL with a proper value
 #my $v1_filings_get_filling_date_start = undef; # replace NULL with a proper value
 #my $v1_filings_get_filling_date_end = undef; # replace NULL with a proper value
@@ -44,7 +45,7 @@ isa_ok($api, 'WWW::OpenAPIClient::FilingMetadataApi');
 #my $v1_filings_get_page_number = undef; # replace NULL with a proper value
 #my $v1_filings_get_sort_by = undef; # replace NULL with a proper value
 #my $v1_filings_get_sort_order = undef; # replace NULL with a proper value
-#my $v1_filings_get_result = $api->v1_filings_get(cik => $v1_filings_get_cik, form_type => $v1_filings_get_form_type, filling_date_start => $v1_filings_get_filling_date_start, filling_date_end => $v1_filings_get_filling_date_end, report_date_start => $v1_filings_get_report_date_start, report_date_end => $v1_filings_get_report_date_end, items_contain => $v1_filings_get_items_contain, page_size => $v1_filings_get_page_size, page_number => $v1_filings_get_page_number, sort_by => $v1_filings_get_sort_by, sort_order => $v1_filings_get_sort_order);
+#my $v1_filings_get_result = $api->v1_filings_get(cik => $v1_filings_get_cik, ticker => $v1_filings_get_ticker, form_type => $v1_filings_get_form_type, filling_date_start => $v1_filings_get_filling_date_start, filling_date_end => $v1_filings_get_filling_date_end, report_date_start => $v1_filings_get_report_date_start, report_date_end => $v1_filings_get_report_date_end, items_contain => $v1_filings_get_items_contain, page_size => $v1_filings_get_page_size, page_number => $v1_filings_get_page_number, sort_by => $v1_filings_get_sort_by, sort_order => $v1_filings_get_sort_order);
 
 
 done_testing();

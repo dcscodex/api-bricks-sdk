@@ -47,13 +47,13 @@ local function new_filing_metadata_api(authority, basePath, schemes)
 	}, filing_metadata_api_mt)
 end
 
-function filing_metadata_api:v1_filings_get(cik, form_type, filling_date_start, filling_date_end, report_date_start, report_date_end, items_contain, page_size, page_number, sort_by, sort_order)
+function filing_metadata_api:v1_filings_get(cik, ticker, form_type, filling_date_start, filling_date_end, report_date_start, report_date_end, items_contain, page_size, page_number, sort_by, sort_order)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/v1/filings?cik=%s&form_type=%s&filling_date_start=%s&filling_date_end=%s&report_date_start=%s&report_date_end=%s&items_contain=%s&page_size=%s&page_number=%s&sort_by=%s&sort_order=%s",
-			self.basePath, http_util.encodeURIComponent(cik), http_util.encodeURIComponent(form_type), http_util.encodeURIComponent(filling_date_start), http_util.encodeURIComponent(filling_date_end), http_util.encodeURIComponent(report_date_start), http_util.encodeURIComponent(report_date_end), http_util.encodeURIComponent(items_contain), http_util.encodeURIComponent(page_size), http_util.encodeURIComponent(page_number), http_util.encodeURIComponent(sort_by), http_util.encodeURIComponent(sort_order));
+		path = string.format("%s/v1/filings?cik=%s&ticker=%s&form_type=%s&filling_date_start=%s&filling_date_end=%s&report_date_start=%s&report_date_end=%s&items_contain=%s&page_size=%s&page_number=%s&sort_by=%s&sort_order=%s",
+			self.basePath, http_util.encodeURIComponent(cik), http_util.encodeURIComponent(ticker), http_util.encodeURIComponent(form_type), http_util.encodeURIComponent(filling_date_start), http_util.encodeURIComponent(filling_date_end), http_util.encodeURIComponent(report_date_start), http_util.encodeURIComponent(report_date_end), http_util.encodeURIComponent(items_contain), http_util.encodeURIComponent(page_size), http_util.encodeURIComponent(page_number), http_util.encodeURIComponent(sort_by), http_util.encodeURIComponent(sort_order));
 	})
 
 	-- set HTTP verb

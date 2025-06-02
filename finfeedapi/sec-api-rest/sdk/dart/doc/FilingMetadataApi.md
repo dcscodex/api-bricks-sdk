@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **v1FilingsGet**
-> List<DTOFilingMetadataDto> v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
+> List<DTOFilingMetadataDto> v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder)
 
 Query SEC filing metadata
 
@@ -25,6 +25,7 @@ import 'package:openapi/api.dart';
 
 final api_instance = FilingMetadataApi();
 final cik = 789; // int | Filter by Central Index Key (CIK)
+final ticker = ticker_example; // String | Filter by stock ticker symbol
 final formType = formType_example; // String | Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 final fillingDateStart = fillingDateStart_example; // String | Filter by filling date start (inclusive), format YYYY-MM-DD
 final fillingDateEnd = fillingDateEnd_example; // String | Filter by filling date end (inclusive), format YYYY-MM-DD
@@ -37,7 +38,7 @@ final sortBy = ; // DTOFilingSortBy | Field to sort results by (default: Accessi
 final sortOrder = sortOrder_example; // String | Sort order (asc or desc, default: desc)
 
 try {
-    final result = api_instance.v1FilingsGet(cik, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
+    final result = api_instance.v1FilingsGet(cik, ticker, formType, fillingDateStart, fillingDateEnd, reportDateStart, reportDateEnd, itemsContain, pageSize, pageNumber, sortBy, sortOrder);
     print(result);
 } catch (e) {
     print('Exception when calling FilingMetadataApi->v1FilingsGet: $e\n');
@@ -49,6 +50,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cik** | **int**| Filter by Central Index Key (CIK) | [optional] 
+ **ticker** | **String**| Filter by stock ticker symbol | [optional] 
  **formType** | **String**| Filter by form type(s) (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated | [optional] 
  **fillingDateStart** | **String**| Filter by filling date start (inclusive), format YYYY-MM-DD | [optional] 
  **fillingDateEnd** | **String**| Filter by filling date end (inclusive), format YYYY-MM-DD | [optional] 

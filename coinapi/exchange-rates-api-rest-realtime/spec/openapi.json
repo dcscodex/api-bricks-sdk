@@ -794,7 +794,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-06T06:08:02.3664720Z",
+  "time": "2025-06-06T14:57:46.7241142Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -809,7 +809,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-06T06:08:02.3664720Z",
+  "time": "2025-06-06T14:57:46.7241142Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -824,7 +824,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-06T06:08:02.3664720Z",
+  "time": "2025-06-06T14:57:46.7241142Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -839,7 +839,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-06T06:08:02.3664720Z",
+  "time": "2025-06-06T14:57:46.7241142Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -1282,8 +1282,8 @@
     "securitySchemes": {
       "APIKey": {
         "type": "apiKey",
-        "description": "CoinAPI API key needed to access the endpoints",
-        "name": "X-CoinAPI-Key",
+        "description": "API Key is required to access the endpoints",
+        "name": "Authorization",
         "in": "header"
       }
     }

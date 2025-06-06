@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents a timeseries period used in exchange rate data.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-06T15:09:18.296665653Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-06T15:20:34.471567044Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class V1TimeseriesPeriod {
   public static final String SERIALIZED_NAME_PERIOD_ID = "period_id";
   @SerializedName(SERIALIZED_NAME_PERIOD_ID)

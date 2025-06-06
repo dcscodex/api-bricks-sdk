@@ -23,9 +23,9 @@ Retrieves the exchange rate for a specific base and quote asset at a given time 
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure API key authorization: APIKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $AssetIdBase = "MyAssetIdBase" # String | Requested exchange rate base asset identifier (from the Metadata -> Assets)
 $AssetIdQuote = "MyAssetIdQuote" # String | Requested exchange rate quote asset identifier (from the Metadata -> Assets)
@@ -77,9 +77,9 @@ Get the current exchange rate between requested asset and all other assets.     
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure API key authorization: APIKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $AssetIdBase = "MyAssetIdBase" # String | Requested exchange rates base asset identifier (from the Metadata -> Assets)
 $FilterAssetId = "MyFilterAssetId" # String | Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)

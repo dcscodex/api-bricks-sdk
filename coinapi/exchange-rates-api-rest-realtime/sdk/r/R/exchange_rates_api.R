@@ -24,7 +24,7 @@
 #' api_instance <- ExchangeRatesApi$new()
 #'
 #' # Configure API key authorization: APIKey
-#' api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quotedata_file = "result.txt")
@@ -43,7 +43,7 @@
 #' api_instance <- ExchangeRatesApi$new()
 #'
 #' # Configure API key authorization: APIKey
-#' api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$V1ExchangerateAssetIdBaseGet(var_asset_id_base, filter_asset_id = var_filter_asset_id, invert = var_invertdata_file = "result.txt")
@@ -133,8 +133,8 @@ ExchangeRatesApi <- R6::R6Class(
       }
 
       # API key authentication
-      if ("X-CoinAPI-Key" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-CoinAPI-Key"]) > 0) {
-        header_params["X-CoinAPI-Key"] <- paste(unlist(self$api_client$api_keys["X-CoinAPI-Key"]), collapse = "")
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
       }
 
       # The Accept request HTTP header
@@ -245,8 +245,8 @@ ExchangeRatesApi <- R6::R6Class(
       }
 
       # API key authentication
-      if ("X-CoinAPI-Key" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-CoinAPI-Key"]) > 0) {
-        header_params["X-CoinAPI-Key"] <- paste(unlist(self$api_client$api_keys["X-CoinAPI-Key"]), collapse = "")
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
       }
 
       # The Accept request HTTP header

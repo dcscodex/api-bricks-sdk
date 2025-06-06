@@ -40,7 +40,7 @@ export class ExchangeRatesApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'APIKey': new ApiKeyAuth('header', 'X-CoinAPI-Key'),
+        'APIKey': new ApiKeyAuth('header', 'Authorization'),
     }
 
     protected interceptors: Interceptor[] = [];

@@ -46,7 +46,7 @@ export class MetadataApi extends BaseAPI {
         throwIfNullOrUndefined(assetId, 'assetId', 'v1AssetsAssetIdGet');
 
         const headers: HttpHeaders = {
-            ...(this.configuration.apiKey && { 'X-CoinAPI-Key': this.configuration.apiKey('X-CoinAPI-Key') }), // APIKey authentication
+            ...(this.configuration.apiKey && { 'Authorization': this.configuration.apiKey('Authorization') }), // APIKey authentication
         };
 
         return this.request<Array<V1Asset>>({
@@ -65,7 +65,7 @@ export class MetadataApi extends BaseAPI {
     v1AssetsGet({ filterAssetId }: V1AssetsGetRequest, opts?: OperationOpts): Observable<Array<V1Asset> | AjaxResponse<Array<V1Asset>>> {
 
         const headers: HttpHeaders = {
-            ...(this.configuration.apiKey && { 'X-CoinAPI-Key': this.configuration.apiKey('X-CoinAPI-Key') }), // APIKey authentication
+            ...(this.configuration.apiKey && { 'Authorization': this.configuration.apiKey('Authorization') }), // APIKey authentication
         };
 
         const query: HttpQuery = {};
@@ -90,7 +90,7 @@ export class MetadataApi extends BaseAPI {
         throwIfNullOrUndefined(size, 'size', 'v1AssetsIconsSizeGet');
 
         const headers: HttpHeaders = {
-            ...(this.configuration.apiKey && { 'X-CoinAPI-Key': this.configuration.apiKey('X-CoinAPI-Key') }), // APIKey authentication
+            ...(this.configuration.apiKey && { 'Authorization': this.configuration.apiKey('Authorization') }), // APIKey authentication
         };
 
         return this.request<Array<V1Icon>>({

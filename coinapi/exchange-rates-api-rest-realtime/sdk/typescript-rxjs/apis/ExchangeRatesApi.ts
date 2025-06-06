@@ -47,7 +47,7 @@ export class ExchangeRatesApi extends BaseAPI {
         throwIfNullOrUndefined(assetIdQuote, 'assetIdQuote', 'getSpecificRate');
 
         const headers: HttpHeaders = {
-            ...(this.configuration.apiKey && { 'X-CoinAPI-Key': this.configuration.apiKey('X-CoinAPI-Key') }), // APIKey authentication
+            ...(this.configuration.apiKey && { 'Authorization': this.configuration.apiKey('Authorization') }), // APIKey authentication
         };
 
         return this.request<V1ExchangeRate>({
@@ -67,7 +67,7 @@ export class ExchangeRatesApi extends BaseAPI {
         throwIfNullOrUndefined(assetIdBase, 'assetIdBase', 'v1ExchangerateAssetIdBaseGet');
 
         const headers: HttpHeaders = {
-            ...(this.configuration.apiKey && { 'X-CoinAPI-Key': this.configuration.apiKey('X-CoinAPI-Key') }), // APIKey authentication
+            ...(this.configuration.apiKey && { 'Authorization': this.configuration.apiKey('Authorization') }), // APIKey authentication
         };
 
         const query: HttpQuery = {};

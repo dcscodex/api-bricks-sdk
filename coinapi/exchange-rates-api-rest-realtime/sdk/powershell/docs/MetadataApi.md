@@ -21,9 +21,9 @@ List all assets by asset ID
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure API key authorization: APIKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $AssetId = "MyAssetId" # String | The asset ID.
 
@@ -71,9 +71,9 @@ Retrieves all assets.                :::info  Our asset identifiers are aligned 
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure API key authorization: APIKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $FilterAssetId = "MyFilterAssetId" # String | Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. `BTC;ETH`). (optional)
 
@@ -121,9 +121,9 @@ Gets the list of icons (of the given size) for all the assets.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure API key authorization: APIKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $Size = 56 # Int32 | The size of the icons.
 

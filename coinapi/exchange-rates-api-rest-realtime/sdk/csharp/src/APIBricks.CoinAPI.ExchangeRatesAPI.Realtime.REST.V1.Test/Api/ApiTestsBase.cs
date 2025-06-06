@@ -54,7 +54,7 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Test.Api
             .ConfigureApi((context, services, options) =>
             {
                 string apiKeyTokenValue1 = context.Configuration["<token>"] ?? throw new Exception("Token not found.");
-                ApiKeyToken apiKeyToken1 = new(apiKeyTokenValue1, ClientUtils.ApiKeyHeader.X_CoinAPI_Key, timeout: TimeSpan.FromSeconds(1));
+                ApiKeyToken apiKeyToken1 = new(apiKeyTokenValue1, ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
                 options.AddTokens(apiKeyToken1);
             });
     }

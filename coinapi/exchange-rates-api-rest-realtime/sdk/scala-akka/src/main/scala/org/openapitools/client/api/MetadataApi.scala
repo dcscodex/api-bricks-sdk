@@ -35,7 +35,7 @@ class MetadataApi(baseUrl: String) {
    */
   def v1AssetsAssetIdGet(assetId: String)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets/{asset_id}", "application/json")
-      .withApiKey(apiKey, "X-CoinAPI-Key", HEADER)
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("asset_id", assetId)
       .withSuccessResponse[Seq[Asset]](200)
       
@@ -53,7 +53,7 @@ class MetadataApi(baseUrl: String) {
    */
   def v1AssetsGet(filterAssetId: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets", "application/json")
-      .withApiKey(apiKey, "X-CoinAPI-Key", HEADER)
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter_asset_id", filterAssetId)
       .withSuccessResponse[Seq[Asset]](200)
       
@@ -71,7 +71,7 @@ class MetadataApi(baseUrl: String) {
    */
   def v1AssetsIconsSizeGet(size: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Icon]] =
     ApiRequest[Seq[Icon]](ApiMethods.GET, baseUrl, "/v1/assets/icons/{size}", "application/json")
-      .withApiKey(apiKey, "X-CoinAPI-Key", HEADER)
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("size", size)
       .withSuccessResponse[Seq[Icon]](200)
       

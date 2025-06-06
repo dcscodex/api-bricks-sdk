@@ -273,9 +273,9 @@ use Data::Dumper;
 
 my $api_instance = WWW::OpenAPIClient::ExchangeRatesApi->new(
     # Configure API key authorization: APIKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $asset_id_base = "asset_id_base_example"; # string | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -319,6 +319,6 @@ Authentication schemes defined for the API:
 ## APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 

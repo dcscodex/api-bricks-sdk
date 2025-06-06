@@ -38,7 +38,7 @@ class ExchangeRatesApi(baseUrl: String) {
    */
   def getSpecificRate(assetIdBase: String, assetIdQuote: String)(implicit apiKey: ApiKeyValue): ApiRequest[ExchangeRate] =
     ApiRequest[ExchangeRate](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}/{asset_id_quote}", "application/json")
-      .withApiKey(apiKey, "X-CoinAPI-Key", HEADER)
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("asset_id_base", assetIdBase)
       .withPathParam("asset_id_quote", assetIdQuote)
       .withSuccessResponse[ExchangeRate](200)
@@ -59,7 +59,7 @@ class ExchangeRatesApi(baseUrl: String) {
    */
   def v1ExchangerateAssetIdBaseGet(assetIdBase: String, filterAssetId: Option[String] = None, invert: Option[Boolean] = None)(implicit apiKey: ApiKeyValue): ApiRequest[ExchangeRates] =
     ApiRequest[ExchangeRates](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}", "application/json")
-      .withApiKey(apiKey, "X-CoinAPI-Key", HEADER)
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter_asset_id", filterAssetId)
       .withQueryParam("invert", invert)
       .withPathParam("asset_id_base", assetIdBase)

@@ -8,7 +8,7 @@
            (java.text SimpleDateFormat)))
 
 (def auth-definitions
-  {"APIKey" {:type :api-key :in :header :param-name "X-CoinAPI-Key"}})
+  {"APIKey" {:type :api-key :in :header :param-name "Authorization"}})
 
 (def default-api-context
   "Default API context."

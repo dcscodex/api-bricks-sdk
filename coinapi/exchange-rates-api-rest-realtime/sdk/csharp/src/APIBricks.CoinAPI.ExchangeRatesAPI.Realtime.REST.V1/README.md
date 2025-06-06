@@ -124,7 +124,7 @@ Authentication schemes defined for the API:
 ### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 
@@ -173,7 +173,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {8FB991E0-CC06-42D3-A6C5-7EEE7E014C7B}
+- packageGuid: {5673CAEB-F6AA-4FC9-9855-C45EEAB7B4CD}
 - packageName: APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

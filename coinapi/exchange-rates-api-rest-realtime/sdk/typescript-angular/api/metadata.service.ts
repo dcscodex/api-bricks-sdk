@@ -54,7 +54,7 @@ export class MetadataService extends BaseService {
         let localVarHeaders = this.defaultHeaders;
 
         // authentication (APIKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'X-CoinAPI-Key', localVarHeaders);
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -116,7 +116,7 @@ export class MetadataService extends BaseService {
         let localVarHeaders = this.defaultHeaders;
 
         // authentication (APIKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'X-CoinAPI-Key', localVarHeaders);
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -178,7 +178,7 @@ export class MetadataService extends BaseService {
         let localVarHeaders = this.defaultHeaders;
 
         // authentication (APIKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'X-CoinAPI-Key', localVarHeaders);
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',

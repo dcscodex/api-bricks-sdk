@@ -55,7 +55,7 @@ class MetadataApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
-            'keyName': 'X-CoinAPI-Key',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -137,7 +137,7 @@ class MetadataApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
-            'keyName': 'X-CoinAPI-Key',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -224,7 +224,7 @@ class MetadataApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
-            'keyName': 'X-CoinAPI-Key',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],

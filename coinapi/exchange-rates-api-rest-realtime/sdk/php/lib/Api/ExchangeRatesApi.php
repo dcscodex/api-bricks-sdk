@@ -396,9 +396,9 @@ class ExchangeRatesApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-CoinAPI-Key');
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
         if ($apiKey !== null) {
-            $headers['X-CoinAPI-Key'] = $apiKey;
+            $headers['Authorization'] = $apiKey;
         }
 
         $defaultHeaders = [];
@@ -699,9 +699,9 @@ class ExchangeRatesApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-CoinAPI-Key');
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
         if ($apiKey !== null) {
-            $headers['X-CoinAPI-Key'] = $apiKey;
+            $headers['Authorization'] = $apiKey;
         }
 
         $defaultHeaders = [];

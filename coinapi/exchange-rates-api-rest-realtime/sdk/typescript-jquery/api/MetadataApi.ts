@@ -80,7 +80,7 @@ export class MetadataApi {
 
         // authentication (APIKey) required
         if (this.configuration.apiKey) {
-            headerParams['X-CoinAPI-Key'] = this.configuration.apiKey;
+            headerParams['Authorization'] = this.configuration.apiKey;
         }
 
 
@@ -148,7 +148,7 @@ export class MetadataApi {
 
         // authentication (APIKey) required
         if (this.configuration.apiKey) {
-            headerParams['X-CoinAPI-Key'] = this.configuration.apiKey;
+            headerParams['Authorization'] = this.configuration.apiKey;
         }
 
 
@@ -218,7 +218,7 @@ export class MetadataApi {
 
         // authentication (APIKey) required
         if (this.configuration.apiKey) {
-            headerParams['X-CoinAPI-Key'] = this.configuration.apiKey;
+            headerParams['Authorization'] = this.configuration.apiKey;
         }
 
 

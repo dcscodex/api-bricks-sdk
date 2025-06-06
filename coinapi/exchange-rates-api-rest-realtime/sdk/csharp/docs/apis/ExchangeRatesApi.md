@@ -32,9 +32,9 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api-realtime.exrates.coinapi.io";
             // Configure API key authorization: APIKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -130,9 +130,9 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api-realtime.exrates.coinapi.io";
             // Configure API key authorization: APIKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rates base asset identifier (from the Metadata -> Assets)

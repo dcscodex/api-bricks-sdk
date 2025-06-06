@@ -360,9 +360,9 @@ export const ExchangeRatesApiFetchParamCreator = function (configuration?: Confi
             // authentication APIKey required
             if (configuration && configuration.apiKey) {
                 const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("X-CoinAPI-Key")
+                    ? configuration.apiKey("Authorization")
                     : configuration.apiKey;
-                localVarHeaderParameter["X-CoinAPI-Key"] = localVarApiKeyValue;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -395,9 +395,9 @@ export const ExchangeRatesApiFetchParamCreator = function (configuration?: Confi
             // authentication APIKey required
             if (configuration && configuration.apiKey) {
                 const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("X-CoinAPI-Key")
+                    ? configuration.apiKey("Authorization")
                     : configuration.apiKey;
-                localVarHeaderParameter["X-CoinAPI-Key"] = localVarApiKeyValue;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
             if (filterAssetId !== undefined) {
@@ -494,9 +494,9 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             // authentication APIKey required
             if (configuration && configuration.apiKey) {
                 const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("X-CoinAPI-Key")
+                    ? configuration.apiKey("Authorization")
                     : configuration.apiKey;
-                localVarHeaderParameter["X-CoinAPI-Key"] = localVarApiKeyValue;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -524,9 +524,9 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             // authentication APIKey required
             if (configuration && configuration.apiKey) {
                 const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("X-CoinAPI-Key")
+                    ? configuration.apiKey("Authorization")
                     : configuration.apiKey;
-                localVarHeaderParameter["X-CoinAPI-Key"] = localVarApiKeyValue;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
             if (filterAssetId !== undefined) {
@@ -563,9 +563,9 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             // authentication APIKey required
             if (configuration && configuration.apiKey) {
                 const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("X-CoinAPI-Key")
+                    ? configuration.apiKey("Authorization")
                     : configuration.apiKey;
-                localVarHeaderParameter["X-CoinAPI-Key"] = localVarApiKeyValue;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);

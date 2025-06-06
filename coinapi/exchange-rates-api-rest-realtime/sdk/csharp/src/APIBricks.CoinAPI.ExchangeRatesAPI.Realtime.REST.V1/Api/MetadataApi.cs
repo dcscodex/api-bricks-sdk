@@ -360,7 +360,7 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Basset_id%7D", Uri.EscapeDataString(assetId.ToString()));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-CoinAPI-Key", cancellationToken).ConfigureAwait(false);
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("Authorization", cancellationToken).ConfigureAwait(false);
                     tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
                     apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
 
@@ -598,7 +598,7 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Api
                     uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-CoinAPI-Key", cancellationToken).ConfigureAwait(false);
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("Authorization", cancellationToken).ConfigureAwait(false);
                     tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
                     apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
 
@@ -817,7 +817,7 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bsize%7D", Uri.EscapeDataString(size.ToString()));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-CoinAPI-Key", cancellationToken).ConfigureAwait(false);
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("Authorization", cancellationToken).ConfigureAwait(false);
                     tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
                     apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
 

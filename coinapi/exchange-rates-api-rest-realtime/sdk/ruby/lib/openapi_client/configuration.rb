@@ -248,8 +248,8 @@ module OpenapiClient
           {
             type: 'api_key',
             in: 'header',
-            key: 'X-CoinAPI-Key',
-            value: api_key_with_prefix('X-CoinAPI-Key')
+            key: 'Authorization',
+            value: api_key_with_prefix('Authorization')
           },
       }
     end

@@ -260,7 +260,7 @@ header_arguments_to_curl() {
     local headers_curl=""
     local api_key_header=""
     local api_key_header_in_cli=""
-    api_key_header="X-CoinAPI-Key"
+    api_key_header="Authorization"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
@@ -535,7 +535,7 @@ ${BOLD}${WHITE}Usage${OFF}
 EOF
     echo -e "${BOLD}${WHITE}Authentication methods${OFF}"
     echo -e ""
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}X-CoinAPI-Key:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
+    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
     
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
@@ -1050,7 +1050,7 @@ case $key in
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable
         #
-        if [[ $header_name == "X-CoinAPI-Key" ]]; then
+        if [[ $header_name == "Authorization" ]]; then
             apikey_auth_credential=$header_value
         fi
         header_arguments[$header_name]=$header_value

@@ -108,7 +108,7 @@ func (a *ExchangeRatesAPIService) GetSpecificRateExecute(r ApiGetSpecificRateReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-CoinAPI-Key"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -256,7 +256,7 @@ func (a *ExchangeRatesAPIService) V1ExchangerateAssetIdBaseGetExecute(r ApiV1Exc
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-CoinAPI-Key"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

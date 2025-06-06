@@ -46,7 +46,7 @@ Class | Method | HTTP request | Description
 ## APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 

@@ -48,8 +48,8 @@ try {
 
 
 Configure APIKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
 
 ### HTTP request headers
 
@@ -97,8 +97,8 @@ try {
 
 
 Configure APIKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
 
 ### HTTP request headers
 
@@ -146,8 +146,8 @@ try {
 
 
 Configure APIKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
 
 ### HTTP request headers
 

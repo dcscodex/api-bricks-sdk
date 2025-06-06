@@ -98,7 +98,7 @@ func (a *MetadataAPIService) V1AssetsAssetIdGetExecute(r ApiV1AssetsAssetIdGetRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-CoinAPI-Key"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -229,7 +229,7 @@ func (a *MetadataAPIService) V1AssetsGetExecute(r ApiV1AssetsGetRequest) ([]V1As
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-CoinAPI-Key"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *MetadataAPIService) V1AssetsIconsSizeGetExecute(r ApiV1AssetsIconsSizeG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-CoinAPI-Key"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

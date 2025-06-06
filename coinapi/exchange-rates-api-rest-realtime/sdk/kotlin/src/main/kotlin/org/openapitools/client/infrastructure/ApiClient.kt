@@ -250,12 +250,12 @@ open class ApiClient(val baseUrl: String, val client: Call.Factory = defaultClie
     }
 
     protected fun <T> updateAuthParams(requestConfig: RequestConfig<T>) {
-        if (requestConfig.headers["X-CoinAPI-Key"].isNullOrEmpty()) {
-            if (apiKey["X-CoinAPI-Key"] != null) {
-                if (apiKeyPrefix["X-CoinAPI-Key"] != null) {
-                    requestConfig.headers["X-CoinAPI-Key"] = apiKeyPrefix["X-CoinAPI-Key"]!! + " " + apiKey["X-CoinAPI-Key"]!!
+        if (requestConfig.headers["Authorization"].isNullOrEmpty()) {
+            if (apiKey["Authorization"] != null) {
+                if (apiKeyPrefix["Authorization"] != null) {
+                    requestConfig.headers["Authorization"] = apiKeyPrefix["Authorization"]!! + " " + apiKey["Authorization"]!!
                 } else {
-                    requestConfig.headers["X-CoinAPI-Key"] = apiKey["X-CoinAPI-Key"]!!
+                    requestConfig.headers["Authorization"] = apiKey["Authorization"]!!
                 }
             }
         }

@@ -26,9 +26,9 @@ use WWW::OpenAPIClient::MetadataApi;
 my $api_instance = WWW::OpenAPIClient::MetadataApi->new(
 
     # Configure API key authorization: APIKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $asset_id = "asset_id_example"; # string | The asset ID.
@@ -77,9 +77,9 @@ use WWW::OpenAPIClient::MetadataApi;
 my $api_instance = WWW::OpenAPIClient::MetadataApi->new(
 
     # Configure API key authorization: APIKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $filter_asset_id = "filter_asset_id_example"; # string | Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. `BTC;ETH`).
@@ -128,9 +128,9 @@ use WWW::OpenAPIClient::MetadataApi;
 my $api_instance = WWW::OpenAPIClient::MetadataApi->new(
 
     # Configure API key authorization: APIKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $size = 56; # int | The size of the icons.

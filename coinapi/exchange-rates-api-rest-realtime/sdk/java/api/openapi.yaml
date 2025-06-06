@@ -626,7 +626,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-06T06:08:02.3664720Z
+                    time: 2025-06-06T14:57:46.7241142Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -636,7 +636,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-06T06:08:02.3664720Z
+                    time: 2025-06-06T14:57:46.7241142Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -646,7 +646,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-06T06:08:02.3664720Z
+                    time: 2025-06-06T14:57:46.7241142Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -656,7 +656,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-06T06:08:02.3664720Z
+                    time: 2025-06-06T14:57:46.7241142Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -1053,8 +1053,8 @@ components:
       type: object
   securitySchemes:
     APIKey:
-      description: CoinAPI API key needed to access the endpoints
+      description: API Key is required to access the endpoints
       in: header
-      name: X-CoinAPI-Key
+      name: Authorization
       type: apiKey
 

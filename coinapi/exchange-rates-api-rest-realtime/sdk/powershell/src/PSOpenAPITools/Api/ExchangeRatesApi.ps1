@@ -81,14 +81,14 @@ function Get-SpecificRate {
         }
         $LocalVarUri = $LocalVarUri.replace('{asset_id_quote}', [System.Web.HTTPUtility]::UrlEncode($AssetIdQuote))
 
-        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["X-CoinAPI-Key"]) {
-            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["X-CoinAPI-Key"]
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]
         } else {
             $apiKeyPrefix = ""
         }
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["X-CoinAPI-Key"]) {
-            $LocalVarHeaderParameters['X-CoinAPI-Key'] = $apiKeyPrefix + $Configuration["ApiKey"]["X-CoinAPI-Key"]
-            Write-Verbose ("Using API key 'X-CoinAPI-Key' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["Authorization"]) {
+            $LocalVarHeaderParameters['Authorization'] = $apiKeyPrefix + $Configuration["ApiKey"]["Authorization"]
+            Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -196,14 +196,14 @@ function Invoke-V1ExchangerateAssetIdBaseGet {
             $LocalVarQueryParameters['invert'] = $Invert
         }
 
-        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["X-CoinAPI-Key"]) {
-            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["X-CoinAPI-Key"]
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]
         } else {
             $apiKeyPrefix = ""
         }
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["X-CoinAPI-Key"]) {
-            $LocalVarHeaderParameters['X-CoinAPI-Key'] = $apiKeyPrefix + $Configuration["ApiKey"]["X-CoinAPI-Key"]
-            Write-Verbose ("Using API key 'X-CoinAPI-Key' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["Authorization"]) {
+            $LocalVarHeaderParameters['Authorization'] = $apiKeyPrefix + $Configuration["ApiKey"]["Authorization"]
+            Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `

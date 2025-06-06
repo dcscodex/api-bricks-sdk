@@ -56,7 +56,7 @@ class ExchangeRatesApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
-            'keyName': 'X-CoinAPI-Key',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -142,7 +142,7 @@ class ExchangeRatesApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
-            'keyName': 'X-CoinAPI-Key',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],

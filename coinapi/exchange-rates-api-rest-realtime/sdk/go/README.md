@@ -103,7 +103,7 @@ Authentication schemes defined for the API:
 ### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: APIKey and passed in as the auth context for each request.

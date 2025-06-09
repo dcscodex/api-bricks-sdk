@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api-historical.sec.finfeedapi.com"
+      "url": "https://api.sec.finfeedapi.com"
     }
   ],
   "paths": {

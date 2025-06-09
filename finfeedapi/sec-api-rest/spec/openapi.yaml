@@ -7,7 +7,7 @@ info:
     email: support@apibricks.io
   version: v1
 servers:
-  - url: https://api-historical.sec.finfeedapi.com
+  - url: https://api.sec.finfeedapi.com
 paths:
   /v1/extractor:
     get:

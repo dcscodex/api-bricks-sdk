@@ -39,7 +39,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class XBRLConversionApi {
-  String basePath = "https://api-historical.sec.finfeedapi.com";
+  String basePath = "https://api.sec.finfeedapi.com";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
   public void addHeader(String key, String value) {

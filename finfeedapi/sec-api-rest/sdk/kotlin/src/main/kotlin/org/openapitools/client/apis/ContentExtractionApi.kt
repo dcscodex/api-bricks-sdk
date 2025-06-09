@@ -43,7 +43,7 @@ class ContentExtractionApi(basePath: kotlin.String = defaultBasePath, client: Ca
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api-historical.sec.finfeedapi.com")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.sec.finfeedapi.com")
         }
     }
 

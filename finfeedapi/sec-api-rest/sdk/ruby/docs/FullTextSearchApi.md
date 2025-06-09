@@ -1,6 +1,6 @@
 # OpenapiClient::FullTextSearchApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |

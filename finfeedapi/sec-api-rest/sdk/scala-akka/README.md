@@ -79,7 +79,7 @@ object ContentExtractionApiExample extends App {
     import system.dispatcher
     // Create invoker to execute requests
     val apiInvoker = ApiInvoker()
-    val apiInstance = ContentExtractionApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = ContentExtractionApi("https://api.sec.finfeedapi.com")
     val accessionNumber: String = accessionNumber_example // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
 
     val `type`: ExtractorType =  // ExtractorType | Result type (text or html, default: text)
@@ -111,7 +111,7 @@ object ContentExtractionApiExample extends App {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

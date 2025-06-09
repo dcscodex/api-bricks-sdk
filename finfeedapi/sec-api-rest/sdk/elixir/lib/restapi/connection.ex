@@ -8,19 +8,19 @@ defmodule RESTAPI.Connection do
   Additional middleware can be set in the compile-time or runtime configuration:
 
       config :tesla, RESTAPI.Connection,
-        base_url: "https://api-historical.sec.finfeedapi.com",
+        base_url: "https://api.sec.finfeedapi.com",
         adapter: Tesla.Adapter.Hackney
 
   The default base URL can also be set as:
 
       config :restapi,
-        :base_url, "https://api-historical.sec.finfeedapi.com"
+        :base_url, "https://api.sec.finfeedapi.com"
   """
 
   @default_base_url Application.compile_env(
                       :restapi,
                       :base_url,
-                      "https://api-historical.sec.finfeedapi.com"
+                      "https://api.sec.finfeedapi.com"
                     )
 
 

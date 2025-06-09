@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://api-historical.sec.finfeedapi.com', this.authentication,});
+  ApiClient({this.basePath = 'https://api.sec.finfeedapi.com', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

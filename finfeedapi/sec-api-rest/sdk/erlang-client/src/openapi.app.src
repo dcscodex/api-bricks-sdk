@@ -9,7 +9,7 @@
      hackney,
      ctx
     ]},
-  {env, [{host, "api-historical.sec.finfeedapi.com"}]},
+  {env, [{host, "api.sec.finfeedapi.com"}]},
   {modules, []},
 
   {maintainers, []},

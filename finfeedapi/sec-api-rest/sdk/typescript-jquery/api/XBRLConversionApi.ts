@@ -20,7 +20,7 @@ import { Configuration } from '../configuration';
 
 
 export class XBRLConversionApi {
-    protected basePath = 'https://api-historical.sec.finfeedapi.com';
+    protected basePath = 'https://api.sec.finfeedapi.com';
     public defaultHeaders: Array<string> = [];
     public defaultExtraJQueryAjaxSettings?: JQueryAjaxSettings = undefined;
     public configuration: Configuration = new Configuration();

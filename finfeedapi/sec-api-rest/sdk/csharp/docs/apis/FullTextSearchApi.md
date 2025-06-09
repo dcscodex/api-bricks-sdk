@@ -1,6 +1,6 @@
 # APIBricks.FinFeedAPI.SECAPI.REST.V1.Api.FullTextSearchApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -29,7 +29,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-historical.sec.finfeedapi.com";
+            config.BasePath = "https://api.sec.finfeedapi.com";
             var apiInstance = new FullTextSearchApi(config);
             var formType = "formType_example";  // string | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional) 
             var fillingDateStart = "fillingDateStart_example";  // string | Filter by filling date start (inclusive), format YYYY-MM-DD (optional) 

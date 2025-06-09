@@ -10,7 +10,7 @@
       ]
     }
   , { env
-    , [ {host, "http://api-historical.sec.finfeedapi.com"}
+    , [ {host, "http://api.sec.finfeedapi.com"}
       , {basic_auth, {"admin", "admin"}}
       ]
     }

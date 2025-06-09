@@ -7,7 +7,7 @@ api_instance <- FilingMetadataApi$new()
 
 test_that("V1FilingsGet", {
   # tests for V1FilingsGet
-  # base path: https://api-historical.sec.finfeedapi.com
+  # base path: https://api.sec.finfeedapi.com
   # Query SEC filing metadata
   # Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
   # @param cik integer Filter by Central Index Key (CIK) (optional)

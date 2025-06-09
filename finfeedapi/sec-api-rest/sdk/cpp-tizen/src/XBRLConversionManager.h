@@ -61,7 +61,7 @@ bool v1XbrlConverterGetAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://api-historical.sec.finfeedapi.com";
+		return "https://api.sec.finfeedapi.com";
 	}
 };
 /** @}*/

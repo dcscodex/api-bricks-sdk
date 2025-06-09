@@ -26,7 +26,7 @@ API.Client.ContentExtractionApi = function($http, $httpParamSerializer, $injecto
   /** @private {!string} */
   this.basePath_ = $injector.has('ContentExtractionApiBasePath') ?
                    /** @type {!string} */ ($injector.get('ContentExtractionApiBasePath')) :
-                   'https://api-historical.sec.finfeedapi.com';
+                   'https://api.sec.finfeedapi.com';
 
   /** @private {!Object<string, string>} */
   this.defaultHeaders_ = $injector.has('ContentExtractionApiDefaultHeaders') ?

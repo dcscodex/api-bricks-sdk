@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	default_base_path: STRING = "https://api-historical.sec.finfeedapi.com"
+	default_base_path: STRING = "https://api.sec.finfeedapi.com"
 			-- default base path.
 
 	base_path: STRING

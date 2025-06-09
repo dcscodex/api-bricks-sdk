@@ -20,7 +20,7 @@ import org.openapitools.client.core.ApiKeyLocations._
 
 object XBRLConversionApi {
 
-  def apply(baseUrl: String = "https://api-historical.sec.finfeedapi.com") = new XBRLConversionApi(baseUrl)
+  def apply(baseUrl: String = "https://api.sec.finfeedapi.com") = new XBRLConversionApi(baseUrl)
 }
 
 class XBRLConversionApi(baseUrl: String) {

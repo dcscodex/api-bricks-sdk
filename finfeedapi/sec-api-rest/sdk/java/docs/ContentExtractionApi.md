@@ -1,6 +1,6 @@
 # ContentExtractionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -28,7 +28,7 @@ import org.openapitools.client.api.ContentExtractionApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api-historical.sec.finfeedapi.com");
+    defaultClient.setBasePath("https://api.sec.finfeedapi.com");
 
     ContentExtractionApi apiInstance = new ContentExtractionApi(defaultClient);
     String accessionNumber = "accessionNumber_example"; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -95,7 +95,7 @@ import org.openapitools.client.api.ContentExtractionApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api-historical.sec.finfeedapi.com");
+    defaultClient.setBasePath("https://api.sec.finfeedapi.com");
 
     ContentExtractionApi apiInstance = new ContentExtractionApi(defaultClient);
     String accessionNumber = "accessionNumber_example"; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.

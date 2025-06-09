@@ -38,7 +38,7 @@ ApiClient <- R6::R6Class(
   "ApiClient",
   public = list(
     # base path of all requests
-    base_path = "https://api-historical.sec.finfeedapi.com",
+    base_path = "https://api.sec.finfeedapi.com",
     # user agent in the HTTP request
     user_agent = "OpenAPI-Generator/1.0.0/r",
     # default headers in the HTTP request

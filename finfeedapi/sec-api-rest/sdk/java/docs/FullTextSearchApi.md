@@ -1,6 +1,6 @@
 # FullTextSearchApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -27,7 +27,7 @@ import org.openapitools.client.api.FullTextSearchApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api-historical.sec.finfeedapi.com");
+    defaultClient.setBasePath("https://api.sec.finfeedapi.com");
 
     FullTextSearchApi apiInstance = new FullTextSearchApi(defaultClient);
     String formType = "formType_example"; // String | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated

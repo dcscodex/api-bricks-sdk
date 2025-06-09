@@ -13,7 +13,7 @@
 
 (def default-api-context
   "Default API context."
-  {:base-url        "https://api-historical.sec.finfeedapi.com"
+  {:base-url        "https://api.sec.finfeedapi.com"
    :date-format     "yyyy-MM-dd"
    :datetime-format "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
    :decode-models   false

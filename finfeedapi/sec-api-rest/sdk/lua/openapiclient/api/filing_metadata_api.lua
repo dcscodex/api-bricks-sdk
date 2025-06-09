@@ -37,7 +37,7 @@ local function new_filing_metadata_api(authority, basePath, schemes)
 	return setmetatable({
 		host = host;
 		port = port;
-		basePath = basePath or "https://api-historical.sec.finfeedapi.com";
+		basePath = basePath or "https://api.sec.finfeedapi.com";
 		schemes = schemes_map;
 		default_scheme = default_scheme;
 		http_username = nil;

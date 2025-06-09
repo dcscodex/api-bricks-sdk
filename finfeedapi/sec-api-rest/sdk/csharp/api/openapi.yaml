@@ -7,7 +7,7 @@ info:
   title: REST API
   version: v1
 servers:
-- url: https://api-historical.sec.finfeedapi.com
+- url: https://api.sec.finfeedapi.com
 security:
 - Basic: []
 tags:

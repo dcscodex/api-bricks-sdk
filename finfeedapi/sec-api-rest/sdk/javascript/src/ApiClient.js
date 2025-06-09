@@ -32,11 +32,11 @@ class ApiClient {
      * Overrides the default value set in spec file if present
      * @param {String} basePath
      */
-    constructor(basePath = 'https://api-historical.sec.finfeedapi.com') {
+    constructor(basePath = 'https://api.sec.finfeedapi.com') {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://api-historical.sec.finfeedapi.com
+         * @default https://api.sec.finfeedapi.com
          */
         this.basePath = basePath.replace(/\/+$/, '');
 
@@ -596,7 +596,7 @@ class ApiClient {
     hostSettings() {
         return [
             {
-              'url': "https://api-historical.sec.finfeedapi.com",
+              'url': "https://api.sec.finfeedapi.com",
               'description': "No description provided",
             }
       ];

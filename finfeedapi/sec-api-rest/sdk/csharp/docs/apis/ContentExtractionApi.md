@@ -1,6 +1,6 @@
 # APIBricks.FinFeedAPI.SECAPI.REST.V1.Api.ContentExtractionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -30,7 +30,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-historical.sec.finfeedapi.com";
+            config.BasePath = "https://api.sec.finfeedapi.com";
             var apiInstance = new ContentExtractionApi(config);
             var accessionNumber = "accessionNumber_example";  // string | The SEC filing accession number used to retrieve the filing from EDGAR database.
             var type = (DTOExtractorType) "text";  // DTOExtractorType | Result type (text or html, default: text) (optional) 
@@ -126,7 +126,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-historical.sec.finfeedapi.com";
+            config.BasePath = "https://api.sec.finfeedapi.com";
             var apiInstance = new ContentExtractionApi(config);
             var accessionNumber = "accessionNumber_example";  // string | The SEC filing accession number used to retrieve the filing from EDGAR database.
             var itemNumber = "itemNumber_example";  // string | The specific item number to extract (e.g., \"1.01\", \"2.01\", \"7.01\").

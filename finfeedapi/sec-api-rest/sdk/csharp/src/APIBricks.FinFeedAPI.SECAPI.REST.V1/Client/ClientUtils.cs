@@ -327,7 +327,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
         /// <summary>
         /// The base path of the API
         /// </summary>
-        public const string BASE_ADDRESS = "https://api-historical.sec.finfeedapi.com";
+        public const string BASE_ADDRESS = "https://api.sec.finfeedapi.com";
 
         /// <summary>
         /// The scheme of the API
@@ -342,7 +342,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
         /// <summary>
         /// The host of the API
         /// </summary>
-        public const string HOST = "api-historical.sec.finfeedapi.com";
+        public const string HOST = "api.sec.finfeedapi.com";
 
         /// <summary>
         /// The format to use for DateTime serialization

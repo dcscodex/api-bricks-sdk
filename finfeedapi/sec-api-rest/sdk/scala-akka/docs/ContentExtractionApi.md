@@ -1,6 +1,6 @@
 # ContentExtractionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -41,7 +41,7 @@ object Example extends App {
     import system.dispatcher
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = ContentExtractionApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = ContentExtractionApi("https://api.sec.finfeedapi.com")
     val accessionNumber: String = accessionNumber_example // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
 
     val `type`: ExtractorType =  // ExtractorType | Result type (text or html, default: text)
@@ -129,7 +129,7 @@ object Example extends App {
     import system.dispatcher
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = ContentExtractionApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = ContentExtractionApi("https://api.sec.finfeedapi.com")
     val accessionNumber: String = accessionNumber_example // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
 
     val itemNumber: String = itemNumber_example // String | The specific item number to extract (e.g., \"1.01\", \"2.01\", \"7.01\").

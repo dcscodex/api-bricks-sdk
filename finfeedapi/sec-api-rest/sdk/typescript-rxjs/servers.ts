@@ -40,6 +40,6 @@ export class ServerConfiguration<T extends { [key: string]: string }> {
     }
 }
 
-const server1 = new ServerConfiguration<{  }>("https://api-historical.sec.finfeedapi.com", {  }, "");
+const server1 = new ServerConfiguration<{  }>("https://api.sec.finfeedapi.com", {  }, "");
 
 export const servers = [server1];

@@ -1,6 +1,6 @@
 # APIBricks.FinFeedAPI.SECAPI.REST.V1.Api.XBRLConversionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -29,7 +29,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-historical.sec.finfeedapi.com";
+            config.BasePath = "https://api.sec.finfeedapi.com";
             var apiInstance = new XBRLConversionApi(config);
             var htmUrl = "htmUrl_example";  // string | URL of the filing ending with .htm or .html (optional) 
             var xbrlUrl = "xbrlUrl_example";  // string | URL of the XBRL file ending with .xml (optional) 

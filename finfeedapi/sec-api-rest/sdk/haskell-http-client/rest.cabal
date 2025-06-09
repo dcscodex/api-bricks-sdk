@@ -4,9 +4,9 @@ synopsis:       Auto-generated rest API Client
 description:    .
                 Client library for calling the REST API API based on http-client.
                 .
-                host: api-historical.sec.finfeedapi.com
+                host: api.sec.finfeedapi.com
                 .
-                base path: https://api-historical.sec.finfeedapi.com
+                base path: https://api.sec.finfeedapi.com
                 .
                 REST API API version: v1
                 .

@@ -1,6 +1,6 @@
 # XBRLConversionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -38,7 +38,7 @@ object Example extends App {
     import system.dispatcher
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = XBRLConversionApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = XBRLConversionApi("https://api.sec.finfeedapi.com")
     val htmUrl: String = htmUrl_example // String | URL of the filing ending with .htm or .html
 
     val xbrlUrl: String = xbrlUrl_example // String | URL of the XBRL file ending with .xml

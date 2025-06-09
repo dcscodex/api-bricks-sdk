@@ -21,7 +21,7 @@ import org.openapitools.client.core.ApiKeyLocations._
 
 object FilingMetadataApi {
 
-  def apply(baseUrl: String = "https://api-historical.sec.finfeedapi.com") = new FilingMetadataApi(baseUrl)
+  def apply(baseUrl: String = "https://api.sec.finfeedapi.com") = new FilingMetadataApi(baseUrl)
 }
 
 class FilingMetadataApi(baseUrl: String) {

@@ -1,6 +1,6 @@
 # FilingMetadataApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -27,7 +27,7 @@ import org.openapitools.client.api.FilingMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api-historical.sec.finfeedapi.com");
+    defaultClient.setBasePath("https://api.sec.finfeedapi.com");
 
     FilingMetadataApi apiInstance = new FilingMetadataApi(defaultClient);
     Long cik = 56L; // Long | Filter by Central Index Key (CIK)

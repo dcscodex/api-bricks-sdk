@@ -1,6 +1,6 @@
 # XbrlConversionApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -27,7 +27,7 @@ import org.openapitools.client.api.XbrlConversionApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api-historical.sec.finfeedapi.com");
+    defaultClient.setBasePath("https://api.sec.finfeedapi.com");
 
     XbrlConversionApi apiInstance = new XbrlConversionApi(defaultClient);
     String htmUrl = "htmUrl_example"; // String | URL of the filing ending with .htm or .html

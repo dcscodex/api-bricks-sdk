@@ -1,6 +1,6 @@
 # FilingMetadataApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -39,7 +39,7 @@ object Example extends App {
     import system.dispatcher
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = FilingMetadataApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = FilingMetadataApi("https://api.sec.finfeedapi.com")
     val cik: Long = 789 // Long | Filter by Central Index Key (CIK)
 
     val ticker: String = ticker_example // String | Filter by stock ticker symbol

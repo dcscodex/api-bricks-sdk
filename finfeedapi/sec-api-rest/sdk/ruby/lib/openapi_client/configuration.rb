@@ -158,7 +158,7 @@ module OpenapiClient
 
     def initialize
       @scheme = 'https'
-      @host = 'api-historical.sec.finfeedapi.com'
+      @host = 'api.sec.finfeedapi.com'
       @base_path = ''
       @server_index = nil
       @server_operation_index = {}
@@ -266,7 +266,7 @@ module OpenapiClient
     def server_settings
       [
         {
-          url: "https://api-historical.sec.finfeedapi.com",
+          url: "https://api.sec.finfeedapi.com",
           description: "No description provided",
         }
       ]

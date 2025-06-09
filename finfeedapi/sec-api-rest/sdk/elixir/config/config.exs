@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-config :restapi, base_url: "https://api-historical.sec.finfeedapi.com"
+config :restapi, base_url: "https://api.sec.finfeedapi.com"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

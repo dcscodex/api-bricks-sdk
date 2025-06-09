@@ -1,6 +1,6 @@
 # api_bricks_sec_api_rest.FilingMetadataApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -44,10 +44,10 @@ from api_bricks_sec_api_rest.models.dto_filing_sort_by import DTOFilingSortBy
 from api_bricks_sec_api_rest.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api-historical.sec.finfeedapi.com
+# Defining the host is optional and defaults to https://api.sec.finfeedapi.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = api_bricks_sec_api_rest.Configuration(
-    host = "https://api-historical.sec.finfeedapi.com"
+    host = "https://api.sec.finfeedapi.com"
 )
 
 

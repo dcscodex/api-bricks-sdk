@@ -24,7 +24,7 @@ function Get-Configuration {
     $Configuration = $Script:Configuration
 
     if ([string]::IsNullOrEmpty($Configuration["BaseUrl"])) {
-        $Configuration["BaseUrl"] = "https://api-historical.sec.finfeedapi.com";
+        $Configuration["BaseUrl"] = "https://api.sec.finfeedapi.com";
     }
 
     if (!$Configuration.containsKey("Username")) {
@@ -313,7 +313,7 @@ System.Collections.Hashtable[]
 function Get-HostSetting {
     return ,@(
           @{
-            "Url" = "https://api-historical.sec.finfeedapi.com";
+            "Url" = "https://api.sec.finfeedapi.com";
             "Description" = "No description provided";
           }
     )

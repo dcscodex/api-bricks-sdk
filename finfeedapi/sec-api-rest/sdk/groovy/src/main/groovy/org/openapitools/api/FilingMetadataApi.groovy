@@ -7,7 +7,7 @@ import org.openapitools.model.MvcProblemDetails
 import org.openapitools.model.MvcValidationProblemDetails
 
 class FilingMetadataApi {
-    String basePath = "https://api-historical.sec.finfeedapi.com"
+    String basePath = "https://api.sec.finfeedapi.com"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 

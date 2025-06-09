@@ -94,7 +94,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://api-historical.sec.finfeedapi.com';
+    protected $host = 'https://api.sec.finfeedapi.com';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -473,7 +473,7 @@ class Configuration
     {
         return [
             [
-                "url" => "https://api-historical.sec.finfeedapi.com",
+                "url" => "https://api.sec.finfeedapi.com",
                 "description" => "No description provided",
             ]
         ];

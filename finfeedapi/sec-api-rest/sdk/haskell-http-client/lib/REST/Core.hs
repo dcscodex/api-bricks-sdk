@@ -98,7 +98,7 @@ instance P.Show RESTConfig where
 --
 -- configHost:
 --
--- @https://api-historical.sec.finfeedapi.com@
+-- @https://api.sec.finfeedapi.com@
 --
 -- configUserAgent:
 --
@@ -108,7 +108,7 @@ newConfig :: IO RESTConfig
 newConfig = do
     logCxt <- initLogContext
     return $ RESTConfig
-        { configHost = "https://api-historical.sec.finfeedapi.com"
+        { configHost = "https://api.sec.finfeedapi.com"
         , configUserAgent = "rest/0.1.0.0"
         , configLogExecWithContext = runDefaultLogExecWithContext
         , configLogContext = logCxt

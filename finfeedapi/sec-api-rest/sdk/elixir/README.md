@@ -31,14 +31,14 @@ You can override the URL of your server (e.g. if you have a separate development
 configuration files).
 
 ```elixir
-config :restapi, base_url: "https://api-historical.sec.finfeedapi.com"
+config :restapi, base_url: "https://api.sec.finfeedapi.com"
 ```
 
 Multiple clients for the same API with different URLs can be created passing different `base_url`s when calling
 `RESTAPI.Connection.new/1`:
 
 ```elixir
-client = RESTAPI.Connection.new(base_url: "https://api-historical.sec.finfeedapi.com")
+client = RESTAPI.Connection.new(base_url: "https://api.sec.finfeedapi.com")
 ```
 
 [exdoc]: https://github.com/elixir-lang/ex_doc

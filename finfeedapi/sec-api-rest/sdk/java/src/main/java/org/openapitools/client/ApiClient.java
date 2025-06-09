@@ -61,10 +61,10 @@ import org.openapitools.client.auth.ApiKeyAuth;
  */
 public class ApiClient {
 
-    private String basePath = "https://api-historical.sec.finfeedapi.com";
+    private String basePath = "https://api.sec.finfeedapi.com";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
-      "https://api-historical.sec.finfeedapi.com",
+      "https://api.sec.finfeedapi.com",
       "No description provided",
       new HashMap<String, ServerVariable>()
     )
@@ -160,7 +160,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api-historical.sec.finfeedapi.com
+     * @param basePath Base path of the URL (e.g https://api.sec.finfeedapi.com
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

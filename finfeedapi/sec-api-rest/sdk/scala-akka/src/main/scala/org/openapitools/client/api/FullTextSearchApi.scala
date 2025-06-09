@@ -20,7 +20,7 @@ import org.openapitools.client.core.ApiKeyLocations._
 
 object FullTextSearchApi {
 
-  def apply(baseUrl: String = "https://api-historical.sec.finfeedapi.com") = new FullTextSearchApi(baseUrl)
+  def apply(baseUrl: String = "https://api.sec.finfeedapi.com") = new FullTextSearchApi(baseUrl)
 }
 
 class FullTextSearchApi(baseUrl: String) {

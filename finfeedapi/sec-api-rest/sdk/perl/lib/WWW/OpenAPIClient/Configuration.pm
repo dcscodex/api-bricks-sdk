@@ -84,7 +84,7 @@ String. The OAuth access token.
 
 String. The base URL of the API
 
-default: https://api-historical.sec.finfeedapi.com
+default: https://api.sec.finfeedapi.com
 
 =back
 
@@ -110,7 +110,7 @@ sub new {
     $p{access_token} //= '';
 
     # base_url
-    $p{base_url} //= 'https://api-historical.sec.finfeedapi.com';
+    $p{base_url} //= 'https://api.sec.finfeedapi.com';
 
     return bless \%p => $self;
 }

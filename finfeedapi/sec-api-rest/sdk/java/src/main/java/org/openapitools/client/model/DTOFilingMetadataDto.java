@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-02T06:15:36.661158473Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-09T06:18:25.292753722Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class DTOFilingMetadataDto {
   public static final String SERIALIZED_NAME_CIK = "cik";
   @SerializedName(SERIALIZED_NAME_CIK)

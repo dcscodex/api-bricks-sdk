@@ -1,6 +1,6 @@
 # OpenAPI\Client\ContentExtractionApi
 
-All URIs are relative to https://api-historical.sec.finfeedapi.com, except if the operation defines another base path.
+All URIs are relative to https://api.sec.finfeedapi.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

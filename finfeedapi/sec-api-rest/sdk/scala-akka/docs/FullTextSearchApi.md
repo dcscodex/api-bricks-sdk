@@ -1,6 +1,6 @@
 # FullTextSearchApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -38,7 +38,7 @@ object Example extends App {
     import system.dispatcher
 
     val apiInvoker = ApiInvoker()
-    val apiInstance = FullTextSearchApi("https://api-historical.sec.finfeedapi.com")
+    val apiInstance = FullTextSearchApi("https://api.sec.finfeedapi.com")
     val formType: String = formType_example // String | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 
     val fillingDateStart: String = fillingDateStart_example // String | Filter by filling date start (inclusive), format YYYY-MM-DD

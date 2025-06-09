@@ -26,7 +26,7 @@ API.Client.FilingMetadataApi = function($http, $httpParamSerializer, $injector) 
   /** @private {!string} */
   this.basePath_ = $injector.has('FilingMetadataApiBasePath') ?
                    /** @type {!string} */ ($injector.get('FilingMetadataApiBasePath')) :
-                   'https://api-historical.sec.finfeedapi.com';
+                   'https://api.sec.finfeedapi.com';
 
   /** @private {!Object<string, string>} */
   this.defaultHeaders_ = $injector.has('FilingMetadataApiDefaultHeaders') ?

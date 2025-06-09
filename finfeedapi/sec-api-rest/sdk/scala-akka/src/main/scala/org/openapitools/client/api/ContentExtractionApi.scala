@@ -21,7 +21,7 @@ import org.openapitools.client.core.ApiKeyLocations._
 
 object ContentExtractionApi {
 
-  def apply(baseUrl: String = "https://api-historical.sec.finfeedapi.com") = new ContentExtractionApi(baseUrl)
+  def apply(baseUrl: String = "https://api.sec.finfeedapi.com") = new ContentExtractionApi(baseUrl)
 }
 
 class ContentExtractionApi(baseUrl: String) {

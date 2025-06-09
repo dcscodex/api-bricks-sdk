@@ -97,7 +97,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api-historical.sec.finfeedapi.com",
+				URL: "https://api.sec.finfeedapi.com",
 				Description: "No description provided",
 			},
 		},

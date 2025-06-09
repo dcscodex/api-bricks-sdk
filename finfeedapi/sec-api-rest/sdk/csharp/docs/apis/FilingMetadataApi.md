@@ -1,6 +1,6 @@
 # APIBricks.FinFeedAPI.SECAPI.REST.V1.Api.FilingMetadataApi
 
-All URIs are relative to *https://api-historical.sec.finfeedapi.com*
+All URIs are relative to *https://api.sec.finfeedapi.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -29,7 +29,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-historical.sec.finfeedapi.com";
+            config.BasePath = "https://api.sec.finfeedapi.com";
             var apiInstance = new FilingMetadataApi(config);
             var cik = 789L;  // long | Filter by Central Index Key (CIK) (optional) 
             var ticker = "ticker_example";  // string | Filter by stock ticker symbol (optional) 

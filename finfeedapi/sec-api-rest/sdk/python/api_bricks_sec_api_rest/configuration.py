@@ -211,7 +211,7 @@ conf = api_bricks_sec_api_rest.Configuration(
     ) -> None:
         """Constructor
         """
-        self._base_path = "https://api-historical.sec.finfeedapi.com" if host is None else host
+        self._base_path = "https://api.sec.finfeedapi.com" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -551,7 +551,7 @@ conf = api_bricks_sec_api_rest.Configuration(
         """
         return [
             {
-                'url': "https://api-historical.sec.finfeedapi.com",
+                'url': "https://api.sec.finfeedapi.com",
                 'description': "No description provided",
             }
         ]

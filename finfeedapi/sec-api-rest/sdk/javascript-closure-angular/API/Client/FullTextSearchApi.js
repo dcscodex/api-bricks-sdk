@@ -25,7 +25,7 @@ API.Client.FullTextSearchApi = function($http, $httpParamSerializer, $injector) 
   /** @private {!string} */
   this.basePath_ = $injector.has('FullTextSearchApiBasePath') ?
                    /** @type {!string} */ ($injector.get('FullTextSearchApiBasePath')) :
-                   'https://api-historical.sec.finfeedapi.com';
+                   'https://api.sec.finfeedapi.com';
 
   /** @private {!Object<string, string>} */
   this.defaultHeaders_ = $injector.has('FullTextSearchApiDefaultHeaders') ?

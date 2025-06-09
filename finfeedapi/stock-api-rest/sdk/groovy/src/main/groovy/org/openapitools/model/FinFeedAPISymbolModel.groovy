@@ -20,4 +20,22 @@ class FinFeedAPISymbolModel {
     String date
     
     String assetClass
+    
+    String cfiCode
+    
+    String cfiCategory
+    
+    String cfiGroup
+    
+    String cfiAttribute1
+    
+    String cfiAttribute2
+    
+    String cfiAttribute3
+    
+    String cfiAttribute4
+    
+    String cfiCategoryDesc
+    
+    String cfiGroupDesc
 }

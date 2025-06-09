@@ -10,6 +10,15 @@
 | **name** | **kotlin.String** |  |  [optional] |
 | **date** | **kotlin.String** |  |  [optional] |
 | **assetClass** | **kotlin.String** |  |  [optional] |
+| **cfiCode** | **kotlin.String** |  |  [optional] |
+| **cfiCategory** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiGroup** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute1** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute2** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute3** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute4** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiCategoryDesc** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiGroupDesc** | **kotlin.String** |  |  [optional] [readonly] |
 
 
 

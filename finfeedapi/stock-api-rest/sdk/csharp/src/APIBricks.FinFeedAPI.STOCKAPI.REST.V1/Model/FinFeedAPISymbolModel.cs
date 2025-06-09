@@ -41,8 +41,17 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
         /// <param name="name">name</param>
         /// <param name="date">date</param>
         /// <param name="assetClass">assetClass</param>
+        /// <param name="cfiCode">cfiCode</param>
+        /// <param name="cfiCategory">cfiCategory</param>
+        /// <param name="cfiGroup">cfiGroup</param>
+        /// <param name="cfiAttribute1">cfiAttribute1</param>
+        /// <param name="cfiAttribute2">cfiAttribute2</param>
+        /// <param name="cfiAttribute3">cfiAttribute3</param>
+        /// <param name="cfiAttribute4">cfiAttribute4</param>
+        /// <param name="cfiCategoryDesc">cfiCategoryDesc</param>
+        /// <param name="cfiGroupDesc">cfiGroupDesc</param>
         [JsonConstructor]
-        public FinFeedAPISymbolModel(Option<string?> symbolId = default, Option<string?> exchangeId = default, Option<string?> securityCategory = default, Option<string?> name = default, Option<string?> date = default, Option<string?> assetClass = default)
+        public FinFeedAPISymbolModel(Option<string?> symbolId = default, Option<string?> exchangeId = default, Option<string?> securityCategory = default, Option<string?> name = default, Option<string?> date = default, Option<string?> assetClass = default, Option<string?> cfiCode = default, Option<string?> cfiCategory = default, Option<string?> cfiGroup = default, Option<string?> cfiAttribute1 = default, Option<string?> cfiAttribute2 = default, Option<string?> cfiAttribute3 = default, Option<string?> cfiAttribute4 = default, Option<string?> cfiCategoryDesc = default, Option<string?> cfiGroupDesc = default)
         {
             SymbolIdOption = symbolId;
             ExchangeIdOption = exchangeId;
@@ -50,6 +59,15 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             NameOption = name;
             DateOption = date;
             AssetClassOption = assetClass;
+            CfiCodeOption = cfiCode;
+            CfiCategoryOption = cfiCategory;
+            CfiGroupOption = cfiGroup;
+            CfiAttribute1Option = cfiAttribute1;
+            CfiAttribute2Option = cfiAttribute2;
+            CfiAttribute3Option = cfiAttribute3;
+            CfiAttribute4Option = cfiAttribute4;
+            CfiCategoryDescOption = cfiCategoryDesc;
+            CfiGroupDescOption = cfiGroupDesc;
             OnCreated();
         }
 
@@ -134,6 +152,123 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
         public string? AssetClass { get { return this.AssetClassOption; } set { this.AssetClassOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CfiCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CfiCode
+        /// </summary>
+        [JsonPropertyName("cfi_code")]
+        public string? CfiCode { get { return this.CfiCodeOption; } set { this.CfiCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of CfiCategory
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiCategoryOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiCategory
+        /// </summary>
+        [JsonPropertyName("cfi_category")]
+        public string? CfiCategory { get { return this.CfiCategoryOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiGroup
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiGroupOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiGroup
+        /// </summary>
+        [JsonPropertyName("cfi_group")]
+        public string? CfiGroup { get { return this.CfiGroupOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute1
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute1Option { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute1
+        /// </summary>
+        [JsonPropertyName("cfi_attribute1")]
+        public string? CfiAttribute1 { get { return this.CfiAttribute1Option; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute2
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute2Option { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute2
+        /// </summary>
+        [JsonPropertyName("cfi_attribute2")]
+        public string? CfiAttribute2 { get { return this.CfiAttribute2Option; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute3
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute3Option { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute3
+        /// </summary>
+        [JsonPropertyName("cfi_attribute3")]
+        public string? CfiAttribute3 { get { return this.CfiAttribute3Option; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute4
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute4Option { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute4
+        /// </summary>
+        [JsonPropertyName("cfi_attribute4")]
+        public string? CfiAttribute4 { get { return this.CfiAttribute4Option; } }
+
+        /// <summary>
+        /// Used to track the state of CfiCategoryDesc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiCategoryDescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiCategoryDesc
+        /// </summary>
+        [JsonPropertyName("cfi_category_desc")]
+        public string? CfiCategoryDesc { get { return this.CfiCategoryDescOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiGroupDesc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiGroupDescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiGroupDesc
+        /// </summary>
+        [JsonPropertyName("cfi_group_desc")]
+        public string? CfiGroupDesc { get { return this.CfiGroupDescOption; } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -153,6 +288,15 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Date: ").Append(Date).Append("\n");
             sb.Append("  AssetClass: ").Append(AssetClass).Append("\n");
+            sb.Append("  CfiCode: ").Append(CfiCode).Append("\n");
+            sb.Append("  CfiCategory: ").Append(CfiCategory).Append("\n");
+            sb.Append("  CfiGroup: ").Append(CfiGroup).Append("\n");
+            sb.Append("  CfiAttribute1: ").Append(CfiAttribute1).Append("\n");
+            sb.Append("  CfiAttribute2: ").Append(CfiAttribute2).Append("\n");
+            sb.Append("  CfiAttribute3: ").Append(CfiAttribute3).Append("\n");
+            sb.Append("  CfiAttribute4: ").Append(CfiAttribute4).Append("\n");
+            sb.Append("  CfiCategoryDesc: ").Append(CfiCategoryDesc).Append("\n");
+            sb.Append("  CfiGroupDesc: ").Append(CfiGroupDesc).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -197,6 +341,15 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             Option<string?> name = default;
             Option<string?> date = default;
             Option<string?> assetClass = default;
+            Option<string?> cfiCode = default;
+            Option<string?> cfiCategory = default;
+            Option<string?> cfiGroup = default;
+            Option<string?> cfiAttribute1 = default;
+            Option<string?> cfiAttribute2 = default;
+            Option<string?> cfiAttribute3 = default;
+            Option<string?> cfiAttribute4 = default;
+            Option<string?> cfiCategoryDesc = default;
+            Option<string?> cfiGroupDesc = default;
 
             while (utf8JsonReader.Read())
             {
@@ -231,13 +384,40 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
                         case "asset_class":
                             assetClass = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "cfi_code":
+                            cfiCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_category":
+                            cfiCategory = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_group":
+                            cfiGroup = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute1":
+                            cfiAttribute1 = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute2":
+                            cfiAttribute2 = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute3":
+                            cfiAttribute3 = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute4":
+                            cfiAttribute4 = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_category_desc":
+                            cfiCategoryDesc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_group_desc":
+                            cfiGroupDesc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FinFeedAPISymbolModel(symbolId, exchangeId, securityCategory, name, date, assetClass);
+            return new FinFeedAPISymbolModel(symbolId, exchangeId, securityCategory, name, date, assetClass, cfiCode, cfiCategory, cfiGroup, cfiAttribute1, cfiAttribute2, cfiAttribute3, cfiAttribute4, cfiCategoryDesc, cfiGroupDesc);
         }
 
         /// <summary>
@@ -299,6 +479,60 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
                     writer.WriteString("asset_class", finFeedAPISymbolModel.AssetClass);
                 else
                     writer.WriteNull("asset_class");
+
+            if (finFeedAPISymbolModel.CfiCodeOption.IsSet)
+                if (finFeedAPISymbolModel.CfiCodeOption.Value != null)
+                    writer.WriteString("cfi_code", finFeedAPISymbolModel.CfiCode);
+                else
+                    writer.WriteNull("cfi_code");
+
+            if (finFeedAPISymbolModel.CfiCategoryOption.IsSet)
+                if (finFeedAPISymbolModel.CfiCategoryOption.Value != null)
+                    writer.WriteString("cfi_category", finFeedAPISymbolModel.CfiCategory);
+                else
+                    writer.WriteNull("cfi_category");
+
+            if (finFeedAPISymbolModel.CfiGroupOption.IsSet)
+                if (finFeedAPISymbolModel.CfiGroupOption.Value != null)
+                    writer.WriteString("cfi_group", finFeedAPISymbolModel.CfiGroup);
+                else
+                    writer.WriteNull("cfi_group");
+
+            if (finFeedAPISymbolModel.CfiAttribute1Option.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute1Option.Value != null)
+                    writer.WriteString("cfi_attribute1", finFeedAPISymbolModel.CfiAttribute1);
+                else
+                    writer.WriteNull("cfi_attribute1");
+
+            if (finFeedAPISymbolModel.CfiAttribute2Option.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute2Option.Value != null)
+                    writer.WriteString("cfi_attribute2", finFeedAPISymbolModel.CfiAttribute2);
+                else
+                    writer.WriteNull("cfi_attribute2");
+
+            if (finFeedAPISymbolModel.CfiAttribute3Option.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute3Option.Value != null)
+                    writer.WriteString("cfi_attribute3", finFeedAPISymbolModel.CfiAttribute3);
+                else
+                    writer.WriteNull("cfi_attribute3");
+
+            if (finFeedAPISymbolModel.CfiAttribute4Option.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute4Option.Value != null)
+                    writer.WriteString("cfi_attribute4", finFeedAPISymbolModel.CfiAttribute4);
+                else
+                    writer.WriteNull("cfi_attribute4");
+
+            if (finFeedAPISymbolModel.CfiCategoryDescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiCategoryDescOption.Value != null)
+                    writer.WriteString("cfi_category_desc", finFeedAPISymbolModel.CfiCategoryDesc);
+                else
+                    writer.WriteNull("cfi_category_desc");
+
+            if (finFeedAPISymbolModel.CfiGroupDescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiGroupDescOption.Value != null)
+                    writer.WriteString("cfi_group_desc", finFeedAPISymbolModel.CfiGroupDesc);
+                else
+                    writer.WriteNull("cfi_group_desc");
         }
     }
 }

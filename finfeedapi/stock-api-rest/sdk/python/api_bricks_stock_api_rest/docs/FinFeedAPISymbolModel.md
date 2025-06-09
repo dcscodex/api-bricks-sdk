@@ -11,6 +11,15 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **var_date** | **str** |  | [optional] 
 **asset_class** | **str** |  | [optional] 
+**cfi_code** | **str** |  | [optional] 
+**cfi_category** | **str** |  | [optional] [readonly] 
+**cfi_group** | **str** |  | [optional] [readonly] 
+**cfi_attribute1** | **str** |  | [optional] [readonly] 
+**cfi_attribute2** | **str** |  | [optional] [readonly] 
+**cfi_attribute3** | **str** |  | [optional] [readonly] 
+**cfi_attribute4** | **str** |  | [optional] [readonly] 
+**cfi_category_desc** | **str** |  | [optional] [readonly] 
+**cfi_group_desc** | **str** |  | [optional] [readonly] 
 
 ## Example
 

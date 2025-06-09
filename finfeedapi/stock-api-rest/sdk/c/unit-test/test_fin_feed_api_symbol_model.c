@@ -27,10 +27,28 @@ fin_feed_api_symbol_model_t* instantiate_fin_feed_api_symbol_model(int include_o
       "0",
       "0",
       "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0"
     );
   } else {
     fin_feed_api_symbol_model = fin_feed_api_symbol_model_create(
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",

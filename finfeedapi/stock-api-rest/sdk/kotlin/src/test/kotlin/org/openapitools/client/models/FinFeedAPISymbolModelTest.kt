@@ -61,5 +61,59 @@ class FinFeedAPISymbolModelTest : ShouldSpec() {
             //modelInstance.assetClass shouldBe ("TODO")
         }
 
+        // to test the property `cfiCode`
+        should("test cfiCode") {
+            // uncomment below to test the property
+            //modelInstance.cfiCode shouldBe ("TODO")
+        }
+
+        // to test the property `cfiCategory`
+        should("test cfiCategory") {
+            // uncomment below to test the property
+            //modelInstance.cfiCategory shouldBe ("TODO")
+        }
+
+        // to test the property `cfiGroup`
+        should("test cfiGroup") {
+            // uncomment below to test the property
+            //modelInstance.cfiGroup shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute1`
+        should("test cfiAttribute1") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute1 shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute2`
+        should("test cfiAttribute2") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute2 shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute3`
+        should("test cfiAttribute3") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute3 shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute4`
+        should("test cfiAttribute4") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute4 shouldBe ("TODO")
+        }
+
+        // to test the property `cfiCategoryDesc`
+        should("test cfiCategoryDesc") {
+            // uncomment below to test the property
+            //modelInstance.cfiCategoryDesc shouldBe ("TODO")
+        }
+
+        // to test the property `cfiGroupDesc`
+        should("test cfiGroupDesc") {
+            // uncomment below to test the property
+            //modelInstance.cfiGroupDesc shouldBe ("TODO")
+        }
+
     }
 }

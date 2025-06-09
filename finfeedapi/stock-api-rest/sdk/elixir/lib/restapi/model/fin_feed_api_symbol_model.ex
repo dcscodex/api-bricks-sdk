@@ -13,7 +13,16 @@ defmodule RESTAPI.Model.FinFeedApiSymbolModel do
     :security_category,
     :name,
     :date,
-    :asset_class
+    :asset_class,
+    :cfi_code,
+    :cfi_category,
+    :cfi_group,
+    :cfi_attribute1,
+    :cfi_attribute2,
+    :cfi_attribute3,
+    :cfi_attribute4,
+    :cfi_category_desc,
+    :cfi_group_desc
   ]
 
   @type t :: %__MODULE__{
@@ -22,7 +31,16 @@ defmodule RESTAPI.Model.FinFeedApiSymbolModel do
     :security_category => String.t | nil,
     :name => String.t | nil,
     :date => String.t | nil,
-    :asset_class => String.t | nil
+    :asset_class => String.t | nil,
+    :cfi_code => String.t | nil,
+    :cfi_category => String.t | nil,
+    :cfi_group => String.t | nil,
+    :cfi_attribute1 => String.t | nil,
+    :cfi_attribute2 => String.t | nil,
+    :cfi_attribute3 => String.t | nil,
+    :cfi_attribute4 => String.t | nil,
+    :cfi_category_desc => String.t | nil,
+    :cfi_group_desc => String.t | nil
   }
 
   def decode(value) do

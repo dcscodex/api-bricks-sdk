@@ -10,6 +10,15 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] 
 **Date** | **string** |  | [optional] 
 **AssetClass** | **string** |  | [optional] 
+**CfiCode** | **string** |  | [optional] 
+**CfiCategory** | **string** |  | [optional] [readonly] 
+**CfiGroup** | **string** |  | [optional] [readonly] 
+**CfiAttribute1** | **string** |  | [optional] [readonly] 
+**CfiAttribute2** | **string** |  | [optional] [readonly] 
+**CfiAttribute3** | **string** |  | [optional] [readonly] 
+**CfiAttribute4** | **string** |  | [optional] [readonly] 
+**CfiCategoryDesc** | **string** |  | [optional] [readonly] 
+**CfiGroupDesc** | **string** |  | [optional] [readonly] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -19,6 +19,15 @@ export class FinFeedAPISymbolModel extends any {
     'name'?: string | null;
     'date'?: string | null;
     'assetClass'?: string | null;
+    'cfiCode'?: string | null;
+    'cfiCategory'?: string | null;
+    'cfiGroup'?: string | null;
+    'cfiAttribute1'?: string | null;
+    'cfiAttribute2'?: string | null;
+    'cfiAttribute3'?: string | null;
+    'cfiAttribute4'?: string | null;
+    'cfiCategoryDesc'?: string | null;
+    'cfiGroupDesc'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,6 +60,51 @@ export class FinFeedAPISymbolModel extends any {
         {
             "name": "assetClass",
             "baseName": "asset_class",
+            "type": "string"
+        },
+        {
+            "name": "cfiCode",
+            "baseName": "cfi_code",
+            "type": "string"
+        },
+        {
+            "name": "cfiCategory",
+            "baseName": "cfi_category",
+            "type": "string"
+        },
+        {
+            "name": "cfiGroup",
+            "baseName": "cfi_group",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute1",
+            "baseName": "cfi_attribute1",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute2",
+            "baseName": "cfi_attribute2",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute3",
+            "baseName": "cfi_attribute3",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute4",
+            "baseName": "cfi_attribute4",
+            "type": "string"
+        },
+        {
+            "name": "cfiCategoryDesc",
+            "baseName": "cfi_category_desc",
+            "type": "string"
+        },
+        {
+            "name": "cfiGroupDesc",
+            "baseName": "cfi_group_desc",
             "type": "string"
         }    ];
 

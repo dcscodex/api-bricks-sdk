@@ -261,6 +261,69 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'cfi_code' => {
+        datatype => 'string',
+        base_name => 'cfi_code',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_category' => {
+        datatype => 'string',
+        base_name => 'cfi_category',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_group' => {
+        datatype => 'string',
+        base_name => 'cfi_group',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute1' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute1',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute2' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute2',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute3' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute3',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute4' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute4',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_category_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_category_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_group_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_group_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -269,7 +332,16 @@ __PACKAGE__->openapi_types( {
     'security_category' => 'string',
     'name' => 'string',
     'date' => 'string',
-    'asset_class' => 'string'
+    'asset_class' => 'string',
+    'cfi_code' => 'string',
+    'cfi_category' => 'string',
+    'cfi_group' => 'string',
+    'cfi_attribute1' => 'string',
+    'cfi_attribute2' => 'string',
+    'cfi_attribute3' => 'string',
+    'cfi_attribute4' => 'string',
+    'cfi_category_desc' => 'string',
+    'cfi_group_desc' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -278,7 +350,16 @@ __PACKAGE__->attribute_map( {
     'security_category' => 'security_category',
     'name' => 'name',
     'date' => 'date',
-    'asset_class' => 'asset_class'
+    'asset_class' => 'asset_class',
+    'cfi_code' => 'cfi_code',
+    'cfi_category' => 'cfi_category',
+    'cfi_group' => 'cfi_group',
+    'cfi_attribute1' => 'cfi_attribute1',
+    'cfi_attribute2' => 'cfi_attribute2',
+    'cfi_attribute3' => 'cfi_attribute3',
+    'cfi_attribute4' => 'cfi_attribute4',
+    'cfi_category_desc' => 'cfi_category_desc',
+    'cfi_group_desc' => 'cfi_group_desc'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

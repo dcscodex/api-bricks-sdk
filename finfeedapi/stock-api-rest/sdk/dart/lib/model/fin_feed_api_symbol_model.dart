@@ -19,6 +19,15 @@ class FinFeedAPISymbolModel {
     this.name,
     this.date,
     this.assetClass,
+    this.cfiCode,
+    this.cfiCategory,
+    this.cfiGroup,
+    this.cfiAttribute1,
+    this.cfiAttribute2,
+    this.cfiAttribute3,
+    this.cfiAttribute4,
+    this.cfiCategoryDesc,
+    this.cfiGroupDesc,
   });
 
   String? symbolId;
@@ -33,6 +42,24 @@ class FinFeedAPISymbolModel {
 
   String? assetClass;
 
+  String? cfiCode;
+
+  String? cfiCategory;
+
+  String? cfiGroup;
+
+  String? cfiAttribute1;
+
+  String? cfiAttribute2;
+
+  String? cfiAttribute3;
+
+  String? cfiAttribute4;
+
+  String? cfiCategoryDesc;
+
+  String? cfiGroupDesc;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FinFeedAPISymbolModel &&
     other.symbolId == symbolId &&
@@ -40,7 +67,16 @@ class FinFeedAPISymbolModel {
     other.securityCategory == securityCategory &&
     other.name == name &&
     other.date == date &&
-    other.assetClass == assetClass;
+    other.assetClass == assetClass &&
+    other.cfiCode == cfiCode &&
+    other.cfiCategory == cfiCategory &&
+    other.cfiGroup == cfiGroup &&
+    other.cfiAttribute1 == cfiAttribute1 &&
+    other.cfiAttribute2 == cfiAttribute2 &&
+    other.cfiAttribute3 == cfiAttribute3 &&
+    other.cfiAttribute4 == cfiAttribute4 &&
+    other.cfiCategoryDesc == cfiCategoryDesc &&
+    other.cfiGroupDesc == cfiGroupDesc;
 
   @override
   int get hashCode =>
@@ -50,10 +86,19 @@ class FinFeedAPISymbolModel {
     (securityCategory == null ? 0 : securityCategory!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (date == null ? 0 : date!.hashCode) +
-    (assetClass == null ? 0 : assetClass!.hashCode);
+    (assetClass == null ? 0 : assetClass!.hashCode) +
+    (cfiCode == null ? 0 : cfiCode!.hashCode) +
+    (cfiCategory == null ? 0 : cfiCategory!.hashCode) +
+    (cfiGroup == null ? 0 : cfiGroup!.hashCode) +
+    (cfiAttribute1 == null ? 0 : cfiAttribute1!.hashCode) +
+    (cfiAttribute2 == null ? 0 : cfiAttribute2!.hashCode) +
+    (cfiAttribute3 == null ? 0 : cfiAttribute3!.hashCode) +
+    (cfiAttribute4 == null ? 0 : cfiAttribute4!.hashCode) +
+    (cfiCategoryDesc == null ? 0 : cfiCategoryDesc!.hashCode) +
+    (cfiGroupDesc == null ? 0 : cfiGroupDesc!.hashCode);
 
   @override
-  String toString() => 'FinFeedAPISymbolModel[symbolId=$symbolId, exchangeId=$exchangeId, securityCategory=$securityCategory, name=$name, date=$date, assetClass=$assetClass]';
+  String toString() => 'FinFeedAPISymbolModel[symbolId=$symbolId, exchangeId=$exchangeId, securityCategory=$securityCategory, name=$name, date=$date, assetClass=$assetClass, cfiCode=$cfiCode, cfiCategory=$cfiCategory, cfiGroup=$cfiGroup, cfiAttribute1=$cfiAttribute1, cfiAttribute2=$cfiAttribute2, cfiAttribute3=$cfiAttribute3, cfiAttribute4=$cfiAttribute4, cfiCategoryDesc=$cfiCategoryDesc, cfiGroupDesc=$cfiGroupDesc]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -87,6 +132,51 @@ class FinFeedAPISymbolModel {
     } else {
       json[r'asset_class'] = null;
     }
+    if (this.cfiCode != null) {
+      json[r'cfi_code'] = this.cfiCode;
+    } else {
+      json[r'cfi_code'] = null;
+    }
+    if (this.cfiCategory != null) {
+      json[r'cfi_category'] = this.cfiCategory;
+    } else {
+      json[r'cfi_category'] = null;
+    }
+    if (this.cfiGroup != null) {
+      json[r'cfi_group'] = this.cfiGroup;
+    } else {
+      json[r'cfi_group'] = null;
+    }
+    if (this.cfiAttribute1 != null) {
+      json[r'cfi_attribute1'] = this.cfiAttribute1;
+    } else {
+      json[r'cfi_attribute1'] = null;
+    }
+    if (this.cfiAttribute2 != null) {
+      json[r'cfi_attribute2'] = this.cfiAttribute2;
+    } else {
+      json[r'cfi_attribute2'] = null;
+    }
+    if (this.cfiAttribute3 != null) {
+      json[r'cfi_attribute3'] = this.cfiAttribute3;
+    } else {
+      json[r'cfi_attribute3'] = null;
+    }
+    if (this.cfiAttribute4 != null) {
+      json[r'cfi_attribute4'] = this.cfiAttribute4;
+    } else {
+      json[r'cfi_attribute4'] = null;
+    }
+    if (this.cfiCategoryDesc != null) {
+      json[r'cfi_category_desc'] = this.cfiCategoryDesc;
+    } else {
+      json[r'cfi_category_desc'] = null;
+    }
+    if (this.cfiGroupDesc != null) {
+      json[r'cfi_group_desc'] = this.cfiGroupDesc;
+    } else {
+      json[r'cfi_group_desc'] = null;
+    }
     return json;
   }
 
@@ -115,6 +205,15 @@ class FinFeedAPISymbolModel {
         name: mapValueOfType<String>(json, r'name'),
         date: mapValueOfType<String>(json, r'date'),
         assetClass: mapValueOfType<String>(json, r'asset_class'),
+        cfiCode: mapValueOfType<String>(json, r'cfi_code'),
+        cfiCategory: mapValueOfType<String>(json, r'cfi_category'),
+        cfiGroup: mapValueOfType<String>(json, r'cfi_group'),
+        cfiAttribute1: mapValueOfType<String>(json, r'cfi_attribute1'),
+        cfiAttribute2: mapValueOfType<String>(json, r'cfi_attribute2'),
+        cfiAttribute3: mapValueOfType<String>(json, r'cfi_attribute3'),
+        cfiAttribute4: mapValueOfType<String>(json, r'cfi_attribute4'),
+        cfiCategoryDesc: mapValueOfType<String>(json, r'cfi_category_desc'),
+        cfiGroupDesc: mapValueOfType<String>(json, r'cfi_group_desc'),
       );
     }
     return null;

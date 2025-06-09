@@ -86,6 +86,51 @@ public:
     void unsetAsset_class();
     void setAssetClass(const utility::string_t& value);
 
+    utility::string_t getCfiCode() const;
+    bool cfiCodeIsSet() const;
+    void unsetCfi_code();
+    void setCfiCode(const utility::string_t& value);
+
+    utility::string_t getCfiCategory() const;
+    bool cfiCategoryIsSet() const;
+    void unsetCfi_category();
+    void setCfiCategory(const utility::string_t& value);
+
+    utility::string_t getCfiGroup() const;
+    bool cfiGroupIsSet() const;
+    void unsetCfi_group();
+    void setCfiGroup(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute1() const;
+    bool cfiAttribute1IsSet() const;
+    void unsetCfi_attribute1();
+    void setCfiAttribute1(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute2() const;
+    bool cfiAttribute2IsSet() const;
+    void unsetCfi_attribute2();
+    void setCfiAttribute2(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute3() const;
+    bool cfiAttribute3IsSet() const;
+    void unsetCfi_attribute3();
+    void setCfiAttribute3(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute4() const;
+    bool cfiAttribute4IsSet() const;
+    void unsetCfi_attribute4();
+    void setCfiAttribute4(const utility::string_t& value);
+
+    utility::string_t getCfiCategoryDesc() const;
+    bool cfiCategoryDescIsSet() const;
+    void unsetCfi_category_desc();
+    void setCfiCategoryDesc(const utility::string_t& value);
+
+    utility::string_t getCfiGroupDesc() const;
+    bool cfiGroupDescIsSet() const;
+    void unsetCfi_group_desc();
+    void setCfiGroupDesc(const utility::string_t& value);
+
 
 protected:
     utility::string_t m_Symbol_id;
@@ -105,6 +150,33 @@ protected:
 
     utility::string_t m_Asset_class;
     bool m_Asset_classIsSet;
+
+    utility::string_t m_Cfi_code;
+    bool m_Cfi_codeIsSet;
+
+    utility::string_t m_Cfi_category;
+    bool m_Cfi_categoryIsSet;
+
+    utility::string_t m_Cfi_group;
+    bool m_Cfi_groupIsSet;
+
+    utility::string_t m_Cfi_attribute1;
+    bool m_Cfi_attribute1IsSet;
+
+    utility::string_t m_Cfi_attribute2;
+    bool m_Cfi_attribute2IsSet;
+
+    utility::string_t m_Cfi_attribute3;
+    bool m_Cfi_attribute3IsSet;
+
+    utility::string_t m_Cfi_attribute4;
+    bool m_Cfi_attribute4IsSet;
+
+    utility::string_t m_Cfi_category_desc;
+    bool m_Cfi_category_descIsSet;
+
+    utility::string_t m_Cfi_group_desc;
+    bool m_Cfi_group_descIsSet;
 
 };
 

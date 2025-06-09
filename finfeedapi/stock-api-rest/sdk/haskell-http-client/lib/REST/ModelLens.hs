@@ -853,6 +853,51 @@ finFeedAPISymbolModelAssetClassL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
 finFeedAPISymbolModelAssetClassL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelAssetClass -> FinFeedAPISymbolModel { finFeedAPISymbolModelAssetClass, ..} ) <$> f finFeedAPISymbolModelAssetClass
 {-# INLINE finFeedAPISymbolModelAssetClassL #-}
 
+-- | 'finFeedAPISymbolModelCfiCode' Lens
+finFeedAPISymbolModelCfiCodeL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiCodeL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiCode -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiCode, ..} ) <$> f finFeedAPISymbolModelCfiCode
+{-# INLINE finFeedAPISymbolModelCfiCodeL #-}
+
+-- | 'finFeedAPISymbolModelCfiCategory' Lens
+finFeedAPISymbolModelCfiCategoryL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiCategoryL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiCategory -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiCategory, ..} ) <$> f finFeedAPISymbolModelCfiCategory
+{-# INLINE finFeedAPISymbolModelCfiCategoryL #-}
+
+-- | 'finFeedAPISymbolModelCfiGroup' Lens
+finFeedAPISymbolModelCfiGroupL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiGroupL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiGroup -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiGroup, ..} ) <$> f finFeedAPISymbolModelCfiGroup
+{-# INLINE finFeedAPISymbolModelCfiGroupL #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute1' Lens
+finFeedAPISymbolModelCfiAttribute1L :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute1L f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute1 -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute1, ..} ) <$> f finFeedAPISymbolModelCfiAttribute1
+{-# INLINE finFeedAPISymbolModelCfiAttribute1L #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute2' Lens
+finFeedAPISymbolModelCfiAttribute2L :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute2L f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute2 -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute2, ..} ) <$> f finFeedAPISymbolModelCfiAttribute2
+{-# INLINE finFeedAPISymbolModelCfiAttribute2L #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute3' Lens
+finFeedAPISymbolModelCfiAttribute3L :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute3L f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute3 -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute3, ..} ) <$> f finFeedAPISymbolModelCfiAttribute3
+{-# INLINE finFeedAPISymbolModelCfiAttribute3L #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute4' Lens
+finFeedAPISymbolModelCfiAttribute4L :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute4L f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute4 -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute4, ..} ) <$> f finFeedAPISymbolModelCfiAttribute4
+{-# INLINE finFeedAPISymbolModelCfiAttribute4L #-}
+
+-- | 'finFeedAPISymbolModelCfiCategoryDesc' Lens
+finFeedAPISymbolModelCfiCategoryDescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiCategoryDescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiCategoryDesc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiCategoryDesc, ..} ) <$> f finFeedAPISymbolModelCfiCategoryDesc
+{-# INLINE finFeedAPISymbolModelCfiCategoryDescL #-}
+
+-- | 'finFeedAPISymbolModelCfiGroupDesc' Lens
+finFeedAPISymbolModelCfiGroupDescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiGroupDescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiGroupDesc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiGroupDesc, ..} ) <$> f finFeedAPISymbolModelCfiGroupDesc
+{-# INLINE finFeedAPISymbolModelCfiGroupDescL #-}
+
 
 
 -- * Level1QuoteUpdateModel

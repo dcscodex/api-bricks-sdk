@@ -90,6 +90,60 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property cfiCode (base name: "cfi_code")', function() {
+      // uncomment below and update the code to test the property cfiCode
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiCategory (base name: "cfi_category")', function() {
+      // uncomment below and update the code to test the property cfiCategory
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiGroup (base name: "cfi_group")', function() {
+      // uncomment below and update the code to test the property cfiGroup
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute1 (base name: "cfi_attribute1")', function() {
+      // uncomment below and update the code to test the property cfiAttribute1
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute2 (base name: "cfi_attribute2")', function() {
+      // uncomment below and update the code to test the property cfiAttribute2
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute3 (base name: "cfi_attribute3")', function() {
+      // uncomment below and update the code to test the property cfiAttribute3
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute4 (base name: "cfi_attribute4")', function() {
+      // uncomment below and update the code to test the property cfiAttribute4
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiCategoryDesc (base name: "cfi_category_desc")', function() {
+      // uncomment below and update the code to test the property cfiCategoryDesc
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiGroupDesc (base name: "cfi_group_desc")', function() {
+      // uncomment below and update the code to test the property cfiGroupDesc
+      //var instance = new RestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

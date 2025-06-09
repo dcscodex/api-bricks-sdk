@@ -14,6 +14,15 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **date** | **String** |  | [optional] 
 **assetClass** | **String** |  | [optional] 
+**cfiCode** | **String** |  | [optional] 
+**cfiCategory** | **String** |  | [optional] [readonly] 
+**cfiGroup** | **String** |  | [optional] [readonly] 
+**cfiAttribute1** | **String** |  | [optional] [readonly] 
+**cfiAttribute2** | **String** |  | [optional] [readonly] 
+**cfiAttribute3** | **String** |  | [optional] [readonly] 
+**cfiAttribute4** | **String** |  | [optional] [readonly] 
+**cfiCategoryDesc** | **String** |  | [optional] [readonly] 
+**cfiGroupDesc** | **String** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

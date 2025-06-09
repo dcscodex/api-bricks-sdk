@@ -33,6 +33,24 @@ FinFeedAPI_SymbolModel::FinFeedAPI_SymbolModel()
     m_dateIsSet = false;
     m_Asset_class = utility::conversions::to_string_t("");
     m_Asset_classIsSet = false;
+    m_Cfi_code = utility::conversions::to_string_t("");
+    m_Cfi_codeIsSet = false;
+    m_Cfi_category = utility::conversions::to_string_t("");
+    m_Cfi_categoryIsSet = false;
+    m_Cfi_group = utility::conversions::to_string_t("");
+    m_Cfi_groupIsSet = false;
+    m_Cfi_attribute1 = utility::conversions::to_string_t("");
+    m_Cfi_attribute1IsSet = false;
+    m_Cfi_attribute2 = utility::conversions::to_string_t("");
+    m_Cfi_attribute2IsSet = false;
+    m_Cfi_attribute3 = utility::conversions::to_string_t("");
+    m_Cfi_attribute3IsSet = false;
+    m_Cfi_attribute4 = utility::conversions::to_string_t("");
+    m_Cfi_attribute4IsSet = false;
+    m_Cfi_category_desc = utility::conversions::to_string_t("");
+    m_Cfi_category_descIsSet = false;
+    m_Cfi_group_desc = utility::conversions::to_string_t("");
+    m_Cfi_group_descIsSet = false;
 }
 
 FinFeedAPI_SymbolModel::~FinFeedAPI_SymbolModel()
@@ -76,6 +94,51 @@ web::json::value FinFeedAPI_SymbolModel::toJson() const
     {   
         
         val[utility::conversions::to_string_t(U("asset_class"))] = ModelBase::toJson(m_Asset_class);
+    }
+    if(m_Cfi_codeIsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_code"))] = ModelBase::toJson(m_Cfi_code);
+    }
+    if(m_Cfi_categoryIsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_category"))] = ModelBase::toJson(m_Cfi_category);
+    }
+    if(m_Cfi_groupIsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_group"))] = ModelBase::toJson(m_Cfi_group);
+    }
+    if(m_Cfi_attribute1IsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_attribute1"))] = ModelBase::toJson(m_Cfi_attribute1);
+    }
+    if(m_Cfi_attribute2IsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_attribute2"))] = ModelBase::toJson(m_Cfi_attribute2);
+    }
+    if(m_Cfi_attribute3IsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_attribute3"))] = ModelBase::toJson(m_Cfi_attribute3);
+    }
+    if(m_Cfi_attribute4IsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_attribute4"))] = ModelBase::toJson(m_Cfi_attribute4);
+    }
+    if(m_Cfi_category_descIsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_category_desc"))] = ModelBase::toJson(m_Cfi_category_desc);
+    }
+    if(m_Cfi_group_descIsSet)
+    {   
+        
+        val[utility::conversions::to_string_t(U("cfi_group_desc"))] = ModelBase::toJson(m_Cfi_group_desc);
     }
 
     return val;
@@ -150,6 +213,105 @@ bool FinFeedAPI_SymbolModel::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_code"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_code")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiCode;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiCode);
+            setCfiCode(refVal_setCfiCode);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_category"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_category")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiCategory;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiCategory);
+            setCfiCategory(refVal_setCfiCategory);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_group"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_group")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiGroup;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiGroup);
+            setCfiGroup(refVal_setCfiGroup);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_attribute1"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_attribute1")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiAttribute1;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiAttribute1);
+            setCfiAttribute1(refVal_setCfiAttribute1);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_attribute2"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_attribute2")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiAttribute2;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiAttribute2);
+            setCfiAttribute2(refVal_setCfiAttribute2);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_attribute3"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_attribute3")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiAttribute3;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiAttribute3);
+            setCfiAttribute3(refVal_setCfiAttribute3);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_attribute4"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_attribute4")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiAttribute4;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiAttribute4);
+            setCfiAttribute4(refVal_setCfiAttribute4);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_category_desc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_category_desc")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiCategoryDesc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiCategoryDesc);
+            setCfiCategoryDesc(refVal_setCfiCategoryDesc);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("cfi_group_desc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("cfi_group_desc")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCfiGroupDesc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCfiGroupDesc);
+            setCfiGroupDesc(refVal_setCfiGroupDesc);
+            
+        }
+    }
     return ok;
 }
 
@@ -183,6 +345,42 @@ void FinFeedAPI_SymbolModel::toMultipart(std::shared_ptr<MultipartFormData> mult
     if(m_Asset_classIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("asset_class")), m_Asset_class));
+    }
+    if(m_Cfi_codeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_code")), m_Cfi_code));
+    }
+    if(m_Cfi_categoryIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_category")), m_Cfi_category));
+    }
+    if(m_Cfi_groupIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_group")), m_Cfi_group));
+    }
+    if(m_Cfi_attribute1IsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_attribute1")), m_Cfi_attribute1));
+    }
+    if(m_Cfi_attribute2IsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_attribute2")), m_Cfi_attribute2));
+    }
+    if(m_Cfi_attribute3IsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_attribute3")), m_Cfi_attribute3));
+    }
+    if(m_Cfi_attribute4IsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_attribute4")), m_Cfi_attribute4));
+    }
+    if(m_Cfi_category_descIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_category_desc")), m_Cfi_category_desc));
+    }
+    if(m_Cfi_group_descIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("cfi_group_desc")), m_Cfi_group_desc));
     }
 }
 
@@ -230,6 +428,60 @@ bool FinFeedAPI_SymbolModel::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         utility::string_t refVal_setAssetClass;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("asset_class"))), refVal_setAssetClass );
         setAssetClass(refVal_setAssetClass);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_code"))))
+    {
+        utility::string_t refVal_setCfiCode;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_code"))), refVal_setCfiCode );
+        setCfiCode(refVal_setCfiCode);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_category"))))
+    {
+        utility::string_t refVal_setCfiCategory;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_category"))), refVal_setCfiCategory );
+        setCfiCategory(refVal_setCfiCategory);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_group"))))
+    {
+        utility::string_t refVal_setCfiGroup;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_group"))), refVal_setCfiGroup );
+        setCfiGroup(refVal_setCfiGroup);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_attribute1"))))
+    {
+        utility::string_t refVal_setCfiAttribute1;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_attribute1"))), refVal_setCfiAttribute1 );
+        setCfiAttribute1(refVal_setCfiAttribute1);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_attribute2"))))
+    {
+        utility::string_t refVal_setCfiAttribute2;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_attribute2"))), refVal_setCfiAttribute2 );
+        setCfiAttribute2(refVal_setCfiAttribute2);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_attribute3"))))
+    {
+        utility::string_t refVal_setCfiAttribute3;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_attribute3"))), refVal_setCfiAttribute3 );
+        setCfiAttribute3(refVal_setCfiAttribute3);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_attribute4"))))
+    {
+        utility::string_t refVal_setCfiAttribute4;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_attribute4"))), refVal_setCfiAttribute4 );
+        setCfiAttribute4(refVal_setCfiAttribute4);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_category_desc"))))
+    {
+        utility::string_t refVal_setCfiCategoryDesc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_category_desc"))), refVal_setCfiCategoryDesc );
+        setCfiCategoryDesc(refVal_setCfiCategoryDesc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("cfi_group_desc"))))
+    {
+        utility::string_t refVal_setCfiGroupDesc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("cfi_group_desc"))), refVal_setCfiGroupDesc );
+        setCfiGroupDesc(refVal_setCfiGroupDesc);
     }
     return ok;
 }
@@ -360,6 +612,195 @@ bool FinFeedAPI_SymbolModel::assetClassIsSet() const
 void FinFeedAPI_SymbolModel::unsetAsset_class()
 {
     m_Asset_classIsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiCode() const
+{
+    return m_Cfi_code;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiCode(const utility::string_t& value)
+{
+    m_Cfi_code = value;
+    m_Cfi_codeIsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiCodeIsSet() const
+{
+    return m_Cfi_codeIsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_code()
+{
+    m_Cfi_codeIsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiCategory() const
+{
+    return m_Cfi_category;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiCategory(const utility::string_t& value)
+{
+    m_Cfi_category = value;
+    m_Cfi_categoryIsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiCategoryIsSet() const
+{
+    return m_Cfi_categoryIsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_category()
+{
+    m_Cfi_categoryIsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiGroup() const
+{
+    return m_Cfi_group;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiGroup(const utility::string_t& value)
+{
+    m_Cfi_group = value;
+    m_Cfi_groupIsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiGroupIsSet() const
+{
+    return m_Cfi_groupIsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_group()
+{
+    m_Cfi_groupIsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiAttribute1() const
+{
+    return m_Cfi_attribute1;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiAttribute1(const utility::string_t& value)
+{
+    m_Cfi_attribute1 = value;
+    m_Cfi_attribute1IsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiAttribute1IsSet() const
+{
+    return m_Cfi_attribute1IsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_attribute1()
+{
+    m_Cfi_attribute1IsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiAttribute2() const
+{
+    return m_Cfi_attribute2;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiAttribute2(const utility::string_t& value)
+{
+    m_Cfi_attribute2 = value;
+    m_Cfi_attribute2IsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiAttribute2IsSet() const
+{
+    return m_Cfi_attribute2IsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_attribute2()
+{
+    m_Cfi_attribute2IsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiAttribute3() const
+{
+    return m_Cfi_attribute3;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiAttribute3(const utility::string_t& value)
+{
+    m_Cfi_attribute3 = value;
+    m_Cfi_attribute3IsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiAttribute3IsSet() const
+{
+    return m_Cfi_attribute3IsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_attribute3()
+{
+    m_Cfi_attribute3IsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiAttribute4() const
+{
+    return m_Cfi_attribute4;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiAttribute4(const utility::string_t& value)
+{
+    m_Cfi_attribute4 = value;
+    m_Cfi_attribute4IsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiAttribute4IsSet() const
+{
+    return m_Cfi_attribute4IsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_attribute4()
+{
+    m_Cfi_attribute4IsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiCategoryDesc() const
+{
+    return m_Cfi_category_desc;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiCategoryDesc(const utility::string_t& value)
+{
+    m_Cfi_category_desc = value;
+    m_Cfi_category_descIsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiCategoryDescIsSet() const
+{
+    return m_Cfi_category_descIsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_category_desc()
+{
+    m_Cfi_category_descIsSet = false;
+}
+utility::string_t FinFeedAPI_SymbolModel::getCfiGroupDesc() const
+{
+    return m_Cfi_group_desc;
+}
+
+
+void FinFeedAPI_SymbolModel::setCfiGroupDesc(const utility::string_t& value)
+{
+    m_Cfi_group_desc = value;
+    m_Cfi_group_descIsSet = true;
+}
+
+bool FinFeedAPI_SymbolModel::cfiGroupDescIsSet() const
+{
+    return m_Cfi_group_descIsSet;
+}
+
+void FinFeedAPI_SymbolModel::unsetCfi_group_desc()
+{
+    m_Cfi_group_descIsSet = false;
 }
 
 }

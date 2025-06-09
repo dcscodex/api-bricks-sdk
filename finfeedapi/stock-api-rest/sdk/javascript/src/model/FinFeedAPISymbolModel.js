@@ -69,6 +69,33 @@ class FinFeedAPISymbolModel {
             if (data.hasOwnProperty('asset_class')) {
                 obj['asset_class'] = ApiClient.convertToType(data['asset_class'], 'String');
             }
+            if (data.hasOwnProperty('cfi_code')) {
+                obj['cfi_code'] = ApiClient.convertToType(data['cfi_code'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_category')) {
+                obj['cfi_category'] = ApiClient.convertToType(data['cfi_category'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_group')) {
+                obj['cfi_group'] = ApiClient.convertToType(data['cfi_group'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute1')) {
+                obj['cfi_attribute1'] = ApiClient.convertToType(data['cfi_attribute1'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute2')) {
+                obj['cfi_attribute2'] = ApiClient.convertToType(data['cfi_attribute2'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute3')) {
+                obj['cfi_attribute3'] = ApiClient.convertToType(data['cfi_attribute3'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute4')) {
+                obj['cfi_attribute4'] = ApiClient.convertToType(data['cfi_attribute4'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_category_desc')) {
+                obj['cfi_category_desc'] = ApiClient.convertToType(data['cfi_category_desc'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_group_desc')) {
+                obj['cfi_group_desc'] = ApiClient.convertToType(data['cfi_group_desc'], 'String');
+            }
         }
         return obj;
     }
@@ -102,6 +129,42 @@ class FinFeedAPISymbolModel {
         // ensure the json data is a string
         if (data['asset_class'] && !(typeof data['asset_class'] === 'string' || data['asset_class'] instanceof String)) {
             throw new Error("Expected the field `asset_class` to be a primitive type in the JSON string but got " + data['asset_class']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_code'] && !(typeof data['cfi_code'] === 'string' || data['cfi_code'] instanceof String)) {
+            throw new Error("Expected the field `cfi_code` to be a primitive type in the JSON string but got " + data['cfi_code']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_category'] && !(typeof data['cfi_category'] === 'string' || data['cfi_category'] instanceof String)) {
+            throw new Error("Expected the field `cfi_category` to be a primitive type in the JSON string but got " + data['cfi_category']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_group'] && !(typeof data['cfi_group'] === 'string' || data['cfi_group'] instanceof String)) {
+            throw new Error("Expected the field `cfi_group` to be a primitive type in the JSON string but got " + data['cfi_group']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute1'] && !(typeof data['cfi_attribute1'] === 'string' || data['cfi_attribute1'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute1` to be a primitive type in the JSON string but got " + data['cfi_attribute1']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute2'] && !(typeof data['cfi_attribute2'] === 'string' || data['cfi_attribute2'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute2` to be a primitive type in the JSON string but got " + data['cfi_attribute2']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute3'] && !(typeof data['cfi_attribute3'] === 'string' || data['cfi_attribute3'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute3` to be a primitive type in the JSON string but got " + data['cfi_attribute3']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute4'] && !(typeof data['cfi_attribute4'] === 'string' || data['cfi_attribute4'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute4` to be a primitive type in the JSON string but got " + data['cfi_attribute4']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_category_desc'] && !(typeof data['cfi_category_desc'] === 'string' || data['cfi_category_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_category_desc` to be a primitive type in the JSON string but got " + data['cfi_category_desc']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_group_desc'] && !(typeof data['cfi_group_desc'] === 'string' || data['cfi_group_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_group_desc` to be a primitive type in the JSON string but got " + data['cfi_group_desc']);
         }
 
         return true;
@@ -141,6 +204,51 @@ FinFeedAPISymbolModel.prototype['date'] = undefined;
  * @member {String} asset_class
  */
 FinFeedAPISymbolModel.prototype['asset_class'] = undefined;
+
+/**
+ * @member {String} cfi_code
+ */
+FinFeedAPISymbolModel.prototype['cfi_code'] = undefined;
+
+/**
+ * @member {String} cfi_category
+ */
+FinFeedAPISymbolModel.prototype['cfi_category'] = undefined;
+
+/**
+ * @member {String} cfi_group
+ */
+FinFeedAPISymbolModel.prototype['cfi_group'] = undefined;
+
+/**
+ * @member {String} cfi_attribute1
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute1'] = undefined;
+
+/**
+ * @member {String} cfi_attribute2
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute2'] = undefined;
+
+/**
+ * @member {String} cfi_attribute3
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute3'] = undefined;
+
+/**
+ * @member {String} cfi_attribute4
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute4'] = undefined;
+
+/**
+ * @member {String} cfi_category_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_category_desc'] = undefined;
+
+/**
+ * @member {String} cfi_group_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_group_desc'] = undefined;
 
 
 

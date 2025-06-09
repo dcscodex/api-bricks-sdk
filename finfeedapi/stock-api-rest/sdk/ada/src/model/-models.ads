@@ -402,6 +402,15 @@ package .Models is
        Name : Swagger.Nullable_UString;
        Date : Swagger.Nullable_UString;
        Asset_Class : Swagger.Nullable_UString;
+       Cfi_Code : Swagger.Nullable_UString;
+       Cfi_Category : Swagger.Nullable_UString;
+       Cfi_Group : Swagger.Nullable_UString;
+       Cfi_Attribute_1 : Swagger.Nullable_UString;
+       Cfi_Attribute_2 : Swagger.Nullable_UString;
+       Cfi_Attribute_3 : Swagger.Nullable_UString;
+       Cfi_Attribute_4 : Swagger.Nullable_UString;
+       Cfi_Category_Desc : Swagger.Nullable_UString;
+       Cfi_Group_Desc : Swagger.Nullable_UString;
      end record;
 
 

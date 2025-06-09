@@ -41,7 +41,16 @@ class TestFinFeedAPISymbolModel(unittest.TestCase):
                 security_category = '',
                 name = '',
                 var_date = '',
-                asset_class = ''
+                asset_class = '',
+                cfi_code = '',
+                cfi_category = '',
+                cfi_group = '',
+                cfi_attribute1 = '',
+                cfi_attribute2 = '',
+                cfi_attribute3 = '',
+                cfi_attribute4 = '',
+                cfi_category_desc = '',
+                cfi_group_desc = ''
             )
         else:
             return FinFeedAPISymbolModel(

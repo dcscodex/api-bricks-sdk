@@ -107,5 +107,86 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Test.Model
         {
             // TODO unit test for the property 'AssetClass'
         }
+
+        /// <summary>
+        /// Test the property 'CfiCode'
+        /// </summary>
+        [Fact]
+        public void CfiCodeTest()
+        {
+            // TODO unit test for the property 'CfiCode'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiCategory'
+        /// </summary>
+        [Fact]
+        public void CfiCategoryTest()
+        {
+            // TODO unit test for the property 'CfiCategory'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiGroup'
+        /// </summary>
+        [Fact]
+        public void CfiGroupTest()
+        {
+            // TODO unit test for the property 'CfiGroup'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute1'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute1Test()
+        {
+            // TODO unit test for the property 'CfiAttribute1'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute2'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute2Test()
+        {
+            // TODO unit test for the property 'CfiAttribute2'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute3'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute3Test()
+        {
+            // TODO unit test for the property 'CfiAttribute3'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute4'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute4Test()
+        {
+            // TODO unit test for the property 'CfiAttribute4'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiCategoryDesc'
+        /// </summary>
+        [Fact]
+        public void CfiCategoryDescTest()
+        {
+            // TODO unit test for the property 'CfiCategoryDesc'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiGroupDesc'
+        /// </summary>
+        [Fact]
+        public void CfiGroupDescTest()
+        {
+            // TODO unit test for the property 'CfiGroupDesc'
+        }
     }
 }

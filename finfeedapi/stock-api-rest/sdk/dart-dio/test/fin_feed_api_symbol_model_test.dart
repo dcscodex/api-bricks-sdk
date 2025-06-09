@@ -37,5 +37,50 @@ void main() {
       // TODO
     });
 
+    // String cfiCode
+    test('to test the property `cfiCode`', () async {
+      // TODO
+    });
+
+    // String cfiCategory
+    test('to test the property `cfiCategory`', () async {
+      // TODO
+    });
+
+    // String cfiGroup
+    test('to test the property `cfiGroup`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute1
+    test('to test the property `cfiAttribute1`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute2
+    test('to test the property `cfiAttribute2`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute3
+    test('to test the property `cfiAttribute3`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute4
+    test('to test the property `cfiAttribute4`', () async {
+      // TODO
+    });
+
+    // String cfiCategoryDesc
+    test('to test the property `cfiCategoryDesc`', () async {
+      // TODO
+    });
+
+    // String cfiGroupDesc
+    test('to test the property `cfiGroupDesc`', () async {
+      // TODO
+    });
+
   });
 }

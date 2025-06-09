@@ -63,7 +63,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => 'string',
         'name' => 'string',
         'date' => 'string',
-        'asset_class' => 'string'
+        'asset_class' => 'string',
+        'cfi_code' => 'string',
+        'cfi_category' => 'string',
+        'cfi_group' => 'string',
+        'cfi_attribute1' => 'string',
+        'cfi_attribute2' => 'string',
+        'cfi_attribute3' => 'string',
+        'cfi_attribute4' => 'string',
+        'cfi_category_desc' => 'string',
+        'cfi_group_desc' => 'string'
     ];
 
     /**
@@ -79,7 +88,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => null,
         'name' => null,
         'date' => null,
-        'asset_class' => null
+        'asset_class' => null,
+        'cfi_code' => null,
+        'cfi_category' => null,
+        'cfi_group' => null,
+        'cfi_attribute1' => null,
+        'cfi_attribute2' => null,
+        'cfi_attribute3' => null,
+        'cfi_attribute4' => null,
+        'cfi_category_desc' => null,
+        'cfi_group_desc' => null
     ];
 
     /**
@@ -93,7 +111,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => true,
         'name' => true,
         'date' => true,
-        'asset_class' => true
+        'asset_class' => true,
+        'cfi_code' => true,
+        'cfi_category' => true,
+        'cfi_group' => true,
+        'cfi_attribute1' => true,
+        'cfi_attribute2' => true,
+        'cfi_attribute3' => true,
+        'cfi_attribute4' => true,
+        'cfi_category_desc' => true,
+        'cfi_group_desc' => true
     ];
 
     /**
@@ -187,7 +214,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => 'security_category',
         'name' => 'name',
         'date' => 'date',
-        'asset_class' => 'asset_class'
+        'asset_class' => 'asset_class',
+        'cfi_code' => 'cfi_code',
+        'cfi_category' => 'cfi_category',
+        'cfi_group' => 'cfi_group',
+        'cfi_attribute1' => 'cfi_attribute1',
+        'cfi_attribute2' => 'cfi_attribute2',
+        'cfi_attribute3' => 'cfi_attribute3',
+        'cfi_attribute4' => 'cfi_attribute4',
+        'cfi_category_desc' => 'cfi_category_desc',
+        'cfi_group_desc' => 'cfi_group_desc'
     ];
 
     /**
@@ -201,7 +237,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => 'setSecurityCategory',
         'name' => 'setName',
         'date' => 'setDate',
-        'asset_class' => 'setAssetClass'
+        'asset_class' => 'setAssetClass',
+        'cfi_code' => 'setCfiCode',
+        'cfi_category' => 'setCfiCategory',
+        'cfi_group' => 'setCfiGroup',
+        'cfi_attribute1' => 'setCfiAttribute1',
+        'cfi_attribute2' => 'setCfiAttribute2',
+        'cfi_attribute3' => 'setCfiAttribute3',
+        'cfi_attribute4' => 'setCfiAttribute4',
+        'cfi_category_desc' => 'setCfiCategoryDesc',
+        'cfi_group_desc' => 'setCfiGroupDesc'
     ];
 
     /**
@@ -215,7 +260,16 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'security_category' => 'getSecurityCategory',
         'name' => 'getName',
         'date' => 'getDate',
-        'asset_class' => 'getAssetClass'
+        'asset_class' => 'getAssetClass',
+        'cfi_code' => 'getCfiCode',
+        'cfi_category' => 'getCfiCategory',
+        'cfi_group' => 'getCfiGroup',
+        'cfi_attribute1' => 'getCfiAttribute1',
+        'cfi_attribute2' => 'getCfiAttribute2',
+        'cfi_attribute3' => 'getCfiAttribute3',
+        'cfi_attribute4' => 'getCfiAttribute4',
+        'cfi_category_desc' => 'getCfiCategoryDesc',
+        'cfi_group_desc' => 'getCfiGroupDesc'
     ];
 
     /**
@@ -281,6 +335,15 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('asset_class', $data ?? [], null);
+        $this->setIfExists('cfi_code', $data ?? [], null);
+        $this->setIfExists('cfi_category', $data ?? [], null);
+        $this->setIfExists('cfi_group', $data ?? [], null);
+        $this->setIfExists('cfi_attribute1', $data ?? [], null);
+        $this->setIfExists('cfi_attribute2', $data ?? [], null);
+        $this->setIfExists('cfi_attribute3', $data ?? [], null);
+        $this->setIfExists('cfi_attribute4', $data ?? [], null);
+        $this->setIfExists('cfi_category_desc', $data ?? [], null);
+        $this->setIfExists('cfi_group_desc', $data ?? [], null);
     }
 
     /**
@@ -525,6 +588,312 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['asset_class'] = $asset_class;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_code
+     *
+     * @return string|null
+     */
+    public function getCfiCode()
+    {
+        return $this->container['cfi_code'];
+    }
+
+    /**
+     * Sets cfi_code
+     *
+     * @param string|null $cfi_code cfi_code
+     *
+     * @return self
+     */
+    public function setCfiCode($cfi_code)
+    {
+        if (is_null($cfi_code)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_code'] = $cfi_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_category
+     *
+     * @return string|null
+     */
+    public function getCfiCategory()
+    {
+        return $this->container['cfi_category'];
+    }
+
+    /**
+     * Sets cfi_category
+     *
+     * @param string|null $cfi_category cfi_category
+     *
+     * @return self
+     */
+    public function setCfiCategory($cfi_category)
+    {
+        if (is_null($cfi_category)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_category', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_category'] = $cfi_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_group
+     *
+     * @return string|null
+     */
+    public function getCfiGroup()
+    {
+        return $this->container['cfi_group'];
+    }
+
+    /**
+     * Sets cfi_group
+     *
+     * @param string|null $cfi_group cfi_group
+     *
+     * @return self
+     */
+    public function setCfiGroup($cfi_group)
+    {
+        if (is_null($cfi_group)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_group');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_group', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_group'] = $cfi_group;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute1
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute1()
+    {
+        return $this->container['cfi_attribute1'];
+    }
+
+    /**
+     * Sets cfi_attribute1
+     *
+     * @param string|null $cfi_attribute1 cfi_attribute1
+     *
+     * @return self
+     */
+    public function setCfiAttribute1($cfi_attribute1)
+    {
+        if (is_null($cfi_attribute1)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute1', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute1'] = $cfi_attribute1;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute2
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute2()
+    {
+        return $this->container['cfi_attribute2'];
+    }
+
+    /**
+     * Sets cfi_attribute2
+     *
+     * @param string|null $cfi_attribute2 cfi_attribute2
+     *
+     * @return self
+     */
+    public function setCfiAttribute2($cfi_attribute2)
+    {
+        if (is_null($cfi_attribute2)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute2'] = $cfi_attribute2;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute3
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute3()
+    {
+        return $this->container['cfi_attribute3'];
+    }
+
+    /**
+     * Sets cfi_attribute3
+     *
+     * @param string|null $cfi_attribute3 cfi_attribute3
+     *
+     * @return self
+     */
+    public function setCfiAttribute3($cfi_attribute3)
+    {
+        if (is_null($cfi_attribute3)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute3', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute3'] = $cfi_attribute3;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute4
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute4()
+    {
+        return $this->container['cfi_attribute4'];
+    }
+
+    /**
+     * Sets cfi_attribute4
+     *
+     * @param string|null $cfi_attribute4 cfi_attribute4
+     *
+     * @return self
+     */
+    public function setCfiAttribute4($cfi_attribute4)
+    {
+        if (is_null($cfi_attribute4)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute4');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute4', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute4'] = $cfi_attribute4;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_category_desc
+     *
+     * @return string|null
+     */
+    public function getCfiCategoryDesc()
+    {
+        return $this->container['cfi_category_desc'];
+    }
+
+    /**
+     * Sets cfi_category_desc
+     *
+     * @param string|null $cfi_category_desc cfi_category_desc
+     *
+     * @return self
+     */
+    public function setCfiCategoryDesc($cfi_category_desc)
+    {
+        if (is_null($cfi_category_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_category_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_category_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_category_desc'] = $cfi_category_desc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_group_desc
+     *
+     * @return string|null
+     */
+    public function getCfiGroupDesc()
+    {
+        return $this->container['cfi_group_desc'];
+    }
+
+    /**
+     * Sets cfi_group_desc
+     *
+     * @param string|null $cfi_group_desc cfi_group_desc
+     *
+     * @return self
+     */
+    public function setCfiGroupDesc($cfi_group_desc)
+    {
+        if (is_null($cfi_group_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_group_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_group_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_group_desc'] = $cfi_group_desc;
 
         return $this;
     }

@@ -1079,6 +1079,60 @@ export type FinFeedAPISymbolModel = {
      * @memberof FinFeedAPISymbolModel
      */
     asset_class?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_code?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_category?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_group?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute1?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute2?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute3?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute4?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_category_desc?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_group_desc?: string;
 }
 
 /**

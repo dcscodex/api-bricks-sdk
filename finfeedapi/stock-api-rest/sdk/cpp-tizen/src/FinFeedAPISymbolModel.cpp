@@ -29,6 +29,15 @@ FinFeedAPI.SymbolModel::__init()
 	//name = std::string();
 	//date = std::string();
 	//asset_class = std::string();
+	//cfi_code = std::string();
+	//cfi_category = std::string();
+	//cfi_group = std::string();
+	//cfi_attribute1 = std::string();
+	//cfi_attribute2 = std::string();
+	//cfi_attribute3 = std::string();
+	//cfi_attribute4 = std::string();
+	//cfi_category_desc = std::string();
+	//cfi_group_desc = std::string();
 }
 
 void
@@ -63,6 +72,51 @@ FinFeedAPI.SymbolModel::__cleanup()
 	//
 	//delete asset_class;
 	//asset_class = NULL;
+	//}
+	//if(cfi_code != NULL) {
+	//
+	//delete cfi_code;
+	//cfi_code = NULL;
+	//}
+	//if(cfi_category != NULL) {
+	//
+	//delete cfi_category;
+	//cfi_category = NULL;
+	//}
+	//if(cfi_group != NULL) {
+	//
+	//delete cfi_group;
+	//cfi_group = NULL;
+	//}
+	//if(cfi_attribute1 != NULL) {
+	//
+	//delete cfi_attribute1;
+	//cfi_attribute1 = NULL;
+	//}
+	//if(cfi_attribute2 != NULL) {
+	//
+	//delete cfi_attribute2;
+	//cfi_attribute2 = NULL;
+	//}
+	//if(cfi_attribute3 != NULL) {
+	//
+	//delete cfi_attribute3;
+	//cfi_attribute3 = NULL;
+	//}
+	//if(cfi_attribute4 != NULL) {
+	//
+	//delete cfi_attribute4;
+	//cfi_attribute4 = NULL;
+	//}
+	//if(cfi_category_desc != NULL) {
+	//
+	//delete cfi_category_desc;
+	//cfi_category_desc = NULL;
+	//}
+	//if(cfi_group_desc != NULL) {
+	//
+	//delete cfi_group_desc;
+	//cfi_group_desc = NULL;
 	//}
 	//
 }
@@ -138,6 +192,105 @@ FinFeedAPI.SymbolModel::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *cfi_codeKey = "cfi_code";
+	node = json_object_get_member(pJsonObject, cfi_codeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_code, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_categoryKey = "cfi_category";
+	node = json_object_get_member(pJsonObject, cfi_categoryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_category, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_groupKey = "cfi_group";
+	node = json_object_get_member(pJsonObject, cfi_groupKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_group, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_attribute1Key = "cfi_attribute1";
+	node = json_object_get_member(pJsonObject, cfi_attribute1Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_attribute1, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_attribute2Key = "cfi_attribute2";
+	node = json_object_get_member(pJsonObject, cfi_attribute2Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_attribute2, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_attribute3Key = "cfi_attribute3";
+	node = json_object_get_member(pJsonObject, cfi_attribute3Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_attribute3, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_attribute4Key = "cfi_attribute4";
+	node = json_object_get_member(pJsonObject, cfi_attribute4Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_attribute4, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_category_descKey = "cfi_category_desc";
+	node = json_object_get_member(pJsonObject, cfi_category_descKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_category_desc, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cfi_group_descKey = "cfi_group_desc";
+	node = json_object_get_member(pJsonObject, cfi_group_descKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&cfi_group_desc, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 FinFeedAPI.SymbolModel::FinFeedAPI.SymbolModel(char* json)
@@ -204,6 +357,87 @@ FinFeedAPI.SymbolModel::toJson()
 	}
 	const gchar *asset_classKey = "asset_class";
 	json_object_set_member(pJsonObject, asset_classKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiCode();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_codeKey = "cfi_code";
+	json_object_set_member(pJsonObject, cfi_codeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiCategory();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_categoryKey = "cfi_category";
+	json_object_set_member(pJsonObject, cfi_categoryKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiGroup();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_groupKey = "cfi_group";
+	json_object_set_member(pJsonObject, cfi_groupKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiAttribute1();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_attribute1Key = "cfi_attribute1";
+	json_object_set_member(pJsonObject, cfi_attribute1Key, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiAttribute2();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_attribute2Key = "cfi_attribute2";
+	json_object_set_member(pJsonObject, cfi_attribute2Key, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiAttribute3();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_attribute3Key = "cfi_attribute3";
+	json_object_set_member(pJsonObject, cfi_attribute3Key, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiAttribute4();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_attribute4Key = "cfi_attribute4";
+	json_object_set_member(pJsonObject, cfi_attribute4Key, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiCategoryDesc();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_category_descKey = "cfi_category_desc";
+	json_object_set_member(pJsonObject, cfi_category_descKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCfiGroupDesc();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cfi_group_descKey = "cfi_group_desc";
+	json_object_set_member(pJsonObject, cfi_group_descKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -282,6 +516,114 @@ void
 FinFeedAPI.SymbolModel::setAssetClass(std::string  asset_class)
 {
 	this->asset_class = asset_class;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiCode()
+{
+	return cfi_code;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiCode(std::string  cfi_code)
+{
+	this->cfi_code = cfi_code;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiCategory()
+{
+	return cfi_category;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiCategory(std::string  cfi_category)
+{
+	this->cfi_category = cfi_category;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiGroup()
+{
+	return cfi_group;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiGroup(std::string  cfi_group)
+{
+	this->cfi_group = cfi_group;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiAttribute1()
+{
+	return cfi_attribute1;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiAttribute1(std::string  cfi_attribute1)
+{
+	this->cfi_attribute1 = cfi_attribute1;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiAttribute2()
+{
+	return cfi_attribute2;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiAttribute2(std::string  cfi_attribute2)
+{
+	this->cfi_attribute2 = cfi_attribute2;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiAttribute3()
+{
+	return cfi_attribute3;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiAttribute3(std::string  cfi_attribute3)
+{
+	this->cfi_attribute3 = cfi_attribute3;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiAttribute4()
+{
+	return cfi_attribute4;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiAttribute4(std::string  cfi_attribute4)
+{
+	this->cfi_attribute4 = cfi_attribute4;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiCategoryDesc()
+{
+	return cfi_category_desc;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiCategoryDesc(std::string  cfi_category_desc)
+{
+	this->cfi_category_desc = cfi_category_desc;
+}
+
+std::string
+FinFeedAPI.SymbolModel::getCfiGroupDesc()
+{
+	return cfi_group_desc;
+}
+
+void
+FinFeedAPI.SymbolModel::setCfiGroupDesc(std::string  cfi_group_desc)
+{
+	this->cfi_group_desc = cfi_group_desc;
 }
 
 

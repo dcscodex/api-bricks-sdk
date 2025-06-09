@@ -15,6 +15,15 @@
   | {'name', binary() }
   | {'date', binary() }
   | {'asset_class', binary() }
+  | {'cfi_code', binary() }
+  | {'cfi_category', binary() }
+  | {'cfi_group', binary() }
+  | {'cfi_attribute1', binary() }
+  | {'cfi_attribute2', binary() }
+  | {'cfi_attribute3', binary() }
+  | {'cfi_attribute4', binary() }
+  | {'cfi_category_desc', binary() }
+  | {'cfi_group_desc', binary() }
   ].
 
 
@@ -28,6 +37,15 @@ openapi_fin_feed_api_symbol_model(Fields) ->
             , {'name', binary() }
             , {'date', binary() }
             , {'asset_class', binary() }
+            , {'cfi_code', binary() }
+            , {'cfi_category', binary() }
+            , {'cfi_group', binary() }
+            , {'cfi_attribute1', binary() }
+            , {'cfi_attribute2', binary() }
+            , {'cfi_attribute3', binary() }
+            , {'cfi_attribute4', binary() }
+            , {'cfi_category_desc', binary() }
+            , {'cfi_group_desc', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

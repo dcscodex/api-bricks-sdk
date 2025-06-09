@@ -13,6 +13,15 @@
    (ds/opt :name) string?
    (ds/opt :date) string?
    (ds/opt :asset_class) string?
+   (ds/opt :cfi_code) string?
+   (ds/opt :cfi_category) string?
+   (ds/opt :cfi_group) string?
+   (ds/opt :cfi_attribute1) string?
+   (ds/opt :cfi_attribute2) string?
+   (ds/opt :cfi_attribute3) string?
+   (ds/opt :cfi_attribute4) string?
+   (ds/opt :cfi_category_desc) string?
+   (ds/opt :cfi_group_desc) string?
    })
 
 (def fin-feed-api/symbol-model-spec

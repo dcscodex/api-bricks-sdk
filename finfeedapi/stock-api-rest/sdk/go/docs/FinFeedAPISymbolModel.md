@@ -10,6 +10,15 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** |  | [optional] 
 **Date** | Pointer to **NullableString** |  | [optional] 
 **AssetClass** | Pointer to **NullableString** |  | [optional] 
+**CfiCode** | Pointer to **NullableString** |  | [optional] 
+**CfiCategory** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiGroup** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiAttribute1** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiAttribute2** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiAttribute3** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiAttribute4** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiCategoryDesc** | Pointer to **NullableString** |  | [optional] [readonly] 
+**CfiGroupDesc** | Pointer to **NullableString** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -240,6 +249,321 @@ HasAssetClass returns a boolean if a field has been set.
 `func (o *FinFeedAPISymbolModel) UnsetAssetClass()`
 
 UnsetAssetClass ensures that no value is present for AssetClass, not even an explicit nil
+### GetCfiCode
+
+`func (o *FinFeedAPISymbolModel) GetCfiCode() string`
+
+GetCfiCode returns the CfiCode field if non-nil, zero value otherwise.
+
+### GetCfiCodeOk
+
+`func (o *FinFeedAPISymbolModel) GetCfiCodeOk() (*string, bool)`
+
+GetCfiCodeOk returns a tuple with the CfiCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiCode
+
+`func (o *FinFeedAPISymbolModel) SetCfiCode(v string)`
+
+SetCfiCode sets CfiCode field to given value.
+
+### HasCfiCode
+
+`func (o *FinFeedAPISymbolModel) HasCfiCode() bool`
+
+HasCfiCode returns a boolean if a field has been set.
+
+### SetCfiCodeNil
+
+`func (o *FinFeedAPISymbolModel) SetCfiCodeNil(b bool)`
+
+ SetCfiCodeNil sets the value for CfiCode to be an explicit nil
+
+### UnsetCfiCode
+`func (o *FinFeedAPISymbolModel) UnsetCfiCode()`
+
+UnsetCfiCode ensures that no value is present for CfiCode, not even an explicit nil
+### GetCfiCategory
+
+`func (o *FinFeedAPISymbolModel) GetCfiCategory() string`
+
+GetCfiCategory returns the CfiCategory field if non-nil, zero value otherwise.
+
+### GetCfiCategoryOk
+
+`func (o *FinFeedAPISymbolModel) GetCfiCategoryOk() (*string, bool)`
+
+GetCfiCategoryOk returns a tuple with the CfiCategory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiCategory
+
+`func (o *FinFeedAPISymbolModel) SetCfiCategory(v string)`
+
+SetCfiCategory sets CfiCategory field to given value.
+
+### HasCfiCategory
+
+`func (o *FinFeedAPISymbolModel) HasCfiCategory() bool`
+
+HasCfiCategory returns a boolean if a field has been set.
+
+### SetCfiCategoryNil
+
+`func (o *FinFeedAPISymbolModel) SetCfiCategoryNil(b bool)`
+
+ SetCfiCategoryNil sets the value for CfiCategory to be an explicit nil
+
+### UnsetCfiCategory
+`func (o *FinFeedAPISymbolModel) UnsetCfiCategory()`
+
+UnsetCfiCategory ensures that no value is present for CfiCategory, not even an explicit nil
+### GetCfiGroup
+
+`func (o *FinFeedAPISymbolModel) GetCfiGroup() string`
+
+GetCfiGroup returns the CfiGroup field if non-nil, zero value otherwise.
+
+### GetCfiGroupOk
+
+`func (o *FinFeedAPISymbolModel) GetCfiGroupOk() (*string, bool)`
+
+GetCfiGroupOk returns a tuple with the CfiGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiGroup
+
+`func (o *FinFeedAPISymbolModel) SetCfiGroup(v string)`
+
+SetCfiGroup sets CfiGroup field to given value.
+
+### HasCfiGroup
+
+`func (o *FinFeedAPISymbolModel) HasCfiGroup() bool`
+
+HasCfiGroup returns a boolean if a field has been set.
+
+### SetCfiGroupNil
+
+`func (o *FinFeedAPISymbolModel) SetCfiGroupNil(b bool)`
+
+ SetCfiGroupNil sets the value for CfiGroup to be an explicit nil
+
+### UnsetCfiGroup
+`func (o *FinFeedAPISymbolModel) UnsetCfiGroup()`
+
+UnsetCfiGroup ensures that no value is present for CfiGroup, not even an explicit nil
+### GetCfiAttribute1
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute1() string`
+
+GetCfiAttribute1 returns the CfiAttribute1 field if non-nil, zero value otherwise.
+
+### GetCfiAttribute1Ok
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute1Ok() (*string, bool)`
+
+GetCfiAttribute1Ok returns a tuple with the CfiAttribute1 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiAttribute1
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute1(v string)`
+
+SetCfiAttribute1 sets CfiAttribute1 field to given value.
+
+### HasCfiAttribute1
+
+`func (o *FinFeedAPISymbolModel) HasCfiAttribute1() bool`
+
+HasCfiAttribute1 returns a boolean if a field has been set.
+
+### SetCfiAttribute1Nil
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute1Nil(b bool)`
+
+ SetCfiAttribute1Nil sets the value for CfiAttribute1 to be an explicit nil
+
+### UnsetCfiAttribute1
+`func (o *FinFeedAPISymbolModel) UnsetCfiAttribute1()`
+
+UnsetCfiAttribute1 ensures that no value is present for CfiAttribute1, not even an explicit nil
+### GetCfiAttribute2
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute2() string`
+
+GetCfiAttribute2 returns the CfiAttribute2 field if non-nil, zero value otherwise.
+
+### GetCfiAttribute2Ok
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute2Ok() (*string, bool)`
+
+GetCfiAttribute2Ok returns a tuple with the CfiAttribute2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiAttribute2
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute2(v string)`
+
+SetCfiAttribute2 sets CfiAttribute2 field to given value.
+
+### HasCfiAttribute2
+
+`func (o *FinFeedAPISymbolModel) HasCfiAttribute2() bool`
+
+HasCfiAttribute2 returns a boolean if a field has been set.
+
+### SetCfiAttribute2Nil
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute2Nil(b bool)`
+
+ SetCfiAttribute2Nil sets the value for CfiAttribute2 to be an explicit nil
+
+### UnsetCfiAttribute2
+`func (o *FinFeedAPISymbolModel) UnsetCfiAttribute2()`
+
+UnsetCfiAttribute2 ensures that no value is present for CfiAttribute2, not even an explicit nil
+### GetCfiAttribute3
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute3() string`
+
+GetCfiAttribute3 returns the CfiAttribute3 field if non-nil, zero value otherwise.
+
+### GetCfiAttribute3Ok
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute3Ok() (*string, bool)`
+
+GetCfiAttribute3Ok returns a tuple with the CfiAttribute3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiAttribute3
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute3(v string)`
+
+SetCfiAttribute3 sets CfiAttribute3 field to given value.
+
+### HasCfiAttribute3
+
+`func (o *FinFeedAPISymbolModel) HasCfiAttribute3() bool`
+
+HasCfiAttribute3 returns a boolean if a field has been set.
+
+### SetCfiAttribute3Nil
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute3Nil(b bool)`
+
+ SetCfiAttribute3Nil sets the value for CfiAttribute3 to be an explicit nil
+
+### UnsetCfiAttribute3
+`func (o *FinFeedAPISymbolModel) UnsetCfiAttribute3()`
+
+UnsetCfiAttribute3 ensures that no value is present for CfiAttribute3, not even an explicit nil
+### GetCfiAttribute4
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute4() string`
+
+GetCfiAttribute4 returns the CfiAttribute4 field if non-nil, zero value otherwise.
+
+### GetCfiAttribute4Ok
+
+`func (o *FinFeedAPISymbolModel) GetCfiAttribute4Ok() (*string, bool)`
+
+GetCfiAttribute4Ok returns a tuple with the CfiAttribute4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiAttribute4
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute4(v string)`
+
+SetCfiAttribute4 sets CfiAttribute4 field to given value.
+
+### HasCfiAttribute4
+
+`func (o *FinFeedAPISymbolModel) HasCfiAttribute4() bool`
+
+HasCfiAttribute4 returns a boolean if a field has been set.
+
+### SetCfiAttribute4Nil
+
+`func (o *FinFeedAPISymbolModel) SetCfiAttribute4Nil(b bool)`
+
+ SetCfiAttribute4Nil sets the value for CfiAttribute4 to be an explicit nil
+
+### UnsetCfiAttribute4
+`func (o *FinFeedAPISymbolModel) UnsetCfiAttribute4()`
+
+UnsetCfiAttribute4 ensures that no value is present for CfiAttribute4, not even an explicit nil
+### GetCfiCategoryDesc
+
+`func (o *FinFeedAPISymbolModel) GetCfiCategoryDesc() string`
+
+GetCfiCategoryDesc returns the CfiCategoryDesc field if non-nil, zero value otherwise.
+
+### GetCfiCategoryDescOk
+
+`func (o *FinFeedAPISymbolModel) GetCfiCategoryDescOk() (*string, bool)`
+
+GetCfiCategoryDescOk returns a tuple with the CfiCategoryDesc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiCategoryDesc
+
+`func (o *FinFeedAPISymbolModel) SetCfiCategoryDesc(v string)`
+
+SetCfiCategoryDesc sets CfiCategoryDesc field to given value.
+
+### HasCfiCategoryDesc
+
+`func (o *FinFeedAPISymbolModel) HasCfiCategoryDesc() bool`
+
+HasCfiCategoryDesc returns a boolean if a field has been set.
+
+### SetCfiCategoryDescNil
+
+`func (o *FinFeedAPISymbolModel) SetCfiCategoryDescNil(b bool)`
+
+ SetCfiCategoryDescNil sets the value for CfiCategoryDesc to be an explicit nil
+
+### UnsetCfiCategoryDesc
+`func (o *FinFeedAPISymbolModel) UnsetCfiCategoryDesc()`
+
+UnsetCfiCategoryDesc ensures that no value is present for CfiCategoryDesc, not even an explicit nil
+### GetCfiGroupDesc
+
+`func (o *FinFeedAPISymbolModel) GetCfiGroupDesc() string`
+
+GetCfiGroupDesc returns the CfiGroupDesc field if non-nil, zero value otherwise.
+
+### GetCfiGroupDescOk
+
+`func (o *FinFeedAPISymbolModel) GetCfiGroupDescOk() (*string, bool)`
+
+GetCfiGroupDescOk returns a tuple with the CfiGroupDesc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCfiGroupDesc
+
+`func (o *FinFeedAPISymbolModel) SetCfiGroupDesc(v string)`
+
+SetCfiGroupDesc sets CfiGroupDesc field to given value.
+
+### HasCfiGroupDesc
+
+`func (o *FinFeedAPISymbolModel) HasCfiGroupDesc() bool`
+
+HasCfiGroupDesc returns a boolean if a field has been set.
+
+### SetCfiGroupDescNil
+
+`func (o *FinFeedAPISymbolModel) SetCfiGroupDescNil(b bool)`
+
+ SetCfiGroupDescNil sets the value for CfiGroupDesc to be an explicit nil
+
+### UnsetCfiGroupDesc
+`func (o *FinFeedAPISymbolModel) UnsetCfiGroupDesc()`
+
+UnsetCfiGroupDesc ensures that no value is present for CfiGroupDesc, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -47,4 +47,49 @@ export interface FinFeedAPISymbolModel {
      * @memberof FinFeedAPISymbolModel
      */
     asset_class?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_code?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_category?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_group?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_attribute1?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_attribute2?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_attribute3?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_attribute4?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_category_desc?: string | null;
+    /**
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    readonly cfi_group_desc?: string | null;
 }

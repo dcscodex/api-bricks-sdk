@@ -33,6 +33,24 @@ feature --Access
       
     asset_class: detachable STRING_32
       
+    cfi_code: detachable STRING_32
+      
+    cfi_category: detachable STRING_32
+      
+    cfi_group: detachable STRING_32
+      
+    cfi_attribute1: detachable STRING_32
+      
+    cfi_attribute2: detachable STRING_32
+      
+    cfi_attribute3: detachable STRING_32
+      
+    cfi_attribute4: detachable STRING_32
+      
+    cfi_category_desc: detachable STRING_32
+      
+    cfi_group_desc: detachable STRING_32
+      
 
 feature -- Change Element
 
@@ -84,6 +102,78 @@ feature -- Change Element
         asset_class_set: asset_class = a_name
       end
 
+    set_cfi_code (a_name: like cfi_code)
+        -- Set 'cfi_code' with 'a_name'.
+      do
+        cfi_code := a_name
+      ensure
+        cfi_code_set: cfi_code = a_name
+      end
+
+    set_cfi_category (a_name: like cfi_category)
+        -- Set 'cfi_category' with 'a_name'.
+      do
+        cfi_category := a_name
+      ensure
+        cfi_category_set: cfi_category = a_name
+      end
+
+    set_cfi_group (a_name: like cfi_group)
+        -- Set 'cfi_group' with 'a_name'.
+      do
+        cfi_group := a_name
+      ensure
+        cfi_group_set: cfi_group = a_name
+      end
+
+    set_cfi_attribute1 (a_name: like cfi_attribute1)
+        -- Set 'cfi_attribute1' with 'a_name'.
+      do
+        cfi_attribute1 := a_name
+      ensure
+        cfi_attribute1_set: cfi_attribute1 = a_name
+      end
+
+    set_cfi_attribute2 (a_name: like cfi_attribute2)
+        -- Set 'cfi_attribute2' with 'a_name'.
+      do
+        cfi_attribute2 := a_name
+      ensure
+        cfi_attribute2_set: cfi_attribute2 = a_name
+      end
+
+    set_cfi_attribute3 (a_name: like cfi_attribute3)
+        -- Set 'cfi_attribute3' with 'a_name'.
+      do
+        cfi_attribute3 := a_name
+      ensure
+        cfi_attribute3_set: cfi_attribute3 = a_name
+      end
+
+    set_cfi_attribute4 (a_name: like cfi_attribute4)
+        -- Set 'cfi_attribute4' with 'a_name'.
+      do
+        cfi_attribute4 := a_name
+      ensure
+        cfi_attribute4_set: cfi_attribute4 = a_name
+      end
+
+    set_cfi_category_desc (a_name: like cfi_category_desc)
+        -- Set 'cfi_category_desc' with 'a_name'.
+      do
+        cfi_category_desc := a_name
+      ensure
+        cfi_category_desc_set: cfi_category_desc = a_name
+      end
+
+    set_cfi_group_desc (a_name: like cfi_group_desc)
+        -- Set 'cfi_group_desc' with 'a_name'.
+      do
+        cfi_group_desc := a_name
+      ensure
+        cfi_group_desc_set: cfi_group_desc = a_name
+      end
+
 
  feature -- Status Report
 
@@ -121,6 +211,51 @@ feature -- Change Element
         if attached asset_class as l_asset_class then
           Result.append ("%Nasset_class:")
           Result.append (l_asset_class.out)
+          Result.append ("%N")
+        end
+        if attached cfi_code as l_cfi_code then
+          Result.append ("%Ncfi_code:")
+          Result.append (l_cfi_code.out)
+          Result.append ("%N")
+        end
+        if attached cfi_category as l_cfi_category then
+          Result.append ("%Ncfi_category:")
+          Result.append (l_cfi_category.out)
+          Result.append ("%N")
+        end
+        if attached cfi_group as l_cfi_group then
+          Result.append ("%Ncfi_group:")
+          Result.append (l_cfi_group.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute1 as l_cfi_attribute1 then
+          Result.append ("%Ncfi_attribute1:")
+          Result.append (l_cfi_attribute1.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute2 as l_cfi_attribute2 then
+          Result.append ("%Ncfi_attribute2:")
+          Result.append (l_cfi_attribute2.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute3 as l_cfi_attribute3 then
+          Result.append ("%Ncfi_attribute3:")
+          Result.append (l_cfi_attribute3.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute4 as l_cfi_attribute4 then
+          Result.append ("%Ncfi_attribute4:")
+          Result.append (l_cfi_attribute4.out)
+          Result.append ("%N")
+        end
+        if attached cfi_category_desc as l_cfi_category_desc then
+          Result.append ("%Ncfi_category_desc:")
+          Result.append (l_cfi_category_desc.out)
+          Result.append ("%N")
+        end
+        if attached cfi_group_desc as l_cfi_group_desc then
+          Result.append ("%Ncfi_group_desc:")
+          Result.append (l_cfi_group_desc.out)
           Result.append ("%N")
         end
       end

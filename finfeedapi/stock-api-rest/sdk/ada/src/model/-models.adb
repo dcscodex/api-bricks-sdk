@@ -882,6 +882,15 @@ package body .Models is
       Into.Write_Entity ("name", Value.Name);
       Into.Write_Entity ("date", Value.Date);
       Into.Write_Entity ("asset_class", Value.Asset_Class);
+      Into.Write_Entity ("cfi_code", Value.Cfi_Code);
+      Into.Write_Entity ("cfi_category", Value.Cfi_Category);
+      Into.Write_Entity ("cfi_group", Value.Cfi_Group);
+      Into.Write_Entity ("cfi_attribute1", Value.Cfi_Attribute_1);
+      Into.Write_Entity ("cfi_attribute2", Value.Cfi_Attribute_2);
+      Into.Write_Entity ("cfi_attribute3", Value.Cfi_Attribute_3);
+      Into.Write_Entity ("cfi_attribute4", Value.Cfi_Attribute_4);
+      Into.Write_Entity ("cfi_category_desc", Value.Cfi_Category_Desc);
+      Into.Write_Entity ("cfi_group_desc", Value.Cfi_Group_Desc);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -908,6 +917,15 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "name", Value.Name);
       Swagger.Streams.Deserialize (Object, "date", Value.Date);
       Swagger.Streams.Deserialize (Object, "asset_class", Value.Asset_Class);
+      Swagger.Streams.Deserialize (Object, "cfi_code", Value.Cfi_Code);
+      Swagger.Streams.Deserialize (Object, "cfi_category", Value.Cfi_Category);
+      Swagger.Streams.Deserialize (Object, "cfi_group", Value.Cfi_Group);
+      Swagger.Streams.Deserialize (Object, "cfi_attribute1", Value.Cfi_Attribute_1);
+      Swagger.Streams.Deserialize (Object, "cfi_attribute2", Value.Cfi_Attribute_2);
+      Swagger.Streams.Deserialize (Object, "cfi_attribute3", Value.Cfi_Attribute_3);
+      Swagger.Streams.Deserialize (Object, "cfi_attribute4", Value.Cfi_Attribute_4);
+      Swagger.Streams.Deserialize (Object, "cfi_category_desc", Value.Cfi_Category_Desc);
+      Swagger.Streams.Deserialize (Object, "cfi_group_desc", Value.Cfi_Group_Desc);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;

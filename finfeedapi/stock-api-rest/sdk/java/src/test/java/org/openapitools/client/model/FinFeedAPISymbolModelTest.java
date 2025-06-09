@@ -86,4 +86,76 @@ public class FinFeedAPISymbolModelTest {
         // TODO: test assetClass
     }
 
+    /**
+     * Test the property 'cfiCode'
+     */
+    @Test
+    public void cfiCodeTest() {
+        // TODO: test cfiCode
+    }
+
+    /**
+     * Test the property 'cfiCategory'
+     */
+    @Test
+    public void cfiCategoryTest() {
+        // TODO: test cfiCategory
+    }
+
+    /**
+     * Test the property 'cfiGroup'
+     */
+    @Test
+    public void cfiGroupTest() {
+        // TODO: test cfiGroup
+    }
+
+    /**
+     * Test the property 'cfiAttribute1'
+     */
+    @Test
+    public void cfiAttribute1Test() {
+        // TODO: test cfiAttribute1
+    }
+
+    /**
+     * Test the property 'cfiAttribute2'
+     */
+    @Test
+    public void cfiAttribute2Test() {
+        // TODO: test cfiAttribute2
+    }
+
+    /**
+     * Test the property 'cfiAttribute3'
+     */
+    @Test
+    public void cfiAttribute3Test() {
+        // TODO: test cfiAttribute3
+    }
+
+    /**
+     * Test the property 'cfiAttribute4'
+     */
+    @Test
+    public void cfiAttribute4Test() {
+        // TODO: test cfiAttribute4
+    }
+
+    /**
+     * Test the property 'cfiCategoryDesc'
+     */
+    @Test
+    public void cfiCategoryDescTest() {
+        // TODO: test cfiCategoryDesc
+    }
+
+    /**
+     * Test the property 'cfiGroupDesc'
+     */
+    @Test
+    public void cfiGroupDescTest() {
+        // TODO: test cfiGroupDesc
+    }
+
 }

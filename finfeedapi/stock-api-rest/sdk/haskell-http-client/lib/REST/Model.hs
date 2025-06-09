@@ -970,6 +970,15 @@ data FinFeedAPISymbolModel = FinFeedAPISymbolModel
   , finFeedAPISymbolModelName :: !(Maybe Text) -- ^ "name"
   , finFeedAPISymbolModelDate :: !(Maybe Text) -- ^ "date"
   , finFeedAPISymbolModelAssetClass :: !(Maybe Text) -- ^ "asset_class"
+  , finFeedAPISymbolModelCfiCode :: !(Maybe Text) -- ^ "cfi_code"
+  , finFeedAPISymbolModelCfiCategory :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_category"
+  , finFeedAPISymbolModelCfiGroup :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_group"
+  , finFeedAPISymbolModelCfiAttribute1 :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute1"
+  , finFeedAPISymbolModelCfiAttribute2 :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute2"
+  , finFeedAPISymbolModelCfiAttribute3 :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute3"
+  , finFeedAPISymbolModelCfiAttribute4 :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute4"
+  , finFeedAPISymbolModelCfiCategoryDesc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_category_desc"
+  , finFeedAPISymbolModelCfiGroupDesc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_group_desc"
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON FinFeedAPISymbolModel
@@ -982,6 +991,15 @@ instance A.FromJSON FinFeedAPISymbolModel where
       <*> (o .:? "name")
       <*> (o .:? "date")
       <*> (o .:? "asset_class")
+      <*> (o .:? "cfi_code")
+      <*> (o .:? "cfi_category")
+      <*> (o .:? "cfi_group")
+      <*> (o .:? "cfi_attribute1")
+      <*> (o .:? "cfi_attribute2")
+      <*> (o .:? "cfi_attribute3")
+      <*> (o .:? "cfi_attribute4")
+      <*> (o .:? "cfi_category_desc")
+      <*> (o .:? "cfi_group_desc")
 
 -- | ToJSON FinFeedAPISymbolModel
 instance A.ToJSON FinFeedAPISymbolModel where
@@ -993,6 +1011,15 @@ instance A.ToJSON FinFeedAPISymbolModel where
       , "name" .= finFeedAPISymbolModelName
       , "date" .= finFeedAPISymbolModelDate
       , "asset_class" .= finFeedAPISymbolModelAssetClass
+      , "cfi_code" .= finFeedAPISymbolModelCfiCode
+      , "cfi_category" .= finFeedAPISymbolModelCfiCategory
+      , "cfi_group" .= finFeedAPISymbolModelCfiGroup
+      , "cfi_attribute1" .= finFeedAPISymbolModelCfiAttribute1
+      , "cfi_attribute2" .= finFeedAPISymbolModelCfiAttribute2
+      , "cfi_attribute3" .= finFeedAPISymbolModelCfiAttribute3
+      , "cfi_attribute4" .= finFeedAPISymbolModelCfiAttribute4
+      , "cfi_category_desc" .= finFeedAPISymbolModelCfiCategoryDesc
+      , "cfi_group_desc" .= finFeedAPISymbolModelCfiGroupDesc
       ]
 
 
@@ -1007,6 +1034,15 @@ mkFinFeedAPISymbolModel =
   , finFeedAPISymbolModelName = Nothing
   , finFeedAPISymbolModelDate = Nothing
   , finFeedAPISymbolModelAssetClass = Nothing
+  , finFeedAPISymbolModelCfiCode = Nothing
+  , finFeedAPISymbolModelCfiCategory = Nothing
+  , finFeedAPISymbolModelCfiGroup = Nothing
+  , finFeedAPISymbolModelCfiAttribute1 = Nothing
+  , finFeedAPISymbolModelCfiAttribute2 = Nothing
+  , finFeedAPISymbolModelCfiAttribute3 = Nothing
+  , finFeedAPISymbolModelCfiAttribute4 = Nothing
+  , finFeedAPISymbolModelCfiCategoryDesc = Nothing
+  , finFeedAPISymbolModelCfiGroupDesc = Nothing
   }
 
 -- ** Level1QuoteUpdateModel

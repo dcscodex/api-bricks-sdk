@@ -26,6 +26,15 @@ typedef struct fin_feed_api_symbol_model_t {
     char *name; // string
     char *date; // string
     char *asset_class; // string
+    char *cfi_code; // string
+    char *cfi_category; // string
+    char *cfi_group; // string
+    char *cfi_attribute1; // string
+    char *cfi_attribute2; // string
+    char *cfi_attribute3; // string
+    char *cfi_attribute4; // string
+    char *cfi_category_desc; // string
+    char *cfi_group_desc; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } fin_feed_api_symbol_model_t;
@@ -36,7 +45,16 @@ __attribute__((deprecated)) fin_feed_api_symbol_model_t *fin_feed_api_symbol_mod
     char *security_category,
     char *name,
     char *date,
-    char *asset_class
+    char *asset_class,
+    char *cfi_code,
+    char *cfi_category,
+    char *cfi_group,
+    char *cfi_attribute1,
+    char *cfi_attribute2,
+    char *cfi_attribute3,
+    char *cfi_attribute4,
+    char *cfi_category_desc,
+    char *cfi_group_desc
 );
 
 void fin_feed_api_symbol_model_free(fin_feed_api_symbol_model_t *fin_feed_api_symbol_model);

@@ -33,8 +33,17 @@ class FinFeedAPISymbolModel(BaseModel):
     name: Optional[StrictStr] = None
     var_date: Optional[StrictStr] = Field(default=None, alias="date")
     asset_class: Optional[StrictStr] = None
+    cfi_code: Optional[StrictStr] = None
+    cfi_category: Optional[StrictStr] = None
+    cfi_group: Optional[StrictStr] = None
+    cfi_attribute1: Optional[StrictStr] = None
+    cfi_attribute2: Optional[StrictStr] = None
+    cfi_attribute3: Optional[StrictStr] = None
+    cfi_attribute4: Optional[StrictStr] = None
+    cfi_category_desc: Optional[StrictStr] = None
+    cfi_group_desc: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["symbol_id", "exchange_id", "security_category", "name", "date", "asset_class"]
+    __properties: ClassVar[List[str]] = ["symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -67,10 +76,26 @@ class FinFeedAPISymbolModel(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
             "security_category",
+            "cfi_category",
+            "cfi_group",
+            "cfi_attribute1",
+            "cfi_attribute2",
+            "cfi_attribute3",
+            "cfi_attribute4",
+            "cfi_category_desc",
+            "cfi_group_desc",
             "additional_properties",
         ])
 
@@ -114,6 +139,51 @@ class FinFeedAPISymbolModel(BaseModel):
         if self.asset_class is None and "asset_class" in self.model_fields_set:
             _dict['asset_class'] = None
 
+        # set to None if cfi_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_code is None and "cfi_code" in self.model_fields_set:
+            _dict['cfi_code'] = None
+
+        # set to None if cfi_category (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_category is None and "cfi_category" in self.model_fields_set:
+            _dict['cfi_category'] = None
+
+        # set to None if cfi_group (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_group is None and "cfi_group" in self.model_fields_set:
+            _dict['cfi_group'] = None
+
+        # set to None if cfi_attribute1 (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute1 is None and "cfi_attribute1" in self.model_fields_set:
+            _dict['cfi_attribute1'] = None
+
+        # set to None if cfi_attribute2 (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute2 is None and "cfi_attribute2" in self.model_fields_set:
+            _dict['cfi_attribute2'] = None
+
+        # set to None if cfi_attribute3 (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute3 is None and "cfi_attribute3" in self.model_fields_set:
+            _dict['cfi_attribute3'] = None
+
+        # set to None if cfi_attribute4 (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute4 is None and "cfi_attribute4" in self.model_fields_set:
+            _dict['cfi_attribute4'] = None
+
+        # set to None if cfi_category_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_category_desc is None and "cfi_category_desc" in self.model_fields_set:
+            _dict['cfi_category_desc'] = None
+
+        # set to None if cfi_group_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_group_desc is None and "cfi_group_desc" in self.model_fields_set:
+            _dict['cfi_group_desc'] = None
+
         return _dict
 
     @classmethod
@@ -131,7 +201,16 @@ class FinFeedAPISymbolModel(BaseModel):
             "security_category": obj.get("security_category"),
             "name": obj.get("name"),
             "date": obj.get("date"),
-            "asset_class": obj.get("asset_class")
+            "asset_class": obj.get("asset_class"),
+            "cfi_code": obj.get("cfi_code"),
+            "cfi_category": obj.get("cfi_category"),
+            "cfi_group": obj.get("cfi_group"),
+            "cfi_attribute1": obj.get("cfi_attribute1"),
+            "cfi_attribute2": obj.get("cfi_attribute2"),
+            "cfi_attribute3": obj.get("cfi_attribute3"),
+            "cfi_attribute4": obj.get("cfi_attribute4"),
+            "cfi_category_desc": obj.get("cfi_category_desc"),
+            "cfi_group_desc": obj.get("cfi_group_desc")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -46,3 +46,66 @@ test_that("asset_class", {
   # uncomment below to test the property
   #expect_equal(model.instance$`asset_class`, "EXPECTED_RESULT")
 })
+
+test_that("cfi_code", {
+  # tests for the property `cfi_code` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_code`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_category", {
+  # tests for the property `cfi_category` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_category`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_group", {
+  # tests for the property `cfi_group` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_group`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute1", {
+  # tests for the property `cfi_attribute1` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute1`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute2", {
+  # tests for the property `cfi_attribute2` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute2`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute3", {
+  # tests for the property `cfi_attribute3` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute3`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute4", {
+  # tests for the property `cfi_attribute4` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute4`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_category_desc", {
+  # tests for the property `cfi_category_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_category_desc`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_group_desc", {
+  # tests for the property `cfi_group_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_group_desc`, "EXPECTED_RESULT")
+})

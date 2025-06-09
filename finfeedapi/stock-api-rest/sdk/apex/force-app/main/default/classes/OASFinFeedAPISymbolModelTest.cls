@@ -78,5 +78,14 @@ private class OASFinFeedAPISymbolModelTest {
         System.assertEquals('securityCategory', x-property-mappings.get('security_category'));
         System.assertEquals('r_date', x-property-mappings.get('date'));
         System.assertEquals('assetClass', x-property-mappings.get('asset_class'));
+        System.assertEquals('cfiCode', x-property-mappings.get('cfi_code'));
+        System.assertEquals('cfiCategory', x-property-mappings.get('cfi_category'));
+        System.assertEquals('cfiGroup', x-property-mappings.get('cfi_group'));
+        System.assertEquals('cfiAttribute1', x-property-mappings.get('cfi_attribute1'));
+        System.assertEquals('cfiAttribute2', x-property-mappings.get('cfi_attribute2'));
+        System.assertEquals('cfiAttribute3', x-property-mappings.get('cfi_attribute3'));
+        System.assertEquals('cfiAttribute4', x-property-mappings.get('cfi_attribute4'));
+        System.assertEquals('cfiCategoryDesc', x-property-mappings.get('cfi_category_desc'));
+        System.assertEquals('cfiGroupDesc', x-property-mappings.get('cfi_group_desc'));
     }
 }

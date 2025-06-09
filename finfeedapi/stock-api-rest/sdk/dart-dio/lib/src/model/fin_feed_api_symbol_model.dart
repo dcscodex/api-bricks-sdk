@@ -19,6 +19,15 @@ part 'fin_feed_api_symbol_model.g.dart';
 /// * [name] 
 /// * [date] 
 /// * [assetClass] 
+/// * [cfiCode] 
+/// * [cfiCategory] 
+/// * [cfiGroup] 
+/// * [cfiAttribute1] 
+/// * [cfiAttribute2] 
+/// * [cfiAttribute3] 
+/// * [cfiAttribute4] 
+/// * [cfiCategoryDesc] 
+/// * [cfiGroupDesc] 
 @BuiltValue()
 abstract class FinFeedAPISymbolModel implements Built<FinFeedAPISymbolModel, FinFeedAPISymbolModelBuilder> {
   @BuiltValueField(wireName: r'symbol_id')
@@ -38,6 +47,33 @@ abstract class FinFeedAPISymbolModel implements Built<FinFeedAPISymbolModel, Fin
 
   @BuiltValueField(wireName: r'asset_class')
   String? get assetClass;
+
+  @BuiltValueField(wireName: r'cfi_code')
+  String? get cfiCode;
+
+  @BuiltValueField(wireName: r'cfi_category')
+  String? get cfiCategory;
+
+  @BuiltValueField(wireName: r'cfi_group')
+  String? get cfiGroup;
+
+  @BuiltValueField(wireName: r'cfi_attribute1')
+  String? get cfiAttribute1;
+
+  @BuiltValueField(wireName: r'cfi_attribute2')
+  String? get cfiAttribute2;
+
+  @BuiltValueField(wireName: r'cfi_attribute3')
+  String? get cfiAttribute3;
+
+  @BuiltValueField(wireName: r'cfi_attribute4')
+  String? get cfiAttribute4;
+
+  @BuiltValueField(wireName: r'cfi_category_desc')
+  String? get cfiCategoryDesc;
+
+  @BuiltValueField(wireName: r'cfi_group_desc')
+  String? get cfiGroupDesc;
 
   FinFeedAPISymbolModel._();
 
@@ -101,6 +137,69 @@ class _$FinFeedAPISymbolModelSerializer implements PrimitiveSerializer<FinFeedAP
       yield r'asset_class';
       yield serializers.serialize(
         object.assetClass,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiCode != null) {
+      yield r'cfi_code';
+      yield serializers.serialize(
+        object.cfiCode,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiCategory != null) {
+      yield r'cfi_category';
+      yield serializers.serialize(
+        object.cfiCategory,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiGroup != null) {
+      yield r'cfi_group';
+      yield serializers.serialize(
+        object.cfiGroup,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute1 != null) {
+      yield r'cfi_attribute1';
+      yield serializers.serialize(
+        object.cfiAttribute1,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute2 != null) {
+      yield r'cfi_attribute2';
+      yield serializers.serialize(
+        object.cfiAttribute2,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute3 != null) {
+      yield r'cfi_attribute3';
+      yield serializers.serialize(
+        object.cfiAttribute3,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute4 != null) {
+      yield r'cfi_attribute4';
+      yield serializers.serialize(
+        object.cfiAttribute4,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiCategoryDesc != null) {
+      yield r'cfi_category_desc';
+      yield serializers.serialize(
+        object.cfiCategoryDesc,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiGroupDesc != null) {
+      yield r'cfi_group_desc';
+      yield serializers.serialize(
+        object.cfiGroupDesc,
         specifiedType: const FullType.nullable(String),
       );
     }
@@ -174,6 +273,78 @@ class _$FinFeedAPISymbolModelSerializer implements PrimitiveSerializer<FinFeedAP
           ) as String?;
           if (valueDes == null) continue;
           result.assetClass = valueDes;
+          break;
+        case r'cfi_code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiCode = valueDes;
+          break;
+        case r'cfi_category':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiCategory = valueDes;
+          break;
+        case r'cfi_group':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiGroup = valueDes;
+          break;
+        case r'cfi_attribute1':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute1 = valueDes;
+          break;
+        case r'cfi_attribute2':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute2 = valueDes;
+          break;
+        case r'cfi_attribute3':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute3 = valueDes;
+          break;
+        case r'cfi_attribute4':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute4 = valueDes;
+          break;
+        case r'cfi_category_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiCategoryDesc = valueDes;
+          break;
+        case r'cfi_group_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiGroupDesc = valueDes;
           break;
         default:
           unhandled.add(key);

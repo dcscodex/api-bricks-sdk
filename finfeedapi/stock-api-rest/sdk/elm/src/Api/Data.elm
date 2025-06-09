@@ -318,6 +318,15 @@ type alias FinFeedAPISymbolModel =
     , name : Maybe String
     , date : Maybe String
     , assetClass : Maybe String
+    , cfiCode : Maybe String
+    , cfiCategory : Maybe String
+    , cfiGroup : Maybe String
+    , cfiAttribute1 : Maybe String
+    , cfiAttribute2 : Maybe String
+    , cfiAttribute3 : Maybe String
+    , cfiAttribute4 : Maybe String
+    , cfiCategoryDesc : Maybe String
+    , cfiGroupDesc : Maybe String
     }
 
 
@@ -867,6 +876,15 @@ encodeFinFeedAPISymbolModelPairs model =
             , maybeEncodeNullable "name" Json.Encode.string model.name
             , maybeEncodeNullable "date" Json.Encode.string model.date
             , maybeEncodeNullable "asset_class" Json.Encode.string model.assetClass
+            , maybeEncodeNullable "cfi_code" Json.Encode.string model.cfiCode
+            , maybeEncodeNullable "cfi_category" Json.Encode.string model.cfiCategory
+            , maybeEncodeNullable "cfi_group" Json.Encode.string model.cfiGroup
+            , maybeEncodeNullable "cfi_attribute1" Json.Encode.string model.cfiAttribute1
+            , maybeEncodeNullable "cfi_attribute2" Json.Encode.string model.cfiAttribute2
+            , maybeEncodeNullable "cfi_attribute3" Json.Encode.string model.cfiAttribute3
+            , maybeEncodeNullable "cfi_attribute4" Json.Encode.string model.cfiAttribute4
+            , maybeEncodeNullable "cfi_category_desc" Json.Encode.string model.cfiCategoryDesc
+            , maybeEncodeNullable "cfi_group_desc" Json.Encode.string model.cfiGroupDesc
             ]
     in
     pairs
@@ -1409,6 +1427,15 @@ finFeedAPISymbolModelDecoder =
         |> maybeDecodeNullable "name" Json.Decode.string Nothing
         |> maybeDecodeNullable "date" Json.Decode.string Nothing
         |> maybeDecodeNullable "asset_class" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_code" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_category" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_group" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute1" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute2" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute3" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute4" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_category_desc" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_group_desc" Json.Decode.string Nothing
 
 
 level1QuoteUpdateModelDecoder : Json.Decode.Decoder Level1QuoteUpdateModel

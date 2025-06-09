@@ -27,6 +27,24 @@ No description available.
 No description available.
 .PARAMETER AssetClass
 No description available.
+.PARAMETER CfiCode
+No description available.
+.PARAMETER CfiCategory
+No description available.
+.PARAMETER CfiGroup
+No description available.
+.PARAMETER CfiAttribute1
+No description available.
+.PARAMETER CfiAttribute2
+No description available.
+.PARAMETER CfiAttribute3
+No description available.
+.PARAMETER CfiAttribute4
+No description available.
+.PARAMETER CfiCategoryDesc
+No description available.
+.PARAMETER CfiGroupDesc
+No description available.
 .OUTPUTS
 
 FinFeedAPISymbolModel<PSCustomObject>
@@ -52,7 +70,34 @@ function Initialize-FinFeedAPISymbolModel {
         ${Date},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${AssetClass}
+        ${AssetClass},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiCode},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiCategory},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiGroup},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute1},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute2},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute3},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute4},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiCategoryDesc},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiGroupDesc}
     )
 
     Process {
@@ -67,6 +112,15 @@ function Initialize-FinFeedAPISymbolModel {
             "name" = ${Name}
             "date" = ${Date}
             "asset_class" = ${AssetClass}
+            "cfi_code" = ${CfiCode}
+            "cfi_category" = ${CfiCategory}
+            "cfi_group" = ${CfiGroup}
+            "cfi_attribute1" = ${CfiAttribute1}
+            "cfi_attribute2" = ${CfiAttribute2}
+            "cfi_attribute3" = ${CfiAttribute3}
+            "cfi_attribute4" = ${CfiAttribute4}
+            "cfi_category_desc" = ${CfiCategoryDesc}
+            "cfi_group_desc" = ${CfiGroupDesc}
         }
 
 
@@ -105,7 +159,7 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
         $FinFeedAPISymbolModelAdditionalProperties = @{}
 
         # check if Json contains properties not defined in FinFeedAPISymbolModel
-        $AllProperties = ("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class")
+        $AllProperties = ("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             # store undefined properties in additionalProperties
             if (!($AllProperties.Contains($name))) {
@@ -149,6 +203,60 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
             $AssetClass = $JsonParameters.PSobject.Properties["asset_class"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_code"))) { #optional property not found
+            $CfiCode = $null
+        } else {
+            $CfiCode = $JsonParameters.PSobject.Properties["cfi_code"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_category"))) { #optional property not found
+            $CfiCategory = $null
+        } else {
+            $CfiCategory = $JsonParameters.PSobject.Properties["cfi_category"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_group"))) { #optional property not found
+            $CfiGroup = $null
+        } else {
+            $CfiGroup = $JsonParameters.PSobject.Properties["cfi_group"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute1"))) { #optional property not found
+            $CfiAttribute1 = $null
+        } else {
+            $CfiAttribute1 = $JsonParameters.PSobject.Properties["cfi_attribute1"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute2"))) { #optional property not found
+            $CfiAttribute2 = $null
+        } else {
+            $CfiAttribute2 = $JsonParameters.PSobject.Properties["cfi_attribute2"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute3"))) { #optional property not found
+            $CfiAttribute3 = $null
+        } else {
+            $CfiAttribute3 = $JsonParameters.PSobject.Properties["cfi_attribute3"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute4"))) { #optional property not found
+            $CfiAttribute4 = $null
+        } else {
+            $CfiAttribute4 = $JsonParameters.PSobject.Properties["cfi_attribute4"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_category_desc"))) { #optional property not found
+            $CfiCategoryDesc = $null
+        } else {
+            $CfiCategoryDesc = $JsonParameters.PSobject.Properties["cfi_category_desc"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_group_desc"))) { #optional property not found
+            $CfiGroupDesc = $null
+        } else {
+            $CfiGroupDesc = $JsonParameters.PSobject.Properties["cfi_group_desc"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "symbol_id" = ${SymbolId}
             "exchange_id" = ${ExchangeId}
@@ -156,6 +264,15 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
             "name" = ${Name}
             "date" = ${Date}
             "asset_class" = ${AssetClass}
+            "cfi_code" = ${CfiCode}
+            "cfi_category" = ${CfiCategory}
+            "cfi_group" = ${CfiGroup}
+            "cfi_attribute1" = ${CfiAttribute1}
+            "cfi_attribute2" = ${CfiAttribute2}
+            "cfi_attribute3" = ${CfiAttribute3}
+            "cfi_attribute4" = ${CfiAttribute4}
+            "cfi_category_desc" = ${CfiCategoryDesc}
+            "cfi_group_desc" = ${CfiGroupDesc}
             "AdditionalProperties" = $FinFeedAPISymbolModelAdditionalProperties
         }
 

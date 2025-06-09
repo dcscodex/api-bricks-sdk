@@ -19,6 +19,15 @@ case class SymbolModel (
   securityCategory: Option[String] = None,
   name: Option[String] = None,
   date: Option[String] = None,
-  assetClass: Option[String] = None
+  assetClass: Option[String] = None,
+  cfiCode: Option[String] = None,
+  cfiCategory: Option[String] = None,
+  cfiGroup: Option[String] = None,
+  cfiAttribute1: Option[String] = None,
+  cfiAttribute2: Option[String] = None,
+  cfiAttribute3: Option[String] = None,
+  cfiAttribute4: Option[String] = None,
+  cfiCategoryDesc: Option[String] = None,
+  cfiGroupDesc: Option[String] = None
 ) extends ApiModel
 

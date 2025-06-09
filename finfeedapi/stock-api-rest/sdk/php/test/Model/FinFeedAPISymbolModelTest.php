@@ -133,4 +133,85 @@ class FinFeedAPISymbolModelTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "cfi_code"
+     */
+    public function testPropertyCfiCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_category"
+     */
+    public function testPropertyCfiCategory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_group"
+     */
+    public function testPropertyCfiGroup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute1"
+     */
+    public function testPropertyCfiAttribute1()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute2"
+     */
+    public function testPropertyCfiAttribute2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute3"
+     */
+    public function testPropertyCfiAttribute3()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute4"
+     */
+    public function testPropertyCfiAttribute4()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_category_desc"
+     */
+    public function testPropertyCfiCategoryDesc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_group_desc"
+     */
+    public function testPropertyCfiGroupDesc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

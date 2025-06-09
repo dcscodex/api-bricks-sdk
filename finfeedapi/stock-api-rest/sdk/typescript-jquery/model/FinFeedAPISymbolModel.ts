@@ -27,4 +27,22 @@ export interface FinFeedAPISymbolModel {
 
     asset_class?: string;
 
+    cfi_code?: string;
+
+    cfi_category?: string;
+
+    cfi_group?: string;
+
+    cfi_attribute1?: string;
+
+    cfi_attribute2?: string;
+
+    cfi_attribute3?: string;
+
+    cfi_attribute4?: string;
+
+    cfi_category_desc?: string;
+
+    cfi_group_desc?: string;
+
 }

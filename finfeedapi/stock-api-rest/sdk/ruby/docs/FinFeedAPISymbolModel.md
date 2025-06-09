@@ -10,6 +10,15 @@
 | **name** | **String** |  | [optional] |
 | **date** | **String** |  | [optional] |
 | **asset_class** | **String** |  | [optional] |
+| **cfi_code** | **String** |  | [optional] |
+| **cfi_category** | **String** |  | [optional][readonly] |
+| **cfi_group** | **String** |  | [optional][readonly] |
+| **cfi_attribute1** | **String** |  | [optional][readonly] |
+| **cfi_attribute2** | **String** |  | [optional][readonly] |
+| **cfi_attribute3** | **String** |  | [optional][readonly] |
+| **cfi_attribute4** | **String** |  | [optional][readonly] |
+| **cfi_category_desc** | **String** |  | [optional][readonly] |
+| **cfi_group_desc** | **String** |  | [optional][readonly] |
 
 ## Example
 
@@ -22,7 +31,16 @@ instance = OpenapiClient::FinFeedAPISymbolModel.new(
   security_category: null,
   name: null,
   date: null,
-  asset_class: null
+  asset_class: null,
+  cfi_code: null,
+  cfi_category: null,
+  cfi_group: null,
+  cfi_attribute1: null,
+  cfi_attribute2: null,
+  cfi_attribute3: null,
+  cfi_attribute4: null,
+  cfi_category_desc: null,
+  cfi_group_desc: null
 )
 ```
 

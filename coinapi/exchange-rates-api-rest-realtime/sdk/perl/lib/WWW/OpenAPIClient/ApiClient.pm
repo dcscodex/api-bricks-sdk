@@ -347,6 +347,12 @@ sub update_params_for_auth {
                 $header_params->{'Authorization'} = $api_key;
             }
         }
+        elsif ($auth eq 'JWT') {
+            my $api_key = $self->get_api_key_with_prefix('Authorization');
+            if ($api_key) {
+                $header_params->{'Authorization'} = $api_key;
+            }
+        }
         else {
            # TODO show warning about security definition not found
         }

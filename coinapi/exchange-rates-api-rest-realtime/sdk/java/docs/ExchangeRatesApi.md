@@ -14,7 +14,7 @@ All URIs are relative to *https://api-realtime.exrates.coinapi.io*
 
 Get specific rate
 
-Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
 ### Example
 ```java
@@ -36,6 +36,12 @@ public class Example {
     APIKey.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //APIKey.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: JWT
+    ApiKeyAuth JWT = (ApiKeyAuth) defaultClient.getAuthentication("JWT");
+    JWT.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //JWT.setApiKeyPrefix("Token");
 
     ExchangeRatesApi apiInstance = new ExchangeRatesApi(defaultClient);
     String assetIdBase = "assetIdBase_example"; // String | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -67,7 +73,7 @@ public class Example {
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -85,7 +91,7 @@ public class Example {
 
 Get all current rates
 
-Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
 
 ### Example
 ```java
@@ -107,6 +113,12 @@ public class Example {
     APIKey.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //APIKey.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: JWT
+    ApiKeyAuth JWT = (ApiKeyAuth) defaultClient.getAuthentication("JWT");
+    JWT.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //JWT.setApiKeyPrefix("Token");
 
     ExchangeRatesApi apiInstance = new ExchangeRatesApi(defaultClient);
     String assetIdBase = "assetIdBase_example"; // String | Requested exchange rates base asset identifier (from the Metadata -> Assets)
@@ -140,7 +152,7 @@ public class Example {
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

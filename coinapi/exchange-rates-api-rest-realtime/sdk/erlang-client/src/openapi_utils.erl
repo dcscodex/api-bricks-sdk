@@ -84,6 +84,9 @@ update_params_with_auth(Cfg, Headers, QS) ->
     Auths = #{ 'APIKey' =>
                 #{type => 'apiKey',
                   key => <<"Authorization">>,
+                  in => header}, 'JWT' =>
+                #{type => 'apiKey',
+                  key => <<"Authorization">>,
                   in => header}},
 
     maps:fold(fun(AuthName, #{type := _Type,

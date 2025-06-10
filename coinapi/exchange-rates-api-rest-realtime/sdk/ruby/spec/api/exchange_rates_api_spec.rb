@@ -34,7 +34,7 @@ describe 'ExchangeRatesApi' do
 
   # unit tests for get_specific_rate
   # Get specific rate
-  # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+  # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
   # @param asset_id_base Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
   # @param asset_id_quote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
   # @param [Hash] opts the optional parameters
@@ -47,7 +47,7 @@ describe 'ExchangeRatesApi' do
 
   # unit tests for v1_exchangerate_asset_id_base_get
   # Get all current rates
-  # Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+  # Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
   # @param asset_id_base Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
   # @param [Hash] opts the optional parameters
   # @option opts [String] :filter_asset_id Comma or semicolon delimited asset identifiers used to filter response (optional)

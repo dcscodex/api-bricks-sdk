@@ -156,6 +156,9 @@ basic_auth_credential=""
 ##
 # The user API key
 apikey_auth_credential=""
+##
+# The user API key
+apikey_auth_credential=""
 
 ##
 # If true, the script will only output the actual cURL command that would be
@@ -261,13 +264,26 @@ header_arguments_to_curl() {
     local api_key_header=""
     local api_key_header_in_cli=""
     api_key_header="Authorization"
+    local api_key_header=""
+    local api_key_header_in_cli=""
+    api_key_header="Authorization"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
         if [[ "${key}XX" == "${api_key_header}XX" ]]; then
             api_key_header_in_cli="YES"
         fi
+        if [[ "${key}XX" == "${api_key_header}XX" ]]; then
+            api_key_header_in_cli="YES"
+        fi
     done
+    #
+    # If the api_key was not provided in the header, try one from the
+    # environment variable
+    #
+    if [[ -z $api_key_header_in_cli && -n $apikey_auth_credential ]]; then
+        headers_curl+="-H \"${api_key_header}: ${apikey_auth_credential}\""
+    fi
     #
     # If the api_key was not provided in the header, try one from the
     # environment variable
@@ -537,21 +553,23 @@ EOF
     echo -e ""
     echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
     
+    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
+    
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
     echo -e "${BOLD}${WHITE}[exchangeRates]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}getSpecificRate${OFF};Get specific rate (AUTH)
-  ${CYAN}v1ExchangerateAssetIdBaseGet${OFF};Get all current rates (AUTH)
+  ${CYAN}getSpecificRate${OFF};Get specific rate (AUTH) (AUTH)
+  ${CYAN}v1ExchangerateAssetIdBaseGet${OFF};Get all current rates (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[metadata]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1AssetsAssetIdGet${OFF};List all assets by asset ID (AUTH)
-  ${CYAN}v1AssetsGet${OFF};List all assets (AUTH)
-  ${CYAN}v1AssetsIconsSizeGet${OFF};List all asset icons (AUTH)
+  ${CYAN}v1AssetsAssetIdGet${OFF};List all assets by asset ID (AUTH) (AUTH)
+  ${CYAN}v1AssetsGet${OFF};List all assets (AUTH) (AUTH)
+  ${CYAN}v1AssetsIconsSizeGet${OFF};List all asset icons (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -612,7 +630,7 @@ print_version() {
 ##############################################################################
 print_getSpecificRate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.
             
@@ -635,7 +653,7 @@ If you are using an exchange rate for mission-critical operations, then for best
 ##############################################################################
 print_v1ExchangerateAssetIdBaseGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get the current exchange rate between requested asset and all other assets.
             
@@ -665,7 +683,7 @@ You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / 
 ##############################################################################
 print_v1AssetsAssetIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The asset ID. ${YELLOW}Specify as: asset_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -681,7 +699,7 @@ print_v1AssetsAssetIdGet_help() {
 ##############################################################################
 print_v1AssetsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves all assets.
             
@@ -708,7 +726,7 @@ Properties of the output are providing aggregated information from across all sy
 ##############################################################################
 print_v1AssetsIconsSizeGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Gets the list of icons (of the given size) for all the assets." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -732,7 +750,7 @@ call_getSpecificRate() {
     local path_parameter_names=(asset_id_base asset_id_quote)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/{asset_id_base}/{asset_id_quote}" path_parameter_names query_parameter_names); then
@@ -768,7 +786,7 @@ call_v1ExchangerateAssetIdBaseGet() {
     local path_parameter_names=(asset_id_base)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_asset_id invert  )
+    local query_parameter_names=(filter_asset_id invert    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/{asset_id_base}" path_parameter_names query_parameter_names); then
@@ -804,7 +822,7 @@ call_v1AssetsAssetIdGet() {
     local path_parameter_names=(asset_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/assets/{asset_id}" path_parameter_names query_parameter_names); then
@@ -840,7 +858,7 @@ call_v1AssetsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_asset_id  )
+    local query_parameter_names=(filter_asset_id    )
     local path
 
     if ! path=$(build_request_path "/v1/assets" path_parameter_names query_parameter_names); then
@@ -876,7 +894,7 @@ call_v1AssetsIconsSizeGet() {
     local path_parameter_names=(size)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/assets/icons/{size}" path_parameter_names query_parameter_names); then
@@ -1046,6 +1064,13 @@ case $key in
     # only after the operation argument
     if [[ "$operation" ]]; then
         IFS=':' read -r header_name header_value <<< "$key"
+        #
+        # If the header key is the same as the api_key expected by API in the
+        # header, override the ${apikey_auth_credential} variable
+        #
+        if [[ $header_name == "Authorization" ]]; then
+            apikey_auth_credential=$header_value
+        fi
         #
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable

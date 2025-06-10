@@ -83,3 +83,11 @@ Authentication schemes defined for the API:
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
 
+<a id="JWT"></a>
+### JWT
+
+- **Type**: API key
+
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+

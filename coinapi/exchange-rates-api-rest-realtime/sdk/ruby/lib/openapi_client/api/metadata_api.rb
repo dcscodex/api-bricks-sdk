@@ -61,7 +61,7 @@ module OpenapiClient
       return_type = opts[:debug_return_type] || 'Array<V1Asset>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['APIKey']
+      auth_names = opts[:debug_auth_names] || ['APIKey', 'JWT']
 
       new_options = opts.merge(
         :operation => :"MetadataApi.v1_assets_asset_id_get",
@@ -81,7 +81,7 @@ module OpenapiClient
     end
 
     # List all assets
-    # Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+    # Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filter_asset_id Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. &#x60;BTC;ETH&#x60;).
     # @return [Array<V1Asset>]
@@ -91,7 +91,7 @@ module OpenapiClient
     end
 
     # List all assets
-    # Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+    # Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filter_asset_id Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. &#x60;BTC;ETH&#x60;).
     # @return [Array<(Array<V1Asset>, Integer, Hash)>] Array<V1Asset> data, response status code and response headers
@@ -121,7 +121,7 @@ module OpenapiClient
       return_type = opts[:debug_return_type] || 'Array<V1Asset>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['APIKey']
+      auth_names = opts[:debug_auth_names] || ['APIKey', 'JWT']
 
       new_options = opts.merge(
         :operation => :"MetadataApi.v1_assets_get",
@@ -184,7 +184,7 @@ module OpenapiClient
       return_type = opts[:debug_return_type] || 'Array<V1Icon>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['APIKey']
+      auth_names = opts[:debug_auth_names] || ['APIKey', 'JWT']
 
       new_options = opts.merge(
         :operation => :"MetadataApi.v1_assets_icons_size_get",

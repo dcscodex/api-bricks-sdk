@@ -25,6 +25,9 @@
 #' # Configure API key authorization: APIKey
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
+#' # Configure API key authorization: JWT
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$V1AssetsAssetIdGet(var_asset_iddata_file = "result.txt")
 #' result <- api_instance$V1AssetsAssetIdGet(var_asset_id)
@@ -42,6 +45,9 @@
 #' # Configure API key authorization: APIKey
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
+#' # Configure API key authorization: JWT
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_iddata_file = "result.txt")
 #' result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_id)
@@ -57,6 +63,9 @@
 #' api_instance <- MetadataApi$new()
 #'
 #' # Configure API key authorization: APIKey
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: JWT
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -135,6 +144,10 @@ MetadataApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{asset_id\\}", URLencode(as.character(`asset_id`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
@@ -231,6 +244,10 @@ MetadataApi <- R6::R6Class(
       query_params[["filter_asset_id"]] <- `filter_asset_id`
 
       local_var_url_path <- "/v1/assets"
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
@@ -333,6 +350,10 @@ MetadataApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{size\\}", URLencode(as.character(`size`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")

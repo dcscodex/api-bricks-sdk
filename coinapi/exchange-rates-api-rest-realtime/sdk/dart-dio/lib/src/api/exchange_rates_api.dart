@@ -21,7 +21,7 @@ class ExchangeRatesApi {
   const ExchangeRatesApi(this._dio, this._serializers);
 
   /// Get specific rate
-  /// Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+  /// Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
   ///
   /// Parameters:
   /// * [assetIdBase] - Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -56,6 +56,11 @@ class ExchangeRatesApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
             'keyName': 'Authorization',
             'where': 'header',
           },
@@ -105,7 +110,7 @@ class ExchangeRatesApi {
   }
 
   /// Get all current rates
-  /// Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+  /// Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
   ///
   /// Parameters:
   /// * [assetIdBase] - Requested exchange rates base asset identifier (from the Metadata -> Assets)
@@ -142,6 +147,11 @@ class ExchangeRatesApi {
           {
             'type': 'apiKey',
             'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
             'keyName': 'Authorization',
             'where': 'header',
           },

@@ -30,6 +30,9 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Test.Api
             {
                 ApiKeyToken apiKeyToken1 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
                 options.AddTokens(apiKeyToken1);
+
+                ApiKeyToken apiKeyToken2 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
+                options.AddTokens(apiKeyToken2);
             })
             .Build();
 
@@ -38,6 +41,9 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Test.Api
             {
                 ApiKeyToken apiKeyToken1 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
                 options.AddTokens(apiKeyToken1);
+
+                ApiKeyToken apiKeyToken2 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
+                options.AddTokens(apiKeyToken2);
                 options.AddApiHttpClients(client => client.BaseAddress = new Uri(ClientUtils.BASE_ADDRESS));
             })
             .Build();
@@ -49,6 +55,9 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Test.Api
                 {
                     ApiKeyToken apiKeyToken1 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
                     options.AddTokens(apiKeyToken1);
+
+                    ApiKeyToken apiKeyToken2 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
+                    options.AddTokens(apiKeyToken2);
                 });
             })
             .Build();
@@ -60,6 +69,9 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Test.Api
                 {
                     ApiKeyToken apiKeyToken1 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
                     options.AddTokens(apiKeyToken1);
+
+                    ApiKeyToken apiKeyToken2 = new("<token>", ClientUtils.ApiKeyHeader.Authorization, timeout: TimeSpan.FromSeconds(1));
+                    options.AddTokens(apiKeyToken2);
                     options.AddApiHttpClients(client => client.BaseAddress = new Uri(ClientUtils.BASE_ADDRESS));
                 });
             })

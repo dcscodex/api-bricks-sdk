@@ -3,7 +3,7 @@ private class OASExchangeRatesApiTest {
     /**
      * Get specific rate
      *
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::
      */
     @isTest
     private static void getSpecificRateTest() {
@@ -58,12 +58,47 @@ private class OASExchangeRatesApiTest {
         expectedResponse = OASV1ExchangeRate.getExample();
         response = (OASV1ExchangeRate) api.getSpecificRate(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExchangeRatesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(OASV1ExchangeRate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRate.getExample();
+        response = (OASV1ExchangeRate) api.getSpecificRate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRate.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRate.getExample();
+        response = (OASV1ExchangeRate) api.getSpecificRate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRate.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRate.getExample();
+        response = (OASV1ExchangeRate) api.getSpecificRate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRate.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRate.getExample();
+        response = (OASV1ExchangeRate) api.getSpecificRate(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get all current rates
      *
-     * Get the current exchange rate between requested asset and all other assets.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);\r\n:::
+     * Get the current exchange rate between requested asset and all other assets.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::\n            \n:::info\nYou can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);\n:::
      */
     @isTest
     private static void v1ExchangerateAssetIdBaseGetTest() {
@@ -87,6 +122,41 @@ private class OASExchangeRatesApiTest {
         client = new OASClient();
         api = new OASExchangeRatesApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(OASV1ExchangeRates.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRates.getExample();
+        response = (OASV1ExchangeRates) api.v1ExchangerateAssetIdBaseGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRates.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRates.getExample();
+        response = (OASV1ExchangeRates) api.v1ExchangerateAssetIdBaseGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRates.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRates.getExample();
+        response = (OASV1ExchangeRates) api.v1ExchangerateAssetIdBaseGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1ExchangeRates.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1ExchangeRates.getExample();
+        response = (OASV1ExchangeRates) api.v1ExchangerateAssetIdBaseGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExchangeRatesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(OASV1ExchangeRates.getExample());

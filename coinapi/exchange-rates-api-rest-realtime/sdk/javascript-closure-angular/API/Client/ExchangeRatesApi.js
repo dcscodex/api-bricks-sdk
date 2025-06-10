@@ -47,7 +47,7 @@ API.Client.ExchangeRatesApi.$inject = ['$http', '$httpParamSerializer', '$inject
 
 /**
  * Get specific rate
- * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+ * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
  * @param {!string} assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
  * @param {!string} assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
@@ -90,7 +90,7 @@ API.Client.ExchangeRatesApi.prototype.getSpecificRate = function(assetIdBase, as
 
 /**
  * Get all current rates
- * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+ * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
  * @param {!string} assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
  * @param {!string=} opt_filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional)
  * @param {!boolean=} opt_invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;)

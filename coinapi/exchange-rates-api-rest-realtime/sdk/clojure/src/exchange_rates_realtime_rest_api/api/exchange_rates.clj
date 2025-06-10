@@ -29,7 +29,7 @@ If you are using an exchange rate for mission-critical operations, then for best
              :form-params   {}
              :content-types []
              :accepts       ["text/plain" "application/json" "text/json" "application/x-msgpack"]
-             :auth-names    ["APIKey"]}))
+             :auth-names    ["APIKey" "JWT"]}))
 
 (defn-spec get-specific-rate v1/exchange-rate-spec
   "Get specific rate
@@ -66,7 +66,7 @@ You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / 
               :form-params   {}
               :content-types []
               :accepts       ["text/plain" "application/json" "text/json" "application/x-msgpack"]
-              :auth-names    ["APIKey"]})))
+              :auth-names    ["APIKey" "JWT"]})))
 
 (defn-spec v1-exchangerate-asset-id-base-get v1/exchange-rates-spec
   "Get all current rates

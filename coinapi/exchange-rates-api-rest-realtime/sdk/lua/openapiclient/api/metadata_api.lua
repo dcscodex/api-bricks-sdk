@@ -64,6 +64,10 @@ function metadata_api:v1_assets_asset_id_get(asset_id)
 	if self.api_key['Authorization'] then
 		req.headers:upsert("APIKey", self.api_key['Authorization'])
 	end
+	-- api key in headers 'Authorization'
+	if self.api_key['Authorization'] then
+		req.headers:upsert("JWT", self.api_key['Authorization'])
+	end
 
 	-- make the HTTP call
 	local headers, stream, errno = req:go()
@@ -117,6 +121,10 @@ function metadata_api:v1_assets_get(filter_asset_id)
 	if self.api_key['Authorization'] then
 		req.headers:upsert("APIKey", self.api_key['Authorization'])
 	end
+	-- api key in headers 'Authorization'
+	if self.api_key['Authorization'] then
+		req.headers:upsert("JWT", self.api_key['Authorization'])
+	end
 
 	-- make the HTTP call
 	local headers, stream, errno = req:go()
@@ -169,6 +177,10 @@ function metadata_api:v1_assets_icons_size_get(size)
 	-- api key in headers 'Authorization'
 	if self.api_key['Authorization'] then
 		req.headers:upsert("APIKey", self.api_key['Authorization'])
+	end
+	-- api key in headers 'Authorization'
+	if self.api_key['Authorization'] then
+		req.headers:upsert("JWT", self.api_key['Authorization'])
 	end
 
 	-- make the HTTP call

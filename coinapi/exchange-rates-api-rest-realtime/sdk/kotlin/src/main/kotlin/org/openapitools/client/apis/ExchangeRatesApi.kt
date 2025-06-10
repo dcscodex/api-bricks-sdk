@@ -49,7 +49,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}/{asset_id_quote}
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
      * @return V1ExchangeRate
@@ -82,7 +82,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}/{asset_id_quote}
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
      * @return ApiResponse<V1ExchangeRate?>
@@ -125,7 +125,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -159,7 +159,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)

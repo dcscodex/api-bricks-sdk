@@ -26,6 +26,9 @@
 #' # Configure API key authorization: APIKey
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
+#' # Configure API key authorization: JWT
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quotedata_file = "result.txt")
 #' result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quote)
@@ -43,6 +46,9 @@
 #' api_instance <- ExchangeRatesApi$new()
 #'
 #' # Configure API key authorization: APIKey
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: JWT
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -132,6 +138,10 @@ ExchangeRatesApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{asset_id_quote\\}", URLencode(as.character(`asset_id_quote`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
@@ -244,6 +254,10 @@ ExchangeRatesApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{asset_id_base\\}", URLencode(as.character(`asset_id_base`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")

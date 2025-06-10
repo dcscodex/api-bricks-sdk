@@ -127,6 +127,13 @@ Authentication schemes defined for the API:
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
 
+<a id="JWT"></a>
+### JWT
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 
 ## Build
 - SDK version: 1.0.0
@@ -173,7 +180,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {0D408C0A-1533-4796-8771-CFCB98E7F12C}
+- packageGuid: {EF64BD88-08C0-419F-ADFA-9BFFECA6FB88}
 - packageName: APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

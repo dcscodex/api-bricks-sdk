@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   contact:
     email: support@apibricks.io
@@ -13,6 +13,7 @@ servers:
 - url: https://api-realtime.exrates.coinapi.io
 security:
 - APIKey: []
+- JWT: []
 tags:
 - description: "\n<span data-status-page=\"28924\"></span>\nExchange rate is defined\
     \ as (VWAP-24H) last 24 hour (rolling window over time) Volume Weighted Average\
@@ -50,13 +51,13 @@ tags:
 paths:
   /v1/assets:
     get:
-      description: "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset\
-        \ identifiers are aligned with the ISO 4217 currency codes standard only for\
-        \ fiat money (government or law regulated currency).\r\n:::\r\n          \
-        \  \r\n:::info\r\nProperties of the output are providing aggregated information\
-        \ from across all symbols related to the specific asset. If you need to calculate\
-        \ your aggregation (e.g., limiting only the particular type of symbols), you\
-        \ should use /v1/symbols endpoint as a data source.\r\n:::"
+      description: "Retrieves all assets.\n            \n:::info\nOur asset identifiers\
+        \ are aligned with the ISO 4217 currency codes standard only for fiat money\
+        \ (government or law regulated currency).\n:::\n            \n:::info\nProperties\
+        \ of the output are providing aggregated information from across all symbols\
+        \ related to the specific asset. If you need to calculate your aggregation\
+        \ (e.g., limiting only the particular type of symbols), you should use /v1/symbols\
+        \ endpoint as a data source.\n:::"
       parameters:
       - description: "Comma or semicolon delimited asset identifiers used to filter\
           \ response. (optional, eg. `BTC;ETH`)."
@@ -579,11 +580,11 @@ paths:
   /v1/exchangerate/{asset_id_base}/{asset_id_quote}:
     get:
       description: "Retrieves the exchange rate for a specific base and quote asset\
-        \ at a given time or the current rate.\r\n            \r\n:::info\r\nIf you\
-        \ are using an exchange rate for mission-critical operations, then for best\
-        \ reliability, you should measure the difference between current time and\
-        \ the time returned from the response to ensure that value of the difference\
-        \ between those meets your internal requirements.\r\n:::"
+        \ at a given time or the current rate.\n            \n:::info\nIf you are\
+        \ using an exchange rate for mission-critical operations, then for best reliability,\
+        \ you should measure the difference between current time and the time returned\
+        \ from the response to ensure that value of the difference between those meets\
+        \ your internal requirements.\n:::"
       operationId: Get specific rate
       parameters:
       - description: Requested exchange rate base asset identifier (from the Metadata
@@ -611,7 +612,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:08:23.5727306Z
+                    time: 2025-06-10T12:29:07.9290938Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -621,7 +622,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:08:23.5727306Z
+                    time: 2025-06-10T12:29:07.9290938Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -631,7 +632,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:08:23.5727306Z
+                    time: 2025-06-10T12:29:07.9290938Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -641,7 +642,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:08:23.5727306Z
+                    time: 2025-06-10T12:29:07.9290938Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -654,13 +655,12 @@ paths:
   /v1/exchangerate/{asset_id_base}:
     get:
       description: "Get the current exchange rate between requested asset and all\
-        \ other assets.\r\n            \r\n:::info\r\nIf you are using an exchange\
-        \ rate for mission-critical operations, then for best reliability, you should\
-        \ measure the difference between current time and the time returned from the\
-        \ response to ensure that value of the difference between those meets your\
-        \ internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert\
-        \ the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\
-        \n:::"
+        \ other assets.\n            \n:::info\nIf you are using an exchange rate\
+        \ for mission-critical operations, then for best reliability, you should measure\
+        \ the difference between current time and the time returned from the response\
+        \ to ensure that value of the difference between those meets your internal\
+        \ requirements.\n:::\n            \n:::info\nYou can invert the rates by using\
+        \ Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\n:::"
       parameters:
       - description: Requested exchange rates base asset identifier (from the Metadata
           -> Assets)
@@ -1029,6 +1029,11 @@ components:
   securitySchemes:
     APIKey:
       description: API Key is required to access the endpoints
+      in: header
+      name: Authorization
+      type: apiKey
+    JWT:
+      description: JWT token needed to access the endpoints
       in: header
       name: Authorization
       type: apiKey

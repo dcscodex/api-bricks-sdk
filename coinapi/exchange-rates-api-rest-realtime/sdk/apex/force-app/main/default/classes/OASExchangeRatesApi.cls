@@ -27,7 +27,7 @@ public class OASExchangeRatesApi {
 
     /**
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets) (required)
      * @return OASV1ExchangeRate
@@ -49,13 +49,13 @@ public class OASExchangeRatesApi {
             new Map<String, Object>(),
             new List<String>{ 'text/plain', 'application/json', 'text/json', 'application/x-msgpack' },
             new List<String>(),
-            new List<String> { 'APIKey' },
+            new List<String> { 'APIKey', 'JWT' },
             OASV1ExchangeRate.class
         );
     }
     /**
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);\r\n:::
+     * Get the current exchange rate between requested asset and all other assets.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::\n            \n:::info\nYou can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);\n:::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -81,7 +81,7 @@ public class OASExchangeRatesApi {
             new Map<String, Object>(),
             new List<String>{ 'text/plain', 'application/json', 'text/json', 'application/x-msgpack' },
             new List<String>(),
-            new List<String> { 'APIKey' },
+            new List<String> { 'APIKey', 'JWT' },
             OASV1ExchangeRates.class
         );
     }

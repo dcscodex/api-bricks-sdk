@@ -132,7 +132,7 @@ public class ExchangeRatesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "APIKey" };
+        String[] localVarAuthNames = new String[] { "APIKey", "JWT" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -154,7 +154,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets) (required)
      * @return V1ExchangeRate
@@ -173,7 +173,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets) (required)
      * @return ApiResponse&lt;V1ExchangeRate&gt;
@@ -193,7 +193,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get specific rate (asynchronously)
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets) (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -280,7 +280,7 @@ public class ExchangeRatesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "APIKey" };
+        String[] localVarAuthNames = new String[] { "APIKey", "JWT" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -297,7 +297,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -317,7 +317,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -338,7 +338,7 @@ public class ExchangeRatesApi {
 
     /**
      * Get all current rates (asynchronously)
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets) (required)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)

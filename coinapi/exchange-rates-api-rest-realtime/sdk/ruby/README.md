@@ -64,6 +64,11 @@ OpenapiClient.configure do |config|
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: JWT
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OpenapiClient::ExchangeRatesApi.new
@@ -108,6 +113,13 @@ Class | Method | HTTP request | Description
 
 Authentication schemes defined for the API:
 ### APIKey
+
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+### JWT
 
 
 - **Type**: API key

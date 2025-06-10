@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Exchange Rates Realtime REST API
   contact:
@@ -17,7 +17,7 @@ paths:
       tags:
         - Metadata
       summary: List all assets
-      description: "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\r\n:::\r\n            \r\n:::info\r\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\r\n:::"
+      description: "Retrieves all assets.\n            \n:::info\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\n:::\n            \n:::info\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\n:::"
       parameters:
         - name: filter_asset_id
           in: query
@@ -663,7 +663,7 @@ paths:
       tags:
         - Exchange Rates
       summary: Get specific rate
-      description: "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::"
+      description: "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::"
       operationId: Get specific rate
       parameters:
         - name: asset_id_base
@@ -688,7 +688,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:08:23.6972627Z",
+  "time": "2025-06-10T12:29:08.0901374Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -699,7 +699,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:08:23.6972627Z",
+  "time": "2025-06-10T12:29:08.0901374Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -710,7 +710,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:08:23.6972627Z",
+  "time": "2025-06-10T12:29:08.0901374Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -721,7 +721,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:08:23.6972627Z",
+  "time": "2025-06-10T12:29:08.0901374Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -731,7 +731,7 @@ paths:
       tags:
         - Exchange Rates
       summary: Get all current rates
-      description: "Get the current exchange rate between requested asset and all other assets.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\n:::"
+      description: "Get the current exchange rate between requested asset and all other assets.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::\n            \n:::info\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\n:::"
       parameters:
         - name: asset_id_base
           in: path
@@ -1075,8 +1075,14 @@ components:
       description: API Key is required to access the endpoints
       name: Authorization
       in: header
+    JWT:
+      type: apiKey
+      description: JWT token needed to access the endpoints
+      name: Authorization
+      in: header
 security:
   - APIKey: [ ]
+  - JWT: [ ]
 tags:
   - name: Exchange Rates
     description: "\n<span data-status-page=\"28924\"></span>\nExchange rate is defined as (VWAP-24H) last 24 hour (rolling window over time) Volume Weighted Average Price across multiple data sources listed on our platform. We are selecting and managing the data sources that are used in the calculation based on multiple factors to provide data of highest quality. \n\nAlgorithm is described below:\n\n  1. Exchange rates are produced from quotes, trades, and metadata datasets.\n  1. Symbols that are not data_type = \"SPOT\" are excluded from the calculation.\n  1. Symbols from the data sources that were marked by us as not legitimate are excluded from the calculation.\n  1. Quotes data where the spread is outside the range of ```<0$; 67%>``` are discarded. `spreadPrc = (ask - bid) / ((ask + bid) / 2)`\n  1. The midpoint from the quote data is used as a pricing reference and it's weighted by the passive cumulative volume resting on the best prices.\n  1. Volume from the trades is used to weight the midpoint prices in the VWAP24 algorithm.\n  1. Midpoint data that has not been updated in the last 5 minutes and 1 second is discarded.\n  1. The last 24-hour volume for each symbol is updated every 4 hours when approximately 20% of the data in the sliding window changes (also, the list of eligible markets is updated at the same time).\n  1. Everywhere in the algorithm below, we are using asset pairs only from exchanges that have the highest legitimacy rank, and the rest of the exchanges are discarded. As we establish the highest-ranking exchanges that have this data for each asset pair, we ensure that the highest quality data is used for each of them. The rank used for asset pairing is carried over to the following steps.\n  1. Every 1 second, we update VWAP24 data for every asset pair across all data sources.\n  1. For each asset pair, we also discard data that is outside the 3 sigma range if there are at least 3 exchanges for this asset pair.\n  1. From the VWAP24 data, we are creating a tree structure where node/vertex = asset and edge = rate.\n  1. By traversing the tree structure using the BFS algorithm and our secret sauce, we are able to establish the final exchange rates.\n    "

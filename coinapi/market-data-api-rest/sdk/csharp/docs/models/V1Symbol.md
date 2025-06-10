@@ -1,0 +1,55 @@
+# APIBricks.CoinAPI.MarketDataAPI.REST.V1.Model.V1Symbol
+Represents a symbol data model.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SymbolId** | **string** | The symbol identifier. | [optional] 
+**ExchangeId** | **string** | The exchange identifier. | [optional] 
+**SymbolType** | **string** | The symbol type. | [optional] 
+**AssetIdBase** | **string** | The base asset identifier. | [optional] 
+**AssetIdQuote** | **string** | The quote asset identifier. | [optional] 
+**AssetIdUnit** | **string** | The unit asset identifier. | [optional] 
+**FutureContractUnit** | **double** | The contract unit for futures. | [optional] 
+**FutureContractUnitAsset** | **string** | The asset used as the unit for futures contract. | [optional] 
+**FutureDeliveryTime** | **DateTime** | The future delivery time for futures contract. | [optional] 
+**OptionTypeIsCall** | **bool** | Indicates whether the option type is a call. | [optional] 
+**OptionStrikePrice** | **double** | The strike price for options. | [optional] 
+**OptionContractUnit** | **double** | The contract unit for options. | [optional] 
+**OptionExerciseStyle** | **string** | The exercise style for options. | [optional] 
+**OptionExpirationTime** | **DateTime** | The expiration time for options. | [optional] 
+**ContractDeliveryTime** | **DateTime** | The delivery time for contracts. | [optional] 
+**ContractUnit** | **double** | The contract unit for contracts. | [optional] 
+**ContractUnitAsset** | **string** | The asset used as the unit for contracts. | [optional] 
+**ContractId** | **string** | The contract identifier. | [optional] 
+**ContractDisplayName** | **string** | The display name of the contract. | [optional] 
+**ContractDisplayDescription** | **string** | The display description of the contract. | [optional] 
+**DataStart** | **string** |  | [optional] [readonly] 
+**DataEnd** | **string** |  | [optional] [readonly] 
+**DataQuoteStart** | **DateTime** | The start date of quote data. | [optional] 
+**DataQuoteEnd** | **DateTime** | The end date of quote data. | [optional] 
+**DataOrderbookStart** | **DateTime** | The start date of order book data. | [optional] 
+**DataOrderbookEnd** | **DateTime** | The end date of order book data. | [optional] 
+**DataTradeStart** | **DateTime** | The start date of trade data. | [optional] 
+**DataTradeEnd** | **DateTime** | The end date of trade data. | [optional] 
+**IndexId** | **string** | The index identifier. | [optional] 
+**IndexDisplayName** | **string** | The display name of the index. | [optional] 
+**IndexDisplayDescription** | **string** | The display description of the index. | [optional] 
+**Volume1hrs** | **double** | The volume in the last 1 hour. | [optional] 
+**Volume1hrsUsd** | **double** | The volume in USD in the last 1 hour. | [optional] 
+**Volume1day** | **double** | The volume in the last 1 day. | [optional] 
+**Volume1dayUsd** | **double** | The volume in USD in the last 1 day. | [optional] 
+**Volume1mth** | **double** | The volume in the last 1 month. | [optional] 
+**Volume1mthUsd** | **double** | The volume in USD in the last 1 month. | [optional] 
+**Price** | **double** | The price. | [optional] 
+**SymbolIdExchange** | **string** | The symbol identifier in the exchange. | [optional] 
+**AssetIdBaseExchange** | **string** | The base asset identifier in the exchange. | [optional] 
+**AssetIdQuoteExchange** | **string** | The quote asset identifier in the exchange. | [optional] 
+**PricePrecision** | **double** | The price precision. | [optional] 
+**SizePrecision** | **double** | The size precision. | [optional] 
+**RawKvp** | **Dictionary&lt;string, string&gt;** | Not normalized raw kvp data. | [optional] 
+**VolumeToUsd** | **double** | Volume unit in USD. | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

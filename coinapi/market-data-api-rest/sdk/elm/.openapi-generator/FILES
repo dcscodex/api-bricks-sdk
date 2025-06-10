@@ -1,0 +1,17 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+elm.json
+src/Api.elm
+src/Api/Data.elm
+src/Api/Request/ExchangeRates.elm
+src/Api/Request/ExternalMetrics.elm
+src/Api/Request/Metadata.elm
+src/Api/Request/Metrics.elm
+src/Api/Request/Ohlcv.elm
+src/Api/Request/Options.elm
+src/Api/Request/OrderBook.elm
+src/Api/Request/OrderBookL3.elm
+src/Api/Request/Quotes.elm
+src/Api/Request/Trades.elm
+src/Api/Time.elm

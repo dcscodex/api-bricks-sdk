@@ -51,7 +51,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}/{asset_id_quote}
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
      * @param time Time at which exchange rate is calculated (optional, if not supplied then current rate is returned) (optional)
@@ -85,7 +85,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}/{asset_id_quote}
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
      * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
      * @param time Time at which exchange rate is calculated (optional, if not supplied then current rate is returned) (optional)
@@ -237,7 +237,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -272,7 +272,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/{asset_id_base}
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
      * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)
      * @param invert True will invert all the rates (optional, if true then rates will be calculated as &#x60;rate &#x3D; 1 / actual_rate&#x60; eg. &#x60;USD/BTC&#x60; as &#x60;BTC/USD&#x60;) (optional, default to false)
@@ -330,7 +330,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/history/periods
      * Timeseries periods
-     * You can also obtain historical exchange rates of any asset pair, grouped into time periods.  Get full list of supported time periods available for requesting exchange rates historical timeseries data.                ## Timeseries periods  Time unit | Period identifiers  --- | ---  Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC  Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN  Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS  Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
+     * You can also obtain historical exchange rates of any asset pair, grouped into time periods. Get full list of supported time periods available for requesting exchange rates historical timeseries data.              ## Timeseries periods Time unit | Period identifiers --- | --- Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
      * @return kotlin.collections.List<V1TimeseriesPeriod>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -361,7 +361,7 @@ class ExchangeRatesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * GET /v1/exchangerate/history/periods
      * Timeseries periods
-     * You can also obtain historical exchange rates of any asset pair, grouped into time periods.  Get full list of supported time periods available for requesting exchange rates historical timeseries data.                ## Timeseries periods  Time unit | Period identifiers  --- | ---  Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC  Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN  Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS  Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
+     * You can also obtain historical exchange rates of any asset pair, grouped into time periods. Get full list of supported time periods available for requesting exchange rates historical timeseries data.              ## Timeseries periods Time unit | Period identifiers --- | --- Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
      * @return ApiResponse<kotlin.collections.List<V1TimeseriesPeriod>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception

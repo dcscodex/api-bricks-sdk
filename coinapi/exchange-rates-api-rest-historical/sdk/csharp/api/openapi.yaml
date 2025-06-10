@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   contact:
     email: support@apibricks.io
@@ -50,13 +50,13 @@ tags:
 paths:
   /v1/assets:
     get:
-      description: "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset\
-        \ identifiers are aligned with the ISO 4217 currency codes standard only for\
-        \ fiat money (government or law regulated currency).\r\n:::\r\n          \
-        \  \r\n:::info\r\nProperties of the output are providing aggregated information\
-        \ from across all symbols related to the specific asset. If you need to calculate\
-        \ your aggregation (e.g., limiting only the particular type of symbols), you\
-        \ should use /v1/symbols endpoint as a data source.\r\n:::"
+      description: "Retrieves all assets.\n            \n:::info\nOur asset identifiers\
+        \ are aligned with the ISO 4217 currency codes standard only for fiat money\
+        \ (government or law regulated currency).\n:::\n            \n:::info\nProperties\
+        \ of the output are providing aggregated information from across all symbols\
+        \ related to the specific asset. If you need to calculate your aggregation\
+        \ (e.g., limiting only the particular type of symbols), you should use /v1/symbols\
+        \ endpoint as a data source.\n:::"
       parameters:
       - description: "Comma or semicolon delimited asset identifiers used to filter\
           \ response. (optional, eg. `BTC;ETH`)."
@@ -463,11 +463,11 @@ paths:
   /v1/exchangerate/{asset_id_base}/{asset_id_quote}:
     get:
       description: "Retrieves the exchange rate for a specific base and quote asset\
-        \ at a given time or the current rate.\r\n            \r\n:::info\r\nIf you\
-        \ are using an exchange rate for mission-critical operations, then for best\
-        \ reliability, you should measure the difference between current time and\
-        \ the time returned from the response to ensure that value of the difference\
-        \ between those meets your internal requirements.\r\n:::"
+        \ at a given time or the current rate.\n            \n:::info\nIf you are\
+        \ using an exchange rate for mission-critical operations, then for best reliability,\
+        \ you should measure the difference between current time and the time returned\
+        \ from the response to ensure that value of the difference between those meets\
+        \ your internal requirements.\n:::"
       operationId: Get specific rate
       parameters:
       - description: Requested exchange rate base asset identifier (from the Metadata
@@ -504,7 +504,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:09:47.3592450Z
+                    time: 2025-06-10T12:33:53.2902867Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -514,7 +514,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:09:47.3592450Z
+                    time: 2025-06-10T12:33:53.2902867Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -524,7 +524,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-10T06:09:47.3592450Z
+                    time: 2025-06-10T12:33:53.2902867Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -537,13 +537,12 @@ paths:
   /v1/exchangerate/{asset_id_base}:
     get:
       description: "Get the current exchange rate between requested asset and all\
-        \ other assets.\r\n            \r\n:::info\r\nIf you are using an exchange\
-        \ rate for mission-critical operations, then for best reliability, you should\
-        \ measure the difference between current time and the time returned from the\
-        \ response to ensure that value of the difference between those meets your\
-        \ internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert\
-        \ the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\
-        \n:::"
+        \ other assets.\n            \n:::info\nIf you are using an exchange rate\
+        \ for mission-critical operations, then for best reliability, you should measure\
+        \ the difference between current time and the time returned from the response\
+        \ to ensure that value of the difference between those meets your internal\
+        \ requirements.\n:::\n            \n:::info\nYou can invert the rates by using\
+        \ Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\n:::"
       parameters:
       - description: Requested exchange rates base asset identifier (from the Metadata
           -> Assets)
@@ -651,13 +650,13 @@ paths:
   /v1/exchangerate/history/periods:
     get:
       description: "You can also obtain historical exchange rates of any asset pair,\
-        \ grouped into time periods.\r\nGet full list of supported time periods available\
-        \ for requesting exchange rates historical timeseries data.\r\n          \
-        \  \r\n## Timeseries periods\r\nTime unit |\tPeriod identifiers\r\n--- | ---\r\
-        \nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\r\
-        \nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\r\
-        \nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\nDay | 1DAY, 2DAY, 3DAY,\
-        \ 5DAY, 7DAY, 10DAY"
+        \ grouped into time periods.\nGet full list of supported time periods available\
+        \ for requesting exchange rates historical timeseries data.\n            \n\
+        ## Timeseries periods\nTime unit |\tPeriod identifiers\n--- | ---\nSecond\
+        \ | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\nMinute\
+        \ | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\nHour |\
+        \ 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\nDay | 1DAY, 2DAY, 3DAY, 5DAY,\
+        \ 7DAY, 10DAY"
       responses:
         "200":
           content:

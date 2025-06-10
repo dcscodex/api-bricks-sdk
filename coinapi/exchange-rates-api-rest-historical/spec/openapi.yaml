@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Exchange Rates Historical REST API
   contact:
@@ -17,7 +17,7 @@ paths:
       tags:
         - Metadata
       summary: List all assets
-      description: "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\r\n:::\r\n            \r\n:::info\r\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\r\n:::"
+      description: "Retrieves all assets.\n            \n:::info\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\n:::\n            \n:::info\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\n:::"
       parameters:
         - name: filter_asset_id
           in: query
@@ -514,7 +514,7 @@ paths:
       tags:
         - Exchange Rates
       summary: Get specific rate
-      description: "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::"
+      description: "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::"
       operationId: Get specific rate
       parameters:
         - name: asset_id_base
@@ -544,7 +544,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:09:47.5159042Z",
+  "time": "2025-06-10T12:33:53.5773458Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -555,7 +555,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:09:47.5159042Z",
+  "time": "2025-06-10T12:33:53.5773458Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -566,7 +566,7 @@ paths:
               examples:
                 Example response:
                   value: {
-  "time": "2025-06-10T06:09:47.5159042Z",
+  "time": "2025-06-10T12:33:53.5773458Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -576,7 +576,7 @@ paths:
       tags:
         - Exchange Rates
       summary: Get all current rates
-      description: "Get the current exchange rate between requested asset and all other assets.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\n:::"
+      description: "Get the current exchange rate between requested asset and all other assets.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::\n            \n:::info\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\n:::"
       parameters:
         - name: asset_id_base
           in: path
@@ -699,7 +699,7 @@ paths:
       tags:
         - Exchange Rates
       summary: Timeseries periods
-      description: "You can also obtain historical exchange rates of any asset pair, grouped into time periods.\r\nGet full list of supported time periods available for requesting exchange rates historical timeseries data.\r\n            \r\n## Timeseries periods\r\nTime unit |\tPeriod identifiers\r\n--- | ---\r\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\r\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\r\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY"
+      description: "You can also obtain historical exchange rates of any asset pair, grouped into time periods.\nGet full list of supported time periods available for requesting exchange rates historical timeseries data.\n            \n## Timeseries periods\nTime unit |\tPeriod identifiers\n--- | ---\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY"
       responses:
         '200':
           description: successful operation

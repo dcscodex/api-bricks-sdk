@@ -9,7 +9,7 @@
     },
     "license": {
       "name": "MIT License",
-      "url": "https://github.com/coinapi/coinapi-sdk/blob/master/LICENSE"
+      "url": "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"
     },
     "version": "v1"
   },
@@ -802,7 +802,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-03T06:04:15.4702784Z",
+  "time": "2025-06-10T06:04:54.8928384Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -817,7 +817,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-03T06:04:15.4702784Z",
+  "time": "2025-06-10T06:04:54.8928384Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -832,7 +832,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-03T06:04:15.4702784Z",
+  "time": "2025-06-10T06:04:54.8928384Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -847,7 +847,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-03T06:04:15.4702784Z",
+  "time": "2025-06-10T06:04:54.8928384Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -909,7 +909,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -943,7 +943,7 @@
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -977,7 +977,7 @@
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -1011,7 +1011,7 @@
               },
               "application/x-msgpack": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1.ExchangeRates`1"
+                  "$ref": "#/components/schemas/v1.ExchangeRates"
                 },
                 "examples": {
                   "Example response": {
@@ -2003,6 +2003,1773 @@
   {
     "exchange_id": "BCOINSG",
     "url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/b7c77041cdef4f359b4044b2d73c7741.png"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/listing": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of all supported metrics (both external and generic)",
+        "description": "Get all metrics available from external data providers and internal generic metrics.\r\nExternal metrics have detailed descriptions, while generic metrics are marked as such.",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example metrics listing (external + database generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "VOLUMES",
+    "description": "Trading volume metrics"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example metrics listing (external + database generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "VOLUMES",
+    "description": "Trading volume metrics"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example metrics listing (external + database generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "VOLUMES",
+    "description": "Trading volume metrics"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example metrics listing (external + database generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "VOLUMES",
+    "description": "Trading volume metrics"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/exchange/listing": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of metrics available for specific exchange (both external and generic)",
+        "description": "Get all metrics that are actually available for the specified exchange from both external providers and internal sources.",
+        "parameters": [
+          {
+            "name": "exchange_id",
+            "in": "query",
+            "description": "Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example exchange metrics (external + generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "TRADES_COUNT_BUYS",
+    "description": "Generic metric: TRADES_COUNT_BUYS"
+  },
+  {
+    "metric_id": "VOLUME_QUOTED",
+    "description": "Generic metric: VOLUME_QUOTED"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example exchange metrics (external + generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "TRADES_COUNT_BUYS",
+    "description": "Generic metric: TRADES_COUNT_BUYS"
+  },
+  {
+    "metric_id": "VOLUME_QUOTED",
+    "description": "Generic metric: VOLUME_QUOTED"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example exchange metrics (external + generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "TRADES_COUNT_BUYS",
+    "description": "Generic metric: TRADES_COUNT_BUYS"
+  },
+  {
+    "metric_id": "VOLUME_QUOTED",
+    "description": "Generic metric: VOLUME_QUOTED"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example exchange metrics (external + generic)": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "FEES",
+    "description": "Total fees collected by the protocol"
+  },
+  {
+    "metric_id": "TRADES_COUNT_BUYS",
+    "description": "Generic metric: TRADES_COUNT_BUYS"
+  },
+  {
+    "metric_id": "VOLUME_QUOTED",
+    "description": "Generic metric: VOLUME_QUOTED"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/exchange/history": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Historical metrics for the exchange from both external and internal sources",
+        "description": "Get exchange metrics history from external data providers or internal sources based on metric type.",
+        "parameters": [
+          {
+            "name": "metric_id",
+            "in": "query",
+            "description": "Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` for external, or generic metric IDs)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exchange_id",
+            "in": "query",
+            "description": "Exchange identifier (e.g., `BINANCE`, `UNISWAP-V3-ETHEREUM`)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_start",
+            "in": "query",
+            "description": "Starting time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_end",
+            "in": "query",
+            "description": "Ending time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_format",
+            "in": "query",
+            "description": "If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "description": "Identifier of requested timeseries period (e.g. `1MIN` or `2MTH`), default value is `1MIN`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example external metric response (TVL, FEES, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 1000000,
+    "last_value": 1050000,
+    "min_value": 990000,
+    "max_value": 110000,
+    "count_values": 24,
+    "sum_values": 25000000
+  }
+]
+                  },
+                  "Example generic metric response (TRADES_COUNT, VOLUME, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "value_open": 1000,
+    "value_high": 1100,
+    "value_low": 950,
+    "value_close": 1050,
+    "value_count": 24,
+    "value_sum": 25000
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example external metric response (TVL, FEES, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 1000000,
+    "last_value": 1050000,
+    "min_value": 990000,
+    "max_value": 110000,
+    "count_values": 24,
+    "sum_values": 25000000
+  }
+]
+                  },
+                  "Example generic metric response (TRADES_COUNT, VOLUME, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "value_open": 1000,
+    "value_high": 1100,
+    "value_low": 950,
+    "value_close": 1050,
+    "value_count": 24,
+    "value_sum": 25000
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example external metric response (TVL, FEES, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 1000000,
+    "last_value": 1050000,
+    "min_value": 990000,
+    "max_value": 110000,
+    "count_values": 24,
+    "sum_values": 25000000
+  }
+]
+                  },
+                  "Example generic metric response (TRADES_COUNT, VOLUME, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "value_open": 1000,
+    "value_high": 1100,
+    "value_low": 950,
+    "value_close": 1050,
+    "value_count": 24,
+    "value_sum": 25000
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example external metric response (TVL, FEES, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 1000000,
+    "last_value": 1050000,
+    "min_value": 990000,
+    "max_value": 110000,
+    "count_values": 24,
+    "sum_values": 25000000
+  }
+]
+                  },
+                  "Example generic metric response (TRADES_COUNT, VOLUME, etc.)": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "value_open": 1000,
+    "value_high": 1100,
+    "value_low": 950,
+    "value_close": 1050,
+    "value_count": 24,
+    "value_sum": 25000
+  }
+]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input, e.g., missing required parameters, invalid exchange_id mapping."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/chains": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of all supported external chains",
+        "description": "Get all blockchain chains supported by external data providers.",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.Chain"
+                  }
+                },
+                "examples": {
+                  "Example external chains listing": {
+                    "value": [
+  {
+    "chain_id": "ETHEREUM",
+    "name": "Leading smart contract blockchain platform"
+  },
+  {
+    "chain_id": "ARBITRUM",
+    "name": "Layer 2 scaling solution for Ethereum using optimistic rollups"
+  },
+  {
+    "chain_id": "POLYGON",
+    "name": "Ethereum sidechain and scaling platform"
+  },
+  {
+    "chain_id": "BSC",
+    "name": "Binance Smart Chain - EVM-compatible blockchain by Binance"
+  },
+  {
+    "chain_id": "AVALANCHE",
+    "name": "High-performance blockchain platform for DeFi and enterprise applications"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.Chain"
+                  }
+                },
+                "examples": {
+                  "Example external chains listing": {
+                    "value": [
+  {
+    "chain_id": "ETHEREUM",
+    "name": "Leading smart contract blockchain platform"
+  },
+  {
+    "chain_id": "ARBITRUM",
+    "name": "Layer 2 scaling solution for Ethereum using optimistic rollups"
+  },
+  {
+    "chain_id": "POLYGON",
+    "name": "Ethereum sidechain and scaling platform"
+  },
+  {
+    "chain_id": "BSC",
+    "name": "Binance Smart Chain - EVM-compatible blockchain by Binance"
+  },
+  {
+    "chain_id": "AVALANCHE",
+    "name": "High-performance blockchain platform for DeFi and enterprise applications"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.Chain"
+                  }
+                },
+                "examples": {
+                  "Example external chains listing": {
+                    "value": [
+  {
+    "chain_id": "ETHEREUM",
+    "name": "Leading smart contract blockchain platform"
+  },
+  {
+    "chain_id": "ARBITRUM",
+    "name": "Layer 2 scaling solution for Ethereum using optimistic rollups"
+  },
+  {
+    "chain_id": "POLYGON",
+    "name": "Ethereum sidechain and scaling platform"
+  },
+  {
+    "chain_id": "BSC",
+    "name": "Binance Smart Chain - EVM-compatible blockchain by Binance"
+  },
+  {
+    "chain_id": "AVALANCHE",
+    "name": "High-performance blockchain platform for DeFi and enterprise applications"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.Chain"
+                  }
+                },
+                "examples": {
+                  "Example external chains listing": {
+                    "value": [
+  {
+    "chain_id": "ETHEREUM",
+    "name": "Leading smart contract blockchain platform"
+  },
+  {
+    "chain_id": "ARBITRUM",
+    "name": "Layer 2 scaling solution for Ethereum using optimistic rollups"
+  },
+  {
+    "chain_id": "POLYGON",
+    "name": "Ethereum sidechain and scaling platform"
+  },
+  {
+    "chain_id": "BSC",
+    "name": "Binance Smart Chain - EVM-compatible blockchain by Binance"
+  },
+  {
+    "chain_id": "AVALANCHE",
+    "name": "High-performance blockchain platform for DeFi and enterprise applications"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/assets": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of all supported external assets",
+        "description": "Get all assets (primarily stablecoins) supported by external data providers.",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalAsset"
+                  }
+                },
+                "examples": {
+                  "Example external assets listing": {
+                    "value": [
+  {
+    "asset_id": "USDC",
+    "description": "USD Coin - Centralized stablecoin pegged to USD, issued by Circle",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "USDT",
+    "description": "Tether USD - Most widely used stablecoin pegged to USD",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "DAI",
+    "description": "Dai - Decentralized stablecoin pegged to USD, collateralized by crypto assets",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "FRAX",
+    "description": "Frax - Algorithmic stablecoin partially backed by collateral",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "BUSD",
+    "description": "Binance USD - Stablecoin pegged to USD, issued by Binance (discontinued)",
+    "asset_type": "Stablecoin"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalAsset"
+                  }
+                },
+                "examples": {
+                  "Example external assets listing": {
+                    "value": [
+  {
+    "asset_id": "USDC",
+    "description": "USD Coin - Centralized stablecoin pegged to USD, issued by Circle",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "USDT",
+    "description": "Tether USD - Most widely used stablecoin pegged to USD",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "DAI",
+    "description": "Dai - Decentralized stablecoin pegged to USD, collateralized by crypto assets",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "FRAX",
+    "description": "Frax - Algorithmic stablecoin partially backed by collateral",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "BUSD",
+    "description": "Binance USD - Stablecoin pegged to USD, issued by Binance (discontinued)",
+    "asset_type": "Stablecoin"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalAsset"
+                  }
+                },
+                "examples": {
+                  "Example external assets listing": {
+                    "value": [
+  {
+    "asset_id": "USDC",
+    "description": "USD Coin - Centralized stablecoin pegged to USD, issued by Circle",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "USDT",
+    "description": "Tether USD - Most widely used stablecoin pegged to USD",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "DAI",
+    "description": "Dai - Decentralized stablecoin pegged to USD, collateralized by crypto assets",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "FRAX",
+    "description": "Frax - Algorithmic stablecoin partially backed by collateral",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "BUSD",
+    "description": "Binance USD - Stablecoin pegged to USD, issued by Binance (discontinued)",
+    "asset_type": "Stablecoin"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalAsset"
+                  }
+                },
+                "examples": {
+                  "Example external assets listing": {
+                    "value": [
+  {
+    "asset_id": "USDC",
+    "description": "USD Coin - Centralized stablecoin pegged to USD, issued by Circle",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "USDT",
+    "description": "Tether USD - Most widely used stablecoin pegged to USD",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "DAI",
+    "description": "Dai - Decentralized stablecoin pegged to USD, collateralized by crypto assets",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "FRAX",
+    "description": "Frax - Algorithmic stablecoin partially backed by collateral",
+    "asset_type": "Stablecoin"
+  },
+  {
+    "asset_id": "BUSD",
+    "description": "Binance USD - Stablecoin pegged to USD, issued by Binance (discontinued)",
+    "asset_type": "Stablecoin"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/exchanges": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of all supported external exchanges",
+        "description": "Get all exchanges that have mapping to external data providers for metrics that actually have sources.\r\nOnly returns exchanges that are properly mapped to external protocols for metrics with defined sources.",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalExchange"
+                  }
+                },
+                "examples": {
+                  "Example external exchanges listing": {
+                    "value": [
+  {
+    "exchange_id": "BINANCE",
+    "external_name": "binance-cex",
+    "description": "World's largest cryptocurrency exchange by trading volume"
+  },
+  {
+    "exchange_id": "COINBASE",
+    "external_name": "coinbase",
+    "description": "Leading US-based cryptocurrency exchange with regulatory compliance"
+  },
+  {
+    "exchange_id": "KRAKEN",
+    "external_name": "kraken",
+    "description": "Established US cryptocurrency exchange known for security and compliance"
+  },
+  {
+    "exchange_id": "UNISWAP-V3-ETHEREUM",
+    "external_name": "uniswap-v3",
+    "description": "Advanced version of Uniswap with concentrated liquidity"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalExchange"
+                  }
+                },
+                "examples": {
+                  "Example external exchanges listing": {
+                    "value": [
+  {
+    "exchange_id": "BINANCE",
+    "external_name": "binance-cex",
+    "description": "World's largest cryptocurrency exchange by trading volume"
+  },
+  {
+    "exchange_id": "COINBASE",
+    "external_name": "coinbase",
+    "description": "Leading US-based cryptocurrency exchange with regulatory compliance"
+  },
+  {
+    "exchange_id": "KRAKEN",
+    "external_name": "kraken",
+    "description": "Established US cryptocurrency exchange known for security and compliance"
+  },
+  {
+    "exchange_id": "UNISWAP-V3-ETHEREUM",
+    "external_name": "uniswap-v3",
+    "description": "Advanced version of Uniswap with concentrated liquidity"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalExchange"
+                  }
+                },
+                "examples": {
+                  "Example external exchanges listing": {
+                    "value": [
+  {
+    "exchange_id": "BINANCE",
+    "external_name": "binance-cex",
+    "description": "World's largest cryptocurrency exchange by trading volume"
+  },
+  {
+    "exchange_id": "COINBASE",
+    "external_name": "coinbase",
+    "description": "Leading US-based cryptocurrency exchange with regulatory compliance"
+  },
+  {
+    "exchange_id": "KRAKEN",
+    "external_name": "kraken",
+    "description": "Established US cryptocurrency exchange known for security and compliance"
+  },
+  {
+    "exchange_id": "UNISWAP-V3-ETHEREUM",
+    "external_name": "uniswap-v3",
+    "description": "Advanced version of Uniswap with concentrated liquidity"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.ExternalExchange"
+                  }
+                },
+                "examples": {
+                  "Example external exchanges listing": {
+                    "value": [
+  {
+    "exchange_id": "BINANCE",
+    "external_name": "binance-cex",
+    "description": "World's largest cryptocurrency exchange by trading volume"
+  },
+  {
+    "exchange_id": "COINBASE",
+    "external_name": "coinbase",
+    "description": "Leading US-based cryptocurrency exchange with regulatory compliance"
+  },
+  {
+    "exchange_id": "KRAKEN",
+    "external_name": "kraken",
+    "description": "Established US cryptocurrency exchange known for security and compliance"
+  },
+  {
+    "exchange_id": "UNISWAP-V3-ETHEREUM",
+    "external_name": "uniswap-v3",
+    "description": "Advanced version of Uniswap with concentrated liquidity"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/asset/history": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Historical metrics for the asset from external sources",
+        "description": "Get asset metrics history from external data providers. Data is typically aggregated daily.",
+        "parameters": [
+          {
+            "name": "metric_id",
+            "in": "query",
+            "description": "Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "asset_id",
+            "in": "query",
+            "description": "Asset identifier (e.g., `USDC`, `USDT` - from supported assets list)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_start",
+            "in": "query",
+            "description": "Starting time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_end",
+            "in": "query",
+            "description": "Ending time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_format",
+            "in": "query",
+            "description": "If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "description": "Identifier of requested timeseries period (e.g. `1MIN` or `2MTH`), default value is `1MIN`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example asset metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 15000000000,
+    "last_value": 15500000000,
+    "min_value": 14800000000,
+    "max_value": 15600000000,
+    "count_values": 24,
+    "sum_values": 370000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 15500000000,
+    "last_value": 15300000000,
+    "min_value": 15200000000,
+    "max_value": 15700000000,
+    "count_values": 24,
+    "sum_values": 372000000000
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example asset metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 15000000000,
+    "last_value": 15500000000,
+    "min_value": 14800000000,
+    "max_value": 15600000000,
+    "count_values": 24,
+    "sum_values": 370000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 15500000000,
+    "last_value": 15300000000,
+    "min_value": 15200000000,
+    "max_value": 15700000000,
+    "count_values": 24,
+    "sum_values": 372000000000
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example asset metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 15000000000,
+    "last_value": 15500000000,
+    "min_value": 14800000000,
+    "max_value": 15600000000,
+    "count_values": 24,
+    "sum_values": 370000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 15500000000,
+    "last_value": 15300000000,
+    "min_value": 15200000000,
+    "max_value": 15700000000,
+    "count_values": 24,
+    "sum_values": 372000000000
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example asset metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 15000000000,
+    "last_value": 15500000000,
+    "min_value": 14800000000,
+    "max_value": 15600000000,
+    "count_values": 24,
+    "sum_values": 370000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 15500000000,
+    "last_value": 15300000000,
+    "min_value": 15200000000,
+    "max_value": 15700000000,
+    "count_values": 24,
+    "sum_values": 372000000000
+  }
+]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input, e.g., missing required parameters, invalid asset_id."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/chain/history": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Historical metrics for the chain from external sources",
+        "description": "Get chain metrics history from external data providers. Data is typically aggregated daily.",
+        "parameters": [
+          {
+            "name": "metric_id",
+            "in": "query",
+            "description": "Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chain_id",
+            "in": "query",
+            "description": "Chain identifier (e.g., `Ethereum`, `Arbitrum` - from supported chains list)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_start",
+            "in": "query",
+            "description": "Starting time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_end",
+            "in": "query",
+            "description": "Ending time in ISO 8601",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "time_format",
+            "in": "query",
+            "description": "If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "description": "Identifier of requested timeseries period (e.g. `1MIN` or `2MTH`), default value is `1MIN`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example chain metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 25000000000,
+    "last_value": 26000000000,
+    "min_value": 24500000000,
+    "max_value": 26200000000,
+    "count_values": 24,
+    "sum_values": 615000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 26000000000,
+    "last_value": 25800000000,
+    "min_value": 25700000000,
+    "max_value": 26100000000,
+    "count_values": 24,
+    "sum_values": 620000000000
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example chain metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 25000000000,
+    "last_value": 26000000000,
+    "min_value": 24500000000,
+    "max_value": 26200000000,
+    "count_values": 24,
+    "sum_values": 615000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 26000000000,
+    "last_value": 25800000000,
+    "min_value": 25700000000,
+    "max_value": 26100000000,
+    "count_values": 24,
+    "sum_values": 620000000000
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example chain metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 25000000000,
+    "last_value": 26000000000,
+    "min_value": 24500000000,
+    "max_value": 26200000000,
+    "count_values": 24,
+    "sum_values": 615000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 26000000000,
+    "last_value": 25800000000,
+    "min_value": 25700000000,
+    "max_value": 26100000000,
+    "count_values": 24,
+    "sum_values": 620000000000
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Models.BaseCsvModel"
+                  }
+                },
+                "examples": {
+                  "Example chain metrics response": {
+                    "value": [
+  {
+    "time_period_start": "2023-07-03T00:00:00.0000000Z",
+    "time_period_end": "2023-07-04T00:00:00.0000000Z",
+    "time_open": "2023-07-03T00:00:00.0000000Z",
+    "time_close": "2023-07-03T23:59:59.9990000Z",
+    "first_value": 25000000000,
+    "last_value": 26000000000,
+    "min_value": 24500000000,
+    "max_value": 26200000000,
+    "count_values": 24,
+    "sum_values": 615000000000
+  },
+  {
+    "time_period_start": "2023-07-04T00:00:00.0000000Z",
+    "time_period_end": "2023-07-05T00:00:00.0000000Z",
+    "time_open": "2023-07-04T00:00:00.0000000Z",
+    "time_close": "2023-07-04T23:59:59.9990000Z",
+    "first_value": 26000000000,
+    "last_value": 25800000000,
+    "min_value": 25700000000,
+    "max_value": 26100000000,
+    "count_values": 24,
+    "sum_values": 620000000000
+  }
+]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input, e.g., missing required parameters, invalid chain_id."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/asset/listing": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of metrics available for specific asset",
+        "description": "Get all metrics that are actually available for the specified asset from external providers.",
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "query",
+            "description": "Asset identifier (e.g., USDC, USDT)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for asset": {
+                    "value": [
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  },
+  {
+    "metric_id": "STABLES_MINTED_USD",
+    "description": "Total minted USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for asset": {
+                    "value": [
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  },
+  {
+    "metric_id": "STABLES_MINTED_USD",
+    "description": "Total minted USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for asset": {
+                    "value": [
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  },
+  {
+    "metric_id": "STABLES_MINTED_USD",
+    "description": "Total minted USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for asset": {
+                    "value": [
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  },
+  {
+    "metric_id": "STABLES_MINTED_USD",
+    "description": "Total minted USD stablecoins"
+  }
+]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/externalmetrics/chain/listing": {
+      "get": {
+        "tags": [
+          "ExternalMetrics"
+        ],
+        "summary": "Listing of metrics available for specific chain",
+        "description": "Get all metrics that are actually available for the specified blockchain chain from external providers.",
+        "parameters": [
+          {
+            "name": "chain_id",
+            "in": "query",
+            "description": "Chain identifier (e.g., ETHEREUM, ARBITRUM)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for chain": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for chain": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for chain": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
+  }
+]
+                  }
+                }
+              },
+              "application/x-msgpack": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v1.MetricInfo"
+                  }
+                },
+                "examples": {
+                  "Example external metrics for chain": {
+                    "value": [
+  {
+    "metric_id": "TVL",
+    "description": "Total Value Locked in the protocol"
+  },
+  {
+    "metric_id": "STABLES_BRIDGED_USD",
+    "description": "Total USD stablecoins bridged to USD value"
+  },
+  {
+    "metric_id": "STABLES_CIRCULATING_USD",
+    "description": "Total circulating USD stablecoins"
   }
 ]
                   }
@@ -7939,6 +9706,10 @@
   },
   "components": {
     "schemas": {
+      "Models.BaseCsvModel": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "Models.ExchangeTimeseriesItem": {
         "type": "object",
         "properties": {
@@ -8194,6 +9965,23 @@
         "additionalProperties": false,
         "description": "Represents an asset."
       },
+      "v1.Chain": {
+        "type": "object",
+        "properties": {
+          "chain_id": {
+            "type": "string",
+            "description": "Gets or sets the chain identifier.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Gets or sets the name of the chain.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a blockchain chain."
+      },
       "v1.ChainNetworkAddress": {
         "type": "object",
         "properties": {
@@ -8368,6 +10156,26 @@
         "additionalProperties": false,
         "description": "Represents an exchange rate."
       },
+      "v1.ExchangeRates": {
+        "type": "object",
+        "properties": {
+          "asset_id_base": {
+            "type": "string",
+            "description": "Gets or sets the base asset ID.",
+            "nullable": true
+          },
+          "rates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1.ExchangeRatesRate"
+            },
+            "description": "Gets or sets the list of exchange rates.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents exchange rates for a specific base asset."
+      },
       "v1.ExchangeRatesRate": {
         "type": "object",
         "properties": {
@@ -8443,25 +10251,53 @@
         "additionalProperties": false,
         "description": "Represents an item in the exchange rate timeseries."
       },
-      "v1.ExchangeRates`1": {
+      "v1.ExternalAsset": {
         "type": "object",
         "properties": {
-          "asset_id_base": {
+          "asset_id": {
             "type": "string",
-            "description": "Gets or sets the base asset ID.",
+            "description": "Gets or sets the asset identifier.",
             "nullable": true
           },
-          "rates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/v1.ExchangeRatesRate"
-            },
-            "description": "Gets or sets the list of exchange rates.",
+          "description": {
+            "type": "string",
+            "description": "Gets or sets the description of the asset.",
+            "nullable": true
+          },
+          "asset_type": {
+            "type": "string",
+            "description": "Gets or sets the type/category of the asset.",
             "nullable": true
           }
         },
         "additionalProperties": false,
-        "description": "Represents exchange rates for a specific base asset."
+        "description": "Represents an external asset with description."
+      },
+      "v1.ExternalExchange": {
+        "type": "object",
+        "properties": {
+          "exchange_id": {
+            "type": "string",
+            "description": "Gets or sets the internal exchange identifier.",
+            "nullable": true
+          },
+          "external_name": {
+            "type": "string",
+            "description": "Gets or sets the external protocol name/slug.",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Gets or sets the description of the exchange.",
+            "nullable": true
+          },
+          "source_id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an exchange with external mapping for metrics."
       },
       "v1.GeneralData": {
         "type": "object",
@@ -8661,6 +10497,28 @@
         },
         "additionalProperties": false,
         "description": "Represents a data model for metric data."
+      },
+      "v1.MetricInfo": {
+        "type": "object",
+        "properties": {
+          "metric_id": {
+            "type": "string",
+            "description": "Gets or sets the metric identifier.",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Gets or sets the description of the metric.",
+            "nullable": true
+          },
+          "source_id": {
+            "type": "string",
+            "description": "Gets or sets the source identifier of the metric.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a metric information."
       },
       "v1.OrderBook": {
         "type": "object",
@@ -9364,6 +11222,10 @@
     {
       "name": "Metadata",
       "description": ""
+    },
+    {
+      "name": "ExternalMetrics",
+      "description": "Provides access to historical metrics data aggregated from external sources.\r\nThese metrics are typically available on a daily basis."
     },
     {
       "name": "Metrics",

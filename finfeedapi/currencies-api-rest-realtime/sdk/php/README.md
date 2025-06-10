@@ -54,6 +54,11 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Au
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\ExchangeRatesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -98,6 +103,13 @@ Class | Method | HTTP request | Description
 
 Authentication schemes defined for the API:
 ### APIKey
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+
+### JWT
 
 - **Type**: API key
 - **API key parameter name**: Authorization

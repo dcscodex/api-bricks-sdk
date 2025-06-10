@@ -20,7 +20,7 @@ module OpenapiClient
       @api_client = api_client
     end
     # Get specific rate
-    # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+    # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
     # @param asset_id_base [String] Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
     # @param asset_id_quote [String] Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
     # @param [Hash] opts the optional parameters
@@ -31,7 +31,7 @@ module OpenapiClient
     end
 
     # Get specific rate
-    # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+    # Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
     # @param asset_id_base [String] Requested exchange rate base asset identifier (from the Metadata -&gt; Assets)
     # @param asset_id_quote [String] Requested exchange rate quote asset identifier (from the Metadata -&gt; Assets)
     # @param [Hash] opts the optional parameters
@@ -69,7 +69,7 @@ module OpenapiClient
       return_type = opts[:debug_return_type] || 'V1ExchangeRate'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['APIKey']
+      auth_names = opts[:debug_auth_names] || ['APIKey', 'JWT']
 
       new_options = opts.merge(
         :operation => :"ExchangeRatesApi.get_specific_rate",
@@ -89,7 +89,7 @@ module OpenapiClient
     end
 
     # Get all current rates
-    # Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+    # Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
     # @param asset_id_base [String] Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filter_asset_id Comma or semicolon delimited asset identifiers used to filter response (optional)
@@ -101,7 +101,7 @@ module OpenapiClient
     end
 
     # Get all current rates
-    # Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+    # Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
     # @param asset_id_base [String] Requested exchange rates base asset identifier (from the Metadata -&gt; Assets)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filter_asset_id Comma or semicolon delimited asset identifiers used to filter response (optional)
@@ -138,7 +138,7 @@ module OpenapiClient
       return_type = opts[:debug_return_type] || 'V1ExchangeRates'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['APIKey']
+      auth_names = opts[:debug_auth_names] || ['APIKey', 'JWT']
 
       new_options = opts.merge(
         :operation => :"ExchangeRatesApi.v1_exchangerate_asset_id_base_get",

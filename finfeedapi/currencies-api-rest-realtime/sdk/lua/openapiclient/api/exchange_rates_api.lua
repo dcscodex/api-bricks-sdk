@@ -64,6 +64,10 @@ function exchange_rates_api:get_specific_rate(asset_id_base, asset_id_quote)
 	if self.api_key['Authorization'] then
 		req.headers:upsert("APIKey", self.api_key['Authorization'])
 	end
+	-- api key in headers 'Authorization'
+	if self.api_key['Authorization'] then
+		req.headers:upsert("JWT", self.api_key['Authorization'])
+	end
 
 	-- make the HTTP call
 	local headers, stream, errno = req:go()
@@ -113,6 +117,10 @@ function exchange_rates_api:v1_exchangerate_asset_id_base_get(asset_id_base, fil
 	-- api key in headers 'Authorization'
 	if self.api_key['Authorization'] then
 		req.headers:upsert("APIKey", self.api_key['Authorization'])
+	end
+	-- api key in headers 'Authorization'
+	if self.api_key['Authorization'] then
+		req.headers:upsert("JWT", self.api_key['Authorization'])
 	end
 
 	-- make the HTTP call

@@ -24,7 +24,7 @@
              :form-params   {}
              :content-types []
              :accepts       ["text/plain" "application/json" "text/json" "application/x-msgpack"]
-             :auth-names    ["APIKey"]}))
+             :auth-names    ["APIKey" "JWT"]}))
 
 (defn-spec v1-assets-asset-id-get (s/coll-of v1/asset-spec)
   "List all assets by asset ID"
@@ -55,7 +55,7 @@ Properties of the output are providing aggregated information from across all sy
               :form-params   {}
               :content-types []
               :accepts       ["text/plain" "application/json" "text/json" "application/x-msgpack"]
-              :auth-names    ["APIKey"]})))
+              :auth-names    ["APIKey" "JWT"]})))
 
 (defn-spec v1-assets-get (s/coll-of v1/asset-spec)
   "List all assets
@@ -88,7 +88,7 @@ Properties of the output are providing aggregated information from across all sy
              :form-params   {}
              :content-types []
              :accepts       ["text/plain" "application/json" "text/json" "application/x-msgpack"]
-             :auth-names    ["APIKey"]}))
+             :auth-names    ["APIKey" "JWT"]}))
 
 (defn-spec v1-assets-icons-size-get (s/coll-of v1/icon-spec)
   "List all asset icons

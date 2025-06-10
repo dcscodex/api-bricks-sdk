@@ -30,29 +30,33 @@ class MetadataApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
+   *   JWT (apiKey)
    * 
    * @param assetId The asset ID.
    */
-  def v1AssetsAssetIdGet(assetId: String)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
+  def v1AssetsAssetIdGet(assetId: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets/{asset_id}", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("asset_id", assetId)
       .withSuccessResponse[Seq[Asset]](200)
       
 
   /**
-   * Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+   * Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
    * 
    * Expected answers:
    *   code 200 : Seq[Asset] (successful operation)
    * 
    * Available security schemes:
    *   APIKey (apiKey)
+   *   JWT (apiKey)
    * 
    * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. `BTC;ETH`).
    */
-  def v1AssetsGet(filterAssetId: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
+  def v1AssetsGet(filterAssetId: Option[String] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter_asset_id", filterAssetId)
       .withSuccessResponse[Seq[Asset]](200)
@@ -66,11 +70,13 @@ class MetadataApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
+   *   JWT (apiKey)
    * 
    * @param size The size of the icons.
    */
-  def v1AssetsIconsSizeGet(size: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Icon]] =
+  def v1AssetsIconsSizeGet(size: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Icon]] =
     ApiRequest[Seq[Icon]](ApiMethods.GET, baseUrl, "/v1/assets/icons/{size}", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("size", size)
       .withSuccessResponse[Seq[Icon]](200)

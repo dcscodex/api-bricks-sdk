@@ -8,7 +8,8 @@
            (java.text SimpleDateFormat)))
 
 (def auth-definitions
-  {"APIKey" {:type :api-key :in :header :param-name "Authorization"}})
+  {"APIKey" {:type :api-key :in :header :param-name "Authorization"}
+   "JWT" {:type :api-key :in :header :param-name "Authorization"}})
 
 (def default-api-context
   "Default API context."
@@ -17,7 +18,8 @@
    :datetime-format "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
    :decode-models   false
    :debug           false
-   :auths           {"APIKey" nil}})
+   :auths           {"APIKey" nil
+                     "JWT" nil}})
 
 (def ^:dynamic *api-context*
   "Dynamic API context to be applied in API calls."

@@ -120,7 +120,7 @@ sub get_specific_rate {
 
     my $_body_data;
     # authentication setting, if any
-    my $auth_settings = [qw(APIKey )];
+    my $auth_settings = [qw(APIKey JWT )];
 
     # make the API Call
     my $response = $self->{api_client}->call_api($_resource_path, $_method,
@@ -209,7 +209,7 @@ sub v1_exchangerate_asset_id_base_get {
 
     my $_body_data;
     # authentication setting, if any
-    my $auth_settings = [qw(APIKey )];
+    my $auth_settings = [qw(APIKey JWT )];
 
     # make the API Call
     my $response = $self->{api_client}->call_api($_resource_path, $_method,

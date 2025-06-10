@@ -45,6 +45,10 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('APIKey').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('APIKey').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: JWT
+//defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
 final api_instance = ExchangeRatesApi();
 final assetIdBase = assetIdBase_example; // String | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -87,6 +91,12 @@ Class | Method | HTTP request | Description
 
 Authentication schemes defined for the API:
 ### APIKey
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+### JWT
 
 - **Type**: API key
 - **API key parameter name**: Authorization

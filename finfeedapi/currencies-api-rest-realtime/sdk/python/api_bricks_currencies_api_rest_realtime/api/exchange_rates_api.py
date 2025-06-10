@@ -61,7 +61,7 @@ class ExchangeRatesApi:
     ) -> V1ExchangeRate:
         """Get specific rate
 
-        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
         :param asset_id_base: Requested exchange rate base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -132,7 +132,7 @@ class ExchangeRatesApi:
     ) -> ApiResponse[V1ExchangeRate]:
         """Get specific rate
 
-        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
         :param asset_id_base: Requested exchange rate base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -203,7 +203,7 @@ class ExchangeRatesApi:
     ) -> RESTResponseType:
         """Get specific rate
 
-        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+        Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
         :param asset_id_base: Requested exchange rate base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -299,7 +299,8 @@ class ExchangeRatesApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'APIKey', 
+            'JWT'
         ]
 
         return self.api_client.param_serialize(
@@ -341,7 +342,7 @@ class ExchangeRatesApi:
     ) -> V1ExchangeRates:
         """Get all current rates
 
-        Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+        Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
         :param asset_id_base: Requested exchange rates base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -416,7 +417,7 @@ class ExchangeRatesApi:
     ) -> ApiResponse[V1ExchangeRates]:
         """Get all current rates
 
-        Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+        Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
         :param asset_id_base: Requested exchange rates base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -491,7 +492,7 @@ class ExchangeRatesApi:
     ) -> RESTResponseType:
         """Get all current rates
 
-        Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+        Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
         :param asset_id_base: Requested exchange rates base asset identifier (from the Metadata -> Assets) (required)
         :type asset_id_base: str
@@ -597,7 +598,8 @@ class ExchangeRatesApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'APIKey', 
+            'JWT'
         ]
 
         return self.api_client.param_serialize(

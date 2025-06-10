@@ -45,7 +45,7 @@ export default class ExchangeRatesApi {
 
     /**
      * Get specific rate
-     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+     * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
      * @param {String} assetIdBase Requested exchange rate base asset identifier (from the Metadata -> Assets)
      * @param {String} assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -> Assets)
      * @param {module:api/ExchangeRatesApi~getSpecificRateCallback} callback The callback function, accepting three arguments: error, data, response
@@ -73,7 +73,7 @@ export default class ExchangeRatesApi {
       let formParams = {
       };
 
-      let authNames = ['APIKey'];
+      let authNames = ['APIKey', 'JWT'];
       let contentTypes = [];
       let accepts = ['text/plain', 'application/json', 'text/json', 'application/x-msgpack'];
       let returnType = V1ExchangeRate;
@@ -94,7 +94,7 @@ export default class ExchangeRatesApi {
 
     /**
      * Get all current rates
-     * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+     * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
      * @param {String} assetIdBase Requested exchange rates base asset identifier (from the Metadata -> Assets)
      * @param {Object} opts Optional parameters
      * @param {String} [filterAssetId] Comma or semicolon delimited asset identifiers used to filter response (optional)
@@ -122,7 +122,7 @@ export default class ExchangeRatesApi {
       let formParams = {
       };
 
-      let authNames = ['APIKey'];
+      let authNames = ['APIKey', 'JWT'];
       let contentTypes = [];
       let accepts = ['text/plain', 'application/json', 'text/json', 'application/x-msgpack'];
       let returnType = V1ExchangeRates;

@@ -31,6 +31,7 @@ let defaultBasePath = 'https://api-realtime.fx.finfeedapi.com';
 
 export enum MetadataApiApiKeys {
     APIKey,
+    JWT,
 }
 
 export class MetadataApi {
@@ -41,6 +42,7 @@ export class MetadataApi {
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
         'APIKey': new ApiKeyAuth('header', 'Authorization'),
+        'JWT': new ApiKeyAuth('header', 'Authorization'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -131,6 +133,9 @@ export class MetadataApi {
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
         }
+        if (this.authentications.JWT.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
+        }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
         let interceptorPromise = authenticationPromise;
@@ -163,7 +168,7 @@ export class MetadataApi {
         });
     }
     /**
-     * Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+     * Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
      * @summary List all assets
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. &#x60;BTC;ETH&#x60;).
      */
@@ -200,6 +205,9 @@ export class MetadataApi {
         let authenticationPromise = Promise.resolve();
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.JWT.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -272,6 +280,9 @@ export class MetadataApi {
         let authenticationPromise = Promise.resolve();
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.JWT.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

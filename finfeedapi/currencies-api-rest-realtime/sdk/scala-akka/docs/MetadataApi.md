@@ -40,6 +40,9 @@ object Example extends App {
     // Configure API key authorization: APIKey
     implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://api-realtime.fx.finfeedapi.com")
     val assetId: String = assetId_example // String | The asset ID.
@@ -81,7 +84,7 @@ ApiRequest[[**Seq[Asset]**](Asset.md)]
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -100,7 +103,7 @@ ApiRequest[[**Seq[Asset]**](Asset.md)]
 
 List all assets
 
-Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 
@@ -122,6 +125,9 @@ object Example extends App {
     
     // Configure API key authorization: APIKey
     implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://api-realtime.fx.finfeedapi.com")
@@ -164,7 +170,7 @@ ApiRequest[[**Seq[Asset]**](Asset.md)]
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -205,6 +211,9 @@ object Example extends App {
     
     // Configure API key authorization: APIKey
     implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://api-realtime.fx.finfeedapi.com")
@@ -247,7 +256,7 @@ ApiRequest[[**Seq[Icon]**](Icon.md)]
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

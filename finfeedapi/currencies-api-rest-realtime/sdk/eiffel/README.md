@@ -49,6 +49,12 @@ Class | Method | HTTP request | Description
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
 
+## JWT
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 
 ## Author
 

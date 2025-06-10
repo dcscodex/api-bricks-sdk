@@ -46,13 +46,13 @@ public class OASMetadataApi {
             new Map<String, Object>(),
             new List<String>{ 'text/plain', 'application/json', 'text/json', 'application/x-msgpack' },
             new List<String>(),
-            new List<String> { 'APIKey' },
+            new List<String> { 'APIKey', 'JWT' },
             List<OASV1Asset>.class
         );
     }
     /**
      * List all assets
-     * Retrieves all assets.\r\n            \r\n:::info\r\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\r\n:::\r\n            \r\n:::info\r\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\r\n:::
+     * Retrieves all assets.\n            \n:::info\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\n:::\n            \n:::info\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\n:::
      * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. &#x60;BTC;ETH&#x60;). (optional)
      * @return List<OASV1Asset>
      * @throws OAS.ApiException if fails to make API call
@@ -72,7 +72,7 @@ public class OASMetadataApi {
             new Map<String, Object>(),
             new List<String>{ 'text/plain', 'application/json', 'text/json', 'application/x-msgpack' },
             new List<String>(),
-            new List<String> { 'APIKey' },
+            new List<String> { 'APIKey', 'JWT' },
             List<OASV1Asset>.class
         );
     }
@@ -97,7 +97,7 @@ public class OASMetadataApi {
             new Map<String, Object>(),
             new List<String>{ 'text/plain', 'application/json', 'text/json', 'application/x-msgpack' },
             new List<String>(),
-            new List<String> { 'APIKey' },
+            new List<String> { 'APIKey', 'JWT' },
             List<OASV1Icon>.class
         );
     }

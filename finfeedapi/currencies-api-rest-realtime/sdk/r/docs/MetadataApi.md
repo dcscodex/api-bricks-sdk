@@ -26,6 +26,8 @@ var_asset_id <- "asset_id_example" # character | The asset ID.
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsAssetIdGet(var_asset_iddata_file = "result.txt")
 result <- api_instance$V1AssetsAssetIdGet(var_asset_id)
@@ -44,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -61,7 +63,7 @@ Name | Type | Description  | Notes
 
 List all assets
 
-Retrieves all assets.                :::info  Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).  :::                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 ```R
@@ -75,6 +77,8 @@ var_filter_asset_id <- "filter_asset_id_example" # character | Comma or semicolo
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_iddata_file = "result.txt")
 result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_id)
@@ -93,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -124,6 +128,8 @@ var_size <- 56 # integer | The size of the icons.
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsIconsSizeGet(var_sizedata_file = "result.txt")
 result <- api_instance$V1AssetsIconsSizeGet(var_size)
@@ -142,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

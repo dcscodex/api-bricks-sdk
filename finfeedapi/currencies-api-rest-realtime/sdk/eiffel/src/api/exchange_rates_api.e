@@ -26,7 +26,7 @@ feature -- API Access
 
 	specific_rate (asset_id_base: STRING_32; asset_id_quote: STRING_32): detachable V1_EXCHANGE_RATE
 			-- Get specific rate
-			-- Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+			-- Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 			-- 
 			-- argument: asset_id_base Requested exchange rate base asset identifier (from the Metadata -&gt; Assets) (required)
 			-- 
@@ -52,7 +52,7 @@ feature -- API Access
 				l_request.add_header(l_accept,"Accept");
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
-			l_request.set_auth_names ({ARRAY [STRING]}<<"APIKey">>)
+			l_request.set_auth_names ({ARRAY [STRING]}<<"APIKey", "JWT">>)
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
@@ -65,7 +65,7 @@ feature -- API Access
 
 	v1_exchangerate_asset_id_base_get (asset_id_base: STRING_32; filter_asset_id: STRING_32; invert: BOOLEAN): detachable V1_EXCHANGE_RATES
 			-- Get all current rates
-			-- Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC);  :::
+			-- Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y &#x3D; 1 / X equation, for example BTC/USD &#x3D; 1 / (USD/BTC); :::
 			-- 
 			-- argument: asset_id_base Requested exchange rates base asset identifier (from the Metadata -&gt; Assets) (required)
 			-- 
@@ -94,7 +94,7 @@ feature -- API Access
 				l_request.add_header(l_accept,"Accept");
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
-			l_request.set_auth_names ({ARRAY [STRING]}<<"APIKey">>)
+			l_request.set_auth_names ({ARRAY [STRING]}<<"APIKey", "JWT">>)
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error

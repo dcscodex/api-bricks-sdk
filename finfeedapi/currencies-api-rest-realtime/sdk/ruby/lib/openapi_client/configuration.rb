@@ -251,6 +251,13 @@ module OpenapiClient
             key: 'Authorization',
             value: api_key_with_prefix('Authorization')
           },
+        'JWT' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'Authorization',
+            value: api_key_with_prefix('Authorization')
+          },
       }
     end
 

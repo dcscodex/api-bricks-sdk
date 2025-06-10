@@ -17,6 +17,7 @@ apiClient_t *apiClient_create() {
     apiClient->progress_data = NULL;
     apiClient->response_code = 0;
     apiClient->apiKeys_APIKey = NULL;
+    apiClient->apiKeys_JWT = NULL;
 
     return apiClient;
 }
@@ -24,6 +25,7 @@ apiClient_t *apiClient_create() {
 apiClient_t *apiClient_create_with_base_path(const char *basePath
 , sslConfig_t *sslConfig
 , list_t *apiKeys_APIKey
+, list_t *apiKeys_JWT
 ) {
     apiClient_t *apiClient = malloc(sizeof(apiClient_t));
     if(basePath){
@@ -55,6 +57,17 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     }else{
         apiClient->apiKeys_APIKey = NULL;
     }
+    if(apiKeys_JWT!= NULL) {
+        apiClient->apiKeys_JWT = list_createList();
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, apiKeys_JWT) {
+            keyValuePair_t *pair = listEntry->data;
+            keyValuePair_t *pairDup = keyValuePair_create(strdup(pair->key), strdup(pair->value));
+            list_addElement(apiClient->apiKeys_JWT, pairDup);
+        }
+    }else{
+        apiClient->apiKeys_JWT = NULL;
+    }
 
     return apiClient;
 }
@@ -79,6 +92,20 @@ void apiClient_free(apiClient_t *apiClient) {
             keyValuePair_free(pair);
         }
         list_freeList(apiClient->apiKeys_APIKey);
+    }
+    if(apiClient->apiKeys_JWT) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, apiClient->apiKeys_JWT) {
+            keyValuePair_t *pair = listEntry->data;
+            if(pair->key){
+                free(pair->key);
+            }
+            if(pair->value){
+                free(pair->value);
+            }
+            keyValuePair_free(pair);
+        }
+        list_freeList(apiClient->apiKeys_JWT);
     }
     free(apiClient);
 }
@@ -391,6 +418,21 @@ void apiClient_invoke(apiClient_t    *apiClient,
         if (apiClient->apiKeys_APIKey != NULL)
         {
         list_ForEach(listEntry, apiClient->apiKeys_APIKey) {
+        keyValuePair_t *apiKey = listEntry->data;
+        if((apiKey->key != NULL) &&
+           (apiKey->value != NULL) )
+        {
+            char *headerValueToWrite = assembleHeaderField(
+                apiKey->key, apiKey->value);
+            curl_slist_append(headers, headerValueToWrite);
+            free(headerValueToWrite);
+        }
+        }
+        }
+        // this would only be generated for apiKey authentication
+        if (apiClient->apiKeys_JWT != NULL)
+        {
+        list_ForEach(listEntry, apiClient->apiKeys_JWT) {
         keyValuePair_t *apiKey = listEntry->data;
         if((apiKey->key != NULL) &&
            (apiKey->value != NULL) )

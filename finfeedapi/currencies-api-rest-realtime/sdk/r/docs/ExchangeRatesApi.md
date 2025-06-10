@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get specific rate
 
-Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
 ### Example
 ```R
@@ -28,6 +28,8 @@ var_asset_id_quote <- "asset_id_quote_example" # character | Requested exchange 
 api_instance <- ExchangeRatesApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quotedata_file = "result.txt")
 result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quote)
@@ -47,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 Get all current rates
 
-Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
 ### Example
 ```R
@@ -80,6 +82,8 @@ var_invert <- FALSE # character | True will invert all the rates (optional, if t
 api_instance <- ExchangeRatesApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1ExchangerateAssetIdBaseGet(var_asset_id_base, filter_asset_id = var_filter_asset_id, invert = var_invertdata_file = "result.txt")
 result <- api_instance$V1ExchangerateAssetIdBaseGet(var_asset_id_base, filter_asset_id = var_filter_asset_id, invert = var_invert)
@@ -100,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -25,19 +25,21 @@ object ExchangeRatesApi {
 class ExchangeRatesApi(baseUrl: String) {
 
   /**
-   * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+   * Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
    * 
    * Expected answers:
    *   code 200 : ExchangeRate (successful operation)
    * 
    * Available security schemes:
    *   APIKey (apiKey)
+   *   JWT (apiKey)
    * 
    * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -> Assets)
    * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -> Assets)
    */
-  def getSpecificRate(assetIdBase: String, assetIdQuote: String)(implicit apiKey: ApiKeyValue): ApiRequest[ExchangeRate] =
+  def getSpecificRate(assetIdBase: String, assetIdQuote: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ExchangeRate] =
     ApiRequest[ExchangeRate](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}/{asset_id_quote}", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("asset_id_base", assetIdBase)
       .withPathParam("asset_id_quote", assetIdQuote)
@@ -45,20 +47,22 @@ class ExchangeRatesApi(baseUrl: String) {
       
 
   /**
-   * Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+   * Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
    * 
    * Expected answers:
    *   code 200 : ExchangeRates (successful operation)
    * 
    * Available security schemes:
    *   APIKey (apiKey)
+   *   JWT (apiKey)
    * 
    * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -> Assets)
    * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional)
    * @param invert True will invert all the rates (optional, if true then rates will be calculated as `rate = 1 / actual_rate` eg. `USD/BTC` as `BTC/USD`)
    */
-  def v1ExchangerateAssetIdBaseGet(assetIdBase: String, filterAssetId: Option[String] = None, invert: Option[Boolean] = None)(implicit apiKey: ApiKeyValue): ApiRequest[ExchangeRates] =
+  def v1ExchangerateAssetIdBaseGet(assetIdBase: String, filterAssetId: Option[String] = None, invert: Option[Boolean] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ExchangeRates] =
     ApiRequest[ExchangeRates](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter_asset_id", filterAssetId)
       .withQueryParam("invert", invert)

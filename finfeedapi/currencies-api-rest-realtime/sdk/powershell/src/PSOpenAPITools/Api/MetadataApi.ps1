@@ -81,6 +81,16 @@ function Invoke-V1AssetsAssetIdGet {
             Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]
+        } else {
+            $apiKeyPrefix = ""
+        }
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["Authorization"]) {
+            $LocalVarHeaderParameters['Authorization'] = $apiKeyPrefix + $Configuration["ApiKey"]["Authorization"]
+            Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -164,6 +174,16 @@ function Invoke-V1AssetsGet {
 
         if ($FilterAssetId) {
             $LocalVarQueryParameters['filter_asset_id'] = $FilterAssetId
+        }
+
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]
+        } else {
+            $apiKeyPrefix = ""
+        }
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["Authorization"]) {
+            $LocalVarHeaderParameters['Authorization'] = $apiKeyPrefix + $Configuration["ApiKey"]["Authorization"]
+            Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
         if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
@@ -260,6 +280,16 @@ function Invoke-V1AssetsIconsSizeGet {
             throw "Error! The required parameter `Size` missing when calling v1AssetsIconsSizeGet."
         }
         $LocalVarUri = $LocalVarUri.replace('{size}', [System.Web.HTTPUtility]::UrlEncode($Size))
+
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]
+        } else {
+            $apiKeyPrefix = ""
+        }
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["Authorization"]) {
+            $LocalVarHeaderParameters['Authorization'] = $apiKeyPrefix + $Configuration["ApiKey"]["Authorization"]
+            Write-Verbose ("Using API key 'Authorization' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["Authorization"]) {
             $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["Authorization"]

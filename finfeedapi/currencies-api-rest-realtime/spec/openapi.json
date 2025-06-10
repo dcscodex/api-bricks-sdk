@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "FX Realtime REST API",
     "contact": {
@@ -25,7 +25,7 @@
           "Metadata"
         ],
         "summary": "List all assets",
-        "description": "Retrieves all assets.\r\n            \r\n:::info\r\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\r\n:::\r\n            \r\n:::info\r\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\r\n:::",
+        "description": "Retrieves all assets.\n            \n:::info\nOur asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency).\n:::\n            \n:::info\nProperties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\n:::",
         "parameters": [
           {
             "name": "filter_asset_id",
@@ -761,7 +761,7 @@
           "Exchange Rates"
         ],
         "summary": "Get specific rate",
-        "description": "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::",
+        "description": "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::",
         "operationId": "Get specific rate",
         "parameters": [
           {
@@ -794,7 +794,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-10T06:14:59.1808726Z",
+  "time": "2025-06-10T12:37:59.0932890Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -809,7 +809,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-10T06:14:59.1808726Z",
+  "time": "2025-06-10T12:37:59.0932890Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -824,7 +824,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-10T06:14:59.1808726Z",
+  "time": "2025-06-10T12:37:59.0932890Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -839,7 +839,7 @@
                 "examples": {
                   "Example response": {
                     "value": {
-  "time": "2025-06-10T06:14:59.1808726Z",
+  "time": "2025-06-10T12:37:59.0932890Z",
   "asset_id_base": "BTC",
   "asset_id_quote": "USD",
   "rate": 10000.0
@@ -858,7 +858,7 @@
           "Exchange Rates"
         ],
         "summary": "Get all current rates",
-        "description": "Get the current exchange rate between requested asset and all other assets.\r\n            \r\n:::info\r\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\r\n:::\r\n            \r\n:::info\r\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\r\n:::",
+        "description": "Get the current exchange rate between requested asset and all other assets.\n            \n:::info\nIf you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.\n:::\n            \n:::info\nYou can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);\n:::",
         "parameters": [
           {
             "name": "asset_id_base",
@@ -1285,12 +1285,21 @@
         "description": "API Key is required to access the endpoints",
         "name": "Authorization",
         "in": "header"
+      },
+      "JWT": {
+        "type": "apiKey",
+        "description": "JWT token needed to access the endpoints",
+        "name": "Authorization",
+        "in": "header"
       }
     }
   },
   "security": [
     {
       "APIKey": [ ]
+    },
+    {
+      "JWT": [ ]
     }
   ],
   "tags": [

@@ -1,5 +1,5 @@
 /**
- * REST API
+ * FinFeedAPI Stock REST API
  *
  * Contact: support@apibricks.io
  *
@@ -26,11 +26,11 @@ export interface Level1QuoteUpdateModel {
      */
     timestamp?: string;
     /**
-     * Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+     * Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
      */
     is_symbol_available?: boolean;
     /**
-     * Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+     * Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
      */
     is_pre_post_market_session?: boolean;
     /**

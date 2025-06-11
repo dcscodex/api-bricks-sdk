@@ -124,7 +124,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/admin/messages/{symbol}".replace("{"+"symbol"+"}", encodeURIComponent(symbol.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -200,7 +200,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/admin/system-event",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -279,7 +279,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/level1-quote/{symbol}".replace("{"+"symbol"+"}", encodeURIComponent(symbol.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -358,7 +358,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/level2-price-level-update/{symbol}".replace("{"+"symbol"+"}", encodeURIComponent(symbol.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -437,7 +437,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/level3-order-book/{symbol}".replace("{"+"symbol"+"}", encodeURIComponent(symbol.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -516,7 +516,7 @@ class NativeIEXApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
             path = "/v1/native/iex/trade/{symbol}".replace("{"+"symbol"+"}", encodeURIComponent(symbol.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }

@@ -1,4 +1,4 @@
-# RestApi.NativeIEXApi
+# FinFeedApiStockRestApi.NativeIEXApi
 
 All URIs are relative to *https://api-historical.stock.finfeedapi.com*
 
@@ -22,9 +22,18 @@ Get Admin Messages
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let symbol = "symbol_example"; // String | The symbol identifier
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Optional date in format YYYY-MM-DD (defaults to latest available data)
 apiInstance.v1NativeIexAdminMessagesSymbolGet(symbol, date, (error, data, response) => {
@@ -50,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -67,9 +76,18 @@ Get System Events
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Date in format YYYY-MM-DD
 apiInstance.v1NativeIexAdminSystemEventGet(date, (error, data, response) => {
   if (error) {
@@ -93,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -110,9 +128,18 @@ Get Level-1 Quotes
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let symbol = "symbol_example"; // String | The symbol identifier
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Optional date in format YYYY-MM-DD (defaults to latest available data)
 apiInstance.v1NativeIexLevel1QuoteSymbolGet(symbol, date, (error, data, response) => {
@@ -138,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -155,9 +182,18 @@ Get Level-2 Price Level Book
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let symbol = "symbol_example"; // String | The symbol identifier
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Optional date in format YYYY-MM-DD (defaults to latest available data)
 apiInstance.v1NativeIexLevel2PriceLevelUpdateSymbolGet(symbol, date, (error, data, response) => {
@@ -183,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -200,9 +236,18 @@ Get Level-3 Order Book
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let symbol = "symbol_example"; // String | The symbol identifier
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Optional date in format YYYY-MM-DD (defaults to latest available data)
 apiInstance.v1NativeIexLevel3OrderBookSymbolGet(symbol, date, (error, data, response) => {
@@ -228,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -245,9 +290,18 @@ Get Trades
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.NativeIEXApi();
+let apiInstance = new FinFeedApiStockRestApi.NativeIEXApi();
 let symbol = "symbol_example"; // String | The symbol identifier
 let date = new Date("2013-10-20T19:20:30+01:00"); // Date | Optional date in format YYYY-MM-DD (defaults to latest available data)
 apiInstance.v1NativeIexTradeSymbolGet(symbol, date, (error, data, response) => {
@@ -273,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

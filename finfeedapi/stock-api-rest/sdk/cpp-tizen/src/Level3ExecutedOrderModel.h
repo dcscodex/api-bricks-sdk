@@ -80,39 +80,39 @@ public:
 	/*! \brief Set Sale condition flags for the execution as byte value
 	 */
 	void setSaleConditionFlags(int  sale_condition_flags);
-	/*! \brief Get Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
+	/*! \brief Get Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
 	 */
 	bool getIsIntermarketSweep();
 
-	/*! \brief Set Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
+	/*! \brief Set Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
 	 */
 	void setIsIntermarketSweep(bool  is_intermarket_sweep);
-	/*! \brief Get Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
+	/*! \brief Get Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
 	 */
 	bool getIsExtendedHoursTrade();
 
-	/*! \brief Set Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
+	/*! \brief Set Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
 	 */
 	void setIsExtendedHoursTrade(bool  is_extended_hours_trade);
-	/*! \brief Get Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
+	/*! \brief Get Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
 	 */
 	bool getIsOddLotTrade();
 
-	/*! \brief Set Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
+	/*! \brief Set Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
 	 */
 	void setIsOddLotTrade(bool  is_odd_lot_trade);
-	/*! \brief Get Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+	/*! \brief Get Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
 	 */
 	bool getIsTradeThroughExempt();
 
-	/*! \brief Set Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+	/*! \brief Set Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
 	 */
 	void setIsTradeThroughExempt(bool  is_trade_through_exempt);
-	/*! \brief Get Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+	/*! \brief Get Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
 	 */
 	bool getIsSinglePriceCrossTrade();
 
-	/*! \brief Set Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+	/*! \brief Set Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
 	 */
 	void setIsSinglePriceCrossTrade(bool  is_single_price_cross_trade);
 	/*! \brief Get Trade volume in number of shares

@@ -25,13 +25,13 @@ void main() {
       // TODO
     });
 
-    // Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+    // Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
     // bool isSymbolAvailable
     test('to test the property `isSymbolAvailable`', () async {
       // TODO
     });
 
-    // Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+    // Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
     // bool isPrePostMarketSession
     test('to test the property `isPrePostMarketSession`', () async {
       // TODO

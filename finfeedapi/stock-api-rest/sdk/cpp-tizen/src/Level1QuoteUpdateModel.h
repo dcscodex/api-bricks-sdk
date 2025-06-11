@@ -66,18 +66,18 @@ public:
 	/*! \brief Set Time when the quote update was recorded as DateTime
 	 */
 	void setTimestamp(std::string  timestamp);
-	/*! \brief Get Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+	/*! \brief Get Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
 	 */
 	bool getIsSymbolAvailable();
 
-	/*! \brief Set Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+	/*! \brief Set Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
 	 */
 	void setIsSymbolAvailable(bool  is_symbol_available);
-	/*! \brief Get Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+	/*! \brief Get Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
 	 */
 	bool getIsPrePostMarketSession();
 
-	/*! \brief Set Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+	/*! \brief Set Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
 	 */
 	void setIsPrePostMarketSession(bool  is_pre_post_market_session);
 	/*! \brief Get Ask size in number of shares

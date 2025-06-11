@@ -1,4 +1,4 @@
-# RestApi.AdminAuctionInformationModel
+# FinFeedApiStockRestApi.AdminAuctionInformationModel
 
 ## Properties
 

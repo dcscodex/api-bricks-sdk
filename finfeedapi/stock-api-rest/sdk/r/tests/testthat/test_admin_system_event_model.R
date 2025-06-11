@@ -47,7 +47,7 @@ test_that("system_event_text", {
 
 test_that("is_system_event_start_of_messages", {
   # tests for the property `is_system_event_start_of_messages` (character)
-  # Indicates if the system event is &#39;Start of Messages&#39; (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
+  # Indicates if the system event is &#39;Start of Messages&#39; (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_start_of_messages`, "EXPECTED_RESULT")
@@ -55,7 +55,7 @@ test_that("is_system_event_start_of_messages", {
 
 test_that("is_system_event_start_of_system_hours", {
   # tests for the property `is_system_event_start_of_system_hours` (character)
-  # Indicates if the system event is &#39;Start of System Hours&#39; (S).  This message indicates that IEX is open and ready to start accepting orders.
+  # Indicates if the system event is &#39;Start of System Hours&#39; (S). This message indicates that IEX is open and ready to start accepting orders.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_start_of_system_hours`, "EXPECTED_RESULT")
@@ -63,7 +63,7 @@ test_that("is_system_event_start_of_system_hours", {
 
 test_that("is_system_event_start_of_regular_market_hours", {
   # tests for the property `is_system_event_start_of_regular_market_hours` (character)
-  # Indicates if the system event is &#39;Start of Regular Market Hours&#39; (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
+  # Indicates if the system event is &#39;Start of Regular Market Hours&#39; (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_start_of_regular_market_hours`, "EXPECTED_RESULT")
@@ -71,7 +71,7 @@ test_that("is_system_event_start_of_regular_market_hours", {
 
 test_that("is_system_event_end_of_regular_market_hours", {
   # tests for the property `is_system_event_end_of_regular_market_hours` (character)
-  # Indicates if the system event is &#39;End of Regular Market Hours&#39; (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
+  # Indicates if the system event is &#39;End of Regular Market Hours&#39; (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_end_of_regular_market_hours`, "EXPECTED_RESULT")
@@ -79,7 +79,7 @@ test_that("is_system_event_end_of_regular_market_hours", {
 
 test_that("is_system_event_end_of_system_hours", {
   # tests for the property `is_system_event_end_of_system_hours` (character)
-  # Indicates if the system event is &#39;End of System Hours&#39; (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
+  # Indicates if the system event is &#39;End of System Hours&#39; (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_end_of_system_hours`, "EXPECTED_RESULT")
@@ -87,7 +87,7 @@ test_that("is_system_event_end_of_system_hours", {
 
 test_that("is_system_event_end_of_messages", {
   # tests for the property `is_system_event_end_of_messages` (character)
-  # Indicates if the system event is &#39;End of Messages&#39; (C).  This is always the last message sent in any trading session.
+  # Indicates if the system event is &#39;End of Messages&#39; (C). This is always the last message sent in any trading session.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_system_event_end_of_messages`, "EXPECTED_RESULT")

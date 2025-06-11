@@ -1,4 +1,4 @@
-# RestApi.FinFeedAPIExchangeModel
+# FinFeedApiStockRestApi.FinFeedAPIExchangeModel
 
 ## Properties
 

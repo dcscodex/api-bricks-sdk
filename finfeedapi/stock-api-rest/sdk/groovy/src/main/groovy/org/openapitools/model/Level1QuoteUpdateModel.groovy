@@ -13,9 +13,9 @@ class Level1QuoteUpdateModel {
     Long timestampNanos
     /* Time when the quote update was recorded as DateTime */
     Date timestamp
-    /* Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available */
+    /* Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available */
     Boolean isSymbolAvailable
-    /* Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session */
+    /* Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session */
     Boolean isPrePostMarketSession
     /* Ask size in number of shares */
     Integer askSize

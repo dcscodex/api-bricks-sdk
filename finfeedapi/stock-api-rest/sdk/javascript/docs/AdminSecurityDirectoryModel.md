@@ -1,4 +1,4 @@
-# RestApi.AdminSecurityDirectoryModel
+# FinFeedApiStockRestApi.AdminSecurityDirectoryModel
 
 ## Properties
 

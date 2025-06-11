@@ -18,7 +18,19 @@ private class OASMetadataApiTest {
         List<OASFinFeedAPIExchangeModel> expectedResponse;
         String js = '';
 
-        api = new OASMetadataApi(new OASClient());
+        client = new OASClient();
+        api = new OASMetadataApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASFinFeedAPIExchangeModel>{OASFinFeedAPIExchangeModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASFinFeedAPIExchangeModel>{OASFinFeedAPIExchangeModel.getExample()};
+        response = (List<OASFinFeedAPIExchangeModel>) api.v1ExchangesGet();
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetadataApi(client);
 
         js = JSON.serialize(new List<OASFinFeedAPIExchangeModel>{OASFinFeedAPIExchangeModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -50,7 +62,19 @@ private class OASMetadataApiTest {
         List<OASFinFeedAPISymbolModel> expectedResponse;
         String js = '';
 
-        api = new OASMetadataApi(new OASClient());
+        client = new OASClient();
+        api = new OASMetadataApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASFinFeedAPISymbolModel>{OASFinFeedAPISymbolModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASFinFeedAPISymbolModel>{OASFinFeedAPISymbolModel.getExample()};
+        response = (List<OASFinFeedAPISymbolModel>) api.v1SymbolsExchangeIdGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetadataApi(client);
 
         js = JSON.serialize(new List<OASFinFeedAPISymbolModel>{OASFinFeedAPISymbolModel.getExample()});
         res.setHeader('Content-Type', 'application/json');

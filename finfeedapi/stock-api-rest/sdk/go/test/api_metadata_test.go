@@ -1,5 +1,5 @@
 /*
-REST API
+FinFeedAPI Stock REST API
 
 Testing MetadataAPIService
 

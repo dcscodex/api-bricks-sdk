@@ -14,8 +14,8 @@ part 'level1_quote_update_model.g.dart';
 /// * [symbol] - The stock symbol
 /// * [timestampNanos] - Original timestamp in nanoseconds since epoch
 /// * [timestamp] - Time when the quote update was recorded as DateTime
-/// * [isSymbolAvailable] - Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
-/// * [isPrePostMarketSession] - Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+/// * [isSymbolAvailable] - Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
+/// * [isPrePostMarketSession] - Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
 /// * [askSize] - Ask size in number of shares
 /// * [askPrice] - Ask price as decimal
 /// * [bidPrice] - Bid price as decimal
@@ -34,11 +34,11 @@ abstract class Level1QuoteUpdateModel implements Built<Level1QuoteUpdateModel, L
   @BuiltValueField(wireName: r'timestamp')
   DateTime? get timestamp;
 
-  /// Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+  /// Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
   @BuiltValueField(wireName: r'is_symbol_available')
   bool? get isSymbolAvailable;
 
-  /// Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+  /// Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
   @BuiltValueField(wireName: r'is_pre_post_market_session')
   bool? get isPrePostMarketSession;
 

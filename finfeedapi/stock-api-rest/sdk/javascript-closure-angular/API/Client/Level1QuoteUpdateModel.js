@@ -28,14 +28,14 @@ API.Client.Level1QuoteUpdateModel.prototype.timestampNanos;
 API.Client.Level1QuoteUpdateModel.prototype.timestamp;
 
 /**
- * Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+ * Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
  * @type {!boolean}
  * @export
  */
 API.Client.Level1QuoteUpdateModel.prototype.isSymbolAvailable;
 
 /**
- * Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+ * Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
  * @type {!boolean}
  * @export
  */

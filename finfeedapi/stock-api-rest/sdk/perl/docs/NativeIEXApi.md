@@ -27,6 +27,14 @@ Get Admin Messages
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol = "symbol_example"; # string | The symbol identifier
@@ -54,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -73,6 +81,14 @@ Get System Events
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $date = DateTime->from_epoch(epoch => str2time('null')); # DATE_TIME | Date in format YYYY-MM-DD
@@ -98,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -117,6 +133,14 @@ Get Level-1 Quotes
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol = "symbol_example"; # string | The symbol identifier
@@ -144,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -163,6 +187,14 @@ Get Level-2 Price Level Book
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol = "symbol_example"; # string | The symbol identifier
@@ -190,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -209,6 +241,14 @@ Get Level-3 Order Book
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol = "symbol_example"; # string | The symbol identifier
@@ -236,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -255,6 +295,14 @@ Get Trades
 use Data::Dumper;
 use WWW::OpenAPIClient::NativeIEXApi;
 my $api_instance = WWW::OpenAPIClient::NativeIEXApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol = "symbol_example"; # string | The symbol identifier
@@ -282,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

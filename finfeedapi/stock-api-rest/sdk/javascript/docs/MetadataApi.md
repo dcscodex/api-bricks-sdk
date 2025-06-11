@@ -1,4 +1,4 @@
-# RestApi.MetadataApi
+# FinFeedApiStockRestApi.MetadataApi
 
 All URIs are relative to *https://api-historical.stock.finfeedapi.com*
 
@@ -18,9 +18,18 @@ List of exchanges
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.MetadataApi();
+let apiInstance = new FinFeedApiStockRestApi.MetadataApi();
 apiInstance.v1ExchangesGet((error, data, response) => {
   if (error) {
     console.error(error);
@@ -40,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -57,9 +66,18 @@ List of symbols for the exchange
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiStockRestApi from 'fin_feed_api_stock_rest_api';
+let defaultClient = FinFeedApiStockRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.MetadataApi();
+let apiInstance = new FinFeedApiStockRestApi.MetadataApi();
 let exchangeId = "exchangeId_example"; // String | 
 apiInstance.v1SymbolsExchangeIdGet(exchangeId, (error, data, response) => {
   if (error) {
@@ -83,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

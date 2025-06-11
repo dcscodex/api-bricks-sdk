@@ -1,4 +1,4 @@
-# RestApi.AdminShortSalePriceTestStatusModel
+# FinFeedApiStockRestApi.AdminShortSalePriceTestStatusModel
 
 ## Properties
 

@@ -1,9 +1,9 @@
-defmodule RESTAPI.Mixfile do
+defmodule FinFeedAPIStockRESTAPI.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :restapi,
+      app: :fin_feed_api_stock_restapi,
       version: "1.0.0",
       elixir: "~> 1.18",
       build_embedded: Mix.env() == :prod,
@@ -43,7 +43,7 @@ defmodule RESTAPI.Mixfile do
 
    defp package do
       [
-        name: "restapi",
+        name: "fin_feed_api_stock_restapi",
         files: ~w(.formatter.exs config lib mix.exs README* LICENSE*),
       ]
   end

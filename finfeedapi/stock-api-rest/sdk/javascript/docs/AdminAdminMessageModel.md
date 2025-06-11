@@ -1,4 +1,4 @@
-# RestApi.AdminAdminMessageModel
+# FinFeedApiStockRestApi.AdminAdminMessageModel
 
 ## Properties
 

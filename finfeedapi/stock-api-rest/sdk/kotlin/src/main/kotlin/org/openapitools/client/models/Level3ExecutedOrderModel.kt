@@ -27,11 +27,11 @@ import com.squareup.moshi.JsonClass
  * @param timestamp Time when the order was executed as DateTime
  * @param orderIdReference Order identifier reference
  * @param saleConditionFlags Sale condition flags for the execution as byte value
- * @param isIntermarketSweep Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
- * @param isExtendedHoursTrade Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
- * @param isOddLotTrade Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
- * @param isTradeThroughExempt Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
- * @param isSinglePriceCrossTrade Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+ * @param isIntermarketSweep Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
+ * @param isExtendedHoursTrade Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
+ * @param isOddLotTrade Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
+ * @param isTradeThroughExempt Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+ * @param isSinglePriceCrossTrade Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
  * @param propertySize Trade volume in number of shares
  * @param price Execution price as decimal
  * @param tradeId IEX trade identifier
@@ -60,23 +60,23 @@ data class Level3ExecutedOrderModel (
     @Json(name = "sale_condition_flags")
     val saleConditionFlags: kotlin.Int? = null,
 
-    /* Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order */
+    /* Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order */
     @Json(name = "is_intermarket_sweep")
     val isIntermarketSweep: kotlin.Boolean? = null,
 
-    /* Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade */
+    /* Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade */
     @Json(name = "is_extended_hours_trade")
     val isExtendedHoursTrade: kotlin.Boolean? = null,
 
-    /* Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade */
+    /* Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade */
     @Json(name = "is_odd_lot_trade")
     val isOddLotTrade: kotlin.Boolean? = null,
 
-    /* Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS */
+    /* Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS */
     @Json(name = "is_trade_through_exempt")
     val isTradeThroughExempt: kotlin.Boolean? = null,
 
-    /* Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading */
+    /* Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading */
     @Json(name = "is_single_price_cross_trade")
     val isSinglePriceCrossTrade: kotlin.Boolean? = null,
 

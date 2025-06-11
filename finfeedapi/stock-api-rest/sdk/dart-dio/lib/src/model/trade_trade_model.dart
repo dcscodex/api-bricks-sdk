@@ -18,11 +18,11 @@ part 'trade_trade_model.g.dart';
 /// * [size] - Trade volume (or break volume) in number of shares.
 /// * [price] - Trade price (or break price) as decimal.
 /// * [tradeId] - IEX trade identifier (same for report and its corresponding break).
-/// * [isIntermarketSweep] - Bit 7 (Mask 0x80): Intermarket Sweep Flag.  True: Intermarket Sweep Order (\"ISO\").  False: Non-Intermarket Sweep Order.
-/// * [isExtendedHoursTrade] - Bit 6 (Mask 0x40): Extended Hours Flag.  True: Extended Hours Trade (i.e., Form T sale condition).  False: Regular Market Session Trade.
-/// * [isOddLotTrade] - Bit 5 (Mask 0x20): Odd Lot Flag.  True: Odd Lot Trade.  False: Round or Mixed Lot Trade.
-/// * [isTradeThroughExempt] - Bit 4 (Mask 0x10): Trade Through Exempt Flag.  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS.  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS.  Applied when the taking order was an ISO that traded through a protected quotation,  OR the NBBO was crossed at the time of the trade,  OR the trade occurred through a self-helped venue's quotation,  OR the trade was a single-price cross.
-/// * [isSinglePriceCrossTrade] - Bit 3 (Mask 0x08): Single-price Cross Trade Flag.  True: Trade resulting from a single-price cross.  False: Execution during continuous trading.
+/// * [isIntermarketSweep] - Bit 7 (Mask 0x80): Intermarket Sweep Flag. True: Intermarket Sweep Order (\"ISO\"). False: Non-Intermarket Sweep Order.
+/// * [isExtendedHoursTrade] - Bit 6 (Mask 0x40): Extended Hours Flag. True: Extended Hours Trade (i.e., Form T sale condition). False: Regular Market Session Trade.
+/// * [isOddLotTrade] - Bit 5 (Mask 0x20): Odd Lot Flag. True: Odd Lot Trade. False: Round or Mixed Lot Trade.
+/// * [isTradeThroughExempt] - Bit 4 (Mask 0x10): Trade Through Exempt Flag. True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS. False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS. Applied when the taking order was an ISO that traded through a protected quotation, OR the NBBO was crossed at the time of the trade, OR the trade occurred through a self-helped venue's quotation, OR the trade was a single-price cross.
+/// * [isSinglePriceCrossTrade] - Bit 3 (Mask 0x08): Single-price Cross Trade Flag. True: Trade resulting from a single-price cross. False: Execution during continuous trading.
 @BuiltValue()
 abstract class TradeTradeModel implements Built<TradeTradeModel, TradeTradeModelBuilder> {
   /// Indicates if this record represents a trade break (true) or a trade report (false).
@@ -53,23 +53,23 @@ abstract class TradeTradeModel implements Built<TradeTradeModel, TradeTradeModel
   @BuiltValueField(wireName: r'trade_id')
   int? get tradeId;
 
-  /// Bit 7 (Mask 0x80): Intermarket Sweep Flag.  True: Intermarket Sweep Order (\"ISO\").  False: Non-Intermarket Sweep Order.
+  /// Bit 7 (Mask 0x80): Intermarket Sweep Flag. True: Intermarket Sweep Order (\"ISO\"). False: Non-Intermarket Sweep Order.
   @BuiltValueField(wireName: r'is_intermarket_sweep')
   bool? get isIntermarketSweep;
 
-  /// Bit 6 (Mask 0x40): Extended Hours Flag.  True: Extended Hours Trade (i.e., Form T sale condition).  False: Regular Market Session Trade.
+  /// Bit 6 (Mask 0x40): Extended Hours Flag. True: Extended Hours Trade (i.e., Form T sale condition). False: Regular Market Session Trade.
   @BuiltValueField(wireName: r'is_extended_hours_trade')
   bool? get isExtendedHoursTrade;
 
-  /// Bit 5 (Mask 0x20): Odd Lot Flag.  True: Odd Lot Trade.  False: Round or Mixed Lot Trade.
+  /// Bit 5 (Mask 0x20): Odd Lot Flag. True: Odd Lot Trade. False: Round or Mixed Lot Trade.
   @BuiltValueField(wireName: r'is_odd_lot_trade')
   bool? get isOddLotTrade;
 
-  /// Bit 4 (Mask 0x10): Trade Through Exempt Flag.  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS.  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS.  Applied when the taking order was an ISO that traded through a protected quotation,  OR the NBBO was crossed at the time of the trade,  OR the trade occurred through a self-helped venue's quotation,  OR the trade was a single-price cross.
+  /// Bit 4 (Mask 0x10): Trade Through Exempt Flag. True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS. False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS. Applied when the taking order was an ISO that traded through a protected quotation, OR the NBBO was crossed at the time of the trade, OR the trade occurred through a self-helped venue's quotation, OR the trade was a single-price cross.
   @BuiltValueField(wireName: r'is_trade_through_exempt')
   bool? get isTradeThroughExempt;
 
-  /// Bit 3 (Mask 0x08): Single-price Cross Trade Flag.  True: Trade resulting from a single-price cross.  False: Execution during continuous trading.
+  /// Bit 3 (Mask 0x08): Single-price Cross Trade Flag. True: Trade resulting from a single-price cross. False: Execution during continuous trading.
   @BuiltValueField(wireName: r'is_single_price_cross_trade')
   bool? get isSinglePriceCrossTrade;
 

@@ -1,7 +1,7 @@
 public class OASClient extends OAS.ApiClient {
     public OASClient() {
         basePath = 'https://api-historical.stock.finfeedapi.com';
-        calloutName = 'REST_API';
+        calloutName = 'FinFeedAPI_Stock_REST_API';
         authentications.put('APIKey', new OAS.ApiKeyHeaderAuth('Authorization'));
     }
 }

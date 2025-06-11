@@ -16,11 +16,11 @@ part 'level3_executed_order_model.g.dart';
 /// * [timestamp] - Time when the order was executed as DateTime
 /// * [orderIdReference] - Order identifier reference
 /// * [saleConditionFlags] - Sale condition flags for the execution as byte value
-/// * [isIntermarketSweep] - Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
-/// * [isExtendedHoursTrade] - Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
-/// * [isOddLotTrade] - Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
-/// * [isTradeThroughExempt] - Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
-/// * [isSinglePriceCrossTrade] - Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+/// * [isIntermarketSweep] - Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
+/// * [isExtendedHoursTrade] - Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
+/// * [isOddLotTrade] - Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
+/// * [isTradeThroughExempt] - Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+/// * [isSinglePriceCrossTrade] - Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
 /// * [size] - Trade volume in number of shares
 /// * [price] - Execution price as decimal
 /// * [tradeId] - IEX trade identifier
@@ -46,23 +46,23 @@ abstract class Level3ExecutedOrderModel implements Built<Level3ExecutedOrderMode
   @BuiltValueField(wireName: r'sale_condition_flags')
   int? get saleConditionFlags;
 
-  /// Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
+  /// Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
   @BuiltValueField(wireName: r'is_intermarket_sweep')
   bool? get isIntermarketSweep;
 
-  /// Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
+  /// Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
   @BuiltValueField(wireName: r'is_extended_hours_trade')
   bool? get isExtendedHoursTrade;
 
-  /// Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
+  /// Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
   @BuiltValueField(wireName: r'is_odd_lot_trade')
   bool? get isOddLotTrade;
 
-  /// Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+  /// Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
   @BuiltValueField(wireName: r'is_trade_through_exempt')
   bool? get isTradeThroughExempt;
 
-  /// Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+  /// Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
   @BuiltValueField(wireName: r'is_single_price_cross_trade')
   bool? get isSinglePriceCrossTrade;
 

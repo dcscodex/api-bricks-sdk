@@ -37,31 +37,31 @@ void main() {
       // TODO
     });
 
-    // Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\"ISO\")  False: Non-Intermarket Sweep Order
+    // Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\"ISO\") False: Non-Intermarket Sweep Order
     // bool isIntermarketSweep
     test('to test the property `isIntermarketSweep`', () async {
       // TODO
     });
 
-    // Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
+    // Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
     // bool isExtendedHoursTrade
     test('to test the property `isExtendedHoursTrade`', () async {
       // TODO
     });
 
-    // Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
+    // Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
     // bool isOddLotTrade
     test('to test the property `isOddLotTrade`', () async {
       // TODO
     });
 
-    // Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+    // Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
     // bool isTradeThroughExempt
     test('to test the property `isTradeThroughExempt`', () async {
       // TODO
     });
 
-    // Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+    // Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
     // bool isSinglePriceCrossTrade
     test('to test the property `isSinglePriceCrossTrade`', () async {
       // TODO

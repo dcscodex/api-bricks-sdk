@@ -27,12 +27,12 @@ import com.squareup.moshi.JsonClass
  * @param systemEvent System event as byte value
  * @param systemEventCode System event as string
  * @param systemEventText Human-readable description of the system event
- * @param isSystemEventStartOfMessages Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
- * @param isSystemEventStartOfSystemHours Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
- * @param isSystemEventStartOfRegularMarketHours Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
- * @param isSystemEventEndOfRegularMarketHours Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
- * @param isSystemEventEndOfSystemHours Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
- * @param isSystemEventEndOfMessages Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+ * @param isSystemEventStartOfMessages Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
+ * @param isSystemEventStartOfSystemHours Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
+ * @param isSystemEventStartOfRegularMarketHours Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
+ * @param isSystemEventEndOfRegularMarketHours Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
+ * @param isSystemEventEndOfSystemHours Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
+ * @param isSystemEventEndOfMessages Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
  */
 
 
@@ -58,27 +58,27 @@ data class AdminSystemEventModel (
     @Json(name = "system_event_text")
     val systemEventText: kotlin.String? = null,
 
-    /* Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session. */
+    /* Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session. */
     @Json(name = "is_system_event_start_of_messages")
     val isSystemEventStartOfMessages: kotlin.Boolean? = null,
 
-    /* Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders. */
+    /* Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders. */
     @Json(name = "is_system_event_start_of_system_hours")
     val isSystemEventStartOfSystemHours: kotlin.Boolean? = null,
 
-    /* Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX. */
+    /* Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX. */
     @Json(name = "is_system_event_start_of_regular_market_hours")
     val isSystemEventStartOfRegularMarketHours: kotlin.Boolean? = null,
 
-    /* Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX. */
+    /* Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX. */
     @Json(name = "is_system_event_end_of_regular_market_hours")
     val isSystemEventEndOfRegularMarketHours: kotlin.Boolean? = null,
 
-    /* Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day. */
+    /* Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day. */
     @Json(name = "is_system_event_end_of_system_hours")
     val isSystemEventEndOfSystemHours: kotlin.Boolean? = null,
 
-    /* Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session. */
+    /* Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session. */
     @Json(name = "is_system_event_end_of_messages")
     val isSystemEventEndOfMessages: kotlin.Boolean? = null
 

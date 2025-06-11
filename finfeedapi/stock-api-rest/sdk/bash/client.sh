@@ -13,10 +13,10 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for REST API.
+# This is a Bash client for FinFeedAPI Stock REST API.
 #
 # LICENSE:
-# 
+# https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
 #
 # CONTACT:
 # support@apibricks.io
@@ -560,7 +560,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}FinFeedAPI Stock REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -596,28 +596,28 @@ EOF
     echo ""
     echo -e "${BOLD}${WHITE}[metadata]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1ExchangesGet${OFF};List of exchanges
-  ${CYAN}v1SymbolsExchangeIdGet${OFF};List of symbols for the exchange
+  ${CYAN}v1ExchangesGet${OFF};List of exchanges (AUTH) (AUTH)
+  ${CYAN}v1SymbolsExchangeIdGet${OFF};List of symbols for the exchange (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[nativeIEX]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1NativeIexAdminMessagesSymbolGet${OFF};Get Admin Messages
-  ${CYAN}v1NativeIexAdminSystemEventGet${OFF};Get System Events
-  ${CYAN}v1NativeIexLevel1QuoteSymbolGet${OFF};Get Level-1 Quotes
-  ${CYAN}v1NativeIexLevel2PriceLevelUpdateSymbolGet${OFF};Get Level-2 Price Level Book
-  ${CYAN}v1NativeIexLevel3OrderBookSymbolGet${OFF};Get Level-3 Order Book
-  ${CYAN}v1NativeIexTradeSymbolGet${OFF};Get Trades
+  ${CYAN}v1NativeIexAdminMessagesSymbolGet${OFF};Get Admin Messages (AUTH) (AUTH)
+  ${CYAN}v1NativeIexAdminSystemEventGet${OFF};Get System Events (AUTH) (AUTH)
+  ${CYAN}v1NativeIexLevel1QuoteSymbolGet${OFF};Get Level-1 Quotes (AUTH) (AUTH)
+  ${CYAN}v1NativeIexLevel2PriceLevelUpdateSymbolGet${OFF};Get Level-2 Price Level Book (AUTH) (AUTH)
+  ${CYAN}v1NativeIexLevel3OrderBookSymbolGet${OFF};Get Level-3 Order Book (AUTH) (AUTH)
+  ${CYAN}v1NativeIexTradeSymbolGet${OFF};Get Trades (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[ohlcv]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1OhlcvExchangeExchangeIdHistoryGet${OFF};Historical data by exchange
-  ${CYAN}v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet${OFF};Historical data
-  ${CYAN}v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet${OFF};Latest data
-  ${CYAN}v1OhlcvPeriodsGet${OFF};List all periods
+  ${CYAN}v1OhlcvExchangeExchangeIdHistoryGet${OFF};Historical data by exchange (AUTH) (AUTH)
+  ${CYAN}v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet${OFF};Historical data (AUTH) (AUTH)
+  ${CYAN}v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet${OFF};Latest data (AUTH) (AUTH)
+  ${CYAN}v1OhlcvPeriodsGet${OFF};List all periods (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -647,9 +647,9 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://api-historical.stock.finfeedap
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}FinFeedAPI Stock REST API command line client (API version v1)${OFF}"
     echo ""
-    echo -e "License: "
+    echo -e "License: MIT License"
     echo -e "Contact: support@apibricks.io"
     echo ""
 read -r -d '' appdescription <<EOF
@@ -667,7 +667,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}FinFeedAPI Stock REST API command line client (API version v1)${OFF}"
     echo ""
 }
 
@@ -678,7 +678,7 @@ print_version() {
 ##############################################################################
 print_v1ExchangesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangesGet - List of exchanges${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangesGet - List of exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -692,7 +692,7 @@ print_v1ExchangesGet_help() {
 ##############################################################################
 print_v1SymbolsExchangeIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1SymbolsExchangeIdGet - List of symbols for the exchange${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1SymbolsExchangeIdGet - List of symbols for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: exchange_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -708,7 +708,7 @@ print_v1SymbolsExchangeIdGet_help() {
 ##############################################################################
 print_v1NativeIexAdminMessagesSymbolGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexAdminMessagesSymbolGet - Get Admin Messages${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexAdminMessagesSymbolGet - Get Admin Messages${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier ${YELLOW}Specify as: symbol=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -726,7 +726,7 @@ print_v1NativeIexAdminMessagesSymbolGet_help() {
 ##############################################################################
 print_v1NativeIexAdminSystemEventGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexAdminSystemEventGet - Get System Events${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexAdminSystemEventGet - Get System Events${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Date in format YYYY-MM-DD${YELLOW} Specify as: date=value${OFF}" \
@@ -743,7 +743,7 @@ print_v1NativeIexAdminSystemEventGet_help() {
 ##############################################################################
 print_v1NativeIexLevel1QuoteSymbolGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexLevel1QuoteSymbolGet - Get Level-1 Quotes${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexLevel1QuoteSymbolGet - Get Level-1 Quotes${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier ${YELLOW}Specify as: symbol=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -761,7 +761,7 @@ print_v1NativeIexLevel1QuoteSymbolGet_help() {
 ##############################################################################
 print_v1NativeIexLevel2PriceLevelUpdateSymbolGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexLevel2PriceLevelUpdateSymbolGet - Get Level-2 Price Level Book${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexLevel2PriceLevelUpdateSymbolGet - Get Level-2 Price Level Book${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier ${YELLOW}Specify as: symbol=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -779,7 +779,7 @@ print_v1NativeIexLevel2PriceLevelUpdateSymbolGet_help() {
 ##############################################################################
 print_v1NativeIexLevel3OrderBookSymbolGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexLevel3OrderBookSymbolGet - Get Level-3 Order Book${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexLevel3OrderBookSymbolGet - Get Level-3 Order Book${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier ${YELLOW}Specify as: symbol=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -797,7 +797,7 @@ print_v1NativeIexLevel3OrderBookSymbolGet_help() {
 ##############################################################################
 print_v1NativeIexTradeSymbolGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1NativeIexTradeSymbolGet - Get Trades${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1NativeIexTradeSymbolGet - Get Trades${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier ${YELLOW}Specify as: symbol=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -815,7 +815,7 @@ print_v1NativeIexTradeSymbolGet_help() {
 ##############################################################################
 print_v1OhlcvExchangeExchangeIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvExchangeExchangeIdHistoryGet - Historical data by exchange${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvExchangeExchangeIdHistoryGet - Historical data by exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -839,7 +839,7 @@ print_v1OhlcvExchangeExchangeIdHistoryGet_help() {
 ##############################################################################
 print_v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet - Historical data${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV timeseries data returned in time ascending order." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -866,7 +866,7 @@ print_v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet_help() {
 ##############################################################################
 print_v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet - Latest data${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg 'BITSTAMP_SPOT_BTC_USD', if you need to query timeseries by asset pairs eg. 'BTC/USD', then please reffer to the Exchange Rates Timeseries data
             
@@ -894,7 +894,7 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 ##############################################################################
 print_v1OhlcvPeriodsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvPeriodsGet - List all periods${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvPeriodsGet - List all periods${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get full list of supported time periods available for requesting OHLCV timeseries data.
             
@@ -931,7 +931,7 @@ call_v1ExchangesGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=()
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/exchanges" path_parameter_names query_parameter_names); then
@@ -967,7 +967,7 @@ call_v1SymbolsExchangeIdGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=()
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/symbols/{exchange_id}" path_parameter_names query_parameter_names); then
@@ -1003,7 +1003,7 @@ call_v1NativeIexAdminMessagesSymbolGet() {
     local path_parameter_names=(symbol)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/admin/messages/{symbol}" path_parameter_names query_parameter_names); then
@@ -1039,7 +1039,7 @@ call_v1NativeIexAdminSystemEventGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/admin/system-event" path_parameter_names query_parameter_names); then
@@ -1075,7 +1075,7 @@ call_v1NativeIexLevel1QuoteSymbolGet() {
     local path_parameter_names=(symbol)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/level1-quote/{symbol}" path_parameter_names query_parameter_names); then
@@ -1111,7 +1111,7 @@ call_v1NativeIexLevel2PriceLevelUpdateSymbolGet() {
     local path_parameter_names=(symbol)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/level2-price-level-update/{symbol}" path_parameter_names query_parameter_names); then
@@ -1147,7 +1147,7 @@ call_v1NativeIexLevel3OrderBookSymbolGet() {
     local path_parameter_names=(symbol)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/level3-order-book/{symbol}" path_parameter_names query_parameter_names); then
@@ -1183,7 +1183,7 @@ call_v1NativeIexTradeSymbolGet() {
     local path_parameter_names=(symbol)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date)
+    local query_parameter_names=(date    )
     local path
 
     if ! path=$(build_request_path "/v1/native/iex/trade/{symbol}" path_parameter_names query_parameter_names); then
@@ -1219,7 +1219,7 @@ call_v1OhlcvExchangeExchangeIdHistoryGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end)
+    local query_parameter_names=(period_id time_start time_end    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/exchange/{exchange_id}/history" path_parameter_names query_parameter_names); then
@@ -1255,7 +1255,7 @@ call_v1OhlcvExchangeSymbolExchangeIdSymbolIdHistoryGet() {
     local path_parameter_names=(exchange_id symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end limit)
+    local query_parameter_names=(period_id time_start time_end limit    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/exchange-symbol/{exchange_id}/{symbol_id}/history" path_parameter_names query_parameter_names); then
@@ -1291,7 +1291,7 @@ call_v1OhlcvExchangeSymbolExchangeIdSymbolIdLatestGet() {
     local path_parameter_names=(exchange_id symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id limit)
+    local query_parameter_names=(period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/exchange-symbol/{exchange_id}/{symbol_id}/latest" path_parameter_names query_parameter_names); then
@@ -1327,7 +1327,7 @@ call_v1OhlcvPeriodsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=()
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/periods" path_parameter_names query_parameter_names); then

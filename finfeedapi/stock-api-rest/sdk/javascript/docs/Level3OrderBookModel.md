@@ -1,4 +1,4 @@
-# RestApi.Level3OrderBookModel
+# FinFeedApiStockRestApi.Level3OrderBookModel
 
 ## Properties
 

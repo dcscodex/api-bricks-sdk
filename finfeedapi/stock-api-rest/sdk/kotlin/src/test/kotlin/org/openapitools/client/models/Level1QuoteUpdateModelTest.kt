@@ -43,13 +43,13 @@ class Level1QuoteUpdateModelTest : ShouldSpec() {
             //modelInstance.timestamp shouldBe ("TODO")
         }
 
-        // to test the property `isSymbolAvailable` - Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+        // to test the property `isSymbolAvailable` - Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
         should("test isSymbolAvailable") {
             // uncomment below to test the property
             //modelInstance.isSymbolAvailable shouldBe ("TODO")
         }
 
-        // to test the property `isPrePostMarketSession` - Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+        // to test the property `isPrePostMarketSession` - Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
         should("test isPrePostMarketSession") {
             // uncomment below to test the property
             //modelInstance.isPrePostMarketSession shouldBe ("TODO")

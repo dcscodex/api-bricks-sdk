@@ -80,46 +80,46 @@ public:
 	/*! \brief Set Human-readable description of the system event
 	 */
 	void setSystemEventText(std::string  system_event_text);
-	/*! \brief Get Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
+	/*! \brief Get Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
 	 */
 	bool getIsSystemEventStartOfMessages();
 
-	/*! \brief Set Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
+	/*! \brief Set Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
 	 */
 	void setIsSystemEventStartOfMessages(bool  is_system_event_start_of_messages);
-	/*! \brief Get Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
+	/*! \brief Get Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
 	 */
 	bool getIsSystemEventStartOfSystemHours();
 
-	/*! \brief Set Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
+	/*! \brief Set Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
 	 */
 	void setIsSystemEventStartOfSystemHours(bool  is_system_event_start_of_system_hours);
-	/*! \brief Get Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
+	/*! \brief Get Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
 	 */
 	bool getIsSystemEventStartOfRegularMarketHours();
 
-	/*! \brief Set Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
+	/*! \brief Set Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
 	 */
 	void setIsSystemEventStartOfRegularMarketHours(bool  is_system_event_start_of_regular_market_hours);
-	/*! \brief Get Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
+	/*! \brief Get Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
 	 */
 	bool getIsSystemEventEndOfRegularMarketHours();
 
-	/*! \brief Set Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
+	/*! \brief Set Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
 	 */
 	void setIsSystemEventEndOfRegularMarketHours(bool  is_system_event_end_of_regular_market_hours);
-	/*! \brief Get Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
+	/*! \brief Get Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
 	 */
 	bool getIsSystemEventEndOfSystemHours();
 
-	/*! \brief Set Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
+	/*! \brief Set Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
 	 */
 	void setIsSystemEventEndOfSystemHours(bool  is_system_event_end_of_system_hours);
-	/*! \brief Get Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+	/*! \brief Get Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
 	 */
 	bool getIsSystemEventEndOfMessages();
 
-	/*! \brief Set Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+	/*! \brief Set Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
 	 */
 	void setIsSystemEventEndOfMessages(bool  is_system_event_end_of_messages);
 

@@ -47,7 +47,7 @@ test_that("sale_condition_flags", {
 
 test_that("is_intermarket_sweep", {
   # tests for the property `is_intermarket_sweep` (character)
-  # Bit 7 (Mask 0x80): Intermarket Sweep Flag  True: Intermarket Sweep Order (\&quot;ISO\&quot;)  False: Non-Intermarket Sweep Order
+  # Bit 7 (Mask 0x80): Intermarket Sweep Flag True: Intermarket Sweep Order (\&quot;ISO\&quot;) False: Non-Intermarket Sweep Order
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_intermarket_sweep`, "EXPECTED_RESULT")
@@ -55,7 +55,7 @@ test_that("is_intermarket_sweep", {
 
 test_that("is_extended_hours_trade", {
   # tests for the property `is_extended_hours_trade` (character)
-  # Bit 6 (Mask 0x40): Extended Hours Flag  True: Extended Hours Trade (i.e., Form T sale condition)  False: Regular Market Session Trade
+  # Bit 6 (Mask 0x40): Extended Hours Flag True: Extended Hours Trade (i.e., Form T sale condition) False: Regular Market Session Trade
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_extended_hours_trade`, "EXPECTED_RESULT")
@@ -63,7 +63,7 @@ test_that("is_extended_hours_trade", {
 
 test_that("is_odd_lot_trade", {
   # tests for the property `is_odd_lot_trade` (character)
-  # Bit 5 (Mask 0x20): Odd Lot Flag  True: Odd Lot Trade  False: Round or Mixed Lot Trade
+  # Bit 5 (Mask 0x20): Odd Lot Flag True: Odd Lot Trade False: Round or Mixed Lot Trade
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_odd_lot_trade`, "EXPECTED_RESULT")
@@ -71,7 +71,7 @@ test_that("is_odd_lot_trade", {
 
 test_that("is_trade_through_exempt", {
   # tests for the property `is_trade_through_exempt` (character)
-  # Bit 4 (Mask 0x10): Trade Through Exempt Flag  True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS  False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
+  # Bit 4 (Mask 0x10): Trade Through Exempt Flag True: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS False: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_trade_through_exempt`, "EXPECTED_RESULT")
@@ -79,7 +79,7 @@ test_that("is_trade_through_exempt", {
 
 test_that("is_single_price_cross_trade", {
   # tests for the property `is_single_price_cross_trade` (character)
-  # Bit 3 (Mask 0x08): Single-price Cross Trade Flag  True: Trade resulting from a single-price cross  False: Execution during continuous trading
+  # Bit 3 (Mask 0x08): Single-price Cross Trade Flag True: Trade resulting from a single-price cross False: Execution during continuous trading
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_single_price_cross_trade`, "EXPECTED_RESULT")

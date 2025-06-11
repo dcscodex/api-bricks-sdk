@@ -16,12 +16,12 @@ part 'admin_system_event_model.g.dart';
 /// * [systemEvent] - System event as byte value
 /// * [systemEventCode] - System event as string
 /// * [systemEventText] - Human-readable description of the system event
-/// * [isSystemEventStartOfMessages] - Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
-/// * [isSystemEventStartOfSystemHours] - Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
-/// * [isSystemEventStartOfRegularMarketHours] - Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
-/// * [isSystemEventEndOfRegularMarketHours] - Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
-/// * [isSystemEventEndOfSystemHours] - Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
-/// * [isSystemEventEndOfMessages] - Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+/// * [isSystemEventStartOfMessages] - Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
+/// * [isSystemEventStartOfSystemHours] - Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
+/// * [isSystemEventStartOfRegularMarketHours] - Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
+/// * [isSystemEventEndOfRegularMarketHours] - Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
+/// * [isSystemEventEndOfSystemHours] - Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
+/// * [isSystemEventEndOfMessages] - Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
 @BuiltValue()
 abstract class AdminSystemEventModel implements Built<AdminSystemEventModel, AdminSystemEventModelBuilder> {
   /// Original timestamp in nanoseconds since epoch
@@ -44,27 +44,27 @@ abstract class AdminSystemEventModel implements Built<AdminSystemEventModel, Adm
   @BuiltValueField(wireName: r'system_event_text')
   String? get systemEventText;
 
-  /// Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
+  /// Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
   @BuiltValueField(wireName: r'is_system_event_start_of_messages')
   bool? get isSystemEventStartOfMessages;
 
-  /// Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
+  /// Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
   @BuiltValueField(wireName: r'is_system_event_start_of_system_hours')
   bool? get isSystemEventStartOfSystemHours;
 
-  /// Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
+  /// Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
   @BuiltValueField(wireName: r'is_system_event_start_of_regular_market_hours')
   bool? get isSystemEventStartOfRegularMarketHours;
 
-  /// Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
+  /// Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
   @BuiltValueField(wireName: r'is_system_event_end_of_regular_market_hours')
   bool? get isSystemEventEndOfRegularMarketHours;
 
-  /// Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
+  /// Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
   @BuiltValueField(wireName: r'is_system_event_end_of_system_hours')
   bool? get isSystemEventEndOfSystemHours;
 
-  /// Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+  /// Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
   @BuiltValueField(wireName: r'is_system_event_end_of_messages')
   bool? get isSystemEventEndOfMessages;
 

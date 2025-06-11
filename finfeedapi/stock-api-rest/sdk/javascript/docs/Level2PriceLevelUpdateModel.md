@@ -1,4 +1,4 @@
-# RestApi.Level2PriceLevelUpdateModel
+# FinFeedApiStockRestApi.Level2PriceLevelUpdateModel
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# RestApi.AdminTradingStatusModel
+# FinFeedApiStockRestApi.AdminTradingStatusModel
 
 ## Properties
 

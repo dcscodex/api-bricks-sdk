@@ -111,7 +111,7 @@ class MetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
             path = "/v1/exchanges",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -184,7 +184,7 @@ class MetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
             path = "/v1/symbols/{exchange_id}".replace("{"+"exchange_id"+"}", encodeURIComponent(exchangeId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }

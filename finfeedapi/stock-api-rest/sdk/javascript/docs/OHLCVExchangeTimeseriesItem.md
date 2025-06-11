@@ -1,4 +1,4 @@
-# RestApi.OHLCVExchangeTimeseriesItem
+# FinFeedApiStockRestApi.OHLCVExchangeTimeseriesItem
 
 ## Properties
 

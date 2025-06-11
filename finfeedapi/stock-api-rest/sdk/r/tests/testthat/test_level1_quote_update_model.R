@@ -31,7 +31,7 @@ test_that("timestamp", {
 
 test_that("is_symbol_available", {
   # tests for the property `is_symbol_available` (character)
-  # Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+  # Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_symbol_available`, "EXPECTED_RESULT")
@@ -39,7 +39,7 @@ test_that("is_symbol_available", {
 
 test_that("is_pre_post_market_session", {
   # tests for the property `is_pre_post_market_session` (character)
-  # Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+  # Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_pre_post_market_session`, "EXPECTED_RESULT")

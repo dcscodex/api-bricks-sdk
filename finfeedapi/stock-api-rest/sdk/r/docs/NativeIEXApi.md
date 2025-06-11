@@ -28,6 +28,10 @@ var_symbol <- "symbol_example" # character | The symbol identifier
 var_date <- "date_example" # character | Optional date in format YYYY-MM-DD (defaults to latest available data)
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexAdminMessagesSymbolGet(var_symbol, var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexAdminMessagesSymbolGet(var_symbol, var_date)
@@ -47,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -74,6 +78,10 @@ library(openapi)
 var_date <- "date_example" # character | Date in format YYYY-MM-DD
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexAdminSystemEventGet(var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexAdminSystemEventGet(var_date)
@@ -92,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -120,6 +128,10 @@ var_symbol <- "symbol_example" # character | The symbol identifier
 var_date <- "date_example" # character | Optional date in format YYYY-MM-DD (defaults to latest available data)
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexLevel1QuoteSymbolGet(var_symbol, var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexLevel1QuoteSymbolGet(var_symbol, var_date)
@@ -139,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -167,6 +179,10 @@ var_symbol <- "symbol_example" # character | The symbol identifier
 var_date <- "date_example" # character | Optional date in format YYYY-MM-DD (defaults to latest available data)
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexLevel2PriceLevelUpdateSymbolGet(var_symbol, var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexLevel2PriceLevelUpdateSymbolGet(var_symbol, var_date)
@@ -186,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -214,6 +230,10 @@ var_symbol <- "symbol_example" # character | The symbol identifier
 var_date <- "date_example" # character | Optional date in format YYYY-MM-DD (defaults to latest available data)
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexLevel3OrderBookSymbolGet(var_symbol, var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexLevel3OrderBookSymbolGet(var_symbol, var_date)
@@ -233,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -261,6 +281,10 @@ var_symbol <- "symbol_example" # character | The symbol identifier
 var_date <- "date_example" # character | Optional date in format YYYY-MM-DD (defaults to latest available data)
 
 api_instance <- NativeIEXApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1NativeIexTradeSymbolGet(var_symbol, var_datedata_file = "result.txt")
 result <- api_instance$V1NativeIexTradeSymbolGet(var_symbol, var_date)
@@ -280,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

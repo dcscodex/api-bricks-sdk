@@ -55,37 +55,37 @@ class AdminSystemEventModelTest : ShouldSpec() {
             //modelInstance.systemEventText shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventStartOfMessages` - Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
+        // to test the property `isSystemEventStartOfMessages` - Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
         should("test isSystemEventStartOfMessages") {
             // uncomment below to test the property
             //modelInstance.isSystemEventStartOfMessages shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventStartOfSystemHours` - Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
+        // to test the property `isSystemEventStartOfSystemHours` - Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
         should("test isSystemEventStartOfSystemHours") {
             // uncomment below to test the property
             //modelInstance.isSystemEventStartOfSystemHours shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventStartOfRegularMarketHours` - Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
+        // to test the property `isSystemEventStartOfRegularMarketHours` - Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
         should("test isSystemEventStartOfRegularMarketHours") {
             // uncomment below to test the property
             //modelInstance.isSystemEventStartOfRegularMarketHours shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventEndOfRegularMarketHours` - Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
+        // to test the property `isSystemEventEndOfRegularMarketHours` - Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
         should("test isSystemEventEndOfRegularMarketHours") {
             // uncomment below to test the property
             //modelInstance.isSystemEventEndOfRegularMarketHours shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventEndOfSystemHours` - Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
+        // to test the property `isSystemEventEndOfSystemHours` - Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
         should("test isSystemEventEndOfSystemHours") {
             // uncomment below to test the property
             //modelInstance.isSystemEventEndOfSystemHours shouldBe ("TODO")
         }
 
-        // to test the property `isSystemEventEndOfMessages` - Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+        // to test the property `isSystemEventEndOfMessages` - Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
         should("test isSystemEventEndOfMessages") {
             // uncomment below to test the property
             //modelInstance.isSystemEventEndOfMessages shouldBe ("TODO")

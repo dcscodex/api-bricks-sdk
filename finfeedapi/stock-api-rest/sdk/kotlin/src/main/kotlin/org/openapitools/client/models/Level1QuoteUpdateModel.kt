@@ -25,8 +25,8 @@ import com.squareup.moshi.JsonClass
  * @param symbol The stock symbol
  * @param timestampNanos Original timestamp in nanoseconds since epoch
  * @param timestamp Time when the quote update was recorded as DateTime
- * @param isSymbolAvailable Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
- * @param isPrePostMarketSession Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+ * @param isSymbolAvailable Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
+ * @param isPrePostMarketSession Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
  * @param askSize Ask size in number of shares
  * @param askPrice Ask price as decimal
  * @param bidPrice Bid price as decimal
@@ -48,11 +48,11 @@ data class Level1QuoteUpdateModel (
     @Json(name = "timestamp")
     val timestamp: java.time.OffsetDateTime? = null,
 
-    /* Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available */
+    /* Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available */
     @Json(name = "is_symbol_available")
     val isSymbolAvailable: kotlin.Boolean? = null,
 
-    /* Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session */
+    /* Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session */
     @Json(name = "is_pre_post_market_session")
     val isPrePostMarketSession: kotlin.Boolean? = null,
 

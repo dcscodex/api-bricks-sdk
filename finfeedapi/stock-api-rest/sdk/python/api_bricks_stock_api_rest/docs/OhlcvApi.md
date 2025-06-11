@@ -19,6 +19,8 @@ Get OHLCV timeseries data returned in time ascending order. Data can be requeste
 
 ### Example
 
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_stock_api_rest
@@ -32,6 +34,21 @@ configuration = api_bricks_stock_api_rest.Configuration(
     host = "https://api-historical.stock.finfeedapi.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_stock_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_stock_api_rest.ApiClient(configuration) as api_client:
@@ -69,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -93,6 +110,8 @@ Get OHLCV timeseries data returned in time ascending order.
 
 ### Example
 
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_stock_api_rest
@@ -106,6 +125,21 @@ configuration = api_bricks_stock_api_rest.Configuration(
     host = "https://api-historical.stock.finfeedapi.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_stock_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_stock_api_rest.ApiClient(configuration) as api_client:
@@ -147,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -176,6 +210,8 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 
 ### Example
 
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_stock_api_rest
@@ -189,6 +225,21 @@ configuration = api_bricks_stock_api_rest.Configuration(
     host = "https://api-historical.stock.finfeedapi.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_stock_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_stock_api_rest.ApiClient(configuration) as api_client:
@@ -226,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -265,6 +316,8 @@ You can assume that we will not remove any periods from this response, however, 
 
 ### Example
 
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_stock_api_rest
@@ -278,6 +331,21 @@ configuration = api_bricks_stock_api_rest.Configuration(
     host = "https://api-historical.stock.finfeedapi.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_stock_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_stock_api_rest.ApiClient(configuration) as api_client:
@@ -305,7 +373,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

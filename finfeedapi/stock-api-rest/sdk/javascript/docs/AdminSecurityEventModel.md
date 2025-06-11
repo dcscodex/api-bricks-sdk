@@ -1,4 +1,4 @@
-# RestApi.AdminSecurityEventModel
+# FinFeedApiStockRestApi.AdminSecurityEventModel
 
 ## Properties
 

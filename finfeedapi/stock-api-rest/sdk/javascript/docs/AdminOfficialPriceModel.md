@@ -1,4 +1,4 @@
-# RestApi.AdminOfficialPriceModel
+# FinFeedApiStockRestApi.AdminOfficialPriceModel
 
 ## Properties
 

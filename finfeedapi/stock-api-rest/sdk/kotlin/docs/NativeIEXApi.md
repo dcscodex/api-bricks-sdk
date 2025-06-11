@@ -51,7 +51,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -95,7 +100,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -141,7 +151,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -187,7 +202,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -233,7 +253,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -279,7 +304,12 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

@@ -146,7 +146,7 @@ auth := context.WithValue(
 r, err := client.Service.Operation(auth, args)
 ```
 
-### Bearer
+### JWT
 
 - **Type**: HTTP Bearer token authentication
 

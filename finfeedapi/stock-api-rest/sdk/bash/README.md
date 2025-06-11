@@ -1,8 +1,8 @@
-# REST API Bash client
+# FinFeedAPI Stock REST API Bash client
 
 ## Overview
 
-This is a Bash client script for accessing REST API service.
+This is a Bash client script for accessing FinFeedAPI Stock REST API service.
 
 The script uses cURL underneath for making all REST calls.
 
@@ -155,7 +155,7 @@ Class | Method | HTTP request | Description
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
 
-## Bearer
+## JWT
 
 
 - **Type**: HTTP Bearer Token authentication (JWT)

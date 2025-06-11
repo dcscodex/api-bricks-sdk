@@ -21,6 +21,10 @@ library(openapi)
 #
 
 api_instance <- MetadataApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1ExchangesGet(data_file = "result.txt")
 result <- api_instance$V1ExchangesGet()
@@ -36,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -63,6 +67,10 @@ library(openapi)
 var_exchange_id <- "exchange_id_example" # character | 
 
 api_instance <- MetadataApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1SymbolsExchangeIdGet(var_exchange_iddata_file = "result.txt")
 result <- api_instance$V1SymbolsExchangeIdGet(var_exchange_id)
@@ -81,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -45,7 +45,7 @@ class Level1QuoteUpdateModel {
   ///
   DateTime? timestamp;
 
-  /// Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
+  /// Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,7 +54,7 @@ class Level1QuoteUpdateModel {
   ///
   bool? isSymbolAvailable;
 
-  /// Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+  /// Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

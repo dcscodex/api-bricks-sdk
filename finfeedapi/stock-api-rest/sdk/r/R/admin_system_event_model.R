@@ -12,12 +12,12 @@
 #' @field system_event System event as byte value integer [optional]
 #' @field system_event_code System event as string character [optional]
 #' @field system_event_text Human-readable description of the system event character [optional]
-#' @field is_system_event_start_of_messages Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session. character [optional]
-#' @field is_system_event_start_of_system_hours Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders. character [optional]
-#' @field is_system_event_start_of_regular_market_hours Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX. character [optional]
-#' @field is_system_event_end_of_regular_market_hours Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX. character [optional]
-#' @field is_system_event_end_of_system_hours Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day. character [optional]
-#' @field is_system_event_end_of_messages Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session. character [optional]
+#' @field is_system_event_start_of_messages Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session. character [optional]
+#' @field is_system_event_start_of_system_hours Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders. character [optional]
+#' @field is_system_event_start_of_regular_market_hours Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX. character [optional]
+#' @field is_system_event_end_of_regular_market_hours Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX. character [optional]
+#' @field is_system_event_end_of_system_hours Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day. character [optional]
+#' @field is_system_event_end_of_messages Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,12 +44,12 @@ AdminSystemEventModel <- R6::R6Class(
     #' @param system_event System event as byte value
     #' @param system_event_code System event as string
     #' @param system_event_text Human-readable description of the system event
-    #' @param is_system_event_start_of_messages Indicates if the system event is 'Start of Messages' (O).  Outside of heartbeat messages on the lower level protocol,   the start of day message is the first message sent in any trading session.
-    #' @param is_system_event_start_of_system_hours Indicates if the system event is 'Start of System Hours' (S).  This message indicates that IEX is open and ready to start accepting orders.
-    #' @param is_system_event_start_of_regular_market_hours Indicates if the system event is 'Start of Regular Market Hours' (R).  This message indicates that DAY and GTX orders, as well as market orders and pegged orders,   are available for execution on IEX.
-    #' @param is_system_event_end_of_regular_market_hours Indicates if the system event is 'End of Regular Market Hours' (M).  This message indicates that DAY orders, market orders, and pegged orders   are no longer accepted by IEX.
-    #' @param is_system_event_end_of_system_hours Indicates if the system event is 'End of System Hours' (E).  This message indicates that IEX is now closed and will not accept   any new orders during this trading session. It is still possible   to receive messages after the end of day.
-    #' @param is_system_event_end_of_messages Indicates if the system event is 'End of Messages' (C).  This is always the last message sent in any trading session.
+    #' @param is_system_event_start_of_messages Indicates if the system event is 'Start of Messages' (O). Outside of heartbeat messages on the lower level protocol,  the start of day message is the first message sent in any trading session.
+    #' @param is_system_event_start_of_system_hours Indicates if the system event is 'Start of System Hours' (S). This message indicates that IEX is open and ready to start accepting orders.
+    #' @param is_system_event_start_of_regular_market_hours Indicates if the system event is 'Start of Regular Market Hours' (R). This message indicates that DAY and GTX orders, as well as market orders and pegged orders,  are available for execution on IEX.
+    #' @param is_system_event_end_of_regular_market_hours Indicates if the system event is 'End of Regular Market Hours' (M). This message indicates that DAY orders, market orders, and pegged orders  are no longer accepted by IEX.
+    #' @param is_system_event_end_of_system_hours Indicates if the system event is 'End of System Hours' (E). This message indicates that IEX is now closed and will not accept  any new orders during this trading session. It is still possible  to receive messages after the end of day.
+    #' @param is_system_event_end_of_messages Indicates if the system event is 'End of Messages' (C). This is always the last message sent in any trading session.
     #' @param ... Other optional arguments.
     initialize = function(`timestamp_nanos` = NULL, `timestamp` = NULL, `system_event` = NULL, `system_event_code` = NULL, `system_event_text` = NULL, `is_system_event_start_of_messages` = NULL, `is_system_event_start_of_system_hours` = NULL, `is_system_event_start_of_regular_market_hours` = NULL, `is_system_event_end_of_regular_market_hours` = NULL, `is_system_event_end_of_system_hours` = NULL, `is_system_event_end_of_messages` = NULL, ...) {
       if (!is.null(`timestamp_nanos`)) {

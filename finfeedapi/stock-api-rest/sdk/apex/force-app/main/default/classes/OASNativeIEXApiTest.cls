@@ -23,7 +23,19 @@ private class OASNativeIEXApiTest {
         List<OASAdminAdminMessageModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASAdminAdminMessageModel>{OASAdminAdminMessageModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdminAdminMessageModel>{OASAdminAdminMessageModel.getExample()};
+        response = (List<OASAdminAdminMessageModel>) api.v1NativeIexAdminMessagesSymbolGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASAdminAdminMessageModel>{OASAdminAdminMessageModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -55,7 +67,19 @@ private class OASNativeIEXApiTest {
         List<OASAdminSystemEventModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASAdminSystemEventModel>{OASAdminSystemEventModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdminSystemEventModel>{OASAdminSystemEventModel.getExample()};
+        response = (List<OASAdminSystemEventModel>) api.v1NativeIexAdminSystemEventGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASAdminSystemEventModel>{OASAdminSystemEventModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -88,7 +112,19 @@ private class OASNativeIEXApiTest {
         List<OASLevel1QuoteUpdateModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASLevel1QuoteUpdateModel>{OASLevel1QuoteUpdateModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLevel1QuoteUpdateModel>{OASLevel1QuoteUpdateModel.getExample()};
+        response = (List<OASLevel1QuoteUpdateModel>) api.v1NativeIexLevel1QuoteSymbolGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASLevel1QuoteUpdateModel>{OASLevel1QuoteUpdateModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -121,7 +157,19 @@ private class OASNativeIEXApiTest {
         List<OASLevel2PriceLevelUpdateModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASLevel2PriceLevelUpdateModel>{OASLevel2PriceLevelUpdateModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLevel2PriceLevelUpdateModel>{OASLevel2PriceLevelUpdateModel.getExample()};
+        response = (List<OASLevel2PriceLevelUpdateModel>) api.v1NativeIexLevel2PriceLevelUpdateSymbolGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASLevel2PriceLevelUpdateModel>{OASLevel2PriceLevelUpdateModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -154,7 +202,19 @@ private class OASNativeIEXApiTest {
         List<OASLevel3OrderBookModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASLevel3OrderBookModel>{OASLevel3OrderBookModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLevel3OrderBookModel>{OASLevel3OrderBookModel.getExample()};
+        response = (List<OASLevel3OrderBookModel>) api.v1NativeIexLevel3OrderBookSymbolGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASLevel3OrderBookModel>{OASLevel3OrderBookModel.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -187,7 +247,19 @@ private class OASNativeIEXApiTest {
         List<OASTradeTradeModel> expectedResponse;
         String js = '';
 
-        api = new OASNativeIEXApi(new OASClient());
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASTradeTradeModel>{OASTradeTradeModel.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASTradeTradeModel>{OASTradeTradeModel.getExample()};
+        response = (List<OASTradeTradeModel>) api.v1NativeIexTradeSymbolGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASNativeIEXApi(client);
 
         js = JSON.serialize(new List<OASTradeTradeModel>{OASTradeTradeModel.getExample()});
         res.setHeader('Content-Type', 'application/json');

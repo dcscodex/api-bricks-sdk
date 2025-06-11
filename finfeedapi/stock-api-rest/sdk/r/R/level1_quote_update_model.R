@@ -10,8 +10,8 @@
 #' @field symbol The stock symbol character [optional]
 #' @field timestamp_nanos Original timestamp in nanoseconds since epoch integer [optional]
 #' @field timestamp Time when the quote update was recorded as DateTime character [optional]
-#' @field is_symbol_available Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available character [optional]
-#' @field is_pre_post_market_session Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session character [optional]
+#' @field is_symbol_available Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available character [optional]
+#' @field is_pre_post_market_session Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session character [optional]
 #' @field ask_size Ask size in number of shares integer [optional]
 #' @field ask_price Ask price as decimal numeric [optional]
 #' @field bid_price Bid price as decimal numeric [optional]
@@ -38,8 +38,8 @@ Level1QuoteUpdateModel <- R6::R6Class(
     #' @param symbol The stock symbol
     #' @param timestamp_nanos Original timestamp in nanoseconds since epoch
     #' @param timestamp Time when the quote update was recorded as DateTime
-    #' @param is_symbol_available Gets whether the symbol is available for trading  True if active, False if halted, paused, or otherwise not available
-    #' @param is_pre_post_market_session Gets whether the market session is regular or pre/post-market  True if pre/post-market session, False if regular market session
+    #' @param is_symbol_available Gets whether the symbol is available for trading True if active, False if halted, paused, or otherwise not available
+    #' @param is_pre_post_market_session Gets whether the market session is regular or pre/post-market True if pre/post-market session, False if regular market session
     #' @param ask_size Ask size in number of shares
     #' @param ask_price Ask price as decimal
     #' @param bid_price Bid price as decimal

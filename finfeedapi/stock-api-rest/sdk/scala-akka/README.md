@@ -1,6 +1,6 @@
 # openapi-client
 
-REST API
+FinFeedAPI Stock REST API
 - API version: v1
   - Generator version: 7.13.0
 
@@ -77,6 +77,13 @@ object MetadataApiExample extends App {
 
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
+    
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
+
     // Create invoker to execute requests
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://api-historical.stock.finfeedapi.com")
@@ -165,8 +172,8 @@ Authentication schemes defined for the API:
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
 
-<a id="Bearer"></a>
-### Bearer
+<a id="JWT"></a>
+### JWT
 
 - **Type**: HTTP Bearer Token authentication (JWT)
 

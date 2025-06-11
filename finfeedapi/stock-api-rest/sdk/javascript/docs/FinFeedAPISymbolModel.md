@@ -1,4 +1,4 @@
-# RestApi.FinFeedAPISymbolModel
+# FinFeedApiStockRestApi.FinFeedAPISymbolModel
 
 ## Properties
 

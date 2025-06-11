@@ -16,6 +16,6 @@
     }
   , {modules, []}
   , {maintainers, []}
-  , {licenses, []}
+  , {licenses, ["MIT License"]}
   , {links, ["https://www.finfeedapi.com"]}
 ]}.

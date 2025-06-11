@@ -1,4 +1,4 @@
-# RestApi.OHLCVTimeseriesPeriod
+# FinFeedApiStockRestApi.OHLCVTimeseriesPeriod
 
 ## Properties
 

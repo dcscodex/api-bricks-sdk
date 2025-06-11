@@ -1,6 +1,8 @@
-(defproject rest-api "v1"
-  :description "Client library of rest-api"
+(defproject fin-feed-api-stock-rest-api "v1"
+  :description "Client library of fin-feed-api-stock-rest-api"
   :url "https://www.finfeedapi.com"
+  :license {:name "MIT License"
+            :url "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [metosin/spec-tools "0.7.0"]
                  [clj-http "3.8.0"]

@@ -1,4 +1,4 @@
-# RestApi.AdminRetailLiquidityIndicatorModel
+# FinFeedApiStockRestApi.AdminRetailLiquidityIndicatorModel
 
 ## Properties
 

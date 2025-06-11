@@ -1,11 +1,15 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
-    "title": "REST API",
+    "title": "FinFeedAPI Stock REST API",
     "contact": {
       "name": "API BRICKS LTD",
       "url": "https://www.finfeedapi.com",
       "email": "support@apibricks.io"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"
     },
     "version": "v1"
   },
@@ -57,8 +61,8 @@
   {
     "trading_status": {
       "symbol": "PYPL",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236135000000,
+      "timestamp": "2025-06-11T06:10:36.1350000Z",
       "is_trading_live": true,
       "is_trading_halted": false,
       "is_trading_in_order_acceptance_period": false,
@@ -79,8 +83,8 @@
   {
     "official_price": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236137000000,
+      "timestamp": "2025-06-11T06:10:36.1370000Z",
       "price_type": 81,
       "price_type_code": "Q",
       "price_type_text": "IEX Official Opening Price",
@@ -92,8 +96,8 @@
   {
     "security_event": {
       "symbol": "CRM",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236138000000,
+      "timestamp": "2025-06-11T06:10:36.1380000Z",
       "security_event": 79,
       "security_event_code": "O",
       "security_event_text": "Opening Process Complete",
@@ -104,8 +108,8 @@
   {
     "auction_information": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236139000000,
+      "timestamp": "2025-06-11T06:10:36.1390000Z",
       "auction_type": 79,
       "auction_type_code": "O",
       "auction_type_text": "Opening Auction",
@@ -125,8 +129,8 @@
       "is_imbalance_side_sell": false,
       "is_imbalance_side_none": false,
       "extension_number": 0,
-      "scheduled_auction_time_seconds": 1749536161,
-      "scheduled_auction_time": "2025-06-10T06:16:01.0000000Z",
+      "scheduled_auction_time_seconds": 1749622536,
+      "scheduled_auction_time": "2025-06-11T06:15:36.0000000Z",
       "auction_book_clearing_price": 156.45,
       "collar_reference_price": 157,
       "lower_auction_collar": 152.5,
@@ -136,8 +140,8 @@
   {
     "short_sale_price_test": {
       "symbol": "MSFT",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236141000000,
+      "timestamp": "2025-06-11T06:10:36.1410000Z",
       "short_sale_price_test_status": 1,
       "short_sale_price_test_status_code": "1",
       "short_sale_price_test_status_text": "Short Sale Price Test in Effect",
@@ -156,8 +160,8 @@
   {
     "operational_halt_status": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236142000000,
+      "timestamp": "2025-06-11T06:10:36.1420000Z",
       "operational_halt_status": 79,
       "operational_halt_status_code": "O",
       "operational_halt_status_text": "IEX specific operational trading halt",
@@ -168,8 +172,8 @@
   {
     "retail_liquidity_indicator": {
       "symbol": "GOOG",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236143000000,
+      "timestamp": "2025-06-11T06:10:36.1430000Z",
       "retail_liquidity_indicator": 65,
       "retail_liquidity_indicator_code": "A",
       "retail_liquidity_indicator_text": "Buy interest for Retail",
@@ -181,8 +185,8 @@
   },
   {
     "system_event": {
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236144000000,
+      "timestamp": "2025-06-11T06:10:36.1440000Z",
       "system_event": 79,
       "system_event_code": "O",
       "system_event_text": "Start of Messages – Outside of heartbeat messages on the lower level protocol, the start of day message is the first message sent in any trading session.",
@@ -197,8 +201,8 @@
   {
     "security_directory": {
       "symbol": "INTC",
-      "timestamp_nanos": 1749535861208000000,
-      "timestamp": "2025-06-10T06:11:01.2080000Z",
+      "timestamp_nanos": 1749622236145000000,
+      "timestamp": "2025-06-11T06:10:36.1450000Z",
       "flags": 0,
       "round_lot_size": 100,
       "adjusted_poc_price": 35.36,
@@ -409,8 +413,8 @@
   {
     "add_order": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1749535861215000000,
-      "timestamp": "2025-06-10T06:11:01.2150000Z",
+      "timestamp_nanos": 1749622236306000000,
+      "timestamp": "2025-06-11T06:10:36.3060000Z",
       "is_side_buy": true,
       "size": 100,
       "price": 176.42,
@@ -420,16 +424,16 @@
   {
     "delete_order": {
       "symbol": "TSLA",
-      "timestamp_nanos": 1749535861215000000,
-      "timestamp": "2025-06-10T06:11:01.2150000Z",
+      "timestamp_nanos": 1749622236307000000,
+      "timestamp": "2025-06-11T06:10:36.3070000Z",
       "order_id_reference": 987654321
     }
   },
   {
     "modify_order": {
       "symbol": "NFLX",
-      "timestamp_nanos": 1749535861215000000,
-      "timestamp": "2025-06-10T06:11:01.2150000Z",
+      "timestamp_nanos": 1749622236307000000,
+      "timestamp": "2025-06-11T06:10:36.3070000Z",
       "order_id_reference": 789456123,
       "is_priority_reset": false,
       "size": 150,
@@ -439,8 +443,8 @@
   {
     "executed_order": {
       "symbol": "META",
-      "timestamp_nanos": 1749535861215000000,
-      "timestamp": "2025-06-10T06:11:01.2150000Z",
+      "timestamp_nanos": 1749622236308000000,
+      "timestamp": "2025-06-11T06:10:36.3080000Z",
       "order_id_reference": 555123456,
       "sale_condition_flags": 0,
       "is_intermarket_sweep": false,
@@ -456,8 +460,8 @@
   {
     "clear_book": {
       "symbol": "MSFT",
-      "timestamp_nanos": 1749535861215000000,
-      "timestamp": "2025-06-10T06:11:01.2150000Z"
+      "timestamp_nanos": 1749622236309000000,
+      "timestamp": "2025-06-11T06:10:36.3090000Z"
     }
   }
 ]
@@ -590,14 +594,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   }
 ]
                   }
@@ -618,14 +622,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   }
 ]
                   }
@@ -646,14 +650,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-10"
+    "date": "2025-06-11"
   }
 ]
                   }
@@ -705,7 +709,7 @@
           "Ohlcv"
         ],
         "summary": "List all periods",
-        "description": "Get full list of supported time periods available for requesting OHLCV timeseries data.\r\n            \r\n### Available periods\r\n            \r\nTime unit | Period identifiers\r\n--------- | -----------\r\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\r\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\r\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY\r\nMonth | 1MTH, 2MTH, 3MTH, 4MTH, 6MTH\r\nYear | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS\r\n            \r\n:::tip\r\nYou can assume that we will not remove any periods from this response, however, we may add new ones.\r\n:::",
+        "description": "Get full list of supported time periods available for requesting OHLCV timeseries data.\n            \n### Available periods\n            \nTime unit | Period identifiers\n--------- | -----------\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY\nMonth | 1MTH, 2MTH, 3MTH, 4MTH, 6MTH\nYear | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS\n            \n:::tip\nYou can assume that we will not remove any periods from this response, however, we may add new ones.\n:::",
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1098,7 +1102,7 @@
           "Ohlcv"
         ],
         "summary": "Latest data",
-        "description": "Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data\r\n            \r\n:::info\r\nOHLCV Latest endpoint is just the shortcut to the OHLCV Historical endpoint with substituted `time_start` and `time_end` parameters. \r\nThe OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay.\r\n:::",
+        "description": "Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data\n            \n:::info\nOHLCV Latest endpoint is just the shortcut to the OHLCV Historical endpoint with substituted `time_start` and `time_end` parameters. \nThe OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay.\n:::",
         "parameters": [
           {
             "name": "exchange_id",
@@ -1848,27 +1852,27 @@
           },
           "is_system_event_start_of_messages": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'Start of Messages' (O).\r\nOutside of heartbeat messages on the lower level protocol, \r\nthe start of day message is the first message sent in any trading session."
+            "description": "Indicates if the system event is 'Start of Messages' (O).\nOutside of heartbeat messages on the lower level protocol, \nthe start of day message is the first message sent in any trading session."
           },
           "is_system_event_start_of_system_hours": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'Start of System Hours' (S).\r\nThis message indicates that IEX is open and ready to start accepting orders."
+            "description": "Indicates if the system event is 'Start of System Hours' (S).\nThis message indicates that IEX is open and ready to start accepting orders."
           },
           "is_system_event_start_of_regular_market_hours": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'Start of Regular Market Hours' (R).\r\nThis message indicates that DAY and GTX orders, as well as market orders and pegged orders, \r\nare available for execution on IEX."
+            "description": "Indicates if the system event is 'Start of Regular Market Hours' (R).\nThis message indicates that DAY and GTX orders, as well as market orders and pegged orders, \nare available for execution on IEX."
           },
           "is_system_event_end_of_regular_market_hours": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'End of Regular Market Hours' (M).\r\nThis message indicates that DAY orders, market orders, and pegged orders \r\nare no longer accepted by IEX."
+            "description": "Indicates if the system event is 'End of Regular Market Hours' (M).\nThis message indicates that DAY orders, market orders, and pegged orders \nare no longer accepted by IEX."
           },
           "is_system_event_end_of_system_hours": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'End of System Hours' (E).\r\nThis message indicates that IEX is now closed and will not accept \r\nany new orders during this trading session. It is still possible \r\nto receive messages after the end of day."
+            "description": "Indicates if the system event is 'End of System Hours' (E).\nThis message indicates that IEX is now closed and will not accept \nany new orders during this trading session. It is still possible \nto receive messages after the end of day."
           },
           "is_system_event_end_of_messages": {
             "type": "boolean",
-            "description": "Indicates if the system event is 'End of Messages' (C).\r\nThis is always the last message sent in any trading session."
+            "description": "Indicates if the system event is 'End of Messages' (C).\nThis is always the last message sent in any trading session."
           }
         },
         "additionalProperties": false,
@@ -2137,11 +2141,11 @@
           },
           "is_symbol_available": {
             "type": "boolean",
-            "description": "Gets whether the symbol is available for trading\r\nTrue if active, False if halted, paused, or otherwise not available"
+            "description": "Gets whether the symbol is available for trading\nTrue if active, False if halted, paused, or otherwise not available"
           },
           "is_pre_post_market_session": {
             "type": "boolean",
-            "description": "Gets whether the market session is regular or pre/post-market\r\nTrue if pre/post-market session, False if regular market session"
+            "description": "Gets whether the market session is regular or pre/post-market\nTrue if pre/post-market session, False if regular market session"
           },
           "ask_size": {
             "type": "integer",
@@ -2327,23 +2331,23 @@
           },
           "is_intermarket_sweep": {
             "type": "boolean",
-            "description": "Bit 7 (Mask 0x80): Intermarket Sweep Flag\r\nTrue: Intermarket Sweep Order (\"ISO\")\r\nFalse: Non-Intermarket Sweep Order"
+            "description": "Bit 7 (Mask 0x80): Intermarket Sweep Flag\nTrue: Intermarket Sweep Order (\"ISO\")\nFalse: Non-Intermarket Sweep Order"
           },
           "is_extended_hours_trade": {
             "type": "boolean",
-            "description": "Bit 6 (Mask 0x40): Extended Hours Flag\r\nTrue: Extended Hours Trade (i.e., Form T sale condition)\r\nFalse: Regular Market Session Trade"
+            "description": "Bit 6 (Mask 0x40): Extended Hours Flag\nTrue: Extended Hours Trade (i.e., Form T sale condition)\nFalse: Regular Market Session Trade"
           },
           "is_odd_lot_trade": {
             "type": "boolean",
-            "description": "Bit 5 (Mask 0x20): Odd Lot Flag\r\nTrue: Odd Lot Trade\r\nFalse: Round or Mixed Lot Trade"
+            "description": "Bit 5 (Mask 0x20): Odd Lot Flag\nTrue: Odd Lot Trade\nFalse: Round or Mixed Lot Trade"
           },
           "is_trade_through_exempt": {
             "type": "boolean",
-            "description": "Bit 4 (Mask 0x10): Trade Through Exempt Flag\r\nTrue: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS\r\nFalse: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS"
+            "description": "Bit 4 (Mask 0x10): Trade Through Exempt Flag\nTrue: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS\nFalse: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS"
           },
           "is_single_price_cross_trade": {
             "type": "boolean",
-            "description": "Bit 3 (Mask 0x08): Single-price Cross Trade Flag\r\nTrue: Trade resulting from a single-price cross\r\nFalse: Execution during continuous trading"
+            "description": "Bit 3 (Mask 0x08): Single-price Cross Trade Flag\nTrue: Trade resulting from a single-price cross\nFalse: Execution during continuous trading"
           },
           "size": {
             "type": "integer",
@@ -2634,23 +2638,23 @@
           },
           "is_intermarket_sweep": {
             "type": "boolean",
-            "description": "Bit 7 (Mask 0x80): Intermarket Sweep Flag.\r\nTrue: Intermarket Sweep Order (\"ISO\").\r\nFalse: Non-Intermarket Sweep Order."
+            "description": "Bit 7 (Mask 0x80): Intermarket Sweep Flag.\nTrue: Intermarket Sweep Order (\"ISO\").\nFalse: Non-Intermarket Sweep Order."
           },
           "is_extended_hours_trade": {
             "type": "boolean",
-            "description": "Bit 6 (Mask 0x40): Extended Hours Flag.\r\nTrue: Extended Hours Trade (i.e., Form T sale condition).\r\nFalse: Regular Market Session Trade."
+            "description": "Bit 6 (Mask 0x40): Extended Hours Flag.\nTrue: Extended Hours Trade (i.e., Form T sale condition).\nFalse: Regular Market Session Trade."
           },
           "is_odd_lot_trade": {
             "type": "boolean",
-            "description": "Bit 5 (Mask 0x20): Odd Lot Flag.\r\nTrue: Odd Lot Trade.\r\nFalse: Round or Mixed Lot Trade."
+            "description": "Bit 5 (Mask 0x20): Odd Lot Flag.\nTrue: Odd Lot Trade.\nFalse: Round or Mixed Lot Trade."
           },
           "is_trade_through_exempt": {
             "type": "boolean",
-            "description": "Bit 4 (Mask 0x10): Trade Through Exempt Flag.\r\nTrue: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS.\r\nFalse: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS.\r\nApplied when the taking order was an ISO that traded through a protected quotation,\r\nOR the NBBO was crossed at the time of the trade,\r\nOR the trade occurred through a self-helped venue's quotation,\r\nOR the trade was a single-price cross."
+            "description": "Bit 4 (Mask 0x10): Trade Through Exempt Flag.\nTrue: Trade is not subject to Rule 611 (Trade Through) of SEC Reg. NMS.\nFalse: Trade is subject to Rule 611 (Trade Through) of SEC Reg. NMS.\nApplied when the taking order was an ISO that traded through a protected quotation,\nOR the NBBO was crossed at the time of the trade,\nOR the trade occurred through a self-helped venue's quotation,\nOR the trade was a single-price cross."
           },
           "is_single_price_cross_trade": {
             "type": "boolean",
-            "description": "Bit 3 (Mask 0x08): Single-price Cross Trade Flag.\r\nTrue: Trade resulting from a single-price cross.\r\nFalse: Execution during continuous trading."
+            "description": "Bit 3 (Mask 0x08): Single-price Cross Trade Flag.\nTrue: Trade resulting from a single-price cross.\nFalse: Execution during continuous trading."
           }
         },
         "additionalProperties": false,
@@ -2660,11 +2664,11 @@
     "securitySchemes": {
       "APIKey": {
         "type": "apiKey",
-        "description": "API Key is required to access the API endpoints.",
+        "description": "API Key is required to access the endpoints",
         "name": "Authorization",
         "in": "header"
       },
-      "Bearer": {
+      "JWT": {
         "type": "http",
         "description": "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
         "scheme": "bearer",
@@ -2674,13 +2678,16 @@
   },
   "security": [
     {
-      "Basic": [ ]
+      "APIKey": [ ]
+    },
+    {
+      "JWT": [ ]
     }
   ],
   "tags": [
     {
       "name": "TimeSeries",
-      "description": "Controller for retrieving OHLCV (Open, High, Low, Close, Volume) timeseries data.\r\nAPI calls described in this section are related to downloading OHLCV *(Open, High, Low, Close, Volume)* timeseries data.\r\nEach data point of this timeseries represents several indicators calculated from transactions activity inside a time range (period).\r\n:::info\r\nOHLCV data primary purpose is to present an overview of the market in human readable form.\r\nIt's often used to visualize market data on charts, websites, and various kinds of reports.\r\n:::"
+      "description": "Controller for retrieving OHLCV (Open, High, Low, Close, Volume) timeseries data.\nAPI calls described in this section are related to downloading OHLCV *(Open, High, Low, Close, Volume)* timeseries data.\nEach data point of this timeseries represents several indicators calculated from transactions activity inside a time range (period).\n:::info\nOHLCV data primary purpose is to present an overview of the market in human readable form.\nIt's often used to visualize market data on charts, websites, and various kinds of reports.\n:::"
     },
     {
       "name": "Trade",

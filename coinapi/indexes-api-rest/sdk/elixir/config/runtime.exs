@@ -7,6 +7,6 @@ import Config
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
 
-if base_url = System.get_env("INDEXES_RESTAPI_BASE_URI") do
-  config :indexes_restapi, base_url: base_url
+if base_url = System.get_env("COIN_API_INDEXES_RESTAPI_BASE_URI") do
+  config :coin_api_indexes_restapi, base_url: base_url
 end

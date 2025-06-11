@@ -1,5 +1,5 @@
-(defproject indexes-rest-api "v1"
-  :description ""
+(defproject coin-api-indexes-rest-api "v1"
+  :description "Client library of coin-api-indexes-rest-api"
   :url "https://www.coinapi.io"
   :license {:name "MIT License"
             :url "https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE"}

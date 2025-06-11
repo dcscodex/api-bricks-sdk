@@ -23,10 +23,15 @@ List all exchanges by exchange_id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\MetadataApi(
@@ -57,7 +62,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -76,7 +81,7 @@ apiMetadataExchangesGet($filter_exchange_id): \OpenAPI\Client\Model\MetadataExch
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 
@@ -85,10 +90,15 @@ Get a detailed list of exchanges provided by the system.                :::info 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\MetadataApi(
@@ -119,7 +129,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 

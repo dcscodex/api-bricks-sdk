@@ -1,19 +1,19 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   contact:
     email: support@apibricks.io
     name: API BRICKS LTD
     url: https://www.coinapi.io
-  description: ""
   license:
     name: MIT License
     url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
-  title: Indexes REST API
+  title: CoinAPI Indexes REST API
   version: v1
 servers:
 - url: https://rest-api.indexes.coinapi.io
 security:
-- ApiKey: []
+- APIKey: []
+- JWT: []
 tags:
 - description: <span data-status-page="28926"></span>
   name: Periods
@@ -24,12 +24,11 @@ tags:
 paths:
   /api/metadata/exchanges:
     get:
-      description: "Get a detailed list of exchanges provided by the system.\r\n \
-        \           \r\n:::info\r\nProperties of the output are providing aggregated\
-        \ information from across all symbols related to the specific exchange. If\
-        \ you need to calculate your aggregation (e.g., limiting only the particular\
-        \ type of symbols), you should use /v1/symbols endpoint as a data source.\r\
-        \n:::"
+      description: "Get a detailed list of exchanges provided by the system.\n   \
+        \         \n:::info\nProperties of the output are providing aggregated information\
+        \ from across all symbols related to the specific exchange. If you need to\
+        \ calculate your aggregation (e.g., limiting only the particular type of symbols),\
+        \ you should use /v1/symbols endpoint as a data source.\n:::"
       parameters:
       - description: "Comma or semicolon delimited exchange identifiers used to filter\
           \ response. (optional, eg. `BITSTAMP;GEMINI`)"
@@ -854,15 +853,14 @@ paths:
       - Indexes
   /v1/metadata/periods:
     get:
-      description: "Get full list of supported time periods\r\n            \r\n###\
-        \ Available periods\r\n            \r\nTime unit | Period identifiers\r\n\
-        --------- | -----------\r\nSecond | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC,\
-        \ 15SEC, 20SEC, 30SEC\r\nMinute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN,\
-        \ 15MIN, 20MIN, 30MIN\r\nHour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\r\
-        \nDay | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY\r\nMonth | 1MTH, 2MTH, 3MTH, 4MTH,\
-        \ 6MTH\r\nYear | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS\r\n            \r\n:::tip\r\n\
-        You can assume that we will not remove any periods from this response, however,\
-        \ we may add new ones.\r\n:::"
+      description: "Get full list of supported time periods\n            \n### Available\
+        \ periods\n            \nTime unit | Period identifiers\n--------- | -----------\n\
+        Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC\n\
+        Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN\n\
+        Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS\nDay | 1DAY, 2DAY, 3DAY,\
+        \ 5DAY, 7DAY, 10DAY\nMonth | 1MTH, 2MTH, 3MTH, 4MTH, 6MTH\nYear | 1YRS, 2YRS,\
+        \ 3YRS, 4YRS, 5YRS\n            \n:::tip\nYou can assume that we will not\
+        \ remove any periods from this response, however, we may add new ones.\n:::"
       responses:
         "200":
           content:
@@ -1216,8 +1214,13 @@ components:
           type: string
       type: object
   securitySchemes:
-    ApiKey:
-      description: CoinApi API key needed to access the endpoints
+    APIKey:
+      description: API Key is required to access the endpoints
       in: header
-      name: X-CoinAPI-Key
+      name: Authorization
+      type: apiKey
+    JWT:
+      description: JWT token needed to access the endpoints
+      in: header
+      name: Authorization
       type: apiKey

@@ -24,7 +24,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexDefinitionInputData>{OASIndexesIndexDefinitionInputData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexDefinitionInputData>{OASIndexesIndexDefinitionInputData.getExample()};
+        response = (List<OASIndexesIndexDefinitionInputData>) api.v1IndexdefInputDataIndexDefinitionIdAllGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexDefinitionInputData>{OASIndexesIndexDefinitionInputData.getExample()});
@@ -64,7 +75,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()};
+        response = (List<OASIndexesIndexDefinitionSnapshotEnt>) api.v1IndexdefInputDataIndexDefinitionIdGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
@@ -95,7 +117,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()};
+        response = (List<OASIndexesIndexMultiAssetWeight>) api.v1IndexdefMultiassetGet();
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()});
@@ -130,7 +163,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()};
+        response = (List<OASIndexesIndexMultiAssetWeight>) api.v1IndexdefMultiassetIndexIdGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexMultiAssetWeight>{OASIndexesIndexMultiAssetWeight.getExample()});
@@ -161,7 +205,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexIdentifier>{OASIndexesIndexIdentifier.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexIdentifier>{OASIndexesIndexIdentifier.getExample()};
+        response = (List<OASIndexesIndexIdentifier>) api.v1IndexesGet();
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexIdentifier>{OASIndexesIndexIdentifier.getExample()});
@@ -196,7 +251,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()};
+        response = (List<OASIndexesIndexDefinitionSnapshotEnt>) api.v1IndexesIndexDefinitionIdCurrentSnapshotGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
@@ -232,7 +298,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()};
+        response = (List<OASIndexesIndexDefinitionSnapshotEnt>) api.v1IndexesIndexDefinitionIdHistorySnapshotGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexDefinitionSnapshotEnt>{OASIndexesIndexDefinitionSnapshotEnt.getExample()});
@@ -267,7 +344,42 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(OASIndexesIndexValue.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIndexesIndexValue.getExample();
+        response = (OASIndexesIndexValue) api.v1IndexesIndexIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIndexesIndexValue.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASIndexesIndexValue.getExample();
+        response = (OASIndexesIndexValue) api.v1IndexesIndexIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIndexesIndexValue.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASIndexesIndexValue.getExample();
+        response = (OASIndexesIndexValue) api.v1IndexesIndexIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIndexesIndexValue.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASIndexesIndexValue.getExample();
+        response = (OASIndexesIndexValue) api.v1IndexesIndexIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(OASIndexesIndexValue.getExample());
@@ -329,7 +441,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexValue>{OASIndexesIndexValue.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexValue>{OASIndexesIndexValue.getExample()};
+        response = (List<OASIndexesIndexValue>) api.v1IndexesIndexIdHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexValue>{OASIndexesIndexValue.getExample()});
@@ -368,7 +491,18 @@ private class OASIndexesApiTest {
 
         client = new OASClient();
         api = new OASIndexesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASIndexesIndexTimeseriesItem>{OASIndexesIndexTimeseriesItem.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASIndexesIndexTimeseriesItem>{OASIndexesIndexTimeseriesItem.getExample()};
+        response = (List<OASIndexesIndexTimeseriesItem>) api.v1IndexesIndexIdTimeseriesGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASIndexesApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASIndexesIndexTimeseriesItem>{OASIndexesIndexTimeseriesItem.getExample()});

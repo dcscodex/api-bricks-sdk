@@ -1,9 +1,9 @@
-defmodule IndexesRESTAPI.Mixfile do
+defmodule CoinAPIIndexesRESTAPI.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :indexes_restapi,
+      app: :coin_api_indexes_restapi,
       version: "1.0.0",
       elixir: "~> 1.18",
       build_embedded: Mix.env() == :prod,
@@ -43,7 +43,7 @@ defmodule IndexesRESTAPI.Mixfile do
 
    defp package do
       [
-        name: "indexes_restapi",
+        name: "coin_api_indexes_restapi",
         files: ~w(.formatter.exs config lib mix.exs README* LICENSE*),
       ]
   end

@@ -111,13 +111,13 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### ApiKey
+### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: ApiKey and passed in as the auth context for each request.
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: APIKey and passed in as the auth context for each request.
 
 Example
 
@@ -126,7 +126,28 @@ auth := context.WithValue(
 		context.Background(),
 		openapi.ContextAPIKeys,
 		map[string]openapi.APIKey{
-			"ApiKey": {Key: "API_KEY_STRING"},
+			"APIKey": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
+
+### JWT
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: JWT and passed in as the auth context for each request.
+
+Example
+
+```go
+auth := context.WithValue(
+		context.Background(),
+		openapi.ContextAPIKeys,
+		map[string]openapi.APIKey{
+			"JWT": {Key: "API_KEY_STRING"},
 		},
 	)
 r, err := client.Service.Operation(auth, args)

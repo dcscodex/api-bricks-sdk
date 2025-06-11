@@ -3,8 +3,8 @@
 
 module Instances where
 
-import IndexesREST.Model
-import IndexesREST.Core
+import CoinAPIIndexesREST.Model
+import CoinAPIIndexesREST.Core
 
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy as BL

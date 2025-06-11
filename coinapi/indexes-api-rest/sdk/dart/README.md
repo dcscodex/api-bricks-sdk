@@ -41,10 +41,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:openapi/api.dart';
 
-// TODO Configure API key authorization: ApiKey
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKey').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: APIKey
+//defaultApiClient.getAuthentication<ApiKeyAuth>('APIKey').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKey').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('APIKey').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: JWT
+//defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('JWT').apiKeyPrefix = 'Bearer';
 
 final api_instance = IndexesApi();
 final indexDefinitionId = indexDefinitionId_example; // String | 
@@ -96,10 +100,16 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### ApiKey
+### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+### JWT
+
+- **Type**: API key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 

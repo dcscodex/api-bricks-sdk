@@ -1,5 +1,5 @@
 /**
- * Indexes REST API
+ * CoinAPI Indexes REST API
  *
  * Contact: support@apibricks.io
  *
@@ -51,8 +51,11 @@ export class MetadataService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders);
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -97,7 +100,7 @@ export class MetadataService extends BaseService {
 
     /**
      * List all exchanges
-     * Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+     * Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
      * @param filterExchangeId Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. &#x60;BITSTAMP;GEMINI&#x60;)
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -113,8 +116,11 @@ export class MetadataService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders);
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',

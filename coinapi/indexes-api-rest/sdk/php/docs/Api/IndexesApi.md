@@ -31,10 +31,15 @@ Returns all data inputs for a specific index definition
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -65,7 +70,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -91,10 +96,15 @@ Returns data inputs for certain index definition and time
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -135,7 +145,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -161,10 +171,15 @@ Get all multi-asset weights
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -192,7 +207,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -218,10 +233,15 @@ Get multi-asset weights for specific index
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -252,7 +272,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -278,10 +298,15 @@ List indexes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -309,7 +334,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -335,10 +360,15 @@ Current Index Values for index definition
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -369,7 +399,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -395,10 +425,15 @@ Historical Index Values for index definition
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -431,7 +466,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -457,10 +492,15 @@ Current Index Value
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -491,7 +531,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -517,10 +557,15 @@ Historical Index Value w/Composition
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -557,7 +602,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -583,10 +628,15 @@ Timeseries Index Value
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: ApiKey
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('X-CoinAPI-Key', 'YOUR_API_KEY');
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-CoinAPI-Key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\IndexesApi(
@@ -625,7 +675,7 @@ try {
 
 ### Authorization
 
-[ApiKey](../../README.md#ApiKey)
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 

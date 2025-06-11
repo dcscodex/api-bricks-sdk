@@ -1,5 +1,5 @@
 /*
-Indexes REST API
+CoinAPI Indexes REST API
 
 Testing MetadataAPIService
 

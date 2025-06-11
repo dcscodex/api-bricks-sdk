@@ -1,4 +1,4 @@
-# IndexesRestApi.IndexesIndexDefinitionSnapshotEntry
+# CoinApiIndexesRestApi.IndexesIndexDefinitionSnapshotEntry
 
 ## Properties
 

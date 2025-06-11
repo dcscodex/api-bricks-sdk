@@ -46,9 +46,12 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
 
 ### HTTP request headers
 
@@ -61,7 +64,7 @@ Configure ApiKey:
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 ```kotlin
@@ -95,9 +98,12 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
 
 ### HTTP request headers
 

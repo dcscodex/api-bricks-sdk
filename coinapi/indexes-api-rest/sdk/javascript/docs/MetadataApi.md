@@ -1,4 +1,4 @@
-# IndexesRestApi.MetadataApi
+# CoinApiIndexesRestApi.MetadataApi
 
 All URIs are relative to *https://rest-api.indexes.coinapi.io*
 
@@ -18,15 +18,20 @@ List all exchanges by exchange_id
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.MetadataApi();
+let apiInstance = new CoinApiIndexesRestApi.MetadataApi();
 let exchangeId = "exchangeId_example"; // String | The ID of the exchange.
 apiInstance.apiMetadataExchangesExchangeIdGet(exchangeId, (error, data, response) => {
   if (error) {
@@ -50,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -64,20 +69,25 @@ Name | Type | Description  | Notes
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.MetadataApi();
+let apiInstance = new CoinApiIndexesRestApi.MetadataApi();
 let opts = {
   'filterExchangeId': "filterExchangeId_example" // String | Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. `BITSTAMP;GEMINI`)
 };
@@ -103,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

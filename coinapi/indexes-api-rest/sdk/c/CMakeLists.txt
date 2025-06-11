@@ -23,7 +23,7 @@ if (OPENSSL_FOUND)
     endif()
 endif()
 
-set(pkgName "indexes_rest_api")
+set(pkgName "coinapi_indexes_rest_api")
 
 # this default version can be overridden in PreTarget.cmake
 set(PROJECT_VERSION_MAJOR 0)

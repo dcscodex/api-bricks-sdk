@@ -31,7 +31,7 @@ feature -- Test routines
     test_api_metadata_exchanges_get
             -- List all exchanges
             --
-            -- Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+            -- Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
         local
             l_response: LIST [METADATA_EXCHANGE]
             l_filter_exchange_id: STRING_32

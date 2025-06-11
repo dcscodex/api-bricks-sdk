@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiV1MetadataPeriodsGetReques
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

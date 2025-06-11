@@ -27,10 +27,15 @@ Returns all data inputs for a specific index definition
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexDefinitionId = "MyIndexDefinitionId" # String | 
 
@@ -55,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -80,10 +85,15 @@ Returns data inputs for certain index definition and time
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexDefinitionId = "MyIndexDefinitionId" # String | 
 $Time = (Get-Date) # System.DateTime |  (optional)
@@ -118,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -137,10 +147,15 @@ Get all multi-asset weights
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 
 # Get all multi-asset weights
@@ -161,7 +176,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -181,10 +196,15 @@ Get multi-asset weights for specific index
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexId = "MyIndexId" # String | 
 
@@ -209,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -228,10 +248,15 @@ List indexes
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 
 # List indexes
@@ -252,7 +277,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -272,10 +297,15 @@ Current Index Values for index definition
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexDefinitionId = "MyIndexDefinitionId" # String | 
 
@@ -300,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -321,10 +351,15 @@ Historical Index Values for index definition
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexDefinitionId = "MyIndexDefinitionId" # String | 
 $Time = (Get-Date) # System.DateTime |  (optional)
@@ -351,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -371,10 +406,15 @@ Current Index Value
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexId = "MyIndexId" # String | 
 
@@ -399,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -422,10 +462,15 @@ Historical Index Value w/Composition
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexId = "MyIndexId" # String | 
 $TimeStart = (Get-Date) # System.DateTime |  (optional)
@@ -456,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -480,10 +525,15 @@ Timeseries Index Value
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+# Configure API key authorization: JWT
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $IndexId = "MyIndexId" # String | 
 $PeriodId = "MyPeriodId" # String | Identifier of requested timeseries period (e.g. `5SEC` or `1DAY`)
@@ -516,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -15,7 +15,8 @@ List all exchanges by exchange_id
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Api Key Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_indexes_api_rest
@@ -34,11 +35,17 @@ configuration = api_bricks_coinapi_indexes_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: JWT
+configuration.api_key['JWT'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['JWT'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_indexes_api_rest.ApiClient(configuration) as api_client:
@@ -70,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -98,7 +105,8 @@ Properties of the output are providing aggregated information from across all sy
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Api Key Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_indexes_api_rest
@@ -117,11 +125,17 @@ configuration = api_bricks_coinapi_indexes_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: JWT
+configuration.api_key['JWT'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['JWT'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_indexes_api_rest.ApiClient(configuration) as api_client:
@@ -153,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

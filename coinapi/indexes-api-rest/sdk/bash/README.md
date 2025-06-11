@@ -1,8 +1,8 @@
-# Indexes REST API Bash client
+# CoinAPI Indexes REST API Bash client
 
 ## Overview
 
-This is a Bash client script for accessing Indexes REST API service.
+This is a Bash client script for accessing CoinAPI Indexes REST API service.
 
 The script uses cURL underneath for making all REST calls.
 
@@ -134,10 +134,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## ApiKey
+## APIKey
 
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+## JWT
+
+
+- **Type**: API key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 

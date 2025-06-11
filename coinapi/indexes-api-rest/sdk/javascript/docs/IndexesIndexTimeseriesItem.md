@@ -1,4 +1,4 @@
-# IndexesRestApi.IndexesIndexTimeseriesItem
+# CoinApiIndexesRestApi.IndexesIndexTimeseriesItem
 
 ## Properties
 

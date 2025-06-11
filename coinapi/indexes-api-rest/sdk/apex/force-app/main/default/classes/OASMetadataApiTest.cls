@@ -24,7 +24,18 @@ private class OASMetadataApiTest {
 
         client = new OASClient();
         api = new OASMetadataApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASMetadataExchange>{OASMetadataExchange.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASMetadataExchange>{OASMetadataExchange.getExample()};
+        response = (List<OASMetadataExchange>) api.apiMetadataExchangesExchangeIdGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetadataApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASMetadataExchange>{OASMetadataExchange.getExample()});
@@ -38,7 +49,7 @@ private class OASMetadataApiTest {
     /**
      * List all exchanges
      *
-     * Get a detailed list of exchanges provided by the system.\r\n            \r\n:::info\r\nProperties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\r\n:::
+     * Get a detailed list of exchanges provided by the system.\n            \n:::info\nProperties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.\n:::
      */
     @isTest
     private static void apiMetadataExchangesGetTest() {
@@ -59,7 +70,18 @@ private class OASMetadataApiTest {
 
         client = new OASClient();
         api = new OASMetadataApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
+
+        js = JSON.serialize(new List<OASMetadataExchange>{OASMetadataExchange.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASMetadataExchange>{OASMetadataExchange.getExample()};
+        response = (List<OASMetadataExchange>) api.apiMetadataExchangesGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetadataApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
 
 
         js = JSON.serialize(new List<OASMetadataExchange>{OASMetadataExchange.getExample()});

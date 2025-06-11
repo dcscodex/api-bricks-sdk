@@ -12,8 +12,8 @@ import Test.Hspec.QuickCheck
 import PropMime
 import Instances ()
 
-import IndexesREST.Model
-import IndexesREST.MimeTypes
+import CoinAPIIndexesREST.Model
+import CoinAPIIndexesREST.MimeTypes
 
 main :: IO ()
 main =

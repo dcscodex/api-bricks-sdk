@@ -13,7 +13,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for Indexes REST API.
+# This is a Bash client for CoinAPI Indexes REST API.
 #
 # LICENSE:
 # https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
@@ -201,6 +201,9 @@ basic_auth_credential=""
 ##
 # The user API key
 apikey_auth_credential=""
+##
+# The user API key
+apikey_auth_credential=""
 
 ##
 # If true, the script will only output the actual cURL command that would be
@@ -305,14 +308,27 @@ header_arguments_to_curl() {
     local headers_curl=""
     local api_key_header=""
     local api_key_header_in_cli=""
-    api_key_header="X-CoinAPI-Key"
+    api_key_header="Authorization"
+    local api_key_header=""
+    local api_key_header_in_cli=""
+    api_key_header="Authorization"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
         if [[ "${key}XX" == "${api_key_header}XX" ]]; then
             api_key_header_in_cli="YES"
         fi
+        if [[ "${key}XX" == "${api_key_header}XX" ]]; then
+            api_key_header_in_cli="YES"
+        fi
     done
+    #
+    # If the api_key was not provided in the header, try one from the
+    # environment variable
+    #
+    if [[ -z $api_key_header_in_cli && -n $apikey_auth_credential ]]; then
+        headers_curl+="-H \"${api_key_header}: ${apikey_auth_credential}\""
+    fi
     #
     # If the api_key was not provided in the header, try one from the
     # environment variable
@@ -551,7 +567,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}Indexes REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}CoinAPI Indexes REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -580,36 +596,38 @@ ${BOLD}${WHITE}Usage${OFF}
 EOF
     echo -e "${BOLD}${WHITE}Authentication methods${OFF}"
     echo -e ""
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}X-CoinAPI-Key:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
+    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
+    
+    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
     
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
     echo -e "${BOLD}${WHITE}[indexes]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1IndexdefInputDataIndexDefinitionIdAllGet${OFF};Returns all data inputs for a specific index definition (AUTH)
-  ${CYAN}v1IndexdefInputDataIndexDefinitionIdGet${OFF};Returns data inputs for certain index definition and time (AUTH)
-  ${CYAN}v1IndexdefMultiassetGet${OFF};Get all multi-asset weights (AUTH)
-  ${CYAN}v1IndexdefMultiassetIndexIdGet${OFF};Get multi-asset weights for specific index (AUTH)
-  ${CYAN}v1IndexesGet${OFF};List indexes (AUTH)
-  ${CYAN}v1IndexesIndexDefinitionIdCurrentSnapshotGet${OFF};Current Index Values for index definition (AUTH)
-  ${CYAN}v1IndexesIndexDefinitionIdHistorySnapshotGet${OFF};Historical Index Values for index definition (AUTH)
-  ${CYAN}v1IndexesIndexIdCurrentGet${OFF};Current Index Value (AUTH)
-  ${CYAN}v1IndexesIndexIdHistoryGet${OFF};Historical Index Value w/Composition (AUTH)
-  ${CYAN}v1IndexesIndexIdTimeseriesGet${OFF};Timeseries Index Value (AUTH)
+  ${CYAN}v1IndexdefInputDataIndexDefinitionIdAllGet${OFF};Returns all data inputs for a specific index definition (AUTH) (AUTH)
+  ${CYAN}v1IndexdefInputDataIndexDefinitionIdGet${OFF};Returns data inputs for certain index definition and time (AUTH) (AUTH)
+  ${CYAN}v1IndexdefMultiassetGet${OFF};Get all multi-asset weights (AUTH) (AUTH)
+  ${CYAN}v1IndexdefMultiassetIndexIdGet${OFF};Get multi-asset weights for specific index (AUTH) (AUTH)
+  ${CYAN}v1IndexesGet${OFF};List indexes (AUTH) (AUTH)
+  ${CYAN}v1IndexesIndexDefinitionIdCurrentSnapshotGet${OFF};Current Index Values for index definition (AUTH) (AUTH)
+  ${CYAN}v1IndexesIndexDefinitionIdHistorySnapshotGet${OFF};Historical Index Values for index definition (AUTH) (AUTH)
+  ${CYAN}v1IndexesIndexIdCurrentGet${OFF};Current Index Value (AUTH) (AUTH)
+  ${CYAN}v1IndexesIndexIdHistoryGet${OFF};Historical Index Value w/Composition (AUTH) (AUTH)
+  ${CYAN}v1IndexesIndexIdTimeseriesGet${OFF};Timeseries Index Value (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[metadata]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}apiMetadataExchangesExchangeIdGet${OFF};List all exchanges by exchange_id (AUTH)
-  ${CYAN}apiMetadataExchangesGet${OFF};List all exchanges (AUTH)
+  ${CYAN}apiMetadataExchangesExchangeIdGet${OFF};List all exchanges by exchange_id (AUTH) (AUTH)
+  ${CYAN}apiMetadataExchangesGet${OFF};List all exchanges (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[periods]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1MetadataPeriodsGet${OFF};List all periods (AUTH)
+  ${CYAN}v1MetadataPeriodsGet${OFF};List all periods (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -639,7 +657,7 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://rest-api.indexes.coinapi.io')"
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}Indexes REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}CoinAPI Indexes REST API command line client (API version v1)${OFF}"
     echo ""
     echo -e "License: MIT License"
     echo -e "Contact: support@apibricks.io"
@@ -659,7 +677,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}Indexes REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}CoinAPI Indexes REST API command line client (API version v1)${OFF}"
     echo ""
 }
 
@@ -670,7 +688,7 @@ print_version() {
 ##############################################################################
 print_v1IndexdefInputDataIndexDefinitionIdAllGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexdefInputDataIndexDefinitionIdAllGet - Returns all data inputs for a specific index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexdefInputDataIndexDefinitionIdAllGet - Returns all data inputs for a specific index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_definition_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_definition_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -686,7 +704,7 @@ print_v1IndexdefInputDataIndexDefinitionIdAllGet_help() {
 ##############################################################################
 print_v1IndexdefInputDataIndexDefinitionIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexdefInputDataIndexDefinitionIdGet - Returns data inputs for certain index definition and time${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexdefInputDataIndexDefinitionIdGet - Returns data inputs for certain index definition and time${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_definition_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_definition_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -712,7 +730,7 @@ print_v1IndexdefInputDataIndexDefinitionIdGet_help() {
 ##############################################################################
 print_v1IndexdefMultiassetGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexdefMultiassetGet - Get all multi-asset weights${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexdefMultiassetGet - Get all multi-asset weights${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -726,7 +744,7 @@ print_v1IndexdefMultiassetGet_help() {
 ##############################################################################
 print_v1IndexdefMultiassetIndexIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexdefMultiassetIndexIdGet - Get multi-asset weights for specific index${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexdefMultiassetIndexIdGet - Get multi-asset weights for specific index${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -742,7 +760,7 @@ print_v1IndexdefMultiassetIndexIdGet_help() {
 ##############################################################################
 print_v1IndexesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesGet - List indexes${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesGet - List indexes${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -756,7 +774,7 @@ print_v1IndexesGet_help() {
 ##############################################################################
 print_v1IndexesIndexDefinitionIdCurrentSnapshotGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesIndexDefinitionIdCurrentSnapshotGet - Current Index Values for index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesIndexDefinitionIdCurrentSnapshotGet - Current Index Values for index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_definition_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_definition_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -772,7 +790,7 @@ print_v1IndexesIndexDefinitionIdCurrentSnapshotGet_help() {
 ##############################################################################
 print_v1IndexesIndexDefinitionIdHistorySnapshotGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesIndexDefinitionIdHistorySnapshotGet - Historical Index Values for index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesIndexDefinitionIdHistorySnapshotGet - Historical Index Values for index definition${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_definition_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_definition_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -790,7 +808,7 @@ print_v1IndexesIndexDefinitionIdHistorySnapshotGet_help() {
 ##############################################################################
 print_v1IndexesIndexIdCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesIndexIdCurrentGet - Current Index Value${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesIndexIdCurrentGet - Current Index Value${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -806,7 +824,7 @@ print_v1IndexesIndexIdCurrentGet_help() {
 ##############################################################################
 print_v1IndexesIndexIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesIndexIdHistoryGet - Historical Index Value w/Composition${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesIndexIdHistoryGet - Historical Index Value w/Composition${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -828,7 +846,7 @@ print_v1IndexesIndexIdHistoryGet_help() {
 ##############################################################################
 print_v1IndexesIndexIdTimeseriesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1IndexesIndexIdTimeseriesGet - Timeseries Index Value${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1IndexesIndexIdTimeseriesGet - Timeseries Index Value${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}index_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} -  ${YELLOW}Specify as: index_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -852,7 +870,7 @@ print_v1IndexesIndexIdTimeseriesGet_help() {
 ##############################################################################
 print_apiMetadataExchangesExchangeIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}apiMetadataExchangesExchangeIdGet - List all exchanges by exchange_id${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}apiMetadataExchangesExchangeIdGet - List all exchanges by exchange_id${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The ID of the exchange. ${YELLOW}Specify as: exchange_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -868,7 +886,7 @@ print_apiMetadataExchangesExchangeIdGet_help() {
 ##############################################################################
 print_apiMetadataExchangesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}apiMetadataExchangesGet - List all exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}apiMetadataExchangesGet - List all exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a detailed list of exchanges provided by the system.
             
@@ -891,7 +909,7 @@ Properties of the output are providing aggregated information from across all sy
 ##############################################################################
 print_v1MetadataPeriodsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetadataPeriodsGet - List all periods${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetadataPeriodsGet - List all periods${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get full list of supported time periods
             
@@ -928,7 +946,7 @@ call_v1IndexdefInputDataIndexDefinitionIdAllGet() {
     local path_parameter_names=(index_definition_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexdef/input-data/{index_definition_id}/all" path_parameter_names query_parameter_names); then
@@ -964,7 +982,7 @@ call_v1IndexdefInputDataIndexDefinitionIdGet() {
     local path_parameter_names=(index_definition_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(time enabled_only pending_only filter_asset_id with_status_info  )
+    local query_parameter_names=(time enabled_only pending_only filter_asset_id with_status_info    )
     local path
 
     if ! path=$(build_request_path "/v1/indexdef/input-data/{index_definition_id}" path_parameter_names query_parameter_names); then
@@ -1000,7 +1018,7 @@ call_v1IndexdefMultiassetGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexdef/multiasset" path_parameter_names query_parameter_names); then
@@ -1036,7 +1054,7 @@ call_v1IndexdefMultiassetIndexIdGet() {
     local path_parameter_names=(index_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexdef/multiasset/{index_id}" path_parameter_names query_parameter_names); then
@@ -1072,7 +1090,7 @@ call_v1IndexesGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes" path_parameter_names query_parameter_names); then
@@ -1108,7 +1126,7 @@ call_v1IndexesIndexDefinitionIdCurrentSnapshotGet() {
     local path_parameter_names=(index_definition_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes/{index_definition_id}/currentSnapshot" path_parameter_names query_parameter_names); then
@@ -1144,7 +1162,7 @@ call_v1IndexesIndexDefinitionIdHistorySnapshotGet() {
     local path_parameter_names=(index_definition_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(time  )
+    local query_parameter_names=(time    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes/{index_definition_id}/historySnapshot" path_parameter_names query_parameter_names); then
@@ -1180,7 +1198,7 @@ call_v1IndexesIndexIdCurrentGet() {
     local path_parameter_names=(index_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes/{index_id}/current" path_parameter_names query_parameter_names); then
@@ -1216,7 +1234,7 @@ call_v1IndexesIndexIdHistoryGet() {
     local path_parameter_names=(index_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(time_start time_end limit  )
+    local query_parameter_names=(time_start time_end limit    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes/{index_id}/history" path_parameter_names query_parameter_names); then
@@ -1252,7 +1270,7 @@ call_v1IndexesIndexIdTimeseriesGet() {
     local path_parameter_names=(index_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end limit  )
+    local query_parameter_names=(period_id time_start time_end limit    )
     local path
 
     if ! path=$(build_request_path "/v1/indexes/{index_id}/timeseries" path_parameter_names query_parameter_names); then
@@ -1288,7 +1306,7 @@ call_apiMetadataExchangesExchangeIdGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/api/metadata/exchanges/{exchange_id}" path_parameter_names query_parameter_names); then
@@ -1324,7 +1342,7 @@ call_apiMetadataExchangesGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_exchange_id  )
+    local query_parameter_names=(filter_exchange_id    )
     local path
 
     if ! path=$(build_request_path "/api/metadata/exchanges" path_parameter_names query_parameter_names); then
@@ -1360,7 +1378,7 @@ call_v1MetadataPeriodsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/metadata/periods" path_parameter_names query_parameter_names); then
@@ -1558,7 +1576,14 @@ case $key in
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable
         #
-        if [[ $header_name == "X-CoinAPI-Key" ]]; then
+        if [[ $header_name == "Authorization" ]]; then
+            apikey_auth_credential=$header_value
+        fi
+        #
+        # If the header key is the same as the api_key expected by API in the
+        # header, override the ${apikey_auth_credential} variable
+        #
+        if [[ $header_name == "Authorization" ]]; then
             apikey_auth_credential=$header_value
         fi
         header_arguments[$header_name]=$header_value

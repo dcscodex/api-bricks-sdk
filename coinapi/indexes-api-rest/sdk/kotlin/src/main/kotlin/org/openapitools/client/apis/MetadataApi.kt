@@ -121,7 +121,7 @@ class MetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     /**
      * GET /api/metadata/exchanges
      * List all exchanges
-     * Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+     * Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
      * @param filterExchangeId Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. &#x60;BITSTAMP;GEMINI&#x60;) (optional)
      * @return kotlin.collections.List<MetadataExchange>
      * @throws IllegalStateException If the request is not correctly configured
@@ -153,7 +153,7 @@ class MetadataApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     /**
      * GET /api/metadata/exchanges
      * List all exchanges
-     * Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+     * Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
      * @param filterExchangeId Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. &#x60;BITSTAMP;GEMINI&#x60;) (optional)
      * @return ApiResponse<kotlin.collections.List<MetadataExchange>?>
      * @throws IllegalStateException If the request is not correctly configured

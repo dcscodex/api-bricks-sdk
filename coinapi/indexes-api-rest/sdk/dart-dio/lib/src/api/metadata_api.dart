@@ -53,8 +53,13 @@ class MetadataApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -103,7 +108,7 @@ class MetadataApi {
   }
 
   /// List all exchanges
-  /// Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+  /// Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
   ///
   /// Parameters:
   /// * [filterExchangeId] - Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. `BITSTAMP;GEMINI`)
@@ -135,8 +140,13 @@ class MetadataApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],

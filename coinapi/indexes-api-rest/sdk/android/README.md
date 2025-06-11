@@ -114,11 +114,18 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### ApiKey
+### APIKey
 
 - **Type**: API key
 
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+### JWT
+
+- **Type**: API key
+
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 

@@ -57,5 +57,5 @@ force-app/main/default/classes/OASResponseMock.cls
 force-app/main/default/classes/OASResponseMock.cls-meta.xml
 force-app/main/default/classes/OASTest.cls
 force-app/main/default/classes/OASTest.cls-meta.xml
-force-app/main/default/namedCredentials/Indexes_REST_API.namedCredential-meta.xml
+force-app/main/default/namedCredentials/CoinAPI_Indexes_REST_API.namedCredential-meta.xml
 sfdx-project.json

@@ -37,10 +37,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexDefinitionId = "indexDefinitionId_example";  // string | 
@@ -94,7 +98,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -131,10 +135,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexDefinitionId = "indexDefinitionId_example";  // string | 
@@ -198,7 +206,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -235,10 +243,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
 
@@ -287,7 +299,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -324,10 +336,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexId = "indexId_example";  // string | 
@@ -381,7 +397,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -418,10 +434,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
 
@@ -470,7 +490,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -507,10 +527,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexDefinitionId = "indexDefinitionId_example";  // string | 
@@ -564,7 +588,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -601,10 +625,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexDefinitionId = "indexDefinitionId_example";  // string | 
@@ -660,7 +688,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -697,10 +725,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexId = "indexId_example";  // string | 
@@ -754,7 +786,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -791,10 +823,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexId = "indexId_example";  // string | 
@@ -854,7 +890,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -891,10 +927,14 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest-api.indexes.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure API key authorization: JWT
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new IndexesApi(config);
             var indexId = "indexId_example";  // string | 
@@ -956,7 +996,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

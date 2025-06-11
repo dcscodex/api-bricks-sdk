@@ -1,4 +1,4 @@
-# IndexesRestApi.IndexesIndexIdentifier
+# CoinApiIndexesRestApi.IndexesIndexIdentifier
 
 ## Properties
 

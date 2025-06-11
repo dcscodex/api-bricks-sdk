@@ -24,10 +24,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetadataApi;
 my $api_instance = WWW::OpenAPIClient::MetadataApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $exchange_id = "exchange_id_example"; # string | The ID of the exchange.
@@ -53,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -67,7 +71,7 @@ Name | Type | Description  | Notes
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 ```perl
@@ -75,10 +79,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetadataApi;
 my $api_instance = WWW::OpenAPIClient::MetadataApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $filter_exchange_id = "filter_exchange_id_example"; # string | Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. `BITSTAMP;GEMINI`)
@@ -104,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-config :indexes_restapi, base_url: "https://rest-api.indexes.coinapi.io"
+config :coin_api_indexes_restapi, base_url: "https://rest-api.indexes.coinapi.io"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

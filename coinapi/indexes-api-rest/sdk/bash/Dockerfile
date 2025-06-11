@@ -23,8 +23,8 @@ source /etc/bash-completion.d/client.sh\n\
 #
 # Setup prompt
 #
-RUN echo 'export PS1="[Indexes REST API] \$ "' >> ~/.bashrc
-RUN echo 'export PROMPT="[Indexes REST API] \$ "' >> ~/.zshrc
+RUN echo 'export PS1="[CoinAPI Indexes REST API] \$ "' >> ~/.bashrc
+RUN echo 'export PROMPT="[CoinAPI Indexes REST API] \$ "' >> ~/.zshrc
 
 #
 # Setup a welcome message with basic instruction
@@ -32,10 +32,11 @@ RUN echo 'export PROMPT="[Indexes REST API] \$ "' >> ~/.zshrc
 RUN echo -e 'echo "\
 \n\
 This Docker provides preconfigured environment for running the command\n\
-line REST client for $(tput setaf 6)Indexes REST API$(tput sgr0).\n\
+line REST client for $(tput setaf 6)CoinAPI Indexes REST API$(tput sgr0).\n\
 \n\
 For convenience, you can export the following environment variables:\n\
 \n\
+
 
 
 \n\

@@ -1,4 +1,4 @@
-# IndexesRestApi.MetadataTimeseriesPeriod
+# CoinApiIndexesRestApi.MetadataTimeseriesPeriod
 
 ## Properties
 

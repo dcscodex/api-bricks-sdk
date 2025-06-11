@@ -1,4 +1,4 @@
-# IndexesRestApi.MetadataExchange
+# CoinApiIndexesRestApi.MetadataExchange
 
 ## Properties
 

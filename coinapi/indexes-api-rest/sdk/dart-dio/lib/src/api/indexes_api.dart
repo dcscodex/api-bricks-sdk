@@ -58,8 +58,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -150,8 +155,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -239,8 +249,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -321,8 +336,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -401,8 +421,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -483,8 +508,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -567,8 +597,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -654,8 +689,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -742,8 +782,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],
@@ -839,8 +884,13 @@ class IndexesApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'apiKey',
+            'name': 'JWT',
+            'keyName': 'Authorization',
             'where': 'header',
           },
         ],

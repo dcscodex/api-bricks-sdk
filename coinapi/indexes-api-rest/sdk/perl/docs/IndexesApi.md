@@ -32,10 +32,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_definition_id = "index_definition_id_example"; # string | 
@@ -61,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -81,10 +85,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_definition_id = "index_definition_id_example"; # string | 
@@ -120,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -140,10 +148,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 
@@ -165,7 +177,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -185,10 +197,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_id = "index_id_example"; # string | 
@@ -214,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -234,10 +250,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 
@@ -259,7 +279,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -279,10 +299,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_definition_id = "index_definition_id_example"; # string | 
@@ -308,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -328,10 +352,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_definition_id = "index_definition_id_example"; # string | 
@@ -359,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -379,10 +407,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_id = "index_id_example"; # string | 
@@ -408,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -428,10 +460,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_id = "index_id_example"; # string | 
@@ -463,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -483,10 +519,14 @@ use Data::Dumper;
 use WWW::OpenAPIClient::IndexesApi;
 my $api_instance = WWW::OpenAPIClient::IndexesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure API key authorization: JWT
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $index_id = "index_id_example"; # string | 
@@ -520,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

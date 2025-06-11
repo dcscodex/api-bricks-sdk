@@ -1,6 +1,6 @@
 # openapi-client
 
-Indexes REST API
+CoinAPI Indexes REST API
 - API version: v1
   - Generator version: 7.13.0
 
@@ -78,8 +78,11 @@ object IndexesApiExample extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     // Create invoker to execute requests
     val apiInvoker = ApiInvoker()
@@ -150,11 +153,18 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="ApiKey"></a>
-### ApiKey
+<a id="APIKey"></a>
+### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+<a id="JWT"></a>
+### JWT
+
+- **Type**: API key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 

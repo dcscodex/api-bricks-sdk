@@ -20,7 +20,7 @@ test_that("ApiMetadataExchangesGet", {
   # tests for ApiMetadataExchangesGet
   # base path: https://rest-api.indexes.coinapi.io
   # List all exchanges
-  # Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+  # Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
   # @param filter_exchange_id character Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. `BITSTAMP;GEMINI`) (optional)
   # @return [array[MetadataExchange]]
 

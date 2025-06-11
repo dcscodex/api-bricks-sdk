@@ -1,4 +1,4 @@
-# IndexesRestApi.IndexesApi
+# CoinApiIndexesRestApi.IndexesApi
 
 All URIs are relative to *https://rest-api.indexes.coinapi.io*
 
@@ -26,15 +26,20 @@ Returns all data inputs for a specific index definition
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexDefinitionId = "indexDefinitionId_example"; // String | 
 apiInstance.v1IndexdefInputDataIndexDefinitionIdAllGet(indexDefinitionId, (error, data, response) => {
   if (error) {
@@ -58,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -75,15 +80,20 @@ Returns data inputs for certain index definition and time
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexDefinitionId = "indexDefinitionId_example"; // String | 
 let opts = {
   'time': new Date("2013-10-20T19:20:30+01:00"), // Date | 
@@ -119,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -136,15 +146,20 @@ Get all multi-asset weights
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 apiInstance.v1IndexdefMultiassetGet((error, data, response) => {
   if (error) {
     console.error(error);
@@ -164,7 +179,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -181,15 +196,20 @@ Get multi-asset weights for specific index
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexId = "indexId_example"; // String | 
 apiInstance.v1IndexdefMultiassetIndexIdGet(indexId, (error, data, response) => {
   if (error) {
@@ -213,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -230,15 +250,20 @@ List indexes
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 apiInstance.v1IndexesGet((error, data, response) => {
   if (error) {
     console.error(error);
@@ -258,7 +283,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -275,15 +300,20 @@ Current Index Values for index definition
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexDefinitionId = "indexDefinitionId_example"; // String | 
 apiInstance.v1IndexesIndexDefinitionIdCurrentSnapshotGet(indexDefinitionId, (error, data, response) => {
   if (error) {
@@ -307,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -324,15 +354,20 @@ Historical Index Values for index definition
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexDefinitionId = "indexDefinitionId_example"; // String | 
 let opts = {
   'time': new Date("2013-10-20T19:20:30+01:00") // Date | 
@@ -360,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -377,15 +412,20 @@ Current Index Value
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexId = "indexId_example"; // String | 
 apiInstance.v1IndexesIndexIdCurrentGet(indexId, (error, data, response) => {
   if (error) {
@@ -409,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -426,15 +466,20 @@ Historical Index Value w/Composition
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexId = "indexId_example"; // String | 
 let opts = {
   'timeStart': new Date("2013-10-20T19:20:30+01:00"), // Date | 
@@ -466,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -483,15 +528,20 @@ Timeseries Index Value
 ### Example
 
 ```javascript
-import IndexesRestApi from 'indexes_rest_api';
-let defaultClient = IndexesRestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiIndexesRestApi from 'coin_api_indexes_rest_api';
+let defaultClient = CoinApiIndexesRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure API key authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new IndexesRestApi.IndexesApi();
+let apiInstance = new CoinApiIndexesRestApi.IndexesApi();
 let indexId = "indexId_example"; // String | 
 let periodId = "periodId_example"; // String | Identifier of requested timeseries period (e.g. `5SEC` or `1DAY`)
 let timeStart = "timeStart_example"; // String | Timeseries starting time in ISO 8601
@@ -525,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

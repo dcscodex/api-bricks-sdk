@@ -23,8 +23,10 @@ library(openapi)
 var_exchange_id <- "exchange_id_example" # character | The ID of the exchange.
 
 api_instance <- MetadataApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$ApiMetadataExchangesExchangeIdGet(var_exchange_iddata_file = "result.txt")
 result <- api_instance$ApiMetadataExchangesExchangeIdGet(var_exchange_id)
@@ -43,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -60,7 +62,7 @@ Name | Type | Description  | Notes
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 ```R
@@ -72,8 +74,10 @@ library(openapi)
 var_filter_exchange_id <- "filter_exchange_id_example" # character | Comma or semicolon delimited exchange identifiers used to filter response. (optional, eg. `BITSTAMP;GEMINI`) (Optional)
 
 api_instance <- MetadataApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$ApiMetadataExchangesGet(filter_exchange_id = var_filter_exchange_iddata_file = "result.txt")
 result <- api_instance$ApiMetadataExchangesGet(filter_exchange_id = var_filter_exchange_id)
@@ -92,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

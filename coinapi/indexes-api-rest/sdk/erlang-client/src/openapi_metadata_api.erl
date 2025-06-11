@@ -27,7 +27,7 @@ api_metadata_exchanges_exchange_id_get(Ctx, ExchangeId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc List all exchanges
-%% Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+%% Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 -spec api_metadata_exchanges_get(ctx:ctx()) -> {ok, [openapi_metadata_exchange:openapi_metadata_exchange()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 api_metadata_exchanges_get(Ctx) ->
     api_metadata_exchanges_get(Ctx, #{}).

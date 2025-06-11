@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build Indexes REST API
+    name: Build CoinAPI Indexes REST API
     runs-on: ubuntu-latest
     strategy:
       matrix:

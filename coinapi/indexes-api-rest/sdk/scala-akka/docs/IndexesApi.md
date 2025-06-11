@@ -51,8 +51,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -95,7 +98,7 @@ ApiRequest[[**Seq[IndexDefinitionInputData]**](IndexDefinitionInputData.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -133,8 +136,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -192,7 +198,7 @@ ApiRequest[[**Seq[IndexDefinitionSnapshotEntry]**](IndexDefinitionSnapshotEntry.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -229,8 +235,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")    
@@ -268,7 +277,7 @@ ApiRequest[[**Seq[IndexMultiAssetWeight]**](IndexMultiAssetWeight.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -305,8 +314,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -349,7 +361,7 @@ ApiRequest[[**Seq[IndexMultiAssetWeight]**](IndexMultiAssetWeight.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -386,8 +398,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")    
@@ -425,7 +440,7 @@ ApiRequest[[**Seq[IndexIdentifier]**](IndexIdentifier.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -462,8 +477,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -506,7 +524,7 @@ ApiRequest[[**Seq[IndexDefinitionSnapshotEntry]**](IndexDefinitionSnapshotEntry.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -544,8 +562,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -591,7 +612,7 @@ ApiRequest[[**Seq[IndexDefinitionSnapshotEntry]**](IndexDefinitionSnapshotEntry.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -628,8 +649,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -672,7 +696,7 @@ ApiRequest[[**IndexValue**](IndexValue.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -710,8 +734,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -763,7 +790,7 @@ ApiRequest[[**Seq[IndexValue]**](IndexValue.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -800,8 +827,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = IndexesApi("https://rest-api.indexes.coinapi.io")
@@ -856,7 +886,7 @@ ApiRequest[[**Seq[IndexTimeseriesItem]**](IndexTimeseriesItem.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

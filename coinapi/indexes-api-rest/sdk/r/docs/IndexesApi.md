@@ -31,8 +31,10 @@ library(openapi)
 var_index_definition_id <- "index_definition_id_example" # character | 
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexdefInputDataIndexDefinitionIdAllGet(var_index_definition_iddata_file = "result.txt")
 result <- api_instance$V1IndexdefInputDataIndexDefinitionIdAllGet(var_index_definition_id)
@@ -51,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -83,8 +85,10 @@ var_filter_asset_id <- "filter_asset_id_example" # character |  (Optional)
 var_with_status_info <- FALSE # character |  (Optional)
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexdefInputDataIndexDefinitionIdGet(var_index_definition_id, time = var_time, enabled_only = var_enabled_only, pending_only = var_pending_only, filter_asset_id = var_filter_asset_id, with_status_info = var_with_status_infodata_file = "result.txt")
 result <- api_instance$V1IndexdefInputDataIndexDefinitionIdGet(var_index_definition_id, time = var_time, enabled_only = var_enabled_only, pending_only = var_pending_only, filter_asset_id = var_filter_asset_id, with_status_info = var_with_status_info)
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -133,8 +137,10 @@ library(openapi)
 #
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexdefMultiassetGet(data_file = "result.txt")
 result <- api_instance$V1IndexdefMultiassetGet()
@@ -150,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -177,8 +183,10 @@ library(openapi)
 var_index_id <- "index_id_example" # character | 
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexdefMultiassetIndexIdGet(var_index_iddata_file = "result.txt")
 result <- api_instance$V1IndexdefMultiassetIndexIdGet(var_index_id)
@@ -197,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -222,8 +230,10 @@ library(openapi)
 #
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesGet(data_file = "result.txt")
 result <- api_instance$V1IndexesGet()
@@ -239,7 +249,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -266,8 +276,10 @@ library(openapi)
 var_index_definition_id <- "index_definition_id_example" # character | 
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesIndexDefinitionIdCurrentSnapshotGet(var_index_definition_iddata_file = "result.txt")
 result <- api_instance$V1IndexesIndexDefinitionIdCurrentSnapshotGet(var_index_definition_id)
@@ -286,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -314,8 +326,10 @@ var_index_definition_id <- "index_definition_id_example" # character |
 var_time <- "time_example" # character |  (Optional)
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesIndexDefinitionIdHistorySnapshotGet(var_index_definition_id, time = var_timedata_file = "result.txt")
 result <- api_instance$V1IndexesIndexDefinitionIdHistorySnapshotGet(var_index_definition_id, time = var_time)
@@ -335,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -362,8 +376,10 @@ library(openapi)
 var_index_id <- "index_id_example" # character | 
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesIndexIdCurrentGet(var_index_iddata_file = "result.txt")
 result <- api_instance$V1IndexesIndexIdCurrentGet(var_index_id)
@@ -382,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -412,8 +428,10 @@ var_time_end <- "time_end_example" # character |  (Optional)
 var_limit <- 100 # integer |  (Optional)
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesIndexIdHistoryGet(var_index_id, time_start = var_time_start, time_end = var_time_end, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1IndexesIndexIdHistoryGet(var_index_id, time_start = var_time_start, time_end = var_time_end, limit = var_limit)
@@ -435,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -466,8 +484,10 @@ var_time_end <- "time_end_example" # character | Timeseries ending time in ISO 8
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- IndexesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: JWT
+# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1IndexesIndexIdTimeseriesGet(var_index_id, var_period_id, var_time_start, var_time_end, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1IndexesIndexIdTimeseriesGet(var_index_id, var_period_id, var_time_start, var_time_end, limit = var_limit)
@@ -490,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

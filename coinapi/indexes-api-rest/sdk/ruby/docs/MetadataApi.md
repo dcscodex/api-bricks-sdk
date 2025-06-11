@@ -21,10 +21,15 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: JWT
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OpenapiClient::MetadataApi.new
@@ -69,7 +74,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -83,7 +88,7 @@ end
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Examples
 
@@ -92,10 +97,15 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure API key authorization: JWT
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
 api_instance = OpenapiClient::MetadataApi.new
@@ -142,7 +152,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -35,8 +35,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://rest-api.indexes.coinapi.io")
@@ -79,7 +82,7 @@ ApiRequest[[**Seq[Exchange]**](Exchange.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -98,7 +101,7 @@ ApiRequest[[**Seq[Exchange]**](Exchange.md)]
 
 List all exchanges
 
-Get a detailed list of exchanges provided by the system.                :::info  Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.  :::
+Get a detailed list of exchanges provided by the system.              :::info Properties of the output are providing aggregated information from across all symbols related to the specific exchange. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 ### Example
 
@@ -118,8 +121,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure API key authorization: JWT
+    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = MetadataApi("https://rest-api.indexes.coinapi.io")
@@ -162,7 +168,7 @@ ApiRequest[[**Seq[Exchange]**](Exchange.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -1,4 +1,4 @@
-# IndexesRestApi.IndexesIndexMultiAssetWeight
+# CoinApiIndexesRestApi.IndexesIndexMultiAssetWeight
 
 ## Properties
 

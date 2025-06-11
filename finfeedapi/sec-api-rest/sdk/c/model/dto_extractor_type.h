@@ -18,15 +18,15 @@ typedef struct dto_extractor_type_t dto_extractor_type_t;
 
 // Enum  for dto_extractor_type
 
-typedef enum { rest_api_dto_extractor_type__NULL = 0, rest_api_dto_extractor_type__text, rest_api_dto_extractor_type__html } rest_api_dto_extractor_type__e;
+typedef enum { finfeedapi_sec_rest_api_dto_extractor_type__NULL = 0, finfeedapi_sec_rest_api_dto_extractor_type__text, finfeedapi_sec_rest_api_dto_extractor_type__html } finfeedapi_sec_rest_api_dto_extractor_type__e;
 
-char* dto_extractor_type_dto_extractor_type_ToString(rest_api_dto_extractor_type__e dto_extractor_type);
+char* dto_extractor_type_dto_extractor_type_ToString(finfeedapi_sec_rest_api_dto_extractor_type__e dto_extractor_type);
 
-rest_api_dto_extractor_type__e dto_extractor_type_dto_extractor_type_FromString(char* dto_extractor_type);
+finfeedapi_sec_rest_api_dto_extractor_type__e dto_extractor_type_dto_extractor_type_FromString(char* dto_extractor_type);
 
-cJSON *dto_extractor_type_convertToJSON(rest_api_dto_extractor_type__e dto_extractor_type);
+cJSON *dto_extractor_type_convertToJSON(finfeedapi_sec_rest_api_dto_extractor_type__e dto_extractor_type);
 
-rest_api_dto_extractor_type__e dto_extractor_type_parseFromJSON(cJSON *dto_extractor_typeJSON);
+finfeedapi_sec_rest_api_dto_extractor_type__e dto_extractor_type_parseFromJSON(cJSON *dto_extractor_typeJSON);
 
 #endif /* _dto_extractor_type_H_ */
 

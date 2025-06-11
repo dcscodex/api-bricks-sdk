@@ -15,7 +15,7 @@ v1FullTextGet($form_type, $filling_date_start, $filling_date_end, $text_contains
 
 Full-text search of SEC filing documents
 
-Search across SEC filing documents with advanced filtering and sorting capabilities.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FormType | Type of the filing document  FilingDate | Date when filing was submitted  CompanyName | Name of the company  CIK | Central Index Key  DocumentFilename | Name of the filing document  DocumentDescription | Description of the document    ### Search Options    Option | Description  --------|-------------  text_contains | Keywords that must appear in the document  text_not_contain | Keywords that must not appear in the document    ### Date Format  All dates must be provided in YYYY-MM-DD format    :::tip  Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches  :::    :::note  The search is case-insensitive and supports partial word matches  :::
+Search across SEC filing documents with advanced filtering and sorting capabilities.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FormType | Type of the filing document FilingDate | Date when filing was submitted CompanyName | Name of the company CIK | Central Index Key DocumentFilename | Name of the filing document DocumentDescription | Description of the document  ### Search Options  Option | Description --------|------------- text_contains | Keywords that must appear in the document text_not_contain | Keywords that must not appear in the document  ### Date Format All dates must be provided in YYYY-MM-DD format  :::tip Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches :::  :::note The search is case-insensitive and supports partial word matches :::
 
 ### Example
 
@@ -24,11 +24,20 @@ Search across SEC filing documents with advanced filtering and sorting capabilit
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure Bearer (JWT) authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\FullTextSearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $form_type = 'form_type_example'; // string | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
 $filling_date_start = 'filling_date_start_example'; // string | Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -68,7 +77,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 

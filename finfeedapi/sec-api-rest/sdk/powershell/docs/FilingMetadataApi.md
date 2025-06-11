@@ -25,10 +25,18 @@ Method | HTTP request | Description
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: ""10-K,8-K,10-Q""    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: ""10-K,8-K,10-Q""  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Example
 ```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
+
 $Cik = 789 # Int64 | Filter by Central Index Key (CIK) (optional)
 $Ticker = "MyTicker" # String | Filter by stock ticker symbol (optional)
 $FormType = "MyFormType" # String | Filter by form type(s) (e.g., ""10-K"", ""8-K""). Multiple values can be comma-separated (optional)
@@ -74,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

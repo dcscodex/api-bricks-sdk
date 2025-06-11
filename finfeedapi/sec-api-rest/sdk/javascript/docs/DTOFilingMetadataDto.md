@@ -1,4 +1,4 @@
-# RestApi.DTOFilingMetadataDto
+# FinFeedApiSecRestApi.DTOFilingMetadataDto
 
 ## Properties
 

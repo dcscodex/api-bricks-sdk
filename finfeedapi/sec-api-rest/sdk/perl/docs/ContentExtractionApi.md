@@ -18,13 +18,21 @@ Method | HTTP request | Description
 
 Extract and classify SEC filing content
 
-Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
+Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.  ### Supported Form Types  Form Type | Description ----------|------------ 8-K      | Current report filing 10-K     | Annual report filing 10-Q     | Quarterly report filing  ### Content Classification - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01) - 10-K/10-Q forms: Items categorized by their respective part and item structure  :::note Both HTML and plain text documents are supported for content extraction. :::
 
 ### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::ContentExtractionApi;
 my $api_instance = WWW::OpenAPIClient::ContentExtractionApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $accession_number = "accession_number_example"; # string | The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -52,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -66,13 +74,21 @@ No authorization required
 
 Extract specific item content from SEC filing
 
-Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.    ### Item Number Format    Form Type | Item Format Examples  -----------|-------------------  8-K       | 1.01, 2.01, 7.01  10-K      | 1, 2, 3  10-K/10-Q | PartI 1, PartII 2    :::tip  For best results, ensure the item number matches exactly with the filing's structure.  :::
+Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.  ### Item Number Format  Form Type | Item Format Examples -----------|------------------- 8-K       | 1.01, 2.01, 7.01 10-K      | 1, 2, 3 10-K/10-Q | PartI 1, PartII 2  :::tip For best results, ensure the item number matches exactly with the filing's structure. :::
 
 ### Example
 ```perl
 use Data::Dumper;
 use WWW::OpenAPIClient::ContentExtractionApi;
 my $api_instance = WWW::OpenAPIClient::ContentExtractionApi->new(
+
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $accession_number = "accession_number_example"; # string | The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -102,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

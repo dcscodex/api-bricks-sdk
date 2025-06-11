@@ -13,13 +13,23 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Full-text search of SEC filing documents
 
-Search across SEC filing documents with advanced filtering and sorting capabilities.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FormType | Type of the filing document  FilingDate | Date when filing was submitted  CompanyName | Name of the company  CIK | Central Index Key  DocumentFilename | Name of the filing document  DocumentDescription | Description of the document    ### Search Options    Option | Description  --------|-------------  text_contains | Keywords that must appear in the document  text_not_contain | Keywords that must not appear in the document    ### Date Format  All dates must be provided in YYYY-MM-DD format    :::tip  Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches  :::    :::note  The search is case-insensitive and supports partial word matches  :::
+Search across SEC filing documents with advanced filtering and sorting capabilities.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FormType | Type of the filing document FilingDate | Date when filing was submitted CompanyName | Name of the company CIK | Central Index Key DocumentFilename | Name of the filing document DocumentDescription | Description of the document  ### Search Options  Option | Description --------|------------- text_contains | Keywords that must appear in the document text_not_contain | Keywords that must not appear in the document  ### Date Format All dates must be provided in YYYY-MM-DD format  :::tip Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches :::  :::note The search is case-insensitive and supports partial word matches :::
 
 ### Examples
 
 ```ruby
 require 'time'
 require 'openapi_client'
+# setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
 
 api_instance = OpenapiClient::FullTextSearchApi.new
 opts = {
@@ -81,7 +91,7 @@ end
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

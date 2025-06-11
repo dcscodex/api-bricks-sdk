@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Example
 ```R
@@ -35,6 +35,10 @@ var_sort_by <- DTO.FilingSortBy$new() # DTOFilingSortBy | Field to sort results 
 var_sort_order <- "desc" # character | Sort order (asc or desc, default: desc) (Optional)
 
 api_instance <- FilingMetadataApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1FilingsGet(cik = var_cik, ticker = var_ticker, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_orderdata_file = "result.txt")
 result <- api_instance$V1FilingsGet(cik = var_cik, ticker = var_ticker, form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, report_date_start = var_report_date_start, report_date_end = var_report_date_end, items_contain = var_items_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_order)
@@ -64,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

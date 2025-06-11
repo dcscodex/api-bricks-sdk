@@ -13,13 +13,23 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Examples
 
 ```ruby
 require 'time'
 require 'openapi_client'
+# setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
 
 api_instance = OpenapiClient::FilingMetadataApi.new
 opts = {
@@ -87,7 +97,7 @@ end
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -1,4 +1,4 @@
-# RestApi.DTOSecFilingResultDto
+# FinFeedApiSecRestApi.DTOSecFilingResultDto
 
 ## Properties
 

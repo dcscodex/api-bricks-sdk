@@ -1,6 +1,6 @@
 # DTOFilingMetadataDto
 
-Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
 
 ## Properties
 

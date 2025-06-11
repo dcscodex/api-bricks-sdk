@@ -16,7 +16,7 @@ v1ExtractorGet($accession_number, $type): array<string,mixed>
 
 Extract and classify SEC filing content
 
-Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
+Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.  ### Supported Form Types  Form Type | Description ----------|------------ 8-K      | Current report filing 10-K     | Annual report filing 10-Q     | Quarterly report filing  ### Content Classification - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01) - 10-K/10-Q forms: Items categorized by their respective part and item structure  :::note Both HTML and plain text documents are supported for content extraction. :::
 
 ### Example
 
@@ -25,11 +25,20 @@ Retrieves filing content from the EDGAR database and intelligently classifies it
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure Bearer (JWT) authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\ContentExtractionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $accession_number = 'accession_number_example'; // string | The SEC filing accession number used to retrieve the filing from EDGAR database.
 $type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\DTOExtractorType(); // \OpenAPI\Client\Model\DTOExtractorType | Result type (text or html, default: text)
@@ -55,7 +64,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 
@@ -74,7 +83,7 @@ v1ExtractorItemGet($accession_number, $item_number, $type): string
 
 Extract specific item content from SEC filing
 
-Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.    ### Item Number Format    Form Type | Item Format Examples  -----------|-------------------  8-K       | 1.01, 2.01, 7.01  10-K      | 1, 2, 3  10-K/10-Q | PartI 1, PartII 2    :::tip  For best results, ensure the item number matches exactly with the filing's structure.  :::
+Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.  ### Item Number Format  Form Type | Item Format Examples -----------|------------------- 8-K       | 1.01, 2.01, 7.01 10-K      | 1, 2, 3 10-K/10-Q | PartI 1, PartII 2  :::tip For best results, ensure the item number matches exactly with the filing's structure. :::
 
 ### Example
 
@@ -83,11 +92,20 @@ Retrieves filing content from the EDGAR database and returns only the text conte
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: APIKey
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure Bearer (JWT) authorization: JWT
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\ContentExtractionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $accession_number = 'accession_number_example'; // string | The SEC filing accession number used to retrieve the filing from EDGAR database.
 $item_number = 'item_number_example'; // string | The specific item number to extract (e.g., \"1.01\", \"2.01\", \"7.01\").
@@ -115,7 +133,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[APIKey](../../README.md#APIKey), [JWT](../../README.md#JWT)
 
 ### HTTP request headers
 

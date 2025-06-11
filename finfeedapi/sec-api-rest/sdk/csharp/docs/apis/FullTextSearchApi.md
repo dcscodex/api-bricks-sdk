@@ -12,7 +12,7 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Full-text search of SEC filing documents
 
-Search across SEC filing documents with advanced filtering and sorting capabilities.    ### Available Sort Fields    Field Name | Description  - -- -- -- -- --|- -- -- -- -- -- --  AccessionNumber | SEC filing accession number  FormType | Type of the filing document  FilingDate | Date when filing was submitted  CompanyName | Name of the company  CIK | Central Index Key  DocumentFilename | Name of the filing document  DocumentDescription | Description of the document    ### Search Options    Option | Description  - -- -- -- -|- -- -- -- -- -- --  text_contains | Keywords that must appear in the document  text_not_contain | Keywords that must not appear in the document    ### Date Format  All dates must be provided in YYYY-MM-DD format    :::tip  Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches  :::    :::note  The search is case-insensitive and supports partial word matches  :::
+Search across SEC filing documents with advanced filtering and sorting capabilities.  ### Available Sort Fields  Field Name | Description - -- -- -- -- --|- -- -- -- -- -- -- AccessionNumber | SEC filing accession number FormType | Type of the filing document FilingDate | Date when filing was submitted CompanyName | Name of the company CIK | Central Index Key DocumentFilename | Name of the filing document DocumentDescription | Description of the document  ### Search Options  Option | Description - -- -- -- -|- -- -- -- -- -- -- text_contains | Keywords that must appear in the document text_not_contain | Keywords that must not appear in the document  ### Date Format All dates must be provided in YYYY-MM-DD format  :::tip Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches :::  :::note The search is case-insensitive and supports partial word matches :::
 
 ### Example
 ```csharp
@@ -30,6 +30,13 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.sec.finfeedapi.com";
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
             var apiInstance = new FullTextSearchApi(config);
             var formType = "formType_example";  // string | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated (optional) 
             var fillingDateStart = "fillingDateStart_example";  // string | Filter by filling date start (inclusive), format YYYY-MM-DD (optional) 
@@ -98,7 +105,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

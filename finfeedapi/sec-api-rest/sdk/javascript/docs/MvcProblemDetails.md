@@ -1,4 +1,4 @@
-# RestApi.MvcProblemDetails
+# FinFeedApiSecRestApi.MvcProblemDetails
 
 ## Properties
 

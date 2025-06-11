@@ -13,6 +13,6 @@
   {modules, []},
 
   {maintainers, []},
-  {licenses, []},
-  {links, ["https://www.finfeedapi.com"]}
+  {licenses, ["MIT License"]},
+  {links, ["https://www.coinapi.io"]}
 ]}.

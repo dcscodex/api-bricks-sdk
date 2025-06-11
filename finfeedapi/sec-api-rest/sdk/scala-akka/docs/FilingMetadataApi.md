@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Example
 
@@ -37,6 +37,12 @@ object Example extends App {
     
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
+    
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = FilingMetadataApi("https://api.sec.finfeedapi.com")
@@ -112,7 +118,7 @@ ApiRequest[[**Seq[FilingMetadataDto]**](FilingMetadataDto.md)]
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

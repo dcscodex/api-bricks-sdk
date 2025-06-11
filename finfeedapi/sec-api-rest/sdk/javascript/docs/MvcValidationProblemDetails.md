@@ -1,4 +1,4 @@
-# RestApi.MvcValidationProblemDetails
+# FinFeedApiSecRestApi.MvcValidationProblemDetails
 
 ## Properties
 

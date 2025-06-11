@@ -3,7 +3,7 @@ private class OASFilingMetadataApiTest {
     /**
      * Query SEC filing metadata
      *
-     * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.\r\n\r\n### Available Sort Fields\r\n\r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing accession number\r\nFilingDate | Date when filing was submitted\r\nAcceptanceDateTime | Date and time of filing acceptance\r\nReportDate | Date of the report\r\nSize | Size of the filing document\r\n\r\n### Date Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n### Form Types\r\nForm types can be provided as comma-separated values, e.g.: &quot;10-K,8-K,10-Q&quot;\r\n\r\n:::tip\r\nFor optimal performance, use date ranges and form types to narrow down your search\r\n:::
+     * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.\n\n### Available Sort Fields\n\nField Name | Description\n-----------|-------------\nAccessionNumber | SEC filing accession number\nFilingDate | Date when filing was submitted\nAcceptanceDateTime | Date and time of filing acceptance\nReportDate | Date of the report\nSize | Size of the filing document\n\n### Date Format\nAll dates must be provided in YYYY-MM-DD format\n\n### Form Types\nForm types can be provided as comma-separated values, e.g.: &quot;10-K,8-K,10-Q&quot;\n\n:::tip\nFor optimal performance, use date ranges and form types to narrow down your search\n:::
      */
     @isTest
     private static void v1FilingsGetTest() {
@@ -33,7 +33,10 @@ private class OASFilingMetadataApiTest {
         List<OASDTOFilingMetadataDto> expectedResponse;
         String js = '';
 
-        api = new OASFilingMetadataApi(new OASClient());
+        client = new OASClient();
+        api = new OASFilingMetadataApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
 
         js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -42,12 +45,39 @@ private class OASFilingMetadataApiTest {
         response = (List<OASDTOFilingMetadataDto>) api.v1FilingsGet(params);
         System.assertEquals(expectedResponse, response);
 
+
         js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()};
         response = (List<OASDTOFilingMetadataDto>) api.v1FilingsGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()};
+        response = (List<OASDTOFilingMetadataDto>) api.v1FilingsGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASFilingMetadataApi(client);
+
+        js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()};
+        response = (List<OASDTOFilingMetadataDto>) api.v1FilingsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()};
+        response = (List<OASDTOFilingMetadataDto>) api.v1FilingsGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(new List<OASDTOFilingMetadataDto>{OASDTOFilingMetadataDto.getExample()});
         res.setHeader('Content-Type', 'application/json');

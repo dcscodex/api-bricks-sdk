@@ -12,7 +12,7 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  - -- -- -- -- --|- -- -- -- -- -- --  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description - -- -- -- -- --|- -- -- -- -- -- -- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Example
 ```csharp
@@ -30,6 +30,13 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.sec.finfeedapi.com";
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
             var apiInstance = new FilingMetadataApi(config);
             var cik = 789L;  // long | Filter by Central Index Key (CIK) (optional) 
             var ticker = "ticker_example";  // string | Filter by stock ticker symbol (optional) 
@@ -104,7 +111,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

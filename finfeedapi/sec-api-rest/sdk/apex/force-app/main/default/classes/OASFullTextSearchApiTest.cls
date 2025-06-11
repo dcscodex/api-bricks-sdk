@@ -3,7 +3,7 @@ private class OASFullTextSearchApiTest {
     /**
      * Full-text search of SEC filing documents
      *
-     * Search across SEC filing documents with advanced filtering and sorting capabilities.\r\n\r\n### Available Sort Fields\r\n\r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing accession number\r\nFormType | Type of the filing document\r\nFilingDate | Date when filing was submitted\r\nCompanyName | Name of the company\r\nCIK | Central Index Key\r\nDocumentFilename | Name of the filing document\r\nDocumentDescription | Description of the document\r\n\r\n### Search Options\r\n\r\nOption | Description\r\n--------|-------------\r\ntext_contains | Keywords that must appear in the document\r\ntext_not_contain | Keywords that must not appear in the document\r\n\r\n### Date Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n:::tip\r\nUse text_contains and text_not_contain with multiple keywords separated by commas for more precise searches\r\n:::\r\n\r\n:::note\r\nThe search is case-insensitive and supports partial word matches\r\n:::
+     * Search across SEC filing documents with advanced filtering and sorting capabilities.\n\n### Available Sort Fields\n\nField Name | Description\n-----------|-------------\nAccessionNumber | SEC filing accession number\nFormType | Type of the filing document\nFilingDate | Date when filing was submitted\nCompanyName | Name of the company\nCIK | Central Index Key\nDocumentFilename | Name of the filing document\nDocumentDescription | Description of the document\n\n### Search Options\n\nOption | Description\n--------|-------------\ntext_contains | Keywords that must appear in the document\ntext_not_contain | Keywords that must not appear in the document\n\n### Date Format\nAll dates must be provided in YYYY-MM-DD format\n\n:::tip\nUse text_contains and text_not_contain with multiple keywords separated by commas for more precise searches\n:::\n\n:::note\nThe search is case-insensitive and supports partial word matches\n:::
      */
     @isTest
     private static void v1FullTextGetTest() {
@@ -30,7 +30,10 @@ private class OASFullTextSearchApiTest {
         List<OASDTOSecFilingResultDto> expectedResponse;
         String js = '';
 
-        api = new OASFullTextSearchApi(new OASClient());
+        client = new OASClient();
+        api = new OASFullTextSearchApi(client);
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
+
 
         js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -39,12 +42,39 @@ private class OASFullTextSearchApiTest {
         response = (List<OASDTOSecFilingResultDto>) api.v1FullTextGet(params);
         System.assertEquals(expectedResponse, response);
 
+
         js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
         expectedResponse = new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()};
         response = (List<OASDTOSecFilingResultDto>) api.v1FullTextGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()};
+        response = (List<OASDTOSecFilingResultDto>) api.v1FullTextGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASFullTextSearchApi(client);
+
+        js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()};
+        response = (List<OASDTOSecFilingResultDto>) api.v1FullTextGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()};
+        response = (List<OASDTOSecFilingResultDto>) api.v1FullTextGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(new List<OASDTOSecFilingResultDto>{OASDTOSecFilingResultDto.getExample()});
         res.setHeader('Content-Type', 'application/json');

@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ * Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  *
  * @param cik 
  * @param accessionNumber 

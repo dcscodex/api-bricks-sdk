@@ -1,4 +1,4 @@
-# RestApi.FullTextSearchApi
+# FinFeedApiSecRestApi.FullTextSearchApi
 
 All URIs are relative to *https://api.sec.finfeedapi.com*
 
@@ -14,14 +14,23 @@ Method | HTTP request | Description
 
 Full-text search of SEC filing documents
 
-Search across SEC filing documents with advanced filtering and sorting capabilities.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FormType | Type of the filing document  FilingDate | Date when filing was submitted  CompanyName | Name of the company  CIK | Central Index Key  DocumentFilename | Name of the filing document  DocumentDescription | Description of the document    ### Search Options    Option | Description  --------|-------------  text_contains | Keywords that must appear in the document  text_not_contain | Keywords that must not appear in the document    ### Date Format  All dates must be provided in YYYY-MM-DD format    :::tip  Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches  :::    :::note  The search is case-insensitive and supports partial word matches  :::
+Search across SEC filing documents with advanced filtering and sorting capabilities.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FormType | Type of the filing document FilingDate | Date when filing was submitted CompanyName | Name of the company CIK | Central Index Key DocumentFilename | Name of the filing document DocumentDescription | Description of the document  ### Search Options  Option | Description --------|------------- text_contains | Keywords that must appear in the document text_not_contain | Keywords that must not appear in the document  ### Date Format All dates must be provided in YYYY-MM-DD format  :::tip Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches :::  :::note The search is case-insensitive and supports partial word matches :::
 
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
+import FinFeedApiSecRestApi from 'fin_feed_api_sec_rest_api';
+let defaultClient = FinFeedApiSecRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.FullTextSearchApi();
+let apiInstance = new FinFeedApiSecRestApi.FullTextSearchApi();
 let opts = {
   'formType': "formType_example", // String | Filter by form type (e.g., \"10-K\", \"8-K\"). Multiple values can be comma-separated
   'fillingDateStart': "fillingDateStart_example", // String | Filter by filling date start (inclusive), format YYYY-MM-DD
@@ -63,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -7,6 +7,6 @@ import Config
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
 
-if base_url = System.get_env("RESTAPI_BASE_URI") do
-  config :restapi, base_url: base_url
+if base_url = System.get_env("FIN_FEED_APISECRESTAPI_BASE_URI") do
+  config :fin_feed_apisecrestapi, base_url: base_url
 end

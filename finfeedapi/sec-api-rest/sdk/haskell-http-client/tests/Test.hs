@@ -12,8 +12,8 @@ import Test.Hspec.QuickCheck
 import PropMime
 import Instances ()
 
-import REST.Model
-import REST.MimeTypes
+import FinFeedAPISECREST.Model
+import FinFeedAPISECREST.MimeTypes
 
 main :: IO ()
 main =

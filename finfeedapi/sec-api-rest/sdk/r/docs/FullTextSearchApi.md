@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Full-text search of SEC filing documents
 
-Search across SEC filing documents with advanced filtering and sorting capabilities.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FormType | Type of the filing document  FilingDate | Date when filing was submitted  CompanyName | Name of the company  CIK | Central Index Key  DocumentFilename | Name of the filing document  DocumentDescription | Description of the document    ### Search Options    Option | Description  --------|-------------  text_contains | Keywords that must appear in the document  text_not_contain | Keywords that must not appear in the document    ### Date Format  All dates must be provided in YYYY-MM-DD format    :::tip  Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches  :::    :::note  The search is case-insensitive and supports partial word matches  :::
+Search across SEC filing documents with advanced filtering and sorting capabilities.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FormType | Type of the filing document FilingDate | Date when filing was submitted CompanyName | Name of the company CIK | Central Index Key DocumentFilename | Name of the filing document DocumentDescription | Description of the document  ### Search Options  Option | Description --------|------------- text_contains | Keywords that must appear in the document text_not_contain | Keywords that must not appear in the document  ### Date Format All dates must be provided in YYYY-MM-DD format  :::tip Use text_contains and text_not_contain with multiple keywords separated by commas for more precise searches :::  :::note The search is case-insensitive and supports partial word matches :::
 
 ### Example
 ```R
@@ -32,6 +32,10 @@ var_sort_by <- "AccessionNumber" # character | Field to sort by (default: Access
 var_sort_order <- "asc" # character | Sort order (asc or desc). Defaults to asc (Optional)
 
 api_instance <- FullTextSearchApi$new()
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1FullTextGet(form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, text_contains = var_text_contains, text_not_contain = var_text_not_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_orderdata_file = "result.txt")
 result <- api_instance$V1FullTextGet(form_type = var_form_type, filling_date_start = var_filling_date_start, filling_date_end = var_filling_date_end, text_contains = var_text_contains, text_not_contain = var_text_not_contain, page_size = var_page_size, page_number = var_page_number, sort_by = var_sort_by, sort_order = var_sort_order)
@@ -58,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

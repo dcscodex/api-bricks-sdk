@@ -14,7 +14,7 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Extract and classify SEC filing content
 
-Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
+Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.  ### Supported Form Types  Form Type | Description ----------|------------ 8-K      | Current report filing 10-K     | Annual report filing 10-Q     | Quarterly report filing  ### Content Classification - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01) - 10-K/10-Q forms: Items categorized by their respective part and item structure  :::note Both HTML and plain text documents are supported for content extraction. :::
 
 ### Example
 ```java
@@ -22,6 +22,7 @@ Retrieves filing content from the EDGAR database and intelligently classifies it
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
 import org.openapitools.client.api.ContentExtractionApi;
 
@@ -29,6 +30,16 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.sec.finfeedapi.com");
+    
+    // Configure API key authorization: APIKey
+    ApiKeyAuth APIKey = (ApiKeyAuth) defaultClient.getAuthentication("APIKey");
+    APIKey.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //APIKey.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: JWT
+    HttpBearerAuth JWT = (HttpBearerAuth) defaultClient.getAuthentication("JWT");
+    JWT.setBearerToken("BEARER TOKEN");
 
     ContentExtractionApi apiInstance = new ContentExtractionApi(defaultClient);
     String accessionNumber = "accessionNumber_example"; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -60,7 +71,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -81,7 +92,7 @@ No authorization required
 
 Extract specific item content from SEC filing
 
-Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.    ### Item Number Format    Form Type | Item Format Examples  -----------|-------------------  8-K       | 1.01, 2.01, 7.01  10-K      | 1, 2, 3  10-K/10-Q | PartI 1, PartII 2    :::tip  For best results, ensure the item number matches exactly with the filing&#39;s structure.  :::
+Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.  ### Item Number Format  Form Type | Item Format Examples -----------|------------------- 8-K       | 1.01, 2.01, 7.01 10-K      | 1, 2, 3 10-K/10-Q | PartI 1, PartII 2  :::tip For best results, ensure the item number matches exactly with the filing&#39;s structure. :::
 
 ### Example
 ```java
@@ -89,6 +100,7 @@ Retrieves filing content from the EDGAR database and returns only the text conte
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
 import org.openapitools.client.api.ContentExtractionApi;
 
@@ -96,6 +108,16 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.sec.finfeedapi.com");
+    
+    // Configure API key authorization: APIKey
+    ApiKeyAuth APIKey = (ApiKeyAuth) defaultClient.getAuthentication("APIKey");
+    APIKey.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //APIKey.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: JWT
+    HttpBearerAuth JWT = (HttpBearerAuth) defaultClient.getAuthentication("JWT");
+    JWT.setBearerToken("BEARER TOKEN");
 
     ContentExtractionApi apiInstance = new ContentExtractionApi(defaultClient);
     String accessionNumber = "accessionNumber_example"; // String | The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -129,7 +151,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

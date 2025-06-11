@@ -8,12 +8,12 @@
 
 // Functions for enum  for ContentExtractionAPI_v1ExtractorGet
 
-static char* v1ExtractorGet__ToString(rest_api_v1ExtractorGet_type_e ){
+static char* v1ExtractorGet__ToString(finfeedapi_sec_rest_api_v1ExtractorGet_type_e ){
     char *Array[] =  { "NULL", "text", "html" };
     return Array[];
 }
 
-static rest_api_v1ExtractorGet_type_e v1ExtractorGet__FromString(char* ){
+static finfeedapi_sec_rest_api_v1ExtractorGet_type_e v1ExtractorGet__FromString(char* ){
     int stringToReturn = 0;
     char *Array[] =  { "NULL", "text", "html" };
     size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
@@ -30,7 +30,7 @@ static rest_api_v1ExtractorGet_type_e v1ExtractorGet__FromString(char* ){
 // Function v1ExtractorGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *v1ExtractorGet__convertToJSON(rest_api_v1ExtractorGet_type_e ) {
+static cJSON *v1ExtractorGet__convertToJSON(finfeedapi_sec_rest_api_v1ExtractorGet_type_e ) {
     cJSON *item = cJSON_CreateObject();
     return item;
     fail:
@@ -41,8 +41,8 @@ static cJSON *v1ExtractorGet__convertToJSON(rest_api_v1ExtractorGet_type_e ) {
 // Function v1ExtractorGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static rest_api_v1ExtractorGet_type_e v1ExtractorGet__parseFromJSON(cJSON* JSON) {
-    rest_api_v1ExtractorGet_type_e Variable = 0;
+static finfeedapi_sec_rest_api_v1ExtractorGet_type_e v1ExtractorGet__parseFromJSON(cJSON* JSON) {
+    finfeedapi_sec_rest_api_v1ExtractorGet_type_e Variable = 0;
     return Variable;
 end:
     return 0;
@@ -51,12 +51,12 @@ end:
 
 // Functions for enum  for ContentExtractionAPI_v1ExtractorItemGet
 
-static char* v1ExtractorItemGet__ToString(rest_api_v1ExtractorItemGet_type_e ){
+static char* v1ExtractorItemGet__ToString(finfeedapi_sec_rest_api_v1ExtractorItemGet_type_e ){
     char *Array[] =  { "NULL", "text", "html" };
     return Array[];
 }
 
-static rest_api_v1ExtractorItemGet_type_e v1ExtractorItemGet__FromString(char* ){
+static finfeedapi_sec_rest_api_v1ExtractorItemGet_type_e v1ExtractorItemGet__FromString(char* ){
     int stringToReturn = 0;
     char *Array[] =  { "NULL", "text", "html" };
     size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
@@ -73,7 +73,7 @@ static rest_api_v1ExtractorItemGet_type_e v1ExtractorItemGet__FromString(char* )
 // Function v1ExtractorItemGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *v1ExtractorItemGet__convertToJSON(rest_api_v1ExtractorItemGet_type_e ) {
+static cJSON *v1ExtractorItemGet__convertToJSON(finfeedapi_sec_rest_api_v1ExtractorItemGet_type_e ) {
     cJSON *item = cJSON_CreateObject();
     return item;
     fail:
@@ -84,8 +84,8 @@ static cJSON *v1ExtractorItemGet__convertToJSON(rest_api_v1ExtractorItemGet_type
 // Function v1ExtractorItemGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static rest_api_v1ExtractorItemGet_type_e v1ExtractorItemGet__parseFromJSON(cJSON* JSON) {
-    rest_api_v1ExtractorItemGet_type_e Variable = 0;
+static finfeedapi_sec_rest_api_v1ExtractorItemGet_type_e v1ExtractorItemGet__parseFromJSON(cJSON* JSON) {
+    finfeedapi_sec_rest_api_v1ExtractorItemGet_type_e Variable = 0;
     return Variable;
 end:
     return 0;
@@ -95,7 +95,7 @@ end:
 
 // Extract and classify SEC filing content
 //
-// Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
+// Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.  ### Supported Form Types  Form Type | Description ----------|------------ 8-K      | Current report filing 10-K     | Annual report filing 10-Q     | Quarterly report filing  ### Content Classification - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01) - 10-K/10-Q forms: Items categorized by their respective part and item structure  :::note Both HTML and plain text documents are supported for content extraction. :::
 //
 list_t*_t*
 ContentExtractionAPI_v1ExtractorGet(apiClient_t *apiClient, char *accession_number, dto_extractor_type_e type)
@@ -232,7 +232,7 @@ end:
 
 // Extract specific item content from SEC filing
 //
-// Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.    ### Item Number Format    Form Type | Item Format Examples  -----------|-------------------  8-K       | 1.01, 2.01, 7.01  10-K      | 1, 2, 3  10-K/10-Q | PartI 1, PartII 2    :::tip  For best results, ensure the item number matches exactly with the filing's structure.  :::
+// Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.  ### Item Number Format  Form Type | Item Format Examples -----------|------------------- 8-K       | 1.01, 2.01, 7.01 10-K      | 1, 2, 3 10-K/10-Q | PartI 1, PartII 2  :::tip For best results, ensure the item number matches exactly with the filing's structure. :::
 //
 char*
 ContentExtractionAPI_v1ExtractorItemGet(apiClient_t *apiClient, char *accession_number, char *item_number, dto_extractor_type_e type)

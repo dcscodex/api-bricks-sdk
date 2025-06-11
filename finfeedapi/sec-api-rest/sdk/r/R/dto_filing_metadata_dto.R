@@ -1,7 +1,7 @@
 #' Create a new DTOFilingMetadataDto
 #'
 #' @description
-#' Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+#' Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
 #'
 #' @docType class
 #' @title DTOFilingMetadataDto

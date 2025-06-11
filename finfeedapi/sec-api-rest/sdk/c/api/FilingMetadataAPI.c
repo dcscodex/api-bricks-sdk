@@ -8,12 +8,12 @@
 
 // Functions for enum  for FilingMetadataAPI_v1FilingsGet
 
-static char* v1FilingsGet__ToString(rest_api_v1FilingsGet_sort_by_e ){
+static char* v1FilingsGet__ToString(finfeedapi_sec_rest_api_v1FilingsGet_sort_by_e ){
     char *Array[] =  { "NULL", "AccessionNumber", "FilingDate", "ReportDate", "AcceptanceDateTime", "Size" };
     return Array[];
 }
 
-static rest_api_v1FilingsGet_sort_by_e v1FilingsGet__FromString(char* ){
+static finfeedapi_sec_rest_api_v1FilingsGet_sort_by_e v1FilingsGet__FromString(char* ){
     int stringToReturn = 0;
     char *Array[] =  { "NULL", "AccessionNumber", "FilingDate", "ReportDate", "AcceptanceDateTime", "Size" };
     size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
@@ -30,7 +30,7 @@ static rest_api_v1FilingsGet_sort_by_e v1FilingsGet__FromString(char* ){
 // Function v1FilingsGet__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *v1FilingsGet__convertToJSON(rest_api_v1FilingsGet_sort_by_e ) {
+static cJSON *v1FilingsGet__convertToJSON(finfeedapi_sec_rest_api_v1FilingsGet_sort_by_e ) {
     cJSON *item = cJSON_CreateObject();
     return item;
     fail:
@@ -41,8 +41,8 @@ static cJSON *v1FilingsGet__convertToJSON(rest_api_v1FilingsGet_sort_by_e ) {
 // Function v1FilingsGet__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static rest_api_v1FilingsGet_sort_by_e v1FilingsGet__parseFromJSON(cJSON* JSON) {
-    rest_api_v1FilingsGet_sort_by_e Variable = 0;
+static finfeedapi_sec_rest_api_v1FilingsGet_sort_by_e v1FilingsGet__parseFromJSON(cJSON* JSON) {
+    finfeedapi_sec_rest_api_v1FilingsGet_sort_by_e Variable = 0;
     return Variable;
 end:
     return 0;
@@ -52,7 +52,7 @@ end:
 
 // Query SEC filing metadata
 //
-// Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+// Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 //
 list_t*
 FilingMetadataAPI_v1FilingsGet(apiClient_t *apiClient, long cik, char *ticker, char *form_type, char *filling_date_start, char *filling_date_end, char *report_date_start, char *report_date_end, char *items_contain, int *page_size, int *page_number, dto_filing_sort_by_e sort_by, char *sort_order)

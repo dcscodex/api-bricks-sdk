@@ -1,5 +1,5 @@
 /**
- * REST API
+ * FinFeedAPI SEC REST API
  *
  * Contact: support@apibricks.io
  *
@@ -43,7 +43,7 @@ export class FilingMetadataService extends BaseService {
 
     /**
      * Query SEC filing metadata
-     * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+     * Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
      * @param cik Filter by Central Index Key (CIK)
      * @param ticker Filter by stock ticker symbol
      * @param formType Filter by form type(s) (e.g., \&quot;10-K\&quot;, \&quot;8-K\&quot;). Multiple values can be comma-separated
@@ -91,6 +91,12 @@ export class FilingMetadataService extends BaseService {
           <any>sortOrder, 'sort_order');
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'application/json'

@@ -1,4 +1,4 @@
-# RestApi.DTOFilingSortBy
+# FinFeedApiSecRestApi.DTOFilingSortBy
 
 ## Enum
 

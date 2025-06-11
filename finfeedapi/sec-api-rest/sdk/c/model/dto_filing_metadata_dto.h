@@ -1,7 +1,7 @@
 /*
  * dto_filing_metadata_dto.h
  *
- * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ * Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  */
 
 #ifndef _dto_filing_metadata_dto_H_

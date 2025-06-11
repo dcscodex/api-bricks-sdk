@@ -1,7 +1,7 @@
 /*
  * DTO.FilingMetadataDto.h
  *
- * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ * Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  */
 
 #ifndef _DTO.FilingMetadataDto_H_
@@ -21,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+/*! \brief Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  *
  *  \ingroup Models
  *

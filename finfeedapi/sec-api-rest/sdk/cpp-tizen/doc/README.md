@@ -1,4 +1,4 @@
-# Documentation for REST API v1 Tizen Client SDK
+# Documentation for FinFeedAPI SEC REST API v1 Tizen Client SDK
 
 ## How do I get the doc files?
 First generate source code by running `openapi-generator`
@@ -16,7 +16,7 @@ This is the structure of the doc folder:
 ├── Doxyfile                  \\Doxygen config files
 ├── generateDocumentation.sh  \\Script to run to generate documentation
 ├── README.md                 \\This file
-├── SDK                       \\Documentation for all classes in REST API Tizen Client SDK. See ./html/index.html
+├── SDK                       \\Documentation for all classes in FinFeedAPI SEC REST API Tizen Client SDK. See ./html/index.html
 │   └── html
 
 ```
@@ -73,7 +73,7 @@ Method | HTTP request | Description
 Class | Description
 ------------- | -------------
  *DTO.ExtractorType* | 
- *DTO.FilingMetadataDto* | Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ *DTO.FilingMetadataDto* | Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  *DTO.FilingSortBy* | Defines sorting options for the filing query.
  *DTO.SecFilingResultDto* | 
  *Mvc.ProblemDetails* | 

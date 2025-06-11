@@ -1,5 +1,5 @@
 /**
- * REST API
+ * FinFeedAPI SEC REST API
  *
  * Contact: support@apibricks.io
  *
@@ -10,7 +10,7 @@
 
 
 /**
- * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ * Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  */
 export interface DTOFilingMetadataDto { 
     cik?: number;

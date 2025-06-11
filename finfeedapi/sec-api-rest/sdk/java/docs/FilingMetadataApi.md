@@ -13,7 +13,7 @@ All URIs are relative to *https://api.sec.finfeedapi.com*
 
 Query SEC filing metadata
 
-Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.    ### Available Sort Fields    Field Name | Description  -----------|-------------  AccessionNumber | SEC filing accession number  FilingDate | Date when filing was submitted  AcceptanceDateTime | Date and time of filing acceptance  ReportDate | Date of the report  Size | Size of the filing document    ### Date Format  All dates must be provided in YYYY-MM-DD format    ### Form Types  Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;    :::tip  For optimal performance, use date ranges and form types to narrow down your search  :::
+Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.  ### Available Sort Fields  Field Name | Description -----------|------------- AccessionNumber | SEC filing accession number FilingDate | Date when filing was submitted AcceptanceDateTime | Date and time of filing acceptance ReportDate | Date of the report Size | Size of the filing document  ### Date Format All dates must be provided in YYYY-MM-DD format  ### Form Types Form types can be provided as comma-separated values, e.g.: \&quot;10-K,8-K,10-Q\&quot;  :::tip For optimal performance, use date ranges and form types to narrow down your search :::
 
 ### Example
 ```java
@@ -21,6 +21,7 @@ Retrieves metadata for SEC filings based on various filter criteria with paginat
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
 import org.openapitools.client.api.FilingMetadataApi;
 
@@ -28,6 +29,16 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.sec.finfeedapi.com");
+    
+    // Configure API key authorization: APIKey
+    ApiKeyAuth APIKey = (ApiKeyAuth) defaultClient.getAuthentication("APIKey");
+    APIKey.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //APIKey.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: JWT
+    HttpBearerAuth JWT = (HttpBearerAuth) defaultClient.getAuthentication("JWT");
+    JWT.setBearerToken("BEARER TOKEN");
 
     FilingMetadataApi apiInstance = new FilingMetadataApi(defaultClient);
     Long cik = 56L; // Long | Filter by Central Index Key (CIK)
@@ -79,7 +90,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

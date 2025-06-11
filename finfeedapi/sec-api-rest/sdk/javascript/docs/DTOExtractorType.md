@@ -1,4 +1,4 @@
-# RestApi.DTOExtractorType
+# FinFeedApiSecRestApi.DTOExtractorType
 
 ## Enum
 

@@ -1,7 +1,7 @@
 goog.provide('API.Client.DTO.FilingMetadataDto');
 
 /**
- * Represents the response for a single SEC filing metadata record.  Maps fields from the edgar_submissions table.
+ * Represents the response for a single SEC filing metadata record. Maps fields from the edgar_submissions table.
  * @record
  */
 API.Client.DTOFilingMetadataDto = function() {}

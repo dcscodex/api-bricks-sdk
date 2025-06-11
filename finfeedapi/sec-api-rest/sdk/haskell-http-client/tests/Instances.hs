@@ -3,8 +3,8 @@
 
 module Instances where
 
-import REST.Model
-import REST.Core
+import FinFeedAPISECREST.Model
+import FinFeedAPISECREST.Core
 
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy as BL

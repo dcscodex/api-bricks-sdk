@@ -15,7 +15,7 @@ import Test.QuickCheck
 import Test.QuickCheck.Property
 import Test.Hspec.QuickCheck (prop)
 
-import REST.MimeTypes
+import FinFeedAPISECREST.MimeTypes
 
 import ApproxEq
 

@@ -102,9 +102,9 @@ constructor({ accessToken, apiKeys, basePath, credentials, encodeParam, encoder,
             };
         }
 
-        // init default Bearer credential
-        if (!this.credentials['Bearer']) {
-            this.credentials['Bearer'] = () => {
+        // init default JWT credential
+        if (!this.credentials['JWT']) {
+            this.credentials['JWT'] = () => {
                 return typeof this.accessToken === 'function'
                     ? this.accessToken()
                     : this.accessToken;

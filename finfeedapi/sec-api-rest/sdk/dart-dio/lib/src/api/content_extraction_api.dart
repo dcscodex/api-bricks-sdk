@@ -24,7 +24,7 @@ class ContentExtractionApi {
   const ContentExtractionApi(this._dio, this._serializers);
 
   /// Extract and classify SEC filing content
-  /// Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.    ### Supported Form Types    Form Type | Description  ----------|------------  8-K      | Current report filing  10-K     | Annual report filing  10-Q     | Quarterly report filing    ### Content Classification  - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)  - 10-K/10-Q forms: Items categorized by their respective part and item structure    :::note  Both HTML and plain text documents are supported for content extraction.  :::
+  /// Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.  ### Supported Form Types  Form Type | Description ----------|------------ 8-K      | Current report filing 10-K     | Annual report filing 10-Q     | Quarterly report filing  ### Content Classification - 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01) - 10-K/10-Q forms: Items categorized by their respective part and item structure  :::note Both HTML and plain text documents are supported for content extraction. :::
   ///
   /// Parameters:
   /// * [accessionNumber] - The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -55,7 +55,18 @@ class ContentExtractionApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'JWT',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,
@@ -107,7 +118,7 @@ class ContentExtractionApi {
   }
 
   /// Extract specific item content from SEC filing
-  /// Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.    ### Item Number Format    Form Type | Item Format Examples  -----------|-------------------  8-K       | 1.01, 2.01, 7.01  10-K      | 1, 2, 3  10-K/10-Q | PartI 1, PartII 2    :::tip  For best results, ensure the item number matches exactly with the filing&#39;s structure.  :::
+  /// Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.  ### Item Number Format  Form Type | Item Format Examples -----------|------------------- 8-K       | 1.01, 2.01, 7.01 10-K      | 1, 2, 3 10-K/10-Q | PartI 1, PartII 2  :::tip For best results, ensure the item number matches exactly with the filing&#39;s structure. :::
   ///
   /// Parameters:
   /// * [accessionNumber] - The SEC filing accession number used to retrieve the filing from EDGAR database.
@@ -140,7 +151,18 @@ class ContentExtractionApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'JWT',
+          },
+        ],
         ...?extra,
       },
       validateStatus: validateStatus,

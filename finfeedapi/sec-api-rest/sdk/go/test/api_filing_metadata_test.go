@@ -1,5 +1,5 @@
 /*
-REST API
+FinFeedAPI SEC REST API
 
 Testing FilingMetadataAPIService
 

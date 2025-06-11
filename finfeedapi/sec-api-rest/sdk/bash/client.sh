@@ -13,10 +13,10 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for REST API.
+# This is a Bash client for FinFeedAPI SEC REST API.
 #
 # LICENSE:
-# 
+# https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
 #
 # CONTACT:
 # support@apibricks.io
@@ -569,7 +569,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}FinFeedAPI SEC REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -605,26 +605,26 @@ EOF
     echo ""
     echo -e "${BOLD}${WHITE}[contentExtraction]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1ExtractorGet${OFF};Extract and classify SEC filing content
-  ${CYAN}v1ExtractorItemGet${OFF};Extract specific item content from SEC filing
+  ${CYAN}v1ExtractorGet${OFF};Extract and classify SEC filing content (AUTH) (AUTH)
+  ${CYAN}v1ExtractorItemGet${OFF};Extract specific item content from SEC filing (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[filingMetadata]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1FilingsGet${OFF};Query SEC filing metadata
+  ${CYAN}v1FilingsGet${OFF};Query SEC filing metadata (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[fullTextSearch]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1FullTextGet${OFF};Full-text search of SEC filing documents
+  ${CYAN}v1FullTextGet${OFF};Full-text search of SEC filing documents (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[xBRLConversion]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1XbrlConverterGet${OFF};Convert XBRL data to JSON format
+  ${CYAN}v1XbrlConverterGet${OFF};Convert XBRL data to JSON format (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -654,9 +654,9 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://api.sec.finfeedapi.com')"
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}FinFeedAPI SEC REST API command line client (API version v1)${OFF}"
     echo ""
-    echo -e "License: "
+    echo -e "License: MIT License"
     echo -e "Contact: support@apibricks.io"
     echo ""
 read -r -d '' appdescription <<EOF
@@ -674,7 +674,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}FinFeedAPI SEC REST API command line client (API version v1)${OFF}"
     echo ""
 }
 
@@ -685,7 +685,7 @@ print_version() {
 ##############################################################################
 print_v1ExtractorGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExtractorGet - Extract and classify SEC filing content${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExtractorGet - Extract and classify SEC filing content${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.
 
@@ -728,7 +728,7 @@ Both HTML and plain text documents are supported for content extraction.
 ##############################################################################
 print_v1ExtractorItemGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExtractorItemGet - Extract specific item content from SEC filing${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExtractorItemGet - Extract specific item content from SEC filing${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.
 
@@ -769,7 +769,7 @@ For best results, ensure the item number matches exactly with the filing's struc
 ##############################################################################
 print_v1FilingsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1FilingsGet - Query SEC filing metadata${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1FilingsGet - Query SEC filing metadata${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.
 
@@ -834,7 +834,7 @@ For optimal performance, use date ranges and form types to narrow down your sear
 ##############################################################################
 print_v1FullTextGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1FullTextGet - Full-text search of SEC filing documents${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1FullTextGet - Full-text search of SEC filing documents${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Search across SEC filing documents with advanced filtering and sorting capabilities.
 
@@ -903,7 +903,7 @@ The search is case-insensitive and supports partial word matches
 ##############################################################################
 print_v1XbrlConverterGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1XbrlConverterGet - Convert XBRL data to JSON format${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1XbrlConverterGet - Convert XBRL data to JSON format${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Converts XBRL data to JSON format using one of three possible input methods.
 
@@ -996,7 +996,7 @@ call_v1ExtractorGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(accession_number type)
+    local query_parameter_names=(accession_number type    )
     local path
 
     if ! path=$(build_request_path "/v1/extractor" path_parameter_names query_parameter_names); then
@@ -1032,7 +1032,7 @@ call_v1ExtractorItemGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(accession_number item_number type)
+    local query_parameter_names=(accession_number item_number type    )
     local path
 
     if ! path=$(build_request_path "/v1/extractor/item" path_parameter_names query_parameter_names); then
@@ -1068,7 +1068,7 @@ call_v1FilingsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(cik ticker form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order)
+    local query_parameter_names=(cik ticker form_type filling_date_start filling_date_end report_date_start report_date_end items_contain page_size page_number sort_by sort_order    )
     local path
 
     if ! path=$(build_request_path "/v1/filings" path_parameter_names query_parameter_names); then
@@ -1104,7 +1104,7 @@ call_v1FullTextGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(form_type filling_date_start filling_date_end text_contains text_not_contain page_size page_number sort_by sort_order)
+    local query_parameter_names=(form_type filling_date_start filling_date_end text_contains text_not_contain page_size page_number sort_by sort_order    )
     local path
 
     if ! path=$(build_request_path "/v1/full-text" path_parameter_names query_parameter_names); then
@@ -1140,7 +1140,7 @@ call_v1XbrlConverterGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(htm-url xbrl-url accession-no)
+    local query_parameter_names=(htm-url xbrl-url accession-no    )
     local path
 
     if ! path=$(build_request_path "/v1/xbrl-converter" path_parameter_names query_parameter_names); then

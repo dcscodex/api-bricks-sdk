@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
-  title: REST API
+  title: FinFeedAPI SEC REST API
   contact:
     name: API BRICKS LTD
-    url: https://www.finfeedapi.com
+    url: https://www.coinapi.io
     email: support@apibricks.io
+  license:
+    name: MIT License
+    url: https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
   version: v1
 servers:
   - url: https://api.sec.finfeedapi.com
@@ -14,7 +17,7 @@ paths:
       tags:
         - Content Extraction
       summary: Extract and classify SEC filing content
-      description: "Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.\r\n\r\n### Supported Form Types\r\n\r\nForm Type | Description\r\n----------|------------\r\n8-K      | Current report filing\r\n10-K     | Annual report filing\r\n10-Q     | Quarterly report filing\r\n\r\n### Content Classification\r\n- 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)\r\n- 10-K/10-Q forms: Items categorized by their respective part and item structure\r\n\r\n:::note\r\nBoth HTML and plain text documents are supported for content extraction.\r\n:::"
+      description: "Retrieves filing content from the EDGAR database and intelligently classifies it according to form type and item categories.\n\n### Supported Form Types\n\nForm Type | Description\n----------|------------\n8-K      | Current report filing\n10-K     | Annual report filing\n10-Q     | Quarterly report filing\n\n### Content Classification\n- 8-K forms: Content classified by item numbers (e.g., 1.01, 2.01)\n- 10-K/10-Q forms: Items categorized by their respective part and item structure\n\n:::note\nBoth HTML and plain text documents are supported for content extraction.\n:::"
       parameters:
         - name: accession_number
           in: query
@@ -77,7 +80,7 @@ paths:
       tags:
         - Content Extraction
       summary: Extract specific item content from SEC filing
-      description: "Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.\r\n\r\n### Item Number Format\r\n\r\nForm Type | Item Format Examples\r\n-----------|-------------------\r\n8-K       | 1.01, 2.01, 7.01\r\n10-K      | 1, 2, 3\r\n10-K/10-Q | PartI 1, PartII 2\r\n\r\n:::tip\r\nFor best results, ensure the item number matches exactly with the filing's structure.\r\n:::"
+      description: "Retrieves filing content from the EDGAR database and returns only the text content of the specified item number.\n\n### Item Number Format\n\nForm Type | Item Format Examples\n-----------|-------------------\n8-K       | 1.01, 2.01, 7.01\n10-K      | 1, 2, 3\n10-K/10-Q | PartI 1, PartII 2\n\n:::tip\nFor best results, ensure the item number matches exactly with the filing's structure.\n:::"
       parameters:
         - name: accession_number
           in: query
@@ -122,7 +125,7 @@ paths:
       tags:
         - Filing Metadata
       summary: Query SEC filing metadata
-      description: "Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.\r\n\r\n### Available Sort Fields\r\n\r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing accession number\r\nFilingDate | Date when filing was submitted\r\nAcceptanceDateTime | Date and time of filing acceptance\r\nReportDate | Date of the report\r\nSize | Size of the filing document\r\n\r\n### Date Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n### Form Types\r\nForm types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"\r\n\r\n:::tip\r\nFor optimal performance, use date ranges and form types to narrow down your search\r\n:::"
+      description: "Retrieves metadata for SEC filings based on various filter criteria with pagination and sorting support.\n\n### Available Sort Fields\n\nField Name | Description\n-----------|-------------\nAccessionNumber | SEC filing accession number\nFilingDate | Date when filing was submitted\nAcceptanceDateTime | Date and time of filing acceptance\nReportDate | Date of the report\nSize | Size of the filing document\n\n### Date Format\nAll dates must be provided in YYYY-MM-DD format\n\n### Form Types\nForm types can be provided as comma-separated values, e.g.: \"10-K,8-K,10-Q\"\n\n:::tip\nFor optimal performance, use date ranges and form types to narrow down your search\n:::"
       parameters:
         - name: cik
           in: query
@@ -244,7 +247,7 @@ paths:
       tags:
         - Full Text Search
       summary: Full-text search of SEC filing documents
-      description: "Search across SEC filing documents with advanced filtering and sorting capabilities.\r\n\r\n### Available Sort Fields\r\n\r\nField Name | Description\r\n-----------|-------------\r\nAccessionNumber | SEC filing accession number\r\nFormType | Type of the filing document\r\nFilingDate | Date when filing was submitted\r\nCompanyName | Name of the company\r\nCIK | Central Index Key\r\nDocumentFilename | Name of the filing document\r\nDocumentDescription | Description of the document\r\n\r\n### Search Options\r\n\r\nOption | Description\r\n--------|-------------\r\ntext_contains | Keywords that must appear in the document\r\ntext_not_contain | Keywords that must not appear in the document\r\n\r\n### Date Format\r\nAll dates must be provided in YYYY-MM-DD format\r\n\r\n:::tip\r\nUse text_contains and text_not_contain with multiple keywords separated by commas for more precise searches\r\n:::\r\n\r\n:::note\r\nThe search is case-insensitive and supports partial word matches\r\n:::"
+      description: "Search across SEC filing documents with advanced filtering and sorting capabilities.\n\n### Available Sort Fields\n\nField Name | Description\n-----------|-------------\nAccessionNumber | SEC filing accession number\nFormType | Type of the filing document\nFilingDate | Date when filing was submitted\nCompanyName | Name of the company\nCIK | Central Index Key\nDocumentFilename | Name of the filing document\nDocumentDescription | Description of the document\n\n### Search Options\n\nOption | Description\n--------|-------------\ntext_contains | Keywords that must appear in the document\ntext_not_contain | Keywords that must not appear in the document\n\n### Date Format\nAll dates must be provided in YYYY-MM-DD format\n\n:::tip\nUse text_contains and text_not_contain with multiple keywords separated by commas for more precise searches\n:::\n\n:::note\nThe search is case-insensitive and supports partial word matches\n:::"
       parameters:
         - name: form_type
           in: query
@@ -337,7 +340,7 @@ paths:
       tags:
         - XBRL Conversion
       summary: Convert XBRL data to JSON format
-      description: "Converts XBRL data to JSON format using one of three possible input methods.\r\n\r\n### Input Methods\r\n\r\n1. HTML URL (htm-url)\r\n   - URL of the filing ending with .htm or .html\r\n   - Both filing URLs and index page URLs are accepted\r\n   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm\r\n\r\n2. XBRL URL (xbrl-url)\r\n   - URL of the XBRL file ending with .xml\r\n   - Can be found in the dataFiles array from Query API\r\n   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml\r\n\r\n3. Accession Number (accession-no)\r\n   - The SEC filing accession number\r\n   - Example: 0001564590-21-004599\r\n\r\n:::note\r\nOnly one of the three parameters should be provided. If multiple parameters are provided, the priority order is:\r\n1. htm-url\r\n2. xbrl-url\r\n3. accession-no\r\n:::\r\n\r\n### Supported Filing Types\r\n\r\n- Annual Reports (10-K)\r\n- Quarterly Reports (10-Q)\r\n- Current Reports (8-K)\r\n- Registration Statements (S-1, S-3)\r\n- Foreign Private Issuer Reports (20-F, 40-F)\r\n\r\n### Response Format\r\n\r\nThe API returns a JSON object containing:\r\n- Financial statements (Income Statement, Balance Sheet, Cash Flow Statement)\r\n- Accounting policies and footnotes\r\n- Company information\r\n- Filing metadata\r\n\r\n### Example Response\r\n```json\r\n{\r\n  \"StatementsOfIncome\": {\r\n    \"RevenueFromContractWithCustomerExcludingAssessedTax\": [\r\n      {\r\n        \"decimals\": \"-6\",\r\n        \"unitRef\": \"U_USD\",\r\n        \"period\": {\r\n          \"startDate\": \"2023-07-01\",\r\n          \"endDate\": \"2024-06-30\"\r\n        },\r\n        \"value\": \"245122000000\"\r\n      }\r\n    ]\r\n  }\r\n}\r\n```"
+      description: "Converts XBRL data to JSON format using one of three possible input methods.\n\n### Input Methods\n\n1. HTML URL (htm-url)\n   - URL of the filing ending with .htm or .html\n   - Both filing URLs and index page URLs are accepted\n   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm\n\n2. XBRL URL (xbrl-url)\n   - URL of the XBRL file ending with .xml\n   - Can be found in the dataFiles array from Query API\n   - Example: https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231_htm.xml\n\n3. Accession Number (accession-no)\n   - The SEC filing accession number\n   - Example: 0001564590-21-004599\n\n:::note\nOnly one of the three parameters should be provided. If multiple parameters are provided, the priority order is:\n1. htm-url\n2. xbrl-url\n3. accession-no\n:::\n\n### Supported Filing Types\n\n- Annual Reports (10-K)\n- Quarterly Reports (10-Q)\n- Current Reports (8-K)\n- Registration Statements (S-1, S-3)\n- Foreign Private Issuer Reports (20-F, 40-F)\n\n### Response Format\n\nThe API returns a JSON object containing:\n- Financial statements (Income Statement, Balance Sheet, Cash Flow Statement)\n- Accounting policies and footnotes\n- Company information\n- Filing metadata\n\n### Example Response\n```json\n{\n  \"StatementsOfIncome\": {\n    \"RevenueFromContractWithCustomerExcludingAssessedTax\": [\n      {\n        \"decimals\": \"-6\",\n        \"unitRef\": \"U_USD\",\n        \"period\": {\n          \"startDate\": \"2023-07-01\",\n          \"endDate\": \"2024-06-30\"\n        },\n        \"value\": \"245122000000\"\n      }\n    ]\n  }\n}\n```"
       parameters:
         - name: htm-url
           in: query
@@ -602,7 +605,7 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-      description: "Represents the response for a single SEC filing metadata record.\r\nMaps fields from the edgar_submissions table."
+      description: "Represents the response for a single SEC filing metadata record.\nMaps fields from the edgar_submissions table."
     DTO.FilingSortBy:
       enum:
         - AccessionNumber
@@ -690,22 +693,23 @@ components:
   securitySchemes:
     APIKey:
       type: apiKey
-      description: API Key is required to access the API endpoints.
+      description: API Key is required to access the endpoints
       name: Authorization
       in: header
-    Bearer:
+    JWT:
       type: http
       description: 'JWT Authorization header using the Bearer scheme. Example: "Bearer {token}"'
       scheme: bearer
       bearerFormat: JWT
 security:
-  - Basic: [ ]
+  - APIKey: [ ]
+  - JWT: [ ]
 tags:
   - name: Extractor
     description: Provides endpoints for extracting and classifying content from SEC filing HTML documents.
   - name: Filings
-    description: "Provides endpoints for querying historical SEC filing metadata.\r\nAllows users to filter filings based on criteria like CIK, form type, date ranges, etc."
+    description: "Provides endpoints for querying historical SEC filing metadata.\nAllows users to filter filings based on criteria like CIK, form type, date ranges, etc."
   - name: FullText
-    description: "Provides endpoints for performing full-text searches on historical SEC filing documents.\r\nAllows users to query filings based on various criteria such as form type, date ranges, and text content."
+    description: "Provides endpoints for performing full-text searches on historical SEC filing documents.\nAllows users to query filings based on various criteria such as form type, date ranges, and text content."
   - name: XbrlConverter
     description: Provides endpoints for converting XBRL data to JSON format from various SEC filing sources.

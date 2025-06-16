@@ -7,6 +7,7 @@ src/openapi_dto_extractor_type.erl
 src/openapi_dto_filing_metadata_dto.erl
 src/openapi_dto_filing_sort_by.erl
 src/openapi_dto_sec_filing_result_dto.erl
+src/openapi_file_download_api.erl
 src/openapi_filing_metadata_api.erl
 src/openapi_full_text_search_api.erl
 src/openapi_mvc_problem_details.erl

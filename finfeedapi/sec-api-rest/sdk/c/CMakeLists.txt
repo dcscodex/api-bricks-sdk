@@ -55,6 +55,7 @@ set(SRCS
     model/mvc_problem_details.c
     model/mvc_validation_problem_details.c
     api/ContentExtractionAPI.c
+    api/FileDownloadAPI.c
     api/FilingMetadataAPI.c
     api/FullTextSearchAPI.c
     api/XBRLConversionAPI.c
@@ -76,6 +77,7 @@ set(HDRS
     model/mvc_problem_details.h
     model/mvc_validation_problem_details.h
     api/ContentExtractionAPI.h
+    api/FileDownloadAPI.h
     api/FilingMetadataAPI.h
     api/FullTextSearchAPI.h
     api/XBRLConversionAPI.h
@@ -161,6 +163,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-ContentExtractionAPI.c
+#    unit-tests/manual-FileDownloadAPI.c
 #    unit-tests/manual-FilingMetadataAPI.c
 #    unit-tests/manual-FullTextSearchAPI.c
 #    unit-tests/manual-XBRLConversionAPI.c

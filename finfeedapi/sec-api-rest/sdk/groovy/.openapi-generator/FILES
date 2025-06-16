@@ -3,6 +3,7 @@ README.md
 build.gradle
 src/main/groovy/org/openapitools/api/ApiUtils.groovy
 src/main/groovy/org/openapitools/api/ContentExtractionApi.groovy
+src/main/groovy/org/openapitools/api/FileDownloadApi.groovy
 src/main/groovy/org/openapitools/api/FilingMetadataApi.groovy
 src/main/groovy/org/openapitools/api/FullTextSearchApi.groovy
 src/main/groovy/org/openapitools/api/XbrlConversionApi.groovy

@@ -57,6 +57,8 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
             _services.AddSingleton<IApiFactory, ApiFactory>();
             _services.AddSingleton<ContentExtractionApiEvents>();
             _services.AddTransient<IContentExtractionApi, ContentExtractionApi>();
+            _services.AddSingleton<FileDownloadApiEvents>();
+            _services.AddTransient<IFileDownloadApi, FileDownloadApi>();
             _services.AddSingleton<FilingMetadataApiEvents>();
             _services.AddTransient<IFilingMetadataApi, FilingMetadataApi>();
             _services.AddSingleton<FullTextSearchApiEvents>();
@@ -81,6 +83,7 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
             List<IHttpClientBuilder> builders = new List<IHttpClientBuilder>();
 
             builders.Add(_services.AddHttpClient<IContentExtractionApi, ContentExtractionApi>(client));
+            builders.Add(_services.AddHttpClient<IFileDownloadApi, FileDownloadApi>(client));
             builders.Add(_services.AddHttpClient<IFilingMetadataApi, FilingMetadataApi>(client));
             builders.Add(_services.AddHttpClient<IFullTextSearchApi, FullTextSearchApi>(client));
             builders.Add(_services.AddHttpClient<IXBRLConversionApi, XBRLConversionApi>(client));

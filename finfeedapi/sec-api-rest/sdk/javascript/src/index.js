@@ -20,6 +20,7 @@ import DTOSecFilingResultDto from './model/DTOSecFilingResultDto';
 import MvcProblemDetails from './model/MvcProblemDetails';
 import MvcValidationProblemDetails from './model/MvcValidationProblemDetails';
 import ContentExtractionApi from './api/ContentExtractionApi';
+import FileDownloadApi from './api/FileDownloadApi';
 import FilingMetadataApi from './api/FilingMetadataApi';
 import FullTextSearchApi from './api/FullTextSearchApi';
 import XBRLConversionApi from './api/XBRLConversionApi';
@@ -104,6 +105,12 @@ export {
     * @property {module:api/ContentExtractionApi}
     */
     ContentExtractionApi,
+
+    /**
+    * The FileDownloadApi service constructor.
+    * @property {module:api/FileDownloadApi}
+    */
+    FileDownloadApi,
 
     /**
     * The FilingMetadataApi service constructor.

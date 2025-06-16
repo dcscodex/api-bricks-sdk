@@ -5,6 +5,7 @@
 README.md
 composer.json
 docs/Api/ContentExtractionApi.md
+docs/Api/FileDownloadApi.md
 docs/Api/FilingMetadataApi.md
 docs/Api/FullTextSearchApi.md
 docs/Api/XBRLConversionApi.md
@@ -16,6 +17,7 @@ docs/Model/MvcProblemDetails.md
 docs/Model/MvcValidationProblemDetails.md
 git_push.sh
 lib/Api/ContentExtractionApi.php
+lib/Api/FileDownloadApi.php
 lib/Api/FilingMetadataApi.php
 lib/Api/FullTextSearchApi.php
 lib/Api/XBRLConversionApi.php
@@ -33,6 +35,7 @@ lib/Model/MvcValidationProblemDetails.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ContentExtractionApiTest.php
+test/Api/FileDownloadApiTest.php
 test/Api/FilingMetadataApiTest.php
 test/Api/FullTextSearchApiTest.php
 test/Api/XBRLConversionApiTest.php

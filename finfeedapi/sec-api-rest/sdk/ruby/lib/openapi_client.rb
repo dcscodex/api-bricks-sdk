@@ -26,6 +26,7 @@ require 'openapi_client/models/mvc_validation_problem_details'
 
 # APIs
 require 'openapi_client/api/content_extraction_api'
+require 'openapi_client/api/file_download_api'
 require 'openapi_client/api/filing_metadata_api'
 require 'openapi_client/api/full_text_search_api'
 require 'openapi_client/api/xbrl_conversion_api'

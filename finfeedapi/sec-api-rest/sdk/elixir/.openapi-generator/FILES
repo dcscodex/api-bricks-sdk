@@ -5,6 +5,7 @@ README.md
 config/config.exs
 config/runtime.exs
 lib/fin_feed_apisecrestapi/api/content_extraction.ex
+lib/fin_feed_apisecrestapi/api/file_download.ex
 lib/fin_feed_apisecrestapi/api/filing_metadata.ex
 lib/fin_feed_apisecrestapi/api/full_text_search.ex
 lib/fin_feed_apisecrestapi/api/xbrl_conversion.ex

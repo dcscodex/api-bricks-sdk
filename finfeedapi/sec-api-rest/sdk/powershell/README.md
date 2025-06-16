@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ContentExtractionApi* | [**Invoke-V1ExtractorGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content
 *ContentExtractionApi* | [**Invoke-V1ExtractorItemGet**](docs/ContentExtractionApi.md#Invoke-V1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
+*FileDownloadApi* | [**Invoke-V1DownloadGet**](docs/FileDownloadApi.md#Invoke-V1DownloadGet) | **GET** /v1/download | Download file from SEC EDGAR archive
 *FilingMetadataApi* | [**Invoke-V1FilingsGet**](docs/FilingMetadataApi.md#Invoke-V1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**Invoke-V1FullTextGet**](docs/FullTextSearchApi.md#Invoke-V1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents
 *XBRLConversionApi* | [**Invoke-V1XbrlConverterGet**](docs/XBRLConversionApi.md#Invoke-V1XbrlConverterGet) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format

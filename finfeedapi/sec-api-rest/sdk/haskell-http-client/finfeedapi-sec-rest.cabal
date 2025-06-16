@@ -67,6 +67,7 @@ library
       FinFeedAPISECREST
       FinFeedAPISECREST.API
       FinFeedAPISECREST.API.ContentExtraction
+      FinFeedAPISECREST.API.FileDownload
       FinFeedAPISECREST.API.FilingMetadata
       FinFeedAPISECREST.API.FullTextSearch
       FinFeedAPISECREST.API.XBRLConversion

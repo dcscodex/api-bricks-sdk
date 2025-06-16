@@ -298,7 +298,7 @@ case $state in
     # Operations
     _values "Operations" \
             "v1ExtractorGet[Extract and classify SEC filing content]" \
-            "v1ExtractorItemGet[Extract specific item content from SEC filing]"             "v1FilingsGet[Query SEC filing metadata]"             "v1FullTextGet[Full-text search of SEC filing documents]"             "v1XbrlConverterGet[Convert XBRL data to JSON format]" \
+            "v1ExtractorItemGet[Extract specific item content from SEC filing]"             "v1DownloadGet[Download file from SEC EDGAR archive]"             "v1FilingsGet[Query SEC filing metadata]"             "v1FullTextGet[Full-text search of SEC filing documents]"             "v1XbrlConverterGet[Convert XBRL data to JSON format]" \
 
     _arguments "(--help)--help[Print information about operation]"
 
@@ -320,6 +320,14 @@ case $state in
                     "accession_number=:[QUERY] The SEC filing accession number used to retrieve the filing from EDGAR database."
 "item_number=:[QUERY] The specific item number to extract (e.g., \&quot;1.01\&quot;, \&quot;2.01\&quot;, \&quot;7.01\&quot;)."
 "type=:[QUERY] Result type (text or html, default: text)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1DownloadGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "accession_no=:[QUERY] SEC filing accession number in format: 0000000000-00-000000"
+"file_name=:[QUERY] Name of the file to download from the filing"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;

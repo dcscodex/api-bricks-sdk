@@ -3,6 +3,7 @@
 api.ts
 api/apis.ts
 api/contentExtractionApi.ts
+api/fileDownloadApi.ts
 api/filingMetadataApi.ts
 api/fullTextSearchApi.ts
 api/xBRLConversionApi.ts

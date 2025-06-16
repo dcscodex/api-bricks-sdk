@@ -210,4 +210,24 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Client
         /// <returns></returns>
         bool TryInternalServerError([NotNullWhen(true)]out TType? result);
     }
+
+    /// <summary>
+    /// An interface for responses of type 
+    /// </summary>
+    /// <typeparam name="TType"></typeparam>
+    public interface INotFound<TType> : IApiResponse
+    {
+        /// <summary>
+        /// Deserializes the response if the response is NotFound
+        /// </summary>
+        /// <returns></returns>
+        TType NotFound();
+
+        /// <summary>
+        /// Returns true if the response is NotFound and the deserialized response is not null
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryNotFound([NotNullWhen(true)]out TType? result);
+    }
 }

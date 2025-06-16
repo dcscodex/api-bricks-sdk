@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 appveyor.yml
 docs/apis/ContentExtractionApi.md
+docs/apis/FileDownloadApi.md
 docs/apis/FilingMetadataApi.md
 docs/apis/FullTextSearchApi.md
 docs/apis/XBRLConversionApi.md
@@ -20,6 +21,7 @@ src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/APIBricks.FinFeedAPI.SECAPI.REST.V1
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/ApiTestsBase.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/ContentExtractionApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/DependencyInjectionTests.cs
+src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/FileDownloadApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/FilingMetadataApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/FullTextSearchApiTests.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Api/XBRLConversionApiTests.cs
@@ -32,6 +34,7 @@ src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/Model/MvcValidationProblemDetailsTe
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1.Test/README.md
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/APIBricks.FinFeedAPI.SECAPI.REST.V1.csproj
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/ContentExtractionApi.cs
+src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/FileDownloadApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/FilingMetadataApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/FullTextSearchApi.cs
 src/APIBricks.FinFeedAPI.SECAPI.REST.V1/Api/IApi.cs

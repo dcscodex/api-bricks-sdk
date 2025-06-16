@@ -4,6 +4,7 @@ API/Client/DTOExtractorType.js
 API/Client/DTOFilingMetadataDto.js
 API/Client/DTOFilingSortBy.js
 API/Client/DTOSecFilingResultDto.js
+API/Client/FileDownloadApi.js
 API/Client/FilingMetadataApi.js
 API/Client/FullTextSearchApi.js
 API/Client/MvcProblemDetails.js

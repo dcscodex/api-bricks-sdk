@@ -24,6 +24,7 @@ build = {
 	type = "builtin",
 	modules = {
 		["openapiclient.api.content_extraction_api"] = "openapiclient/api/content_extraction_api.lua";
+		["openapiclient.api.file_download_api"] = "openapiclient/api/file_download_api.lua";
 		["openapiclient.api.filing_metadata_api"] = "openapiclient/api/filing_metadata_api.lua";
 		["openapiclient.api.full_text_search_api"] = "openapiclient/api/full_text_search_api.lua";
 		["openapiclient.api.xbrl_conversion_api"] = "openapiclient/api/xbrl_conversion_api.lua";

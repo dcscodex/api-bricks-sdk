@@ -3,6 +3,7 @@
 git_push.sh
 project.clj
 src/fin_feed_api_sec_rest_api/api/content_extraction.clj
+src/fin_feed_api_sec_rest_api/api/file_download.clj
 src/fin_feed_api_sec_rest_api/api/filing_metadata.clj
 src/fin_feed_api_sec_rest_api/api/full_text_search.clj
 src/fin_feed_api_sec_rest_api/api/xbrl_conversion.clj

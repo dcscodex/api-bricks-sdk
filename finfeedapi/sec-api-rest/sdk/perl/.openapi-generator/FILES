@@ -9,6 +9,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -19,6 +20,7 @@ lib/WWW/OpenAPIClient/ApiClient.pm
 lib/WWW/OpenAPIClient/ApiFactory.pm
 lib/WWW/OpenAPIClient/Configuration.pm
 lib/WWW/OpenAPIClient/ContentExtractionApi.pm
+lib/WWW/OpenAPIClient/FileDownloadApi.pm
 lib/WWW/OpenAPIClient/FilingMetadataApi.pm
 lib/WWW/OpenAPIClient/FullTextSearchApi.pm
 lib/WWW/OpenAPIClient/Object/DTOExtractorType.pm
@@ -35,6 +37,7 @@ t/DTOExtractorTypeTest.t
 t/DTOFilingMetadataDtoTest.t
 t/DTOFilingSortByTest.t
 t/DTOSecFilingResultDtoTest.t
+t/FileDownloadApiTest.t
 t/FilingMetadataApiTest.t
 t/FullTextSearchApiTest.t
 t/MvcProblemDetailsTest.t

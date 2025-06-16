@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *OpenapiClient::ContentExtractionApi* | [**v1_extractor_get**](docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 *OpenapiClient::ContentExtractionApi* | [**v1_extractor_item_get**](docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
+*OpenapiClient::FileDownloadApi* | [**v1_download_get**](docs/FileDownloadApi.md#v1_download_get) | **GET** /v1/download | Download file from SEC EDGAR archive
 *OpenapiClient::FilingMetadataApi* | [**v1_filings_get**](docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *OpenapiClient::FullTextSearchApi* | [**v1_full_text_get**](docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents
 *OpenapiClient::XBRLConversionApi* | [**v1_xbrl_converter_get**](docs/XBRLConversionApi.md#v1_xbrl_converter_get) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format

@@ -7,12 +7,14 @@ docs/DTO_EXTRACTOR_TYPE.md
 docs/DTO_FILING_METADATA_DTO.md
 docs/DTO_FILING_SORT_BY.md
 docs/DTO_SEC_FILING_RESULT_DTO.md
+docs/FILEDOWNLOAD_API.md
 docs/FILINGMETADATA_API.md
 docs/FULLTEXTSEARCH_API.md
 docs/MVC_PROBLEM_DETAILS.md
 docs/MVC_VALIDATION_PROBLEM_DETAILS.md
 docs/XBRLCONVERSION_API.md
 src/api/content_extraction_api.e
+src/api/file_download_api.e
 src/api/filing_metadata_api.e
 src/api/full_text_search_api.e
 src/api/xbrl_conversion_api.e
@@ -40,6 +42,7 @@ src/framework/serialization/json_basic_reflector_deserializer.e
 src/framework/serialization/json_type_utilities_ext.e
 test/api_test.ecf
 test/apis/contentextraction_api_test.e
+test/apis/filedownload_api_test.e
 test/apis/filingmetadata_api_test.e
 test/apis/fulltextsearch_api_test.e
 test/apis/xbrlconversion_api_test.e

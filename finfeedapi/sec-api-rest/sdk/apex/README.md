@@ -68,6 +68,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *OASContentExtractionApi* | [**v1ExtractorGet**](OASContentExtractionApi.md#v1ExtractorGet) | **GET** /v1/extractor | Extract and classify SEC filing content
 *OASContentExtractionApi* | [**v1ExtractorItemGet**](OASContentExtractionApi.md#v1ExtractorItemGet) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
+*OASFileDownloadApi* | [**v1DownloadGet**](OASFileDownloadApi.md#v1DownloadGet) | **GET** /v1/download | Download file from SEC EDGAR archive
 *OASFilingMetadataApi* | [**v1FilingsGet**](OASFilingMetadataApi.md#v1FilingsGet) | **GET** /v1/filings | Query SEC filing metadata
 *OASFullTextSearchApi* | [**v1FullTextGet**](OASFullTextSearchApi.md#v1FullTextGet) | **GET** /v1/full-text | Full-text search of SEC filing documents
 *OASXBRLConversionApi* | [**v1XbrlConverterGet**](OASXBRLConversionApi.md#v1XbrlConverterGet) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format

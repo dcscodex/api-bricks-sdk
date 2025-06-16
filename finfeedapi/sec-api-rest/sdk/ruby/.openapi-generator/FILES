@@ -12,6 +12,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -20,6 +21,7 @@ docs/XBRLConversionApi.md
 git_push.sh
 lib/openapi_client.rb
 lib/openapi_client/api/content_extraction_api.rb
+lib/openapi_client/api/file_download_api.rb
 lib/openapi_client/api/filing_metadata_api.rb
 lib/openapi_client/api/full_text_search_api.rb
 lib/openapi_client/api/xbrl_conversion_api.rb
@@ -35,6 +37,7 @@ lib/openapi_client/models/mvc_validation_problem_details.rb
 lib/openapi_client/version.rb
 openapi_client.gemspec
 spec/api/content_extraction_api_spec.rb
+spec/api/file_download_api_spec.rb
 spec/api/filing_metadata_api_spec.rb
 spec/api/full_text_search_api_spec.rb
 spec/api/xbrl_conversion_api_spec.rb

@@ -1,5 +1,6 @@
 .openapi-generator-ignore
 api/ContentExtractionApi.ts
+api/FileDownloadApi.ts
 api/FilingMetadataApi.ts
 api/FullTextSearchApi.ts
 api/XBRLConversionApi.ts

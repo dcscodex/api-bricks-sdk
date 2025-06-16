@@ -1,6 +1,7 @@
 .gitignore
 .openapi-generator-ignore
 apis/ContentExtractionApi.ts
+apis/FileDownloadApi.ts
 apis/FilingMetadataApi.ts
 apis/FullTextSearchApi.ts
 apis/XBRLConversionApi.ts

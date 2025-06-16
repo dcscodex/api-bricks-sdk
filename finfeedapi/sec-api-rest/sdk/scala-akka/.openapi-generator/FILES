@@ -6,6 +6,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -16,6 +17,7 @@ project/build.properties
 src/main/resources/reference.conf
 src/main/scala/org/openapitools/client/api/ContentExtractionApi.scala
 src/main/scala/org/openapitools/client/api/EnumsSerializers.scala
+src/main/scala/org/openapitools/client/api/FileDownloadApi.scala
 src/main/scala/org/openapitools/client/api/FilingMetadataApi.scala
 src/main/scala/org/openapitools/client/api/FullTextSearchApi.scala
 src/main/scala/org/openapitools/client/api/XBRLConversionApi.scala

@@ -7,12 +7,14 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
 docs/MvcValidationProblemDetails.md
 docs/XBRLConversionApi.md
 src/PSOpenAPITools/Api/ContentExtractionApi.ps1
+src/PSOpenAPITools/Api/FileDownloadApi.ps1
 src/PSOpenAPITools/Api/FilingMetadataApi.ps1
 src/PSOpenAPITools/Api/FullTextSearchApi.ps1
 src/PSOpenAPITools/Api/XBRLConversionApi.ps1
@@ -31,6 +33,7 @@ src/PSOpenAPITools/Private/Out-DebugParameter.ps1
 src/PSOpenAPITools/Private/RSAEncryptionProvider.cs
 src/PSOpenAPITools/en-US/about_PSOpenAPITools.help.txt
 tests/Api/ContentExtractionApi.Tests.ps1
+tests/Api/FileDownloadApi.Tests.ps1
 tests/Api/FilingMetadataApi.Tests.ps1
 tests/Api/FullTextSearchApi.Tests.ps1
 tests/Api/XBRLConversionApi.Tests.ps1

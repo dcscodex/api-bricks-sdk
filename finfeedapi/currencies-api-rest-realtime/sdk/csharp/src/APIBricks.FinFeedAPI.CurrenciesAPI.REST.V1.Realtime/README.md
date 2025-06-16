@@ -180,7 +180,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {2ADB2F10-3BD7-4E4C-8A2B-0BC756E7C896}
+- packageGuid: {50892F76-7F26-4FAE-9376-FF81D5725B0B}
 - packageName: APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime
 - packageTags: 
 - packageTitle: OpenAPI Library

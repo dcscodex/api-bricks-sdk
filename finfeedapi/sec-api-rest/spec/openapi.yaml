@@ -12,6 +12,62 @@ info:
 servers:
   - url: https://api.sec.finfeedapi.com
 paths:
+  /v1/download:
+    get:
+      tags:
+        - File Download
+      summary: Download file from SEC EDGAR archive
+      description: "Downloads a specific file from the SEC EDGAR archive using the accession number and filename.\nThe file is streamed directly from the SEC servers to the client.\n\n### Accession Number Format\nAccession numbers must be in the format: 0000000000-00-000000 (10 digits, dash, 2 digits, dash, 6 digits)\n\n### File Name Examples\n- Primary documents: `d123456d10k.htm`, `d789012d8k.htm`\n- XBRL files: `d123456d10k_htm.xml`, `FilingSummary.xml`\n- Exhibits: `d123456dexhibit99.htm`, `d123456dex101.htm`\n\n### File Types\nThe endpoint supports downloading various file types from SEC filings:\n- HTML documents (.htm, .html)\n- XBRL files (.xml, .xsd)\n- Text files (.txt)\n- PDF files (.pdf)\n- Other document formats as submitted to SEC\n\n:::tip\nYou can find available filenames for a specific filing using the `/v1/filings` endpoint first\n:::\n\n:::warning\nThis endpoint streams files directly from the SEC. Large files may take longer to download.\n:::"
+      parameters:
+        - name: accession_no
+          in: query
+          description: 'SEC filing accession number in format: 0000000000-00-000000'
+          required: true
+          schema:
+            pattern: '^\d{10}-\d{2}-\d{6}$'
+            type: string
+        - name: file_name
+          in: query
+          description: Name of the file to download from the filing
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File downloaded successfully
+          content:
+            application/octet-stream: { }
+            text/html: { }
+            application/xml: { }
+            text/plain: { }
+            application/pdf: { }
+        '400':
+          description: Invalid request parameters
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ValidationProblemDetails'
+        '404':
+          description: Filing or file not found
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+        '500':
+          description: Server error
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mvc.ProblemDetails'
   /v1/extractor:
     get:
       tags:
@@ -713,3 +769,5 @@ tags:
     description: "Provides endpoints for performing full-text searches on historical SEC filing documents.\nAllows users to query filings based on various criteria such as form type, date ranges, and text content."
   - name: XbrlConverter
     description: Provides endpoints for converting XBRL data to JSON format from various SEC filing sources.
+  - name: Download
+    description: "Provides endpoints for downloading files directly from the SEC EDGAR archive.\nAllows users to download specific filing documents by accession number and filename."

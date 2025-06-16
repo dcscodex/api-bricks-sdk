@@ -180,7 +180,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {DF4FA9CA-EB65-4738-A691-77B64A7972AA}
+- packageGuid: {FFCE56F1-47D8-43EF-AE1F-6C9AF27C15FB}
 - packageName: APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

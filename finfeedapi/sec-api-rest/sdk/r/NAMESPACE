@@ -22,6 +22,7 @@ export(MvcValidationProblemDetails)
 
 # APIs
 export(ContentExtractionApi)
+export(FileDownloadApi)
 export(FilingMetadataApi)
 export(FullTextSearchApi)
 export(XBRLConversionApi)

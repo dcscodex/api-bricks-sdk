@@ -71,6 +71,7 @@ _()
     declare -A operations
     operations["v1ExtractorGet"]=1
     operations["v1ExtractorItemGet"]=1
+    operations["v1DownloadGet"]=1
     operations["v1FilingsGet"]=1
     operations["v1FullTextGet"]=1
     operations["v1XbrlConverterGet"]=1
@@ -80,6 +81,7 @@ _()
     declare -A operation_parameters
     operation_parameters["v1ExtractorGet"]="accession_number= type= "
     operation_parameters["v1ExtractorItemGet"]="accession_number= item_number= type= "
+    operation_parameters["v1DownloadGet"]="accession_no= file_name= "
     operation_parameters["v1FilingsGet"]="cik= ticker= form_type= filling_date_start= filling_date_end= report_date_start= report_date_end= items_contain= page_size= page_number= sort_by= sort_order= "
     operation_parameters["v1FullTextGet"]="form_type= filling_date_start= filling_date_end= text_contains= text_not_contain= page_size= page_number= sort_by= sort_order= "
     operation_parameters["v1XbrlConverterGet"]="htm-url= xbrl-url= accession-no= "

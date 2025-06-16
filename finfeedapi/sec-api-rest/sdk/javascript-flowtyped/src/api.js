@@ -486,6 +486,93 @@ export const ContentExtractionApi = function(configuration?: Configuration, fetc
 
 
 /**
+ * FileDownloadApi - fetch parameter creator
+ * @export
+ */
+export const FileDownloadApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Downloads a specific file from the SEC EDGAR archive using the accession number and filename. The file is streamed directly from the SEC servers to the client.  ### Accession Number Format Accession numbers must be in the format: 0000000000-00-000000 (10 digits, dash, 2 digits, dash, 6 digits)  ### File Name Examples - Primary documents: `d123456d10k.htm`, `d789012d8k.htm` - XBRL files: `d123456d10k_htm.xml`, `FilingSummary.xml` - Exhibits: `d123456dexhibit99.htm`, `d123456dex101.htm`  ### File Types The endpoint supports downloading various file types from SEC filings: - HTML documents (.htm, .html) - XBRL files (.xml, .xsd) - Text files (.txt) - PDF files (.pdf) - Other document formats as submitted to SEC  :::tip You can find available filenames for a specific filing using the `/v1/filings` endpoint first :::  :::warning This endpoint streams files directly from the SEC. Large files may take longer to download. :::
+         * @summary Download file from SEC EDGAR archive
+         * @throws {RequiredError}
+         */
+        v1DownloadGet(accessionNo: string, fileName: string, options: RequestOptions): FetchArgs {
+            // verify required parameter 'accessionNo' is not null or undefined
+            if (accessionNo === null || accessionNo === undefined) {
+                throw new RequiredError('accessionNo','Required parameter accessionNo was null or undefined when calling v1DownloadGet.');
+            }
+            // verify required parameter 'fileName' is not null or undefined
+            if (fileName === null || fileName === undefined) {
+                throw new RequiredError('fileName','Required parameter fileName was null or undefined when calling v1DownloadGet.');
+            }
+            const localVarPath = `/v1/download`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (accessionNo !== undefined) {
+                localVarQueryParameter['accession_no'] = ((accessionNo:any):string);
+            }
+
+            if (fileName !== undefined) {
+                localVarQueryParameter['file_name'] = ((fileName:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+export type FileDownloadApiType = { 
+    v1DownloadGet(accessionNo: string, fileName: string, options?: RequestOptions): Promise<Response>,
+}
+
+/**
+ * FileDownloadApi - factory function to inject configuration 
+ * @export
+ */
+export const FileDownloadApi = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): FileDownloadApiType {
+    const basePath: string = (configuration && configuration.basePath) || BASE_PATH;
+    return {
+        /**
+         * Downloads a specific file from the SEC EDGAR archive using the accession number and filename. The file is streamed directly from the SEC servers to the client.  ### Accession Number Format Accession numbers must be in the format: 0000000000-00-000000 (10 digits, dash, 2 digits, dash, 6 digits)  ### File Name Examples - Primary documents: `d123456d10k.htm`, `d789012d8k.htm` - XBRL files: `d123456d10k_htm.xml`, `FilingSummary.xml` - Exhibits: `d123456dexhibit99.htm`, `d123456dex101.htm`  ### File Types The endpoint supports downloading various file types from SEC filings: - HTML documents (.htm, .html) - XBRL files (.xml, .xsd) - Text files (.txt) - PDF files (.pdf) - Other document formats as submitted to SEC  :::tip You can find available filenames for a specific filing using the `/v1/filings` endpoint first :::  :::warning This endpoint streams files directly from the SEC. Large files may take longer to download. :::
+         * @summary Download file from SEC EDGAR archive
+         * @throws {RequiredError}
+         */
+        v1DownloadGet(accessionNo: string, fileName: string, options?: RequestOptions = {}): Promise<Response> {
+            const localVarFetchArgs = FileDownloadApiFetchParamCreator(configuration).v1DownloadGet(accessionNo, fileName, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response;
+                } else {
+                    throw response;
+                }
+            });
+        },
+    }
+};
+
+
+/**
  * FilingMetadataApi - fetch parameter creator
  * @export
  */
@@ -796,6 +883,8 @@ export const XBRLConversionApi = function(configuration?: Configuration, fetch: 
 
 export type ApiTypes = { 
     ContentExtractionApi: ContentExtractionApiType,
+
+    FileDownloadApi: FileDownloadApiType,
 
     FilingMetadataApi: FilingMetadataApiType,
 

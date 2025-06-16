@@ -6,6 +6,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -17,6 +18,7 @@ gradlew
 gradlew.bat
 settings.gradle
 src/main/kotlin/org/openapitools/client/apis/ContentExtractionApi.kt
+src/main/kotlin/org/openapitools/client/apis/FileDownloadApi.kt
 src/main/kotlin/org/openapitools/client/apis/FilingMetadataApi.kt
 src/main/kotlin/org/openapitools/client/apis/FullTextSearchApi.kt
 src/main/kotlin/org/openapitools/client/apis/XBRLConversionApi.kt
@@ -44,6 +46,7 @@ src/main/kotlin/org/openapitools/client/models/DTOSecFilingResultDto.kt
 src/main/kotlin/org/openapitools/client/models/MvcProblemDetails.kt
 src/main/kotlin/org/openapitools/client/models/MvcValidationProblemDetails.kt
 src/test/kotlin/org/openapitools/client/apis/ContentExtractionApiTest.kt
+src/test/kotlin/org/openapitools/client/apis/FileDownloadApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/FilingMetadataApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/FullTextSearchApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/XBRLConversionApiTest.kt

@@ -11,6 +11,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -39,6 +40,7 @@ src/main/java/org/openapitools/client/ServerConfiguration.java
 src/main/java/org/openapitools/client/ServerVariable.java
 src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/ContentExtractionApi.java
+src/main/java/org/openapitools/client/api/FileDownloadApi.java
 src/main/java/org/openapitools/client/api/FilingMetadataApi.java
 src/main/java/org/openapitools/client/api/FullTextSearchApi.java
 src/main/java/org/openapitools/client/api/XbrlConversionApi.java
@@ -54,6 +56,7 @@ src/main/java/org/openapitools/client/model/DTOSecFilingResultDto.java
 src/main/java/org/openapitools/client/model/MvcProblemDetails.java
 src/main/java/org/openapitools/client/model/MvcValidationProblemDetails.java
 src/test/java/org/openapitools/client/api/ContentExtractionApiTest.java
+src/test/java/org/openapitools/client/api/FileDownloadApiTest.java
 src/test/java/org/openapitools/client/api/FilingMetadataApiTest.java
 src/test/java/org/openapitools/client/api/FullTextSearchApiTest.java
 src/test/java/org/openapitools/client/api/XbrlConversionApiTest.java

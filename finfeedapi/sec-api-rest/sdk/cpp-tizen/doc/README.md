@@ -48,6 +48,13 @@ Method | HTTP request | Description
 *v1ExtractorItemGetASync* | *GET* /v1/extractor/item | Extract specific item content from SEC filing.
 
 
+### FileDownloadManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*v1DownloadGetSync* | *GET* /v1/download | Download file from SEC EDGAR archive.
+*v1DownloadGetASync* | *GET* /v1/download | Download file from SEC EDGAR archive.
+
+
 ### FilingMetadataManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------

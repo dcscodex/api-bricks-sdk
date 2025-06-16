@@ -1,5 +1,7 @@
 export * from './contentExtractionApi';
 import { ContentExtractionApi } from './contentExtractionApi';
+export * from './fileDownloadApi';
+import { FileDownloadApi } from './fileDownloadApi';
 export * from './filingMetadataApi';
 import { FilingMetadataApi } from './filingMetadataApi';
 export * from './fullTextSearchApi';
@@ -17,4 +19,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [ContentExtractionApi, FilingMetadataApi, FullTextSearchApi, XBRLConversionApi];
+export const APIS = [ContentExtractionApi, FileDownloadApi, FilingMetadataApi, FullTextSearchApi, XBRLConversionApi];

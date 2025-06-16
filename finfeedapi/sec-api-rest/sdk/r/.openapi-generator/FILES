@@ -13,6 +13,7 @@ R/dto_extractor_type.R
 R/dto_filing_metadata_dto.R
 R/dto_filing_sort_by.R
 R/dto_sec_filing_result_dto.R
+R/file_download_api.R
 R/filing_metadata_api.R
 R/full_text_search_api.R
 R/mvc_problem_details.R
@@ -24,6 +25,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -36,6 +38,7 @@ tests/testthat/test_dto_extractor_type.R
 tests/testthat/test_dto_filing_metadata_dto.R
 tests/testthat/test_dto_filing_sort_by.R
 tests/testthat/test_dto_sec_filing_result_dto.R
+tests/testthat/test_file_download_api.R
 tests/testthat/test_filing_metadata_api.R
 tests/testthat/test_full_text_search_api.R
 tests/testthat/test_mvc_problem_details.R

@@ -7,6 +7,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -25,6 +26,7 @@ src/main/java/org/openapitools/client/ApiInvoker.java
 src/main/java/org/openapitools/client/JsonUtil.java
 src/main/java/org/openapitools/client/Pair.java
 src/main/java/org/openapitools/client/api/ContentExtractionApi.java
+src/main/java/org/openapitools/client/api/FileDownloadApi.java
 src/main/java/org/openapitools/client/api/FilingMetadataApi.java
 src/main/java/org/openapitools/client/api/FullTextSearchApi.java
 src/main/java/org/openapitools/client/api/XBRLConversionApi.java

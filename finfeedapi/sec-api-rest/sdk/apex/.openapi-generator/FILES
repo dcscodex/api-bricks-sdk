@@ -25,6 +25,10 @@ force-app/main/default/classes/OASDTOSecFilingResultDto.cls
 force-app/main/default/classes/OASDTOSecFilingResultDto.cls-meta.xml
 force-app/main/default/classes/OASDTOSecFilingResultDtoTest.cls
 force-app/main/default/classes/OASDTOSecFilingResultDtoTest.cls-meta.xml
+force-app/main/default/classes/OASFileDownloadApi.cls
+force-app/main/default/classes/OASFileDownloadApi.cls-meta.xml
+force-app/main/default/classes/OASFileDownloadApiTest.cls
+force-app/main/default/classes/OASFileDownloadApiTest.cls-meta.xml
 force-app/main/default/classes/OASFilingMetadataApi.cls
 force-app/main/default/classes/OASFilingMetadataApi.cls-meta.xml
 force-app/main/default/classes/OASFilingMetadataApiTest.cls

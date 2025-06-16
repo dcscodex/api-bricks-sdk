@@ -5,6 +5,7 @@ api.base.service.ts
 api.module.ts
 api/api.ts
 api/contentExtraction.service.ts
+api/fileDownload.service.ts
 api/filingMetadata.service.ts
 api/fullTextSearch.service.ts
 api/xBRLConversion.service.ts

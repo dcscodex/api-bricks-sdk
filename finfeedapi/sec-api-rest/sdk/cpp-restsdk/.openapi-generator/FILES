@@ -15,6 +15,7 @@ include/CppRestOpenAPIClient/ModelBase.h
 include/CppRestOpenAPIClient/MultipartFormData.h
 include/CppRestOpenAPIClient/Object.h
 include/CppRestOpenAPIClient/api/ContentExtractionApi.h
+include/CppRestOpenAPIClient/api/FileDownloadApi.h
 include/CppRestOpenAPIClient/api/FilingMetadataApi.h
 include/CppRestOpenAPIClient/api/FullTextSearchApi.h
 include/CppRestOpenAPIClient/api/XBRLConversionApi.h
@@ -34,6 +35,7 @@ src/ModelBase.cpp
 src/MultipartFormData.cpp
 src/Object.cpp
 src/api/ContentExtractionApi.cpp
+src/api/FileDownloadApi.cpp
 src/api/FilingMetadataApi.cpp
 src/api/FullTextSearchApi.cpp
 src/api/XBRLConversionApi.cpp

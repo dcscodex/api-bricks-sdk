@@ -14,6 +14,8 @@ src/DTOSecFilingResultDto.cpp
 src/DTOSecFilingResultDto.h
 src/Error.cpp
 src/Error.h
+src/FileDownloadManager.cpp
+src/FileDownloadManager.h
 src/FilingMetadataManager.cpp
 src/FilingMetadataManager.h
 src/FullTextSearchManager.cpp

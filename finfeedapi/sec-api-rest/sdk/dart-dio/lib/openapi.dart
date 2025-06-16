@@ -11,6 +11,7 @@ export 'package:openapi/src/serializers.dart';
 export 'package:openapi/src/model/date.dart';
 
 export 'package:openapi/src/api/content_extraction_api.dart';
+export 'package:openapi/src/api/file_download_api.dart';
 export 'package:openapi/src/api/filing_metadata_api.dart';
 export 'package:openapi/src/api/full_text_search_api.dart';
 export 'package:openapi/src/api/xbrl_conversion_api.dart';

@@ -77,6 +77,9 @@ newtype AccessionNumber = AccessionNumber { unAccessionNumber :: Text } deriving
 -- ** Cik
 newtype Cik = Cik { unCik :: Integer } deriving (P.Eq, P.Show)
 
+-- ** FileName
+newtype FileName = FileName { unFileName :: Text } deriving (P.Eq, P.Show)
+
 -- ** FillingDateEnd
 newtype FillingDateEnd = FillingDateEnd { unFillingDateEnd :: Text } deriving (P.Eq, P.Show)
 

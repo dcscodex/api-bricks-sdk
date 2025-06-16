@@ -86,6 +86,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
             var contentExtractionApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IContentExtractionApi>();
             Assert.True(contentExtractionApi.HttpClient.BaseAddress != null);
 
+            var fileDownloadApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IFileDownloadApi>();
+            Assert.True(fileDownloadApi.HttpClient.BaseAddress != null);
+
             var filingMetadataApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IFilingMetadataApi>();
             Assert.True(filingMetadataApi.HttpClient.BaseAddress != null);
 
@@ -104,6 +107,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
         {
             var contentExtractionApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IContentExtractionApi>();
             Assert.True(contentExtractionApi.HttpClient.BaseAddress != null);
+
+            var fileDownloadApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IFileDownloadApi>();
+            Assert.True(fileDownloadApi.HttpClient.BaseAddress != null);
 
             var filingMetadataApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IFilingMetadataApi>();
             Assert.True(filingMetadataApi.HttpClient.BaseAddress != null);
@@ -124,6 +130,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
             var contentExtractionApi = _hostUsingAddWithAClient.Services.GetRequiredService<IContentExtractionApi>();
             Assert.True(contentExtractionApi.HttpClient.BaseAddress != null);
             
+            var fileDownloadApi = _hostUsingAddWithAClient.Services.GetRequiredService<IFileDownloadApi>();
+            Assert.True(fileDownloadApi.HttpClient.BaseAddress != null);
+            
             var filingMetadataApi = _hostUsingAddWithAClient.Services.GetRequiredService<IFilingMetadataApi>();
             Assert.True(filingMetadataApi.HttpClient.BaseAddress != null);
             
@@ -142,6 +151,9 @@ namespace APIBricks.FinFeedAPI.SECAPI.REST.V1.Test.Api
         {
             var contentExtractionApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IContentExtractionApi>();
             Assert.True(contentExtractionApi.HttpClient.BaseAddress != null);
+
+            var fileDownloadApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IFileDownloadApi>();
+            Assert.True(fileDownloadApi.HttpClient.BaseAddress != null);
 
             var filingMetadataApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IFilingMetadataApi>();
             Assert.True(filingMetadataApi.HttpClient.BaseAddress != null);

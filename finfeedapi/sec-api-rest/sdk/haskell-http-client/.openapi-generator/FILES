@@ -8,6 +8,7 @@ git_push.sh
 lib/FinFeedAPISECREST.hs
 lib/FinFeedAPISECREST/API.hs
 lib/FinFeedAPISECREST/API/ContentExtraction.hs
+lib/FinFeedAPISECREST/API/FileDownload.hs
 lib/FinFeedAPISECREST/API/FilingMetadata.hs
 lib/FinFeedAPISECREST/API/FullTextSearch.hs
 lib/FinFeedAPISECREST/API/XBRLConversion.hs

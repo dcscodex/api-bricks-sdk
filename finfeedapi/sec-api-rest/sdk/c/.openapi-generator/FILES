@@ -5,6 +5,8 @@ Packing.cmake
 README.md
 api/ContentExtractionAPI.c
 api/ContentExtractionAPI.h
+api/FileDownloadAPI.c
+api/FileDownloadAPI.h
 api/FilingMetadataAPI.c
 api/FilingMetadataAPI.h
 api/FullTextSearchAPI.c
@@ -12,6 +14,7 @@ api/FullTextSearchAPI.h
 api/XBRLConversionAPI.c
 api/XBRLConversionAPI.h
 docs/ContentExtractionAPI.md
+docs/FileDownloadAPI.md
 docs/FilingMetadataAPI.md
 docs/FullTextSearchAPI.md
 docs/XBRLConversionAPI.md

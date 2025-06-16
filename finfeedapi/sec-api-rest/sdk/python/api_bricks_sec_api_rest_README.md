@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ContentExtractionApi* | [**v1_extractor_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_get) | **GET** /v1/extractor | Extract and classify SEC filing content
 *ContentExtractionApi* | [**v1_extractor_item_get**](api_bricks_sec_api_rest/docs/ContentExtractionApi.md#v1_extractor_item_get) | **GET** /v1/extractor/item | Extract specific item content from SEC filing
+*FileDownloadApi* | [**v1_download_get**](api_bricks_sec_api_rest/docs/FileDownloadApi.md#v1_download_get) | **GET** /v1/download | Download file from SEC EDGAR archive
 *FilingMetadataApi* | [**v1_filings_get**](api_bricks_sec_api_rest/docs/FilingMetadataApi.md#v1_filings_get) | **GET** /v1/filings | Query SEC filing metadata
 *FullTextSearchApi* | [**v1_full_text_get**](api_bricks_sec_api_rest/docs/FullTextSearchApi.md#v1_full_text_get) | **GET** /v1/full-text | Full-text search of SEC filing documents
 *XBRLConversionApi* | [**v1_xbrl_converter_get**](api_bricks_sec_api_rest/docs/XBRLConversionApi.md#v1_xbrl_converter_get) | **GET** /v1/xbrl-converter | Convert XBRL data to JSON format

@@ -8,6 +8,7 @@ docs/DTOExtractorType.md
 docs/DTOFilingMetadataDto.md
 docs/DTOFilingSortBy.md
 docs/DTOSecFilingResultDto.md
+docs/FileDownloadApi.md
 docs/FilingMetadataApi.md
 docs/FullTextSearchApi.md
 docs/MvcProblemDetails.md
@@ -18,6 +19,7 @@ mocha.opts
 package.json
 src/ApiClient.js
 src/api/ContentExtractionApi.js
+src/api/FileDownloadApi.js
 src/api/FilingMetadataApi.js
 src/api/FullTextSearchApi.js
 src/api/XBRLConversionApi.js
@@ -29,6 +31,7 @@ src/model/DTOSecFilingResultDto.js
 src/model/MvcProblemDetails.js
 src/model/MvcValidationProblemDetails.js
 test/api/ContentExtractionApi.spec.js
+test/api/FileDownloadApi.spec.js
 test/api/FilingMetadataApi.spec.js
 test/api/FullTextSearchApi.spec.js
 test/api/XBRLConversionApi.spec.js

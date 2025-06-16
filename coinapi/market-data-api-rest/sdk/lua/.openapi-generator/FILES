@@ -23,8 +23,6 @@ openapiclient/model/v1_exchange_rate.lua
 openapiclient/model/v1_exchange_rates.lua
 openapiclient/model/v1_exchange_rates_rate.lua
 openapiclient/model/v1_exchange_rates_timeseries_item.lua
-openapiclient/model/v1_external_asset.lua
-openapiclient/model/v1_external_exchange.lua
 openapiclient/model/v1_general_data.lua
 openapiclient/model/v1_icon.lua
 openapiclient/model/v1_last_trade.lua
@@ -63,8 +61,6 @@ spec/v1_exchange_rates_rate_spec.lua
 spec/v1_exchange_rates_spec.lua
 spec/v1_exchange_rates_timeseries_item_spec.lua
 spec/v1_exchange_spec.lua
-spec/v1_external_asset_spec.lua
-spec/v1_external_exchange_spec.lua
 spec/v1_general_data_spec.lua
 spec/v1_icon_spec.lua
 spec/v1_last_trade_spec.lua

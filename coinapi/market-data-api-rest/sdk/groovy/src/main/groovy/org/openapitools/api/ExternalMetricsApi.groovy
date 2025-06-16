@@ -1,9 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.V1Chain
-import org.openapitools.model.V1ExternalAsset
-import org.openapitools.model.V1ExternalExchange
 import org.openapitools.model.V1MetricInfo
 
 class ExternalMetricsApi {
@@ -87,26 +84,6 @@ class ExternalMetricsApi {
 
     }
 
-    def v1ExternalmetricsAssetsGet ( Closure onSuccess, Closure onFailure)  {
-        String resourcePath = "/v1/externalmetrics/assets"
-
-        // params
-        def queryParams = [:]
-        def headerParams = [:]
-        def bodyParams
-        def contentType
-
-
-
-
-
-
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "GET", "array",
-                    V1ExternalAsset.class )
-
-    }
-
     def v1ExternalmetricsChainHistoryGet ( String metricId, String chainId, Date timeStart, Date timeEnd, String timeFormat, String periodId, Integer limit, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/v1/externalmetrics/chain/history"
 
@@ -183,26 +160,6 @@ class ExternalMetricsApi {
 
     }
 
-    def v1ExternalmetricsChainsGet ( Closure onSuccess, Closure onFailure)  {
-        String resourcePath = "/v1/externalmetrics/chains"
-
-        // params
-        def queryParams = [:]
-        def headerParams = [:]
-        def bodyParams
-        def contentType
-
-
-
-
-
-
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "GET", "array",
-                    V1Chain.class )
-
-    }
-
     def v1ExternalmetricsExchangeHistoryGet ( String metricId, String exchangeId, Date timeStart, Date timeEnd, String timeFormat, String periodId, Integer limit, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/v1/externalmetrics/exchange/history"
 
@@ -276,26 +233,6 @@ class ExternalMetricsApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "array",
                     V1MetricInfo.class )
-
-    }
-
-    def v1ExternalmetricsExchangesGet ( Closure onSuccess, Closure onFailure)  {
-        String resourcePath = "/v1/externalmetrics/exchanges"
-
-        // params
-        def queryParams = [:]
-        def headerParams = [:]
-        def bodyParams
-        def contentType
-
-
-
-
-
-
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "GET", "array",
-                    V1ExternalExchange.class )
 
     }
 

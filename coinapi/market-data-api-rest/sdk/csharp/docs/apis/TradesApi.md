@@ -32,10 +32,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TradesApi(config);
             var filterSymbolId = "filterSymbolId_example";  // string | Comma or semicolon delimited parts of symbol identifier used to filter response. (optional) (optional) 
@@ -93,7 +95,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -114,7 +116,7 @@ catch (ApiException e)
 
 Historical data
 
-Get history transactions from specific symbol, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get history transactions from specific symbol, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```csharp
@@ -132,10 +134,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TradesApi(config);
             var symbolId = "symbolId_example";  // string | Symbol identifier for requested timeseries (from the Metadata -> Symbols)
@@ -199,7 +203,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -238,10 +242,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TradesApi(config);
             var symbolId = "symbolId_example";  // string | Symbol identifier for requested timeseries (from the Metadata -> Symbols)
@@ -299,7 +305,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

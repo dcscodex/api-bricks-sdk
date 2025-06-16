@@ -13,7 +13,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #
-# This is a Bash client for REST API.
+# This is a Bash client for CoinAPI Market Data REST API.
 #
 # LICENSE:
 # https://github.com/api-bricks/api-bricks-sdk/blob/master/LICENSE
@@ -136,6 +136,8 @@ operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeListingGet:::
 operation_parameters_minimum_occurrences["v1AssetsAssetIdGet:::asset_id"]=1
 operation_parameters_minimum_occurrences["v1AssetsGet:::filter_asset_id"]=0
 operation_parameters_minimum_occurrences["v1AssetsIconsSizeGet:::size"]=1
+operation_parameters_minimum_occurrences["v1ChainsChainIdGet:::chain_id"]=1
+operation_parameters_minimum_occurrences["v1ChainsGet:::filter_chain_id"]=0
 operation_parameters_minimum_occurrences["v1ExchangesExchangeIdGet:::exchange_id"]=1
 operation_parameters_minimum_occurrences["v1ExchangesGet:::filter_exchange_id"]=0
 operation_parameters_minimum_occurrences["v1ExchangesIconsSizeGet:::size"]=1
@@ -292,6 +294,8 @@ operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeListingGet:::
 operation_parameters_maximum_occurrences["v1AssetsAssetIdGet:::asset_id"]=0
 operation_parameters_maximum_occurrences["v1AssetsGet:::filter_asset_id"]=0
 operation_parameters_maximum_occurrences["v1AssetsIconsSizeGet:::size"]=0
+operation_parameters_maximum_occurrences["v1ChainsChainIdGet:::chain_id"]=0
+operation_parameters_maximum_occurrences["v1ChainsGet:::filter_chain_id"]=0
 operation_parameters_maximum_occurrences["v1ExchangesExchangeIdGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1ExchangesGet:::filter_exchange_id"]=0
 operation_parameters_maximum_occurrences["v1ExchangesIconsSizeGet:::size"]=0
@@ -445,6 +449,8 @@ operation_parameters_collection_type["v1ExternalmetricsExchangeListingGet:::exch
 operation_parameters_collection_type["v1AssetsAssetIdGet:::asset_id"]=""
 operation_parameters_collection_type["v1AssetsGet:::filter_asset_id"]=""
 operation_parameters_collection_type["v1AssetsIconsSizeGet:::size"]=""
+operation_parameters_collection_type["v1ChainsChainIdGet:::chain_id"]=""
+operation_parameters_collection_type["v1ChainsGet:::filter_chain_id"]=""
 operation_parameters_collection_type["v1ExchangesExchangeIdGet:::exchange_id"]=""
 operation_parameters_collection_type["v1ExchangesGet:::filter_exchange_id"]=""
 operation_parameters_collection_type["v1ExchangesIconsSizeGet:::size"]=""
@@ -680,7 +686,7 @@ header_arguments_to_curl() {
     local headers_curl=""
     local api_key_header=""
     local api_key_header_in_cli=""
-    api_key_header="X-CoinAPI-Key"
+    api_key_header="Authorization"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
@@ -926,7 +932,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}REST API command line client (API version v1)${OFF}
+${BOLD}${WHITE}CoinAPI Market Data REST API command line client (API version v1)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -955,110 +961,109 @@ ${BOLD}${WHITE}Usage${OFF}
 EOF
     echo -e "${BOLD}${WHITE}Authentication methods${OFF}"
     echo -e ""
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}X-CoinAPI-Key:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
+    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
     
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
     echo -e "${BOLD}${WHITE}[exchangeRates]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}getSpecificRate${OFF};Get specific rate (AUTH)
-  ${CYAN}v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet${OFF};Timeseries data (AUTH)
-  ${CYAN}v1ExchangerateAssetIdBaseGet${OFF};Get all current rates (AUTH)
-  ${CYAN}v1ExchangerateHistoryPeriodsGet${OFF};Timeseries periods (AUTH)
+  ${CYAN}getSpecificRate${OFF};Get specific rate (AUTH) (AUTH)
+  ${CYAN}v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet${OFF};Timeseries data (AUTH) (AUTH)
+  ${CYAN}v1ExchangerateAssetIdBaseGet${OFF};Get all current rates (AUTH) (AUTH)
+  ${CYAN}v1ExchangerateHistoryPeriodsGet${OFF};Timeseries periods (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[externalMetrics]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1ExternalmetricsAssetHistoryGet${OFF};Historical metrics for the asset from external sources (AUTH)
-  ${CYAN}v1ExternalmetricsAssetListingGet${OFF};Listing of metrics available for specific asset (AUTH)
-  ${CYAN}v1ExternalmetricsAssetsGet${OFF};Listing of all supported external assets (AUTH)
-  ${CYAN}v1ExternalmetricsChainHistoryGet${OFF};Historical metrics for the chain from external sources (AUTH)
-  ${CYAN}v1ExternalmetricsChainListingGet${OFF};Listing of metrics available for specific chain (AUTH)
-  ${CYAN}v1ExternalmetricsChainsGet${OFF};Listing of all supported external chains (AUTH)
-  ${CYAN}v1ExternalmetricsExchangeHistoryGet${OFF};Historical metrics for the exchange from both external and internal sources (AUTH)
-  ${CYAN}v1ExternalmetricsExchangeListingGet${OFF};Listing of metrics available for specific exchange (both external and generic) (AUTH)
-  ${CYAN}v1ExternalmetricsExchangesGet${OFF};Listing of all supported external exchanges (AUTH)
-  ${CYAN}v1ExternalmetricsListingGet${OFF};Listing of all supported metrics (both external and generic) (AUTH)
+  ${CYAN}v1ExternalmetricsAssetHistoryGet${OFF};Historical metrics for the asset (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsAssetListingGet${OFF};Listing of metrics available for specific asset (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsChainHistoryGet${OFF};Historical metrics for the chain (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsChainListingGet${OFF};Listing of metrics available for specific chain (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsExchangeHistoryGet${OFF};Historical metrics for the exchange (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsExchangeListingGet${OFF};Listing of metrics available for specific exchange (AUTH) (AUTH)
+  ${CYAN}v1ExternalmetricsListingGet${OFF};Listing of all supported metrics (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[metadata]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1AssetsAssetIdGet${OFF};List all assets by asset ID (AUTH)
-  ${CYAN}v1AssetsGet${OFF};List all assets (AUTH)
-  ${CYAN}v1AssetsIconsSizeGet${OFF};List all asset icons (AUTH)
-  ${CYAN}v1ExchangesExchangeIdGet${OFF};List all exchanges by exchange_id (AUTH)
-  ${CYAN}v1ExchangesGet${OFF};List all exchanges (AUTH)
-  ${CYAN}v1ExchangesIconsSizeGet${OFF};List of icons for the exchanges (AUTH)
-  ${CYAN}v1SymbolsExchangeIdGet${OFF};List of symbols for the exchange (AUTH)
-  ${CYAN}v1SymbolsGet${OFF};List all symbols (AUTH)
-  ${CYAN}v1SymbolsMapExchangeIdGet${OFF};List symbol mapping for the exchange (AUTH)
+  ${CYAN}v1AssetsAssetIdGet${OFF};List all assets by asset ID (AUTH) (AUTH)
+  ${CYAN}v1AssetsGet${OFF};List all assets (AUTH) (AUTH)
+  ${CYAN}v1AssetsIconsSizeGet${OFF};List all asset icons (AUTH) (AUTH)
+  ${CYAN}v1ChainsChainIdGet${OFF};List all chains by chain ID (AUTH) (AUTH)
+  ${CYAN}v1ChainsGet${OFF};List all blockchain chains (AUTH) (AUTH)
+  ${CYAN}v1ExchangesExchangeIdGet${OFF};List all exchanges by exchange_id (AUTH) (AUTH)
+  ${CYAN}v1ExchangesGet${OFF};List all exchanges (AUTH) (AUTH)
+  ${CYAN}v1ExchangesIconsSizeGet${OFF};List of icons for the exchanges (AUTH) (AUTH)
+  ${CYAN}v1SymbolsExchangeIdGet${OFF};List of symbols for the exchange (AUTH) (AUTH)
+  ${CYAN}v1SymbolsGet${OFF};List all symbols (AUTH) (AUTH)
+  ${CYAN}v1SymbolsMapExchangeIdGet${OFF};List symbol mapping for the exchange (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[metrics]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1MetricsAssetCurrentGet${OFF};Current metrics for given asset (AUTH)
-  ${CYAN}v1MetricsAssetHistoryGet${OFF};Historical metrics for asset (AUTH)
-  ${CYAN}v1MetricsAssetListingGet${OFF};Listing of all supported metrics for asset (AUTH)
-  ${CYAN}v1MetricsExchangeCurrentGet${OFF};Current metrics for given exchange (AUTH)
-  ${CYAN}v1MetricsExchangeHistoryGet${OFF};Historical metrics for the exchange (AUTH)
-  ${CYAN}v1MetricsExchangeListingGet${OFF};Listing of all supported exchange metrics (AUTH)
-  ${CYAN}v1MetricsListingGet${OFF};Listing of all supported metrics by CoinAPI (AUTH)
-  ${CYAN}v1MetricsSymbolCurrentGet${OFF};Current metrics for given symbol (AUTH)
-  ${CYAN}v1MetricsSymbolHistoryGet${OFF};Historical metrics for symbol (AUTH)
-  ${CYAN}v1MetricsSymbolListingGet${OFF};Listing of all supported metrics for symbol (AUTH)
+  ${CYAN}v1MetricsAssetCurrentGet${OFF};Current metrics for given asset (AUTH) (AUTH)
+  ${CYAN}v1MetricsAssetHistoryGet${OFF};Historical metrics for asset (AUTH) (AUTH)
+  ${CYAN}v1MetricsAssetListingGet${OFF};Listing of all supported metrics for asset (AUTH) (AUTH)
+  ${CYAN}v1MetricsExchangeCurrentGet${OFF};Current metrics for given exchange (AUTH) (AUTH)
+  ${CYAN}v1MetricsExchangeHistoryGet${OFF};Historical metrics for the exchange (AUTH) (AUTH)
+  ${CYAN}v1MetricsExchangeListingGet${OFF};Listing of all supported exchange metrics (AUTH) (AUTH)
+  ${CYAN}v1MetricsListingGet${OFF};Listing of all supported metrics by CoinAPI (AUTH) (AUTH)
+  ${CYAN}v1MetricsSymbolCurrentGet${OFF};Current metrics for given symbol (AUTH) (AUTH)
+  ${CYAN}v1MetricsSymbolHistoryGet${OFF};Historical metrics for symbol (AUTH) (AUTH)
+  ${CYAN}v1MetricsSymbolListingGet${OFF};Listing of all supported metrics for symbol (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[ohlcv]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1OhlcvExchangesExchangeIdHistoryGet${OFF};Historical data by exchange (AUTH)
-  ${CYAN}v1OhlcvPeriodsGet${OFF};List all periods (AUTH)
-  ${CYAN}v1OhlcvSymbolIdHistoryGet${OFF};Historical data (AUTH)
-  ${CYAN}v1OhlcvSymbolIdLatestGet${OFF};Latest data (AUTH)
+  ${CYAN}v1OhlcvExchangesExchangeIdHistoryGet${OFF};Historical data by exchange (AUTH) (AUTH)
+  ${CYAN}v1OhlcvPeriodsGet${OFF};List all periods (AUTH) (AUTH)
+  ${CYAN}v1OhlcvSymbolIdHistoryGet${OFF};Historical data (AUTH) (AUTH)
+  ${CYAN}v1OhlcvSymbolIdLatestGet${OFF};Latest data (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[options]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1OptionsExchangeIdCurrentGet${OFF};Current data by Exchange (AUTH)
+  ${CYAN}v1OptionsExchangeIdCurrentGet${OFF};Current data by Exchange (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[orderBook]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1OrderbooksSymbolIdCurrentGet${OFF};Get current order book (AUTH)
-  ${CYAN}v1OrderbooksSymbolIdDepthCurrentGet${OFF};Current depth of the order book (AUTH)
-  ${CYAN}v1OrderbooksSymbolIdHistoryGet${OFF};Historical data (AUTH)
-  ${CYAN}v1OrderbooksSymbolIdLatestGet${OFF};Latest data (AUTH)
+  ${CYAN}v1OrderbooksSymbolIdCurrentGet${OFF};Get current order book (AUTH) (AUTH)
+  ${CYAN}v1OrderbooksSymbolIdDepthCurrentGet${OFF};Current depth of the order book (AUTH) (AUTH)
+  ${CYAN}v1OrderbooksSymbolIdHistoryGet${OFF};Historical data (AUTH) (AUTH)
+  ${CYAN}v1OrderbooksSymbolIdLatestGet${OFF};Latest data (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[orderBookL3]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1Orderbooks3CurrentGet${OFF};Current order books (AUTH)
-  ${CYAN}v1Orderbooks3SymbolIdCurrentGet${OFF};Current order book by symbol_id (AUTH)
+  ${CYAN}v1Orderbooks3CurrentGet${OFF};Current order books (AUTH) (AUTH)
+  ${CYAN}v1Orderbooks3SymbolIdCurrentGet${OFF};Current order book by symbol_id (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[quotes]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1QuotesCurrentGet${OFF};Current data (AUTH)
-  ${CYAN}v1QuotesLatestGet${OFF};Latest data (AUTH)
-  ${CYAN}v1QuotesSymbolIdCurrentGet${OFF};Current quotes for a specific symbol (AUTH)
-  ${CYAN}v1QuotesSymbolIdHistoryGet${OFF};Historical data (AUTH)
-  ${CYAN}v1QuotesSymbolIdLatestGet${OFF};Latest quote updates for a specific symbol (AUTH)
+  ${CYAN}v1QuotesCurrentGet${OFF};Current data (AUTH) (AUTH)
+  ${CYAN}v1QuotesLatestGet${OFF};Latest data (AUTH) (AUTH)
+  ${CYAN}v1QuotesSymbolIdCurrentGet${OFF};Current quotes for a specific symbol (AUTH) (AUTH)
+  ${CYAN}v1QuotesSymbolIdHistoryGet${OFF};Historical data (AUTH) (AUTH)
+  ${CYAN}v1QuotesSymbolIdLatestGet${OFF};Latest quote updates for a specific symbol (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[trades]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}v1TradesLatestGet${OFF};Latest data (AUTH)
-  ${CYAN}v1TradesSymbolIdHistoryGet${OFF};Historical data (AUTH)
-  ${CYAN}v1TradesSymbolIdLatestGet${OFF};Latest data by symbol_id (AUTH)
+  ${CYAN}v1TradesLatestGet${OFF};Latest data (AUTH) (AUTH)
+  ${CYAN}v1TradesSymbolIdHistoryGet${OFF};Historical data (AUTH) (AUTH)
+  ${CYAN}v1TradesSymbolIdLatestGet${OFF};Latest data by symbol_id (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -1088,7 +1093,7 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://rest.coinapi.io')"
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}${WHITE}CoinAPI Market Data REST API command line client (API version v1)${OFF}"
     echo ""
     echo -e "License: MIT License"
     echo -e "Contact: support@apibricks.io"
@@ -1108,7 +1113,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}REST API command line client (API version v1)${OFF}"
+    echo -e "${BOLD}CoinAPI Market Data REST API command line client (API version v1)${OFF}"
     echo ""
 }
 
@@ -1119,7 +1124,7 @@ print_version() {
 ##############################################################################
 print_getSpecificRate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.
             
@@ -1144,7 +1149,7 @@ If you are using an exchange rate for mission-critical operations, then for best
 ##############################################################################
 print_v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet - Timeseries data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet - Timeseries data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get the historical exchange rates between two assets in the form of the timeseries." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1171,7 +1176,7 @@ print_v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet_help() {
 ##############################################################################
 print_v1ExchangerateAssetIdBaseGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get the current exchange rate between requested asset and all other assets.
             
@@ -1203,7 +1208,7 @@ You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / 
 ##############################################################################
 print_v1ExchangerateHistoryPeriodsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangerateHistoryPeriodsGet - Timeseries periods${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangerateHistoryPeriodsGet - Timeseries periods${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "You can also obtain historical exchange rates of any asset pair, grouped into time periods.
 Get full list of supported time periods available for requesting exchange rates historical timeseries data.
@@ -1228,14 +1233,14 @@ Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_v1ExternalmetricsAssetHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetHistoryGet - Historical metrics for the asset from external sources${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetHistoryGet - Historical metrics for the asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get asset metrics history from external data providers. Data is typically aggregated daily." | paste -sd' ' | fold -sw 80
+    echo -e "Get asset metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD' - internal metric key)${YELLOW} Specify as: metric_id=value${OFF}" \
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., 'USDC', 'USDT' - from supported assets list)${YELLOW} Specify as: asset_id=value${OFF}" \
+    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., 'USDC', 'USDT')${YELLOW} Specify as: asset_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1263,29 +1268,13 @@ print_v1ExternalmetricsAssetHistoryGet_help() {
 ##############################################################################
 print_v1ExternalmetricsAssetListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetListingGet - Listing of metrics available for specific asset${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetListingGet - Listing of metrics available for specific asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get all metrics that are actually available for the specified asset from external providers." | paste -sd' ' | fold -sw 80
+    echo -e "Get all metrics that are actually available for the specified asset." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., USDC, USDT)${YELLOW} Specify as: asset_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsAssetsGet operation
-#
-##############################################################################
-print_v1ExternalmetricsAssetsGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetsGet - Listing of all supported external assets${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all assets (primarily stablecoins) supported by external data providers." | paste -sd' ' | fold -sw 80
-    echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -1298,14 +1287,14 @@ print_v1ExternalmetricsAssetsGet_help() {
 ##############################################################################
 print_v1ExternalmetricsChainHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainHistoryGet - Historical metrics for the chain from external sources${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainHistoryGet - Historical metrics for the chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get chain metrics history from external data providers. Data is typically aggregated daily." | paste -sd' ' | fold -sw 80
+    echo -e "Get chain metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD' - internal metric key)${YELLOW} Specify as: metric_id=value${OFF}" \
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., 'Ethereum', 'Arbitrum' - from supported chains list)${YELLOW} Specify as: chain_id=value${OFF}" \
+    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., 'Ethereum', 'Arbitrum')${YELLOW} Specify as: chain_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1333,29 +1322,13 @@ print_v1ExternalmetricsChainHistoryGet_help() {
 ##############################################################################
 print_v1ExternalmetricsChainListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainListingGet - Listing of metrics available for specific chain${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainListingGet - Listing of metrics available for specific chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get all metrics that are actually available for the specified blockchain chain from external providers." | paste -sd' ' | fold -sw 80
+    echo -e "Get all metrics that are actually available for the specified blockchain chain." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., ETHEREUM, ARBITRUM)${YELLOW} Specify as: chain_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsChainsGet operation
-#
-##############################################################################
-print_v1ExternalmetricsChainsGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainsGet - Listing of all supported external chains${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all blockchain chains supported by external data providers." | paste -sd' ' | fold -sw 80
-    echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -1368,12 +1341,12 @@ print_v1ExternalmetricsChainsGet_help() {
 ##############################################################################
 print_v1ExternalmetricsExchangeHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeHistoryGet - Historical metrics for the exchange from both external and internal sources${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeHistoryGet - Historical metrics for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get exchange metrics history from external data providers or internal sources based on metric type." | paste -sd' ' | fold -sw 80
+    echo -e "Get exchange metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD' for external, or generic metric IDs)${YELLOW} Specify as: metric_id=value${OFF}" \
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., 'BINANCE', 'UNISWAP-V3-ETHEREUM')${YELLOW} Specify as: exchange_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1403,30 +1376,13 @@ print_v1ExternalmetricsExchangeHistoryGet_help() {
 ##############################################################################
 print_v1ExternalmetricsExchangeListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeListingGet - Listing of metrics available for specific exchange (both external and generic)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeListingGet - Listing of metrics available for specific exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get all metrics that are actually available for the specified exchange from both external providers and internal sources." | paste -sd' ' | fold -sw 80
+    echo -e "Get all metrics that are actually available for the specified exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)${YELLOW} Specify as: exchange_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsExchangesGet operation
-#
-##############################################################################
-print_v1ExternalmetricsExchangesGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangesGet - Listing of all supported external exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all exchanges that have mapping to external data providers for metrics that actually have sources.
-Only returns exchanges that are properly mapped to external protocols for metrics with defined sources." | paste -sd' ' | fold -sw 80
-    echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -1439,10 +1395,9 @@ Only returns exchanges that are properly mapped to external protocols for metric
 ##############################################################################
 print_v1ExternalmetricsListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsListingGet - Listing of all supported metrics (both external and generic)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExternalmetricsListingGet - Listing of all supported metrics${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get all metrics available from external data providers and internal generic metrics.
-External metrics have detailed descriptions, while generic metrics are marked as such." | paste -sd' ' | fold -sw 80
+    echo -e "Get all metrics available in the system." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -1456,7 +1411,7 @@ External metrics have detailed descriptions, while generic metrics are marked as
 ##############################################################################
 print_v1AssetsAssetIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The asset ID. ${YELLOW}Specify as: asset_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1472,7 +1427,7 @@ print_v1AssetsAssetIdGet_help() {
 ##############################################################################
 print_v1AssetsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves all assets.
             
@@ -1499,7 +1454,7 @@ Properties of the output are providing aggregated information from across all sy
 ##############################################################################
 print_v1AssetsIconsSizeGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Gets the list of icons (of the given size) for all the assets." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1512,12 +1467,51 @@ print_v1AssetsIconsSizeGet_help() {
 }
 ##############################################################################
 #
+# Print help for v1ChainsChainIdGet operation
+#
+##############################################################################
+print_v1ChainsChainIdGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1ChainsChainIdGet - List all chains by chain ID${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The chain ID. ${YELLOW}Specify as: chain_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v1ChainsGet operation
+#
+##############################################################################
+print_v1ChainsGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v1ChainsGet - List all blockchain chains${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Retrieves all blockchain chains supported by the system.
+            
+:::info
+Properties of the output are providing aggregated information from across all symbols related to the specific chain. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.
+:::" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}filter_chain_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Comma or semicolon delimited chain identifiers used to filter response. (optional, eg. 'ETHEREUM;ARBITRUM').${YELLOW} Specify as: filter_chain_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for v1ExchangesExchangeIdGet operation
 #
 ##############################################################################
 print_v1ExchangesExchangeIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangesExchangeIdGet - List all exchanges by exchange_id${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangesExchangeIdGet - List all exchanges by exchange_id${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The ID of the exchange. ${YELLOW}Specify as: exchange_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1533,7 +1527,7 @@ print_v1ExchangesExchangeIdGet_help() {
 ##############################################################################
 print_v1ExchangesGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangesGet - List all exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangesGet - List all exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a detailed list of exchanges provided by the system.
             
@@ -1556,7 +1550,7 @@ Properties of the output are providing aggregated information from across all sy
 ##############################################################################
 print_v1ExchangesIconsSizeGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangesIconsSizeGet - List of icons for the exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangesIconsSizeGet - List of icons for the exchanges${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}size${OFF} ${BLUE}[integer]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The size of the icons. ${YELLOW}Specify as: size=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1572,7 +1566,7 @@ print_v1ExchangesIconsSizeGet_help() {
 ##############################################################################
 print_v1SymbolsExchangeIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1SymbolsExchangeIdGet - List of symbols for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1SymbolsExchangeIdGet - List of symbols for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The ID of the exchange (from the Metadata -> Exchanges) ${YELLOW}Specify as: exchange_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1592,7 +1586,7 @@ print_v1SymbolsExchangeIdGet_help() {
 ##############################################################################
 print_v1SymbolsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1SymbolsGet - List all symbols${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1SymbolsGet - List all symbols${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves all symbols with optional filtering.
             
@@ -1695,7 +1689,7 @@ contract_id | Identifier of contract by the exchange" | paste -sd' ' | fold -sw 
 ##############################################################################
 print_v1SymbolsMapExchangeIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1SymbolsMapExchangeIdGet - List symbol mapping for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1SymbolsMapExchangeIdGet - List symbol mapping for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The ID of the exchange (from the Metadata -> Exchanges) ${YELLOW}Specify as: exchange_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -1711,7 +1705,7 @@ print_v1SymbolsMapExchangeIdGet_help() {
 ##############################################################################
 print_v1MetricsAssetCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsAssetCurrentGet - Current metrics for given asset${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsAssetCurrentGet - Current metrics for given asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get current asset metrics." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1736,7 +1730,7 @@ print_v1MetricsAssetCurrentGet_help() {
 ##############################################################################
 print_v1MetricsAssetHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsAssetHistoryGet - Historical metrics for asset${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsAssetHistoryGet - Historical metrics for asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get asset metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1771,7 +1765,7 @@ print_v1MetricsAssetHistoryGet_help() {
 ##############################################################################
 print_v1MetricsAssetListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsAssetListingGet - Listing of all supported metrics for asset${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsAssetListingGet - Listing of all supported metrics for asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get data metrics for asset." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1800,7 +1794,7 @@ print_v1MetricsAssetListingGet_help() {
 ##############################################################################
 print_v1MetricsExchangeCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsExchangeCurrentGet - Current metrics for given exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsExchangeCurrentGet - Current metrics for given exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get current exchange metrics values." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1821,7 +1815,7 @@ print_v1MetricsExchangeCurrentGet_help() {
 ##############################################################################
 print_v1MetricsExchangeHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsExchangeHistoryGet - Historical metrics for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsExchangeHistoryGet - Historical metrics for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get exchange metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1852,7 +1846,7 @@ print_v1MetricsExchangeHistoryGet_help() {
 ##############################################################################
 print_v1MetricsExchangeListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsExchangeListingGet - Listing of all supported exchange metrics${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsExchangeListingGet - Listing of all supported exchange metrics${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get data metrics for exchange." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1873,7 +1867,7 @@ print_v1MetricsExchangeListingGet_help() {
 ##############################################################################
 print_v1MetricsListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsListingGet - Listing of all supported metrics by CoinAPI${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsListingGet - Listing of all supported metrics by CoinAPI${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get all data metrics." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1889,7 +1883,7 @@ print_v1MetricsListingGet_help() {
 ##############################################################################
 print_v1MetricsSymbolCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsSymbolCurrentGet - Current metrics for given symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsSymbolCurrentGet - Current metrics for given symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get current symbol metrics." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1912,7 +1906,7 @@ print_v1MetricsSymbolCurrentGet_help() {
 ##############################################################################
 print_v1MetricsSymbolHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsSymbolHistoryGet - Historical metrics for symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsSymbolHistoryGet - Historical metrics for symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get symbol metrics history." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1943,7 +1937,7 @@ print_v1MetricsSymbolHistoryGet_help() {
 ##############################################################################
 print_v1MetricsSymbolListingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1MetricsSymbolListingGet - Listing of all supported metrics for symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1MetricsSymbolListingGet - Listing of all supported metrics for symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get data metrics for symbol." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1966,7 +1960,7 @@ print_v1MetricsSymbolListingGet_help() {
 ##############################################################################
 print_v1OhlcvExchangesExchangeIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvExchangesExchangeIdHistoryGet - Historical data by exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvExchangesExchangeIdHistoryGet - Historical data by exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg 'BITSTAMP'
             
@@ -1996,7 +1990,7 @@ The 'period_id' cannot be higher than '1DAY'.
 ##############################################################################
 print_v1OhlcvPeriodsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvPeriodsGet - List all periods${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvPeriodsGet - List all periods${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get full list of supported time periods available for requesting OHLCV timeseries data.
             
@@ -2027,7 +2021,7 @@ You can assume that we will not remove any periods from this response, however, 
 ##############################################################################
 print_v1OhlcvSymbolIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific symbol eg 'BITSTAMP_SPOT_BTC_USD', if you need to query timeseries by asset pairs eg. 'BTC/USD', then please reffer to the Exchange Rates Timeseries data
             
@@ -2059,7 +2053,7 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 ##############################################################################
 print_v1OhlcvSymbolIdLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OhlcvSymbolIdLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OhlcvSymbolIdLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg 'BITSTAMP_SPOT_BTC_USD', if you need to query timeseries by asset pairs eg. 'BTC/USD', then please reffer to the Exchange Rates Timeseries data
             
@@ -2088,7 +2082,7 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 ##############################################################################
 print_v1OptionsExchangeIdCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OptionsExchangeIdCurrentGet - Current data by Exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OptionsExchangeIdCurrentGet - Current data by Exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get current options data for a specific exchange.
 
@@ -2109,7 +2103,7 @@ with quotes for both calls and puts at each strike price." | paste -sd' ' | fold
 ##############################################################################
 print_v1OrderbooksSymbolIdCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdCurrentGet - Get current order book${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdCurrentGet - Get current order book${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the current order book for the specified symbol." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2129,7 +2123,7 @@ print_v1OrderbooksSymbolIdCurrentGet_help() {
 ##############################################################################
 print_v1OrderbooksSymbolIdDepthCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdDepthCurrentGet - Current depth of the order book${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdDepthCurrentGet - Current depth of the order book${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the current depth of the order book for the specified symbol." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2149,7 +2143,7 @@ print_v1OrderbooksSymbolIdDepthCurrentGet_help() {
 ##############################################################################
 print_v1OrderbooksSymbolIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.
             
@@ -2186,7 +2180,7 @@ Please use the 'date' parameter instead for querying data for a specific day wit
 ##############################################################################
 print_v1OrderbooksSymbolIdLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1OrderbooksSymbolIdLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get latest order book snapshots for a specific symbol, returned in time descending order.
             
@@ -2212,7 +2206,7 @@ The historical order book data via the REST API is currently limited by a number
 ##############################################################################
 print_v1Orderbooks3CurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1Orderbooks3CurrentGet - Current order books${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1Orderbooks3CurrentGet - Current order books${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}filter_symbol_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Comma or semicolon delimited parts of symbol identifier used to filter the response.${YELLOW} Specify as: filter_symbol_id=value${OFF}" \
@@ -2231,7 +2225,7 @@ print_v1Orderbooks3CurrentGet_help() {
 ##############################################################################
 print_v1Orderbooks3SymbolIdCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1Orderbooks3SymbolIdCurrentGet - Current order book by symbol_id${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1Orderbooks3SymbolIdCurrentGet - Current order book by symbol_id${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the current order book for the specified symbol." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2251,7 +2245,7 @@ print_v1Orderbooks3SymbolIdCurrentGet_help() {
 ##############################################################################
 print_v1QuotesCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1QuotesCurrentGet - Current data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1QuotesCurrentGet - Current data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get current quotes for all symbols or for a specific symbol.
             
@@ -2274,7 +2268,7 @@ When requesting current data for a specific symbol, output is not encapsulated i
 ##############################################################################
 print_v1QuotesLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1QuotesLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1QuotesLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get latest updates of the quotes up to 1 minute ago. Latest data is always returned in time descending order." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2295,7 +2289,7 @@ print_v1QuotesLatestGet_help() {
 ##############################################################################
 print_v1QuotesSymbolIdCurrentGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdCurrentGet - Current quotes for a specific symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdCurrentGet - Current quotes for a specific symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The symbol identifier (from the Metadata -> Symbols) ${YELLOW}Specify as: symbol_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2311,7 +2305,7 @@ print_v1QuotesSymbolIdCurrentGet_help() {
 ##############################################################################
 print_v1QuotesSymbolIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get historical quote updates within requested time range, returned in time ascending order.
 
@@ -2342,7 +2336,7 @@ Please use the 'date' parameter instead for querying data for a specific day wit
 ##############################################################################
 print_v1QuotesSymbolIdLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdLatestGet - Latest quote updates for a specific symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1QuotesSymbolIdLatestGet - Latest quote updates for a specific symbol${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}symbol_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Symbol identifier of requested timeseries (from the Metadata -> Symbols) ${YELLOW}Specify as: symbol_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2360,7 +2354,7 @@ print_v1QuotesSymbolIdLatestGet_help() {
 ##############################################################################
 print_v1TradesLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1TradesLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1TradesLatestGet - Latest data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get latest trades executed up to 1 minute ago. Latest data is always returned in time descending order." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2383,7 +2377,7 @@ print_v1TradesLatestGet_help() {
 ##############################################################################
 print_v1TradesSymbolIdHistoryGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1TradesSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1TradesSymbolIdHistoryGet - Historical data${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get history transactions from specific symbol, returned in time ascending order.
 
@@ -2416,7 +2410,7 @@ Please use the 'date' parameter instead for querying data for a specific day wit
 ##############################################################################
 print_v1TradesSymbolIdLatestGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1TradesSymbolIdLatestGet - Latest data by symbol_id${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1TradesSymbolIdLatestGet - Latest data by symbol_id${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get latest trades executed up to 1 minute ago. Latest data is always returned in time descending order." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -2444,7 +2438,7 @@ call_getSpecificRate() {
     local path_parameter_names=(asset_id_base asset_id_quote)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(time  )
+    local query_parameter_names=(time    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/{asset_id_base}/{asset_id_quote}" path_parameter_names query_parameter_names); then
@@ -2480,7 +2474,7 @@ call_v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet() {
     local path_parameter_names=(asset_id_base asset_id_quote)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end limit  )
+    local query_parameter_names=(period_id time_start time_end limit    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/{asset_id_base}/{asset_id_quote}/history" path_parameter_names query_parameter_names); then
@@ -2516,7 +2510,7 @@ call_v1ExchangerateAssetIdBaseGet() {
     local path_parameter_names=(asset_id_base)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_asset_id invert time  )
+    local query_parameter_names=(filter_asset_id invert time    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/{asset_id_base}" path_parameter_names query_parameter_names); then
@@ -2552,7 +2546,7 @@ call_v1ExchangerateHistoryPeriodsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/history/periods" path_parameter_names query_parameter_names); then
@@ -2588,7 +2582,7 @@ call_v1ExternalmetricsAssetHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id asset_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id asset_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/asset/history" path_parameter_names query_parameter_names); then
@@ -2624,46 +2618,10 @@ call_v1ExternalmetricsAssetListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(asset_id  )
+    local query_parameter_names=(asset_id    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/asset/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsAssetsGet operation
-#
-##############################################################################
-call_v1ExternalmetricsAssetsGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(  )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/assets" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -2696,7 +2654,7 @@ call_v1ExternalmetricsChainHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id chain_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id chain_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/chain/history" path_parameter_names query_parameter_names); then
@@ -2732,46 +2690,10 @@ call_v1ExternalmetricsChainListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(chain_id  )
+    local query_parameter_names=(chain_id    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/chain/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsChainsGet operation
-#
-##############################################################################
-call_v1ExternalmetricsChainsGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(  )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/chains" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -2804,7 +2726,7 @@ call_v1ExternalmetricsExchangeHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/exchange/history" path_parameter_names query_parameter_names); then
@@ -2840,46 +2762,10 @@ call_v1ExternalmetricsExchangeListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(exchange_id  )
+    local query_parameter_names=(exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/exchange/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsExchangesGet operation
-#
-##############################################################################
-call_v1ExternalmetricsExchangesGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(  )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/exchanges" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -2912,7 +2798,7 @@ call_v1ExternalmetricsListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/externalmetrics/listing" path_parameter_names query_parameter_names); then
@@ -2948,7 +2834,7 @@ call_v1AssetsAssetIdGet() {
     local path_parameter_names=(asset_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/assets/{asset_id}" path_parameter_names query_parameter_names); then
@@ -2984,7 +2870,7 @@ call_v1AssetsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_asset_id  )
+    local query_parameter_names=(filter_asset_id    )
     local path
 
     if ! path=$(build_request_path "/v1/assets" path_parameter_names query_parameter_names); then
@@ -3020,10 +2906,82 @@ call_v1AssetsIconsSizeGet() {
     local path_parameter_names=(size)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/assets/icons/{size}" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v1ChainsChainIdGet operation
+#
+##############################################################################
+call_v1ChainsChainIdGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(chain_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(    )
+    local path
+
+    if ! path=$(build_request_path "/v1/chains/{chain_id}" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v1ChainsGet operation
+#
+##############################################################################
+call_v1ChainsGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(filter_chain_id    )
+    local path
+
+    if ! path=$(build_request_path "/v1/chains" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -3056,7 +3014,7 @@ call_v1ExchangesExchangeIdGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/exchanges/{exchange_id}" path_parameter_names query_parameter_names); then
@@ -3092,7 +3050,7 @@ call_v1ExchangesGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_exchange_id  )
+    local query_parameter_names=(filter_exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/exchanges" path_parameter_names query_parameter_names); then
@@ -3128,7 +3086,7 @@ call_v1ExchangesIconsSizeGet() {
     local path_parameter_names=(size)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/exchanges/icons/{size}" path_parameter_names query_parameter_names); then
@@ -3164,7 +3122,7 @@ call_v1SymbolsExchangeIdGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id filter_asset_id  )
+    local query_parameter_names=(filter_symbol_id filter_asset_id    )
     local path
 
     if ! path=$(build_request_path "/v1/symbols/{exchange_id}" path_parameter_names query_parameter_names); then
@@ -3200,7 +3158,7 @@ call_v1SymbolsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id filter_exchange_id filter_asset_id  )
+    local query_parameter_names=(filter_symbol_id filter_exchange_id filter_asset_id    )
     local path
 
     if ! path=$(build_request_path "/v1/symbols" path_parameter_names query_parameter_names); then
@@ -3236,7 +3194,7 @@ call_v1SymbolsMapExchangeIdGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/symbols/map/{exchange_id}" path_parameter_names query_parameter_names); then
@@ -3272,7 +3230,7 @@ call_v1MetricsAssetCurrentGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id asset_id asset_id_external exchange_id  )
+    local query_parameter_names=(metric_id asset_id asset_id_external exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/asset/current" path_parameter_names query_parameter_names); then
@@ -3308,7 +3266,7 @@ call_v1MetricsAssetHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id asset_id asset_id_external exchange_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id asset_id asset_id_external exchange_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/asset/history" path_parameter_names query_parameter_names); then
@@ -3344,7 +3302,7 @@ call_v1MetricsAssetListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id chain_id network_id asset_id asset_id_external  )
+    local query_parameter_names=(metric_id exchange_id chain_id network_id asset_id asset_id_external    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/asset/listing" path_parameter_names query_parameter_names); then
@@ -3380,7 +3338,7 @@ call_v1MetricsExchangeCurrentGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id  )
+    local query_parameter_names=(metric_id exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/exchange/current" path_parameter_names query_parameter_names); then
@@ -3416,7 +3374,7 @@ call_v1MetricsExchangeHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/exchange/history" path_parameter_names query_parameter_names); then
@@ -3452,7 +3410,7 @@ call_v1MetricsExchangeListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id  )
+    local query_parameter_names=(metric_id exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/exchange/listing" path_parameter_names query_parameter_names); then
@@ -3488,7 +3446,7 @@ call_v1MetricsListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/listing" path_parameter_names query_parameter_names); then
@@ -3524,7 +3482,7 @@ call_v1MetricsSymbolCurrentGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id symbol_id exchange_id  )
+    local query_parameter_names=(metric_id symbol_id exchange_id    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/symbol/current" path_parameter_names query_parameter_names); then
@@ -3560,7 +3518,7 @@ call_v1MetricsSymbolHistoryGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id symbol_id time_start time_end time_format period_id limit  )
+    local query_parameter_names=(metric_id symbol_id time_start time_end time_format period_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/symbol/history" path_parameter_names query_parameter_names); then
@@ -3596,7 +3554,7 @@ call_v1MetricsSymbolListingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id symbol_id  )
+    local query_parameter_names=(metric_id exchange_id symbol_id    )
     local path
 
     if ! path=$(build_request_path "/v1/metrics/symbol/listing" path_parameter_names query_parameter_names); then
@@ -3632,7 +3590,7 @@ call_v1OhlcvExchangesExchangeIdHistoryGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end  )
+    local query_parameter_names=(period_id time_start time_end    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/exchanges/{exchange_id}/history" path_parameter_names query_parameter_names); then
@@ -3668,7 +3626,7 @@ call_v1OhlcvPeriodsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/periods" path_parameter_names query_parameter_names); then
@@ -3704,7 +3662,7 @@ call_v1OhlcvSymbolIdHistoryGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id time_start time_end limit include_empty_items  )
+    local query_parameter_names=(period_id time_start time_end limit include_empty_items    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/{symbol_id}/history" path_parameter_names query_parameter_names); then
@@ -3740,7 +3698,7 @@ call_v1OhlcvSymbolIdLatestGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(period_id limit include_empty_items  )
+    local query_parameter_names=(period_id limit include_empty_items    )
     local path
 
     if ! path=$(build_request_path "/v1/ohlcv/{symbol_id}/latest" path_parameter_names query_parameter_names); then
@@ -3776,7 +3734,7 @@ call_v1OptionsExchangeIdCurrentGet() {
     local path_parameter_names=(exchange_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/options/{exchange_id}/current" path_parameter_names query_parameter_names); then
@@ -3812,7 +3770,7 @@ call_v1OrderbooksSymbolIdCurrentGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit_levels  )
+    local query_parameter_names=(limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks/{symbol_id}/current" path_parameter_names query_parameter_names); then
@@ -3848,7 +3806,7 @@ call_v1OrderbooksSymbolIdDepthCurrentGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit_levels  )
+    local query_parameter_names=(limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks/{symbol_id}/depth/current" path_parameter_names query_parameter_names); then
@@ -3884,7 +3842,7 @@ call_v1OrderbooksSymbolIdHistoryGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date time_start time_end limit limit_levels  )
+    local query_parameter_names=(date time_start time_end limit limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks/{symbol_id}/history" path_parameter_names query_parameter_names); then
@@ -3920,7 +3878,7 @@ call_v1OrderbooksSymbolIdLatestGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit limit_levels  )
+    local query_parameter_names=(limit limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks/{symbol_id}/latest" path_parameter_names query_parameter_names); then
@@ -3956,7 +3914,7 @@ call_v1Orderbooks3CurrentGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id limit_levels  )
+    local query_parameter_names=(filter_symbol_id limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks3/current" path_parameter_names query_parameter_names); then
@@ -3992,7 +3950,7 @@ call_v1Orderbooks3SymbolIdCurrentGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit_levels  )
+    local query_parameter_names=(limit_levels    )
     local path
 
     if ! path=$(build_request_path "/v1/orderbooks3/{symbol_id}/current" path_parameter_names query_parameter_names); then
@@ -4028,7 +3986,7 @@ call_v1QuotesCurrentGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id  )
+    local query_parameter_names=(filter_symbol_id    )
     local path
 
     if ! path=$(build_request_path "/v1/quotes/current" path_parameter_names query_parameter_names); then
@@ -4064,7 +4022,7 @@ call_v1QuotesLatestGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id limit  )
+    local query_parameter_names=(filter_symbol_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/quotes/latest" path_parameter_names query_parameter_names); then
@@ -4100,7 +4058,7 @@ call_v1QuotesSymbolIdCurrentGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v1/quotes/{symbol_id}/current" path_parameter_names query_parameter_names); then
@@ -4136,7 +4094,7 @@ call_v1QuotesSymbolIdHistoryGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date time_start time_end limit  )
+    local query_parameter_names=(date time_start time_end limit    )
     local path
 
     if ! path=$(build_request_path "/v1/quotes/{symbol_id}/history" path_parameter_names query_parameter_names); then
@@ -4172,7 +4130,7 @@ call_v1QuotesSymbolIdLatestGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit  )
+    local query_parameter_names=(limit    )
     local path
 
     if ! path=$(build_request_path "/v1/quotes/{symbol_id}/latest" path_parameter_names query_parameter_names); then
@@ -4208,7 +4166,7 @@ call_v1TradesLatestGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filter_symbol_id include_id limit  )
+    local query_parameter_names=(filter_symbol_id include_id limit    )
     local path
 
     if ! path=$(build_request_path "/v1/trades/latest" path_parameter_names query_parameter_names); then
@@ -4244,7 +4202,7 @@ call_v1TradesSymbolIdHistoryGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(date time_start time_end limit include_id  )
+    local query_parameter_names=(date time_start time_end limit include_id    )
     local path
 
     if ! path=$(build_request_path "/v1/trades/{symbol_id}/history" path_parameter_names query_parameter_names); then
@@ -4280,7 +4238,7 @@ call_v1TradesSymbolIdLatestGet() {
     local path_parameter_names=(symbol_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(limit include_id  )
+    local query_parameter_names=(limit include_id    )
     local path
 
     if ! path=$(build_request_path "/v1/trades/{symbol_id}/latest" path_parameter_names query_parameter_names); then
@@ -4420,26 +4378,17 @@ case $key in
     v1ExternalmetricsAssetListingGet)
     operation="v1ExternalmetricsAssetListingGet"
     ;;
-    v1ExternalmetricsAssetsGet)
-    operation="v1ExternalmetricsAssetsGet"
-    ;;
     v1ExternalmetricsChainHistoryGet)
     operation="v1ExternalmetricsChainHistoryGet"
     ;;
     v1ExternalmetricsChainListingGet)
     operation="v1ExternalmetricsChainListingGet"
     ;;
-    v1ExternalmetricsChainsGet)
-    operation="v1ExternalmetricsChainsGet"
-    ;;
     v1ExternalmetricsExchangeHistoryGet)
     operation="v1ExternalmetricsExchangeHistoryGet"
     ;;
     v1ExternalmetricsExchangeListingGet)
     operation="v1ExternalmetricsExchangeListingGet"
-    ;;
-    v1ExternalmetricsExchangesGet)
-    operation="v1ExternalmetricsExchangesGet"
     ;;
     v1ExternalmetricsListingGet)
     operation="v1ExternalmetricsListingGet"
@@ -4452,6 +4401,12 @@ case $key in
     ;;
     v1AssetsIconsSizeGet)
     operation="v1AssetsIconsSizeGet"
+    ;;
+    v1ChainsChainIdGet)
+    operation="v1ChainsChainIdGet"
+    ;;
+    v1ChainsGet)
+    operation="v1ChainsGet"
     ;;
     v1ExchangesExchangeIdGet)
     operation="v1ExchangesExchangeIdGet"
@@ -4595,7 +4550,7 @@ case $key in
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable
         #
-        if [[ $header_name == "X-CoinAPI-Key" ]]; then
+        if [[ $header_name == "Authorization" ]]; then
             apikey_auth_credential=$header_value
         fi
         header_arguments[$header_name]=$header_value
@@ -4670,26 +4625,17 @@ case $operation in
     v1ExternalmetricsAssetListingGet)
     call_v1ExternalmetricsAssetListingGet
     ;;
-    v1ExternalmetricsAssetsGet)
-    call_v1ExternalmetricsAssetsGet
-    ;;
     v1ExternalmetricsChainHistoryGet)
     call_v1ExternalmetricsChainHistoryGet
     ;;
     v1ExternalmetricsChainListingGet)
     call_v1ExternalmetricsChainListingGet
     ;;
-    v1ExternalmetricsChainsGet)
-    call_v1ExternalmetricsChainsGet
-    ;;
     v1ExternalmetricsExchangeHistoryGet)
     call_v1ExternalmetricsExchangeHistoryGet
     ;;
     v1ExternalmetricsExchangeListingGet)
     call_v1ExternalmetricsExchangeListingGet
-    ;;
-    v1ExternalmetricsExchangesGet)
-    call_v1ExternalmetricsExchangesGet
     ;;
     v1ExternalmetricsListingGet)
     call_v1ExternalmetricsListingGet
@@ -4702,6 +4648,12 @@ case $operation in
     ;;
     v1AssetsIconsSizeGet)
     call_v1AssetsIconsSizeGet
+    ;;
+    v1ChainsChainIdGet)
+    call_v1ChainsChainIdGet
+    ;;
+    v1ChainsGet)
+    call_v1ChainsGet
     ;;
     v1ExchangesExchangeIdGet)
     call_v1ExchangesExchangeIdGet

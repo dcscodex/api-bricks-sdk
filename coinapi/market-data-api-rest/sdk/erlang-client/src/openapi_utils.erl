@@ -81,9 +81,12 @@ auth_with_prefix(Cfg, Key, Token) ->
 
 update_params_with_auth(Cfg, Headers, QS) ->
     AuthSettings = maps:get(auth, Cfg, #{}),
-    Auths = #{ 'ApiKey' =>
+    Auths = #{ 'APIKey' =>
                 #{type => 'apiKey',
-                  key => <<"X-CoinAPI-Key">>,
+                  key => <<"Authorization">>,
+                  in => header}, 'JWT' =>
+                #{type => 'http',
+                  key => <<"Authorization">>,
                   in => header}},
 
     maps:fold(fun(AuthName, #{type := _Type,

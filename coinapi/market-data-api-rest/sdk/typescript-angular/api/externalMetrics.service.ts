@@ -1,5 +1,5 @@
 /**
- * REST API
+ * CoinAPI Market Data REST API
  *
  * Contact: support@apibricks.io
  *
@@ -16,12 +16,6 @@ import { HttpClient, HttpHeaders, HttpParams,
 import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
-// @ts-ignore
-import { V1Chain } from '../model/v1Chain';
-// @ts-ignore
-import { V1ExternalAsset } from '../model/v1ExternalAsset';
-// @ts-ignore
-import { V1ExternalExchange } from '../model/v1ExternalExchange';
 // @ts-ignore
 import { V1MetricInfo } from '../model/v1MetricInfo';
 
@@ -42,10 +36,10 @@ export class ExternalMetricsService extends BaseService {
     }
 
     /**
-     * Historical metrics for the asset from external sources
-     * Get asset metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60; - from supported assets list)
+     * Historical metrics for the asset
+     * Get asset metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60;)
      * @param timeStart Starting time in ISO 8601
      * @param timeEnd Ending time in ISO 8601
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)
@@ -83,8 +77,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -130,7 +127,7 @@ export class ExternalMetricsService extends BaseService {
 
     /**
      * Listing of metrics available for specific asset
-     * Get all metrics that are actually available for the specified asset from external providers.
+     * Get all metrics that are actually available for the specified asset.
      * @param assetId Asset identifier (e.g., USDC, USDT)
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -149,8 +146,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -195,67 +195,10 @@ export class ExternalMetricsService extends BaseService {
     }
 
     /**
-     * Listing of all supported external assets
-     * Get all assets (primarily stablecoins) supported by external data providers.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1ExternalmetricsAssetsGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<Array<V1ExternalAsset>>;
-    public v1ExternalmetricsAssetsGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<V1ExternalAsset>>>;
-    public v1ExternalmetricsAssetsGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<V1ExternalAsset>>>;
-    public v1ExternalmetricsAssetsGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-
-        let localVarHeaders = this.defaultHeaders;
-
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
-
-        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
-            'text/plain',
-            'application/json',
-            'text/json',
-            'application/x-msgpack'
-        ]);
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
-
-        const localVarTransferCache: boolean = options?.transferCache ?? true;
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/v1/externalmetrics/assets`;
-        const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Array<V1ExternalAsset>>('get', `${basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                responseType: <any>responseType_,
-                ...(withCredentials ? { withCredentials } : {}),
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Historical metrics for the chain from external sources
-     * Get chain metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60; - from supported chains list)
+     * Historical metrics for the chain
+     * Get chain metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60;)
      * @param timeStart Starting time in ISO 8601
      * @param timeEnd Ending time in ISO 8601
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)
@@ -293,8 +236,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -340,7 +286,7 @@ export class ExternalMetricsService extends BaseService {
 
     /**
      * Listing of metrics available for specific chain
-     * Get all metrics that are actually available for the specified blockchain chain from external providers.
+     * Get all metrics that are actually available for the specified blockchain chain.
      * @param chainId Chain identifier (e.g., ETHEREUM, ARBITRUM)
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -359,8 +305,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -405,66 +354,9 @@ export class ExternalMetricsService extends BaseService {
     }
 
     /**
-     * Listing of all supported external chains
-     * Get all blockchain chains supported by external data providers.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1ExternalmetricsChainsGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<Array<V1Chain>>;
-    public v1ExternalmetricsChainsGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<V1Chain>>>;
-    public v1ExternalmetricsChainsGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<V1Chain>>>;
-    public v1ExternalmetricsChainsGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-
-        let localVarHeaders = this.defaultHeaders;
-
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
-
-        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
-            'text/plain',
-            'application/json',
-            'text/json',
-            'application/x-msgpack'
-        ]);
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
-
-        const localVarTransferCache: boolean = options?.transferCache ?? true;
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/v1/externalmetrics/chains`;
-        const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Array<V1Chain>>('get', `${basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                responseType: <any>responseType_,
-                ...(withCredentials ? { withCredentials } : {}),
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Historical metrics for the exchange from both external and internal sources
-     * Get exchange metrics history from external data providers or internal sources based on metric type.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; for external, or generic metric IDs)
+     * Historical metrics for the exchange
+     * Get exchange metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
      * @param exchangeId Exchange identifier (e.g., &#x60;BINANCE&#x60;, &#x60;UNISWAP-V3-ETHEREUM&#x60;)
      * @param timeStart Starting time in ISO 8601
      * @param timeEnd Ending time in ISO 8601
@@ -503,8 +395,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -549,8 +444,8 @@ export class ExternalMetricsService extends BaseService {
     }
 
     /**
-     * Listing of metrics available for specific exchange (both external and generic)
-     * Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+     * Listing of metrics available for specific exchange
+     * Get all metrics that are actually available for the specified exchange.
      * @param exchangeId Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -569,8 +464,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -615,65 +513,8 @@ export class ExternalMetricsService extends BaseService {
     }
 
     /**
-     * Listing of all supported external exchanges
-     * Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public v1ExternalmetricsExchangesGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<Array<V1ExternalExchange>>;
-    public v1ExternalmetricsExchangesGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<V1ExternalExchange>>>;
-    public v1ExternalmetricsExchangesGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<V1ExternalExchange>>>;
-    public v1ExternalmetricsExchangesGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json' | 'application/x-msgpack', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-
-        let localVarHeaders = this.defaultHeaders;
-
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
-
-        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
-            'text/plain',
-            'application/json',
-            'text/json',
-            'application/x-msgpack'
-        ]);
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
-
-        const localVarTransferCache: boolean = options?.transferCache ?? true;
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/v1/externalmetrics/exchanges`;
-        const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<Array<V1ExternalExchange>>('get', `${basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                responseType: <any>responseType_,
-                ...(withCredentials ? { withCredentials } : {}),
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Listing of all supported metrics (both external and generic)
-     * Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+     * Listing of all supported metrics
+     * Get all metrics available in the system.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -684,8 +525,11 @@ export class ExternalMetricsService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',

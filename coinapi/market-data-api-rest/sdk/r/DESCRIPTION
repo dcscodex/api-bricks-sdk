@@ -1,5 +1,5 @@
 Package: openapi
-Title: R Package Client for REST API
+Title: R Package Client for CoinAPI Market Data REST API
 Version: 1.0.0
 Author: person("API BRICKS LTD", email = "support@apibricks.io", role = c("aut", "cre"))
 Maintainer: API BRICKS LTD <support@apibricks.io>

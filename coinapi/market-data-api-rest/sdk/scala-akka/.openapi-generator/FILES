@@ -22,8 +22,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -69,8 +67,6 @@ src/main/scala/org/openapitools/client/model/ExchangeRates.scala
 src/main/scala/org/openapitools/client/model/ExchangeRatesRate.scala
 src/main/scala/org/openapitools/client/model/ExchangeRatesTimeseriesItem.scala
 src/main/scala/org/openapitools/client/model/ExchangeTimeseriesItem.scala
-src/main/scala/org/openapitools/client/model/ExternalAsset.scala
-src/main/scala/org/openapitools/client/model/ExternalExchange.scala
 src/main/scala/org/openapitools/client/model/GeneralData.scala
 src/main/scala/org/openapitools/client/model/Icon.scala
 src/main/scala/org/openapitools/client/model/LastTrade.scala

@@ -28,8 +28,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -73,8 +71,6 @@ lib/openapi_client/models/v1_exchange_rate.rb
 lib/openapi_client/models/v1_exchange_rates.rb
 lib/openapi_client/models/v1_exchange_rates_rate.rb
 lib/openapi_client/models/v1_exchange_rates_timeseries_item.rb
-lib/openapi_client/models/v1_external_asset.rb
-lib/openapi_client/models/v1_external_exchange.rb
 lib/openapi_client/models/v1_general_data.rb
 lib/openapi_client/models/v1_icon.rb
 lib/openapi_client/models/v1_last_trade.rb
@@ -115,8 +111,6 @@ spec/models/v1_exchange_rates_rate_spec.rb
 spec/models/v1_exchange_rates_spec.rb
 spec/models/v1_exchange_rates_timeseries_item_spec.rb
 spec/models/v1_exchange_spec.rb
-spec/models/v1_external_asset_spec.rb
-spec/models/v1_external_exchange_spec.rb
 spec/models/v1_general_data_spec.rb
 spec/models/v1_icon_spec.rb
 spec/models/v1_last_trade_spec.rb

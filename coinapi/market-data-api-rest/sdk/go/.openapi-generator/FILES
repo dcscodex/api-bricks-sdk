@@ -36,8 +36,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -69,8 +67,6 @@ model_v1_exchange_rate.go
 model_v1_exchange_rates.go
 model_v1_exchange_rates_rate.go
 model_v1_exchange_rates_timeseries_item.go
-model_v1_external_asset.go
-model_v1_external_exchange.go
 model_v1_general_data.go
 model_v1_icon.go
 model_v1_last_trade.go

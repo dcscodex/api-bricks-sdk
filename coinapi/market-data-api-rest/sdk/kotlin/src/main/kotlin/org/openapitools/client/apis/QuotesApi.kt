@@ -49,7 +49,7 @@ class QuotesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     /**
      * GET /v1/quotes/current
      * Current data
-     * Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+     * Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
      * @param filterSymbolId Comma or semicolon delimited parts of symbol identifier used to filter response. (optional) (optional)
      * @return kotlin.collections.List<V1QuoteTrade>
      * @throws IllegalStateException If the request is not correctly configured
@@ -81,7 +81,7 @@ class QuotesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     /**
      * GET /v1/quotes/current
      * Current data
-     * Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+     * Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
      * @param filterSymbolId Comma or semicolon delimited parts of symbol identifier used to filter response. (optional) (optional)
      * @return ApiResponse<kotlin.collections.List<V1QuoteTrade>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -284,7 +284,7 @@ class QuotesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     /**
      * GET /v1/quotes/{symbol_id}/history
      * Historical data
-     * Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if &#39;time_start&#39; is not provided) (optional)
      * @param timeStart Starting time in ISO 8601 (optional)
@@ -320,7 +320,7 @@ class QuotesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory 
     /**
      * GET /v1/quotes/{symbol_id}/history
      * Historical data
-     * Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if &#39;time_start&#39; is not provided) (optional)
      * @param timeStart Starting time in ISO 8601 (optional)

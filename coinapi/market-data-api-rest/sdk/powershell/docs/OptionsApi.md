@@ -14,16 +14,17 @@ Method | HTTP request | Description
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $ExchangeId = "MyExchangeId" # String | Exchange identifier (from the Metadata -> Exchanges)
 
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

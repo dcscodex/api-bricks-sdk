@@ -1,4 +1,4 @@
-# Documentation for REST API v1 Tizen Client SDK
+# Documentation for CoinAPI Market Data REST API v1 Tizen Client SDK
 
 ## How do I get the doc files?
 First generate source code by running `openapi-generator`
@@ -16,7 +16,7 @@ This is the structure of the doc folder:
 ├── Doxyfile                  \\Doxygen config files
 ├── generateDocumentation.sh  \\Script to run to generate documentation
 ├── README.md                 \\This file
-├── SDK                       \\Documentation for all classes in REST API Tizen Client SDK. See ./html/index.html
+├── SDK                       \\Documentation for all classes in CoinAPI Market Data REST API Tizen Client SDK. See ./html/index.html
 │   └── html
 
 ```
@@ -55,26 +55,20 @@ Method | HTTP request | Description
 ### ExternalMetricsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-*v1ExternalmetricsAssetHistoryGetSync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources.
-*v1ExternalmetricsAssetHistoryGetASync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources.
+*v1ExternalmetricsAssetHistoryGetSync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset.
+*v1ExternalmetricsAssetHistoryGetASync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset.
 *v1ExternalmetricsAssetListingGetSync* | *GET* /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset.
 *v1ExternalmetricsAssetListingGetASync* | *GET* /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset.
-*v1ExternalmetricsAssetsGetSync* | *GET* /v1/externalmetrics/assets | Listing of all supported external assets.
-*v1ExternalmetricsAssetsGetASync* | *GET* /v1/externalmetrics/assets | Listing of all supported external assets.
-*v1ExternalmetricsChainHistoryGetSync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources.
-*v1ExternalmetricsChainHistoryGetASync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources.
+*v1ExternalmetricsChainHistoryGetSync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain.
+*v1ExternalmetricsChainHistoryGetASync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain.
 *v1ExternalmetricsChainListingGetSync* | *GET* /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain.
 *v1ExternalmetricsChainListingGetASync* | *GET* /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain.
-*v1ExternalmetricsChainsGetSync* | *GET* /v1/externalmetrics/chains | Listing of all supported external chains.
-*v1ExternalmetricsChainsGetASync* | *GET* /v1/externalmetrics/chains | Listing of all supported external chains.
-*v1ExternalmetricsExchangeHistoryGetSync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources.
-*v1ExternalmetricsExchangeHistoryGetASync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources.
-*v1ExternalmetricsExchangeListingGetSync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic).
-*v1ExternalmetricsExchangeListingGetASync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic).
-*v1ExternalmetricsExchangesGetSync* | *GET* /v1/externalmetrics/exchanges | Listing of all supported external exchanges.
-*v1ExternalmetricsExchangesGetASync* | *GET* /v1/externalmetrics/exchanges | Listing of all supported external exchanges.
-*v1ExternalmetricsListingGetSync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic).
-*v1ExternalmetricsListingGetASync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic).
+*v1ExternalmetricsExchangeHistoryGetSync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange.
+*v1ExternalmetricsExchangeHistoryGetASync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange.
+*v1ExternalmetricsExchangeListingGetSync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange.
+*v1ExternalmetricsExchangeListingGetASync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange.
+*v1ExternalmetricsListingGetSync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics.
+*v1ExternalmetricsListingGetASync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics.
 
 
 ### MetadataManager
@@ -86,6 +80,10 @@ Method | HTTP request | Description
 *v1AssetsGetASync* | *GET* /v1/assets | List all assets.
 *v1AssetsIconsSizeGetSync* | *GET* /v1/assets/icons/{size} | List all asset icons.
 *v1AssetsIconsSizeGetASync* | *GET* /v1/assets/icons/{size} | List all asset icons.
+*v1ChainsChainIdGetSync* | *GET* /v1/chains/{chain_id} | List all chains by chain ID.
+*v1ChainsChainIdGetASync* | *GET* /v1/chains/{chain_id} | List all chains by chain ID.
+*v1ChainsGetSync* | *GET* /v1/chains | List all blockchain chains.
+*v1ChainsGetASync* | *GET* /v1/chains | List all blockchain chains.
 *v1ExchangesExchangeIdGetSync* | *GET* /v1/exchanges/{exchange_id} | List all exchanges by exchange_id.
 *v1ExchangesExchangeIdGetASync* | *GET* /v1/exchanges/{exchange_id} | List all exchanges by exchange_id.
 *v1ExchangesGetSync* | *GET* /v1/exchanges | List all exchanges.
@@ -207,8 +205,6 @@ Class | Description
  *V1.ExchangeRates* | Represents exchange rates for a specific base asset.
  *V1.ExchangeRatesRate* | Represents an exchange rate within a collection of exchange rates.
  *V1.ExchangeRatesTimeseriesItem* | Represents an item in the exchange rate timeseries.
- *V1.ExternalAsset* | Represents an external asset with description.
- *V1.ExternalExchange* | Represents an exchange with external mapping for metrics.
  *V1.GeneralData* | Class representation of general metric data. This class is an XML type with name 'general_data' and inherits from the BaseCsvModel class.
  *V1.Icon* | Represents an icon.
  *V1.LastTrade* | Represents the last executed transaction.

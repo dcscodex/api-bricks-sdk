@@ -25,8 +25,17 @@ private class OASOrderBookL3ApiTest {
 
         client = new OASClient();
         api = new OASOrderBookL3Api(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1OrderBookBase>{OASV1OrderBookBase.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1OrderBookBase>{OASV1OrderBookBase.getExample()};
+        response = (List<OASV1OrderBookBase>) api.v1Orderbooks3CurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookL3Api(client);
 
         js = JSON.serialize(new List<OASV1OrderBookBase>{OASV1OrderBookBase.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -61,8 +70,41 @@ private class OASOrderBookL3ApiTest {
 
         client = new OASClient();
         api = new OASOrderBookL3Api(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1Orderbooks3SymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1Orderbooks3SymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1Orderbooks3SymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1Orderbooks3SymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookL3Api(client);
 
         js = JSON.serialize(OASV1OrderBookBase.getExample());
         res.setHeader('Content-Type', 'application/json');

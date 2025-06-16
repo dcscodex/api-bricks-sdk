@@ -83,19 +83,18 @@ Class | Method | HTTP request | Description
 *ExchangeRatesAPI* | [**V1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet**](docs/ExchangeRatesAPI.md#v1exchangerateassetidbaseassetidquotehistoryget) | **Get** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *ExchangeRatesAPI* | [**V1ExchangerateAssetIdBaseGet**](docs/ExchangeRatesAPI.md#v1exchangerateassetidbaseget) | **Get** /v1/exchangerate/{asset_id_base} | Get all current rates
 *ExchangeRatesAPI* | [**V1ExchangerateHistoryPeriodsGet**](docs/ExchangeRatesAPI.md#v1exchangeratehistoryperiodsget) | **Get** /v1/exchangerate/history/periods | Timeseries periods
-*ExternalMetricsAPI* | [**V1ExternalmetricsAssetHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricsassethistoryget) | **Get** /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources
+*ExternalMetricsAPI* | [**V1ExternalmetricsAssetHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricsassethistoryget) | **Get** /v1/externalmetrics/asset/history | Historical metrics for the asset
 *ExternalMetricsAPI* | [**V1ExternalmetricsAssetListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricsassetlistingget) | **Get** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*ExternalMetricsAPI* | [**V1ExternalmetricsAssetsGet**](docs/ExternalMetricsAPI.md#v1externalmetricsassetsget) | **Get** /v1/externalmetrics/assets | Listing of all supported external assets
-*ExternalMetricsAPI* | [**V1ExternalmetricsChainHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricschainhistoryget) | **Get** /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources
+*ExternalMetricsAPI* | [**V1ExternalmetricsChainHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricschainhistoryget) | **Get** /v1/externalmetrics/chain/history | Historical metrics for the chain
 *ExternalMetricsAPI* | [**V1ExternalmetricsChainListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricschainlistingget) | **Get** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*ExternalMetricsAPI* | [**V1ExternalmetricsChainsGet**](docs/ExternalMetricsAPI.md#v1externalmetricschainsget) | **Get** /v1/externalmetrics/chains | Listing of all supported external chains
-*ExternalMetricsAPI* | [**V1ExternalmetricsExchangeHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricsexchangehistoryget) | **Get** /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources
-*ExternalMetricsAPI* | [**V1ExternalmetricsExchangeListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricsexchangelistingget) | **Get** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic)
-*ExternalMetricsAPI* | [**V1ExternalmetricsExchangesGet**](docs/ExternalMetricsAPI.md#v1externalmetricsexchangesget) | **Get** /v1/externalmetrics/exchanges | Listing of all supported external exchanges
-*ExternalMetricsAPI* | [**V1ExternalmetricsListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricslistingget) | **Get** /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic)
+*ExternalMetricsAPI* | [**V1ExternalmetricsExchangeHistoryGet**](docs/ExternalMetricsAPI.md#v1externalmetricsexchangehistoryget) | **Get** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
+*ExternalMetricsAPI* | [**V1ExternalmetricsExchangeListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricsexchangelistingget) | **Get** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
+*ExternalMetricsAPI* | [**V1ExternalmetricsListingGet**](docs/ExternalMetricsAPI.md#v1externalmetricslistingget) | **Get** /v1/externalmetrics/listing | Listing of all supported metrics
 *MetadataAPI* | [**V1AssetsAssetIdGet**](docs/MetadataAPI.md#v1assetsassetidget) | **Get** /v1/assets/{asset_id} | List all assets by asset ID
 *MetadataAPI* | [**V1AssetsGet**](docs/MetadataAPI.md#v1assetsget) | **Get** /v1/assets | List all assets
 *MetadataAPI* | [**V1AssetsIconsSizeGet**](docs/MetadataAPI.md#v1assetsiconssizeget) | **Get** /v1/assets/icons/{size} | List all asset icons
+*MetadataAPI* | [**V1ChainsChainIdGet**](docs/MetadataAPI.md#v1chainschainidget) | **Get** /v1/chains/{chain_id} | List all chains by chain ID
+*MetadataAPI* | [**V1ChainsGet**](docs/MetadataAPI.md#v1chainsget) | **Get** /v1/chains | List all blockchain chains
 *MetadataAPI* | [**V1ExchangesExchangeIdGet**](docs/MetadataAPI.md#v1exchangesexchangeidget) | **Get** /v1/exchanges/{exchange_id} | List all exchanges by exchange_id
 *MetadataAPI* | [**V1ExchangesGet**](docs/MetadataAPI.md#v1exchangesget) | **Get** /v1/exchanges | List all exchanges
 *MetadataAPI* | [**V1ExchangesIconsSizeGet**](docs/MetadataAPI.md#v1exchangesiconssizeget) | **Get** /v1/exchanges/icons/{size} | List of icons for the exchanges
@@ -146,8 +145,6 @@ Class | Method | HTTP request | Description
  - [V1ExchangeRates](docs/V1ExchangeRates.md)
  - [V1ExchangeRatesRate](docs/V1ExchangeRatesRate.md)
  - [V1ExchangeRatesTimeseriesItem](docs/V1ExchangeRatesTimeseriesItem.md)
- - [V1ExternalAsset](docs/V1ExternalAsset.md)
- - [V1ExternalExchange](docs/V1ExternalExchange.md)
  - [V1GeneralData](docs/V1GeneralData.md)
  - [V1Icon](docs/V1Icon.md)
  - [V1LastTrade](docs/V1LastTrade.md)
@@ -171,13 +168,13 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### ApiKey
+### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: ApiKey and passed in as the auth context for each request.
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: APIKey and passed in as the auth context for each request.
 
 Example
 
@@ -186,9 +183,20 @@ auth := context.WithValue(
 		context.Background(),
 		openapi.ContextAPIKeys,
 		map[string]openapi.APIKey{
-			"ApiKey": {Key: "API_KEY_STRING"},
+			"APIKey": {Key: "API_KEY_STRING"},
 		},
 	)
+r, err := client.Service.Operation(auth, args)
+```
+
+### JWT
+
+- **Type**: HTTP Bearer token authentication
+
+Example
+
+```go
+auth := context.WithValue(context.Background(), openapi.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 

@@ -41,8 +41,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = OrderBookApi("https://rest.coinapi.io")
@@ -88,7 +91,7 @@ ApiRequest[[**OrderBookBase**](OrderBookBase.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -127,8 +130,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = OrderBookApi("https://rest.coinapi.io")
@@ -174,7 +180,7 @@ ApiRequest[[**OrderBookDepth**](OrderBookDepth.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -193,7 +199,7 @@ ApiRequest[[**OrderBookDepth**](OrderBookDepth.md)]
 
 Historical data
 
-Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 
@@ -213,8 +219,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = OrderBookApi("https://rest.coinapi.io")
@@ -272,7 +281,7 @@ ApiRequest[[**Seq[OrderBook]**](OrderBook.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -291,7 +300,7 @@ ApiRequest[[**Seq[OrderBook]**](OrderBook.md)]
 
 Latest data
 
-Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
 
 ### Example
 
@@ -311,8 +320,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = OrderBookApi("https://rest.coinapi.io")
@@ -361,7 +373,7 @@ ApiRequest[[**Seq[OrderBook]**](OrderBook.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

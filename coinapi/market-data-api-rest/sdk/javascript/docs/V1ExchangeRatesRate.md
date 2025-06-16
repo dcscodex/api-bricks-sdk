@@ -1,4 +1,4 @@
-# RestApi.V1ExchangeRatesRate
+# CoinApiMarketDataRestApi.V1ExchangeRatesRate
 
 ## Properties
 

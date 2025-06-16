@@ -28,8 +28,10 @@ var_include_id <- FALSE # character | Information that additional exchange trade
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- TradesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1TradesLatestGet(filter_symbol_id = var_filter_symbol_id, include_id = var_include_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1TradesLatestGet(filter_symbol_id = var_filter_symbol_id, include_id = var_include_id, limit = var_limit)
@@ -50,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -67,7 +69,7 @@ Name | Type | Description  | Notes
 
 Historical data
 
-Get history transactions from specific symbol, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get history transactions from specific symbol, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```R
@@ -84,8 +86,10 @@ var_limit <- 100 # integer | Amount of items to return (optional, minimum is 1, 
 var_include_id <- FALSE # character | Information that additional exchange trade identifier should be included in the `id_trade` parameter of the trade if exchange providing identifiers. (Optional)
 
 api_instance <- TradesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1TradesSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limit, include_id = var_include_iddata_file = "result.txt")
 result <- api_instance$V1TradesSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limit, include_id = var_include_id)
@@ -109,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -140,8 +144,10 @@ var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, 
 var_include_id <- FALSE # character | Information that additional exchange trade identifier should be included in the `id_trade` parameter of the trade if exchange providing identifiers. (Optional)
 
 api_instance <- TradesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1TradesSymbolIdLatestGet(var_symbol_id, limit = var_limit, include_id = var_include_iddata_file = "result.txt")
 result <- api_instance$V1TradesSymbolIdLatestGet(var_symbol_id, limit = var_limit, include_id = var_include_id)
@@ -162,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

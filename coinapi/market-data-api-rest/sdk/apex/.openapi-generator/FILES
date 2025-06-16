@@ -93,14 +93,6 @@ force-app/main/default/classes/OASV1ExchangeRatesTimeseriesItemTest.cls
 force-app/main/default/classes/OASV1ExchangeRatesTimeseriesItemTest.cls-meta.xml
 force-app/main/default/classes/OASV1ExchangeTest.cls
 force-app/main/default/classes/OASV1ExchangeTest.cls-meta.xml
-force-app/main/default/classes/OASV1ExternalAsset.cls
-force-app/main/default/classes/OASV1ExternalAsset.cls-meta.xml
-force-app/main/default/classes/OASV1ExternalAssetTest.cls
-force-app/main/default/classes/OASV1ExternalAssetTest.cls-meta.xml
-force-app/main/default/classes/OASV1ExternalExchange.cls
-force-app/main/default/classes/OASV1ExternalExchange.cls-meta.xml
-force-app/main/default/classes/OASV1ExternalExchangeTest.cls
-force-app/main/default/classes/OASV1ExternalExchangeTest.cls-meta.xml
 force-app/main/default/classes/OASV1GeneralData.cls
 force-app/main/default/classes/OASV1GeneralData.cls-meta.xml
 force-app/main/default/classes/OASV1GeneralDataTest.cls
@@ -169,5 +161,5 @@ force-app/main/default/classes/OASV1Trade.cls
 force-app/main/default/classes/OASV1Trade.cls-meta.xml
 force-app/main/default/classes/OASV1TradeTest.cls
 force-app/main/default/classes/OASV1TradeTest.cls-meta.xml
-force-app/main/default/namedCredentials/REST_API.namedCredential-meta.xml
+force-app/main/default/namedCredentials/CoinAPI_Market_Data_REST_API.namedCredential-meta.xml
 sfdx-project.json

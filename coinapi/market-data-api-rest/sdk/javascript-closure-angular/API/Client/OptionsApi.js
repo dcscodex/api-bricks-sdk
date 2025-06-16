@@ -46,7 +46,7 @@ API.Client.OptionsApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
 
 /**
  * Current data by Exchange
- * Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+ * Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
  * @param {!string} exchangeId Exchange identifier (from the Metadata -&gt; Exchanges)
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!Array<!API.Client.Options.OptionExchangeGroup>>}

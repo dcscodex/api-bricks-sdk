@@ -1,5 +1,5 @@
 /*
-REST API
+CoinAPI Market Data REST API
 
 Testing OhlcvAPIService
 

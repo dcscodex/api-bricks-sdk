@@ -18,7 +18,7 @@ class OptionsApi {
 
   /// Current data by Exchange
   ///
-  /// Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+  /// Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -54,7 +54,7 @@ class OptionsApi {
 
   /// Current data by Exchange
   ///
-  /// Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+  /// Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
   ///
   /// Parameters:
   ///

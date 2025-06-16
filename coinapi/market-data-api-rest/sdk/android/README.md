@@ -89,19 +89,18 @@ Class | Method | HTTP request | Description
 *ExchangeRatesApi* | [**v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet**](docs/ExchangeRatesApi.md#v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet) | **GET** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *ExchangeRatesApi* | [**v1ExchangerateAssetIdBaseGet**](docs/ExchangeRatesApi.md#v1ExchangerateAssetIdBaseGet) | **GET** /v1/exchangerate/{asset_id_base} | Get all current rates
 *ExchangeRatesApi* | [**v1ExchangerateHistoryPeriodsGet**](docs/ExchangeRatesApi.md#v1ExchangerateHistoryPeriodsGet) | **GET** /v1/exchangerate/history/periods | Timeseries periods
-*ExternalMetricsApi* | [**v1ExternalmetricsAssetHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsAssetHistoryGet) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources
+*ExternalMetricsApi* | [**v1ExternalmetricsAssetHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsAssetHistoryGet) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset
 *ExternalMetricsApi* | [**v1ExternalmetricsAssetListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsAssetListingGet) | **GET** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*ExternalMetricsApi* | [**v1ExternalmetricsAssetsGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsAssetsGet) | **GET** /v1/externalmetrics/assets | Listing of all supported external assets
-*ExternalMetricsApi* | [**v1ExternalmetricsChainHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsChainHistoryGet) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources
+*ExternalMetricsApi* | [**v1ExternalmetricsChainHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsChainHistoryGet) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain
 *ExternalMetricsApi* | [**v1ExternalmetricsChainListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsChainListingGet) | **GET** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*ExternalMetricsApi* | [**v1ExternalmetricsChainsGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsChainsGet) | **GET** /v1/externalmetrics/chains | Listing of all supported external chains
-*ExternalMetricsApi* | [**v1ExternalmetricsExchangeHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsExchangeHistoryGet) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources
-*ExternalMetricsApi* | [**v1ExternalmetricsExchangeListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsExchangeListingGet) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic)
-*ExternalMetricsApi* | [**v1ExternalmetricsExchangesGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsExchangesGet) | **GET** /v1/externalmetrics/exchanges | Listing of all supported external exchanges
-*ExternalMetricsApi* | [**v1ExternalmetricsListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsListingGet) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic)
+*ExternalMetricsApi* | [**v1ExternalmetricsExchangeHistoryGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsExchangeHistoryGet) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
+*ExternalMetricsApi* | [**v1ExternalmetricsExchangeListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsExchangeListingGet) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
+*ExternalMetricsApi* | [**v1ExternalmetricsListingGet**](docs/ExternalMetricsApi.md#v1ExternalmetricsListingGet) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics
 *MetadataApi* | [**v1AssetsAssetIdGet**](docs/MetadataApi.md#v1AssetsAssetIdGet) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 *MetadataApi* | [**v1AssetsGet**](docs/MetadataApi.md#v1AssetsGet) | **GET** /v1/assets | List all assets
 *MetadataApi* | [**v1AssetsIconsSizeGet**](docs/MetadataApi.md#v1AssetsIconsSizeGet) | **GET** /v1/assets/icons/{size} | List all asset icons
+*MetadataApi* | [**v1ChainsChainIdGet**](docs/MetadataApi.md#v1ChainsChainIdGet) | **GET** /v1/chains/{chain_id} | List all chains by chain ID
+*MetadataApi* | [**v1ChainsGet**](docs/MetadataApi.md#v1ChainsGet) | **GET** /v1/chains | List all blockchain chains
 *MetadataApi* | [**v1ExchangesExchangeIdGet**](docs/MetadataApi.md#v1ExchangesExchangeIdGet) | **GET** /v1/exchanges/{exchange_id} | List all exchanges by exchange_id
 *MetadataApi* | [**v1ExchangesGet**](docs/MetadataApi.md#v1ExchangesGet) | **GET** /v1/exchanges | List all exchanges
 *MetadataApi* | [**v1ExchangesIconsSizeGet**](docs/MetadataApi.md#v1ExchangesIconsSizeGet) | **GET** /v1/exchanges/icons/{size} | List of icons for the exchanges
@@ -152,8 +151,6 @@ Class | Method | HTTP request | Description
  - [V1ExchangeRates](docs/V1ExchangeRates.md)
  - [V1ExchangeRatesRate](docs/V1ExchangeRatesRate.md)
  - [V1ExchangeRatesTimeseriesItem](docs/V1ExchangeRatesTimeseriesItem.md)
- - [V1ExternalAsset](docs/V1ExternalAsset.md)
- - [V1ExternalExchange](docs/V1ExternalExchange.md)
  - [V1GeneralData](docs/V1GeneralData.md)
  - [V1Icon](docs/V1Icon.md)
  - [V1LastTrade](docs/V1LastTrade.md)
@@ -176,12 +173,16 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### ApiKey
+### APIKey
 
 - **Type**: API key
 
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
+
+### JWT
+
+- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Recommendation

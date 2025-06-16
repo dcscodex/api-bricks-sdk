@@ -32,10 +32,11 @@ Get current asset metrics.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing) (optional)
 $AssetId = "MyAssetId" # String | Asset identifier (from the Metadata -> Assets) (optional)
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -96,10 +97,11 @@ Get asset metrics history.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing)
 $ExchangeId = "MyExchangeId" # String | Exchange identifier (from the Metadata -> Exchanges)
@@ -140,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -167,10 +169,11 @@ Get data metrics for asset.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing) (optional)
 $ExchangeId = "MyExchangeId" # String | Exchange identifier (from the Metadata -> Exchanges) (optional)
@@ -205,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -228,10 +231,11 @@ Get current exchange metrics values.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $ExchangeId = "MyExchangeId" # String | The exchange identifier (from the Metadata -> Exchanges)
 $MetricId = "MyMetricId" # String | The metric identifier (from the Metrics -> Listing) (optional)
@@ -258,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -286,10 +290,11 @@ Get exchange metrics history.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing)
 $ExchangeId = "MyExchangeId" # String | Exchange identifier (from the Metadata -> Exchanges)
@@ -326,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -349,10 +354,11 @@ Get data metrics for exchange.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $ExchangeId = "MyExchangeId" # String | The exchange identifier (from the Metadata -> Exchanges)
 $MetricId = "MyMetricId" # String | The metric identifier (from the Metrics -> Listing) (optional)
@@ -379,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -400,10 +406,11 @@ Get all data metrics.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 
 # Listing of all supported metrics by CoinAPI
@@ -424,7 +431,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -448,10 +455,11 @@ Get current symbol metrics.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing) (optional)
 $SymbolId = "MySymbolId" # String | Symbol identifier (from the Metadata -> Symbols) (optional)
@@ -480,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -508,10 +516,11 @@ Get symbol metrics history.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing)
 $SymbolId = "MySymbolId" # String | Symbol identifier (from the Metadata -> Symbols)
@@ -548,7 +557,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -572,10 +581,11 @@ Get data metrics for symbol.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $MetricId = "MyMetricId" # String | Metric identifier (from the Metrics -> Listing) (optional)
 $ExchangeId = "MyExchangeId" # String | Exchange identifier (from the Metadata -> Exchanges) (optional)
@@ -604,7 +614,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

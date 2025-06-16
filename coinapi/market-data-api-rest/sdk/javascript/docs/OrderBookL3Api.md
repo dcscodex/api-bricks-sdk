@@ -1,4 +1,4 @@
-# RestApi.OrderBookL3Api
+# CoinApiMarketDataRestApi.OrderBookL3Api
 
 All URIs are relative to *https://rest.coinapi.io*
 
@@ -18,15 +18,18 @@ Current order books
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
-let defaultClient = RestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiMarketDataRestApi from 'coin_api_market_data_rest_api';
+let defaultClient = CoinApiMarketDataRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.OrderBookL3Api();
+let apiInstance = new CoinApiMarketDataRestApi.OrderBookL3Api();
 let opts = {
   'filterSymbolId': "filterSymbolId_example", // String | Comma or semicolon delimited parts of symbol identifier used to filter the response.
   'limitLevels': 56 // Number | The maximum number of levels to include in the response.
@@ -54,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -73,15 +76,18 @@ Retrieves the current order book for the specified symbol.
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
-let defaultClient = RestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiMarketDataRestApi from 'coin_api_market_data_rest_api';
+let defaultClient = CoinApiMarketDataRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.OrderBookL3Api();
+let apiInstance = new CoinApiMarketDataRestApi.OrderBookL3Api();
 let symbolId = "symbolId_example"; // String | The symbol ID (from the Metadata -> Symbols)
 let opts = {
   'limitLevels': 56 // Number | The maximum number of levels to include in the response.
@@ -109,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

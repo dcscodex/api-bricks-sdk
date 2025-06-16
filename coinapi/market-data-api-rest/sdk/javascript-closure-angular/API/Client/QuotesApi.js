@@ -47,7 +47,7 @@ API.Client.QuotesApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
 
 /**
  * Current data
- * Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+ * Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
  * @param {!string=} opt_filterSymbolId Comma or semicolon delimited parts of symbol identifier used to filter response. (optional)
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!Array<!API.Client.v1.QuoteTrade>>}
@@ -161,7 +161,7 @@ API.Client.QuotesApi.prototype.v1QuotesSymbolIdCurrentGet = function(symbolId, o
 
 /**
  * Historical data
- * Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+ * Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
  * @param {!string} symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
  * @param {!string=} opt_date Date in ISO 8601, returned data is for the whole given day (preferred method, required if &#39;time_start&#39; is not provided)
  * @param {!string=} opt_timeStart Starting time in ISO 8601

@@ -23,7 +23,7 @@ test_that("V1TradesSymbolIdHistoryGet", {
   # tests for V1TradesSymbolIdHistoryGet
   # base path: https://rest.coinapi.io
   # Historical data
-  # Get history transactions from specific symbol, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+  # Get history transactions from specific symbol, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
   # @param symbol_id character Symbol identifier for requested timeseries (from the Metadata -> Symbols)
   # @param date character Date in ISO 8601, returned data is for the whole given day (required if 'time_start' is not provided) (optional)
   # @param time_start character Starting time in ISO 8601 (optional)

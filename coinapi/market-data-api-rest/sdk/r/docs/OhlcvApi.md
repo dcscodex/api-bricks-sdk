@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Historical data by exchange
 
-Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`                :::info  The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay.  The difference between `time_end` and `time_start` cannot be higher than 1 day.  The `period_id` cannot be higher than `1DAY`.  :::
+Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`              :::info The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay. The difference between `time_end` and `time_start` cannot be higher than 1 day. The `period_id` cannot be higher than `1DAY`. :::
 
 ### Example
 ```R
@@ -30,8 +30,10 @@ var_time_start <- "time_start_example" # character | Timeseries starting time in
 var_time_end <- "time_end_example" # character | Timeseries ending time in ISO 8601
 
 api_instance <- OhlcvApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OhlcvExchangesExchangeIdHistoryGet(var_exchange_id, var_period_id, var_time_start, var_time_enddata_file = "result.txt")
 result <- api_instance$V1OhlcvExchangesExchangeIdHistoryGet(var_exchange_id, var_period_id, var_time_start, var_time_end)
@@ -53,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -70,7 +72,7 @@ Name | Type | Description  | Notes
 
 List all periods
 
-Get full list of supported time periods available for requesting OHLCV timeseries data.                ### Available periods                Time unit | Period identifiers  --------- | -----------  Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC  Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN  Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS  Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY  Month | 1MTH, 2MTH, 3MTH, 4MTH, 6MTH  Year | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS                :::tip  You can assume that we will not remove any periods from this response, however, we may add new ones.  :::
+Get full list of supported time periods available for requesting OHLCV timeseries data.              ### Available periods              Time unit | Period identifiers --------- | ----------- Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY Month | 1MTH, 2MTH, 3MTH, 4MTH, 6MTH Year | 1YRS, 2YRS, 3YRS, 4YRS, 5YRS              :::tip You can assume that we will not remove any periods from this response, however, we may add new ones. :::
 
 ### Example
 ```R
@@ -80,8 +82,10 @@ library(openapi)
 #
 
 api_instance <- OhlcvApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OhlcvPeriodsGet(data_file = "result.txt")
 result <- api_instance$V1OhlcvPeriodsGet()
@@ -97,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -114,7 +118,7 @@ This endpoint does not need any parameter.
 
 Historical data
 
-Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data                :::info  The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay.  :::
+Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data              :::info The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay. :::
 
 ### Example
 ```R
@@ -131,8 +135,10 @@ var_limit <- 100 # integer | Amount of items to return (mininum is 1, maximum is
 var_include_empty_items <- FALSE # character | Include items with no activity? (default value is `false`, possible values are `true` or `false`) (Optional)
 
 api_instance <- OhlcvApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OhlcvSymbolIdHistoryGet(var_symbol_id, var_period_id, time_start = var_time_start, time_end = var_time_end, limit = var_limit, include_empty_items = var_include_empty_itemsdata_file = "result.txt")
 result <- api_instance$V1OhlcvSymbolIdHistoryGet(var_symbol_id, var_period_id, time_start = var_time_start, time_end = var_time_end, limit = var_limit, include_empty_items = var_include_empty_items)
@@ -156,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -173,7 +179,7 @@ Name | Type | Description  | Notes
 
 Latest data
 
-Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data                :::info  OHLCV Latest endpoint is just the shortcut to the OHLCV Historical endpoint with substituted `time_start` and `time_end` parameters.   The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay.  :::
+Get OHLCV latest timeseries data returned in time descending order. Data can be requested by the period and for the specific symbol eg `BITSTAMP_SPOT_BTC_USD`, if you need to query timeseries by asset pairs eg. `BTC/USD`, then please reffer to the Exchange Rates Timeseries data              :::info OHLCV Latest endpoint is just the shortcut to the OHLCV Historical endpoint with substituted `time_start` and `time_end` parameters.  The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-time data stream to get data without delay. :::
 
 ### Example
 ```R
@@ -188,8 +194,10 @@ var_limit <- 100 # integer | Amount of items to return (mininum is 1, maximum is
 var_include_empty_items <- FALSE # character | Include items with no activity? (default value is `false`, possible values are `true` or `false`) (Optional)
 
 api_instance <- OhlcvApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OhlcvSymbolIdLatestGet(var_symbol_id, var_period_id, limit = var_limit, include_empty_items = var_include_empty_itemsdata_file = "result.txt")
 result <- api_instance$V1OhlcvSymbolIdLatestGet(var_symbol_id, var_period_id, limit = var_limit, include_empty_items = var_include_empty_items)
@@ -211,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

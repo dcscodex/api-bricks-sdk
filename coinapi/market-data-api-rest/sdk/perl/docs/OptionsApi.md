@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 ```perl
@@ -25,10 +25,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::OptionsApi;
 my $api_instance = WWW::OpenAPIClient::OptionsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $exchange_id = "exchange_id_example"; # string | Exchange identifier (from the Metadata -> Exchanges)
@@ -54,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -34,10 +34,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -69,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -91,10 +94,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -136,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -158,10 +164,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -197,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -219,10 +228,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $exchange_id = "exchange_id_example"; # string | The exchange identifier (from the Metadata -> Exchanges)
@@ -250,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -272,10 +284,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -313,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -335,10 +350,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $exchange_id = "exchange_id_example"; # string | The exchange identifier (from the Metadata -> Exchanges)
@@ -366,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -388,10 +406,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 
@@ -413,7 +434,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -435,10 +456,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -468,7 +492,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -490,10 +514,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -531,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -553,10 +580,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::MetricsApi;
 my $api_instance = WWW::OpenAPIClient::MetricsApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $metric_id = "metric_id_example"; # string | Metric identifier (from the Metrics -> Listing)
@@ -586,7 +616,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

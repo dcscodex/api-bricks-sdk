@@ -1,5 +1,5 @@
 /*
-REST API
+CoinAPI Market Data REST API
 
 Testing ExternalMetricsAPIService
 
@@ -46,18 +46,6 @@ func Test_openapi_ExternalMetricsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExternalMetricsAPIService V1ExternalmetricsAssetsGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsAssetsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ExternalMetricsAPIService V1ExternalmetricsChainHistoryGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -82,18 +70,6 @@ func Test_openapi_ExternalMetricsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExternalMetricsAPIService V1ExternalmetricsChainsGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsChainsGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ExternalMetricsAPIService V1ExternalmetricsExchangeHistoryGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -111,18 +87,6 @@ func Test_openapi_ExternalMetricsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsExchangeListingGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ExternalMetricsAPIService V1ExternalmetricsExchangesGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsExchangesGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

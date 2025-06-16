@@ -19,9 +19,6 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.V1Chain
-import org.openapitools.client.models.V1ExternalAsset
-import org.openapitools.client.models.V1ExternalExchange
 import org.openapitools.client.models.V1MetricInfo
 
 import com.squareup.moshi.Json
@@ -50,10 +47,10 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/asset/history
-     * Historical metrics for the asset from external sources
-     * Get asset metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60; - from supported assets list)
+     * Historical metrics for the asset
+     * Get asset metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -88,10 +85,10 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/asset/history
-     * Historical metrics for the asset from external sources
-     * Get asset metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60; - from supported assets list)
+     * Historical metrics for the asset
+     * Get asset metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -114,8 +111,8 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation v1ExternalmetricsAssetHistoryGet
      *
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60; - from supported assets list)
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param assetId Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -161,7 +158,7 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * GET /v1/externalmetrics/asset/listing
      * Listing of metrics available for specific asset
-     * Get all metrics that are actually available for the specified asset from external providers.
+     * Get all metrics that are actually available for the specified asset.
      * @param assetId Asset identifier (e.g., USDC, USDT)
      * @return kotlin.collections.List<V1MetricInfo>
      * @throws IllegalStateException If the request is not correctly configured
@@ -193,7 +190,7 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * GET /v1/externalmetrics/asset/listing
      * Listing of metrics available for specific asset
-     * Get all metrics that are actually available for the specified asset from external providers.
+     * Get all metrics that are actually available for the specified asset.
      * @param assetId Asset identifier (e.g., USDC, USDT)
      * @return ApiResponse<kotlin.collections.List<V1MetricInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -235,81 +232,11 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     }
 
     /**
-     * GET /v1/externalmetrics/assets
-     * Listing of all supported external assets
-     * Get all assets (primarily stablecoins) supported by external data providers.
-     * @return kotlin.collections.List<V1ExternalAsset>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1ExternalmetricsAssetsGet() : kotlin.collections.List<V1ExternalAsset> {
-        val localVarResponse = v1ExternalmetricsAssetsGetWithHttpInfo()
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<V1ExternalAsset>
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /v1/externalmetrics/assets
-     * Listing of all supported external assets
-     * Get all assets (primarily stablecoins) supported by external data providers.
-     * @return ApiResponse<kotlin.collections.List<V1ExternalAsset>?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun v1ExternalmetricsAssetsGetWithHttpInfo() : ApiResponse<kotlin.collections.List<V1ExternalAsset>?> {
-        val localVariableConfig = v1ExternalmetricsAssetsGetRequestConfig()
-
-        return request<Unit, kotlin.collections.List<V1ExternalAsset>>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation v1ExternalmetricsAssetsGet
-     *
-     * @return RequestConfig
-     */
-    fun v1ExternalmetricsAssetsGetRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "text/plain, application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/externalmetrics/assets",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
      * GET /v1/externalmetrics/chain/history
-     * Historical metrics for the chain from external sources
-     * Get chain metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60; - from supported chains list)
+     * Historical metrics for the chain
+     * Get chain metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -344,10 +271,10 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/chain/history
-     * Historical metrics for the chain from external sources
-     * Get chain metrics history from external data providers. Data is typically aggregated daily.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60; - from supported chains list)
+     * Historical metrics for the chain
+     * Get chain metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -370,8 +297,8 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation v1ExternalmetricsChainHistoryGet
      *
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key)
-     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60; - from supported chains list)
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
+     * @param chainId Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
      * @param timeFormat If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -417,7 +344,7 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * GET /v1/externalmetrics/chain/listing
      * Listing of metrics available for specific chain
-     * Get all metrics that are actually available for the specified blockchain chain from external providers.
+     * Get all metrics that are actually available for the specified blockchain chain.
      * @param chainId Chain identifier (e.g., ETHEREUM, ARBITRUM)
      * @return kotlin.collections.List<V1MetricInfo>
      * @throws IllegalStateException If the request is not correctly configured
@@ -449,7 +376,7 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * GET /v1/externalmetrics/chain/listing
      * Listing of metrics available for specific chain
-     * Get all metrics that are actually available for the specified blockchain chain from external providers.
+     * Get all metrics that are actually available for the specified blockchain chain.
      * @param chainId Chain identifier (e.g., ETHEREUM, ARBITRUM)
      * @return ApiResponse<kotlin.collections.List<V1MetricInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -491,80 +418,10 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     }
 
     /**
-     * GET /v1/externalmetrics/chains
-     * Listing of all supported external chains
-     * Get all blockchain chains supported by external data providers.
-     * @return kotlin.collections.List<V1Chain>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1ExternalmetricsChainsGet() : kotlin.collections.List<V1Chain> {
-        val localVarResponse = v1ExternalmetricsChainsGetWithHttpInfo()
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<V1Chain>
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /v1/externalmetrics/chains
-     * Listing of all supported external chains
-     * Get all blockchain chains supported by external data providers.
-     * @return ApiResponse<kotlin.collections.List<V1Chain>?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun v1ExternalmetricsChainsGetWithHttpInfo() : ApiResponse<kotlin.collections.List<V1Chain>?> {
-        val localVariableConfig = v1ExternalmetricsChainsGetRequestConfig()
-
-        return request<Unit, kotlin.collections.List<V1Chain>>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation v1ExternalmetricsChainsGet
-     *
-     * @return RequestConfig
-     */
-    fun v1ExternalmetricsChainsGetRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "text/plain, application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/externalmetrics/chains",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
      * GET /v1/externalmetrics/exchange/history
-     * Historical metrics for the exchange from both external and internal sources
-     * Get exchange metrics history from external data providers or internal sources based on metric type.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; for external, or generic metric IDs)
+     * Historical metrics for the exchange
+     * Get exchange metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
      * @param exchangeId Exchange identifier (e.g., &#x60;BINANCE&#x60;, &#x60;UNISWAP-V3-ETHEREUM&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
@@ -600,9 +457,9 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/exchange/history
-     * Historical metrics for the exchange from both external and internal sources
-     * Get exchange metrics history from external data providers or internal sources based on metric type.
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; for external, or generic metric IDs)
+     * Historical metrics for the exchange
+     * Get exchange metrics history.
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
      * @param exchangeId Exchange identifier (e.g., &#x60;BINANCE&#x60;, &#x60;UNISWAP-V3-ETHEREUM&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
@@ -626,7 +483,7 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     /**
      * To obtain the request config of the operation v1ExternalmetricsExchangeHistoryGet
      *
-     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; for external, or generic metric IDs)
+     * @param metricId Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;)
      * @param exchangeId Exchange identifier (e.g., &#x60;BINANCE&#x60;, &#x60;UNISWAP-V3-ETHEREUM&#x60;)
      * @param timeStart Starting time in ISO 8601 (optional)
      * @param timeEnd Ending time in ISO 8601 (optional)
@@ -672,8 +529,8 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/exchange/listing
-     * Listing of metrics available for specific exchange (both external and generic)
-     * Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+     * Listing of metrics available for specific exchange
+     * Get all metrics that are actually available for the specified exchange.
      * @param exchangeId Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)
      * @return kotlin.collections.List<V1MetricInfo>
      * @throws IllegalStateException If the request is not correctly configured
@@ -704,8 +561,8 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/exchange/listing
-     * Listing of metrics available for specific exchange (both external and generic)
-     * Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+     * Listing of metrics available for specific exchange
+     * Get all metrics that are actually available for the specified exchange.
      * @param exchangeId Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)
      * @return ApiResponse<kotlin.collections.List<V1MetricInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -747,79 +604,9 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
     }
 
     /**
-     * GET /v1/externalmetrics/exchanges
-     * Listing of all supported external exchanges
-     * Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-     * @return kotlin.collections.List<V1ExternalExchange>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun v1ExternalmetricsExchangesGet() : kotlin.collections.List<V1ExternalExchange> {
-        val localVarResponse = v1ExternalmetricsExchangesGetWithHttpInfo()
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<V1ExternalExchange>
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /v1/externalmetrics/exchanges
-     * Listing of all supported external exchanges
-     * Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-     * @return ApiResponse<kotlin.collections.List<V1ExternalExchange>?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun v1ExternalmetricsExchangesGetWithHttpInfo() : ApiResponse<kotlin.collections.List<V1ExternalExchange>?> {
-        val localVariableConfig = v1ExternalmetricsExchangesGetRequestConfig()
-
-        return request<Unit, kotlin.collections.List<V1ExternalExchange>>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation v1ExternalmetricsExchangesGet
-     *
-     * @return RequestConfig
-     */
-    fun v1ExternalmetricsExchangesGetRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "text/plain, application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/externalmetrics/exchanges",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
      * GET /v1/externalmetrics/listing
-     * Listing of all supported metrics (both external and generic)
-     * Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+     * Listing of all supported metrics
+     * Get all metrics available in the system.
      * @return kotlin.collections.List<V1MetricInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -849,8 +636,8 @@ class ExternalMetricsApi(basePath: kotlin.String = defaultBasePath, client: Call
 
     /**
      * GET /v1/externalmetrics/listing
-     * Listing of all supported metrics (both external and generic)
-     * Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+     * Listing of all supported metrics
+     * Get all metrics available in the system.
      * @return ApiResponse<kotlin.collections.List<V1MetricInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception

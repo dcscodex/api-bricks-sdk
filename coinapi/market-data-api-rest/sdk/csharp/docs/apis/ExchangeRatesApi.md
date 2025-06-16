@@ -15,7 +15,7 @@ All URIs are relative to *https://rest.coinapi.io*
 
 Get specific rate
 
-Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::
+Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
 ### Example
 ```csharp
@@ -33,10 +33,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -94,7 +96,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -133,10 +135,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rates base asset identifier (from the Metadata -> Assets)
@@ -200,7 +204,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -221,7 +225,7 @@ catch (ApiException e)
 
 Get all current rates
 
-Get the current exchange rate between requested asset and all other assets.                :::info  If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements.  :::                :::info  You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC);  :::
+Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
 ### Example
 ```csharp
@@ -239,10 +243,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rates base asset identifier (from the Metadata -> Assets)
@@ -302,7 +308,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -323,7 +329,7 @@ catch (ApiException e)
 
 Timeseries periods
 
-You can also obtain historical exchange rates of any asset pair, grouped into time periods.  Get full list of supported time periods available for requesting exchange rates historical timeseries data.                ## Timeseries periods  Time unit | Period identifiers  - -- | - --  Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC  Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN  Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS  Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
+You can also obtain historical exchange rates of any asset pair, grouped into time periods. Get full list of supported time periods available for requesting exchange rates historical timeseries data.              ## Timeseries periods Time unit | Period identifiers - -- | - -- Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY
 
 ### Example
 ```csharp
@@ -341,10 +347,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
 
@@ -393,7 +401,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

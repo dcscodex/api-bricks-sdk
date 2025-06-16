@@ -1,4 +1,4 @@
-# RestApi.V1MetricInfo
+# CoinApiMarketDataRestApi.V1MetricInfo
 
 ## Properties
 

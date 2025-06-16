@@ -17,9 +17,9 @@ void main() {
   // final instance = ExternalMetricsApi();
 
   group('tests for ExternalMetricsApi', () {
-    // Historical metrics for the asset from external sources
+    // Historical metrics for the asset
     //
-    // Get asset metrics history from external data providers. Data is typically aggregated daily.
+    // Get asset metrics history.
     //
     //Future<List<Object>> v1ExternalmetricsAssetHistoryGet(String metricId, String assetId, { DateTime timeStart, DateTime timeEnd, String timeFormat, String periodId, int limit }) async
     test('test v1ExternalmetricsAssetHistoryGet', () async {
@@ -28,25 +28,16 @@ void main() {
 
     // Listing of metrics available for specific asset
     //
-    // Get all metrics that are actually available for the specified asset from external providers.
+    // Get all metrics that are actually available for the specified asset.
     //
     //Future<List<V1MetricInfo>> v1ExternalmetricsAssetListingGet(String assetId) async
     test('test v1ExternalmetricsAssetListingGet', () async {
       // TODO
     });
 
-    // Listing of all supported external assets
+    // Historical metrics for the chain
     //
-    // Get all assets (primarily stablecoins) supported by external data providers.
-    //
-    //Future<List<V1ExternalAsset>> v1ExternalmetricsAssetsGet() async
-    test('test v1ExternalmetricsAssetsGet', () async {
-      // TODO
-    });
-
-    // Historical metrics for the chain from external sources
-    //
-    // Get chain metrics history from external data providers. Data is typically aggregated daily.
+    // Get chain metrics history.
     //
     //Future<List<Object>> v1ExternalmetricsChainHistoryGet(String metricId, String chainId, { DateTime timeStart, DateTime timeEnd, String timeFormat, String periodId, int limit }) async
     test('test v1ExternalmetricsChainHistoryGet', () async {
@@ -55,52 +46,34 @@ void main() {
 
     // Listing of metrics available for specific chain
     //
-    // Get all metrics that are actually available for the specified blockchain chain from external providers.
+    // Get all metrics that are actually available for the specified blockchain chain.
     //
     //Future<List<V1MetricInfo>> v1ExternalmetricsChainListingGet(String chainId) async
     test('test v1ExternalmetricsChainListingGet', () async {
       // TODO
     });
 
-    // Listing of all supported external chains
+    // Historical metrics for the exchange
     //
-    // Get all blockchain chains supported by external data providers.
-    //
-    //Future<List<V1Chain>> v1ExternalmetricsChainsGet() async
-    test('test v1ExternalmetricsChainsGet', () async {
-      // TODO
-    });
-
-    // Historical metrics for the exchange from both external and internal sources
-    //
-    // Get exchange metrics history from external data providers or internal sources based on metric type.
+    // Get exchange metrics history.
     //
     //Future<List<Object>> v1ExternalmetricsExchangeHistoryGet(String metricId, String exchangeId, { DateTime timeStart, DateTime timeEnd, String timeFormat, String periodId, int limit }) async
     test('test v1ExternalmetricsExchangeHistoryGet', () async {
       // TODO
     });
 
-    // Listing of metrics available for specific exchange (both external and generic)
+    // Listing of metrics available for specific exchange
     //
-    // Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+    // Get all metrics that are actually available for the specified exchange.
     //
     //Future<List<V1MetricInfo>> v1ExternalmetricsExchangeListingGet(String exchangeId) async
     test('test v1ExternalmetricsExchangeListingGet', () async {
       // TODO
     });
 
-    // Listing of all supported external exchanges
+    // Listing of all supported metrics
     //
-    // Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-    //
-    //Future<List<V1ExternalExchange>> v1ExternalmetricsExchangesGet() async
-    test('test v1ExternalmetricsExchangesGet', () async {
-      // TODO
-    });
-
-    // Listing of all supported metrics (both external and generic)
-    //
-    // Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+    // Get all metrics available in the system.
     //
     //Future<List<V1MetricInfo>> v1ExternalmetricsListingGet() async
     test('test v1ExternalmetricsListingGet', () async {

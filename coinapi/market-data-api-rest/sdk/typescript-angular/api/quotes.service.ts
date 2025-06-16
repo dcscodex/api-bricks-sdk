@@ -1,5 +1,5 @@
 /**
- * REST API
+ * CoinAPI Market Data REST API
  *
  * Contact: support@apibricks.io
  *
@@ -39,7 +39,7 @@ export class QuotesService extends BaseService {
 
     /**
      * Current data
-     * Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+     * Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
      * @param filterSymbolId Comma or semicolon delimited parts of symbol identifier used to filter response. (optional)
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -55,8 +55,11 @@ export class QuotesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -121,8 +124,11 @@ export class QuotesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -182,8 +188,11 @@ export class QuotesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -228,7 +237,7 @@ export class QuotesService extends BaseService {
 
     /**
      * Historical data
-     * Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get historical quote updates within requested time range, returned in time ascending order.  :::warning The \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if \&#39;time_start\&#39; is not provided)
      * @param timeStart Starting time in ISO 8601
@@ -257,8 +266,11 @@ export class QuotesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -323,8 +335,11 @@ export class QuotesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',

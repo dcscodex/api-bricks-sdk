@@ -1,4 +1,4 @@
-# RestApi.V1TimeseriesPeriod
+# CoinApiMarketDataRestApi.V1TimeseriesPeriod
 
 ## Properties
 

@@ -1,5 +1,5 @@
 /**
- * REST API
+ * CoinAPI Market Data REST API
  *
  * Contact: support@apibricks.io
  *
@@ -59,8 +59,11 @@ export class TradesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -106,7 +109,7 @@ export class TradesService extends BaseService {
 
     /**
      * Historical data
-     * Get history transactions from specific symbol, returned in time ascending order.    :::warning  The \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get history transactions from specific symbol, returned in time ascending order.  :::warning The \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (required if \&#39;time_start\&#39; is not provided)
      * @param timeStart Starting time in ISO 8601
@@ -138,8 +141,11 @@ export class TradesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',
@@ -208,8 +214,11 @@ export class TradesService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
-        // authentication (ApiKey) required
-        localVarHeaders = this.configuration.addCredentialToHeaders('ApiKey', 'X-CoinAPI-Key', localVarHeaders);
+        // authentication (APIKey) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('APIKey', 'Authorization', localVarHeaders);
+
+        // authentication (JWT) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('JWT', 'Authorization', localVarHeaders, 'Bearer ');
 
         const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
             'text/plain',

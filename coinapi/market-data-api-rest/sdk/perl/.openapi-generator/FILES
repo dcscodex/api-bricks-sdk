@@ -25,8 +25,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -63,8 +61,6 @@ lib/WWW/OpenAPIClient/Object/V1ExchangeRate.pm
 lib/WWW/OpenAPIClient/Object/V1ExchangeRates.pm
 lib/WWW/OpenAPIClient/Object/V1ExchangeRatesRate.pm
 lib/WWW/OpenAPIClient/Object/V1ExchangeRatesTimeseriesItem.pm
-lib/WWW/OpenAPIClient/Object/V1ExternalAsset.pm
-lib/WWW/OpenAPIClient/Object/V1ExternalExchange.pm
 lib/WWW/OpenAPIClient/Object/V1GeneralData.pm
 lib/WWW/OpenAPIClient/Object/V1Icon.pm
 lib/WWW/OpenAPIClient/Object/V1LastTrade.pm
@@ -111,8 +107,6 @@ t/V1ExchangeRatesRateTest.t
 t/V1ExchangeRatesTest.t
 t/V1ExchangeRatesTimeseriesItemTest.t
 t/V1ExchangeTest.t
-t/V1ExternalAssetTest.t
-t/V1ExternalExchangeTest.t
 t/V1GeneralDataTest.t
 t/V1IconTest.t
 t/V1LastTradeTest.t

@@ -58,7 +58,7 @@ bool v1TradesLatestGetAsync(char * accessToken,
 
 /*! \brief Historical data. *Synchronous*
  *
- * Get history transactions from specific symbol, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+ * Get history transactions from specific symbol, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
  * \param symbolId Symbol identifier for requested timeseries (from the Metadata -> Symbols) *Required*
  * \param date Date in ISO 8601, returned data is for the whole given day (required if 'time_start' is not provided)
  * \param timeStart Starting time in ISO 8601
@@ -76,7 +76,7 @@ bool v1TradesSymbolIdHistoryGetSync(char * accessToken,
 
 /*! \brief Historical data. *Asynchronous*
  *
- * Get history transactions from specific symbol, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+ * Get history transactions from specific symbol, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
  * \param symbolId Symbol identifier for requested timeseries (from the Metadata -> Symbols) *Required*
  * \param date Date in ISO 8601, returned data is for the whole given day (required if 'time_start' is not provided)
  * \param timeStart Starting time in ISO 8601

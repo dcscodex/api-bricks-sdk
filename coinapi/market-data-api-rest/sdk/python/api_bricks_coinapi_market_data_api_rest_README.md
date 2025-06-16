@@ -46,11 +46,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 
 # Enter a context with an instance of the API client
@@ -81,19 +86,18 @@ Class | Method | HTTP request | Description
 *ExchangeRatesApi* | [**v1_exchangerate_asset_id_base_asset_id_quote_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExchangeRatesApi.md#v1_exchangerate_asset_id_base_asset_id_quote_history_get) | **GET** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *ExchangeRatesApi* | [**v1_exchangerate_asset_id_base_get**](api_bricks_coinapi_market_data_api_rest/docs/ExchangeRatesApi.md#v1_exchangerate_asset_id_base_get) | **GET** /v1/exchangerate/{asset_id_base} | Get all current rates
 *ExchangeRatesApi* | [**v1_exchangerate_history_periods_get**](api_bricks_coinapi_market_data_api_rest/docs/ExchangeRatesApi.md#v1_exchangerate_history_periods_get) | **GET** /v1/exchangerate/history/periods | Timeseries periods
-*ExternalMetricsApi* | [**v1_externalmetrics_asset_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_asset_history_get) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources
+*ExternalMetricsApi* | [**v1_externalmetrics_asset_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_asset_history_get) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset
 *ExternalMetricsApi* | [**v1_externalmetrics_asset_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_asset_listing_get) | **GET** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*ExternalMetricsApi* | [**v1_externalmetrics_assets_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_assets_get) | **GET** /v1/externalmetrics/assets | Listing of all supported external assets
-*ExternalMetricsApi* | [**v1_externalmetrics_chain_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_chain_history_get) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources
+*ExternalMetricsApi* | [**v1_externalmetrics_chain_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_chain_history_get) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain
 *ExternalMetricsApi* | [**v1_externalmetrics_chain_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_chain_listing_get) | **GET** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*ExternalMetricsApi* | [**v1_externalmetrics_chains_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_chains_get) | **GET** /v1/externalmetrics/chains | Listing of all supported external chains
-*ExternalMetricsApi* | [**v1_externalmetrics_exchange_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_history_get) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources
-*ExternalMetricsApi* | [**v1_externalmetrics_exchange_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_listing_get) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic)
-*ExternalMetricsApi* | [**v1_externalmetrics_exchanges_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_exchanges_get) | **GET** /v1/externalmetrics/exchanges | Listing of all supported external exchanges
-*ExternalMetricsApi* | [**v1_externalmetrics_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_listing_get) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic)
+*ExternalMetricsApi* | [**v1_externalmetrics_exchange_history_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_history_get) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
+*ExternalMetricsApi* | [**v1_externalmetrics_exchange_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_listing_get) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
+*ExternalMetricsApi* | [**v1_externalmetrics_listing_get**](api_bricks_coinapi_market_data_api_rest/docs/ExternalMetricsApi.md#v1_externalmetrics_listing_get) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics
 *MetadataApi* | [**v1_assets_asset_id_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_assets_asset_id_get) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 *MetadataApi* | [**v1_assets_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_assets_get) | **GET** /v1/assets | List all assets
 *MetadataApi* | [**v1_assets_icons_size_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_assets_icons_size_get) | **GET** /v1/assets/icons/{size} | List all asset icons
+*MetadataApi* | [**v1_chains_chain_id_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_chains_chain_id_get) | **GET** /v1/chains/{chain_id} | List all chains by chain ID
+*MetadataApi* | [**v1_chains_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_chains_get) | **GET** /v1/chains | List all blockchain chains
 *MetadataApi* | [**v1_exchanges_exchange_id_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_exchanges_exchange_id_get) | **GET** /v1/exchanges/{exchange_id} | List all exchanges by exchange_id
 *MetadataApi* | [**v1_exchanges_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_exchanges_get) | **GET** /v1/exchanges | List all exchanges
 *MetadataApi* | [**v1_exchanges_icons_size_get**](api_bricks_coinapi_market_data_api_rest/docs/MetadataApi.md#v1_exchanges_icons_size_get) | **GET** /v1/exchanges/icons/{size} | List of icons for the exchanges
@@ -144,8 +148,6 @@ Class | Method | HTTP request | Description
  - [V1ExchangeRates](api_bricks_coinapi_market_data_api_rest/docs/V1ExchangeRates.md)
  - [V1ExchangeRatesRate](api_bricks_coinapi_market_data_api_rest/docs/V1ExchangeRatesRate.md)
  - [V1ExchangeRatesTimeseriesItem](api_bricks_coinapi_market_data_api_rest/docs/V1ExchangeRatesTimeseriesItem.md)
- - [V1ExternalAsset](api_bricks_coinapi_market_data_api_rest/docs/V1ExternalAsset.md)
- - [V1ExternalExchange](api_bricks_coinapi_market_data_api_rest/docs/V1ExternalExchange.md)
  - [V1GeneralData](api_bricks_coinapi_market_data_api_rest/docs/V1GeneralData.md)
  - [V1Icon](api_bricks_coinapi_market_data_api_rest/docs/V1Icon.md)
  - [V1LastTrade](api_bricks_coinapi_market_data_api_rest/docs/V1LastTrade.md)
@@ -170,12 +172,17 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="ApiKey"></a>
-### ApiKey
+<a id="APIKey"></a>
+### APIKey
 
 - **Type**: API key
-- **API key parameter name**: X-CoinAPI-Key
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
+
+<a id="JWT"></a>
+### JWT
+
+- **Type**: Bearer authentication (JWT)
 
 
 ## Author

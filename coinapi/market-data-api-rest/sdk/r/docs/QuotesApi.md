@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Current data
 
-Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
 
 ### Example
 ```R
@@ -28,8 +28,10 @@ library(openapi)
 var_filter_symbol_id <- "filter_symbol_id_example" # character | Comma or semicolon delimited parts of symbol identifier used to filter response. (optional) (Optional)
 
 api_instance <- QuotesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1QuotesCurrentGet(filter_symbol_id = var_filter_symbol_iddata_file = "result.txt")
 result <- api_instance$V1QuotesCurrentGet(filter_symbol_id = var_filter_symbol_id)
@@ -48,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -78,8 +80,10 @@ var_filter_symbol_id <- "filter_symbol_id_example" # character | Comma or semico
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- QuotesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1QuotesLatestGet(filter_symbol_id = var_filter_symbol_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1QuotesLatestGet(filter_symbol_id = var_filter_symbol_id, limit = var_limit)
@@ -99,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -126,8 +130,10 @@ library(openapi)
 var_symbol_id <- "symbol_id_example" # character | The symbol identifier (from the Metadata -> Symbols)
 
 api_instance <- QuotesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1QuotesSymbolIdCurrentGet(var_symbol_iddata_file = "result.txt")
 result <- api_instance$V1QuotesSymbolIdCurrentGet(var_symbol_id)
@@ -146,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -163,7 +169,7 @@ Name | Type | Description  | Notes
 
 Historical data
 
-Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get historical quote updates within requested time range, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```R
@@ -179,8 +185,10 @@ var_time_end <- "time_end_example" # character | Timeseries ending time in ISO 8
 var_limit <- 100 # integer | Amount of items to return (optional, minimum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- QuotesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1QuotesSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1QuotesSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limit)
@@ -203,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -231,8 +239,10 @@ var_symbol_id <- "symbol_id_example" # character | Symbol identifier of requeste
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- QuotesApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1QuotesSymbolIdLatestGet(var_symbol_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1QuotesSymbolIdLatestGet(var_symbol_id, limit = var_limit)
@@ -252,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

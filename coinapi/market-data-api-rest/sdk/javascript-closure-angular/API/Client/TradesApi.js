@@ -92,7 +92,7 @@ API.Client.TradesApi.prototype.v1TradesLatestGet = function(opt_filterSymbolId, 
 
 /**
  * Historical data
- * Get history transactions from specific symbol, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+ * Get history transactions from specific symbol, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
  * @param {!string} symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
  * @param {!string=} opt_date Date in ISO 8601, returned data is for the whole given day (required if &#39;time_start&#39; is not provided)
  * @param {!string=} opt_timeStart Starting time in ISO 8601

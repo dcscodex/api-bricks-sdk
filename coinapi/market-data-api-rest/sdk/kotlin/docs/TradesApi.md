@@ -53,9 +53,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -68,7 +70,7 @@ Configure ApiKey:
 
 Historical data
 
-Get history transactions from specific symbol, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+Get history transactions from specific symbol, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```kotlin
@@ -112,9 +114,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -165,9 +169,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

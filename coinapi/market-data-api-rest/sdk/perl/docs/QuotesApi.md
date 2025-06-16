@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Current data
 
-Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
 
 ### Example
 ```perl
@@ -29,10 +29,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::QuotesApi;
 my $api_instance = WWW::OpenAPIClient::QuotesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $filter_symbol_id = "filter_symbol_id_example"; # string | Comma or semicolon delimited parts of symbol identifier used to filter response. (optional)
@@ -58,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -80,10 +83,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::QuotesApi;
 my $api_instance = WWW::OpenAPIClient::QuotesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $filter_symbol_id = "filter_symbol_id_example"; # string | Comma or semicolon delimited parts of symbol identifier used to filter response. (optional)
@@ -111,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -131,10 +137,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::QuotesApi;
 my $api_instance = WWW::OpenAPIClient::QuotesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol_id = "symbol_id_example"; # string | The symbol identifier (from the Metadata -> Symbols)
@@ -160,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -174,7 +183,7 @@ Name | Type | Description  | Notes
 
 Historical data
 
-Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get historical quote updates within requested time range, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```perl
@@ -182,10 +191,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::QuotesApi;
 my $api_instance = WWW::OpenAPIClient::QuotesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol_id = "symbol_id_example"; # string | Symbol identifier for requested timeseries (from the Metadata -> Symbols)
@@ -219,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -239,10 +251,13 @@ use Data::Dumper;
 use WWW::OpenAPIClient::QuotesApi;
 my $api_instance = WWW::OpenAPIClient::QuotesApi->new(
 
-    # Configure API key authorization: ApiKey
-    api_key => {'X-CoinAPI-Key' => 'YOUR_API_KEY'},
+    # Configure API key authorization: APIKey
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'X-CoinAPI-Key' => 'Bearer'},
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+    # Configure bearer access token for authorization: JWT
+    access_token => 'YOUR_BEARER_TOKEN',
+    
 );
 
 my $symbol_id = "symbol_id_example"; # string | Symbol identifier of requested timeseries (from the Metadata -> Symbols)
@@ -270,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

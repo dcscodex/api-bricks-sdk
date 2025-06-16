@@ -48,7 +48,7 @@ feature -- Test routines
     test_v1_orderbooks_symbol_id_history_get
             -- Historical data
             --
-            -- Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+            -- Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
         local
             l_response: LIST [V1_ORDER_BOOK]
             l_symbol_id: STRING_32
@@ -68,7 +68,7 @@ feature -- Test routines
     test_v1_orderbooks_symbol_id_latest_get
             -- Latest data
             --
-            -- Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+            -- Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
         local
             l_response: LIST [V1_ORDER_BOOK]
             l_symbol_id: STRING_32

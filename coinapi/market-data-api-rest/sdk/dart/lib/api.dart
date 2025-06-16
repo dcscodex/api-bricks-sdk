@@ -50,8 +50,6 @@ part 'model/v1_exchange_rate.dart';
 part 'model/v1_exchange_rates.dart';
 part 'model/v1_exchange_rates_rate.dart';
 part 'model/v1_exchange_rates_timeseries_item.dart';
-part 'model/v1_external_asset.dart';
-part 'model/v1_external_exchange.dart';
 part 'model/v1_general_data.dart';
 part 'model/v1_icon.dart';
 part 'model/v1_last_trade.dart';

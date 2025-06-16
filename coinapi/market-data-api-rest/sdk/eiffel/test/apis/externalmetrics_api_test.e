@@ -14,9 +14,9 @@ feature -- Test routines
 
 
     test_v1_externalmetrics_asset_history_get
-            -- Historical metrics for the asset from external sources
+            -- Historical metrics for the asset
             --
-            -- Get asset metrics history from external data providers. Data is typically aggregated daily.
+            -- Get asset metrics history.
         local
             l_response: LIST [ANY]
             l_metric_id: STRING_32
@@ -38,7 +38,7 @@ feature -- Test routines
     test_v1_externalmetrics_asset_listing_get
             -- Listing of metrics available for specific asset
             --
-            -- Get all metrics that are actually available for the specified asset from external providers.
+            -- Get all metrics that are actually available for the specified asset.
         local
             l_response: LIST [V1_METRIC_INFO]
             l_asset_id: STRING_32
@@ -50,23 +50,10 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
 
-    test_v1_externalmetrics_assets_get
-            -- Listing of all supported external assets
-            --
-            -- Get all assets (primarily stablecoins) supported by external data providers.
-        local
-            l_response: LIST [V1_EXTERNAL_ASSET]
-        do
-            -- TODO: Initialize required params.
-
-            -- l_response := api.v1_externalmetrics_assets_get
-            assert ("not_implemented", False)
-        end
-
     test_v1_externalmetrics_chain_history_get
-            -- Historical metrics for the chain from external sources
+            -- Historical metrics for the chain
             --
-            -- Get chain metrics history from external data providers. Data is typically aggregated daily.
+            -- Get chain metrics history.
         local
             l_response: LIST [ANY]
             l_metric_id: STRING_32
@@ -88,7 +75,7 @@ feature -- Test routines
     test_v1_externalmetrics_chain_listing_get
             -- Listing of metrics available for specific chain
             --
-            -- Get all metrics that are actually available for the specified blockchain chain from external providers.
+            -- Get all metrics that are actually available for the specified blockchain chain.
         local
             l_response: LIST [V1_METRIC_INFO]
             l_chain_id: STRING_32
@@ -100,23 +87,10 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
 
-    test_v1_externalmetrics_chains_get
-            -- Listing of all supported external chains
-            --
-            -- Get all blockchain chains supported by external data providers.
-        local
-            l_response: LIST [V1_CHAIN]
-        do
-            -- TODO: Initialize required params.
-
-            -- l_response := api.v1_externalmetrics_chains_get
-            assert ("not_implemented", False)
-        end
-
     test_v1_externalmetrics_exchange_history_get
-            -- Historical metrics for the exchange from both external and internal sources
+            -- Historical metrics for the exchange
             --
-            -- Get exchange metrics history from external data providers or internal sources based on metric type.
+            -- Get exchange metrics history.
         local
             l_response: LIST [ANY]
             l_metric_id: STRING_32
@@ -136,9 +110,9 @@ feature -- Test routines
         end
 
     test_v1_externalmetrics_exchange_listing_get
-            -- Listing of metrics available for specific exchange (both external and generic)
+            -- Listing of metrics available for specific exchange
             --
-            -- Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+            -- Get all metrics that are actually available for the specified exchange.
         local
             l_response: LIST [V1_METRIC_INFO]
             l_exchange_id: STRING_32
@@ -150,23 +124,10 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
 
-    test_v1_externalmetrics_exchanges_get
-            -- Listing of all supported external exchanges
-            --
-            -- Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-        local
-            l_response: LIST [V1_EXTERNAL_EXCHANGE]
-        do
-            -- TODO: Initialize required params.
-
-            -- l_response := api.v1_externalmetrics_exchanges_get
-            assert ("not_implemented", False)
-        end
-
     test_v1_externalmetrics_listing_get
-            -- Listing of all supported metrics (both external and generic)
+            -- Listing of all supported metrics
             --
-            -- Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+            -- Get all metrics available in the system.
         local
             l_response: LIST [V1_METRIC_INFO]
         do

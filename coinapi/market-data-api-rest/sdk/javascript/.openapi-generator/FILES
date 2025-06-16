@@ -24,8 +24,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -69,8 +67,6 @@ src/model/V1ExchangeRate.js
 src/model/V1ExchangeRates.js
 src/model/V1ExchangeRatesRate.js
 src/model/V1ExchangeRatesTimeseriesItem.js
-src/model/V1ExternalAsset.js
-src/model/V1ExternalExchange.js
 src/model/V1GeneralData.js
 src/model/V1Icon.js
 src/model/V1LastTrade.js
@@ -109,8 +105,6 @@ test/model/V1ExchangeRate.spec.js
 test/model/V1ExchangeRates.spec.js
 test/model/V1ExchangeRatesRate.spec.js
 test/model/V1ExchangeRatesTimeseriesItem.spec.js
-test/model/V1ExternalAsset.spec.js
-test/model/V1ExternalExchange.spec.js
 test/model/V1GeneralData.spec.js
 test/model/V1Icon.spec.js
 test/model/V1LastTrade.spec.js

@@ -27,7 +27,7 @@ public:
 
 /*! \brief Current data by Exchange. *Synchronous*
  *
- * Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+ * Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
  * \param exchangeId Exchange identifier (from the Metadata -> Exchanges) *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool v1OptionsExchangeIdCurrentGetSync(char * accessToken,
 
 /*! \brief Current data by Exchange. *Asynchronous*
  *
- * Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+ * Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
  * \param exchangeId Exchange identifier (from the Metadata -> Exchanges) *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*

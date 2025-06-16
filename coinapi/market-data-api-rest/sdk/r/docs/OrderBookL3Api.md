@@ -24,8 +24,10 @@ var_filter_symbol_id <- "filter_symbol_id_example" # character | Comma or semico
 var_limit_levels <- 56 # integer | The maximum number of levels to include in the response. (Optional)
 
 api_instance <- OrderBookL3Api$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1Orderbooks3CurrentGet(filter_symbol_id = var_filter_symbol_id, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1Orderbooks3CurrentGet(filter_symbol_id = var_filter_symbol_id, limit_levels = var_limit_levels)
@@ -45,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -75,8 +77,10 @@ var_symbol_id <- "symbol_id_example" # character | The symbol ID (from the Metad
 var_limit_levels <- 56 # integer | The maximum number of levels to include in the response. (Optional)
 
 api_instance <- OrderBookL3Api$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1Orderbooks3SymbolIdCurrentGet(var_symbol_id, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1Orderbooks3SymbolIdCurrentGet(var_symbol_id, limit_levels = var_limit_levels)
@@ -96,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

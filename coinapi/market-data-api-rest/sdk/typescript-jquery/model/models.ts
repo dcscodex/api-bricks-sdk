@@ -9,8 +9,6 @@ export * from './V1ExchangeRate';
 export * from './V1ExchangeRates';
 export * from './V1ExchangeRatesRate';
 export * from './V1ExchangeRatesTimeseriesItem';
-export * from './V1ExternalAsset';
-export * from './V1ExternalExchange';
 export * from './V1GeneralData';
 export * from './V1Icon';
 export * from './V1LastTrade';

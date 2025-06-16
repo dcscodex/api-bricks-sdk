@@ -15,7 +15,7 @@ import Test.QuickCheck
 import Test.QuickCheck.Property
 import Test.Hspec.QuickCheck (prop)
 
-import REST.MimeTypes
+import CoinAPIMarketDataREST.MimeTypes
 
 import ApproxEq
 

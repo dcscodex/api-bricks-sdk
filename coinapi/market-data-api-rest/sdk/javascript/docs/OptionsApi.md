@@ -1,4 +1,4 @@
-# RestApi.OptionsApi
+# CoinApiMarketDataRestApi.OptionsApi
 
 All URIs are relative to *https://rest.coinapi.io*
 
@@ -14,20 +14,23 @@ Method | HTTP request | Description
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 
 ```javascript
-import RestApi from 'rest_api';
-let defaultClient = RestApi.ApiClient.instance;
-// Configure API key authorization: ApiKey
-let ApiKey = defaultClient.authentications['ApiKey'];
-ApiKey.apiKey = 'YOUR API KEY';
+import CoinApiMarketDataRestApi from 'coin_api_market_data_rest_api';
+let defaultClient = CoinApiMarketDataRestApi.ApiClient.instance;
+// Configure API key authorization: APIKey
+let APIKey = defaultClient.authentications['APIKey'];
+APIKey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKey.apiKeyPrefix = 'Token';
+//APIKey.apiKeyPrefix = 'Token';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new RestApi.OptionsApi();
+let apiInstance = new CoinApiMarketDataRestApi.OptionsApi();
 let exchangeId = "exchangeId_example"; // String | Exchange identifier (from the Metadata -> Exchanges)
 apiInstance.v1OptionsExchangeIdCurrentGet(exchangeId, (error, data, response) => {
   if (error) {
@@ -51,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

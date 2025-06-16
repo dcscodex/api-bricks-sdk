@@ -25,8 +25,6 @@ docs/Model/V1ExchangeRate.md
 docs/Model/V1ExchangeRates.md
 docs/Model/V1ExchangeRatesRate.md
 docs/Model/V1ExchangeRatesTimeseriesItem.md
-docs/Model/V1ExternalAsset.md
-docs/Model/V1ExternalExchange.md
 docs/Model/V1GeneralData.md
 docs/Model/V1Icon.md
 docs/Model/V1LastTrade.md
@@ -71,8 +69,6 @@ lib/Model/V1ExchangeRate.php
 lib/Model/V1ExchangeRates.php
 lib/Model/V1ExchangeRatesRate.php
 lib/Model/V1ExchangeRatesTimeseriesItem.php
-lib/Model/V1ExternalAsset.php
-lib/Model/V1ExternalExchange.php
 lib/Model/V1GeneralData.php
 lib/Model/V1Icon.php
 lib/Model/V1LastTrade.php
@@ -113,8 +109,6 @@ test/Model/V1ExchangeRatesRateTest.php
 test/Model/V1ExchangeRatesTest.php
 test/Model/V1ExchangeRatesTimeseriesItemTest.php
 test/Model/V1ExchangeTest.php
-test/Model/V1ExternalAssetTest.php
-test/Model/V1ExternalExchangeTest.php
 test/Model/V1GeneralDataTest.php
 test/Model/V1IconTest.php
 test/Model/V1LastTradeTest.php

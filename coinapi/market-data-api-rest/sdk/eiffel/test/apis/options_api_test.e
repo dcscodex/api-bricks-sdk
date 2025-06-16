@@ -16,7 +16,7 @@ feature -- Test routines
     test_v1_options_exchange_id_current_get
             -- Current data by Exchange
             --
-            -- Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+            -- Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
         local
             l_response: LIST [OPTIONS_OPTION_EXCHANGE_GROUP]
             l_exchange_id: STRING_32

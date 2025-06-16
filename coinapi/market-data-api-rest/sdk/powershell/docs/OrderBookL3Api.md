@@ -20,10 +20,11 @@ Current order books
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $FilterSymbolId = "MyFilterSymbolId" # String | Comma or semicolon delimited parts of symbol identifier used to filter the response. (optional)
 $LimitLevels = 56 # Int32 | The maximum number of levels to include in the response. (optional)
@@ -50,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -73,10 +74,11 @@ Retrieves the current order book for the specified symbol.
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
-# Configure API key authorization: ApiKey
-$Configuration.ApiKey.X-CoinAPI-Key = "YOUR_API_KEY"
+# Configure API key authorization: APIKey
+$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.X-CoinAPI-Key = "Bearer"
+#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
+
 
 $SymbolId = "MySymbolId" # String | The symbol ID (from the Metadata -> Symbols)
 $LimitLevels = 56 # Int32 | The maximum number of levels to include in the response. (optional)
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

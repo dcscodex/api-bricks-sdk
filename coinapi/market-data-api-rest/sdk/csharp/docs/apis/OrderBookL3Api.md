@@ -29,10 +29,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrderBookL3Api(config);
             var filterSymbolId = "filterSymbolId_example";  // string | Comma or semicolon delimited parts of symbol identifier used to filter the response. (optional) 
@@ -88,7 +90,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -127,10 +129,12 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://rest.coinapi.io";
-            // Configure API key authorization: ApiKey
-            config.AddApiKey("X-CoinAPI-Key", "YOUR_API_KEY");
+            // Configure API key authorization: APIKey
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("X-CoinAPI-Key", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrderBookL3Api(config);
             var symbolId = "symbolId_example";  // string | The symbol ID (from the Metadata -> Symbols)
@@ -186,7 +190,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

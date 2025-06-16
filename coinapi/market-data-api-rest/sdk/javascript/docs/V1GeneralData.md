@@ -1,4 +1,4 @@
-# RestApi.V1GeneralData
+# CoinApiMarketDataRestApi.V1GeneralData
 
 ## Properties
 

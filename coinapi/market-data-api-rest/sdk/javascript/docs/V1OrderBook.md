@@ -1,4 +1,4 @@
-# RestApi.V1OrderBook
+# CoinApiMarketDataRestApi.V1OrderBook
 
 ## Properties
 

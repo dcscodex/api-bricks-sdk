@@ -3,7 +3,7 @@ private class OASQuotesApiTest {
     /**
      * Current data
      *
-     * Get current quotes for all symbols or for a specific symbol.\r\n            \r\n:::info\r\nWhen requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.\r\n:::
+     * Get current quotes for all symbols or for a specific symbol.\n            \n:::info\nWhen requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.\n:::
      */
     @isTest
     private static void v1QuotesCurrentGetTest() {
@@ -24,8 +24,17 @@ private class OASQuotesApiTest {
 
         client = new OASClient();
         api = new OASQuotesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1QuoteTrade>{OASV1QuoteTrade.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1QuoteTrade>{OASV1QuoteTrade.getExample()};
+        response = (List<OASV1QuoteTrade>) api.v1QuotesCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASQuotesApi(client);
 
         js = JSON.serialize(new List<OASV1QuoteTrade>{OASV1QuoteTrade.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -60,8 +69,17 @@ private class OASQuotesApiTest {
 
         client = new OASClient();
         api = new OASQuotesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Quote>{OASV1Quote.getExample()};
+        response = (List<OASV1Quote>) api.v1QuotesLatestGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASQuotesApi(client);
 
         js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -95,8 +113,41 @@ private class OASQuotesApiTest {
 
         client = new OASClient();
         api = new OASQuotesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(OASV1QuoteTrade.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1QuoteTrade.getExample();
+        response = (OASV1QuoteTrade) api.v1QuotesSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1QuoteTrade.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1QuoteTrade.getExample();
+        response = (OASV1QuoteTrade) api.v1QuotesSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1QuoteTrade.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1QuoteTrade.getExample();
+        response = (OASV1QuoteTrade) api.v1QuotesSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1QuoteTrade.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1QuoteTrade.getExample();
+        response = (OASV1QuoteTrade) api.v1QuotesSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASQuotesApi(client);
 
         js = JSON.serialize(OASV1QuoteTrade.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -133,7 +184,7 @@ private class OASQuotesApiTest {
     /**
      * Historical data
      *
-     * Get historical quote updates within requested time range, returned in time ascending order.\r\n\r\n:::warning\r\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\r\n:::
+     * Get historical quote updates within requested time range, returned in time ascending order.\n\n:::warning\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\n:::
      */
     @isTest
     private static void v1QuotesSymbolIdHistoryGetTest() {
@@ -158,8 +209,17 @@ private class OASQuotesApiTest {
 
         client = new OASClient();
         api = new OASQuotesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Quote>{OASV1Quote.getExample()};
+        response = (List<OASV1Quote>) api.v1QuotesSymbolIdHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASQuotesApi(client);
 
         js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -194,8 +254,17 @@ private class OASQuotesApiTest {
 
         client = new OASClient();
         api = new OASQuotesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Quote>{OASV1Quote.getExample()};
+        response = (List<OASV1Quote>) api.v1QuotesSymbolIdLatestGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASQuotesApi(client);
 
         js = JSON.serialize(new List<OASV1Quote>{OASV1Quote.getExample()});
         res.setHeader('Content-Type', 'application/json');

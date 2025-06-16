@@ -23,8 +23,6 @@ docs/V1_EXCHANGE_RATE.md
 docs/V1_EXCHANGE_RATES.md
 docs/V1_EXCHANGE_RATES_RATE.md
 docs/V1_EXCHANGE_RATES_TIMESERIES_ITEM.md
-docs/V1_EXTERNAL_ASSET.md
-docs/V1_EXTERNAL_EXCHANGE.md
 docs/V1_GENERAL_DATA.md
 docs/V1_ICON.md
 docs/V1_LAST_TRADE.md
@@ -64,8 +62,6 @@ src/domain/v1_exchange_rate.e
 src/domain/v1_exchange_rates.e
 src/domain/v1_exchange_rates_rate.e
 src/domain/v1_exchange_rates_timeseries_item.e
-src/domain/v1_external_asset.e
-src/domain/v1_external_exchange.e
 src/domain/v1_general_data.e
 src/domain/v1_icon.e
 src/domain/v1_last_trade.e

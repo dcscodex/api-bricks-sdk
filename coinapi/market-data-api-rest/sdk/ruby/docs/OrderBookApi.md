@@ -25,10 +25,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::OrderBookApi.new
@@ -77,7 +80,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -100,10 +103,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::OrderBookApi.new
@@ -152,7 +158,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -166,7 +172,7 @@ end
 
 Historical data
 
-Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Examples
 
@@ -175,10 +181,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::OrderBookApi.new
@@ -235,7 +244,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -249,7 +258,7 @@ end
 
 Latest data
 
-Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
 
 ### Examples
 
@@ -258,10 +267,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::OrderBookApi.new
@@ -312,7 +324,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -25,8 +25,6 @@ import 'package:openapi/src/model/v1_exchange_rate.dart';
 import 'package:openapi/src/model/v1_exchange_rates.dart';
 import 'package:openapi/src/model/v1_exchange_rates_rate.dart';
 import 'package:openapi/src/model/v1_exchange_rates_timeseries_item.dart';
-import 'package:openapi/src/model/v1_external_asset.dart';
-import 'package:openapi/src/model/v1_external_exchange.dart';
 import 'package:openapi/src/model/v1_general_data.dart';
 import 'package:openapi/src/model/v1_icon.dart';
 import 'package:openapi/src/model/v1_last_trade.dart';
@@ -59,8 +57,6 @@ part 'serializers.g.dart';
   V1ExchangeRates,
   V1ExchangeRatesRate,
   V1ExchangeRatesTimeseriesItem,
-  V1ExternalAsset,
-  V1ExternalExchange,
   V1GeneralData,
   V1Icon,
   V1LastTrade,
@@ -81,10 +77,6 @@ part 'serializers.g.dart';
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(V1ExternalAsset)]),
-        () => ListBuilder<V1ExternalAsset>(),
-      )
-      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(V1Exchange)]),
         () => ListBuilder<V1Exchange>(),
       )
@@ -95,10 +87,6 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(V1Trade)]),
         () => ListBuilder<V1Trade>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(V1ExternalExchange)]),
-        () => ListBuilder<V1ExternalExchange>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ModelsExchangeTimeseriesItem)]),

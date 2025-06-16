@@ -87,7 +87,7 @@ bool v1OrderbooksSymbolIdDepthCurrentGetAsync(char * accessToken,
 
 /*! \brief Historical data. *Synchronous*
  *
- * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+ * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
  * \param symbolId Symbol identifier for requested timeseries (from the Metadata -> Symbols) *Required*
  * \param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if 'time_start' is not provided)
  * \param timeStart Starting time in ISO 8601 (deprecated, use 'date' instead)
@@ -105,7 +105,7 @@ bool v1OrderbooksSymbolIdHistoryGetSync(char * accessToken,
 
 /*! \brief Historical data. *Asynchronous*
  *
- * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+ * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
  * \param symbolId Symbol identifier for requested timeseries (from the Metadata -> Symbols) *Required*
  * \param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if 'time_start' is not provided)
  * \param timeStart Starting time in ISO 8601 (deprecated, use 'date' instead)
@@ -124,7 +124,7 @@ bool v1OrderbooksSymbolIdHistoryGetAsync(char * accessToken,
 
 /*! \brief Latest data. *Synchronous*
  *
- * Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+ * Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
  * \param symbolId Symbol identifier of requested timeseries (from the Metadata -> Symbols) *Required*
  * \param limit Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)
  * \param limitLevels Maximum amount of levels from each side of the book to include in response (optional)
@@ -139,7 +139,7 @@ bool v1OrderbooksSymbolIdLatestGetSync(char * accessToken,
 
 /*! \brief Latest data. *Asynchronous*
  *
- * Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+ * Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
  * \param symbolId Symbol identifier of requested timeseries (from the Metadata -> Symbols) *Required*
  * \param limit Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)
  * \param limitLevels Maximum amount of levels from each side of the book to include in response (optional)

@@ -1,4 +1,4 @@
-# RestApi.ModelsExchangeTimeseriesItem
+# CoinApiMarketDataRestApi.ModelsExchangeTimeseriesItem
 
 ## Properties
 

@@ -28,7 +28,7 @@ v1_trades_latest_get(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Historical data
-%% Get history transactions from specific symbol, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+%% Get history transactions from specific symbol, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 -spec v1_trades_symbol_id_history_get(ctx:ctx(), binary()) -> {ok, [openapi_v1_trade:openapi_v1_trade()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_trades_symbol_id_history_get(Ctx, SymbolId) ->
     v1_trades_symbol_id_history_get(Ctx, SymbolId, #{}).

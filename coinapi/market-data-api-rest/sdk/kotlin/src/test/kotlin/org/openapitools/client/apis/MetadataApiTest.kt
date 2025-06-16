@@ -20,6 +20,7 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.MetadataApi
 import org.openapitools.client.models.V1Asset
+import org.openapitools.client.models.V1Chain
 import org.openapitools.client.models.V1Exchange
 import org.openapitools.client.models.V1Icon
 import org.openapitools.client.models.V1Symbol
@@ -51,6 +52,22 @@ class MetadataApiTest : ShouldSpec() {
             // uncomment below to test v1AssetsIconsSizeGet
             //val size : kotlin.Int = 56 // kotlin.Int | The size of the icons.
             //val result : kotlin.collections.List<V1Icon> = apiInstance.v1AssetsIconsSizeGet(size)
+            //result shouldBe ("TODO")
+        }
+
+        // to test v1ChainsChainIdGet
+        should("test v1ChainsChainIdGet") {
+            // uncomment below to test v1ChainsChainIdGet
+            //val chainId : kotlin.String = chainId_example // kotlin.String | The chain ID.
+            //val result : kotlin.collections.List<V1Chain> = apiInstance.v1ChainsChainIdGet(chainId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test v1ChainsGet
+        should("test v1ChainsGet") {
+            // uncomment below to test v1ChainsGet
+            //val filterChainId : kotlin.String = filterChainId_example // kotlin.String | Comma or semicolon delimited chain identifiers used to filter response. (optional, eg. `ETHEREUM;ARBITRUM`).
+            //val result : kotlin.collections.List<V1Chain> = apiInstance.v1ChainsGet(filterChainId)
             //result shouldBe ("TODO")
         }
 

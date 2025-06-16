@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 ```R
@@ -24,8 +24,10 @@ library(openapi)
 var_exchange_id <- "exchange_id_example" # character | Exchange identifier (from the Metadata -> Exchanges)
 
 api_instance <- OptionsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OptionsExchangeIdCurrentGet(var_exchange_iddata_file = "result.txt")
 result <- api_instance$V1OptionsExchangeIdCurrentGet(var_exchange_id)
@@ -44,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

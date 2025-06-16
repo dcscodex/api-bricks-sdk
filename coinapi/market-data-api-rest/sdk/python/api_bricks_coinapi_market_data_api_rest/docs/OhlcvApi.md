@@ -25,7 +25,8 @@ The `period_id` cannot be higher than `1DAY`.
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -44,11 +45,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -86,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -125,7 +131,8 @@ You can assume that we will not remove any periods from this response, however, 
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -144,11 +151,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -176,7 +188,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -204,7 +216,8 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -223,11 +236,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -269,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -298,7 +316,8 @@ The OHLCV Historical endpoint data can be delayed a few seconds. Use OHLCV real-
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -317,11 +336,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -359,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

@@ -1,4 +1,4 @@
-# RestApi.V1Trade
+# CoinApiMarketDataRestApi.V1Trade
 
 ## Properties
 

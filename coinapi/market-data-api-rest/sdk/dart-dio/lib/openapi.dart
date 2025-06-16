@@ -32,8 +32,6 @@ export 'package:openapi/src/model/v1_exchange_rate.dart';
 export 'package:openapi/src/model/v1_exchange_rates.dart';
 export 'package:openapi/src/model/v1_exchange_rates_rate.dart';
 export 'package:openapi/src/model/v1_exchange_rates_timeseries_item.dart';
-export 'package:openapi/src/model/v1_external_asset.dart';
-export 'package:openapi/src/model/v1_external_exchange.dart';
 export 'package:openapi/src/model/v1_general_data.dart';
 export 'package:openapi/src/model/v1_icon.dart';
 export 'package:openapi/src/model/v1_last_trade.dart';

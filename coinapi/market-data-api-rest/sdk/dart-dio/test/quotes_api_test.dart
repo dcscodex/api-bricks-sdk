@@ -9,7 +9,7 @@ void main() {
   group(QuotesApi, () {
     // Current data
     //
-    // Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+    // Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
     //
     //Future<BuiltList<V1QuoteTrade>> v1QuotesCurrentGet({ String filterSymbolId }) async
     test('test v1QuotesCurrentGet', () async {
@@ -34,7 +34,7 @@ void main() {
 
     // Historical data
     //
-    // Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+    // Get historical quote updates within requested time range, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
     //
     //Future<BuiltList<V1Quote>> v1QuotesSymbolIdHistoryGet(String symbolId, { String date, String timeStart, String timeEnd, int limit }) async
     test('test v1QuotesSymbolIdHistoryGet', () async {

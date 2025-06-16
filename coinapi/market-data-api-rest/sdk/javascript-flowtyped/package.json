@@ -1,14 +1,14 @@
 {
-  "name": "rest_api",
+  "name": "coin_api_market_data_rest_api",
   "version": "1.0.0",
-  "description": "OpenAPI Client for rest_api",
+  "description": "OpenAPI Client for coin_api_market_data_rest_api",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "fetch",
     "flow",
     "openapi",
     "openapi-generator",
-    "rest_api"
+    "coin_api_market_data_rest_api"
   ],
   "license": "Unlicense",
   "main": "./lib/index.js",

@@ -3,8 +3,8 @@
 
 module Instances where
 
-import REST.Model
-import REST.Core
+import CoinAPIMarketDataREST.Model
+import CoinAPIMarketDataREST.Core
 
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy as BL
@@ -272,27 +272,6 @@ genV1ExchangeRatesTimeseriesItem n =
     <*> arbitraryReducedMaybe n -- v1ExchangeRatesTimeseriesItemRateHigh :: Maybe Double
     <*> arbitraryReducedMaybe n -- v1ExchangeRatesTimeseriesItemRateLow :: Maybe Double
     <*> arbitraryReducedMaybe n -- v1ExchangeRatesTimeseriesItemRateClose :: Maybe Double
-  
-instance Arbitrary V1ExternalAsset where
-  arbitrary = sized genV1ExternalAsset
-
-genV1ExternalAsset :: Int -> Gen V1ExternalAsset
-genV1ExternalAsset n =
-  V1ExternalAsset
-    <$> arbitraryReducedMaybe n -- v1ExternalAssetAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- v1ExternalAssetDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- v1ExternalAssetAssetType :: Maybe Text
-  
-instance Arbitrary V1ExternalExchange where
-  arbitrary = sized genV1ExternalExchange
-
-genV1ExternalExchange :: Int -> Gen V1ExternalExchange
-genV1ExternalExchange n =
-  V1ExternalExchange
-    <$> arbitraryReducedMaybe n -- v1ExternalExchangeExchangeId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- v1ExternalExchangeExternalName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- v1ExternalExchangeDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- v1ExternalExchangeSourceId :: Maybe Text
   
 instance Arbitrary V1GeneralData where
   arbitrary = sized genV1GeneralData

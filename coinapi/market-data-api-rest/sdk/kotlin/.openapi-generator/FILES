@@ -22,8 +22,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -84,8 +82,6 @@ src/main/kotlin/org/openapitools/client/models/V1ExchangeRate.kt
 src/main/kotlin/org/openapitools/client/models/V1ExchangeRates.kt
 src/main/kotlin/org/openapitools/client/models/V1ExchangeRatesRate.kt
 src/main/kotlin/org/openapitools/client/models/V1ExchangeRatesTimeseriesItem.kt
-src/main/kotlin/org/openapitools/client/models/V1ExternalAsset.kt
-src/main/kotlin/org/openapitools/client/models/V1ExternalExchange.kt
 src/main/kotlin/org/openapitools/client/models/V1GeneralData.kt
 src/main/kotlin/org/openapitools/client/models/V1Icon.kt
 src/main/kotlin/org/openapitools/client/models/V1LastTrade.kt
@@ -124,8 +120,6 @@ src/test/kotlin/org/openapitools/client/models/V1ExchangeRatesRateTest.kt
 src/test/kotlin/org/openapitools/client/models/V1ExchangeRatesTest.kt
 src/test/kotlin/org/openapitools/client/models/V1ExchangeRatesTimeseriesItemTest.kt
 src/test/kotlin/org/openapitools/client/models/V1ExchangeTest.kt
-src/test/kotlin/org/openapitools/client/models/V1ExternalAssetTest.kt
-src/test/kotlin/org/openapitools/client/models/V1ExternalExchangeTest.kt
 src/test/kotlin/org/openapitools/client/models/V1GeneralDataTest.kt
 src/test/kotlin/org/openapitools/client/models/V1IconTest.kt
 src/test/kotlin/org/openapitools/client/models/V1LastTradeTest.kt

@@ -19,9 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ExternalMetricsApi
-import org.openapitools.client.models.V1Chain
-import org.openapitools.client.models.V1ExternalAsset
-import org.openapitools.client.models.V1ExternalExchange
 import org.openapitools.client.models.V1MetricInfo
 
 class ExternalMetricsApiTest : ShouldSpec() {
@@ -32,8 +29,8 @@ class ExternalMetricsApiTest : ShouldSpec() {
         // to test v1ExternalmetricsAssetHistoryGet
         should("test v1ExternalmetricsAssetHistoryGet") {
             // uncomment below to test v1ExternalmetricsAssetHistoryGet
-            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-            //val assetId : kotlin.String = assetId_example // kotlin.String | Asset identifier (e.g., `USDC`, `USDT` - from supported assets list)
+            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+            //val assetId : kotlin.String = assetId_example // kotlin.String | Asset identifier (e.g., `USDC`, `USDT`)
             //val timeStart : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Starting time in ISO 8601
             //val timeEnd : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Ending time in ISO 8601
             //val timeFormat : kotlin.String = timeFormat_example // kotlin.String | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)
@@ -51,18 +48,11 @@ class ExternalMetricsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
-        // to test v1ExternalmetricsAssetsGet
-        should("test v1ExternalmetricsAssetsGet") {
-            // uncomment below to test v1ExternalmetricsAssetsGet
-            //val result : kotlin.collections.List<V1ExternalAsset> = apiInstance.v1ExternalmetricsAssetsGet()
-            //result shouldBe ("TODO")
-        }
-
         // to test v1ExternalmetricsChainHistoryGet
         should("test v1ExternalmetricsChainHistoryGet") {
             // uncomment below to test v1ExternalmetricsChainHistoryGet
-            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-            //val chainId : kotlin.String = chainId_example // kotlin.String | Chain identifier (e.g., `Ethereum`, `Arbitrum` - from supported chains list)
+            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+            //val chainId : kotlin.String = chainId_example // kotlin.String | Chain identifier (e.g., `Ethereum`, `Arbitrum`)
             //val timeStart : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Starting time in ISO 8601
             //val timeEnd : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Ending time in ISO 8601
             //val timeFormat : kotlin.String = timeFormat_example // kotlin.String | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)
@@ -80,17 +70,10 @@ class ExternalMetricsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
-        // to test v1ExternalmetricsChainsGet
-        should("test v1ExternalmetricsChainsGet") {
-            // uncomment below to test v1ExternalmetricsChainsGet
-            //val result : kotlin.collections.List<V1Chain> = apiInstance.v1ExternalmetricsChainsGet()
-            //result shouldBe ("TODO")
-        }
-
         // to test v1ExternalmetricsExchangeHistoryGet
         should("test v1ExternalmetricsExchangeHistoryGet") {
             // uncomment below to test v1ExternalmetricsExchangeHistoryGet
-            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` for external, or generic metric IDs)
+            //val metricId : kotlin.String = metricId_example // kotlin.String | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
             //val exchangeId : kotlin.String = exchangeId_example // kotlin.String | Exchange identifier (e.g., `BINANCE`, `UNISWAP-V3-ETHEREUM`)
             //val timeStart : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Starting time in ISO 8601
             //val timeEnd : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Ending time in ISO 8601
@@ -106,13 +89,6 @@ class ExternalMetricsApiTest : ShouldSpec() {
             // uncomment below to test v1ExternalmetricsExchangeListingGet
             //val exchangeId : kotlin.String = exchangeId_example // kotlin.String | Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)
             //val result : kotlin.collections.List<V1MetricInfo> = apiInstance.v1ExternalmetricsExchangeListingGet(exchangeId)
-            //result shouldBe ("TODO")
-        }
-
-        // to test v1ExternalmetricsExchangesGet
-        should("test v1ExternalmetricsExchangesGet") {
-            // uncomment below to test v1ExternalmetricsExchangesGet
-            //val result : kotlin.collections.List<V1ExternalExchange> = apiInstance.v1ExternalmetricsExchangesGet()
             //result shouldBe ("TODO")
         }
 

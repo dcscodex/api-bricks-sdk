@@ -20,8 +20,6 @@ API/Client/V1ExchangeRate.js
 API/Client/V1ExchangeRates.js
 API/Client/V1ExchangeRatesRate.js
 API/Client/V1ExchangeRatesTimeseriesItem.js
-API/Client/V1ExternalAsset.js
-API/Client/V1ExternalExchange.js
 API/Client/V1GeneralData.js
 API/Client/V1Icon.js
 API/Client/V1LastTrade.js

@@ -13,7 +13,7 @@ All URIs are relative to *https://rest.coinapi.io*
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 ```kotlin
@@ -47,9 +47,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

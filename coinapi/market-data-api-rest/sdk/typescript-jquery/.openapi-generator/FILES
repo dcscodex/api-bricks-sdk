@@ -24,8 +24,6 @@ model/V1ExchangeRate.ts
 model/V1ExchangeRates.ts
 model/V1ExchangeRatesRate.ts
 model/V1ExchangeRatesTimeseriesItem.ts
-model/V1ExternalAsset.ts
-model/V1ExternalExchange.ts
 model/V1GeneralData.ts
 model/V1Icon.ts
 model/V1LastTrade.ts

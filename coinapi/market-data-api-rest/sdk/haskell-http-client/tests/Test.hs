@@ -12,8 +12,8 @@ import Test.Hspec.QuickCheck
 import PropMime
 import Instances ()
 
-import REST.Model
-import REST.MimeTypes
+import CoinAPIMarketDataREST.Model
+import CoinAPIMarketDataREST.MimeTypes
 
 main :: IO ()
 main =
@@ -31,8 +31,6 @@ main =
       propMimeEq MimeJSON (Proxy :: Proxy V1ExchangeRates)
       propMimeEq MimeJSON (Proxy :: Proxy V1ExchangeRatesRate)
       propMimeEq MimeJSON (Proxy :: Proxy V1ExchangeRatesTimeseriesItem)
-      propMimeEq MimeJSON (Proxy :: Proxy V1ExternalAsset)
-      propMimeEq MimeJSON (Proxy :: Proxy V1ExternalExchange)
       propMimeEq MimeJSON (Proxy :: Proxy V1GeneralData)
       propMimeEq MimeJSON (Proxy :: Proxy V1Icon)
       propMimeEq MimeJSON (Proxy :: Proxy V1LastTrade)

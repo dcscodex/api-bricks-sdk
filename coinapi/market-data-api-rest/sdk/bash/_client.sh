@@ -300,18 +300,17 @@ case $state in
             "getSpecificRate[Get specific rate]" \
             "v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet[Timeseries data]" \
             "v1ExchangerateAssetIdBaseGet[Get all current rates]" \
-            "v1ExchangerateHistoryPeriodsGet[Timeseries periods]"             "v1ExternalmetricsAssetHistoryGet[Historical metrics for the asset from external sources]" \
+            "v1ExchangerateHistoryPeriodsGet[Timeseries periods]"             "v1ExternalmetricsAssetHistoryGet[Historical metrics for the asset]" \
             "v1ExternalmetricsAssetListingGet[Listing of metrics available for specific asset]" \
-            "v1ExternalmetricsAssetsGet[Listing of all supported external assets]" \
-            "v1ExternalmetricsChainHistoryGet[Historical metrics for the chain from external sources]" \
+            "v1ExternalmetricsChainHistoryGet[Historical metrics for the chain]" \
             "v1ExternalmetricsChainListingGet[Listing of metrics available for specific chain]" \
-            "v1ExternalmetricsChainsGet[Listing of all supported external chains]" \
-            "v1ExternalmetricsExchangeHistoryGet[Historical metrics for the exchange from both external and internal sources]" \
-            "v1ExternalmetricsExchangeListingGet[Listing of metrics available for specific exchange (both external and generic)]" \
-            "v1ExternalmetricsExchangesGet[Listing of all supported external exchanges]" \
-            "v1ExternalmetricsListingGet[Listing of all supported metrics (both external and generic)]"             "v1AssetsAssetIdGet[List all assets by asset ID]" \
+            "v1ExternalmetricsExchangeHistoryGet[Historical metrics for the exchange]" \
+            "v1ExternalmetricsExchangeListingGet[Listing of metrics available for specific exchange]" \
+            "v1ExternalmetricsListingGet[Listing of all supported metrics]"             "v1AssetsAssetIdGet[List all assets by asset ID]" \
             "v1AssetsGet[List all assets]" \
             "v1AssetsIconsSizeGet[List all asset icons]" \
+            "v1ChainsChainIdGet[List all chains by chain ID]" \
+            "v1ChainsGet[List all blockchain chains]" \
             "v1ExchangesExchangeIdGet[List all exchanges by exchange_id]" \
             "v1ExchangesGet[List all exchanges]" \
             "v1ExchangesIconsSizeGet[List of icons for the exchanges]" \
@@ -388,8 +387,8 @@ case $state in
       v1ExternalmetricsAssetHistoryGet)
         local -a _op_arguments
         _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39; - internal metric key)"
-"asset_id=:[QUERY] Asset identifier (e.g., &#39;USDC&#39;, &#39;USDT&#39; - from supported assets list)"
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
+"asset_id=:[QUERY] Asset identifier (e.g., &#39;USDC&#39;, &#39;USDT&#39;)"
 "time_start=:[QUERY] Starting time in ISO 8601"
 "time_end=:[QUERY] Ending time in ISO 8601"
 "time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
@@ -405,17 +404,11 @@ case $state in
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      v1ExternalmetricsAssetsGet)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
       v1ExternalmetricsChainHistoryGet)
         local -a _op_arguments
         _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39; - internal metric key)"
-"chain_id=:[QUERY] Chain identifier (e.g., &#39;Ethereum&#39;, &#39;Arbitrum&#39; - from supported chains list)"
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
+"chain_id=:[QUERY] Chain identifier (e.g., &#39;Ethereum&#39;, &#39;Arbitrum&#39;)"
 "time_start=:[QUERY] Starting time in ISO 8601"
 "time_end=:[QUERY] Ending time in ISO 8601"
 "time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
@@ -431,16 +424,10 @@ case $state in
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      v1ExternalmetricsChainsGet)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
       v1ExternalmetricsExchangeHistoryGet)
         local -a _op_arguments
         _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39; for external, or generic metric IDs)"
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
 "exchange_id=:[QUERY] Exchange identifier (e.g., &#39;BINANCE&#39;, &#39;UNISWAP-V3-ETHEREUM&#39;)"
 "time_start=:[QUERY] Starting time in ISO 8601"
 "time_end=:[QUERY] Ending time in ISO 8601"
@@ -455,12 +442,6 @@ case $state in
         _op_arguments=(
                     "exchange_id=:[QUERY] Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)"
           )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsExchangesGet)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       v1ExternalmetricsListingGet)
@@ -488,6 +469,20 @@ case $state in
         _op_arguments=(
           "size=:[PATH] The size of the icons."
                     )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1ChainsChainIdGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "chain_id=:[PATH] The chain ID."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v1ChainsGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "filter_chain_id=:[QUERY] Comma or semicolon delimited chain identifiers used to filter response. (optional, eg. &#39;ETHEREUM;ARBITRUM&#39;)."
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       v1ExchangesExchangeIdGet)

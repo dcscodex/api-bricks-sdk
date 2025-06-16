@@ -25,8 +25,6 @@ docs/models/V1ExchangeRate.md
 docs/models/V1ExchangeRates.md
 docs/models/V1ExchangeRatesRate.md
 docs/models/V1ExchangeRatesTimeseriesItem.md
-docs/models/V1ExternalAsset.md
-docs/models/V1ExternalExchange.md
 docs/models/V1GeneralData.md
 docs/models/V1Icon.md
 docs/models/V1LastTrade.md
@@ -70,8 +68,6 @@ src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExchangeRatesRateTests.
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExchangeRatesTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExchangeRatesTimeseriesItemTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExchangeTests.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExternalAssetTests.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1ExternalExchangeTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1GeneralDataTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1IconTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1LastTradeTests.cs
@@ -107,6 +103,7 @@ src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/ApiFactory.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/ApiKeyToken.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/ApiResponseEventArgs.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/ApiResponse`1.cs
+src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/BearerToken.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/ClientUtils.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/CookieContainer.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Client/DateOnlyJsonConverter.cs
@@ -135,8 +132,6 @@ src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExchangeRate.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExchangeRates.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExchangeRatesRate.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExchangeRatesTimeseriesItem.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExternalAsset.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1ExternalExchange.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1GeneralData.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1Icon.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Model/V1LastTrade.cs

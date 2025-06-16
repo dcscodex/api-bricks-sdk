@@ -5,7 +5,7 @@
 -define(BASE_URL, <<"">>).
 
 %% @doc Current data by Exchange
-%% Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+%% Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 -spec v1_options_exchange_id_current_get(ctx:ctx(), binary()) -> {ok, [openapi_options_option_exchange_group:openapi_options_option_exchange_group()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_options_exchange_id_current_get(Ctx, ExchangeId) ->
     v1_options_exchange_id_current_get(Ctx, ExchangeId, #{}).

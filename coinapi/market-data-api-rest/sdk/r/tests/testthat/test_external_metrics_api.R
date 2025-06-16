@@ -8,10 +8,10 @@ api_instance <- ExternalMetricsApi$new()
 test_that("V1ExternalmetricsAssetHistoryGet", {
   # tests for V1ExternalmetricsAssetHistoryGet
   # base path: https://rest.coinapi.io
-  # Historical metrics for the asset from external sources
-  # Get asset metrics history from external data providers. Data is typically aggregated daily.
-  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-  # @param asset_id character Asset identifier (e.g., `USDC`, `USDT` - from supported assets list)
+  # Historical metrics for the asset
+  # Get asset metrics history.
+  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+  # @param asset_id character Asset identifier (e.g., `USDC`, `USDT`)
   # @param time_start character Starting time in ISO 8601 (optional)
   # @param time_end character Ending time in ISO 8601 (optional)
   # @param time_format character If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -27,20 +27,9 @@ test_that("V1ExternalmetricsAssetListingGet", {
   # tests for V1ExternalmetricsAssetListingGet
   # base path: https://rest.coinapi.io
   # Listing of metrics available for specific asset
-  # Get all metrics that are actually available for the specified asset from external providers.
+  # Get all metrics that are actually available for the specified asset.
   # @param asset_id character Asset identifier (e.g., USDC, USDT)
   # @return [array[V1MetricInfo]]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("V1ExternalmetricsAssetsGet", {
-  # tests for V1ExternalmetricsAssetsGet
-  # base path: https://rest.coinapi.io
-  # Listing of all supported external assets
-  # Get all assets (primarily stablecoins) supported by external data providers.
-  # @return [array[V1ExternalAsset]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -49,10 +38,10 @@ test_that("V1ExternalmetricsAssetsGet", {
 test_that("V1ExternalmetricsChainHistoryGet", {
   # tests for V1ExternalmetricsChainHistoryGet
   # base path: https://rest.coinapi.io
-  # Historical metrics for the chain from external sources
-  # Get chain metrics history from external data providers. Data is typically aggregated daily.
-  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-  # @param chain_id character Chain identifier (e.g., `Ethereum`, `Arbitrum` - from supported chains list)
+  # Historical metrics for the chain
+  # Get chain metrics history.
+  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+  # @param chain_id character Chain identifier (e.g., `Ethereum`, `Arbitrum`)
   # @param time_start character Starting time in ISO 8601 (optional)
   # @param time_end character Ending time in ISO 8601 (optional)
   # @param time_format character If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -68,20 +57,9 @@ test_that("V1ExternalmetricsChainListingGet", {
   # tests for V1ExternalmetricsChainListingGet
   # base path: https://rest.coinapi.io
   # Listing of metrics available for specific chain
-  # Get all metrics that are actually available for the specified blockchain chain from external providers.
+  # Get all metrics that are actually available for the specified blockchain chain.
   # @param chain_id character Chain identifier (e.g., ETHEREUM, ARBITRUM)
   # @return [array[V1MetricInfo]]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("V1ExternalmetricsChainsGet", {
-  # tests for V1ExternalmetricsChainsGet
-  # base path: https://rest.coinapi.io
-  # Listing of all supported external chains
-  # Get all blockchain chains supported by external data providers.
-  # @return [array[V1Chain]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -90,9 +68,9 @@ test_that("V1ExternalmetricsChainsGet", {
 test_that("V1ExternalmetricsExchangeHistoryGet", {
   # tests for V1ExternalmetricsExchangeHistoryGet
   # base path: https://rest.coinapi.io
-  # Historical metrics for the exchange from both external and internal sources
-  # Get exchange metrics history from external data providers or internal sources based on metric type.
-  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` for external, or generic metric IDs)
+  # Historical metrics for the exchange
+  # Get exchange metrics history.
+  # @param metric_id character Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
   # @param exchange_id character Exchange identifier (e.g., `BINANCE`, `UNISWAP-V3-ETHEREUM`)
   # @param time_start character Starting time in ISO 8601 (optional)
   # @param time_end character Ending time in ISO 8601 (optional)
@@ -108,21 +86,10 @@ test_that("V1ExternalmetricsExchangeHistoryGet", {
 test_that("V1ExternalmetricsExchangeListingGet", {
   # tests for V1ExternalmetricsExchangeListingGet
   # base path: https://rest.coinapi.io
-  # Listing of metrics available for specific exchange (both external and generic)
-  # Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+  # Listing of metrics available for specific exchange
+  # Get all metrics that are actually available for the specified exchange.
   # @param exchange_id character Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)
   # @return [array[V1MetricInfo]]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("V1ExternalmetricsExchangesGet", {
-  # tests for V1ExternalmetricsExchangesGet
-  # base path: https://rest.coinapi.io
-  # Listing of all supported external exchanges
-  # Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-  # @return [array[V1ExternalExchange]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -131,8 +98,8 @@ test_that("V1ExternalmetricsExchangesGet", {
 test_that("V1ExternalmetricsListingGet", {
   # tests for V1ExternalmetricsListingGet
   # base path: https://rest.coinapi.io
-  # Listing of all supported metrics (both external and generic)
-  # Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+  # Listing of all supported metrics
+  # Get all metrics available in the system.
   # @return [array[V1MetricInfo]]
 
   # uncomment below to test the operation

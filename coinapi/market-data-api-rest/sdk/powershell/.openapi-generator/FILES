@@ -23,8 +23,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -64,8 +62,6 @@ src/PSOpenAPITools/Model/V1ExchangeRate.ps1
 src/PSOpenAPITools/Model/V1ExchangeRates.ps1
 src/PSOpenAPITools/Model/V1ExchangeRatesRate.ps1
 src/PSOpenAPITools/Model/V1ExchangeRatesTimeseriesItem.ps1
-src/PSOpenAPITools/Model/V1ExternalAsset.ps1
-src/PSOpenAPITools/Model/V1ExternalExchange.ps1
 src/PSOpenAPITools/Model/V1GeneralData.ps1
 src/PSOpenAPITools/Model/V1Icon.ps1
 src/PSOpenAPITools/Model/V1LastTrade.ps1
@@ -111,8 +107,6 @@ tests/Model/V1ExchangeRate.Tests.ps1
 tests/Model/V1ExchangeRates.Tests.ps1
 tests/Model/V1ExchangeRatesRate.Tests.ps1
 tests/Model/V1ExchangeRatesTimeseriesItem.Tests.ps1
-tests/Model/V1ExternalAsset.Tests.ps1
-tests/Model/V1ExternalExchange.Tests.ps1
 tests/Model/V1GeneralData.Tests.ps1
 tests/Model/V1Icon.Tests.ps1
 tests/Model/V1LastTrade.Tests.ps1

@@ -1,4 +1,4 @@
-# RestApi.V1ChainNetworkAddress
+# CoinApiMarketDataRestApi.V1ChainNetworkAddress
 
 ## Properties
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Current data by Exchange
 
-Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 
 ### Example
 
@@ -35,8 +35,11 @@ object Example extends App {
     implicit val system: ActorSystem = ActorSystem()
     import system.dispatcher
     
-    // Configure API key authorization: ApiKey
-    implicit val ApiKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure API key authorization: APIKey
+    implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     val apiInvoker = ApiInvoker()
     val apiInstance = OptionsApi("https://rest.coinapi.io")
@@ -79,7 +82,7 @@ ApiRequest[[**Seq[OptionExchangeGroup]**](OptionExchangeGroup.md)]
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

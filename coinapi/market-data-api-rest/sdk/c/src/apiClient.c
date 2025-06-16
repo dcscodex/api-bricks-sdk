@@ -16,14 +16,15 @@ apiClient_t *apiClient_create() {
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
     apiClient->response_code = 0;
-    apiClient->apiKeys_ApiKey = NULL;
+    apiClient->apiKeys_APIKey = NULL;
+    apiClient->accessToken = NULL;
 
     return apiClient;
 }
 
 apiClient_t *apiClient_create_with_base_path(const char *basePath
 , sslConfig_t *sslConfig
-, list_t *apiKeys_ApiKey
+, list_t *apiKeys_APIKey
 ) {
     apiClient_t *apiClient = malloc(sizeof(apiClient_t));
     if(basePath){
@@ -44,17 +45,18 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
     apiClient->response_code = 0;
-    if(apiKeys_ApiKey!= NULL) {
-        apiClient->apiKeys_ApiKey = list_createList();
+    if(apiKeys_APIKey!= NULL) {
+        apiClient->apiKeys_APIKey = list_createList();
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiKeys_ApiKey) {
+        list_ForEach(listEntry, apiKeys_APIKey) {
             keyValuePair_t *pair = listEntry->data;
             keyValuePair_t *pairDup = keyValuePair_create(strdup(pair->key), strdup(pair->value));
-            list_addElement(apiClient->apiKeys_ApiKey, pairDup);
+            list_addElement(apiClient->apiKeys_APIKey, pairDup);
         }
     }else{
-        apiClient->apiKeys_ApiKey = NULL;
+        apiClient->apiKeys_APIKey = NULL;
     }
+    apiClient->accessToken = NULL;
 
     return apiClient;
 }
@@ -66,9 +68,9 @@ void apiClient_free(apiClient_t *apiClient) {
     apiClient->data_callback_func = NULL;
     apiClient->progress_func = NULL;
     apiClient->progress_data = NULL;
-    if(apiClient->apiKeys_ApiKey) {
+    if(apiClient->apiKeys_APIKey) {
         listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, apiClient->apiKeys_ApiKey) {
+        list_ForEach(listEntry, apiClient->apiKeys_APIKey) {
             keyValuePair_t *pair = listEntry->data;
             if(pair->key){
                 free(pair->key);
@@ -78,7 +80,10 @@ void apiClient_free(apiClient_t *apiClient) {
             }
             keyValuePair_free(pair);
         }
-        list_freeList(apiClient->apiKeys_ApiKey);
+        list_freeList(apiClient->apiKeys_APIKey);
+    }
+    if(apiClient->accessToken) {
+        free(apiClient->accessToken);
     }
     free(apiClient);
 }
@@ -388,9 +393,9 @@ void apiClient_invoke(apiClient_t    *apiClient,
         }
 
         // this would only be generated for apiKey authentication
-        if (apiClient->apiKeys_ApiKey != NULL)
+        if (apiClient->apiKeys_APIKey != NULL)
         {
-        list_ForEach(listEntry, apiClient->apiKeys_ApiKey) {
+        list_ForEach(listEntry, apiClient->apiKeys_APIKey) {
         keyValuePair_t *apiKey = listEntry->data;
         if((apiKey->key != NULL) &&
            (apiKey->value != NULL) )
@@ -401,6 +406,18 @@ void apiClient_invoke(apiClient_t    *apiClient,
             free(headerValueToWrite);
         }
         }
+        }
+        // this would only be generated for bearer token authentication
+        if(apiClient->accessToken != NULL)
+        {
+            int authHeaderSize;
+            char *authHeader = NULL;
+
+            authHeaderSize = snprintf(NULL, 0, "Authorization: Bearer %s", apiClient->accessToken) + 1;
+            authHeader = malloc(authHeaderSize);
+            snprintf(authHeader, authHeaderSize, "Authorization: Bearer %s", apiClient->accessToken);
+            headers = curl_slist_append(headers, authHeader);
+            free(authHeader);
         }
 
         char *targetUrl =

@@ -23,8 +23,6 @@ src/main/groovy/org/openapitools/model/V1ExchangeRate.groovy
 src/main/groovy/org/openapitools/model/V1ExchangeRates.groovy
 src/main/groovy/org/openapitools/model/V1ExchangeRatesRate.groovy
 src/main/groovy/org/openapitools/model/V1ExchangeRatesTimeseriesItem.groovy
-src/main/groovy/org/openapitools/model/V1ExternalAsset.groovy
-src/main/groovy/org/openapitools/model/V1ExternalExchange.groovy
 src/main/groovy/org/openapitools/model/V1GeneralData.groovy
 src/main/groovy/org/openapitools/model/V1Icon.groovy
 src/main/groovy/org/openapitools/model/V1LastTrade.groovy

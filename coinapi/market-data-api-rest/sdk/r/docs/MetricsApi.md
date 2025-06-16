@@ -36,8 +36,10 @@ var_asset_id_external <- "asset_id_external_example" # character | Exchange asse
 var_exchange_id <- "exchange_id_example" # character | Exchange identifier (from the Metadata -> Exchanges) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsAssetCurrentGet(metric_id = var_metric_id, asset_id = var_asset_id, asset_id_external = var_asset_id_external, exchange_id = var_exchange_iddata_file = "result.txt")
 result <- api_instance$V1MetricsAssetCurrentGet(metric_id = var_metric_id, asset_id = var_asset_id, asset_id_external = var_asset_id_external, exchange_id = var_exchange_id)
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -96,8 +98,10 @@ var_period_id <- "period_id_example" # character | Identifier of requested times
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsAssetHistoryGet(var_metric_id, var_exchange_id, asset_id = var_asset_id, asset_id_external = var_asset_id_external, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1MetricsAssetHistoryGet(var_metric_id, var_exchange_id, asset_id = var_asset_id, asset_id_external = var_asset_id_external, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limit)
@@ -124,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -158,8 +162,10 @@ var_asset_id <- "asset_id_example" # character | Asset identifier (from the Meta
 var_asset_id_external <- "asset_id_external_example" # character | The asset external identifier (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsAssetListingGet(metric_id = var_metric_id, exchange_id = var_exchange_id, chain_id = var_chain_id, network_id = var_network_id, asset_id = var_asset_id, asset_id_external = var_asset_id_externaldata_file = "result.txt")
 result <- api_instance$V1MetricsAssetListingGet(metric_id = var_metric_id, exchange_id = var_exchange_id, chain_id = var_chain_id, network_id = var_network_id, asset_id = var_asset_id, asset_id_external = var_asset_id_external)
@@ -183,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -213,8 +219,10 @@ var_exchange_id <- "exchange_id_example" # character | The exchange identifier (
 var_metric_id <- "metric_id_example" # character | The metric identifier (from the Metrics -> Listing) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsExchangeCurrentGet(var_exchange_id, metric_id = var_metric_iddata_file = "result.txt")
 result <- api_instance$V1MetricsExchangeCurrentGet(var_exchange_id, metric_id = var_metric_id)
@@ -234,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -269,8 +277,10 @@ var_period_id <- "period_id_example" # character | Identifier of requested times
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsExchangeHistoryGet(var_metric_id, var_exchange_id, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1MetricsExchangeHistoryGet(var_metric_id, var_exchange_id, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limit)
@@ -295,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -325,8 +335,10 @@ var_exchange_id <- "exchange_id_example" # character | The exchange identifier (
 var_metric_id <- "metric_id_example" # character | The metric identifier (from the Metrics -> Listing) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsExchangeListingGet(var_exchange_id, metric_id = var_metric_iddata_file = "result.txt")
 result <- api_instance$V1MetricsExchangeListingGet(var_exchange_id, metric_id = var_metric_id)
@@ -346,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -373,8 +385,10 @@ library(openapi)
 #
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsListingGet(data_file = "result.txt")
 result <- api_instance$V1MetricsListingGet()
@@ -390,7 +404,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -421,8 +435,10 @@ var_symbol_id <- "symbol_id_example" # character | Symbol identifier (from the M
 var_exchange_id <- "exchange_id_example" # character | Exchange id (from the Metadata -> Exchanges) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsSymbolCurrentGet(metric_id = var_metric_id, symbol_id = var_symbol_id, exchange_id = var_exchange_iddata_file = "result.txt")
 result <- api_instance$V1MetricsSymbolCurrentGet(metric_id = var_metric_id, symbol_id = var_symbol_id, exchange_id = var_exchange_id)
@@ -443,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -478,8 +494,10 @@ var_period_id <- "period_id_example" # character | Identifier of requested times
 var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsSymbolHistoryGet(var_metric_id, var_symbol_id, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limitdata_file = "result.txt")
 result <- api_instance$V1MetricsSymbolHistoryGet(var_metric_id, var_symbol_id, time_start = var_time_start, time_end = var_time_end, time_format = var_time_format, period_id = var_period_id, limit = var_limit)
@@ -504,7 +522,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -535,8 +553,10 @@ var_exchange_id <- "exchange_id_example" # character | Exchange identifier (from
 var_symbol_id <- "symbol_id_example" # character | Symbol identifier (from the Metadata -> Symbols) (Optional)
 
 api_instance <- MetricsApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1MetricsSymbolListingGet(metric_id = var_metric_id, exchange_id = var_exchange_id, symbol_id = var_symbol_iddata_file = "result.txt")
 result <- api_instance$V1MetricsSymbolListingGet(metric_id = var_metric_id, exchange_id = var_exchange_id, symbol_id = var_symbol_id)
@@ -557,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

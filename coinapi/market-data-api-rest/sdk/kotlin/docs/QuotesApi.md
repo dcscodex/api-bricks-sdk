@@ -17,7 +17,7 @@ All URIs are relative to *https://rest.coinapi.io*
 
 Current data
 
-Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
 
 ### Example
 ```kotlin
@@ -51,9 +51,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -102,9 +104,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -149,9 +153,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -164,7 +170,7 @@ Configure ApiKey:
 
 Historical data
 
-Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```kotlin
@@ -206,9 +212,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -255,9 +263,11 @@ try {
 ### Authorization
 
 
-Configure ApiKey:
-    ApiClient.apiKey["X-CoinAPI-Key"] = ""
-    ApiClient.apiKeyPrefix["X-CoinAPI-Key"] = ""
+Configure APIKey:
+    ApiClient.apiKey["Authorization"] = ""
+    ApiClient.apiKeyPrefix["Authorization"] = ""
+Configure JWT:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

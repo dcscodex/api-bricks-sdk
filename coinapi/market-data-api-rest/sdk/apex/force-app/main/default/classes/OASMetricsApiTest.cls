@@ -27,8 +27,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1GeneralData>{OASV1GeneralData.getExample()};
+        response = (List<OASV1GeneralData>) api.v1MetricsAssetCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -70,8 +79,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricData>{OASV1MetricData.getExample()};
+        response = (List<OASV1MetricData>) api.v1MetricsAssetHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -110,8 +128,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1ListingItem>{OASV1ListingItem.getExample()};
+        response = (List<OASV1ListingItem>) api.v1MetricsAssetListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -146,8 +173,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1GeneralData>{OASV1GeneralData.getExample()};
+        response = (List<OASV1GeneralData>) api.v1MetricsExchangeCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -187,8 +223,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricData>{OASV1MetricData.getExample()};
+        response = (List<OASV1MetricData>) api.v1MetricsExchangeHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -223,8 +268,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1ListingItem>{OASV1ListingItem.getExample()};
+        response = (List<OASV1ListingItem>) api.v1MetricsExchangeListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -254,8 +308,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Metric>{OASV1Metric.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Metric>{OASV1Metric.getExample()};
+        response = (List<OASV1Metric>) api.v1MetricsListingGet();
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1Metric>{OASV1Metric.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -291,8 +354,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1GeneralData>{OASV1GeneralData.getExample()};
+        response = (List<OASV1GeneralData>) api.v1MetricsSymbolCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1GeneralData>{OASV1GeneralData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -332,8 +404,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricData>{OASV1MetricData.getExample()};
+        response = (List<OASV1MetricData>) api.v1MetricsSymbolHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricData>{OASV1MetricData.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -369,8 +450,17 @@ private class OASMetricsApiTest {
 
         client = new OASClient();
         api = new OASMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1ListingItem>{OASV1ListingItem.getExample()};
+        response = (List<OASV1ListingItem>) api.v1MetricsSymbolListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1ListingItem>{OASV1ListingItem.getExample()});
         res.setHeader('Content-Type', 'application/json');

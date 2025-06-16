@@ -23,7 +23,7 @@ if (OPENSSL_FOUND)
     endif()
 endif()
 
-set(pkgName "rest_api")
+set(pkgName "coinapi_market_data_rest_api")
 
 # this default version can be overridden in PreTarget.cmake
 set(PROJECT_VERSION_MAJOR 0)
@@ -59,8 +59,6 @@ set(SRCS
     model/v1_exchange_rates.c
     model/v1_exchange_rates_rate.c
     model/v1_exchange_rates_timeseries_item.c
-    model/v1_external_asset.c
-    model/v1_external_exchange.c
     model/v1_general_data.c
     model/v1_icon.c
     model/v1_last_trade.c
@@ -110,8 +108,6 @@ set(HDRS
     model/v1_exchange_rates.h
     model/v1_exchange_rates_rate.h
     model/v1_exchange_rates_timeseries_item.h
-    model/v1_external_asset.h
-    model/v1_external_exchange.h
     model/v1_general_data.h
     model/v1_icon.h
     model/v1_last_trade.h

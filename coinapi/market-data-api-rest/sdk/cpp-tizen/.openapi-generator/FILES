@@ -52,10 +52,6 @@ src/V1ExchangeRatesRate.cpp
 src/V1ExchangeRatesRate.h
 src/V1ExchangeRatesTimeseriesItem.cpp
 src/V1ExchangeRatesTimeseriesItem.h
-src/V1ExternalAsset.cpp
-src/V1ExternalAsset.h
-src/V1ExternalExchange.cpp
-src/V1ExternalExchange.h
 src/V1GeneralData.cpp
 src/V1GeneralData.h
 src/V1Icon.cpp

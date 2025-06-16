@@ -11,8 +11,6 @@ export * from './v1ExchangeRate';
 export * from './v1ExchangeRates';
 export * from './v1ExchangeRatesRate';
 export * from './v1ExchangeRatesTimeseriesItem';
-export * from './v1ExternalAsset';
-export * from './v1ExternalExchange';
 export * from './v1GeneralData';
 export * from './v1Icon';
 export * from './v1LastTrade';
@@ -55,8 +53,6 @@ import { V1ExchangeRate } from './v1ExchangeRate';
 import { V1ExchangeRates } from './v1ExchangeRates';
 import { V1ExchangeRatesRate } from './v1ExchangeRatesRate';
 import { V1ExchangeRatesTimeseriesItem } from './v1ExchangeRatesTimeseriesItem';
-import { V1ExternalAsset } from './v1ExternalAsset';
-import { V1ExternalExchange } from './v1ExternalExchange';
 import { V1GeneralData } from './v1GeneralData';
 import { V1Icon } from './v1Icon';
 import { V1LastTrade } from './v1LastTrade';
@@ -102,8 +98,6 @@ let typeMap: {[index: string]: any} = {
     "V1ExchangeRates": V1ExchangeRates,
     "V1ExchangeRatesRate": V1ExchangeRatesRate,
     "V1ExchangeRatesTimeseriesItem": V1ExchangeRatesTimeseriesItem,
-    "V1ExternalAsset": V1ExternalAsset,
-    "V1ExternalExchange": V1ExternalExchange,
     "V1GeneralData": V1GeneralData,
     "V1Icon": V1Icon,
     "V1LastTrade": V1LastTrade,

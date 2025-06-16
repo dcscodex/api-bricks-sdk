@@ -27,8 +27,6 @@ docs/V1ExchangeRate.md
 docs/V1ExchangeRates.md
 docs/V1ExchangeRatesRate.md
 docs/V1ExchangeRatesTimeseriesItem.md
-docs/V1ExternalAsset.md
-docs/V1ExternalExchange.md
 docs/V1GeneralData.md
 docs/V1Icon.md
 docs/V1LastTrade.md
@@ -94,8 +92,6 @@ src/main/java/org/openapitools/client/model/V1ExchangeRate.java
 src/main/java/org/openapitools/client/model/V1ExchangeRates.java
 src/main/java/org/openapitools/client/model/V1ExchangeRatesRate.java
 src/main/java/org/openapitools/client/model/V1ExchangeRatesTimeseriesItem.java
-src/main/java/org/openapitools/client/model/V1ExternalAsset.java
-src/main/java/org/openapitools/client/model/V1ExternalExchange.java
 src/main/java/org/openapitools/client/model/V1GeneralData.java
 src/main/java/org/openapitools/client/model/V1Icon.java
 src/main/java/org/openapitools/client/model/V1LastTrade.java
@@ -134,8 +130,6 @@ src/test/java/org/openapitools/client/model/V1ExchangeRatesRateTest.java
 src/test/java/org/openapitools/client/model/V1ExchangeRatesTest.java
 src/test/java/org/openapitools/client/model/V1ExchangeRatesTimeseriesItemTest.java
 src/test/java/org/openapitools/client/model/V1ExchangeTest.java
-src/test/java/org/openapitools/client/model/V1ExternalAssetTest.java
-src/test/java/org/openapitools/client/model/V1ExternalExchangeTest.java
 src/test/java/org/openapitools/client/model/V1GeneralDataTest.java
 src/test/java/org/openapitools/client/model/V1IconTest.java
 src/test/java/org/openapitools/client/model/V1LastTradeTest.java

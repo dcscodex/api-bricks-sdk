@@ -1,4 +1,4 @@
-# RestApi.V1SymbolMapping
+# CoinApiMarketDataRestApi.V1SymbolMapping
 
 ## Properties
 

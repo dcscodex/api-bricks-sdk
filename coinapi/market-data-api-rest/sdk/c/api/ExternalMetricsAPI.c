@@ -7,9 +7,9 @@
 #define MAX_BUFFER_LENGTH 4096
 
 
-// Historical metrics for the asset from external sources
+// Historical metrics for the asset
 //
-// Get asset metrics history from external data providers. Data is typically aggregated daily.
+// Get asset metrics history.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsAssetHistoryGet(apiClient_t *apiClient, char *metric_id, char *asset_id, char time_start, char time_end, char *time_format, char *period_id, int *limit)
@@ -261,7 +261,7 @@ end:
 
 // Listing of metrics available for specific asset
 //
-// Get all metrics that are actually available for the specified asset from external providers.
+// Get all metrics that are actually available for the specified asset.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsAssetListingGet(apiClient_t *apiClient, char *asset_id)
@@ -366,92 +366,9 @@ end:
 
 }
 
-// Listing of all supported external assets
+// Historical metrics for the chain
 //
-// Get all assets (primarily stablecoins) supported by external data providers.
-//
-list_t*
-ExternalMetricsAPI_v1ExternalmetricsAssetsGet(apiClient_t *apiClient)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/v1/externalmetrics/assets");
-
-
-
-
-    list_addElement(localVarHeaderType,"text/plain"); //produces
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"text/json"); //produces
-    list_addElement(localVarHeaderType,"application/x-msgpack"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","successful operation");
-    //}
-    list_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *ExternalMetricsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        if(!cJSON_IsArray(ExternalMetricsAPIlocalVarJSON)) {
-            return 0;//nonprimitive container
-        }
-        elementToReturn = list_createList();
-        cJSON *VarJSON;
-        cJSON_ArrayForEach(VarJSON, ExternalMetricsAPIlocalVarJSON)
-        {
-            if(!cJSON_IsObject(VarJSON))
-            {
-               // return 0;
-            }
-            char *localVarJSONToChar = cJSON_Print(VarJSON);
-            list_addElement(elementToReturn , localVarJSONToChar);
-        }
-
-        cJSON_Delete( ExternalMetricsAPIlocalVarJSON);
-        cJSON_Delete( VarJSON);
-    }
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Historical metrics for the chain from external sources
-//
-// Get chain metrics history from external data providers. Data is typically aggregated daily.
+// Get chain metrics history.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsChainHistoryGet(apiClient_t *apiClient, char *metric_id, char *chain_id, char time_start, char time_end, char *time_format, char *period_id, int *limit)
@@ -703,7 +620,7 @@ end:
 
 // Listing of metrics available for specific chain
 //
-// Get all metrics that are actually available for the specified blockchain chain from external providers.
+// Get all metrics that are actually available for the specified blockchain chain.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsChainListingGet(apiClient_t *apiClient, char *chain_id)
@@ -808,92 +725,9 @@ end:
 
 }
 
-// Listing of all supported external chains
+// Historical metrics for the exchange
 //
-// Get all blockchain chains supported by external data providers.
-//
-list_t*
-ExternalMetricsAPI_v1ExternalmetricsChainsGet(apiClient_t *apiClient)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/v1/externalmetrics/chains");
-
-
-
-
-    list_addElement(localVarHeaderType,"text/plain"); //produces
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"text/json"); //produces
-    list_addElement(localVarHeaderType,"application/x-msgpack"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","successful operation");
-    //}
-    list_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *ExternalMetricsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        if(!cJSON_IsArray(ExternalMetricsAPIlocalVarJSON)) {
-            return 0;//nonprimitive container
-        }
-        elementToReturn = list_createList();
-        cJSON *VarJSON;
-        cJSON_ArrayForEach(VarJSON, ExternalMetricsAPIlocalVarJSON)
-        {
-            if(!cJSON_IsObject(VarJSON))
-            {
-               // return 0;
-            }
-            char *localVarJSONToChar = cJSON_Print(VarJSON);
-            list_addElement(elementToReturn , localVarJSONToChar);
-        }
-
-        cJSON_Delete( ExternalMetricsAPIlocalVarJSON);
-        cJSON_Delete( VarJSON);
-    }
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Historical metrics for the exchange from both external and internal sources
-//
-// Get exchange metrics history from external data providers or internal sources based on metric type.
+// Get exchange metrics history.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsExchangeHistoryGet(apiClient_t *apiClient, char *metric_id, char *exchange_id, char time_start, char time_end, char *time_format, char *period_id, int *limit)
@@ -1143,9 +977,9 @@ end:
 
 }
 
-// Listing of metrics available for specific exchange (both external and generic)
+// Listing of metrics available for specific exchange
 //
-// Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+// Get all metrics that are actually available for the specified exchange.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsExchangeListingGet(apiClient_t *apiClient, char *exchange_id)
@@ -1250,92 +1084,9 @@ end:
 
 }
 
-// Listing of all supported external exchanges
+// Listing of all supported metrics
 //
-// Get all exchanges that have mapping to external data providers for metrics that actually have sources.  Only returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-//
-list_t*
-ExternalMetricsAPI_v1ExternalmetricsExchangesGet(apiClient_t *apiClient)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/v1/externalmetrics/exchanges");
-
-
-
-
-    list_addElement(localVarHeaderType,"text/plain"); //produces
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"text/json"); //produces
-    list_addElement(localVarHeaderType,"application/x-msgpack"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","successful operation");
-    //}
-    list_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *ExternalMetricsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        if(!cJSON_IsArray(ExternalMetricsAPIlocalVarJSON)) {
-            return 0;//nonprimitive container
-        }
-        elementToReturn = list_createList();
-        cJSON *VarJSON;
-        cJSON_ArrayForEach(VarJSON, ExternalMetricsAPIlocalVarJSON)
-        {
-            if(!cJSON_IsObject(VarJSON))
-            {
-               // return 0;
-            }
-            char *localVarJSONToChar = cJSON_Print(VarJSON);
-            list_addElement(elementToReturn , localVarJSONToChar);
-        }
-
-        cJSON_Delete( ExternalMetricsAPIlocalVarJSON);
-        cJSON_Delete( VarJSON);
-    }
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Listing of all supported metrics (both external and generic)
-//
-// Get all metrics available from external data providers and internal generic metrics.  External metrics have detailed descriptions, while generic metrics are marked as such.
+// Get all metrics available in the system.
 //
 list_t*
 ExternalMetricsAPI_v1ExternalmetricsListingGet(apiClient_t *apiClient)

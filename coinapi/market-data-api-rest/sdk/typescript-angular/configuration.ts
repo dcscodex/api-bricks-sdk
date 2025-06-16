@@ -91,14 +91,23 @@ constructor({ accessToken, apiKeys, basePath, credentials, encodeParam, encoder,
         this.encodeParam = encodeParam ?? (param => this.defaultEncodeParam(param));
         this.credentials = credentials ?? {};
 
-        // init default ApiKey credential
-        if (!this.credentials['ApiKey']) {
-            this.credentials['ApiKey'] = () => {
+        // init default APIKey credential
+        if (!this.credentials['APIKey']) {
+            this.credentials['APIKey'] = () => {
                 if (this.apiKeys === null || this.apiKeys === undefined) {
                     return undefined;
                 } else {
-                    return this.apiKeys['ApiKey'] || this.apiKeys['X-CoinAPI-Key'];
+                    return this.apiKeys['APIKey'] || this.apiKeys['Authorization'];
                 }
+            };
+        }
+
+        // init default JWT credential
+        if (!this.credentials['JWT']) {
+            this.credentials['JWT'] = () => {
+                return typeof this.accessToken === 'function'
+                    ? this.accessToken()
+                    : this.accessToken;
             };
         }
     }

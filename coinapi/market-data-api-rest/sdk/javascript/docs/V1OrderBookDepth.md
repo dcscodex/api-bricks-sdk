@@ -1,4 +1,4 @@
-# RestApi.V1OrderBookDepth
+# CoinApiMarketDataRestApi.V1OrderBookDepth
 
 ## Properties
 

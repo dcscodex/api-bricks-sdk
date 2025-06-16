@@ -21,7 +21,7 @@ class OptionsApi {
   const OptionsApi(this._dio, this._serializers);
 
   /// Current data by Exchange
-  /// Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+  /// Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
   ///
   /// Parameters:
   /// * [exchangeId] - Exchange identifier (from the Metadata -> Exchanges)
@@ -53,9 +53,13 @@ class OptionsApi {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
             'where': 'header',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'JWT',
           },
         ],
         ...?extra,

@@ -28,8 +28,10 @@ var_symbol_id <- "symbol_id_example" # character | The symbol ID (from the Metad
 var_limit_levels <- 56 # integer | The maximum number of levels to include in the response. (Optional)
 
 api_instance <- OrderBookApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OrderbooksSymbolIdCurrentGet(var_symbol_id, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1OrderbooksSymbolIdCurrentGet(var_symbol_id, limit_levels = var_limit_levels)
@@ -49,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -79,8 +81,10 @@ var_symbol_id <- "symbol_id_example" # character | The symbol ID (from the Metad
 var_limit_levels <- 56 # integer | The maximum number of levels to include in the response. (Optional)
 
 api_instance <- OrderBookApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OrderbooksSymbolIdDepthCurrentGet(var_symbol_id, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1OrderbooksSymbolIdDepthCurrentGet(var_symbol_id, limit_levels = var_limit_levels)
@@ -100,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -117,7 +121,7 @@ Name | Type | Description  | Notes
 
 Historical data
 
-Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 
 ### Example
 ```R
@@ -134,8 +138,10 @@ var_limit <- 100 # integer | Amount of items to return (optional, minimum is 1, 
 var_limit_levels <- 56 # integer | Maximum amount of levels from each side of the book to include in response (optional) (Optional)
 
 api_instance <- OrderBookApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OrderbooksSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limit, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1OrderbooksSymbolIdHistoryGet(var_symbol_id, date = var_date, time_start = var_time_start, time_end = var_time_end, limit = var_limit, limit_levels = var_limit_levels)
@@ -159,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -176,7 +182,7 @@ Name | Type | Description  | Notes
 
 Latest data
 
-Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
 
 ### Example
 ```R
@@ -190,8 +196,10 @@ var_limit <- 100 # integer | Amount of items to return (optional, mininum is 1, 
 var_limit_levels <- 56 # integer | Maximum amount of levels from each side of the book to include in response (optional) (Optional)
 
 api_instance <- OrderBookApi$new()
-# Configure API key authorization: ApiKey
-api_instance$api_client$api_keys["X-CoinAPI-Key"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: APIKey
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1OrderbooksSymbolIdLatestGet(var_symbol_id, limit = var_limit, limit_levels = var_limit_levelsdata_file = "result.txt")
 result <- api_instance$V1OrderbooksSymbolIdLatestGet(var_symbol_id, limit = var_limit, limit_levels = var_limit_levels)
@@ -212,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

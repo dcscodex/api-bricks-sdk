@@ -24,8 +24,6 @@ doc/V1ExchangeRate.md
 doc/V1ExchangeRates.md
 doc/V1ExchangeRatesRate.md
 doc/V1ExchangeRatesTimeseriesItem.md
-doc/V1ExternalAsset.md
-doc/V1ExternalExchange.md
 doc/V1GeneralData.md
 doc/V1Icon.md
 doc/V1LastTrade.md
@@ -74,8 +72,6 @@ lib/model/v1_exchange_rate.dart
 lib/model/v1_exchange_rates.dart
 lib/model/v1_exchange_rates_rate.dart
 lib/model/v1_exchange_rates_timeseries_item.dart
-lib/model/v1_external_asset.dart
-lib/model/v1_external_exchange.dart
 lib/model/v1_general_data.dart
 lib/model/v1_icon.dart
 lib/model/v1_last_trade.dart
@@ -115,8 +111,6 @@ test/v1_exchange_rates_rate_test.dart
 test/v1_exchange_rates_test.dart
 test/v1_exchange_rates_timeseries_item_test.dart
 test/v1_exchange_test.dart
-test/v1_external_asset_test.dart
-test/v1_external_exchange_test.dart
 test/v1_general_data_test.dart
 test/v1_icon_test.dart
 test/v1_last_trade_test.dart

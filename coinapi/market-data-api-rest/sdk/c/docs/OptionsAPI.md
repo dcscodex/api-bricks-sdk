@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ```c
 // Current data by Exchange
 //
-// Get current options data for a specific exchange.    Returns option data grouped by underlying asset, quote currency, and expiration time,  with quotes for both calls and puts at each strike price.
+// Get current options data for a specific exchange.  Returns option data grouped by underlying asset, quote currency, and expiration time, with quotes for both calls and puts at each strike price.
 //
 list_t* OptionsAPI_v1OptionsExchangeIdCurrentGet(apiClient_t *apiClient, char *exchange_id);
 ```
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

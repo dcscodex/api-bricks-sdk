@@ -1,4 +1,4 @@
-# RestApi.OptionsOptionExchangeGroup
+# CoinApiMarketDataRestApi.OptionsOptionExchangeGroup
 
 ## Properties
 

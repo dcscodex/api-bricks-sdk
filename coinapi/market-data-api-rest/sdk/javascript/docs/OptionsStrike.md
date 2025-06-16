@@ -1,4 +1,4 @@
-# RestApi.OptionsStrike
+# CoinApiMarketDataRestApi.OptionsStrike
 
 ## Properties
 

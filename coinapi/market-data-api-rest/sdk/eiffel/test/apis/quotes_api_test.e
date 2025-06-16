@@ -16,7 +16,7 @@ feature -- Test routines
     test_v1_quotes_current_get
             -- Current data
             --
-            -- Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+            -- Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
         local
             l_response: LIST [V1_QUOTE_TRADE]
             l_filter_symbol_id: STRING_32
@@ -60,7 +60,7 @@ feature -- Test routines
     test_v1_quotes_symbol_id_history_get
             -- Historical data
             --
-            -- Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+            -- Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
         local
             l_response: LIST [V1_QUOTE]
             l_symbol_id: STRING_32

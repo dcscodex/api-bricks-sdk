@@ -1,9 +1,9 @@
 @isTest
 private class OASExternalMetricsApiTest {
     /**
-     * Historical metrics for the asset from external sources
+     * Historical metrics for the asset
      *
-     * Get asset metrics history from external data providers. Data is typically aggregated daily.
+     * Get asset metrics history.
      */
     @isTest
     private static void v1ExternalmetricsAssetHistoryGetTest() {
@@ -30,8 +30,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<Object>{Object.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{Object.getExample()};
+        response = (List<Object>) api.v1ExternalmetricsAssetHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<Object>{Object.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -44,7 +53,7 @@ private class OASExternalMetricsApiTest {
     /**
      * Listing of metrics available for specific asset
      *
-     * Get all metrics that are actually available for the specified asset from external providers.
+     * Get all metrics that are actually available for the specified asset.
      */
     @isTest
     private static void v1ExternalmetricsAssetListingGetTest() {
@@ -65,8 +74,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()};
+        response = (List<OASV1MetricInfo>) api.v1ExternalmetricsAssetListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -77,40 +95,9 @@ private class OASExternalMetricsApiTest {
     }
 
     /**
-     * Listing of all supported external assets
+     * Historical metrics for the chain
      *
-     * Get all assets (primarily stablecoins) supported by external data providers.
-     */
-    @isTest
-    private static void v1ExternalmetricsAssetsGetTest() {
-        HttpResponse res = new HttpResponse();
-        res.setStatusCode(200);
-        res.setStatus('OK');
-        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
-
-        OASClient client;
-        OASExternalMetricsApi api;
-        List<OASV1ExternalAsset> response;
-        List<OASV1ExternalAsset> expectedResponse;
-        String js = '';
-
-        client = new OASClient();
-        api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
-
-
-        js = JSON.serialize(new List<OASV1ExternalAsset>{OASV1ExternalAsset.getExample()});
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody(js);
-        expectedResponse = new List<OASV1ExternalAsset>{OASV1ExternalAsset.getExample()};
-        response = (List<OASV1ExternalAsset>) api.v1ExternalmetricsAssetsGet();
-        System.assertEquals(expectedResponse, response);
-    }
-
-    /**
-     * Historical metrics for the chain from external sources
-     *
-     * Get chain metrics history from external data providers. Data is typically aggregated daily.
+     * Get chain metrics history.
      */
     @isTest
     private static void v1ExternalmetricsChainHistoryGetTest() {
@@ -137,8 +124,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<Object>{Object.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{Object.getExample()};
+        response = (List<Object>) api.v1ExternalmetricsChainHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<Object>{Object.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -151,7 +147,7 @@ private class OASExternalMetricsApiTest {
     /**
      * Listing of metrics available for specific chain
      *
-     * Get all metrics that are actually available for the specified blockchain chain from external providers.
+     * Get all metrics that are actually available for the specified blockchain chain.
      */
     @isTest
     private static void v1ExternalmetricsChainListingGetTest() {
@@ -172,8 +168,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()};
+        response = (List<OASV1MetricInfo>) api.v1ExternalmetricsChainListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -184,40 +189,9 @@ private class OASExternalMetricsApiTest {
     }
 
     /**
-     * Listing of all supported external chains
+     * Historical metrics for the exchange
      *
-     * Get all blockchain chains supported by external data providers.
-     */
-    @isTest
-    private static void v1ExternalmetricsChainsGetTest() {
-        HttpResponse res = new HttpResponse();
-        res.setStatusCode(200);
-        res.setStatus('OK');
-        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
-
-        OASClient client;
-        OASExternalMetricsApi api;
-        List<OASV1Chain> response;
-        List<OASV1Chain> expectedResponse;
-        String js = '';
-
-        client = new OASClient();
-        api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
-
-
-        js = JSON.serialize(new List<OASV1Chain>{OASV1Chain.getExample()});
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody(js);
-        expectedResponse = new List<OASV1Chain>{OASV1Chain.getExample()};
-        response = (List<OASV1Chain>) api.v1ExternalmetricsChainsGet();
-        System.assertEquals(expectedResponse, response);
-    }
-
-    /**
-     * Historical metrics for the exchange from both external and internal sources
-     *
-     * Get exchange metrics history from external data providers or internal sources based on metric type.
+     * Get exchange metrics history.
      */
     @isTest
     private static void v1ExternalmetricsExchangeHistoryGetTest() {
@@ -244,8 +218,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<Object>{Object.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<Object>{Object.getExample()};
+        response = (List<Object>) api.v1ExternalmetricsExchangeHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<Object>{Object.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -256,9 +239,9 @@ private class OASExternalMetricsApiTest {
     }
 
     /**
-     * Listing of metrics available for specific exchange (both external and generic)
+     * Listing of metrics available for specific exchange
      *
-     * Get all metrics that are actually available for the specified exchange from both external providers and internal sources.
+     * Get all metrics that are actually available for the specified exchange.
      */
     @isTest
     private static void v1ExternalmetricsExchangeListingGetTest() {
@@ -279,8 +262,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()};
+        response = (List<OASV1MetricInfo>) api.v1ExternalmetricsExchangeListingGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -291,40 +283,9 @@ private class OASExternalMetricsApiTest {
     }
 
     /**
-     * Listing of all supported external exchanges
+     * Listing of all supported metrics
      *
-     * Get all exchanges that have mapping to external data providers for metrics that actually have sources.\r\nOnly returns exchanges that are properly mapped to external protocols for metrics with defined sources.
-     */
-    @isTest
-    private static void v1ExternalmetricsExchangesGetTest() {
-        HttpResponse res = new HttpResponse();
-        res.setStatusCode(200);
-        res.setStatus('OK');
-        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
-
-        OASClient client;
-        OASExternalMetricsApi api;
-        List<OASV1ExternalExchange> response;
-        List<OASV1ExternalExchange> expectedResponse;
-        String js = '';
-
-        client = new OASClient();
-        api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
-
-
-        js = JSON.serialize(new List<OASV1ExternalExchange>{OASV1ExternalExchange.getExample()});
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody(js);
-        expectedResponse = new List<OASV1ExternalExchange>{OASV1ExternalExchange.getExample()};
-        response = (List<OASV1ExternalExchange>) api.v1ExternalmetricsExchangesGet();
-        System.assertEquals(expectedResponse, response);
-    }
-
-    /**
-     * Listing of all supported metrics (both external and generic)
-     *
-     * Get all metrics available from external data providers and internal generic metrics.\r\nExternal metrics have detailed descriptions, while generic metrics are marked as such.
+     * Get all metrics available in the system.
      */
     @isTest
     private static void v1ExternalmetricsListingGetTest() {
@@ -341,8 +302,17 @@ private class OASExternalMetricsApiTest {
 
         client = new OASClient();
         api = new OASExternalMetricsApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()};
+        response = (List<OASV1MetricInfo>) api.v1ExternalmetricsListingGet();
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASExternalMetricsApi(client);
 
         js = JSON.serialize(new List<OASV1MetricInfo>{OASV1MetricInfo.getExample()});
         res.setHeader('Content-Type', 'application/json');

@@ -9,7 +9,7 @@
 -define(BASE_URL, <<"">>).
 
 %% @doc Current data
-%% Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+%% Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
 -spec v1_quotes_current_get(ctx:ctx()) -> {ok, [openapi_v1_quote_trade:openapi_v1_quote_trade()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_quotes_current_get(Ctx) ->
     v1_quotes_current_get(Ctx, #{}).
@@ -72,7 +72,7 @@ v1_quotes_symbol_id_current_get(Ctx, SymbolId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Historical data
-%% Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the 'date' parameter instead for querying data for a specific day without filter.  :::
+%% Get historical quote updates within requested time range, returned in time ascending order.  :::warning The 'time_start' and 'time_end' parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the 'date' parameter instead for querying data for a specific day without filter. :::
 -spec v1_quotes_symbol_id_history_get(ctx:ctx(), binary()) -> {ok, [openapi_v1_quote:openapi_v1_quote()], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 v1_quotes_symbol_id_history_get(Ctx, SymbolId) ->
     v1_quotes_symbol_id_history_get(Ctx, SymbolId, #{}).

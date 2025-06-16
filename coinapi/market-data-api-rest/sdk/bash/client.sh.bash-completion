@@ -75,17 +75,16 @@ _()
     operations["v1ExchangerateHistoryPeriodsGet"]=1
     operations["v1ExternalmetricsAssetHistoryGet"]=1
     operations["v1ExternalmetricsAssetListingGet"]=1
-    operations["v1ExternalmetricsAssetsGet"]=1
     operations["v1ExternalmetricsChainHistoryGet"]=1
     operations["v1ExternalmetricsChainListingGet"]=1
-    operations["v1ExternalmetricsChainsGet"]=1
     operations["v1ExternalmetricsExchangeHistoryGet"]=1
     operations["v1ExternalmetricsExchangeListingGet"]=1
-    operations["v1ExternalmetricsExchangesGet"]=1
     operations["v1ExternalmetricsListingGet"]=1
     operations["v1AssetsAssetIdGet"]=1
     operations["v1AssetsGet"]=1
     operations["v1AssetsIconsSizeGet"]=1
+    operations["v1ChainsChainIdGet"]=1
+    operations["v1ChainsGet"]=1
     operations["v1ExchangesExchangeIdGet"]=1
     operations["v1ExchangesGet"]=1
     operations["v1ExchangesIconsSizeGet"]=1
@@ -131,17 +130,16 @@ _()
     operation_parameters["v1ExchangerateHistoryPeriodsGet"]=""
     operation_parameters["v1ExternalmetricsAssetHistoryGet"]="metric_id= asset_id= time_start= time_end= time_format= period_id= limit= "
     operation_parameters["v1ExternalmetricsAssetListingGet"]="asset_id= "
-    operation_parameters["v1ExternalmetricsAssetsGet"]=""
     operation_parameters["v1ExternalmetricsChainHistoryGet"]="metric_id= chain_id= time_start= time_end= time_format= period_id= limit= "
     operation_parameters["v1ExternalmetricsChainListingGet"]="chain_id= "
-    operation_parameters["v1ExternalmetricsChainsGet"]=""
     operation_parameters["v1ExternalmetricsExchangeHistoryGet"]="metric_id= exchange_id= time_start= time_end= time_format= period_id= limit= "
     operation_parameters["v1ExternalmetricsExchangeListingGet"]="exchange_id= "
-    operation_parameters["v1ExternalmetricsExchangesGet"]=""
     operation_parameters["v1ExternalmetricsListingGet"]=""
     operation_parameters["v1AssetsAssetIdGet"]="asset_id= "
     operation_parameters["v1AssetsGet"]="filter_asset_id= "
     operation_parameters["v1AssetsIconsSizeGet"]="size= "
+    operation_parameters["v1ChainsChainIdGet"]="chain_id= "
+    operation_parameters["v1ChainsGet"]="filter_chain_id= "
     operation_parameters["v1ExchangesExchangeIdGet"]="exchange_id= "
     operation_parameters["v1ExchangesGet"]="filter_exchange_id= "
     operation_parameters["v1ExchangesIconsSizeGet"]="size= "

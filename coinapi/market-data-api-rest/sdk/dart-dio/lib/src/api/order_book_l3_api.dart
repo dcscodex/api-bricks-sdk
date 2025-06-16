@@ -55,9 +55,13 @@ class OrderBookL3Api {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
             'where': 'header',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'JWT',
           },
         ],
         ...?extra,
@@ -145,9 +149,13 @@ class OrderBookL3Api {
         'secure': <Map<String, String>>[
           {
             'type': 'apiKey',
-            'name': 'ApiKey',
-            'keyName': 'X-CoinAPI-Key',
+            'name': 'APIKey',
+            'keyName': 'Authorization',
             'where': 'header',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'JWT',
           },
         ],
         ...?extra,

@@ -1,4 +1,4 @@
-# RestApi.V1LastTrade
+# CoinApiMarketDataRestApi.V1LastTrade
 
 ## Properties
 

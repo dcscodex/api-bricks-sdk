@@ -9,7 +9,7 @@ test_that("V1QuotesCurrentGet", {
   # tests for V1QuotesCurrentGet
   # base path: https://rest.coinapi.io
   # Current data
-  # Get current quotes for all symbols or for a specific symbol.                :::info  When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned.  :::
+  # Get current quotes for all symbols or for a specific symbol.              :::info When requesting current data for a specific symbol, output is not encapsulated into JSON array as only one item is returned. :::
   # @param filter_symbol_id character Comma or semicolon delimited parts of symbol identifier used to filter response. (optional) (optional)
   # @return [array[V1QuoteTrade]]
 
@@ -45,7 +45,7 @@ test_that("V1QuotesSymbolIdHistoryGet", {
   # tests for V1QuotesSymbolIdHistoryGet
   # base path: https://rest.coinapi.io
   # Historical data
-  # Get historical quote updates within requested time range, returned in time ascending order.    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+  # Get historical quote updates within requested time range, returned in time ascending order.  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
   # @param symbol_id character Symbol identifier for requested timeseries (from the Metadata -> Symbols)
   # @param date character Date in ISO 8601, returned data is for the whole given day (preferred method, required if 'time_start' is not provided) (optional)
   # @param time_start character Starting time in ISO 8601 (optional)

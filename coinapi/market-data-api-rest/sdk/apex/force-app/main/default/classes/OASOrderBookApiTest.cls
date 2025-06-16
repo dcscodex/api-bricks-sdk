@@ -25,8 +25,41 @@ private class OASOrderBookApiTest {
 
         client = new OASClient();
         api = new OASOrderBookApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1OrderbooksSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1OrderbooksSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1OrderbooksSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookBase.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookBase.getExample();
+        response = (OASV1OrderBookBase) api.v1OrderbooksSymbolIdCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookApi(client);
 
         js = JSON.serialize(OASV1OrderBookBase.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -85,8 +118,41 @@ private class OASOrderBookApiTest {
 
         client = new OASClient();
         api = new OASOrderBookApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(OASV1OrderBookDepth.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookDepth.getExample();
+        response = (OASV1OrderBookDepth) api.v1OrderbooksSymbolIdDepthCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookDepth.getExample());
+        res.setHeader('Content-Type', 'application/x-msgpack');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookDepth.getExample();
+        response = (OASV1OrderBookDepth) api.v1OrderbooksSymbolIdDepthCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookDepth.getExample());
+        res.setHeader('Content-Type', 'text/json');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookDepth.getExample();
+        response = (OASV1OrderBookDepth) api.v1OrderbooksSymbolIdDepthCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASV1OrderBookDepth.getExample());
+        res.setHeader('Content-Type', 'text/plain');
+        res.setBody(js);
+        expectedResponse = OASV1OrderBookDepth.getExample();
+        response = (OASV1OrderBookDepth) api.v1OrderbooksSymbolIdDepthCurrentGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookApi(client);
 
         js = JSON.serialize(OASV1OrderBookDepth.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -123,7 +189,7 @@ private class OASOrderBookApiTest {
     /**
      * Historical data
      *
-     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::\r\n\r\n:::warning\r\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\r\n:::
+     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.\n            \n:::info\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\n:::\n\n:::warning\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\n:::
      */
     @isTest
     private static void v1OrderbooksSymbolIdHistoryGetTest() {
@@ -149,8 +215,17 @@ private class OASOrderBookApiTest {
 
         client = new OASClient();
         api = new OASOrderBookApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1OrderBook>{OASV1OrderBook.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1OrderBook>{OASV1OrderBook.getExample()};
+        response = (List<OASV1OrderBook>) api.v1OrderbooksSymbolIdHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookApi(client);
 
         js = JSON.serialize(new List<OASV1OrderBook>{OASV1OrderBook.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -163,7 +238,7 @@ private class OASOrderBookApiTest {
     /**
      * Latest data
      *
-     * Get latest order book snapshots for a specific symbol, returned in time descending order.\r\n            \r\n:::info\r\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\r\n:::
+     * Get latest order book snapshots for a specific symbol, returned in time descending order.\n            \n:::info\nThe historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.\n:::
      */
     @isTest
     private static void v1OrderbooksSymbolIdLatestGetTest() {
@@ -186,8 +261,17 @@ private class OASOrderBookApiTest {
 
         client = new OASClient();
         api = new OASOrderBookApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1OrderBook>{OASV1OrderBook.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1OrderBook>{OASV1OrderBook.getExample()};
+        response = (List<OASV1OrderBook>) api.v1OrderbooksSymbolIdLatestGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASOrderBookApi(client);
 
         js = JSON.serialize(new List<OASV1OrderBook>{OASV1OrderBook.getExample()});
         res.setHeader('Content-Type', 'application/json');

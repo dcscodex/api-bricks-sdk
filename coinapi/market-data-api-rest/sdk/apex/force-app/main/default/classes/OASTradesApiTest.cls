@@ -26,8 +26,17 @@ private class OASTradesApiTest {
 
         client = new OASClient();
         api = new OASTradesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Trade>{OASV1Trade.getExample()};
+        response = (List<OASV1Trade>) api.v1TradesLatestGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASTradesApi(client);
 
         js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -40,7 +49,7 @@ private class OASTradesApiTest {
     /**
      * Historical data
      *
-     * Get history transactions from specific symbol, returned in time ascending order.\r\n\r\n:::warning\r\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\r\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\r\n:::
+     * Get history transactions from specific symbol, returned in time ascending order.\n\n:::warning\nThe \&#39;time_start\&#39; and \&#39;time_end\&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.\nPlease use the \&#39;date\&#39; parameter instead for querying data for a specific day without filter.\n:::
      */
     @isTest
     private static void v1TradesSymbolIdHistoryGetTest() {
@@ -66,8 +75,17 @@ private class OASTradesApiTest {
 
         client = new OASClient();
         api = new OASTradesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Trade>{OASV1Trade.getExample()};
+        response = (List<OASV1Trade>) api.v1TradesSymbolIdHistoryGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASTradesApi(client);
 
         js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -103,8 +121,17 @@ private class OASTradesApiTest {
 
         client = new OASClient();
         api = new OASTradesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('ApiKey')).setApiKey('foo-bar-api-key');
+        ((OAS.ApiKeyAuth)client.getAuthentication('APIKey')).setApiKey('foo-bar-api-key');
 
+
+        js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASV1Trade>{OASV1Trade.getExample()};
+        response = (List<OASV1Trade>) api.v1TradesSymbolIdLatestGet(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASTradesApi(client);
 
         js = JSON.serialize(new List<OASV1Trade>{OASV1Trade.getExample()});
         res.setHeader('Content-Type', 'application/json');

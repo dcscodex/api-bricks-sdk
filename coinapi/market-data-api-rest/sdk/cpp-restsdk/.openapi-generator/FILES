@@ -35,8 +35,6 @@ include/CppRestOpenAPIClient/model/V1_ExchangeRate.h
 include/CppRestOpenAPIClient/model/V1_ExchangeRates.h
 include/CppRestOpenAPIClient/model/V1_ExchangeRatesRate.h
 include/CppRestOpenAPIClient/model/V1_ExchangeRatesTimeseriesItem.h
-include/CppRestOpenAPIClient/model/V1_ExternalAsset.h
-include/CppRestOpenAPIClient/model/V1_ExternalExchange.h
 include/CppRestOpenAPIClient/model/V1_GeneralData.h
 include/CppRestOpenAPIClient/model/V1_Icon.h
 include/CppRestOpenAPIClient/model/V1_LastTrade.h
@@ -84,8 +82,6 @@ src/model/V1_ExchangeRate.cpp
 src/model/V1_ExchangeRates.cpp
 src/model/V1_ExchangeRatesRate.cpp
 src/model/V1_ExchangeRatesTimeseriesItem.cpp
-src/model/V1_ExternalAsset.cpp
-src/model/V1_ExternalExchange.cpp
 src/model/V1_GeneralData.cpp
 src/model/V1_Icon.cpp
 src/model/V1_LastTrade.cpp

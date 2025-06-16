@@ -1,5 +1,5 @@
 /*
-REST API
+CoinAPI Market Data REST API
 
 Testing MetadataAPIService
 
@@ -55,6 +55,32 @@ func Test_openapi_MetadataAPIService(t *testing.T) {
 		var size int32
 
 		resp, httpRes, err := apiClient.MetadataAPI.V1AssetsIconsSizeGet(context.Background(), size).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetadataAPIService V1ChainsChainIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var chainId string
+
+		resp, httpRes, err := apiClient.MetadataAPI.V1ChainsChainIdGet(context.Background(), chainId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetadataAPIService V1ChainsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MetadataAPI.V1ChainsGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

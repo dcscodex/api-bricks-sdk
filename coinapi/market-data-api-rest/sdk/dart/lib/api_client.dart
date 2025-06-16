@@ -204,10 +204,6 @@ class ApiClient {
           return V1ExchangeRatesRate.fromJson(value);
         case 'V1ExchangeRatesTimeseriesItem':
           return V1ExchangeRatesTimeseriesItem.fromJson(value);
-        case 'V1ExternalAsset':
-          return V1ExternalAsset.fromJson(value);
-        case 'V1ExternalExchange':
-          return V1ExternalExchange.fromJson(value);
         case 'V1GeneralData':
           return V1GeneralData.fromJson(value);
         case 'V1Icon':

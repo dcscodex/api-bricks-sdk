@@ -2,6 +2,7 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.V1Asset
+import org.openapitools.model.V1Chain
 import org.openapitools.model.V1Exchange
 import org.openapitools.model.V1Icon
 import org.openapitools.model.V1Symbol
@@ -80,6 +81,53 @@ class MetadataApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "array",
                     V1Icon.class )
+
+    }
+
+    def v1ChainsChainIdGet ( String chainId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/v1/chains/${chain_id}"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (chainId == null) {
+            throw new RuntimeException("missing required params chainId")
+        }
+
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "array",
+                    V1Chain.class )
+
+    }
+
+    def v1ChainsGet ( String filterChainId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/v1/chains"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+
+        if (filterChainId != null) {
+            queryParams.put("filter_chain_id", filterChainId)
+        }
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "array",
+                    V1Chain.class )
 
     }
 

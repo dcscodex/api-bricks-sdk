@@ -12,8 +12,6 @@ src/model/openapi_v1_exchange_rate.erl
 src/model/openapi_v1_exchange_rates.erl
 src/model/openapi_v1_exchange_rates_rate.erl
 src/model/openapi_v1_exchange_rates_timeseries_item.erl
-src/model/openapi_v1_external_asset.erl
-src/model/openapi_v1_external_exchange.erl
 src/model/openapi_v1_general_data.erl
 src/model/openapi_v1_icon.erl
 src/model/openapi_v1_last_trade.erl

@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**v1_assets_asset_id_get**](MetadataApi.md#v1_assets_asset_id_get) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 [**v1_assets_get**](MetadataApi.md#v1_assets_get) | **GET** /v1/assets | List all assets
 [**v1_assets_icons_size_get**](MetadataApi.md#v1_assets_icons_size_get) | **GET** /v1/assets/icons/{size} | List all asset icons
+[**v1_chains_chain_id_get**](MetadataApi.md#v1_chains_chain_id_get) | **GET** /v1/chains/{chain_id} | List all chains by chain ID
+[**v1_chains_get**](MetadataApi.md#v1_chains_get) | **GET** /v1/chains | List all blockchain chains
 [**v1_exchanges_exchange_id_get**](MetadataApi.md#v1_exchanges_exchange_id_get) | **GET** /v1/exchanges/{exchange_id} | List all exchanges by exchange_id
 [**v1_exchanges_get**](MetadataApi.md#v1_exchanges_get) | **GET** /v1/exchanges | List all exchanges
 [**v1_exchanges_icons_size_get**](MetadataApi.md#v1_exchanges_icons_size_get) | **GET** /v1/exchanges/icons/{size} | List of icons for the exchanges
@@ -22,7 +24,8 @@ List all assets by asset ID
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -41,11 +44,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -77,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -109,7 +117,8 @@ Properties of the output are providing aggregated information from across all sy
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -128,11 +137,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -164,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -188,7 +202,8 @@ Gets the list of icons (of the given size) for all the assets.
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -207,11 +222,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -243,7 +263,179 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json, application/x-msgpack
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_chains_chain_id_get**
+> List[V1Chain] v1_chains_chain_id_get(chain_id)
+
+List all chains by chain ID
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
+
+```python
+import api_bricks_coinapi_market_data_api_rest
+from api_bricks_coinapi_market_data_api_rest.models.v1_chain import V1Chain
+from api_bricks_coinapi_market_data_api_rest.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://rest.coinapi.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    host = "https://rest.coinapi.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = api_bricks_coinapi_market_data_api_rest.MetadataApi(api_client)
+    chain_id = 'chain_id_example' # str | The chain ID.
+
+    try:
+        # List all chains by chain ID
+        api_response = api_instance.v1_chains_chain_id_get(chain_id)
+        print("The response of MetadataApi->v1_chains_chain_id_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MetadataApi->v1_chains_chain_id_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain_id** | **str**| The chain ID. | 
+
+### Return type
+
+[**List[V1Chain]**](V1Chain.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json, application/x-msgpack
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_chains_get**
+> List[V1Chain] v1_chains_get(filter_chain_id=filter_chain_id)
+
+List all blockchain chains
+
+Retrieves all blockchain chains supported by the system.
+            
+:::info
+Properties of the output are providing aggregated information from across all symbols related to the specific chain. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source.
+:::
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
+
+```python
+import api_bricks_coinapi_market_data_api_rest
+from api_bricks_coinapi_market_data_api_rest.models.v1_chain import V1Chain
+from api_bricks_coinapi_market_data_api_rest.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://rest.coinapi.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    host = "https://rest.coinapi.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = api_bricks_coinapi_market_data_api_rest.MetadataApi(api_client)
+    filter_chain_id = 'filter_chain_id_example' # str | Comma or semicolon delimited chain identifiers used to filter response. (optional, eg. `ETHEREUM;ARBITRUM`). (optional)
+
+    try:
+        # List all blockchain chains
+        api_response = api_instance.v1_chains_get(filter_chain_id=filter_chain_id)
+        print("The response of MetadataApi->v1_chains_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MetadataApi->v1_chains_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter_chain_id** | **str**| Comma or semicolon delimited chain identifiers used to filter response. (optional, eg. &#x60;ETHEREUM;ARBITRUM&#x60;). | [optional] 
+
+### Return type
+
+[**List[V1Chain]**](V1Chain.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -265,7 +457,8 @@ List all exchanges by exchange_id
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -284,11 +477,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -320,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -348,7 +546,8 @@ Properties of the output are providing aggregated information from across all sy
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -367,11 +566,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -403,7 +607,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -425,7 +629,8 @@ List of icons for the exchanges
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -444,11 +649,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -480,7 +690,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -502,7 +712,8 @@ List of symbols for the exchange
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -521,11 +732,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -561,7 +777,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -665,7 +881,8 @@ contract_id | Identifier of contract by the exchange
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -684,11 +901,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -724,7 +946,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -746,7 +968,8 @@ List symbol mapping for the exchange
 
 ### Example
 
-* Api Key Authentication (ApiKey):
+* Api Key Authentication (APIKey):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_coinapi_market_data_api_rest
@@ -765,11 +988,16 @@ configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_coinapi_market_data_api_rest.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_coinapi_market_data_api_rest.ApiClient(configuration) as api_client:
@@ -801,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

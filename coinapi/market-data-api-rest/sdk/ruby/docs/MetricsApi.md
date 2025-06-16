@@ -31,10 +31,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -87,7 +90,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -110,10 +113,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -176,7 +182,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -199,10 +205,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -259,7 +268,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -282,10 +291,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -334,7 +346,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -357,10 +369,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -419,7 +434,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -442,10 +457,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -494,7 +512,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -517,10 +535,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -562,7 +583,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -585,10 +606,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -639,7 +663,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -662,10 +686,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -724,7 +751,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -747,10 +774,13 @@ require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['X-CoinAPI-Key'] = 'YOUR API KEY'
+  # Configure API key authorization: APIKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['X-CoinAPI-Key'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure Bearer authorization (JWT): JWT
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OpenapiClient::MetricsApi.new
@@ -801,7 +831,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

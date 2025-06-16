@@ -1,4 +1,4 @@
-# RestApi.V1ExchangeRatesTimeseriesItem
+# CoinApiMarketDataRestApi.V1ExchangeRatesTimeseriesItem
 
 ## Properties
 

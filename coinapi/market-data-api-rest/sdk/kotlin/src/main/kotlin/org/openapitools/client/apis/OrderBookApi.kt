@@ -212,7 +212,7 @@ class OrderBookApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /v1/orderbooks/{symbol_id}/history
      * Historical data
-     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if &#39;time_start&#39; is not provided) (optional)
      * @param timeStart Starting time in ISO 8601 (deprecated, use &#39;date&#39; instead) (optional)
@@ -249,7 +249,7 @@ class OrderBookApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /v1/orderbooks/{symbol_id}/history
      * Historical data
-     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::    :::warning  The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day.  Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter.  :::
+     * Get historical order book snapshots for a specific symbol within time range, returned in time ascending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::  :::warning The &#39;time_start&#39; and &#39;time_end&#39; parameters must be from the same day as this endpoint provides intraday data only for specific day. Please use the &#39;date&#39; parameter instead for querying data for a specific day without filter. :::
      * @param symbolId Symbol identifier for requested timeseries (from the Metadata -&gt; Symbols)
      * @param date Date in ISO 8601, returned data is for the whole given day (preferred method, required if &#39;time_start&#39; is not provided) (optional)
      * @param timeStart Starting time in ISO 8601 (deprecated, use &#39;date&#39; instead) (optional)
@@ -317,7 +317,7 @@ class OrderBookApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /v1/orderbooks/{symbol_id}/latest
      * Latest data
-     * Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+     * Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
      * @param symbolId Symbol identifier of requested timeseries (from the Metadata -&gt; Symbols)
      * @param limit Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (optional, default to 100)
      * @param limitLevels Maximum amount of levels from each side of the book to include in response (optional) (optional)
@@ -351,7 +351,7 @@ class OrderBookApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /v1/orderbooks/{symbol_id}/latest
      * Latest data
-     * Get latest order book snapshots for a specific symbol, returned in time descending order.                :::info  The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels.  :::
+     * Get latest order book snapshots for a specific symbol, returned in time descending order.              :::info The historical order book data via the REST API is currently limited by a number of updates and to the maximum number of 20 levels. :::
      * @param symbolId Symbol identifier of requested timeseries (from the Metadata -&gt; Symbols)
      * @param limit Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request) (optional, default to 100)
      * @param limitLevels Maximum amount of levels from each side of the book to include in response (optional) (optional)

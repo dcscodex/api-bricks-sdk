@@ -4,16 +4,13 @@ All URIs are relative to *https://rest.coinapi.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ExternalmetricsAssetHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsAssetHistoryGet) | **Get** /v1/externalmetrics/asset/history | Historical metrics for the asset from external sources
+[**V1ExternalmetricsAssetHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsAssetHistoryGet) | **Get** /v1/externalmetrics/asset/history | Historical metrics for the asset
 [**V1ExternalmetricsAssetListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsAssetListingGet) | **Get** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-[**V1ExternalmetricsAssetsGet**](ExternalMetricsAPI.md#V1ExternalmetricsAssetsGet) | **Get** /v1/externalmetrics/assets | Listing of all supported external assets
-[**V1ExternalmetricsChainHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsChainHistoryGet) | **Get** /v1/externalmetrics/chain/history | Historical metrics for the chain from external sources
+[**V1ExternalmetricsChainHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsChainHistoryGet) | **Get** /v1/externalmetrics/chain/history | Historical metrics for the chain
 [**V1ExternalmetricsChainListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsChainListingGet) | **Get** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-[**V1ExternalmetricsChainsGet**](ExternalMetricsAPI.md#V1ExternalmetricsChainsGet) | **Get** /v1/externalmetrics/chains | Listing of all supported external chains
-[**V1ExternalmetricsExchangeHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsExchangeHistoryGet) | **Get** /v1/externalmetrics/exchange/history | Historical metrics for the exchange from both external and internal sources
-[**V1ExternalmetricsExchangeListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsExchangeListingGet) | **Get** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange (both external and generic)
-[**V1ExternalmetricsExchangesGet**](ExternalMetricsAPI.md#V1ExternalmetricsExchangesGet) | **Get** /v1/externalmetrics/exchanges | Listing of all supported external exchanges
-[**V1ExternalmetricsListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsListingGet) | **Get** /v1/externalmetrics/listing | Listing of all supported metrics (both external and generic)
+[**V1ExternalmetricsExchangeHistoryGet**](ExternalMetricsAPI.md#V1ExternalmetricsExchangeHistoryGet) | **Get** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
+[**V1ExternalmetricsExchangeListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsExchangeListingGet) | **Get** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
+[**V1ExternalmetricsListingGet**](ExternalMetricsAPI.md#V1ExternalmetricsListingGet) | **Get** /v1/externalmetrics/listing | Listing of all supported metrics
 
 
 
@@ -21,7 +18,7 @@ Method | HTTP request | Description
 
 > []map[string]interface{} V1ExternalmetricsAssetHistoryGet(ctx).MetricId(metricId).AssetId(assetId).TimeStart(timeStart).TimeEnd(timeEnd).TimeFormat(timeFormat).PeriodId(periodId).Limit(limit).Execute()
 
-Historical metrics for the asset from external sources
+Historical metrics for the asset
 
 
 
@@ -39,8 +36,8 @@ import (
 )
 
 func main() {
-	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-	assetId := "assetId_example" // string | Asset identifier (e.g., `USDC`, `USDT` - from supported assets list)
+	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+	assetId := "assetId_example" // string | Asset identifier (e.g., `USDC`, `USDT`)
 	timeStart := time.Now() // time.Time | Starting time in ISO 8601 (optional)
 	timeEnd := time.Now() // time.Time | Ending time in ISO 8601 (optional)
 	timeFormat := "timeFormat_example" // string | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -70,8 +67,8 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsAssetHist
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key) | 
- **assetId** | **string** | Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60; - from supported assets list) | 
+ **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;) | 
+ **assetId** | **string** | Asset identifier (e.g., &#x60;USDC&#x60;, &#x60;USDT&#x60;) | 
  **timeStart** | **time.Time** | Starting time in ISO 8601 | 
  **timeEnd** | **time.Time** | Ending time in ISO 8601 | 
  **timeFormat** | **string** | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) | 
@@ -84,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -150,68 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json, application/x-msgpack
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1ExternalmetricsAssetsGet
-
-> []V1ExternalAsset V1ExternalmetricsAssetsGet(ctx).Execute()
-
-Listing of all supported external assets
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsAssetsGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExternalMetricsAPI.V1ExternalmetricsAssetsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1ExternalmetricsAssetsGet`: []V1ExternalAsset
-	fmt.Fprintf(os.Stdout, "Response from `ExternalMetricsAPI.V1ExternalmetricsAssetsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1ExternalmetricsAssetsGetRequest struct via the builder pattern
-
-
-### Return type
-
-[**[]V1ExternalAsset**](V1ExternalAsset.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -227,7 +163,7 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsAssetsGet
 
 > []map[string]interface{} V1ExternalmetricsChainHistoryGet(ctx).MetricId(metricId).ChainId(chainId).TimeStart(timeStart).TimeEnd(timeEnd).TimeFormat(timeFormat).PeriodId(periodId).Limit(limit).Execute()
 
-Historical metrics for the chain from external sources
+Historical metrics for the chain
 
 
 
@@ -245,8 +181,8 @@ import (
 )
 
 func main() {
-	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` - internal metric key)
-	chainId := "chainId_example" // string | Chain identifier (e.g., `Ethereum`, `Arbitrum` - from supported chains list)
+	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
+	chainId := "chainId_example" // string | Chain identifier (e.g., `Ethereum`, `Arbitrum`)
 	timeStart := time.Now() // time.Time | Starting time in ISO 8601 (optional)
 	timeEnd := time.Now() // time.Time | Ending time in ISO 8601 (optional)
 	timeFormat := "timeFormat_example" // string | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) (optional)
@@ -276,8 +212,8 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsChainHist
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; - internal metric key) | 
- **chainId** | **string** | Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60; - from supported chains list) | 
+ **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;) | 
+ **chainId** | **string** | Chain identifier (e.g., &#x60;Ethereum&#x60;, &#x60;Arbitrum&#x60;) | 
  **timeStart** | **time.Time** | Starting time in ISO 8601 | 
  **timeEnd** | **time.Time** | Ending time in ISO 8601 | 
  **timeFormat** | **string** | If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec) | 
@@ -290,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -356,68 +292,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json, application/x-msgpack
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1ExternalmetricsChainsGet
-
-> []V1Chain V1ExternalmetricsChainsGet(ctx).Execute()
-
-Listing of all supported external chains
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsChainsGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExternalMetricsAPI.V1ExternalmetricsChainsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1ExternalmetricsChainsGet`: []V1Chain
-	fmt.Fprintf(os.Stdout, "Response from `ExternalMetricsAPI.V1ExternalmetricsChainsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1ExternalmetricsChainsGetRequest struct via the builder pattern
-
-
-### Return type
-
-[**[]V1Chain**](V1Chain.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -433,7 +308,7 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsChainsGet
 
 > []map[string]interface{} V1ExternalmetricsExchangeHistoryGet(ctx).MetricId(metricId).ExchangeId(exchangeId).TimeStart(timeStart).TimeEnd(timeEnd).TimeFormat(timeFormat).PeriodId(periodId).Limit(limit).Execute()
 
-Historical metrics for the exchange from both external and internal sources
+Historical metrics for the exchange
 
 
 
@@ -451,7 +326,7 @@ import (
 )
 
 func main() {
-	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD` for external, or generic metric IDs)
+	metricId := "metricId_example" // string | Metric identifier (e.g., `TVL`, `STABLES_BRIDGED_USD`)
 	exchangeId := "exchangeId_example" // string | Exchange identifier (e.g., `BINANCE`, `UNISWAP-V3-ETHEREUM`)
 	timeStart := time.Now() // time.Time | Starting time in ISO 8601 (optional)
 	timeEnd := time.Now() // time.Time | Ending time in ISO 8601 (optional)
@@ -482,7 +357,7 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsExchangeH
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60; for external, or generic metric IDs) | 
+ **metricId** | **string** | Metric identifier (e.g., &#x60;TVL&#x60;, &#x60;STABLES_BRIDGED_USD&#x60;) | 
  **exchangeId** | **string** | Exchange identifier (e.g., &#x60;BINANCE&#x60;, &#x60;UNISWAP-V3-ETHEREUM&#x60;) | 
  **timeStart** | **time.Time** | Starting time in ISO 8601 | 
  **timeEnd** | **time.Time** | Ending time in ISO 8601 | 
@@ -496,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -512,7 +387,7 @@ Name | Type | Description  | Notes
 
 > []V1MetricInfo V1ExternalmetricsExchangeListingGet(ctx).ExchangeId(exchangeId).Execute()
 
-Listing of metrics available for specific exchange (both external and generic)
+Listing of metrics available for specific exchange
 
 
 
@@ -562,68 +437,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json, application/x-msgpack
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1ExternalmetricsExchangesGet
-
-> []V1ExternalExchange V1ExternalmetricsExchangesGet(ctx).Execute()
-
-Listing of all supported external exchanges
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExternalMetricsAPI.V1ExternalmetricsExchangesGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExternalMetricsAPI.V1ExternalmetricsExchangesGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1ExternalmetricsExchangesGet`: []V1ExternalExchange
-	fmt.Fprintf(os.Stdout, "Response from `ExternalMetricsAPI.V1ExternalmetricsExchangesGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1ExternalmetricsExchangesGetRequest struct via the builder pattern
-
-
-### Return type
-
-[**[]V1ExternalExchange**](V1ExternalExchange.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 
@@ -639,7 +453,7 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsExchanges
 
 > []V1MetricInfo V1ExternalmetricsListingGet(ctx).Execute()
 
-Listing of all supported metrics (both external and generic)
+Listing of all supported metrics
 
 
 
@@ -684,7 +498,7 @@ Other parameters are passed through a pointer to a apiV1ExternalmetricsListingGe
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[APIKey](../README.md#APIKey), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

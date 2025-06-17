@@ -22,6 +22,10 @@
    (ds/opt :cfi_attribute4) string?
    (ds/opt :cfi_category_desc) string?
    (ds/opt :cfi_group_desc) string?
+   (ds/opt :cfi_attribute1_desc) string?
+   (ds/opt :cfi_attribute2_desc) string?
+   (ds/opt :cfi_attribute3_desc) string?
+   (ds/opt :cfi_attribute4_desc) string?
    })
 
 (def fin-feed-api/symbol-model-spec

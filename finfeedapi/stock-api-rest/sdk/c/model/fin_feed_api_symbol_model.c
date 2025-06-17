@@ -20,7 +20,11 @@ static fin_feed_api_symbol_model_t *fin_feed_api_symbol_model_create_internal(
     char *cfi_attribute3,
     char *cfi_attribute4,
     char *cfi_category_desc,
-    char *cfi_group_desc
+    char *cfi_group_desc,
+    char *cfi_attribute1_desc,
+    char *cfi_attribute2_desc,
+    char *cfi_attribute3_desc,
+    char *cfi_attribute4_desc
     ) {
     fin_feed_api_symbol_model_t *fin_feed_api_symbol_model_local_var = malloc(sizeof(fin_feed_api_symbol_model_t));
     if (!fin_feed_api_symbol_model_local_var) {
@@ -41,6 +45,10 @@ static fin_feed_api_symbol_model_t *fin_feed_api_symbol_model_create_internal(
     fin_feed_api_symbol_model_local_var->cfi_attribute4 = cfi_attribute4;
     fin_feed_api_symbol_model_local_var->cfi_category_desc = cfi_category_desc;
     fin_feed_api_symbol_model_local_var->cfi_group_desc = cfi_group_desc;
+    fin_feed_api_symbol_model_local_var->cfi_attribute1_desc = cfi_attribute1_desc;
+    fin_feed_api_symbol_model_local_var->cfi_attribute2_desc = cfi_attribute2_desc;
+    fin_feed_api_symbol_model_local_var->cfi_attribute3_desc = cfi_attribute3_desc;
+    fin_feed_api_symbol_model_local_var->cfi_attribute4_desc = cfi_attribute4_desc;
 
     fin_feed_api_symbol_model_local_var->_library_owned = 1;
     return fin_feed_api_symbol_model_local_var;
@@ -61,7 +69,11 @@ __attribute__((deprecated)) fin_feed_api_symbol_model_t *fin_feed_api_symbol_mod
     char *cfi_attribute3,
     char *cfi_attribute4,
     char *cfi_category_desc,
-    char *cfi_group_desc
+    char *cfi_group_desc,
+    char *cfi_attribute1_desc,
+    char *cfi_attribute2_desc,
+    char *cfi_attribute3_desc,
+    char *cfi_attribute4_desc
     ) {
     return fin_feed_api_symbol_model_create_internal (
         symbol_id,
@@ -78,7 +90,11 @@ __attribute__((deprecated)) fin_feed_api_symbol_model_t *fin_feed_api_symbol_mod
         cfi_attribute3,
         cfi_attribute4,
         cfi_category_desc,
-        cfi_group_desc
+        cfi_group_desc,
+        cfi_attribute1_desc,
+        cfi_attribute2_desc,
+        cfi_attribute3_desc,
+        cfi_attribute4_desc
         );
 }
 
@@ -150,6 +166,22 @@ void fin_feed_api_symbol_model_free(fin_feed_api_symbol_model_t *fin_feed_api_sy
     if (fin_feed_api_symbol_model->cfi_group_desc) {
         free(fin_feed_api_symbol_model->cfi_group_desc);
         fin_feed_api_symbol_model->cfi_group_desc = NULL;
+    }
+    if (fin_feed_api_symbol_model->cfi_attribute1_desc) {
+        free(fin_feed_api_symbol_model->cfi_attribute1_desc);
+        fin_feed_api_symbol_model->cfi_attribute1_desc = NULL;
+    }
+    if (fin_feed_api_symbol_model->cfi_attribute2_desc) {
+        free(fin_feed_api_symbol_model->cfi_attribute2_desc);
+        fin_feed_api_symbol_model->cfi_attribute2_desc = NULL;
+    }
+    if (fin_feed_api_symbol_model->cfi_attribute3_desc) {
+        free(fin_feed_api_symbol_model->cfi_attribute3_desc);
+        fin_feed_api_symbol_model->cfi_attribute3_desc = NULL;
+    }
+    if (fin_feed_api_symbol_model->cfi_attribute4_desc) {
+        free(fin_feed_api_symbol_model->cfi_attribute4_desc);
+        fin_feed_api_symbol_model->cfi_attribute4_desc = NULL;
     }
     free(fin_feed_api_symbol_model);
 }
@@ -272,6 +304,38 @@ cJSON *fin_feed_api_symbol_model_convertToJSON(fin_feed_api_symbol_model_t *fin_
     // fin_feed_api_symbol_model->cfi_group_desc
     if(fin_feed_api_symbol_model->cfi_group_desc) {
     if(cJSON_AddStringToObject(item, "cfi_group_desc", fin_feed_api_symbol_model->cfi_group_desc) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // fin_feed_api_symbol_model->cfi_attribute1_desc
+    if(fin_feed_api_symbol_model->cfi_attribute1_desc) {
+    if(cJSON_AddStringToObject(item, "cfi_attribute1_desc", fin_feed_api_symbol_model->cfi_attribute1_desc) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // fin_feed_api_symbol_model->cfi_attribute2_desc
+    if(fin_feed_api_symbol_model->cfi_attribute2_desc) {
+    if(cJSON_AddStringToObject(item, "cfi_attribute2_desc", fin_feed_api_symbol_model->cfi_attribute2_desc) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // fin_feed_api_symbol_model->cfi_attribute3_desc
+    if(fin_feed_api_symbol_model->cfi_attribute3_desc) {
+    if(cJSON_AddStringToObject(item, "cfi_attribute3_desc", fin_feed_api_symbol_model->cfi_attribute3_desc) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // fin_feed_api_symbol_model->cfi_attribute4_desc
+    if(fin_feed_api_symbol_model->cfi_attribute4_desc) {
+    if(cJSON_AddStringToObject(item, "cfi_attribute4_desc", fin_feed_api_symbol_model->cfi_attribute4_desc) == NULL) {
     goto fail; //String
     }
     }
@@ -468,6 +532,54 @@ fin_feed_api_symbol_model_t *fin_feed_api_symbol_model_parseFromJSON(cJSON *fin_
     }
     }
 
+    // fin_feed_api_symbol_model->cfi_attribute1_desc
+    cJSON *cfi_attribute1_desc = cJSON_GetObjectItemCaseSensitive(fin_feed_api_symbol_modelJSON, "cfi_attribute1_desc");
+    if (cJSON_IsNull(cfi_attribute1_desc)) {
+        cfi_attribute1_desc = NULL;
+    }
+    if (cfi_attribute1_desc) { 
+    if(!cJSON_IsString(cfi_attribute1_desc) && !cJSON_IsNull(cfi_attribute1_desc))
+    {
+    goto end; //String
+    }
+    }
+
+    // fin_feed_api_symbol_model->cfi_attribute2_desc
+    cJSON *cfi_attribute2_desc = cJSON_GetObjectItemCaseSensitive(fin_feed_api_symbol_modelJSON, "cfi_attribute2_desc");
+    if (cJSON_IsNull(cfi_attribute2_desc)) {
+        cfi_attribute2_desc = NULL;
+    }
+    if (cfi_attribute2_desc) { 
+    if(!cJSON_IsString(cfi_attribute2_desc) && !cJSON_IsNull(cfi_attribute2_desc))
+    {
+    goto end; //String
+    }
+    }
+
+    // fin_feed_api_symbol_model->cfi_attribute3_desc
+    cJSON *cfi_attribute3_desc = cJSON_GetObjectItemCaseSensitive(fin_feed_api_symbol_modelJSON, "cfi_attribute3_desc");
+    if (cJSON_IsNull(cfi_attribute3_desc)) {
+        cfi_attribute3_desc = NULL;
+    }
+    if (cfi_attribute3_desc) { 
+    if(!cJSON_IsString(cfi_attribute3_desc) && !cJSON_IsNull(cfi_attribute3_desc))
+    {
+    goto end; //String
+    }
+    }
+
+    // fin_feed_api_symbol_model->cfi_attribute4_desc
+    cJSON *cfi_attribute4_desc = cJSON_GetObjectItemCaseSensitive(fin_feed_api_symbol_modelJSON, "cfi_attribute4_desc");
+    if (cJSON_IsNull(cfi_attribute4_desc)) {
+        cfi_attribute4_desc = NULL;
+    }
+    if (cfi_attribute4_desc) { 
+    if(!cJSON_IsString(cfi_attribute4_desc) && !cJSON_IsNull(cfi_attribute4_desc))
+    {
+    goto end; //String
+    }
+    }
+
 
     fin_feed_api_symbol_model_local_var = fin_feed_api_symbol_model_create_internal (
         symbol_id && !cJSON_IsNull(symbol_id) ? strdup(symbol_id->valuestring) : NULL,
@@ -484,7 +596,11 @@ fin_feed_api_symbol_model_t *fin_feed_api_symbol_model_parseFromJSON(cJSON *fin_
         cfi_attribute3 && !cJSON_IsNull(cfi_attribute3) ? strdup(cfi_attribute3->valuestring) : NULL,
         cfi_attribute4 && !cJSON_IsNull(cfi_attribute4) ? strdup(cfi_attribute4->valuestring) : NULL,
         cfi_category_desc && !cJSON_IsNull(cfi_category_desc) ? strdup(cfi_category_desc->valuestring) : NULL,
-        cfi_group_desc && !cJSON_IsNull(cfi_group_desc) ? strdup(cfi_group_desc->valuestring) : NULL
+        cfi_group_desc && !cJSON_IsNull(cfi_group_desc) ? strdup(cfi_group_desc->valuestring) : NULL,
+        cfi_attribute1_desc && !cJSON_IsNull(cfi_attribute1_desc) ? strdup(cfi_attribute1_desc->valuestring) : NULL,
+        cfi_attribute2_desc && !cJSON_IsNull(cfi_attribute2_desc) ? strdup(cfi_attribute2_desc->valuestring) : NULL,
+        cfi_attribute3_desc && !cJSON_IsNull(cfi_attribute3_desc) ? strdup(cfi_attribute3_desc->valuestring) : NULL,
+        cfi_attribute4_desc && !cJSON_IsNull(cfi_attribute4_desc) ? strdup(cfi_attribute4_desc->valuestring) : NULL
         );
 
     return fin_feed_api_symbol_model_local_var;

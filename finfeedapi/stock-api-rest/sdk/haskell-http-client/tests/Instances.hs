@@ -359,6 +359,10 @@ genFinFeedAPISymbolModel n =
     <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiAttribute4 :: Maybe Text
     <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiCategoryDesc :: Maybe Text
     <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiGroupDesc :: Maybe Text
+    <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiAttribute1Desc :: Maybe Text
+    <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiAttribute2Desc :: Maybe Text
+    <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiAttribute3Desc :: Maybe Text
+    <*> arbitraryReducedMaybe n -- finFeedAPISymbolModelCfiAttribute4Desc :: Maybe Text
   
 instance Arbitrary Level1QuoteUpdateModel where
   arbitrary = sized genLevel1QuoteUpdateModel

@@ -28,6 +28,10 @@ export class FinFeedAPISymbolModel extends any {
     'cfiAttribute4'?: string | null;
     'cfiCategoryDesc'?: string | null;
     'cfiGroupDesc'?: string | null;
+    'cfiAttribute1Desc'?: string | null;
+    'cfiAttribute2Desc'?: string | null;
+    'cfiAttribute3Desc'?: string | null;
+    'cfiAttribute4Desc'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -105,6 +109,26 @@ export class FinFeedAPISymbolModel extends any {
         {
             "name": "cfiGroupDesc",
             "baseName": "cfi_group_desc",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute1Desc",
+            "baseName": "cfi_attribute1_desc",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute2Desc",
+            "baseName": "cfi_attribute2_desc",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute3Desc",
+            "baseName": "cfi_attribute3_desc",
+            "type": "string"
+        },
+        {
+            "name": "cfiAttribute4Desc",
+            "baseName": "cfi_attribute4_desc",
             "type": "string"
         }    ];
 

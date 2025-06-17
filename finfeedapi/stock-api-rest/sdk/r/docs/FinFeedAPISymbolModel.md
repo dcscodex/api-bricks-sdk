@@ -19,5 +19,9 @@ Name | Type | Description | Notes
 **cfi_attribute4** | **character** |  | [optional] [readonly] 
 **cfi_category_desc** | **character** |  | [optional] [readonly] 
 **cfi_group_desc** | **character** |  | [optional] [readonly] 
+**cfi_attribute1_desc** | **character** |  | [optional] [readonly] 
+**cfi_attribute2_desc** | **character** |  | [optional] [readonly] 
+**cfi_attribute3_desc** | **character** |  | [optional] [readonly] 
+**cfi_attribute4_desc** | **character** |  | [optional] [readonly] 
 
 

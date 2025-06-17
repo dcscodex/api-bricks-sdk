@@ -18,6 +18,10 @@ Name | Type | Description | Notes
 **CfiAttribute4** | **String** |  | [optional] [readonly] 
 **CfiCategoryDesc** | **String** |  | [optional] [readonly] 
 **CfiGroupDesc** | **String** |  | [optional] [readonly] 
+**CfiAttribute1Desc** | **String** |  | [optional] [readonly] 
+**CfiAttribute2Desc** | **String** |  | [optional] [readonly] 
+**CfiAttribute3Desc** | **String** |  | [optional] [readonly] 
+**CfiAttribute4Desc** | **String** |  | [optional] [readonly] 
 
 ## Examples
 
@@ -37,7 +41,11 @@ $FinFeedAPISymbolModel = Initialize-PSOpenAPIToolsFinFeedAPISymbolModel  -Symbol
  -CfiAttribute3 null `
  -CfiAttribute4 null `
  -CfiCategoryDesc null `
- -CfiGroupDesc null
+ -CfiGroupDesc null `
+ -CfiAttribute1Desc null `
+ -CfiAttribute2Desc null `
+ -CfiAttribute3Desc null `
+ -CfiAttribute4Desc null
 ```
 
 - Convert the resource to JSON

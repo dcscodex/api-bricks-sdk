@@ -42,8 +42,12 @@ class FinFeedAPISymbolModel(BaseModel):
     cfi_attribute4: Optional[StrictStr] = None
     cfi_category_desc: Optional[StrictStr] = None
     cfi_group_desc: Optional[StrictStr] = None
+    cfi_attribute1_desc: Optional[StrictStr] = None
+    cfi_attribute2_desc: Optional[StrictStr] = None
+    cfi_attribute3_desc: Optional[StrictStr] = None
+    cfi_attribute4_desc: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc"]
+    __properties: ClassVar[List[str]] = ["symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc", "cfi_attribute1_desc", "cfi_attribute2_desc", "cfi_attribute3_desc", "cfi_attribute4_desc"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +88,10 @@ class FinFeedAPISymbolModel(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
@@ -96,6 +104,10 @@ class FinFeedAPISymbolModel(BaseModel):
             "cfi_attribute4",
             "cfi_category_desc",
             "cfi_group_desc",
+            "cfi_attribute1_desc",
+            "cfi_attribute2_desc",
+            "cfi_attribute3_desc",
+            "cfi_attribute4_desc",
             "additional_properties",
         ])
 
@@ -184,6 +196,26 @@ class FinFeedAPISymbolModel(BaseModel):
         if self.cfi_group_desc is None and "cfi_group_desc" in self.model_fields_set:
             _dict['cfi_group_desc'] = None
 
+        # set to None if cfi_attribute1_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute1_desc is None and "cfi_attribute1_desc" in self.model_fields_set:
+            _dict['cfi_attribute1_desc'] = None
+
+        # set to None if cfi_attribute2_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute2_desc is None and "cfi_attribute2_desc" in self.model_fields_set:
+            _dict['cfi_attribute2_desc'] = None
+
+        # set to None if cfi_attribute3_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute3_desc is None and "cfi_attribute3_desc" in self.model_fields_set:
+            _dict['cfi_attribute3_desc'] = None
+
+        # set to None if cfi_attribute4_desc (nullable) is None
+        # and model_fields_set contains the field
+        if self.cfi_attribute4_desc is None and "cfi_attribute4_desc" in self.model_fields_set:
+            _dict['cfi_attribute4_desc'] = None
+
         return _dict
 
     @classmethod
@@ -210,7 +242,11 @@ class FinFeedAPISymbolModel(BaseModel):
             "cfi_attribute3": obj.get("cfi_attribute3"),
             "cfi_attribute4": obj.get("cfi_attribute4"),
             "cfi_category_desc": obj.get("cfi_category_desc"),
-            "cfi_group_desc": obj.get("cfi_group_desc")
+            "cfi_group_desc": obj.get("cfi_group_desc"),
+            "cfi_attribute1_desc": obj.get("cfi_attribute1_desc"),
+            "cfi_attribute2_desc": obj.get("cfi_attribute2_desc"),
+            "cfi_attribute3_desc": obj.get("cfi_attribute3_desc"),
+            "cfi_attribute4_desc": obj.get("cfi_attribute4_desc")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -35,6 +35,10 @@ typedef struct fin_feed_api_symbol_model_t {
     char *cfi_attribute4; // string
     char *cfi_category_desc; // string
     char *cfi_group_desc; // string
+    char *cfi_attribute1_desc; // string
+    char *cfi_attribute2_desc; // string
+    char *cfi_attribute3_desc; // string
+    char *cfi_attribute4_desc; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } fin_feed_api_symbol_model_t;
@@ -54,7 +58,11 @@ __attribute__((deprecated)) fin_feed_api_symbol_model_t *fin_feed_api_symbol_mod
     char *cfi_attribute3,
     char *cfi_attribute4,
     char *cfi_category_desc,
-    char *cfi_group_desc
+    char *cfi_group_desc,
+    char *cfi_attribute1_desc,
+    char *cfi_attribute2_desc,
+    char *cfi_attribute3_desc,
+    char *cfi_attribute4_desc
 );
 
 void fin_feed_api_symbol_model_free(fin_feed_api_symbol_model_t *fin_feed_api_symbol_model);

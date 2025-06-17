@@ -28,6 +28,10 @@ case class SymbolModel (
   cfiAttribute3: Option[String] = None,
   cfiAttribute4: Option[String] = None,
   cfiCategoryDesc: Option[String] = None,
-  cfiGroupDesc: Option[String] = None
+  cfiGroupDesc: Option[String] = None,
+  cfiAttribute1Desc: Option[String] = None,
+  cfiAttribute2Desc: Option[String] = None,
+  cfiAttribute3Desc: Option[String] = None,
+  cfiAttribute4Desc: Option[String] = None
 ) extends ApiModel
 

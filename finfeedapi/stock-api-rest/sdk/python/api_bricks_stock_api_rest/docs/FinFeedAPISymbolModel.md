@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **cfi_attribute4** | **str** |  | [optional] [readonly] 
 **cfi_category_desc** | **str** |  | [optional] [readonly] 
 **cfi_group_desc** | **str** |  | [optional] [readonly] 
+**cfi_attribute1_desc** | **str** |  | [optional] [readonly] 
+**cfi_attribute2_desc** | **str** |  | [optional] [readonly] 
+**cfi_attribute3_desc** | **str** |  | [optional] [readonly] 
+**cfi_attribute4_desc** | **str** |  | [optional] [readonly] 
 
 ## Example
 

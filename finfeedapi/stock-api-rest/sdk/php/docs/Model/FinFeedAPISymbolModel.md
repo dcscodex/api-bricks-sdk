@@ -19,5 +19,9 @@ Name | Type | Description | Notes
 **cfi_attribute4** | **string** |  | [optional] [readonly]
 **cfi_category_desc** | **string** |  | [optional] [readonly]
 **cfi_group_desc** | **string** |  | [optional] [readonly]
+**cfi_attribute1_desc** | **string** |  | [optional] [readonly]
+**cfi_attribute2_desc** | **string** |  | [optional] [readonly]
+**cfi_attribute3_desc** | **string** |  | [optional] [readonly]
+**cfi_attribute4_desc** | **string** |  | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

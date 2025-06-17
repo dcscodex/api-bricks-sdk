@@ -411,6 +411,10 @@ package .Models is
        Cfi_Attribute_4 : Swagger.Nullable_UString;
        Cfi_Category_Desc : Swagger.Nullable_UString;
        Cfi_Group_Desc : Swagger.Nullable_UString;
+       Cfi_Attribute_1_Desc : Swagger.Nullable_UString;
+       Cfi_Attribute_2_Desc : Swagger.Nullable_UString;
+       Cfi_Attribute_3_Desc : Swagger.Nullable_UString;
+       Cfi_Attribute_4_Desc : Swagger.Nullable_UString;
      end record;
 
 

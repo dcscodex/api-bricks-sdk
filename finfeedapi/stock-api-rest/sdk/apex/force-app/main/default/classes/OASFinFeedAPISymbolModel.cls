@@ -104,6 +104,30 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
      */
     public String cfiGroupDesc { get; private set; }
 
+    /**
+     * Get cfiAttribute1Desc
+     * @return cfiAttribute1Desc
+     */
+    public String cfiAttribute1Desc { get; private set; }
+
+    /**
+     * Get cfiAttribute2Desc
+     * @return cfiAttribute2Desc
+     */
+    public String cfiAttribute2Desc { get; private set; }
+
+    /**
+     * Get cfiAttribute3Desc
+     * @return cfiAttribute3Desc
+     */
+    public String cfiAttribute3Desc { get; private set; }
+
+    /**
+     * Get cfiAttribute4Desc
+     * @return cfiAttribute4Desc
+     */
+    public String cfiAttribute4Desc { get; private set; }
+
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'symbol_id' => 'symbolId',
         'exchange_id' => 'exchangeId',
@@ -118,7 +142,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -139,7 +167,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -160,7 +192,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -181,7 +217,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -202,7 +242,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -223,7 +267,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -244,7 +292,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -265,7 +317,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -286,7 +342,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -307,7 +367,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -328,7 +392,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -349,7 +417,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -370,7 +442,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -391,7 +467,111 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         'cfi_attribute3' => 'cfiAttribute3',
         'cfi_attribute4' => 'cfiAttribute4',
         'cfi_category_desc' => 'cfiCategoryDesc',
-        'cfi_group_desc' => 'cfiGroupDesc'
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'symbol_id' => 'symbolId',
+        'exchange_id' => 'exchangeId',
+        'security_category' => 'securityCategory',
+        'date' => 'r_date',
+        'asset_class' => 'assetClass',
+        'cfi_code' => 'cfiCode',
+        'cfi_category' => 'cfiCategory',
+        'cfi_group' => 'cfiGroup',
+        'cfi_attribute1' => 'cfiAttribute1',
+        'cfi_attribute2' => 'cfiAttribute2',
+        'cfi_attribute3' => 'cfiAttribute3',
+        'cfi_attribute4' => 'cfiAttribute4',
+        'cfi_category_desc' => 'cfiCategoryDesc',
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'symbol_id' => 'symbolId',
+        'exchange_id' => 'exchangeId',
+        'security_category' => 'securityCategory',
+        'date' => 'r_date',
+        'asset_class' => 'assetClass',
+        'cfi_code' => 'cfiCode',
+        'cfi_category' => 'cfiCategory',
+        'cfi_group' => 'cfiGroup',
+        'cfi_attribute1' => 'cfiAttribute1',
+        'cfi_attribute2' => 'cfiAttribute2',
+        'cfi_attribute3' => 'cfiAttribute3',
+        'cfi_attribute4' => 'cfiAttribute4',
+        'cfi_category_desc' => 'cfiCategoryDesc',
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'symbol_id' => 'symbolId',
+        'exchange_id' => 'exchangeId',
+        'security_category' => 'securityCategory',
+        'date' => 'r_date',
+        'asset_class' => 'assetClass',
+        'cfi_code' => 'cfiCode',
+        'cfi_category' => 'cfiCategory',
+        'cfi_group' => 'cfiGroup',
+        'cfi_attribute1' => 'cfiAttribute1',
+        'cfi_attribute2' => 'cfiAttribute2',
+        'cfi_attribute3' => 'cfiAttribute3',
+        'cfi_attribute4' => 'cfiAttribute4',
+        'cfi_category_desc' => 'cfiCategoryDesc',
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
+    };
+
+    public Map<String, String> getPropertyMappings() {
+        return propertyMappings;
+    }
+
+    private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'symbol_id' => 'symbolId',
+        'exchange_id' => 'exchangeId',
+        'security_category' => 'securityCategory',
+        'date' => 'r_date',
+        'asset_class' => 'assetClass',
+        'cfi_code' => 'cfiCode',
+        'cfi_category' => 'cfiCategory',
+        'cfi_group' => 'cfiGroup',
+        'cfi_attribute1' => 'cfiAttribute1',
+        'cfi_attribute2' => 'cfiAttribute2',
+        'cfi_attribute3' => 'cfiAttribute3',
+        'cfi_attribute4' => 'cfiAttribute4',
+        'cfi_category_desc' => 'cfiCategoryDesc',
+        'cfi_group_desc' => 'cfiGroupDesc',
+        'cfi_attribute1_desc' => 'cfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'cfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'cfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'cfiAttribute4Desc'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -415,6 +595,10 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
           finFeedAPISymbolModel.cfiAttribute4 = '';
           finFeedAPISymbolModel.cfiCategoryDesc = '';
           finFeedAPISymbolModel.cfiGroupDesc = '';
+          finFeedAPISymbolModel.cfiAttribute1Desc = '';
+          finFeedAPISymbolModel.cfiAttribute2Desc = '';
+          finFeedAPISymbolModel.cfiAttribute3Desc = '';
+          finFeedAPISymbolModel.cfiAttribute4Desc = '';
         return finFeedAPISymbolModel;
     }
 
@@ -435,7 +619,11 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
                 && this.cfiAttribute3 == finFeedAPISymbolModel.cfiAttribute3
                 && this.cfiAttribute4 == finFeedAPISymbolModel.cfiAttribute4
                 && this.cfiCategoryDesc == finFeedAPISymbolModel.cfiCategoryDesc
-                && this.cfiGroupDesc == finFeedAPISymbolModel.cfiGroupDesc;
+                && this.cfiGroupDesc == finFeedAPISymbolModel.cfiGroupDesc
+                && this.cfiAttribute1Desc == finFeedAPISymbolModel.cfiAttribute1Desc
+                && this.cfiAttribute2Desc == finFeedAPISymbolModel.cfiAttribute2Desc
+                && this.cfiAttribute3Desc == finFeedAPISymbolModel.cfiAttribute3Desc
+                && this.cfiAttribute4Desc == finFeedAPISymbolModel.cfiAttribute4Desc;
         }
         return false;
     }
@@ -457,6 +645,10 @@ public class OASFinFeedAPISymbolModel extends Map<String, oas_any_type_not_mappe
         hashCode = (17 * hashCode) + (cfiAttribute4 == null ? 0 : System.hashCode(cfiAttribute4));
         hashCode = (17 * hashCode) + (cfiCategoryDesc == null ? 0 : System.hashCode(cfiCategoryDesc));
         hashCode = (17 * hashCode) + (cfiGroupDesc == null ? 0 : System.hashCode(cfiGroupDesc));
+        hashCode = (17 * hashCode) + (cfiAttribute1Desc == null ? 0 : System.hashCode(cfiAttribute1Desc));
+        hashCode = (17 * hashCode) + (cfiAttribute2Desc == null ? 0 : System.hashCode(cfiAttribute2Desc));
+        hashCode = (17 * hashCode) + (cfiAttribute3Desc == null ? 0 : System.hashCode(cfiAttribute3Desc));
+        hashCode = (17 * hashCode) + (cfiAttribute4Desc == null ? 0 : System.hashCode(cfiAttribute4Desc));
         return hashCode;
     }
 }

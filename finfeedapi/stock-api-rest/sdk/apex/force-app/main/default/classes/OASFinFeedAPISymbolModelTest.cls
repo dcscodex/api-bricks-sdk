@@ -87,5 +87,9 @@ private class OASFinFeedAPISymbolModelTest {
         System.assertEquals('cfiAttribute4', x-property-mappings.get('cfi_attribute4'));
         System.assertEquals('cfiCategoryDesc', x-property-mappings.get('cfi_category_desc'));
         System.assertEquals('cfiGroupDesc', x-property-mappings.get('cfi_group_desc'));
+        System.assertEquals('cfiAttribute1Desc', x-property-mappings.get('cfi_attribute1_desc'));
+        System.assertEquals('cfiAttribute2Desc', x-property-mappings.get('cfi_attribute2_desc'));
+        System.assertEquals('cfiAttribute3Desc', x-property-mappings.get('cfi_attribute3_desc'));
+        System.assertEquals('cfiAttribute4Desc', x-property-mappings.get('cfi_attribute4_desc'));
     }
 }

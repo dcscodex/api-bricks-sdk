@@ -50,7 +50,11 @@ class TestFinFeedAPISymbolModel(unittest.TestCase):
                 cfi_attribute3 = '',
                 cfi_attribute4 = '',
                 cfi_category_desc = '',
-                cfi_group_desc = ''
+                cfi_group_desc = '',
+                cfi_attribute1_desc = '',
+                cfi_attribute2_desc = '',
+                cfi_attribute3_desc = '',
+                cfi_attribute4_desc = ''
             )
         else:
             return FinFeedAPISymbolModel(

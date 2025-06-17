@@ -152,6 +152,34 @@ public:
 	/*! \brief Set 
 	 */
 	void setCfiGroupDesc(std::string  cfi_group_desc);
+	/*! \brief Get 
+	 */
+	std::string getCfiAttribute1Desc();
+
+	/*! \brief Set 
+	 */
+	void setCfiAttribute1Desc(std::string  cfi_attribute1_desc);
+	/*! \brief Get 
+	 */
+	std::string getCfiAttribute2Desc();
+
+	/*! \brief Set 
+	 */
+	void setCfiAttribute2Desc(std::string  cfi_attribute2_desc);
+	/*! \brief Get 
+	 */
+	std::string getCfiAttribute3Desc();
+
+	/*! \brief Set 
+	 */
+	void setCfiAttribute3Desc(std::string  cfi_attribute3_desc);
+	/*! \brief Get 
+	 */
+	std::string getCfiAttribute4Desc();
+
+	/*! \brief Set 
+	 */
+	void setCfiAttribute4Desc(std::string  cfi_attribute4_desc);
 
 private:
 	std::string symbol_id;
@@ -169,6 +197,10 @@ private:
 	std::string cfi_attribute4;
 	std::string cfi_category_desc;
 	std::string cfi_group_desc;
+	std::string cfi_attribute1_desc;
+	std::string cfi_attribute2_desc;
+	std::string cfi_attribute3_desc;
+	std::string cfi_attribute4_desc;
 	void __init();
 	void __cleanup();
 

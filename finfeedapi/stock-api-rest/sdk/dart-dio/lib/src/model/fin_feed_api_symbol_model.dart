@@ -28,6 +28,10 @@ part 'fin_feed_api_symbol_model.g.dart';
 /// * [cfiAttribute4] 
 /// * [cfiCategoryDesc] 
 /// * [cfiGroupDesc] 
+/// * [cfiAttribute1Desc] 
+/// * [cfiAttribute2Desc] 
+/// * [cfiAttribute3Desc] 
+/// * [cfiAttribute4Desc] 
 @BuiltValue()
 abstract class FinFeedAPISymbolModel implements Built<FinFeedAPISymbolModel, FinFeedAPISymbolModelBuilder> {
   @BuiltValueField(wireName: r'symbol_id')
@@ -74,6 +78,18 @@ abstract class FinFeedAPISymbolModel implements Built<FinFeedAPISymbolModel, Fin
 
   @BuiltValueField(wireName: r'cfi_group_desc')
   String? get cfiGroupDesc;
+
+  @BuiltValueField(wireName: r'cfi_attribute1_desc')
+  String? get cfiAttribute1Desc;
+
+  @BuiltValueField(wireName: r'cfi_attribute2_desc')
+  String? get cfiAttribute2Desc;
+
+  @BuiltValueField(wireName: r'cfi_attribute3_desc')
+  String? get cfiAttribute3Desc;
+
+  @BuiltValueField(wireName: r'cfi_attribute4_desc')
+  String? get cfiAttribute4Desc;
 
   FinFeedAPISymbolModel._();
 
@@ -200,6 +216,34 @@ class _$FinFeedAPISymbolModelSerializer implements PrimitiveSerializer<FinFeedAP
       yield r'cfi_group_desc';
       yield serializers.serialize(
         object.cfiGroupDesc,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute1Desc != null) {
+      yield r'cfi_attribute1_desc';
+      yield serializers.serialize(
+        object.cfiAttribute1Desc,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute2Desc != null) {
+      yield r'cfi_attribute2_desc';
+      yield serializers.serialize(
+        object.cfiAttribute2Desc,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute3Desc != null) {
+      yield r'cfi_attribute3_desc';
+      yield serializers.serialize(
+        object.cfiAttribute3Desc,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.cfiAttribute4Desc != null) {
+      yield r'cfi_attribute4_desc';
+      yield serializers.serialize(
+        object.cfiAttribute4Desc,
         specifiedType: const FullType.nullable(String),
       );
     }
@@ -345,6 +389,38 @@ class _$FinFeedAPISymbolModelSerializer implements PrimitiveSerializer<FinFeedAP
           ) as String?;
           if (valueDes == null) continue;
           result.cfiGroupDesc = valueDes;
+          break;
+        case r'cfi_attribute1_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute1Desc = valueDes;
+          break;
+        case r'cfi_attribute2_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute2Desc = valueDes;
+          break;
+        case r'cfi_attribute3_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute3Desc = valueDes;
+          break;
+        case r'cfi_attribute4_desc':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cfiAttribute4Desc = valueDes;
           break;
         default:
           unhandled.add(key);

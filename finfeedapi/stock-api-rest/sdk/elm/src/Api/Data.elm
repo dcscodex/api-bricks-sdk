@@ -327,6 +327,10 @@ type alias FinFeedAPISymbolModel =
     , cfiAttribute4 : Maybe String
     , cfiCategoryDesc : Maybe String
     , cfiGroupDesc : Maybe String
+    , cfiAttribute1Desc : Maybe String
+    , cfiAttribute2Desc : Maybe String
+    , cfiAttribute3Desc : Maybe String
+    , cfiAttribute4Desc : Maybe String
     }
 
 
@@ -885,6 +889,10 @@ encodeFinFeedAPISymbolModelPairs model =
             , maybeEncodeNullable "cfi_attribute4" Json.Encode.string model.cfiAttribute4
             , maybeEncodeNullable "cfi_category_desc" Json.Encode.string model.cfiCategoryDesc
             , maybeEncodeNullable "cfi_group_desc" Json.Encode.string model.cfiGroupDesc
+            , maybeEncodeNullable "cfi_attribute1_desc" Json.Encode.string model.cfiAttribute1Desc
+            , maybeEncodeNullable "cfi_attribute2_desc" Json.Encode.string model.cfiAttribute2Desc
+            , maybeEncodeNullable "cfi_attribute3_desc" Json.Encode.string model.cfiAttribute3Desc
+            , maybeEncodeNullable "cfi_attribute4_desc" Json.Encode.string model.cfiAttribute4Desc
             ]
     in
     pairs
@@ -1436,6 +1444,10 @@ finFeedAPISymbolModelDecoder =
         |> maybeDecodeNullable "cfi_attribute4" Json.Decode.string Nothing
         |> maybeDecodeNullable "cfi_category_desc" Json.Decode.string Nothing
         |> maybeDecodeNullable "cfi_group_desc" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute1_desc" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute2_desc" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute3_desc" Json.Decode.string Nothing
+        |> maybeDecodeNullable "cfi_attribute4_desc" Json.Decode.string Nothing
 
 
 level1QuoteUpdateModelDecoder : Json.Decode.Decoder Level1QuoteUpdateModel

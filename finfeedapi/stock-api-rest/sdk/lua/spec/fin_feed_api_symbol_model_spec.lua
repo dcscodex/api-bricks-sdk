@@ -121,4 +121,32 @@ describe("fin_feed_api_symbol_model", function()
     end)
   end)
 
+  -- unit tests for the property 'cfi_attribute1_desc'
+  describe("property cfi_attribute1_desc test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'cfi_attribute2_desc'
+  describe("property cfi_attribute2_desc test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'cfi_attribute3_desc'
+  describe("property cfi_attribute3_desc test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'cfi_attribute4_desc'
+  describe("property cfi_attribute4_desc test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
 end)

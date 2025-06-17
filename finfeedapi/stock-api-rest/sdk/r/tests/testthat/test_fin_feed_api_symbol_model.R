@@ -109,3 +109,31 @@ test_that("cfi_group_desc", {
   # uncomment below to test the property
   #expect_equal(model.instance$`cfi_group_desc`, "EXPECTED_RESULT")
 })
+
+test_that("cfi_attribute1_desc", {
+  # tests for the property `cfi_attribute1_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute1_desc`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute2_desc", {
+  # tests for the property `cfi_attribute2_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute2_desc`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute3_desc", {
+  # tests for the property `cfi_attribute3_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute3_desc`, "EXPECTED_RESULT")
+})
+
+test_that("cfi_attribute4_desc", {
+  # tests for the property `cfi_attribute4_desc` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cfi_attribute4_desc`, "EXPECTED_RESULT")
+})

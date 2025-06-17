@@ -21,6 +21,10 @@ Name | Type | Description | Notes
 **cfiAttribute4** | **String** |  |  [optional] [readonly]
 **cfiCategoryDesc** | **String** |  |  [optional] [readonly]
 **cfiGroupDesc** | **String** |  |  [optional] [readonly]
+**cfiAttribute1Desc** | **String** |  |  [optional] [readonly]
+**cfiAttribute2Desc** | **String** |  |  [optional] [readonly]
+**cfiAttribute3Desc** | **String** |  |  [optional] [readonly]
+**cfiAttribute4Desc** | **String** |  |  [optional] [readonly]
 
 
 

@@ -19,6 +19,10 @@
 | **cfi_attribute4** | **String** |  | [optional][readonly] |
 | **cfi_category_desc** | **String** |  | [optional][readonly] |
 | **cfi_group_desc** | **String** |  | [optional][readonly] |
+| **cfi_attribute1_desc** | **String** |  | [optional][readonly] |
+| **cfi_attribute2_desc** | **String** |  | [optional][readonly] |
+| **cfi_attribute3_desc** | **String** |  | [optional][readonly] |
+| **cfi_attribute4_desc** | **String** |  | [optional][readonly] |
 
 ## Example
 
@@ -40,7 +44,11 @@ instance = OpenapiClient::FinFeedAPISymbolModel.new(
   cfi_attribute3: null,
   cfi_attribute4: null,
   cfi_category_desc: null,
-  cfi_group_desc: null
+  cfi_group_desc: null,
+  cfi_attribute1_desc: null,
+  cfi_attribute2_desc: null,
+  cfi_attribute3_desc: null,
+  cfi_attribute4_desc: null
 )
 ```
 

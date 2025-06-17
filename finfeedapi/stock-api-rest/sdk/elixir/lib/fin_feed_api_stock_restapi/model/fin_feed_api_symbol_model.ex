@@ -22,7 +22,11 @@ defmodule FinFeedAPIStockRESTAPI.Model.FinFeedApiSymbolModel do
     :cfi_attribute3,
     :cfi_attribute4,
     :cfi_category_desc,
-    :cfi_group_desc
+    :cfi_group_desc,
+    :cfi_attribute1_desc,
+    :cfi_attribute2_desc,
+    :cfi_attribute3_desc,
+    :cfi_attribute4_desc
   ]
 
   @type t :: %__MODULE__{
@@ -40,7 +44,11 @@ defmodule FinFeedAPIStockRESTAPI.Model.FinFeedApiSymbolModel do
     :cfi_attribute3 => String.t | nil,
     :cfi_attribute4 => String.t | nil,
     :cfi_category_desc => String.t | nil,
-    :cfi_group_desc => String.t | nil
+    :cfi_group_desc => String.t | nil,
+    :cfi_attribute1_desc => String.t | nil,
+    :cfi_attribute2_desc => String.t | nil,
+    :cfi_attribute3_desc => String.t | nil,
+    :cfi_attribute4_desc => String.t | nil
   }
 
   def decode(value) do

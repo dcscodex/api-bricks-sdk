@@ -38,4 +38,12 @@ class FinFeedAPISymbolModel {
     String cfiCategoryDesc
     
     String cfiGroupDesc
+    
+    String cfiAttribute1Desc
+    
+    String cfiAttribute2Desc
+    
+    String cfiAttribute3Desc
+    
+    String cfiAttribute4Desc
 }

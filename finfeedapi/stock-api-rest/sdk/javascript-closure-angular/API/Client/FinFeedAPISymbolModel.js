@@ -95,3 +95,27 @@ API.Client.FinFeedAPISymbolModel.prototype.cfiCategoryDesc;
  */
 API.Client.FinFeedAPISymbolModel.prototype.cfiGroupDesc;
 
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.FinFeedAPISymbolModel.prototype.cfiAttribute1Desc;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.FinFeedAPISymbolModel.prototype.cfiAttribute2Desc;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.FinFeedAPISymbolModel.prototype.cfiAttribute3Desc;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.FinFeedAPISymbolModel.prototype.cfiAttribute4Desc;
+

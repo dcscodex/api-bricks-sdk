@@ -35,6 +35,10 @@ type FinFeedAPISymbolModel struct {
 	CfiAttribute4 NullableString `json:"cfi_attribute4,omitempty"`
 	CfiCategoryDesc NullableString `json:"cfi_category_desc,omitempty"`
 	CfiGroupDesc NullableString `json:"cfi_group_desc,omitempty"`
+	CfiAttribute1Desc NullableString `json:"cfi_attribute1_desc,omitempty"`
+	CfiAttribute2Desc NullableString `json:"cfi_attribute2_desc,omitempty"`
+	CfiAttribute3Desc NullableString `json:"cfi_attribute3_desc,omitempty"`
+	CfiAttribute4Desc NullableString `json:"cfi_attribute4_desc,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -687,6 +691,174 @@ func (o *FinFeedAPISymbolModel) UnsetCfiGroupDesc() {
 	o.CfiGroupDesc.Unset()
 }
 
+// GetCfiAttribute1Desc returns the CfiAttribute1Desc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FinFeedAPISymbolModel) GetCfiAttribute1Desc() string {
+	if o == nil || IsNil(o.CfiAttribute1Desc.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CfiAttribute1Desc.Get()
+}
+
+// GetCfiAttribute1DescOk returns a tuple with the CfiAttribute1Desc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FinFeedAPISymbolModel) GetCfiAttribute1DescOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CfiAttribute1Desc.Get(), o.CfiAttribute1Desc.IsSet()
+}
+
+// HasCfiAttribute1Desc returns a boolean if a field has been set.
+func (o *FinFeedAPISymbolModel) HasCfiAttribute1Desc() bool {
+	if o != nil && o.CfiAttribute1Desc.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCfiAttribute1Desc gets a reference to the given NullableString and assigns it to the CfiAttribute1Desc field.
+func (o *FinFeedAPISymbolModel) SetCfiAttribute1Desc(v string) {
+	o.CfiAttribute1Desc.Set(&v)
+}
+// SetCfiAttribute1DescNil sets the value for CfiAttribute1Desc to be an explicit nil
+func (o *FinFeedAPISymbolModel) SetCfiAttribute1DescNil() {
+	o.CfiAttribute1Desc.Set(nil)
+}
+
+// UnsetCfiAttribute1Desc ensures that no value is present for CfiAttribute1Desc, not even an explicit nil
+func (o *FinFeedAPISymbolModel) UnsetCfiAttribute1Desc() {
+	o.CfiAttribute1Desc.Unset()
+}
+
+// GetCfiAttribute2Desc returns the CfiAttribute2Desc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FinFeedAPISymbolModel) GetCfiAttribute2Desc() string {
+	if o == nil || IsNil(o.CfiAttribute2Desc.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CfiAttribute2Desc.Get()
+}
+
+// GetCfiAttribute2DescOk returns a tuple with the CfiAttribute2Desc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FinFeedAPISymbolModel) GetCfiAttribute2DescOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CfiAttribute2Desc.Get(), o.CfiAttribute2Desc.IsSet()
+}
+
+// HasCfiAttribute2Desc returns a boolean if a field has been set.
+func (o *FinFeedAPISymbolModel) HasCfiAttribute2Desc() bool {
+	if o != nil && o.CfiAttribute2Desc.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCfiAttribute2Desc gets a reference to the given NullableString and assigns it to the CfiAttribute2Desc field.
+func (o *FinFeedAPISymbolModel) SetCfiAttribute2Desc(v string) {
+	o.CfiAttribute2Desc.Set(&v)
+}
+// SetCfiAttribute2DescNil sets the value for CfiAttribute2Desc to be an explicit nil
+func (o *FinFeedAPISymbolModel) SetCfiAttribute2DescNil() {
+	o.CfiAttribute2Desc.Set(nil)
+}
+
+// UnsetCfiAttribute2Desc ensures that no value is present for CfiAttribute2Desc, not even an explicit nil
+func (o *FinFeedAPISymbolModel) UnsetCfiAttribute2Desc() {
+	o.CfiAttribute2Desc.Unset()
+}
+
+// GetCfiAttribute3Desc returns the CfiAttribute3Desc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FinFeedAPISymbolModel) GetCfiAttribute3Desc() string {
+	if o == nil || IsNil(o.CfiAttribute3Desc.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CfiAttribute3Desc.Get()
+}
+
+// GetCfiAttribute3DescOk returns a tuple with the CfiAttribute3Desc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FinFeedAPISymbolModel) GetCfiAttribute3DescOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CfiAttribute3Desc.Get(), o.CfiAttribute3Desc.IsSet()
+}
+
+// HasCfiAttribute3Desc returns a boolean if a field has been set.
+func (o *FinFeedAPISymbolModel) HasCfiAttribute3Desc() bool {
+	if o != nil && o.CfiAttribute3Desc.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCfiAttribute3Desc gets a reference to the given NullableString and assigns it to the CfiAttribute3Desc field.
+func (o *FinFeedAPISymbolModel) SetCfiAttribute3Desc(v string) {
+	o.CfiAttribute3Desc.Set(&v)
+}
+// SetCfiAttribute3DescNil sets the value for CfiAttribute3Desc to be an explicit nil
+func (o *FinFeedAPISymbolModel) SetCfiAttribute3DescNil() {
+	o.CfiAttribute3Desc.Set(nil)
+}
+
+// UnsetCfiAttribute3Desc ensures that no value is present for CfiAttribute3Desc, not even an explicit nil
+func (o *FinFeedAPISymbolModel) UnsetCfiAttribute3Desc() {
+	o.CfiAttribute3Desc.Unset()
+}
+
+// GetCfiAttribute4Desc returns the CfiAttribute4Desc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FinFeedAPISymbolModel) GetCfiAttribute4Desc() string {
+	if o == nil || IsNil(o.CfiAttribute4Desc.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CfiAttribute4Desc.Get()
+}
+
+// GetCfiAttribute4DescOk returns a tuple with the CfiAttribute4Desc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FinFeedAPISymbolModel) GetCfiAttribute4DescOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CfiAttribute4Desc.Get(), o.CfiAttribute4Desc.IsSet()
+}
+
+// HasCfiAttribute4Desc returns a boolean if a field has been set.
+func (o *FinFeedAPISymbolModel) HasCfiAttribute4Desc() bool {
+	if o != nil && o.CfiAttribute4Desc.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCfiAttribute4Desc gets a reference to the given NullableString and assigns it to the CfiAttribute4Desc field.
+func (o *FinFeedAPISymbolModel) SetCfiAttribute4Desc(v string) {
+	o.CfiAttribute4Desc.Set(&v)
+}
+// SetCfiAttribute4DescNil sets the value for CfiAttribute4Desc to be an explicit nil
+func (o *FinFeedAPISymbolModel) SetCfiAttribute4DescNil() {
+	o.CfiAttribute4Desc.Set(nil)
+}
+
+// UnsetCfiAttribute4Desc ensures that no value is present for CfiAttribute4Desc, not even an explicit nil
+func (o *FinFeedAPISymbolModel) UnsetCfiAttribute4Desc() {
+	o.CfiAttribute4Desc.Unset()
+}
+
 func (o FinFeedAPISymbolModel) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -742,6 +914,18 @@ func (o FinFeedAPISymbolModel) ToMap() (map[string]interface{}, error) {
 	if o.CfiGroupDesc.IsSet() {
 		toSerialize["cfi_group_desc"] = o.CfiGroupDesc.Get()
 	}
+	if o.CfiAttribute1Desc.IsSet() {
+		toSerialize["cfi_attribute1_desc"] = o.CfiAttribute1Desc.Get()
+	}
+	if o.CfiAttribute2Desc.IsSet() {
+		toSerialize["cfi_attribute2_desc"] = o.CfiAttribute2Desc.Get()
+	}
+	if o.CfiAttribute3Desc.IsSet() {
+		toSerialize["cfi_attribute3_desc"] = o.CfiAttribute3Desc.Get()
+	}
+	if o.CfiAttribute4Desc.IsSet() {
+		toSerialize["cfi_attribute4_desc"] = o.CfiAttribute4Desc.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -779,6 +963,10 @@ func (o *FinFeedAPISymbolModel) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cfi_attribute4")
 		delete(additionalProperties, "cfi_category_desc")
 		delete(additionalProperties, "cfi_group_desc")
+		delete(additionalProperties, "cfi_attribute1_desc")
+		delete(additionalProperties, "cfi_attribute2_desc")
+		delete(additionalProperties, "cfi_attribute3_desc")
+		delete(additionalProperties, "cfi_attribute4_desc")
 		o.AdditionalProperties = additionalProperties
 	}
 

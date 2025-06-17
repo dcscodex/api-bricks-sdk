@@ -214,4 +214,40 @@ class FinFeedAPISymbolModelTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "cfi_attribute1_desc"
+     */
+    public function testPropertyCfiAttribute1Desc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute2_desc"
+     */
+    public function testPropertyCfiAttribute2Desc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute3_desc"
+     */
+    public function testPropertyCfiAttribute3Desc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cfi_attribute4_desc"
+     */
+    public function testPropertyCfiAttribute4Desc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

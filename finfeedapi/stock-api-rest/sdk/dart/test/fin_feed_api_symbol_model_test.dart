@@ -91,6 +91,26 @@ void main() {
       // TODO
     });
 
+    // String cfiAttribute1Desc
+    test('to test the property `cfiAttribute1Desc`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute2Desc
+    test('to test the property `cfiAttribute2Desc`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute3Desc
+    test('to test the property `cfiAttribute3Desc`', () async {
+      // TODO
+    });
+
+    // String cfiAttribute4Desc
+    test('to test the property `cfiAttribute4Desc`', () async {
+      // TODO
+    });
+
 
   });
 

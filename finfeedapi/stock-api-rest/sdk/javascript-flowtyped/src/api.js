@@ -1133,6 +1133,30 @@ export type FinFeedAPISymbolModel = {
      * @memberof FinFeedAPISymbolModel
      */
     cfi_group_desc?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute1_desc?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute2_desc?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute3_desc?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FinFeedAPISymbolModel
+     */
+    cfi_attribute4_desc?: string;
 }
 
 /**

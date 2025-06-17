@@ -19,6 +19,10 @@
 | **cfiAttribute4** | **kotlin.String** |  |  [optional] [readonly] |
 | **cfiCategoryDesc** | **kotlin.String** |  |  [optional] [readonly] |
 | **cfiGroupDesc** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute1Desc** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute2Desc** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute3Desc** | **kotlin.String** |  |  [optional] [readonly] |
+| **cfiAttribute4Desc** | **kotlin.String** |  |  [optional] [readonly] |
 
 
 

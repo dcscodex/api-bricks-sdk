@@ -23,6 +23,10 @@ Name | Type | Description | Notes
 **cfiAttribute4** | **String** |  | [optional] 
 **cfiCategoryDesc** | **String** |  | [optional] 
 **cfiGroupDesc** | **String** |  | [optional] 
+**cfiAttribute1Desc** | **String** |  | [optional] 
+**cfiAttribute2Desc** | **String** |  | [optional] 
+**cfiAttribute3Desc** | **String** |  | [optional] 
+**cfiAttribute4Desc** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

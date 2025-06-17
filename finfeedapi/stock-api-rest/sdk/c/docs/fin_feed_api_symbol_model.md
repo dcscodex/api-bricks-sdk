@@ -18,6 +18,10 @@ Name | Type | Description | Notes
 **cfi_attribute4** | **char \*** |  | [optional] [readonly] 
 **cfi_category_desc** | **char \*** |  | [optional] [readonly] 
 **cfi_group_desc** | **char \*** |  | [optional] [readonly] 
+**cfi_attribute1_desc** | **char \*** |  | [optional] [readonly] 
+**cfi_attribute2_desc** | **char \*** |  | [optional] [readonly] 
+**cfi_attribute3_desc** | **char \*** |  | [optional] [readonly] 
+**cfi_attribute4_desc** | **char \*** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

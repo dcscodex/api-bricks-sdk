@@ -898,6 +898,26 @@ finFeedAPISymbolModelCfiGroupDescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
 finFeedAPISymbolModelCfiGroupDescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiGroupDesc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiGroupDesc, ..} ) <$> f finFeedAPISymbolModelCfiGroupDesc
 {-# INLINE finFeedAPISymbolModelCfiGroupDescL #-}
 
+-- | 'finFeedAPISymbolModelCfiAttribute1Desc' Lens
+finFeedAPISymbolModelCfiAttribute1DescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute1DescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute1Desc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute1Desc, ..} ) <$> f finFeedAPISymbolModelCfiAttribute1Desc
+{-# INLINE finFeedAPISymbolModelCfiAttribute1DescL #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute2Desc' Lens
+finFeedAPISymbolModelCfiAttribute2DescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute2DescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute2Desc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute2Desc, ..} ) <$> f finFeedAPISymbolModelCfiAttribute2Desc
+{-# INLINE finFeedAPISymbolModelCfiAttribute2DescL #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute3Desc' Lens
+finFeedAPISymbolModelCfiAttribute3DescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute3DescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute3Desc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute3Desc, ..} ) <$> f finFeedAPISymbolModelCfiAttribute3Desc
+{-# INLINE finFeedAPISymbolModelCfiAttribute3DescL #-}
+
+-- | 'finFeedAPISymbolModelCfiAttribute4Desc' Lens
+finFeedAPISymbolModelCfiAttribute4DescL :: Lens_' FinFeedAPISymbolModel (Maybe Text)
+finFeedAPISymbolModelCfiAttribute4DescL f FinFeedAPISymbolModel{..} = (\finFeedAPISymbolModelCfiAttribute4Desc -> FinFeedAPISymbolModel { finFeedAPISymbolModelCfiAttribute4Desc, ..} ) <$> f finFeedAPISymbolModelCfiAttribute4Desc
+{-# INLINE finFeedAPISymbolModelCfiAttribute4DescL #-}
+
 
 
 -- * Level1QuoteUpdateModel

@@ -131,6 +131,26 @@ public:
     void unsetCfi_group_desc();
     void setCfiGroupDesc(const utility::string_t& value);
 
+    utility::string_t getCfiAttribute1Desc() const;
+    bool cfiAttribute1DescIsSet() const;
+    void unsetCfi_attribute1_desc();
+    void setCfiAttribute1Desc(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute2Desc() const;
+    bool cfiAttribute2DescIsSet() const;
+    void unsetCfi_attribute2_desc();
+    void setCfiAttribute2Desc(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute3Desc() const;
+    bool cfiAttribute3DescIsSet() const;
+    void unsetCfi_attribute3_desc();
+    void setCfiAttribute3Desc(const utility::string_t& value);
+
+    utility::string_t getCfiAttribute4Desc() const;
+    bool cfiAttribute4DescIsSet() const;
+    void unsetCfi_attribute4_desc();
+    void setCfiAttribute4Desc(const utility::string_t& value);
+
 
 protected:
     utility::string_t m_Symbol_id;
@@ -177,6 +197,18 @@ protected:
 
     utility::string_t m_Cfi_group_desc;
     bool m_Cfi_group_descIsSet;
+
+    utility::string_t m_Cfi_attribute1_desc;
+    bool m_Cfi_attribute1_descIsSet;
+
+    utility::string_t m_Cfi_attribute2_desc;
+    bool m_Cfi_attribute2_descIsSet;
+
+    utility::string_t m_Cfi_attribute3_desc;
+    bool m_Cfi_attribute3_descIsSet;
+
+    utility::string_t m_Cfi_attribute4_desc;
+    bool m_Cfi_attribute4_descIsSet;
 
 };
 

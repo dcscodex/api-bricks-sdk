@@ -96,6 +96,18 @@ class FinFeedAPISymbolModel {
             if (data.hasOwnProperty('cfi_group_desc')) {
                 obj['cfi_group_desc'] = ApiClient.convertToType(data['cfi_group_desc'], 'String');
             }
+            if (data.hasOwnProperty('cfi_attribute1_desc')) {
+                obj['cfi_attribute1_desc'] = ApiClient.convertToType(data['cfi_attribute1_desc'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute2_desc')) {
+                obj['cfi_attribute2_desc'] = ApiClient.convertToType(data['cfi_attribute2_desc'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute3_desc')) {
+                obj['cfi_attribute3_desc'] = ApiClient.convertToType(data['cfi_attribute3_desc'], 'String');
+            }
+            if (data.hasOwnProperty('cfi_attribute4_desc')) {
+                obj['cfi_attribute4_desc'] = ApiClient.convertToType(data['cfi_attribute4_desc'], 'String');
+            }
         }
         return obj;
     }
@@ -165,6 +177,22 @@ class FinFeedAPISymbolModel {
         // ensure the json data is a string
         if (data['cfi_group_desc'] && !(typeof data['cfi_group_desc'] === 'string' || data['cfi_group_desc'] instanceof String)) {
             throw new Error("Expected the field `cfi_group_desc` to be a primitive type in the JSON string but got " + data['cfi_group_desc']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute1_desc'] && !(typeof data['cfi_attribute1_desc'] === 'string' || data['cfi_attribute1_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute1_desc` to be a primitive type in the JSON string but got " + data['cfi_attribute1_desc']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute2_desc'] && !(typeof data['cfi_attribute2_desc'] === 'string' || data['cfi_attribute2_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute2_desc` to be a primitive type in the JSON string but got " + data['cfi_attribute2_desc']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute3_desc'] && !(typeof data['cfi_attribute3_desc'] === 'string' || data['cfi_attribute3_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute3_desc` to be a primitive type in the JSON string but got " + data['cfi_attribute3_desc']);
+        }
+        // ensure the json data is a string
+        if (data['cfi_attribute4_desc'] && !(typeof data['cfi_attribute4_desc'] === 'string' || data['cfi_attribute4_desc'] instanceof String)) {
+            throw new Error("Expected the field `cfi_attribute4_desc` to be a primitive type in the JSON string but got " + data['cfi_attribute4_desc']);
         }
 
         return true;
@@ -249,6 +277,26 @@ FinFeedAPISymbolModel.prototype['cfi_category_desc'] = undefined;
  * @member {String} cfi_group_desc
  */
 FinFeedAPISymbolModel.prototype['cfi_group_desc'] = undefined;
+
+/**
+ * @member {String} cfi_attribute1_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute1_desc'] = undefined;
+
+/**
+ * @member {String} cfi_attribute2_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute2_desc'] = undefined;
+
+/**
+ * @member {String} cfi_attribute3_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute3_desc'] = undefined;
+
+/**
+ * @member {String} cfi_attribute4_desc
+ */
+FinFeedAPISymbolModel.prototype['cfi_attribute4_desc'] = undefined;
 
 
 

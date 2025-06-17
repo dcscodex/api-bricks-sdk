@@ -115,5 +115,29 @@ class FinFeedAPISymbolModelTest : ShouldSpec() {
             //modelInstance.cfiGroupDesc shouldBe ("TODO")
         }
 
+        // to test the property `cfiAttribute1Desc`
+        should("test cfiAttribute1Desc") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute1Desc shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute2Desc`
+        should("test cfiAttribute2Desc") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute2Desc shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute3Desc`
+        should("test cfiAttribute3Desc") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute3Desc shouldBe ("TODO")
+        }
+
+        // to test the property `cfiAttribute4Desc`
+        should("test cfiAttribute4Desc") {
+            // uncomment below to test the property
+            //modelInstance.cfiAttribute4Desc shouldBe ("TODO")
+        }
+
     }
 }

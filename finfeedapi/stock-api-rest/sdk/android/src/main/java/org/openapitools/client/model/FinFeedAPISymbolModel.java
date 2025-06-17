@@ -51,6 +51,14 @@ public class FinFeedAPISymbolModel extends HashMap<String, OasAnyTypeNotMapped> 
   private String cfiCategoryDesc = null;
   @SerializedName("cfi_group_desc")
   private String cfiGroupDesc = null;
+  @SerializedName("cfi_attribute1_desc")
+  private String cfiAttribute1Desc = null;
+  @SerializedName("cfi_attribute2_desc")
+  private String cfiAttribute2Desc = null;
+  @SerializedName("cfi_attribute3_desc")
+  private String cfiAttribute3Desc = null;
+  @SerializedName("cfi_attribute4_desc")
+  private String cfiAttribute4Desc = null;
 
   /**
    **/
@@ -202,6 +210,46 @@ public class FinFeedAPISymbolModel extends HashMap<String, OasAnyTypeNotMapped> 
     this.cfiGroupDesc = cfiGroupDesc;
   }
 
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getCfiAttribute1Desc() {
+    return cfiAttribute1Desc;
+  }
+  public void setCfiAttribute1Desc(String cfiAttribute1Desc) {
+    this.cfiAttribute1Desc = cfiAttribute1Desc;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getCfiAttribute2Desc() {
+    return cfiAttribute2Desc;
+  }
+  public void setCfiAttribute2Desc(String cfiAttribute2Desc) {
+    this.cfiAttribute2Desc = cfiAttribute2Desc;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getCfiAttribute3Desc() {
+    return cfiAttribute3Desc;
+  }
+  public void setCfiAttribute3Desc(String cfiAttribute3Desc) {
+    this.cfiAttribute3Desc = cfiAttribute3Desc;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getCfiAttribute4Desc() {
+    return cfiAttribute4Desc;
+  }
+  public void setCfiAttribute4Desc(String cfiAttribute4Desc) {
+    this.cfiAttribute4Desc = cfiAttribute4Desc;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -226,7 +274,11 @@ public class FinFeedAPISymbolModel extends HashMap<String, OasAnyTypeNotMapped> 
         (this.cfiAttribute3 == null ? finFeedAPISymbolModel.cfiAttribute3 == null : this.cfiAttribute3.equals(finFeedAPISymbolModel.cfiAttribute3)) &&
         (this.cfiAttribute4 == null ? finFeedAPISymbolModel.cfiAttribute4 == null : this.cfiAttribute4.equals(finFeedAPISymbolModel.cfiAttribute4)) &&
         (this.cfiCategoryDesc == null ? finFeedAPISymbolModel.cfiCategoryDesc == null : this.cfiCategoryDesc.equals(finFeedAPISymbolModel.cfiCategoryDesc)) &&
-        (this.cfiGroupDesc == null ? finFeedAPISymbolModel.cfiGroupDesc == null : this.cfiGroupDesc.equals(finFeedAPISymbolModel.cfiGroupDesc));
+        (this.cfiGroupDesc == null ? finFeedAPISymbolModel.cfiGroupDesc == null : this.cfiGroupDesc.equals(finFeedAPISymbolModel.cfiGroupDesc)) &&
+        (this.cfiAttribute1Desc == null ? finFeedAPISymbolModel.cfiAttribute1Desc == null : this.cfiAttribute1Desc.equals(finFeedAPISymbolModel.cfiAttribute1Desc)) &&
+        (this.cfiAttribute2Desc == null ? finFeedAPISymbolModel.cfiAttribute2Desc == null : this.cfiAttribute2Desc.equals(finFeedAPISymbolModel.cfiAttribute2Desc)) &&
+        (this.cfiAttribute3Desc == null ? finFeedAPISymbolModel.cfiAttribute3Desc == null : this.cfiAttribute3Desc.equals(finFeedAPISymbolModel.cfiAttribute3Desc)) &&
+        (this.cfiAttribute4Desc == null ? finFeedAPISymbolModel.cfiAttribute4Desc == null : this.cfiAttribute4Desc.equals(finFeedAPISymbolModel.cfiAttribute4Desc));
   }
 
   @Override
@@ -247,6 +299,10 @@ public class FinFeedAPISymbolModel extends HashMap<String, OasAnyTypeNotMapped> 
     result = 31 * result + (this.cfiAttribute4 == null ? 0: this.cfiAttribute4.hashCode());
     result = 31 * result + (this.cfiCategoryDesc == null ? 0: this.cfiCategoryDesc.hashCode());
     result = 31 * result + (this.cfiGroupDesc == null ? 0: this.cfiGroupDesc.hashCode());
+    result = 31 * result + (this.cfiAttribute1Desc == null ? 0: this.cfiAttribute1Desc.hashCode());
+    result = 31 * result + (this.cfiAttribute2Desc == null ? 0: this.cfiAttribute2Desc.hashCode());
+    result = 31 * result + (this.cfiAttribute3Desc == null ? 0: this.cfiAttribute3Desc.hashCode());
+    result = 31 * result + (this.cfiAttribute4Desc == null ? 0: this.cfiAttribute4Desc.hashCode());
     return result;
   }
 
@@ -270,6 +326,10 @@ public class FinFeedAPISymbolModel extends HashMap<String, OasAnyTypeNotMapped> 
     sb.append("  cfiAttribute4: ").append(cfiAttribute4).append("\n");
     sb.append("  cfiCategoryDesc: ").append(cfiCategoryDesc).append("\n");
     sb.append("  cfiGroupDesc: ").append(cfiGroupDesc).append("\n");
+    sb.append("  cfiAttribute1Desc: ").append(cfiAttribute1Desc).append("\n");
+    sb.append("  cfiAttribute2Desc: ").append(cfiAttribute2Desc).append("\n");
+    sb.append("  cfiAttribute3Desc: ").append(cfiAttribute3Desc).append("\n");
+    sb.append("  cfiAttribute4Desc: ").append(cfiAttribute4Desc).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

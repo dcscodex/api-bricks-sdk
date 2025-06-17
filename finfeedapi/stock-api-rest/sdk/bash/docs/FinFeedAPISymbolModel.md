@@ -18,6 +18,10 @@ Name | Type | Description | Notes
 **cfiUnderscoreattribute4** | **string** |  | [optional] [readonly] [default to null]
 **cfiUnderscorecategoryUnderscoredesc** | **string** |  | [optional] [readonly] [default to null]
 **cfiUnderscoregroupUnderscoredesc** | **string** |  | [optional] [readonly] [default to null]
+**cfiUnderscoreattribute1Underscoredesc** | **string** |  | [optional] [readonly] [default to null]
+**cfiUnderscoreattribute2Underscoredesc** | **string** |  | [optional] [readonly] [default to null]
+**cfiUnderscoreattribute3Underscoredesc** | **string** |  | [optional] [readonly] [default to null]
+**cfiUnderscoreattribute4Underscoredesc** | **string** |  | [optional] [readonly] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

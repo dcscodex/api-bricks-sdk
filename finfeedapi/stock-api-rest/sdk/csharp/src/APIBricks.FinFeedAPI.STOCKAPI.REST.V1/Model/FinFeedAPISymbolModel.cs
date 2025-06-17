@@ -50,8 +50,12 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
         /// <param name="cfiAttribute4">cfiAttribute4</param>
         /// <param name="cfiCategoryDesc">cfiCategoryDesc</param>
         /// <param name="cfiGroupDesc">cfiGroupDesc</param>
+        /// <param name="cfiAttribute1Desc">cfiAttribute1Desc</param>
+        /// <param name="cfiAttribute2Desc">cfiAttribute2Desc</param>
+        /// <param name="cfiAttribute3Desc">cfiAttribute3Desc</param>
+        /// <param name="cfiAttribute4Desc">cfiAttribute4Desc</param>
         [JsonConstructor]
-        public FinFeedAPISymbolModel(Option<string?> symbolId = default, Option<string?> exchangeId = default, Option<string?> securityCategory = default, Option<string?> name = default, Option<string?> date = default, Option<string?> assetClass = default, Option<string?> cfiCode = default, Option<string?> cfiCategory = default, Option<string?> cfiGroup = default, Option<string?> cfiAttribute1 = default, Option<string?> cfiAttribute2 = default, Option<string?> cfiAttribute3 = default, Option<string?> cfiAttribute4 = default, Option<string?> cfiCategoryDesc = default, Option<string?> cfiGroupDesc = default)
+        public FinFeedAPISymbolModel(Option<string?> symbolId = default, Option<string?> exchangeId = default, Option<string?> securityCategory = default, Option<string?> name = default, Option<string?> date = default, Option<string?> assetClass = default, Option<string?> cfiCode = default, Option<string?> cfiCategory = default, Option<string?> cfiGroup = default, Option<string?> cfiAttribute1 = default, Option<string?> cfiAttribute2 = default, Option<string?> cfiAttribute3 = default, Option<string?> cfiAttribute4 = default, Option<string?> cfiCategoryDesc = default, Option<string?> cfiGroupDesc = default, Option<string?> cfiAttribute1Desc = default, Option<string?> cfiAttribute2Desc = default, Option<string?> cfiAttribute3Desc = default, Option<string?> cfiAttribute4Desc = default)
         {
             SymbolIdOption = symbolId;
             ExchangeIdOption = exchangeId;
@@ -68,6 +72,10 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             CfiAttribute4Option = cfiAttribute4;
             CfiCategoryDescOption = cfiCategoryDesc;
             CfiGroupDescOption = cfiGroupDesc;
+            CfiAttribute1DescOption = cfiAttribute1Desc;
+            CfiAttribute2DescOption = cfiAttribute2Desc;
+            CfiAttribute3DescOption = cfiAttribute3Desc;
+            CfiAttribute4DescOption = cfiAttribute4Desc;
             OnCreated();
         }
 
@@ -269,6 +277,58 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
         public string? CfiGroupDesc { get { return this.CfiGroupDescOption; } }
 
         /// <summary>
+        /// Used to track the state of CfiAttribute1Desc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute1DescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute1Desc
+        /// </summary>
+        [JsonPropertyName("cfi_attribute1_desc")]
+        public string? CfiAttribute1Desc { get { return this.CfiAttribute1DescOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute2Desc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute2DescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute2Desc
+        /// </summary>
+        [JsonPropertyName("cfi_attribute2_desc")]
+        public string? CfiAttribute2Desc { get { return this.CfiAttribute2DescOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute3Desc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute3DescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute3Desc
+        /// </summary>
+        [JsonPropertyName("cfi_attribute3_desc")]
+        public string? CfiAttribute3Desc { get { return this.CfiAttribute3DescOption; } }
+
+        /// <summary>
+        /// Used to track the state of CfiAttribute4Desc
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CfiAttribute4DescOption { get; }
+
+        /// <summary>
+        /// Gets or Sets CfiAttribute4Desc
+        /// </summary>
+        [JsonPropertyName("cfi_attribute4_desc")]
+        public string? CfiAttribute4Desc { get { return this.CfiAttribute4DescOption; } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -297,6 +357,10 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             sb.Append("  CfiAttribute4: ").Append(CfiAttribute4).Append("\n");
             sb.Append("  CfiCategoryDesc: ").Append(CfiCategoryDesc).Append("\n");
             sb.Append("  CfiGroupDesc: ").Append(CfiGroupDesc).Append("\n");
+            sb.Append("  CfiAttribute1Desc: ").Append(CfiAttribute1Desc).Append("\n");
+            sb.Append("  CfiAttribute2Desc: ").Append(CfiAttribute2Desc).Append("\n");
+            sb.Append("  CfiAttribute3Desc: ").Append(CfiAttribute3Desc).Append("\n");
+            sb.Append("  CfiAttribute4Desc: ").Append(CfiAttribute4Desc).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -350,6 +414,10 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
             Option<string?> cfiAttribute4 = default;
             Option<string?> cfiCategoryDesc = default;
             Option<string?> cfiGroupDesc = default;
+            Option<string?> cfiAttribute1Desc = default;
+            Option<string?> cfiAttribute2Desc = default;
+            Option<string?> cfiAttribute3Desc = default;
+            Option<string?> cfiAttribute4Desc = default;
 
             while (utf8JsonReader.Read())
             {
@@ -411,13 +479,25 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
                         case "cfi_group_desc":
                             cfiGroupDesc = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "cfi_attribute1_desc":
+                            cfiAttribute1Desc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute2_desc":
+                            cfiAttribute2Desc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute3_desc":
+                            cfiAttribute3Desc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "cfi_attribute4_desc":
+                            cfiAttribute4Desc = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FinFeedAPISymbolModel(symbolId, exchangeId, securityCategory, name, date, assetClass, cfiCode, cfiCategory, cfiGroup, cfiAttribute1, cfiAttribute2, cfiAttribute3, cfiAttribute4, cfiCategoryDesc, cfiGroupDesc);
+            return new FinFeedAPISymbolModel(symbolId, exchangeId, securityCategory, name, date, assetClass, cfiCode, cfiCategory, cfiGroup, cfiAttribute1, cfiAttribute2, cfiAttribute3, cfiAttribute4, cfiCategoryDesc, cfiGroupDesc, cfiAttribute1Desc, cfiAttribute2Desc, cfiAttribute3Desc, cfiAttribute4Desc);
         }
 
         /// <summary>
@@ -533,6 +613,30 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Model
                     writer.WriteString("cfi_group_desc", finFeedAPISymbolModel.CfiGroupDesc);
                 else
                     writer.WriteNull("cfi_group_desc");
+
+            if (finFeedAPISymbolModel.CfiAttribute1DescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute1DescOption.Value != null)
+                    writer.WriteString("cfi_attribute1_desc", finFeedAPISymbolModel.CfiAttribute1Desc);
+                else
+                    writer.WriteNull("cfi_attribute1_desc");
+
+            if (finFeedAPISymbolModel.CfiAttribute2DescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute2DescOption.Value != null)
+                    writer.WriteString("cfi_attribute2_desc", finFeedAPISymbolModel.CfiAttribute2Desc);
+                else
+                    writer.WriteNull("cfi_attribute2_desc");
+
+            if (finFeedAPISymbolModel.CfiAttribute3DescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute3DescOption.Value != null)
+                    writer.WriteString("cfi_attribute3_desc", finFeedAPISymbolModel.CfiAttribute3Desc);
+                else
+                    writer.WriteNull("cfi_attribute3_desc");
+
+            if (finFeedAPISymbolModel.CfiAttribute4DescOption.IsSet)
+                if (finFeedAPISymbolModel.CfiAttribute4DescOption.Value != null)
+                    writer.WriteString("cfi_attribute4_desc", finFeedAPISymbolModel.CfiAttribute4Desc);
+                else
+                    writer.WriteNull("cfi_attribute4_desc");
         }
     }
 }

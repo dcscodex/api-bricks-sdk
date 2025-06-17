@@ -324,6 +324,34 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'cfi_attribute1_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute1_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute2_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute2_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute3_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute3_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cfi_attribute4_desc' => {
+        datatype => 'string',
+        base_name => 'cfi_attribute4_desc',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -341,7 +369,11 @@ __PACKAGE__->openapi_types( {
     'cfi_attribute3' => 'string',
     'cfi_attribute4' => 'string',
     'cfi_category_desc' => 'string',
-    'cfi_group_desc' => 'string'
+    'cfi_group_desc' => 'string',
+    'cfi_attribute1_desc' => 'string',
+    'cfi_attribute2_desc' => 'string',
+    'cfi_attribute3_desc' => 'string',
+    'cfi_attribute4_desc' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -359,7 +391,11 @@ __PACKAGE__->attribute_map( {
     'cfi_attribute3' => 'cfi_attribute3',
     'cfi_attribute4' => 'cfi_attribute4',
     'cfi_category_desc' => 'cfi_category_desc',
-    'cfi_group_desc' => 'cfi_group_desc'
+    'cfi_group_desc' => 'cfi_group_desc',
+    'cfi_attribute1_desc' => 'cfi_attribute1_desc',
+    'cfi_attribute2_desc' => 'cfi_attribute2_desc',
+    'cfi_attribute3_desc' => 'cfi_attribute3_desc',
+    'cfi_attribute4_desc' => 'cfi_attribute4_desc'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

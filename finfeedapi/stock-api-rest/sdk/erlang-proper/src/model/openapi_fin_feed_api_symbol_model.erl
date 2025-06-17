@@ -24,6 +24,10 @@
   | {'cfi_attribute4', binary() }
   | {'cfi_category_desc', binary() }
   | {'cfi_group_desc', binary() }
+  | {'cfi_attribute1_desc', binary() }
+  | {'cfi_attribute2_desc', binary() }
+  | {'cfi_attribute3_desc', binary() }
+  | {'cfi_attribute4_desc', binary() }
   ].
 
 
@@ -46,6 +50,10 @@ openapi_fin_feed_api_symbol_model(Fields) ->
             , {'cfi_attribute4', binary() }
             , {'cfi_category_desc', binary() }
             , {'cfi_group_desc', binary() }
+            , {'cfi_attribute1_desc', binary() }
+            , {'cfi_attribute2_desc', binary() }
+            , {'cfi_attribute3_desc', binary() }
+            , {'cfi_attribute4_desc', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

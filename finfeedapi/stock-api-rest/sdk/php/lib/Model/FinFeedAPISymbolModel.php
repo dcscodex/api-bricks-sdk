@@ -72,7 +72,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => 'string',
         'cfi_attribute4' => 'string',
         'cfi_category_desc' => 'string',
-        'cfi_group_desc' => 'string'
+        'cfi_group_desc' => 'string',
+        'cfi_attribute1_desc' => 'string',
+        'cfi_attribute2_desc' => 'string',
+        'cfi_attribute3_desc' => 'string',
+        'cfi_attribute4_desc' => 'string'
     ];
 
     /**
@@ -97,7 +101,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => null,
         'cfi_attribute4' => null,
         'cfi_category_desc' => null,
-        'cfi_group_desc' => null
+        'cfi_group_desc' => null,
+        'cfi_attribute1_desc' => null,
+        'cfi_attribute2_desc' => null,
+        'cfi_attribute3_desc' => null,
+        'cfi_attribute4_desc' => null
     ];
 
     /**
@@ -120,7 +128,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => true,
         'cfi_attribute4' => true,
         'cfi_category_desc' => true,
-        'cfi_group_desc' => true
+        'cfi_group_desc' => true,
+        'cfi_attribute1_desc' => true,
+        'cfi_attribute2_desc' => true,
+        'cfi_attribute3_desc' => true,
+        'cfi_attribute4_desc' => true
     ];
 
     /**
@@ -223,7 +235,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => 'cfi_attribute3',
         'cfi_attribute4' => 'cfi_attribute4',
         'cfi_category_desc' => 'cfi_category_desc',
-        'cfi_group_desc' => 'cfi_group_desc'
+        'cfi_group_desc' => 'cfi_group_desc',
+        'cfi_attribute1_desc' => 'cfi_attribute1_desc',
+        'cfi_attribute2_desc' => 'cfi_attribute2_desc',
+        'cfi_attribute3_desc' => 'cfi_attribute3_desc',
+        'cfi_attribute4_desc' => 'cfi_attribute4_desc'
     ];
 
     /**
@@ -246,7 +262,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => 'setCfiAttribute3',
         'cfi_attribute4' => 'setCfiAttribute4',
         'cfi_category_desc' => 'setCfiCategoryDesc',
-        'cfi_group_desc' => 'setCfiGroupDesc'
+        'cfi_group_desc' => 'setCfiGroupDesc',
+        'cfi_attribute1_desc' => 'setCfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'setCfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'setCfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'setCfiAttribute4Desc'
     ];
 
     /**
@@ -269,7 +289,11 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'cfi_attribute3' => 'getCfiAttribute3',
         'cfi_attribute4' => 'getCfiAttribute4',
         'cfi_category_desc' => 'getCfiCategoryDesc',
-        'cfi_group_desc' => 'getCfiGroupDesc'
+        'cfi_group_desc' => 'getCfiGroupDesc',
+        'cfi_attribute1_desc' => 'getCfiAttribute1Desc',
+        'cfi_attribute2_desc' => 'getCfiAttribute2Desc',
+        'cfi_attribute3_desc' => 'getCfiAttribute3Desc',
+        'cfi_attribute4_desc' => 'getCfiAttribute4Desc'
     ];
 
     /**
@@ -344,6 +368,10 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('cfi_attribute4', $data ?? [], null);
         $this->setIfExists('cfi_category_desc', $data ?? [], null);
         $this->setIfExists('cfi_group_desc', $data ?? [], null);
+        $this->setIfExists('cfi_attribute1_desc', $data ?? [], null);
+        $this->setIfExists('cfi_attribute2_desc', $data ?? [], null);
+        $this->setIfExists('cfi_attribute3_desc', $data ?? [], null);
+        $this->setIfExists('cfi_attribute4_desc', $data ?? [], null);
     }
 
     /**
@@ -894,6 +922,142 @@ class FinFeedAPISymbolModel implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['cfi_group_desc'] = $cfi_group_desc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute1_desc
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute1Desc()
+    {
+        return $this->container['cfi_attribute1_desc'];
+    }
+
+    /**
+     * Sets cfi_attribute1_desc
+     *
+     * @param string|null $cfi_attribute1_desc cfi_attribute1_desc
+     *
+     * @return self
+     */
+    public function setCfiAttribute1Desc($cfi_attribute1_desc)
+    {
+        if (is_null($cfi_attribute1_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute1_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute1_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute1_desc'] = $cfi_attribute1_desc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute2_desc
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute2Desc()
+    {
+        return $this->container['cfi_attribute2_desc'];
+    }
+
+    /**
+     * Sets cfi_attribute2_desc
+     *
+     * @param string|null $cfi_attribute2_desc cfi_attribute2_desc
+     *
+     * @return self
+     */
+    public function setCfiAttribute2Desc($cfi_attribute2_desc)
+    {
+        if (is_null($cfi_attribute2_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute2_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute2_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute2_desc'] = $cfi_attribute2_desc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute3_desc
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute3Desc()
+    {
+        return $this->container['cfi_attribute3_desc'];
+    }
+
+    /**
+     * Sets cfi_attribute3_desc
+     *
+     * @param string|null $cfi_attribute3_desc cfi_attribute3_desc
+     *
+     * @return self
+     */
+    public function setCfiAttribute3Desc($cfi_attribute3_desc)
+    {
+        if (is_null($cfi_attribute3_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute3_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute3_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute3_desc'] = $cfi_attribute3_desc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cfi_attribute4_desc
+     *
+     * @return string|null
+     */
+    public function getCfiAttribute4Desc()
+    {
+        return $this->container['cfi_attribute4_desc'];
+    }
+
+    /**
+     * Sets cfi_attribute4_desc
+     *
+     * @param string|null $cfi_attribute4_desc cfi_attribute4_desc
+     *
+     * @return self
+     */
+    public function setCfiAttribute4Desc($cfi_attribute4_desc)
+    {
+        if (is_null($cfi_attribute4_desc)) {
+            array_push($this->openAPINullablesSetToNull, 'cfi_attribute4_desc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cfi_attribute4_desc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cfi_attribute4_desc'] = $cfi_attribute4_desc;
 
         return $this;
     }

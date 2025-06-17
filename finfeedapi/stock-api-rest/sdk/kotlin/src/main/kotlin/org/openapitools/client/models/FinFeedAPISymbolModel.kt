@@ -37,6 +37,10 @@ import com.squareup.moshi.JsonClass
  * @param cfiAttribute4 
  * @param cfiCategoryDesc 
  * @param cfiGroupDesc 
+ * @param cfiAttribute1Desc 
+ * @param cfiAttribute2Desc 
+ * @param cfiAttribute3Desc 
+ * @param cfiAttribute4Desc 
  */
 
 
@@ -85,7 +89,19 @@ data class FinFeedAPISymbolModel (
     val cfiCategoryDesc: kotlin.String? = null,
 
     @Json(name = "cfi_group_desc")
-    val cfiGroupDesc: kotlin.String? = null
+    val cfiGroupDesc: kotlin.String? = null,
+
+    @Json(name = "cfi_attribute1_desc")
+    val cfiAttribute1Desc: kotlin.String? = null,
+
+    @Json(name = "cfi_attribute2_desc")
+    val cfiAttribute2Desc: kotlin.String? = null,
+
+    @Json(name = "cfi_attribute3_desc")
+    val cfiAttribute3Desc: kotlin.String? = null,
+
+    @Json(name = "cfi_attribute4_desc")
+    val cfiAttribute4Desc: kotlin.String? = null
 
 ) : kotlin.collections.HashMap<String, kotlin.Any>() {
 

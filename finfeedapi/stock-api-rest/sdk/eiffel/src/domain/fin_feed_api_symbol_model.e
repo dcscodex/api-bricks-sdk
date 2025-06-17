@@ -51,6 +51,14 @@ feature --Access
       
     cfi_group_desc: detachable STRING_32
       
+    cfi_attribute1_desc: detachable STRING_32
+      
+    cfi_attribute2_desc: detachable STRING_32
+      
+    cfi_attribute3_desc: detachable STRING_32
+      
+    cfi_attribute4_desc: detachable STRING_32
+      
 
 feature -- Change Element
 
@@ -174,6 +182,38 @@ feature -- Change Element
         cfi_group_desc_set: cfi_group_desc = a_name
       end
 
+    set_cfi_attribute1_desc (a_name: like cfi_attribute1_desc)
+        -- Set 'cfi_attribute1_desc' with 'a_name'.
+      do
+        cfi_attribute1_desc := a_name
+      ensure
+        cfi_attribute1_desc_set: cfi_attribute1_desc = a_name
+      end
+
+    set_cfi_attribute2_desc (a_name: like cfi_attribute2_desc)
+        -- Set 'cfi_attribute2_desc' with 'a_name'.
+      do
+        cfi_attribute2_desc := a_name
+      ensure
+        cfi_attribute2_desc_set: cfi_attribute2_desc = a_name
+      end
+
+    set_cfi_attribute3_desc (a_name: like cfi_attribute3_desc)
+        -- Set 'cfi_attribute3_desc' with 'a_name'.
+      do
+        cfi_attribute3_desc := a_name
+      ensure
+        cfi_attribute3_desc_set: cfi_attribute3_desc = a_name
+      end
+
+    set_cfi_attribute4_desc (a_name: like cfi_attribute4_desc)
+        -- Set 'cfi_attribute4_desc' with 'a_name'.
+      do
+        cfi_attribute4_desc := a_name
+      ensure
+        cfi_attribute4_desc_set: cfi_attribute4_desc = a_name
+      end
+
 
  feature -- Status Report
 
@@ -256,6 +296,26 @@ feature -- Change Element
         if attached cfi_group_desc as l_cfi_group_desc then
           Result.append ("%Ncfi_group_desc:")
           Result.append (l_cfi_group_desc.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute1_desc as l_cfi_attribute1_desc then
+          Result.append ("%Ncfi_attribute1_desc:")
+          Result.append (l_cfi_attribute1_desc.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute2_desc as l_cfi_attribute2_desc then
+          Result.append ("%Ncfi_attribute2_desc:")
+          Result.append (l_cfi_attribute2_desc.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute3_desc as l_cfi_attribute3_desc then
+          Result.append ("%Ncfi_attribute3_desc:")
+          Result.append (l_cfi_attribute3_desc.out)
+          Result.append ("%N")
+        end
+        if attached cfi_attribute4_desc as l_cfi_attribute4_desc then
+          Result.append ("%Ncfi_attribute4_desc:")
+          Result.append (l_cfi_attribute4_desc.out)
           Result.append ("%N")
         end
       end

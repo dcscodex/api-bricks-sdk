@@ -28,6 +28,10 @@ class FinFeedAPISymbolModel {
     this.cfiAttribute4,
     this.cfiCategoryDesc,
     this.cfiGroupDesc,
+    this.cfiAttribute1Desc,
+    this.cfiAttribute2Desc,
+    this.cfiAttribute3Desc,
+    this.cfiAttribute4Desc,
   });
 
   String? symbolId;
@@ -60,6 +64,14 @@ class FinFeedAPISymbolModel {
 
   String? cfiGroupDesc;
 
+  String? cfiAttribute1Desc;
+
+  String? cfiAttribute2Desc;
+
+  String? cfiAttribute3Desc;
+
+  String? cfiAttribute4Desc;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FinFeedAPISymbolModel &&
     other.symbolId == symbolId &&
@@ -76,7 +88,11 @@ class FinFeedAPISymbolModel {
     other.cfiAttribute3 == cfiAttribute3 &&
     other.cfiAttribute4 == cfiAttribute4 &&
     other.cfiCategoryDesc == cfiCategoryDesc &&
-    other.cfiGroupDesc == cfiGroupDesc;
+    other.cfiGroupDesc == cfiGroupDesc &&
+    other.cfiAttribute1Desc == cfiAttribute1Desc &&
+    other.cfiAttribute2Desc == cfiAttribute2Desc &&
+    other.cfiAttribute3Desc == cfiAttribute3Desc &&
+    other.cfiAttribute4Desc == cfiAttribute4Desc;
 
   @override
   int get hashCode =>
@@ -95,10 +111,14 @@ class FinFeedAPISymbolModel {
     (cfiAttribute3 == null ? 0 : cfiAttribute3!.hashCode) +
     (cfiAttribute4 == null ? 0 : cfiAttribute4!.hashCode) +
     (cfiCategoryDesc == null ? 0 : cfiCategoryDesc!.hashCode) +
-    (cfiGroupDesc == null ? 0 : cfiGroupDesc!.hashCode);
+    (cfiGroupDesc == null ? 0 : cfiGroupDesc!.hashCode) +
+    (cfiAttribute1Desc == null ? 0 : cfiAttribute1Desc!.hashCode) +
+    (cfiAttribute2Desc == null ? 0 : cfiAttribute2Desc!.hashCode) +
+    (cfiAttribute3Desc == null ? 0 : cfiAttribute3Desc!.hashCode) +
+    (cfiAttribute4Desc == null ? 0 : cfiAttribute4Desc!.hashCode);
 
   @override
-  String toString() => 'FinFeedAPISymbolModel[symbolId=$symbolId, exchangeId=$exchangeId, securityCategory=$securityCategory, name=$name, date=$date, assetClass=$assetClass, cfiCode=$cfiCode, cfiCategory=$cfiCategory, cfiGroup=$cfiGroup, cfiAttribute1=$cfiAttribute1, cfiAttribute2=$cfiAttribute2, cfiAttribute3=$cfiAttribute3, cfiAttribute4=$cfiAttribute4, cfiCategoryDesc=$cfiCategoryDesc, cfiGroupDesc=$cfiGroupDesc]';
+  String toString() => 'FinFeedAPISymbolModel[symbolId=$symbolId, exchangeId=$exchangeId, securityCategory=$securityCategory, name=$name, date=$date, assetClass=$assetClass, cfiCode=$cfiCode, cfiCategory=$cfiCategory, cfiGroup=$cfiGroup, cfiAttribute1=$cfiAttribute1, cfiAttribute2=$cfiAttribute2, cfiAttribute3=$cfiAttribute3, cfiAttribute4=$cfiAttribute4, cfiCategoryDesc=$cfiCategoryDesc, cfiGroupDesc=$cfiGroupDesc, cfiAttribute1Desc=$cfiAttribute1Desc, cfiAttribute2Desc=$cfiAttribute2Desc, cfiAttribute3Desc=$cfiAttribute3Desc, cfiAttribute4Desc=$cfiAttribute4Desc]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -177,6 +197,26 @@ class FinFeedAPISymbolModel {
     } else {
       json[r'cfi_group_desc'] = null;
     }
+    if (this.cfiAttribute1Desc != null) {
+      json[r'cfi_attribute1_desc'] = this.cfiAttribute1Desc;
+    } else {
+      json[r'cfi_attribute1_desc'] = null;
+    }
+    if (this.cfiAttribute2Desc != null) {
+      json[r'cfi_attribute2_desc'] = this.cfiAttribute2Desc;
+    } else {
+      json[r'cfi_attribute2_desc'] = null;
+    }
+    if (this.cfiAttribute3Desc != null) {
+      json[r'cfi_attribute3_desc'] = this.cfiAttribute3Desc;
+    } else {
+      json[r'cfi_attribute3_desc'] = null;
+    }
+    if (this.cfiAttribute4Desc != null) {
+      json[r'cfi_attribute4_desc'] = this.cfiAttribute4Desc;
+    } else {
+      json[r'cfi_attribute4_desc'] = null;
+    }
     return json;
   }
 
@@ -214,6 +254,10 @@ class FinFeedAPISymbolModel {
         cfiAttribute4: mapValueOfType<String>(json, r'cfi_attribute4'),
         cfiCategoryDesc: mapValueOfType<String>(json, r'cfi_category_desc'),
         cfiGroupDesc: mapValueOfType<String>(json, r'cfi_group_desc'),
+        cfiAttribute1Desc: mapValueOfType<String>(json, r'cfi_attribute1_desc'),
+        cfiAttribute2Desc: mapValueOfType<String>(json, r'cfi_attribute2_desc'),
+        cfiAttribute3Desc: mapValueOfType<String>(json, r'cfi_attribute3_desc'),
+        cfiAttribute4Desc: mapValueOfType<String>(json, r'cfi_attribute4_desc'),
       );
     }
     return null;

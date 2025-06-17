@@ -158,4 +158,36 @@ public class FinFeedAPISymbolModelTest {
         // TODO: test cfiGroupDesc
     }
 
+    /**
+     * Test the property 'cfiAttribute1Desc'
+     */
+    @Test
+    public void cfiAttribute1DescTest() {
+        // TODO: test cfiAttribute1Desc
+    }
+
+    /**
+     * Test the property 'cfiAttribute2Desc'
+     */
+    @Test
+    public void cfiAttribute2DescTest() {
+        // TODO: test cfiAttribute2Desc
+    }
+
+    /**
+     * Test the property 'cfiAttribute3Desc'
+     */
+    @Test
+    public void cfiAttribute3DescTest() {
+        // TODO: test cfiAttribute3Desc
+    }
+
+    /**
+     * Test the property 'cfiAttribute4Desc'
+     */
+    @Test
+    public void cfiAttribute4DescTest() {
+        // TODO: test cfiAttribute4Desc
+    }
+
 }

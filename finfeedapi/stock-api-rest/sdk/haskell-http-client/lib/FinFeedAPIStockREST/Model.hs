@@ -979,6 +979,10 @@ data FinFeedAPISymbolModel = FinFeedAPISymbolModel
   , finFeedAPISymbolModelCfiAttribute4 :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute4"
   , finFeedAPISymbolModelCfiCategoryDesc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_category_desc"
   , finFeedAPISymbolModelCfiGroupDesc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_group_desc"
+  , finFeedAPISymbolModelCfiAttribute1Desc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute1_desc"
+  , finFeedAPISymbolModelCfiAttribute2Desc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute2_desc"
+  , finFeedAPISymbolModelCfiAttribute3Desc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute3_desc"
+  , finFeedAPISymbolModelCfiAttribute4Desc :: !(Maybe Text) -- ^ /ReadOnly/ "cfi_attribute4_desc"
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON FinFeedAPISymbolModel
@@ -1000,6 +1004,10 @@ instance A.FromJSON FinFeedAPISymbolModel where
       <*> (o .:? "cfi_attribute4")
       <*> (o .:? "cfi_category_desc")
       <*> (o .:? "cfi_group_desc")
+      <*> (o .:? "cfi_attribute1_desc")
+      <*> (o .:? "cfi_attribute2_desc")
+      <*> (o .:? "cfi_attribute3_desc")
+      <*> (o .:? "cfi_attribute4_desc")
 
 -- | ToJSON FinFeedAPISymbolModel
 instance A.ToJSON FinFeedAPISymbolModel where
@@ -1020,6 +1028,10 @@ instance A.ToJSON FinFeedAPISymbolModel where
       , "cfi_attribute4" .= finFeedAPISymbolModelCfiAttribute4
       , "cfi_category_desc" .= finFeedAPISymbolModelCfiCategoryDesc
       , "cfi_group_desc" .= finFeedAPISymbolModelCfiGroupDesc
+      , "cfi_attribute1_desc" .= finFeedAPISymbolModelCfiAttribute1Desc
+      , "cfi_attribute2_desc" .= finFeedAPISymbolModelCfiAttribute2Desc
+      , "cfi_attribute3_desc" .= finFeedAPISymbolModelCfiAttribute3Desc
+      , "cfi_attribute4_desc" .= finFeedAPISymbolModelCfiAttribute4Desc
       ]
 
 
@@ -1043,6 +1055,10 @@ mkFinFeedAPISymbolModel =
   , finFeedAPISymbolModelCfiAttribute4 = Nothing
   , finFeedAPISymbolModelCfiCategoryDesc = Nothing
   , finFeedAPISymbolModelCfiGroupDesc = Nothing
+  , finFeedAPISymbolModelCfiAttribute1Desc = Nothing
+  , finFeedAPISymbolModelCfiAttribute2Desc = Nothing
+  , finFeedAPISymbolModelCfiAttribute3Desc = Nothing
+  , finFeedAPISymbolModelCfiAttribute4Desc = Nothing
   }
 
 -- ** Level1QuoteUpdateModel

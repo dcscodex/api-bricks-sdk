@@ -144,6 +144,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property cfiAttribute1Desc (base name: "cfi_attribute1_desc")', function() {
+      // uncomment below and update the code to test the property cfiAttribute1Desc
+      //var instance = new FinFeedApiStockRestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute2Desc (base name: "cfi_attribute2_desc")', function() {
+      // uncomment below and update the code to test the property cfiAttribute2Desc
+      //var instance = new FinFeedApiStockRestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute3Desc (base name: "cfi_attribute3_desc")', function() {
+      // uncomment below and update the code to test the property cfiAttribute3Desc
+      //var instance = new FinFeedApiStockRestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cfiAttribute4Desc (base name: "cfi_attribute4_desc")', function() {
+      // uncomment below and update the code to test the property cfiAttribute4Desc
+      //var instance = new FinFeedApiStockRestApi.FinFeedAPISymbolModel();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

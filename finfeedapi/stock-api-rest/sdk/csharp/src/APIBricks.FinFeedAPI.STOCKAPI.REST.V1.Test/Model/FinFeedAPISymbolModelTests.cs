@@ -188,5 +188,41 @@ namespace APIBricks.FinFeedAPI.STOCKAPI.REST.V1.Test.Model
         {
             // TODO unit test for the property 'CfiGroupDesc'
         }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute1Desc'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute1DescTest()
+        {
+            // TODO unit test for the property 'CfiAttribute1Desc'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute2Desc'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute2DescTest()
+        {
+            // TODO unit test for the property 'CfiAttribute2Desc'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute3Desc'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute3DescTest()
+        {
+            // TODO unit test for the property 'CfiAttribute3Desc'
+        }
+
+        /// <summary>
+        /// Test the property 'CfiAttribute4Desc'
+        /// </summary>
+        [Fact]
+        public void CfiAttribute4DescTest()
+        {
+            // TODO unit test for the property 'CfiAttribute4Desc'
+        }
     }
 }

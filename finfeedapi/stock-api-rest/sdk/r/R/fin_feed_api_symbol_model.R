@@ -22,6 +22,10 @@
 #' @field cfi_attribute4  character [optional]
 #' @field cfi_category_desc  character [optional]
 #' @field cfi_group_desc  character [optional]
+#' @field cfi_attribute1_desc  character [optional]
+#' @field cfi_attribute2_desc  character [optional]
+#' @field cfi_attribute3_desc  character [optional]
+#' @field cfi_attribute4_desc  character [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
@@ -46,7 +50,11 @@ FinFeedAPISymbolModel <- R6::R6Class(
     `cfi_attribute4` = NULL,
     `cfi_category_desc` = NULL,
     `cfi_group_desc` = NULL,
-    `_field_list` = c("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc"),
+    `cfi_attribute1_desc` = NULL,
+    `cfi_attribute2_desc` = NULL,
+    `cfi_attribute3_desc` = NULL,
+    `cfi_attribute4_desc` = NULL,
+    `_field_list` = c("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc", "cfi_attribute1_desc", "cfi_attribute2_desc", "cfi_attribute3_desc", "cfi_attribute4_desc"),
     `additional_properties` = list(),
 
     #' @description
@@ -67,9 +75,13 @@ FinFeedAPISymbolModel <- R6::R6Class(
     #' @param cfi_attribute4 cfi_attribute4
     #' @param cfi_category_desc cfi_category_desc
     #' @param cfi_group_desc cfi_group_desc
+    #' @param cfi_attribute1_desc cfi_attribute1_desc
+    #' @param cfi_attribute2_desc cfi_attribute2_desc
+    #' @param cfi_attribute3_desc cfi_attribute3_desc
+    #' @param cfi_attribute4_desc cfi_attribute4_desc
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
-    initialize = function(`symbol_id` = NULL, `exchange_id` = NULL, `security_category` = NULL, `name` = NULL, `date` = NULL, `asset_class` = NULL, `cfi_code` = NULL, `cfi_category` = NULL, `cfi_group` = NULL, `cfi_attribute1` = NULL, `cfi_attribute2` = NULL, `cfi_attribute3` = NULL, `cfi_attribute4` = NULL, `cfi_category_desc` = NULL, `cfi_group_desc` = NULL, additional_properties = NULL, ...) {
+    initialize = function(`symbol_id` = NULL, `exchange_id` = NULL, `security_category` = NULL, `name` = NULL, `date` = NULL, `asset_class` = NULL, `cfi_code` = NULL, `cfi_category` = NULL, `cfi_group` = NULL, `cfi_attribute1` = NULL, `cfi_attribute2` = NULL, `cfi_attribute3` = NULL, `cfi_attribute4` = NULL, `cfi_category_desc` = NULL, `cfi_group_desc` = NULL, `cfi_attribute1_desc` = NULL, `cfi_attribute2_desc` = NULL, `cfi_attribute3_desc` = NULL, `cfi_attribute4_desc` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`symbol_id`)) {
         if (!(is.character(`symbol_id`) && length(`symbol_id`) == 1)) {
           stop(paste("Error! Invalid data for `symbol_id`. Must be a string:", `symbol_id`))
@@ -159,6 +171,30 @@ FinFeedAPISymbolModel <- R6::R6Class(
           stop(paste("Error! Invalid data for `cfi_group_desc`. Must be a string:", `cfi_group_desc`))
         }
         self$`cfi_group_desc` <- `cfi_group_desc`
+      }
+      if (!is.null(`cfi_attribute1_desc`)) {
+        if (!(is.character(`cfi_attribute1_desc`) && length(`cfi_attribute1_desc`) == 1)) {
+          stop(paste("Error! Invalid data for `cfi_attribute1_desc`. Must be a string:", `cfi_attribute1_desc`))
+        }
+        self$`cfi_attribute1_desc` <- `cfi_attribute1_desc`
+      }
+      if (!is.null(`cfi_attribute2_desc`)) {
+        if (!(is.character(`cfi_attribute2_desc`) && length(`cfi_attribute2_desc`) == 1)) {
+          stop(paste("Error! Invalid data for `cfi_attribute2_desc`. Must be a string:", `cfi_attribute2_desc`))
+        }
+        self$`cfi_attribute2_desc` <- `cfi_attribute2_desc`
+      }
+      if (!is.null(`cfi_attribute3_desc`)) {
+        if (!(is.character(`cfi_attribute3_desc`) && length(`cfi_attribute3_desc`) == 1)) {
+          stop(paste("Error! Invalid data for `cfi_attribute3_desc`. Must be a string:", `cfi_attribute3_desc`))
+        }
+        self$`cfi_attribute3_desc` <- `cfi_attribute3_desc`
+      }
+      if (!is.null(`cfi_attribute4_desc`)) {
+        if (!(is.character(`cfi_attribute4_desc`) && length(`cfi_attribute4_desc`) == 1)) {
+          stop(paste("Error! Invalid data for `cfi_attribute4_desc`. Must be a string:", `cfi_attribute4_desc`))
+        }
+        self$`cfi_attribute4_desc` <- `cfi_attribute4_desc`
       }
       if (!is.null(additional_properties)) {
         for (key in names(additional_properties)) {
@@ -258,6 +294,22 @@ FinFeedAPISymbolModel <- R6::R6Class(
         FinFeedAPISymbolModelObject[["cfi_group_desc"]] <-
           self$`cfi_group_desc`
       }
+      if (!is.null(self$`cfi_attribute1_desc`)) {
+        FinFeedAPISymbolModelObject[["cfi_attribute1_desc"]] <-
+          self$`cfi_attribute1_desc`
+      }
+      if (!is.null(self$`cfi_attribute2_desc`)) {
+        FinFeedAPISymbolModelObject[["cfi_attribute2_desc"]] <-
+          self$`cfi_attribute2_desc`
+      }
+      if (!is.null(self$`cfi_attribute3_desc`)) {
+        FinFeedAPISymbolModelObject[["cfi_attribute3_desc"]] <-
+          self$`cfi_attribute3_desc`
+      }
+      if (!is.null(self$`cfi_attribute4_desc`)) {
+        FinFeedAPISymbolModelObject[["cfi_attribute4_desc"]] <-
+          self$`cfi_attribute4_desc`
+      }
       for (key in names(self$additional_properties)) {
         FinFeedAPISymbolModelObject[[key]] <- self$additional_properties[[key]]
       }
@@ -317,6 +369,18 @@ FinFeedAPISymbolModel <- R6::R6Class(
       if (!is.null(this_object$`cfi_group_desc`)) {
         self$`cfi_group_desc` <- this_object$`cfi_group_desc`
       }
+      if (!is.null(this_object$`cfi_attribute1_desc`)) {
+        self$`cfi_attribute1_desc` <- this_object$`cfi_attribute1_desc`
+      }
+      if (!is.null(this_object$`cfi_attribute2_desc`)) {
+        self$`cfi_attribute2_desc` <- this_object$`cfi_attribute2_desc`
+      }
+      if (!is.null(this_object$`cfi_attribute3_desc`)) {
+        self$`cfi_attribute3_desc` <- this_object$`cfi_attribute3_desc`
+      }
+      if (!is.null(this_object$`cfi_attribute4_desc`)) {
+        self$`cfi_attribute4_desc` <- this_object$`cfi_attribute4_desc`
+      }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
         if (!(key %in% self$`_field_list`)) { # json key not in list of fields
@@ -363,6 +427,10 @@ FinFeedAPISymbolModel <- R6::R6Class(
       self$`cfi_attribute4` <- this_object$`cfi_attribute4`
       self$`cfi_category_desc` <- this_object$`cfi_category_desc`
       self$`cfi_group_desc` <- this_object$`cfi_group_desc`
+      self$`cfi_attribute1_desc` <- this_object$`cfi_attribute1_desc`
+      self$`cfi_attribute2_desc` <- this_object$`cfi_attribute2_desc`
+      self$`cfi_attribute3_desc` <- this_object$`cfi_attribute3_desc`
+      self$`cfi_attribute4_desc` <- this_object$`cfi_attribute4_desc`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
         if (!(key %in% self$`_field_list`)) { # json key not in list of fields

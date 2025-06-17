@@ -45,6 +45,14 @@ No description available.
 No description available.
 .PARAMETER CfiGroupDesc
 No description available.
+.PARAMETER CfiAttribute1Desc
+No description available.
+.PARAMETER CfiAttribute2Desc
+No description available.
+.PARAMETER CfiAttribute3Desc
+No description available.
+.PARAMETER CfiAttribute4Desc
+No description available.
 .OUTPUTS
 
 FinFeedAPISymbolModel<PSCustomObject>
@@ -97,7 +105,19 @@ function Initialize-FinFeedAPISymbolModel {
         ${CfiCategoryDesc},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${CfiGroupDesc}
+        ${CfiGroupDesc},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute1Desc},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute2Desc},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute3Desc},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CfiAttribute4Desc}
     )
 
     Process {
@@ -121,6 +141,10 @@ function Initialize-FinFeedAPISymbolModel {
             "cfi_attribute4" = ${CfiAttribute4}
             "cfi_category_desc" = ${CfiCategoryDesc}
             "cfi_group_desc" = ${CfiGroupDesc}
+            "cfi_attribute1_desc" = ${CfiAttribute1Desc}
+            "cfi_attribute2_desc" = ${CfiAttribute2Desc}
+            "cfi_attribute3_desc" = ${CfiAttribute3Desc}
+            "cfi_attribute4_desc" = ${CfiAttribute4Desc}
         }
 
 
@@ -159,7 +183,7 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
         $FinFeedAPISymbolModelAdditionalProperties = @{}
 
         # check if Json contains properties not defined in FinFeedAPISymbolModel
-        $AllProperties = ("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc")
+        $AllProperties = ("symbol_id", "exchange_id", "security_category", "name", "date", "asset_class", "cfi_code", "cfi_category", "cfi_group", "cfi_attribute1", "cfi_attribute2", "cfi_attribute3", "cfi_attribute4", "cfi_category_desc", "cfi_group_desc", "cfi_attribute1_desc", "cfi_attribute2_desc", "cfi_attribute3_desc", "cfi_attribute4_desc")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             # store undefined properties in additionalProperties
             if (!($AllProperties.Contains($name))) {
@@ -257,6 +281,30 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
             $CfiGroupDesc = $JsonParameters.PSobject.Properties["cfi_group_desc"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute1_desc"))) { #optional property not found
+            $CfiAttribute1Desc = $null
+        } else {
+            $CfiAttribute1Desc = $JsonParameters.PSobject.Properties["cfi_attribute1_desc"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute2_desc"))) { #optional property not found
+            $CfiAttribute2Desc = $null
+        } else {
+            $CfiAttribute2Desc = $JsonParameters.PSobject.Properties["cfi_attribute2_desc"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute3_desc"))) { #optional property not found
+            $CfiAttribute3Desc = $null
+        } else {
+            $CfiAttribute3Desc = $JsonParameters.PSobject.Properties["cfi_attribute3_desc"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cfi_attribute4_desc"))) { #optional property not found
+            $CfiAttribute4Desc = $null
+        } else {
+            $CfiAttribute4Desc = $JsonParameters.PSobject.Properties["cfi_attribute4_desc"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "symbol_id" = ${SymbolId}
             "exchange_id" = ${ExchangeId}
@@ -273,6 +321,10 @@ function ConvertFrom-JsonToFinFeedAPISymbolModel {
             "cfi_attribute4" = ${CfiAttribute4}
             "cfi_category_desc" = ${CfiCategoryDesc}
             "cfi_group_desc" = ${CfiGroupDesc}
+            "cfi_attribute1_desc" = ${CfiAttribute1Desc}
+            "cfi_attribute2_desc" = ${CfiAttribute2Desc}
+            "cfi_attribute3_desc" = ${CfiAttribute3Desc}
+            "cfi_attribute4_desc" = ${CfiAttribute4Desc}
             "AdditionalProperties" = $FinFeedAPISymbolModelAdditionalProperties
         }
 

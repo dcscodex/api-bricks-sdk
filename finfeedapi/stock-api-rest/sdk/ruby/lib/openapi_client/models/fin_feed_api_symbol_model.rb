@@ -45,6 +45,14 @@ module OpenapiClient
 
     attr_accessor :cfi_group_desc
 
+    attr_accessor :cfi_attribute1_desc
+
+    attr_accessor :cfi_attribute2_desc
+
+    attr_accessor :cfi_attribute3_desc
+
+    attr_accessor :cfi_attribute4_desc
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -62,7 +70,11 @@ module OpenapiClient
         :'cfi_attribute3' => :'cfi_attribute3',
         :'cfi_attribute4' => :'cfi_attribute4',
         :'cfi_category_desc' => :'cfi_category_desc',
-        :'cfi_group_desc' => :'cfi_group_desc'
+        :'cfi_group_desc' => :'cfi_group_desc',
+        :'cfi_attribute1_desc' => :'cfi_attribute1_desc',
+        :'cfi_attribute2_desc' => :'cfi_attribute2_desc',
+        :'cfi_attribute3_desc' => :'cfi_attribute3_desc',
+        :'cfi_attribute4_desc' => :'cfi_attribute4_desc'
       }
     end
 
@@ -93,7 +105,11 @@ module OpenapiClient
         :'cfi_attribute3' => :'String',
         :'cfi_attribute4' => :'String',
         :'cfi_category_desc' => :'String',
-        :'cfi_group_desc' => :'String'
+        :'cfi_group_desc' => :'String',
+        :'cfi_attribute1_desc' => :'String',
+        :'cfi_attribute2_desc' => :'String',
+        :'cfi_attribute3_desc' => :'String',
+        :'cfi_attribute4_desc' => :'String'
       }
     end
 
@@ -114,7 +130,11 @@ module OpenapiClient
         :'cfi_attribute3',
         :'cfi_attribute4',
         :'cfi_category_desc',
-        :'cfi_group_desc'
+        :'cfi_group_desc',
+        :'cfi_attribute1_desc',
+        :'cfi_attribute2_desc',
+        :'cfi_attribute3_desc',
+        :'cfi_attribute4_desc'
       ])
     end
 
@@ -193,6 +213,22 @@ module OpenapiClient
       if attributes.key?(:'cfi_group_desc')
         self.cfi_group_desc = attributes[:'cfi_group_desc']
       end
+
+      if attributes.key?(:'cfi_attribute1_desc')
+        self.cfi_attribute1_desc = attributes[:'cfi_attribute1_desc']
+      end
+
+      if attributes.key?(:'cfi_attribute2_desc')
+        self.cfi_attribute2_desc = attributes[:'cfi_attribute2_desc']
+      end
+
+      if attributes.key?(:'cfi_attribute3_desc')
+        self.cfi_attribute3_desc = attributes[:'cfi_attribute3_desc']
+      end
+
+      if attributes.key?(:'cfi_attribute4_desc')
+        self.cfi_attribute4_desc = attributes[:'cfi_attribute4_desc']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -229,7 +265,11 @@ module OpenapiClient
           cfi_attribute3 == o.cfi_attribute3 &&
           cfi_attribute4 == o.cfi_attribute4 &&
           cfi_category_desc == o.cfi_category_desc &&
-          cfi_group_desc == o.cfi_group_desc
+          cfi_group_desc == o.cfi_group_desc &&
+          cfi_attribute1_desc == o.cfi_attribute1_desc &&
+          cfi_attribute2_desc == o.cfi_attribute2_desc &&
+          cfi_attribute3_desc == o.cfi_attribute3_desc &&
+          cfi_attribute4_desc == o.cfi_attribute4_desc
     end
 
     # @see the `==` method
@@ -241,7 +281,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [symbol_id, exchange_id, security_category, name, date, asset_class, cfi_code, cfi_category, cfi_group, cfi_attribute1, cfi_attribute2, cfi_attribute3, cfi_attribute4, cfi_category_desc, cfi_group_desc].hash
+      [symbol_id, exchange_id, security_category, name, date, asset_class, cfi_code, cfi_category, cfi_group, cfi_attribute1, cfi_attribute2, cfi_attribute3, cfi_attribute4, cfi_category_desc, cfi_group_desc, cfi_attribute1_desc, cfi_attribute2_desc, cfi_attribute3_desc, cfi_attribute4_desc].hash
     end
 
     # Builds the object from hash

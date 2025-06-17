@@ -45,4 +45,12 @@ export interface FinFeedAPISymbolModel {
 
     cfi_group_desc?: string;
 
+    cfi_attribute1_desc?: string;
+
+    cfi_attribute2_desc?: string;
+
+    cfi_attribute3_desc?: string;
+
+    cfi_attribute4_desc?: string;
+
 }

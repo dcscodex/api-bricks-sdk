@@ -19,7 +19,7 @@ local function cast_fin_feed_api_symbol_model(t)
 	return setmetatable(t, fin_feed_api_symbol_model_mt)
 end
 
-local function new_fin_feed_api_symbol_model(symbol_id, exchange_id, security_category, name, date, asset_class, cfi_code, cfi_category, cfi_group, cfi_attribute1, cfi_attribute2, cfi_attribute3, cfi_attribute4, cfi_category_desc, cfi_group_desc)
+local function new_fin_feed_api_symbol_model(symbol_id, exchange_id, security_category, name, date, asset_class, cfi_code, cfi_category, cfi_group, cfi_attribute1, cfi_attribute2, cfi_attribute3, cfi_attribute4, cfi_category_desc, cfi_group_desc, cfi_attribute1_desc, cfi_attribute2_desc, cfi_attribute3_desc, cfi_attribute4_desc)
 	return cast_fin_feed_api_symbol_model({
 		["symbol_id"] = symbol_id;
 		["exchange_id"] = exchange_id;
@@ -36,6 +36,10 @@ local function new_fin_feed_api_symbol_model(symbol_id, exchange_id, security_ca
 		["cfi_attribute4"] = cfi_attribute4;
 		["cfi_category_desc"] = cfi_category_desc;
 		["cfi_group_desc"] = cfi_group_desc;
+		["cfi_attribute1_desc"] = cfi_attribute1_desc;
+		["cfi_attribute2_desc"] = cfi_attribute2_desc;
+		["cfi_attribute3_desc"] = cfi_attribute3_desc;
+		["cfi_attribute4_desc"] = cfi_attribute4_desc;
 	})
 end
 

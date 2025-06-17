@@ -19,7 +19,11 @@
        'cfi_attribute3' => binary(),
        'cfi_attribute4' => binary(),
        'cfi_category_desc' => binary(),
-       'cfi_group_desc' => binary()
+       'cfi_group_desc' => binary(),
+       'cfi_attribute1_desc' => binary(),
+       'cfi_attribute2_desc' => binary(),
+       'cfi_attribute3_desc' => binary(),
+       'cfi_attribute4_desc' => binary()
      }.
 
 encode(#{ 'symbol_id' := SymbolId,
@@ -36,7 +40,11 @@ encode(#{ 'symbol_id' := SymbolId,
           'cfi_attribute3' := CfiAttribute3,
           'cfi_attribute4' := CfiAttribute4,
           'cfi_category_desc' := CfiCategoryDesc,
-          'cfi_group_desc' := CfiGroupDesc
+          'cfi_group_desc' := CfiGroupDesc,
+          'cfi_attribute1_desc' := CfiAttribute1Desc,
+          'cfi_attribute2_desc' := CfiAttribute2Desc,
+          'cfi_attribute3_desc' := CfiAttribute3Desc,
+          'cfi_attribute4_desc' := CfiAttribute4Desc
         }) ->
     #{ 'symbol_id' => SymbolId,
        'exchange_id' => ExchangeId,
@@ -52,5 +60,9 @@ encode(#{ 'symbol_id' := SymbolId,
        'cfi_attribute3' => CfiAttribute3,
        'cfi_attribute4' => CfiAttribute4,
        'cfi_category_desc' => CfiCategoryDesc,
-       'cfi_group_desc' => CfiGroupDesc
+       'cfi_group_desc' => CfiGroupDesc,
+       'cfi_attribute1_desc' => CfiAttribute1Desc,
+       'cfi_attribute2_desc' => CfiAttribute2Desc,
+       'cfi_attribute3_desc' => CfiAttribute3Desc,
+       'cfi_attribute4_desc' => CfiAttribute4Desc
      }.

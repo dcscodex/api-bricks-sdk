@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * FinFeedAPISymbolModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-16T09:39:05.567262125Z[Etc/UTC]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-17T06:09:15.825717697Z[Etc/UTC]", comments = "Generator version: 7.13.0")
 public class FinFeedAPISymbolModel {
   public static final String SERIALIZED_NAME_SYMBOL_ID = "symbol_id";
   @SerializedName(SERIALIZED_NAME_SYMBOL_ID)
@@ -126,6 +126,26 @@ public class FinFeedAPISymbolModel {
   @javax.annotation.Nullable
   private String cfiGroupDesc;
 
+  public static final String SERIALIZED_NAME_CFI_ATTRIBUTE1_DESC = "cfi_attribute1_desc";
+  @SerializedName(SERIALIZED_NAME_CFI_ATTRIBUTE1_DESC)
+  @javax.annotation.Nullable
+  private String cfiAttribute1Desc;
+
+  public static final String SERIALIZED_NAME_CFI_ATTRIBUTE2_DESC = "cfi_attribute2_desc";
+  @SerializedName(SERIALIZED_NAME_CFI_ATTRIBUTE2_DESC)
+  @javax.annotation.Nullable
+  private String cfiAttribute2Desc;
+
+  public static final String SERIALIZED_NAME_CFI_ATTRIBUTE3_DESC = "cfi_attribute3_desc";
+  @SerializedName(SERIALIZED_NAME_CFI_ATTRIBUTE3_DESC)
+  @javax.annotation.Nullable
+  private String cfiAttribute3Desc;
+
+  public static final String SERIALIZED_NAME_CFI_ATTRIBUTE4_DESC = "cfi_attribute4_desc";
+  @SerializedName(SERIALIZED_NAME_CFI_ATTRIBUTE4_DESC)
+  @javax.annotation.Nullable
+  private String cfiAttribute4Desc;
+
   public FinFeedAPISymbolModel() {
   }
 
@@ -138,7 +158,11 @@ public class FinFeedAPISymbolModel {
      String cfiAttribute3, 
      String cfiAttribute4, 
      String cfiCategoryDesc, 
-     String cfiGroupDesc
+     String cfiGroupDesc, 
+     String cfiAttribute1Desc, 
+     String cfiAttribute2Desc, 
+     String cfiAttribute3Desc, 
+     String cfiAttribute4Desc
   ) {
     this();
     this.securityCategory = securityCategory;
@@ -150,6 +174,10 @@ public class FinFeedAPISymbolModel {
     this.cfiAttribute4 = cfiAttribute4;
     this.cfiCategoryDesc = cfiCategoryDesc;
     this.cfiGroupDesc = cfiGroupDesc;
+    this.cfiAttribute1Desc = cfiAttribute1Desc;
+    this.cfiAttribute2Desc = cfiAttribute2Desc;
+    this.cfiAttribute3Desc = cfiAttribute3Desc;
+    this.cfiAttribute4Desc = cfiAttribute4Desc;
   }
 
   public FinFeedAPISymbolModel symbolId(@javax.annotation.Nullable String symbolId) {
@@ -364,6 +392,50 @@ public class FinFeedAPISymbolModel {
   }
 
 
+
+  /**
+   * Get cfiAttribute1Desc
+   * @return cfiAttribute1Desc
+   */
+  @javax.annotation.Nullable
+  public String getCfiAttribute1Desc() {
+    return cfiAttribute1Desc;
+  }
+
+
+
+  /**
+   * Get cfiAttribute2Desc
+   * @return cfiAttribute2Desc
+   */
+  @javax.annotation.Nullable
+  public String getCfiAttribute2Desc() {
+    return cfiAttribute2Desc;
+  }
+
+
+
+  /**
+   * Get cfiAttribute3Desc
+   * @return cfiAttribute3Desc
+   */
+  @javax.annotation.Nullable
+  public String getCfiAttribute3Desc() {
+    return cfiAttribute3Desc;
+  }
+
+
+
+  /**
+   * Get cfiAttribute4Desc
+   * @return cfiAttribute4Desc
+   */
+  @javax.annotation.Nullable
+  public String getCfiAttribute4Desc() {
+    return cfiAttribute4Desc;
+  }
+
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -433,7 +505,11 @@ public class FinFeedAPISymbolModel {
         Objects.equals(this.cfiAttribute3, finFeedAPISymbolModel.cfiAttribute3) &&
         Objects.equals(this.cfiAttribute4, finFeedAPISymbolModel.cfiAttribute4) &&
         Objects.equals(this.cfiCategoryDesc, finFeedAPISymbolModel.cfiCategoryDesc) &&
-        Objects.equals(this.cfiGroupDesc, finFeedAPISymbolModel.cfiGroupDesc)&&
+        Objects.equals(this.cfiGroupDesc, finFeedAPISymbolModel.cfiGroupDesc) &&
+        Objects.equals(this.cfiAttribute1Desc, finFeedAPISymbolModel.cfiAttribute1Desc) &&
+        Objects.equals(this.cfiAttribute2Desc, finFeedAPISymbolModel.cfiAttribute2Desc) &&
+        Objects.equals(this.cfiAttribute3Desc, finFeedAPISymbolModel.cfiAttribute3Desc) &&
+        Objects.equals(this.cfiAttribute4Desc, finFeedAPISymbolModel.cfiAttribute4Desc)&&
         Objects.equals(this.additionalProperties, finFeedAPISymbolModel.additionalProperties);
   }
 
@@ -443,7 +519,7 @@ public class FinFeedAPISymbolModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbolId, exchangeId, securityCategory, name, date, assetClass, cfiCode, cfiCategory, cfiGroup, cfiAttribute1, cfiAttribute2, cfiAttribute3, cfiAttribute4, cfiCategoryDesc, cfiGroupDesc, additionalProperties);
+    return Objects.hash(symbolId, exchangeId, securityCategory, name, date, assetClass, cfiCode, cfiCategory, cfiGroup, cfiAttribute1, cfiAttribute2, cfiAttribute3, cfiAttribute4, cfiCategoryDesc, cfiGroupDesc, cfiAttribute1Desc, cfiAttribute2Desc, cfiAttribute3Desc, cfiAttribute4Desc, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -472,6 +548,10 @@ public class FinFeedAPISymbolModel {
     sb.append("    cfiAttribute4: ").append(toIndentedString(cfiAttribute4)).append("\n");
     sb.append("    cfiCategoryDesc: ").append(toIndentedString(cfiCategoryDesc)).append("\n");
     sb.append("    cfiGroupDesc: ").append(toIndentedString(cfiGroupDesc)).append("\n");
+    sb.append("    cfiAttribute1Desc: ").append(toIndentedString(cfiAttribute1Desc)).append("\n");
+    sb.append("    cfiAttribute2Desc: ").append(toIndentedString(cfiAttribute2Desc)).append("\n");
+    sb.append("    cfiAttribute3Desc: ").append(toIndentedString(cfiAttribute3Desc)).append("\n");
+    sb.append("    cfiAttribute4Desc: ").append(toIndentedString(cfiAttribute4Desc)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -510,6 +590,10 @@ public class FinFeedAPISymbolModel {
     openapiFields.add("cfi_attribute4");
     openapiFields.add("cfi_category_desc");
     openapiFields.add("cfi_group_desc");
+    openapiFields.add("cfi_attribute1_desc");
+    openapiFields.add("cfi_attribute2_desc");
+    openapiFields.add("cfi_attribute3_desc");
+    openapiFields.add("cfi_attribute4_desc");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -572,6 +656,18 @@ public class FinFeedAPISymbolModel {
       }
       if ((jsonObj.get("cfi_group_desc") != null && !jsonObj.get("cfi_group_desc").isJsonNull()) && !jsonObj.get("cfi_group_desc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cfi_group_desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cfi_group_desc").toString()));
+      }
+      if ((jsonObj.get("cfi_attribute1_desc") != null && !jsonObj.get("cfi_attribute1_desc").isJsonNull()) && !jsonObj.get("cfi_attribute1_desc").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cfi_attribute1_desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cfi_attribute1_desc").toString()));
+      }
+      if ((jsonObj.get("cfi_attribute2_desc") != null && !jsonObj.get("cfi_attribute2_desc").isJsonNull()) && !jsonObj.get("cfi_attribute2_desc").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cfi_attribute2_desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cfi_attribute2_desc").toString()));
+      }
+      if ((jsonObj.get("cfi_attribute3_desc") != null && !jsonObj.get("cfi_attribute3_desc").isJsonNull()) && !jsonObj.get("cfi_attribute3_desc").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cfi_attribute3_desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cfi_attribute3_desc").toString()));
+      }
+      if ((jsonObj.get("cfi_attribute4_desc") != null && !jsonObj.get("cfi_attribute4_desc").isJsonNull()) && !jsonObj.get("cfi_attribute4_desc").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cfi_attribute4_desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cfi_attribute4_desc").toString()));
       }
   }
 

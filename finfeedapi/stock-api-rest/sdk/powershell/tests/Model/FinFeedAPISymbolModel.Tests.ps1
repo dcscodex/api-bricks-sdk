@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'FinFeedAPISymbolModel' {
     Context 'FinFeedAPISymbolModel' {
         It 'Initialize-FinFeedAPISymbolModel' {
             # a simple test to create an object
-            #$NewObject = Initialize-FinFeedAPISymbolModel -SymbolId "TEST_VALUE" -ExchangeId "TEST_VALUE" -SecurityCategory "TEST_VALUE" -Name "TEST_VALUE" -Date "TEST_VALUE" -AssetClass "TEST_VALUE" -CfiCode "TEST_VALUE" -CfiCategory "TEST_VALUE" -CfiGroup "TEST_VALUE" -CfiAttribute1 "TEST_VALUE" -CfiAttribute2 "TEST_VALUE" -CfiAttribute3 "TEST_VALUE" -CfiAttribute4 "TEST_VALUE" -CfiCategoryDesc "TEST_VALUE" -CfiGroupDesc "TEST_VALUE"
+            #$NewObject = Initialize-FinFeedAPISymbolModel -SymbolId "TEST_VALUE" -ExchangeId "TEST_VALUE" -SecurityCategory "TEST_VALUE" -Name "TEST_VALUE" -Date "TEST_VALUE" -AssetClass "TEST_VALUE" -CfiCode "TEST_VALUE" -CfiCategory "TEST_VALUE" -CfiGroup "TEST_VALUE" -CfiAttribute1 "TEST_VALUE" -CfiAttribute2 "TEST_VALUE" -CfiAttribute3 "TEST_VALUE" -CfiAttribute4 "TEST_VALUE" -CfiCategoryDesc "TEST_VALUE" -CfiGroupDesc "TEST_VALUE" -CfiAttribute1Desc "TEST_VALUE" -CfiAttribute2Desc "TEST_VALUE" -CfiAttribute3Desc "TEST_VALUE" -CfiAttribute4Desc "TEST_VALUE"
             #$NewObject | Should -BeOfType FinFeedAPISymbolModel
             #$NewObject.property | Should -Be 0
         }

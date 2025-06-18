@@ -44,9 +44,9 @@ export(V1Trade)
 
 # APIs
 export(ExchangeRatesApi)
-export(ExternalMetricsApi)
 export(MetadataApi)
-export(MetricsApi)
+export(MetricsV1Api)
+export(MetricsV2Api)
 export(OhlcvApi)
 export(OptionsApi)
 export(OrderBookApi)

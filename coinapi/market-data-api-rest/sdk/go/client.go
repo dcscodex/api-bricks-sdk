@@ -52,11 +52,11 @@ type APIClient struct {
 
 	ExchangeRatesAPI *ExchangeRatesAPIService
 
-	ExternalMetricsAPI *ExternalMetricsAPIService
-
 	MetadataAPI *MetadataAPIService
 
-	MetricsAPI *MetricsAPIService
+	MetricsV1API *MetricsV1APIService
+
+	MetricsV2API *MetricsV2APIService
 
 	OhlcvAPI *OhlcvAPIService
 
@@ -88,9 +88,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ExchangeRatesAPI = (*ExchangeRatesAPIService)(&c.common)
-	c.ExternalMetricsAPI = (*ExternalMetricsAPIService)(&c.common)
 	c.MetadataAPI = (*MetadataAPIService)(&c.common)
-	c.MetricsAPI = (*MetricsAPIService)(&c.common)
+	c.MetricsV1API = (*MetricsV1APIService)(&c.common)
+	c.MetricsV2API = (*MetricsV2APIService)(&c.common)
 	c.OhlcvAPI = (*OhlcvAPIService)(&c.common)
 	c.OptionsAPI = (*OptionsAPIService)(&c.common)
 	c.OrderBookAPI = (*OrderBookAPIService)(&c.common)

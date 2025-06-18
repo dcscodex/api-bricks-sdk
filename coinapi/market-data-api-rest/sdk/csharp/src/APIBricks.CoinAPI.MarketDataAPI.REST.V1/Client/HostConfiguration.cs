@@ -77,12 +77,12 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Client
             _services.AddSingleton<IApiFactory, ApiFactory>();
             _services.AddSingleton<ExchangeRatesApiEvents>();
             _services.AddTransient<IExchangeRatesApi, ExchangeRatesApi>();
-            _services.AddSingleton<ExternalMetricsApiEvents>();
-            _services.AddTransient<IExternalMetricsApi, ExternalMetricsApi>();
             _services.AddSingleton<MetadataApiEvents>();
             _services.AddTransient<IMetadataApi, MetadataApi>();
-            _services.AddSingleton<MetricsApiEvents>();
-            _services.AddTransient<IMetricsApi, MetricsApi>();
+            _services.AddSingleton<MetricsV1ApiEvents>();
+            _services.AddTransient<IMetricsV1Api, MetricsV1Api>();
+            _services.AddSingleton<MetricsV2ApiEvents>();
+            _services.AddTransient<IMetricsV2Api, MetricsV2Api>();
             _services.AddSingleton<OhlcvApiEvents>();
             _services.AddTransient<IOhlcvApi, OhlcvApi>();
             _services.AddSingleton<OptionsApiEvents>();
@@ -113,9 +113,9 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Client
             List<IHttpClientBuilder> builders = new List<IHttpClientBuilder>();
 
             builders.Add(_services.AddHttpClient<IExchangeRatesApi, ExchangeRatesApi>(client));
-            builders.Add(_services.AddHttpClient<IExternalMetricsApi, ExternalMetricsApi>(client));
             builders.Add(_services.AddHttpClient<IMetadataApi, MetadataApi>(client));
-            builders.Add(_services.AddHttpClient<IMetricsApi, MetricsApi>(client));
+            builders.Add(_services.AddHttpClient<IMetricsV1Api, MetricsV1Api>(client));
+            builders.Add(_services.AddHttpClient<IMetricsV2Api, MetricsV2Api>(client));
             builders.Add(_services.AddHttpClient<IOhlcvApi, OhlcvApi>(client));
             builders.Add(_services.AddHttpClient<IOptionsApi, OptionsApi>(client));
             builders.Add(_services.AddHttpClient<IOrderBookApi, OrderBookApi>(client));

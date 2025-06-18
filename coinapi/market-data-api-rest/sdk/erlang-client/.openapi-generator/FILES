@@ -3,9 +3,9 @@ README.md
 rebar.config
 src/openapi.app.src
 src/openapi_exchange_rates_api.erl
-src/openapi_external_metrics_api.erl
 src/openapi_metadata_api.erl
-src/openapi_metrics_api.erl
+src/openapi_metrics_v1_api.erl
+src/openapi_metrics_v2_api.erl
 src/openapi_models_exchange_timeseries_item.erl
 src/openapi_ohlcv_api.erl
 src/openapi_options_api.erl

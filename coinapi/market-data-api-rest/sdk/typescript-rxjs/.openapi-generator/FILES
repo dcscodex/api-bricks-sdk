@@ -1,9 +1,9 @@
 .gitignore
 .openapi-generator-ignore
 apis/ExchangeRatesApi.ts
-apis/ExternalMetricsApi.ts
 apis/MetadataApi.ts
-apis/MetricsApi.ts
+apis/MetricsV1Api.ts
+apis/MetricsV2Api.ts
 apis/OhlcvApi.ts
 apis/OptionsApi.ts
 apis/OrderBookApi.ts

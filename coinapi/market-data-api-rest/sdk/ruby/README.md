@@ -98,13 +98,6 @@ Class | Method | HTTP request | Description
 *OpenapiClient::ExchangeRatesApi* | [**v1_exchangerate_asset_id_base_asset_id_quote_history_get**](docs/ExchangeRatesApi.md#v1_exchangerate_asset_id_base_asset_id_quote_history_get) | **GET** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *OpenapiClient::ExchangeRatesApi* | [**v1_exchangerate_asset_id_base_get**](docs/ExchangeRatesApi.md#v1_exchangerate_asset_id_base_get) | **GET** /v1/exchangerate/{asset_id_base} | Get all current rates
 *OpenapiClient::ExchangeRatesApi* | [**v1_exchangerate_history_periods_get**](docs/ExchangeRatesApi.md#v1_exchangerate_history_periods_get) | **GET** /v1/exchangerate/history/periods | Timeseries periods
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_asset_history_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_asset_history_get) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_asset_listing_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_asset_listing_get) | **GET** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_chain_history_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_chain_history_get) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_chain_listing_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_chain_listing_get) | **GET** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_exchange_history_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_history_get) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_exchange_listing_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_exchange_listing_get) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
-*OpenapiClient::ExternalMetricsApi* | [**v1_externalmetrics_listing_get**](docs/ExternalMetricsApi.md#v1_externalmetrics_listing_get) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics
 *OpenapiClient::MetadataApi* | [**v1_assets_asset_id_get**](docs/MetadataApi.md#v1_assets_asset_id_get) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 *OpenapiClient::MetadataApi* | [**v1_assets_get**](docs/MetadataApi.md#v1_assets_get) | **GET** /v1/assets | List all assets
 *OpenapiClient::MetadataApi* | [**v1_assets_icons_size_get**](docs/MetadataApi.md#v1_assets_icons_size_get) | **GET** /v1/assets/icons/{size} | List all asset icons
@@ -116,16 +109,23 @@ Class | Method | HTTP request | Description
 *OpenapiClient::MetadataApi* | [**v1_symbols_exchange_id_get**](docs/MetadataApi.md#v1_symbols_exchange_id_get) | **GET** /v1/symbols/{exchange_id} | List of symbols for the exchange
 *OpenapiClient::MetadataApi* | [**v1_symbols_get**](docs/MetadataApi.md#v1_symbols_get) | **GET** /v1/symbols | List all symbols
 *OpenapiClient::MetadataApi* | [**v1_symbols_map_exchange_id_get**](docs/MetadataApi.md#v1_symbols_map_exchange_id_get) | **GET** /v1/symbols/map/{exchange_id} | List symbol mapping for the exchange
-*OpenapiClient::MetricsApi* | [**v1_metrics_asset_current_get**](docs/MetricsApi.md#v1_metrics_asset_current_get) | **GET** /v1/metrics/asset/current | Current metrics for given asset
-*OpenapiClient::MetricsApi* | [**v1_metrics_asset_history_get**](docs/MetricsApi.md#v1_metrics_asset_history_get) | **GET** /v1/metrics/asset/history | Historical metrics for asset
-*OpenapiClient::MetricsApi* | [**v1_metrics_asset_listing_get**](docs/MetricsApi.md#v1_metrics_asset_listing_get) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
-*OpenapiClient::MetricsApi* | [**v1_metrics_exchange_current_get**](docs/MetricsApi.md#v1_metrics_exchange_current_get) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
-*OpenapiClient::MetricsApi* | [**v1_metrics_exchange_history_get**](docs/MetricsApi.md#v1_metrics_exchange_history_get) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
-*OpenapiClient::MetricsApi* | [**v1_metrics_exchange_listing_get**](docs/MetricsApi.md#v1_metrics_exchange_listing_get) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
-*OpenapiClient::MetricsApi* | [**v1_metrics_listing_get**](docs/MetricsApi.md#v1_metrics_listing_get) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
-*OpenapiClient::MetricsApi* | [**v1_metrics_symbol_current_get**](docs/MetricsApi.md#v1_metrics_symbol_current_get) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
-*OpenapiClient::MetricsApi* | [**v1_metrics_symbol_history_get**](docs/MetricsApi.md#v1_metrics_symbol_history_get) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
-*OpenapiClient::MetricsApi* | [**v1_metrics_symbol_listing_get**](docs/MetricsApi.md#v1_metrics_symbol_listing_get) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_asset_current_get**](docs/MetricsV1Api.md#v1_metrics_asset_current_get) | **GET** /v1/metrics/asset/current | Current metrics for given asset
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_asset_history_get**](docs/MetricsV1Api.md#v1_metrics_asset_history_get) | **GET** /v1/metrics/asset/history | Historical metrics for asset
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_asset_listing_get**](docs/MetricsV1Api.md#v1_metrics_asset_listing_get) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_exchange_current_get**](docs/MetricsV1Api.md#v1_metrics_exchange_current_get) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_exchange_history_get**](docs/MetricsV1Api.md#v1_metrics_exchange_history_get) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_exchange_listing_get**](docs/MetricsV1Api.md#v1_metrics_exchange_listing_get) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_listing_get**](docs/MetricsV1Api.md#v1_metrics_listing_get) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_symbol_current_get**](docs/MetricsV1Api.md#v1_metrics_symbol_current_get) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_symbol_history_get**](docs/MetricsV1Api.md#v1_metrics_symbol_history_get) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
+*OpenapiClient::MetricsV1Api* | [**v1_metrics_symbol_listing_get**](docs/MetricsV1Api.md#v1_metrics_symbol_listing_get) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_asset_history_get**](docs/MetricsV2Api.md#v2_metrics_asset_history_get) | **GET** /v2/metrics/asset/history | Historical metrics for the asset
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_asset_listing_get**](docs/MetricsV2Api.md#v2_metrics_asset_listing_get) | **GET** /v2/metrics/asset/listing | Listing of metrics available for specific asset
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_chain_history_get**](docs/MetricsV2Api.md#v2_metrics_chain_history_get) | **GET** /v2/metrics/chain/history | Historical metrics for the chain
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_chain_listing_get**](docs/MetricsV2Api.md#v2_metrics_chain_listing_get) | **GET** /v2/metrics/chain/listing | Listing of metrics available for specific chain
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_exchange_history_get**](docs/MetricsV2Api.md#v2_metrics_exchange_history_get) | **GET** /v2/metrics/exchange/history | Historical metrics for the exchange
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_exchange_listing_get**](docs/MetricsV2Api.md#v2_metrics_exchange_listing_get) | **GET** /v2/metrics/exchange/listing | Listing of metrics available for specific exchange
+*OpenapiClient::MetricsV2Api* | [**v2_metrics_listing_get**](docs/MetricsV2Api.md#v2_metrics_listing_get) | **GET** /v2/metrics/listing | Listing of all supported metrics
 *OpenapiClient::OhlcvApi* | [**v1_ohlcv_exchanges_exchange_id_history_get**](docs/OhlcvApi.md#v1_ohlcv_exchanges_exchange_id_history_get) | **GET** /v1/ohlcv/exchanges/{exchange_id}/history | Historical data by exchange
 *OpenapiClient::OhlcvApi* | [**v1_ohlcv_periods_get**](docs/OhlcvApi.md#v1_ohlcv_periods_get) | **GET** /v1/ohlcv/periods | List all periods
 *OpenapiClient::OhlcvApi* | [**v1_ohlcv_symbol_id_history_get**](docs/OhlcvApi.md#v1_ohlcv_symbol_id_history_get) | **GET** /v1/ohlcv/{symbol_id}/history | Historical data

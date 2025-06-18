@@ -8,9 +8,9 @@ git_push.sh
 lib/CoinAPIMarketDataREST.hs
 lib/CoinAPIMarketDataREST/API.hs
 lib/CoinAPIMarketDataREST/API/ExchangeRates.hs
-lib/CoinAPIMarketDataREST/API/ExternalMetrics.hs
 lib/CoinAPIMarketDataREST/API/Metadata.hs
-lib/CoinAPIMarketDataREST/API/Metrics.hs
+lib/CoinAPIMarketDataREST/API/MetricsV1.hs
+lib/CoinAPIMarketDataREST/API/MetricsV2.hs
 lib/CoinAPIMarketDataREST/API/Ohlcv.hs
 lib/CoinAPIMarketDataREST/API/Options.hs
 lib/CoinAPIMarketDataREST/API/OrderBook.hs

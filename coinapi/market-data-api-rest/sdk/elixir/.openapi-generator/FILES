@@ -5,9 +5,9 @@ README.md
 config/config.exs
 config/runtime.exs
 lib/coin_api_market_data_restapi/api/exchange_rates.ex
-lib/coin_api_market_data_restapi/api/external_metrics.ex
 lib/coin_api_market_data_restapi/api/metadata.ex
-lib/coin_api_market_data_restapi/api/metrics.ex
+lib/coin_api_market_data_restapi/api/metrics_v1.ex
+lib/coin_api_market_data_restapi/api/metrics_v2.ex
 lib/coin_api_market_data_restapi/api/ohlcv.ex
 lib/coin_api_market_data_restapi/api/options.ex
 lib/coin_api_market_data_restapi/api/order_book.ex

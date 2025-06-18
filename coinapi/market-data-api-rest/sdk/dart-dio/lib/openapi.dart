@@ -11,9 +11,9 @@ export 'package:openapi/src/serializers.dart';
 export 'package:openapi/src/model/date.dart';
 
 export 'package:openapi/src/api/exchange_rates_api.dart';
-export 'package:openapi/src/api/external_metrics_api.dart';
 export 'package:openapi/src/api/metadata_api.dart';
-export 'package:openapi/src/api/metrics_api.dart';
+export 'package:openapi/src/api/metrics_v1_api.dart';
+export 'package:openapi/src/api/metrics_v2_api.dart';
 export 'package:openapi/src/api/ohlcv_api.dart';
 export 'package:openapi/src/api/options_api.dart';
 export 'package:openapi/src/api/order_book_api.dart';

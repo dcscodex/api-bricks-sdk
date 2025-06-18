@@ -19,9 +19,9 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from api_bricks_coinapi_market_data_api_rest.api.exchange_rates_api import ExchangeRatesApi
-from api_bricks_coinapi_market_data_api_rest.api.external_metrics_api import ExternalMetricsApi
 from api_bricks_coinapi_market_data_api_rest.api.metadata_api import MetadataApi
-from api_bricks_coinapi_market_data_api_rest.api.metrics_api import MetricsApi
+from api_bricks_coinapi_market_data_api_rest.api.metrics_v1_api import MetricsV1Api
+from api_bricks_coinapi_market_data_api_rest.api.metrics_v2_api import MetricsV2Api
 from api_bricks_coinapi_market_data_api_rest.api.ohlcv_api import OhlcvApi
 from api_bricks_coinapi_market_data_api_rest.api.options_api import OptionsApi
 from api_bricks_coinapi_market_data_api_rest.api.order_book_api import OrderBookApi

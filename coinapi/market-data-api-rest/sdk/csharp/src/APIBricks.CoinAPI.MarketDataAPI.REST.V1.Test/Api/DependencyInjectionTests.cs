@@ -86,14 +86,14 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test.Api
             var exchangeRatesApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IExchangeRatesApi>();
             Assert.True(exchangeRatesApi.HttpClient.BaseAddress != null);
 
-            var externalMetricsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IExternalMetricsApi>();
-            Assert.True(externalMetricsApi.HttpClient.BaseAddress != null);
-
             var metadataApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMetadataApi>();
             Assert.True(metadataApi.HttpClient.BaseAddress != null);
 
-            var metricsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMetricsApi>();
-            Assert.True(metricsApi.HttpClient.BaseAddress != null);
+            var metricsV1Api = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMetricsV1Api>();
+            Assert.True(metricsV1Api.HttpClient.BaseAddress != null);
+
+            var metricsV2Api = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMetricsV2Api>();
+            Assert.True(metricsV2Api.HttpClient.BaseAddress != null);
 
             var ohlcvApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IOhlcvApi>();
             Assert.True(ohlcvApi.HttpClient.BaseAddress != null);
@@ -123,14 +123,14 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test.Api
             var exchangeRatesApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IExchangeRatesApi>();
             Assert.True(exchangeRatesApi.HttpClient.BaseAddress != null);
 
-            var externalMetricsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IExternalMetricsApi>();
-            Assert.True(externalMetricsApi.HttpClient.BaseAddress != null);
-
             var metadataApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMetadataApi>();
             Assert.True(metadataApi.HttpClient.BaseAddress != null);
 
-            var metricsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMetricsApi>();
-            Assert.True(metricsApi.HttpClient.BaseAddress != null);
+            var metricsV1Api = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMetricsV1Api>();
+            Assert.True(metricsV1Api.HttpClient.BaseAddress != null);
+
+            var metricsV2Api = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMetricsV2Api>();
+            Assert.True(metricsV2Api.HttpClient.BaseAddress != null);
 
             var ohlcvApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IOhlcvApi>();
             Assert.True(ohlcvApi.HttpClient.BaseAddress != null);
@@ -160,14 +160,14 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test.Api
             var exchangeRatesApi = _hostUsingAddWithAClient.Services.GetRequiredService<IExchangeRatesApi>();
             Assert.True(exchangeRatesApi.HttpClient.BaseAddress != null);
             
-            var externalMetricsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IExternalMetricsApi>();
-            Assert.True(externalMetricsApi.HttpClient.BaseAddress != null);
-            
             var metadataApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMetadataApi>();
             Assert.True(metadataApi.HttpClient.BaseAddress != null);
             
-            var metricsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMetricsApi>();
-            Assert.True(metricsApi.HttpClient.BaseAddress != null);
+            var metricsV1Api = _hostUsingAddWithAClient.Services.GetRequiredService<IMetricsV1Api>();
+            Assert.True(metricsV1Api.HttpClient.BaseAddress != null);
+            
+            var metricsV2Api = _hostUsingAddWithAClient.Services.GetRequiredService<IMetricsV2Api>();
+            Assert.True(metricsV2Api.HttpClient.BaseAddress != null);
             
             var ohlcvApi = _hostUsingAddWithAClient.Services.GetRequiredService<IOhlcvApi>();
             Assert.True(ohlcvApi.HttpClient.BaseAddress != null);
@@ -197,14 +197,14 @@ namespace APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test.Api
             var exchangeRatesApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IExchangeRatesApi>();
             Assert.True(exchangeRatesApi.HttpClient.BaseAddress != null);
 
-            var externalMetricsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IExternalMetricsApi>();
-            Assert.True(externalMetricsApi.HttpClient.BaseAddress != null);
-
             var metadataApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMetadataApi>();
             Assert.True(metadataApi.HttpClient.BaseAddress != null);
 
-            var metricsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMetricsApi>();
-            Assert.True(metricsApi.HttpClient.BaseAddress != null);
+            var metricsV1Api = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMetricsV1Api>();
+            Assert.True(metricsV1Api.HttpClient.BaseAddress != null);
+
+            var metricsV2Api = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMetricsV2Api>();
+            Assert.True(metricsV2Api.HttpClient.BaseAddress != null);
 
             var ohlcvApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IOhlcvApi>();
             Assert.True(ohlcvApi.HttpClient.BaseAddress != null);

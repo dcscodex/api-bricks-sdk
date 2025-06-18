@@ -4,9 +4,9 @@
 README.md
 analysis_options.yaml
 doc/ExchangeRatesApi.md
-doc/ExternalMetricsApi.md
 doc/MetadataApi.md
-doc/MetricsApi.md
+doc/MetricsV1Api.md
+doc/MetricsV2Api.md
 doc/ModelsExchangeTimeseriesItem.md
 doc/OhlcvApi.md
 doc/OptionsApi.md
@@ -44,9 +44,9 @@ doc/V1Trade.md
 git_push.sh
 lib/api.dart
 lib/api/exchange_rates_api.dart
-lib/api/external_metrics_api.dart
 lib/api/metadata_api.dart
-lib/api/metrics_api.dart
+lib/api/metrics_v1_api.dart
+lib/api/metrics_v2_api.dart
 lib/api/ohlcv_api.dart
 lib/api/options_api.dart
 lib/api/order_book_api.dart
@@ -91,9 +91,9 @@ lib/model/v1_timeseries_period.dart
 lib/model/v1_trade.dart
 pubspec.yaml
 test/exchange_rates_api_test.dart
-test/external_metrics_api_test.dart
 test/metadata_api_test.dart
-test/metrics_api_test.dart
+test/metrics_v1_api_test.dart
+test/metrics_v2_api_test.dart
 test/models_exchange_timeseries_item_test.dart
 test/ohlcv_api_test.dart
 test/options_api_test.dart

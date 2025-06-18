@@ -7,9 +7,9 @@ api/openapi.yaml
 build.gradle
 build.sbt
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -67,9 +67,9 @@ src/main/java/org/openapitools/client/ServerConfiguration.java
 src/main/java/org/openapitools/client/ServerVariable.java
 src/main/java/org/openapitools/client/StringUtil.java
 src/main/java/org/openapitools/client/api/ExchangeRatesApi.java
-src/main/java/org/openapitools/client/api/ExternalMetricsApi.java
 src/main/java/org/openapitools/client/api/MetadataApi.java
-src/main/java/org/openapitools/client/api/MetricsApi.java
+src/main/java/org/openapitools/client/api/MetricsV1Api.java
+src/main/java/org/openapitools/client/api/MetricsV2Api.java
 src/main/java/org/openapitools/client/api/OhlcvApi.java
 src/main/java/org/openapitools/client/api/OptionsApi.java
 src/main/java/org/openapitools/client/api/OrderBookApi.java
@@ -110,9 +110,9 @@ src/main/java/org/openapitools/client/model/V1TimeseriesItem.java
 src/main/java/org/openapitools/client/model/V1TimeseriesPeriod.java
 src/main/java/org/openapitools/client/model/V1Trade.java
 src/test/java/org/openapitools/client/api/ExchangeRatesApiTest.java
-src/test/java/org/openapitools/client/api/ExternalMetricsApiTest.java
 src/test/java/org/openapitools/client/api/MetadataApiTest.java
-src/test/java/org/openapitools/client/api/MetricsApiTest.java
+src/test/java/org/openapitools/client/api/MetricsV1ApiTest.java
+src/test/java/org/openapitools/client/api/MetricsV2ApiTest.java
 src/test/java/org/openapitools/client/api/OhlcvApiTest.java
 src/test/java/org/openapitools/client/api/OptionsApiTest.java
 src/test/java/org/openapitools/client/api/OrderBookApiTest.java

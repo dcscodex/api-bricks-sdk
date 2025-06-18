@@ -5,9 +5,9 @@ elm.json
 src/Api.elm
 src/Api/Data.elm
 src/Api/Request/ExchangeRates.elm
-src/Api/Request/ExternalMetrics.elm
 src/Api/Request/Metadata.elm
-src/Api/Request/Metrics.elm
+src/Api/Request/MetricsV1.elm
+src/Api/Request/MetricsV2.elm
 src/Api/Request/Ohlcv.elm
 src/Api/Request/Options.elm
 src/Api/Request/OrderBook.elm

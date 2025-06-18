@@ -15,9 +15,9 @@ Module : CoinAPIMarketDataREST.API
 
 module CoinAPIMarketDataREST.API
   ( module CoinAPIMarketDataREST.API.ExchangeRates
-  , module CoinAPIMarketDataREST.API.ExternalMetrics
   , module CoinAPIMarketDataREST.API.Metadata
-  , module CoinAPIMarketDataREST.API.Metrics
+  , module CoinAPIMarketDataREST.API.MetricsV1
+  , module CoinAPIMarketDataREST.API.MetricsV2
   , module CoinAPIMarketDataREST.API.Ohlcv
   , module CoinAPIMarketDataREST.API.Options
   , module CoinAPIMarketDataREST.API.OrderBook
@@ -27,9 +27,9 @@ module CoinAPIMarketDataREST.API
   ) where
 
 import CoinAPIMarketDataREST.API.ExchangeRates
-import CoinAPIMarketDataREST.API.ExternalMetrics
 import CoinAPIMarketDataREST.API.Metadata
-import CoinAPIMarketDataREST.API.Metrics
+import CoinAPIMarketDataREST.API.MetricsV1
+import CoinAPIMarketDataREST.API.MetricsV2
 import CoinAPIMarketDataREST.API.Ohlcv
 import CoinAPIMarketDataREST.API.Options
 import CoinAPIMarketDataREST.API.OrderBook

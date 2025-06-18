@@ -109,30 +109,6 @@ operation_parameters_minimum_occurrences["v1ExchangerateAssetIdBaseGet:::asset_i
 operation_parameters_minimum_occurrences["v1ExchangerateAssetIdBaseGet:::filter_asset_id"]=0
 operation_parameters_minimum_occurrences["v1ExchangerateAssetIdBaseGet:::invert"]=0
 operation_parameters_minimum_occurrences["v1ExchangerateAssetIdBaseGet:::time"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::metric_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::asset_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_start"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_end"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_format"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::period_id"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetHistoryGet:::limit"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsAssetListingGet:::asset_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::metric_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::chain_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::time_start"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::time_end"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::time_format"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::period_id"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainHistoryGet:::limit"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsChainListingGet:::chain_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::metric_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::exchange_id"]=1
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_start"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_end"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_format"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::period_id"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeHistoryGet:::limit"]=0
-operation_parameters_minimum_occurrences["v1ExternalmetricsExchangeListingGet:::exchange_id"]=1
 operation_parameters_minimum_occurrences["v1AssetsAssetIdGet:::asset_id"]=1
 operation_parameters_minimum_occurrences["v1AssetsGet:::filter_asset_id"]=0
 operation_parameters_minimum_occurrences["v1AssetsIconsSizeGet:::size"]=1
@@ -191,6 +167,30 @@ operation_parameters_minimum_occurrences["v1MetricsSymbolHistoryGet:::limit"]=0
 operation_parameters_minimum_occurrences["v1MetricsSymbolListingGet:::metric_id"]=0
 operation_parameters_minimum_occurrences["v1MetricsSymbolListingGet:::exchange_id"]=0
 operation_parameters_minimum_occurrences["v1MetricsSymbolListingGet:::symbol_id"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::metric_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::asset_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::time_start"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::time_end"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::time_format"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::period_id"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetHistoryGet:::limit"]=0
+operation_parameters_minimum_occurrences["v2MetricsAssetListingGet:::asset_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::metric_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::chain_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::time_start"]=0
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::time_end"]=0
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::time_format"]=0
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::period_id"]=0
+operation_parameters_minimum_occurrences["v2MetricsChainHistoryGet:::limit"]=0
+operation_parameters_minimum_occurrences["v2MetricsChainListingGet:::chain_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::metric_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::exchange_id"]=1
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::time_start"]=0
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::time_end"]=0
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::time_format"]=0
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::period_id"]=0
+operation_parameters_minimum_occurrences["v2MetricsExchangeHistoryGet:::limit"]=0
+operation_parameters_minimum_occurrences["v2MetricsExchangeListingGet:::exchange_id"]=1
 operation_parameters_minimum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::exchange_id"]=1
 operation_parameters_minimum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::period_id"]=1
 operation_parameters_minimum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::time_start"]=1
@@ -267,30 +267,6 @@ operation_parameters_maximum_occurrences["v1ExchangerateAssetIdBaseGet:::asset_i
 operation_parameters_maximum_occurrences["v1ExchangerateAssetIdBaseGet:::filter_asset_id"]=0
 operation_parameters_maximum_occurrences["v1ExchangerateAssetIdBaseGet:::invert"]=0
 operation_parameters_maximum_occurrences["v1ExchangerateAssetIdBaseGet:::time"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::metric_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::asset_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_start"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_end"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::time_format"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::period_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetHistoryGet:::limit"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsAssetListingGet:::asset_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::metric_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::chain_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::time_start"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::time_end"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::time_format"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::period_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainHistoryGet:::limit"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsChainListingGet:::chain_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::metric_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::exchange_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_start"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_end"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::time_format"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::period_id"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeHistoryGet:::limit"]=0
-operation_parameters_maximum_occurrences["v1ExternalmetricsExchangeListingGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1AssetsAssetIdGet:::asset_id"]=0
 operation_parameters_maximum_occurrences["v1AssetsGet:::filter_asset_id"]=0
 operation_parameters_maximum_occurrences["v1AssetsIconsSizeGet:::size"]=0
@@ -349,6 +325,30 @@ operation_parameters_maximum_occurrences["v1MetricsSymbolHistoryGet:::limit"]=0
 operation_parameters_maximum_occurrences["v1MetricsSymbolListingGet:::metric_id"]=0
 operation_parameters_maximum_occurrences["v1MetricsSymbolListingGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1MetricsSymbolListingGet:::symbol_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::metric_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::asset_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::time_start"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::time_end"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::time_format"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::period_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetHistoryGet:::limit"]=0
+operation_parameters_maximum_occurrences["v2MetricsAssetListingGet:::asset_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::metric_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::chain_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::time_start"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::time_end"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::time_format"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::period_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainHistoryGet:::limit"]=0
+operation_parameters_maximum_occurrences["v2MetricsChainListingGet:::chain_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::metric_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::exchange_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::time_start"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::time_end"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::time_format"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::period_id"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeHistoryGet:::limit"]=0
+operation_parameters_maximum_occurrences["v2MetricsExchangeListingGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::exchange_id"]=0
 operation_parameters_maximum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::period_id"]=0
 operation_parameters_maximum_occurrences["v1OhlcvExchangesExchangeIdHistoryGet:::time_start"]=0
@@ -422,30 +422,6 @@ operation_parameters_collection_type["v1ExchangerateAssetIdBaseGet:::asset_id_ba
 operation_parameters_collection_type["v1ExchangerateAssetIdBaseGet:::filter_asset_id"]=""
 operation_parameters_collection_type["v1ExchangerateAssetIdBaseGet:::invert"]=""
 operation_parameters_collection_type["v1ExchangerateAssetIdBaseGet:::time"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::metric_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::asset_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::time_start"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::time_end"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::time_format"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::period_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetHistoryGet:::limit"]=""
-operation_parameters_collection_type["v1ExternalmetricsAssetListingGet:::asset_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::metric_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::chain_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::time_start"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::time_end"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::time_format"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::period_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainHistoryGet:::limit"]=""
-operation_parameters_collection_type["v1ExternalmetricsChainListingGet:::chain_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::metric_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::exchange_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::time_start"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::time_end"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::time_format"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::period_id"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeHistoryGet:::limit"]=""
-operation_parameters_collection_type["v1ExternalmetricsExchangeListingGet:::exchange_id"]=""
 operation_parameters_collection_type["v1AssetsAssetIdGet:::asset_id"]=""
 operation_parameters_collection_type["v1AssetsGet:::filter_asset_id"]=""
 operation_parameters_collection_type["v1AssetsIconsSizeGet:::size"]=""
@@ -504,6 +480,30 @@ operation_parameters_collection_type["v1MetricsSymbolHistoryGet:::limit"]=""
 operation_parameters_collection_type["v1MetricsSymbolListingGet:::metric_id"]=""
 operation_parameters_collection_type["v1MetricsSymbolListingGet:::exchange_id"]=""
 operation_parameters_collection_type["v1MetricsSymbolListingGet:::symbol_id"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::metric_id"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::asset_id"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::time_start"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::time_end"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::time_format"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::period_id"]=""
+operation_parameters_collection_type["v2MetricsAssetHistoryGet:::limit"]=""
+operation_parameters_collection_type["v2MetricsAssetListingGet:::asset_id"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::metric_id"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::chain_id"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::time_start"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::time_end"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::time_format"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::period_id"]=""
+operation_parameters_collection_type["v2MetricsChainHistoryGet:::limit"]=""
+operation_parameters_collection_type["v2MetricsChainListingGet:::chain_id"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::metric_id"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::exchange_id"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::time_start"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::time_end"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::time_format"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::period_id"]=""
+operation_parameters_collection_type["v2MetricsExchangeHistoryGet:::limit"]=""
+operation_parameters_collection_type["v2MetricsExchangeListingGet:::exchange_id"]=""
 operation_parameters_collection_type["v1OhlcvExchangesExchangeIdHistoryGet:::exchange_id"]=""
 operation_parameters_collection_type["v1OhlcvExchangesExchangeIdHistoryGet:::period_id"]=""
 operation_parameters_collection_type["v1OhlcvExchangesExchangeIdHistoryGet:::time_start"]=""
@@ -975,18 +975,6 @@ read -r -d '' ops <<EOF
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
-    echo -e "${BOLD}${WHITE}[externalMetrics]${OFF}"
-read -r -d '' ops <<EOF
-  ${CYAN}v1ExternalmetricsAssetHistoryGet${OFF};Historical metrics for the asset (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsAssetListingGet${OFF};Listing of metrics available for specific asset (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsChainHistoryGet${OFF};Historical metrics for the chain (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsChainListingGet${OFF};Listing of metrics available for specific chain (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsExchangeHistoryGet${OFF};Historical metrics for the exchange (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsExchangeListingGet${OFF};Listing of metrics available for specific exchange (AUTH) (AUTH)
-  ${CYAN}v1ExternalmetricsListingGet${OFF};Listing of all supported metrics (AUTH) (AUTH)
-EOF
-echo "  $ops" | column -t -s ';'
-    echo ""
     echo -e "${BOLD}${WHITE}[metadata]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}v1AssetsAssetIdGet${OFF};List all assets by asset ID (AUTH) (AUTH)
@@ -1003,7 +991,7 @@ read -r -d '' ops <<EOF
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
-    echo -e "${BOLD}${WHITE}[metrics]${OFF}"
+    echo -e "${BOLD}${WHITE}[metricsV1]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}v1MetricsAssetCurrentGet${OFF};Current metrics for given asset (AUTH) (AUTH)
   ${CYAN}v1MetricsAssetHistoryGet${OFF};Historical metrics for asset (AUTH) (AUTH)
@@ -1015,6 +1003,18 @@ read -r -d '' ops <<EOF
   ${CYAN}v1MetricsSymbolCurrentGet${OFF};Current metrics for given symbol (AUTH) (AUTH)
   ${CYAN}v1MetricsSymbolHistoryGet${OFF};Historical metrics for symbol (AUTH) (AUTH)
   ${CYAN}v1MetricsSymbolListingGet${OFF};Listing of all supported metrics for symbol (AUTH) (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[metricsV2]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}v2MetricsAssetHistoryGet${OFF};Historical metrics for the asset (AUTH) (AUTH)
+  ${CYAN}v2MetricsAssetListingGet${OFF};Listing of metrics available for specific asset (AUTH) (AUTH)
+  ${CYAN}v2MetricsChainHistoryGet${OFF};Historical metrics for the chain (AUTH) (AUTH)
+  ${CYAN}v2MetricsChainListingGet${OFF};Listing of metrics available for specific chain (AUTH) (AUTH)
+  ${CYAN}v2MetricsExchangeHistoryGet${OFF};Historical metrics for the exchange (AUTH) (AUTH)
+  ${CYAN}v2MetricsExchangeListingGet${OFF};Listing of metrics available for specific exchange (AUTH) (AUTH)
+  ${CYAN}v2MetricsListingGet${OFF};Listing of all supported metrics (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -1220,184 +1220,6 @@ Second | 1SEC, 2SEC, 3SEC, 4SEC, 5SEC, 6SEC, 10SEC, 15SEC, 20SEC, 30SEC
 Minute | 1MIN, 2MIN, 3MIN, 4MIN, 5MIN, 6MIN, 10MIN, 15MIN, 20MIN, 30MIN
 Hour | 1HRS, 2HRS, 3HRS, 4HRS, 6HRS, 8HRS, 12HRS
 Day | 1DAY, 2DAY, 3DAY, 5DAY, 7DAY, 10DAY" | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsAssetHistoryGet operation
-#
-##############################################################################
-print_v1ExternalmetricsAssetHistoryGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetHistoryGet - Historical metrics for the asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get asset metrics history." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., 'USDC', 'USDT')${YELLOW} Specify as: asset_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=400
-    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid asset_id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=500
-    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsAssetListingGet operation
-#
-##############################################################################
-print_v1ExternalmetricsAssetListingGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsAssetListingGet - Listing of metrics available for specific asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all metrics that are actually available for the specified asset." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., USDC, USDT)${YELLOW} Specify as: asset_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsChainHistoryGet operation
-#
-##############################################################################
-print_v1ExternalmetricsChainHistoryGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainHistoryGet - Historical metrics for the chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get chain metrics history." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., 'Ethereum', 'Arbitrum')${YELLOW} Specify as: chain_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=400
-    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid chain_id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=500
-    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsChainListingGet operation
-#
-##############################################################################
-print_v1ExternalmetricsChainListingGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsChainListingGet - Listing of metrics available for specific chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all metrics that are actually available for the specified blockchain chain." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., ETHEREUM, ARBITRUM)${YELLOW} Specify as: chain_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsExchangeHistoryGet operation
-#
-##############################################################################
-print_v1ExternalmetricsExchangeHistoryGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeHistoryGet - Historical metrics for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get exchange metrics history." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., 'BINANCE', 'UNISWAP-V3-ETHEREUM')${YELLOW} Specify as: exchange_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=400
-    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid exchange_id mapping.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=500
-    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsExchangeListingGet operation
-#
-##############################################################################
-print_v1ExternalmetricsExchangeListingGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsExchangeListingGet - Listing of metrics available for specific exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all metrics that are actually available for the specified exchange." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)${YELLOW} Specify as: exchange_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
-# Print help for v1ExternalmetricsListingGet operation
-#
-##############################################################################
-print_v1ExternalmetricsListingGet_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}v1ExternalmetricsListingGet - Listing of all supported metrics${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "Get all metrics available in the system." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -1948,6 +1770,184 @@ print_v1MetricsSymbolListingGet_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}symbol_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Symbol identifier (from the Metadata -> Symbols)${YELLOW} Specify as: symbol_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsAssetHistoryGet operation
+#
+##############################################################################
+print_v2MetricsAssetHistoryGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsAssetHistoryGet - Historical metrics for the asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get asset metrics history." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., 'USDC', 'USDT')${YELLOW} Specify as: asset_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid asset_id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsAssetListingGet operation
+#
+##############################################################################
+print_v2MetricsAssetListingGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsAssetListingGet - Listing of metrics available for specific asset${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all metrics that are actually available for the specified asset." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Asset identifier (e.g., USDC, USDT)${YELLOW} Specify as: asset_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsChainHistoryGet operation
+#
+##############################################################################
+print_v2MetricsChainHistoryGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsChainHistoryGet - Historical metrics for the chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get chain metrics history." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., 'Ethereum', 'Arbitrum')${YELLOW} Specify as: chain_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid chain_id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsChainListingGet operation
+#
+##############################################################################
+print_v2MetricsChainListingGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsChainListingGet - Listing of metrics available for specific chain${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all metrics that are actually available for the specified blockchain chain." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}chain_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Chain identifier (e.g., ETHEREUM, ARBITRUM)${YELLOW} Specify as: chain_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsExchangeHistoryGet operation
+#
+##############################################################################
+print_v2MetricsExchangeHistoryGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsExchangeHistoryGet - Historical metrics for the exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get exchange metrics history." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}metric_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric identifier (e.g., 'TVL', 'STABLES_BRIDGED_USD')${YELLOW} Specify as: metric_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., 'BINANCE', 'UNISWAP-V3-ETHEREUM')${YELLOW} Specify as: exchange_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_start${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Starting time in ISO 8601${YELLOW} Specify as: time_start=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_end${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ending time in ISO 8601${YELLOW} Specify as: time_end=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}time_format${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)${YELLOW} Specify as: time_format=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}period_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Identifier of requested timeseries period (e.g. '1MIN' or '2MTH'), default value is '1MIN'${YELLOW} Specify as: period_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 100)${OFF} - Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)${YELLOW} Specify as: limit=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid input, e.g., missing required parameters, invalid exchange_id mapping.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Internal server error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsExchangeListingGet operation
+#
+##############################################################################
+print_v2MetricsExchangeListingGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsExchangeListingGet - Listing of metrics available for specific exchange${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all metrics that are actually available for the specified exchange." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}exchange_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)${YELLOW} Specify as: exchange_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;successful operation${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for v2MetricsListingGet operation
+#
+##############################################################################
+print_v2MetricsListingGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}v2MetricsListingGet - Listing of all supported metrics${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all metrics available in the system." | paste -sd' ' | fold -sw 80
+    echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -2550,258 +2550,6 @@ call_v1ExchangerateHistoryPeriodsGet() {
     local path
 
     if ! path=$(build_request_path "/v1/exchangerate/history/periods" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsAssetHistoryGet operation
-#
-##############################################################################
-call_v1ExternalmetricsAssetHistoryGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id asset_id time_start time_end time_format period_id limit    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/asset/history" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsAssetListingGet operation
-#
-##############################################################################
-call_v1ExternalmetricsAssetListingGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(asset_id    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/asset/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsChainHistoryGet operation
-#
-##############################################################################
-call_v1ExternalmetricsChainHistoryGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id chain_id time_start time_end time_format period_id limit    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/chain/history" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsChainListingGet operation
-#
-##############################################################################
-call_v1ExternalmetricsChainListingGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(chain_id    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/chain/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsExchangeHistoryGet operation
-#
-##############################################################################
-call_v1ExternalmetricsExchangeHistoryGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/exchange/history" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsExchangeListingGet operation
-#
-##############################################################################
-call_v1ExternalmetricsExchangeListingGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(exchange_id    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/exchange/listing" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
-# Call v1ExternalmetricsListingGet operation
-#
-##############################################################################
-call_v1ExternalmetricsListingGet() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(    )
-    local path
-
-    if ! path=$(build_request_path "/v1/externalmetrics/listing" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -3558,6 +3306,258 @@ call_v1MetricsSymbolListingGet() {
     local path
 
     if ! path=$(build_request_path "/v1/metrics/symbol/listing" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsAssetHistoryGet operation
+#
+##############################################################################
+call_v2MetricsAssetHistoryGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(metric_id asset_id time_start time_end time_format period_id limit    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/asset/history" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsAssetListingGet operation
+#
+##############################################################################
+call_v2MetricsAssetListingGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(asset_id    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/asset/listing" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsChainHistoryGet operation
+#
+##############################################################################
+call_v2MetricsChainHistoryGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(metric_id chain_id time_start time_end time_format period_id limit    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/chain/history" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsChainListingGet operation
+#
+##############################################################################
+call_v2MetricsChainListingGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(chain_id    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/chain/listing" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsExchangeHistoryGet operation
+#
+##############################################################################
+call_v2MetricsExchangeHistoryGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(metric_id exchange_id time_start time_end time_format period_id limit    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/exchange/history" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsExchangeListingGet operation
+#
+##############################################################################
+call_v2MetricsExchangeListingGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(exchange_id    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/exchange/listing" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call v2MetricsListingGet operation
+#
+##############################################################################
+call_v2MetricsListingGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(    )
+    local path
+
+    if ! path=$(build_request_path "/v2/metrics/listing" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -4372,27 +4372,6 @@ case $key in
     v1ExchangerateHistoryPeriodsGet)
     operation="v1ExchangerateHistoryPeriodsGet"
     ;;
-    v1ExternalmetricsAssetHistoryGet)
-    operation="v1ExternalmetricsAssetHistoryGet"
-    ;;
-    v1ExternalmetricsAssetListingGet)
-    operation="v1ExternalmetricsAssetListingGet"
-    ;;
-    v1ExternalmetricsChainHistoryGet)
-    operation="v1ExternalmetricsChainHistoryGet"
-    ;;
-    v1ExternalmetricsChainListingGet)
-    operation="v1ExternalmetricsChainListingGet"
-    ;;
-    v1ExternalmetricsExchangeHistoryGet)
-    operation="v1ExternalmetricsExchangeHistoryGet"
-    ;;
-    v1ExternalmetricsExchangeListingGet)
-    operation="v1ExternalmetricsExchangeListingGet"
-    ;;
-    v1ExternalmetricsListingGet)
-    operation="v1ExternalmetricsListingGet"
-    ;;
     v1AssetsAssetIdGet)
     operation="v1AssetsAssetIdGet"
     ;;
@@ -4455,6 +4434,27 @@ case $key in
     ;;
     v1MetricsSymbolListingGet)
     operation="v1MetricsSymbolListingGet"
+    ;;
+    v2MetricsAssetHistoryGet)
+    operation="v2MetricsAssetHistoryGet"
+    ;;
+    v2MetricsAssetListingGet)
+    operation="v2MetricsAssetListingGet"
+    ;;
+    v2MetricsChainHistoryGet)
+    operation="v2MetricsChainHistoryGet"
+    ;;
+    v2MetricsChainListingGet)
+    operation="v2MetricsChainListingGet"
+    ;;
+    v2MetricsExchangeHistoryGet)
+    operation="v2MetricsExchangeHistoryGet"
+    ;;
+    v2MetricsExchangeListingGet)
+    operation="v2MetricsExchangeListingGet"
+    ;;
+    v2MetricsListingGet)
+    operation="v2MetricsListingGet"
     ;;
     v1OhlcvExchangesExchangeIdHistoryGet)
     operation="v1OhlcvExchangesExchangeIdHistoryGet"
@@ -4619,27 +4619,6 @@ case $operation in
     v1ExchangerateHistoryPeriodsGet)
     call_v1ExchangerateHistoryPeriodsGet
     ;;
-    v1ExternalmetricsAssetHistoryGet)
-    call_v1ExternalmetricsAssetHistoryGet
-    ;;
-    v1ExternalmetricsAssetListingGet)
-    call_v1ExternalmetricsAssetListingGet
-    ;;
-    v1ExternalmetricsChainHistoryGet)
-    call_v1ExternalmetricsChainHistoryGet
-    ;;
-    v1ExternalmetricsChainListingGet)
-    call_v1ExternalmetricsChainListingGet
-    ;;
-    v1ExternalmetricsExchangeHistoryGet)
-    call_v1ExternalmetricsExchangeHistoryGet
-    ;;
-    v1ExternalmetricsExchangeListingGet)
-    call_v1ExternalmetricsExchangeListingGet
-    ;;
-    v1ExternalmetricsListingGet)
-    call_v1ExternalmetricsListingGet
-    ;;
     v1AssetsAssetIdGet)
     call_v1AssetsAssetIdGet
     ;;
@@ -4702,6 +4681,27 @@ case $operation in
     ;;
     v1MetricsSymbolListingGet)
     call_v1MetricsSymbolListingGet
+    ;;
+    v2MetricsAssetHistoryGet)
+    call_v2MetricsAssetHistoryGet
+    ;;
+    v2MetricsAssetListingGet)
+    call_v2MetricsAssetListingGet
+    ;;
+    v2MetricsChainHistoryGet)
+    call_v2MetricsChainHistoryGet
+    ;;
+    v2MetricsChainListingGet)
+    call_v2MetricsChainListingGet
+    ;;
+    v2MetricsExchangeHistoryGet)
+    call_v2MetricsExchangeHistoryGet
+    ;;
+    v2MetricsExchangeListingGet)
+    call_v2MetricsExchangeListingGet
+    ;;
+    v2MetricsListingGet)
+    call_v2MetricsListingGet
     ;;
     v1OhlcvExchangesExchangeIdHistoryGet)
     call_v1OhlcvExchangesExchangeIdHistoryGet

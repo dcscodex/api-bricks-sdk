@@ -136,172 +136,6 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end V_1Exchangerate_History_Periods_Get;
 
-   --  Historical metrics for the asset
-   --  Get asset metrics history.
-   procedure V_1Externalmetrics_Asset_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Asset_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("metric_id", Metric_Id);
-      URI.Add_Param ("asset_id", Asset_Id);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_format", Time_Format);
-      URI.Add_Param ("period_id", Period_Id);
-      URI.Add_Param ("limit", Limit);
-      URI.Set_Path ("/v1/externalmetrics/asset/history");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Asset_History_Get;
-
-   --  Listing of metrics available for specific asset
-   --  Get all metrics that are actually available for the specified asset.
-   procedure V_1Externalmetrics_Asset_Listing_Get
-      (Client : in out Client_Type;
-       Asset_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("asset_id", Asset_Id);
-      URI.Set_Path ("/v1/externalmetrics/asset/listing");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Asset_Listing_Get;
-
-   --  Historical metrics for the chain
-   --  Get chain metrics history.
-   procedure V_1Externalmetrics_Chain_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Chain_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("metric_id", Metric_Id);
-      URI.Add_Param ("chain_id", Chain_Id);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_format", Time_Format);
-      URI.Add_Param ("period_id", Period_Id);
-      URI.Add_Param ("limit", Limit);
-      URI.Set_Path ("/v1/externalmetrics/chain/history");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Chain_History_Get;
-
-   --  Listing of metrics available for specific chain
-   --  Get all metrics that are actually available for the specified blockchain chain.
-   procedure V_1Externalmetrics_Chain_Listing_Get
-      (Client : in out Client_Type;
-       Chain_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("chain_id", Chain_Id);
-      URI.Set_Path ("/v1/externalmetrics/chain/listing");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Chain_Listing_Get;
-
-   --  Historical metrics for the exchange
-   --  Get exchange metrics history.
-   procedure V_1Externalmetrics_Exchange_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Exchange_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("metric_id", Metric_Id);
-      URI.Add_Param ("exchange_id", Exchange_Id);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_start", Time_Start);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_end", Time_End);
-      URI.Add_Param ("time_format", Time_Format);
-      URI.Add_Param ("period_id", Period_Id);
-      URI.Add_Param ("limit", Limit);
-      URI.Set_Path ("/v1/externalmetrics/exchange/history");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Exchange_History_Get;
-
-   --  Listing of metrics available for specific exchange
-   --  Get all metrics that are actually available for the specified exchange.
-   procedure V_1Externalmetrics_Exchange_Listing_Get
-      (Client : in out Client_Type;
-       Exchange_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("exchange_id", Exchange_Id);
-      URI.Set_Path ("/v1/externalmetrics/exchange/listing");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Exchange_Listing_Get;
-
-   --  Listing of all supported metrics
-   --  Get all metrics available in the system.
-   procedure V_1Externalmetrics_Listing_Get
-      (Client : in out Client_Type;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Set_Path ("/v1/externalmetrics/listing");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end V_1Externalmetrics_Listing_Get;
-
    --  List all assets by asset ID
    procedure V_1Assets_Asset_Id_Get
       (Client : in out Client_Type;
@@ -849,6 +683,172 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end V_1Metrics_Symbol_Listing_Get;
+
+   --  Historical metrics for the asset
+   --  Get asset metrics history.
+   procedure V_2Metrics_Asset_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Asset_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("metric_id", Metric_Id);
+      URI.Add_Param ("asset_id", Asset_Id);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_format", Time_Format);
+      URI.Add_Param ("period_id", Period_Id);
+      URI.Add_Param ("limit", Limit);
+      URI.Set_Path ("/v2/metrics/asset/history");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Asset_History_Get;
+
+   --  Listing of metrics available for specific asset
+   --  Get all metrics that are actually available for the specified asset.
+   procedure V_2Metrics_Asset_Listing_Get
+      (Client : in out Client_Type;
+       Asset_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("asset_id", Asset_Id);
+      URI.Set_Path ("/v2/metrics/asset/listing");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Asset_Listing_Get;
+
+   --  Historical metrics for the chain
+   --  Get chain metrics history.
+   procedure V_2Metrics_Chain_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Chain_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("metric_id", Metric_Id);
+      URI.Add_Param ("chain_id", Chain_Id);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_format", Time_Format);
+      URI.Add_Param ("period_id", Period_Id);
+      URI.Add_Param ("limit", Limit);
+      URI.Set_Path ("/v2/metrics/chain/history");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Chain_History_Get;
+
+   --  Listing of metrics available for specific chain
+   --  Get all metrics that are actually available for the specified blockchain chain.
+   procedure V_2Metrics_Chain_Listing_Get
+      (Client : in out Client_Type;
+       Chain_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("chain_id", Chain_Id);
+      URI.Set_Path ("/v2/metrics/chain/listing");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Chain_Listing_Get;
+
+   --  Historical metrics for the exchange
+   --  Get exchange metrics history.
+   procedure V_2Metrics_Exchange_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Exchange_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("metric_id", Metric_Id);
+      URI.Add_Param ("exchange_id", Exchange_Id);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_start", Time_Start);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_end", Time_End);
+      URI.Add_Param ("time_format", Time_Format);
+      URI.Add_Param ("period_id", Period_Id);
+      URI.Add_Param ("limit", Limit);
+      URI.Set_Path ("/v2/metrics/exchange/history");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Exchange_History_Get;
+
+   --  Listing of metrics available for specific exchange
+   --  Get all metrics that are actually available for the specified exchange.
+   procedure V_2Metrics_Exchange_Listing_Get
+      (Client : in out Client_Type;
+       Exchange_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("exchange_id", Exchange_Id);
+      URI.Set_Path ("/v2/metrics/exchange/listing");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Exchange_Listing_Get;
+
+   --  Listing of all supported metrics
+   --  Get all metrics available in the system.
+   procedure V_2Metrics_Listing_Get
+      (Client : in out Client_Type;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Set_Path ("/v2/metrics/listing");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end V_2Metrics_Listing_Get;
 
    --  Historical data by exchange
    --  Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`

@@ -77,9 +77,9 @@ set(SRCS
     model/v1_timeseries_period.c
     model/v1_trade.c
     api/ExchangeRatesAPI.c
-    api/ExternalMetricsAPI.c
     api/MetadataAPI.c
-    api/MetricsAPI.c
+    api/MetricsV1API.c
+    api/MetricsV2API.c
     api/OhlcvAPI.c
     api/OptionsAPI.c
     api/OrderBookAPI.c
@@ -126,9 +126,9 @@ set(HDRS
     model/v1_timeseries_period.h
     model/v1_trade.h
     api/ExchangeRatesAPI.h
-    api/ExternalMetricsAPI.h
     api/MetadataAPI.h
-    api/MetricsAPI.h
+    api/MetricsV1API.h
+    api/MetricsV2API.h
     api/OhlcvAPI.h
     api/OptionsAPI.h
     api/OrderBookAPI.h
@@ -217,9 +217,9 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-ExchangeRatesAPI.c
-#    unit-tests/manual-ExternalMetricsAPI.c
 #    unit-tests/manual-MetadataAPI.c
-#    unit-tests/manual-MetricsAPI.c
+#    unit-tests/manual-MetricsV1API.c
+#    unit-tests/manual-MetricsV2API.c
 #    unit-tests/manual-OhlcvAPI.c
 #    unit-tests/manual-OptionsAPI.c
 #    unit-tests/manual-OrderBookAPI.c

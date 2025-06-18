@@ -9,9 +9,9 @@ NAMESPACE
 R/api_client.R
 R/api_response.R
 R/exchange_rates_api.R
-R/external_metrics_api.R
 R/metadata_api.R
-R/metrics_api.R
+R/metrics_v1_api.R
+R/metrics_v2_api.R
 R/models_exchange_timeseries_item.R
 R/ohlcv_api.R
 R/options_api.R
@@ -48,9 +48,9 @@ R/v1_timeseries_period.R
 R/v1_trade.R
 README.md
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -88,9 +88,9 @@ docs/V1Trade.md
 git_push.sh
 tests/testthat.R
 tests/testthat/test_exchange_rates_api.R
-tests/testthat/test_external_metrics_api.R
 tests/testthat/test_metadata_api.R
-tests/testthat/test_metrics_api.R
+tests/testthat/test_metrics_v1_api.R
+tests/testthat/test_metrics_v2_api.R
 tests/testthat/test_models_exchange_timeseries_item.R
 tests/testthat/test_ohlcv_api.R
 tests/testthat/test_options_api.R

@@ -73,13 +73,6 @@ _()
     operations["v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet"]=1
     operations["v1ExchangerateAssetIdBaseGet"]=1
     operations["v1ExchangerateHistoryPeriodsGet"]=1
-    operations["v1ExternalmetricsAssetHistoryGet"]=1
-    operations["v1ExternalmetricsAssetListingGet"]=1
-    operations["v1ExternalmetricsChainHistoryGet"]=1
-    operations["v1ExternalmetricsChainListingGet"]=1
-    operations["v1ExternalmetricsExchangeHistoryGet"]=1
-    operations["v1ExternalmetricsExchangeListingGet"]=1
-    operations["v1ExternalmetricsListingGet"]=1
     operations["v1AssetsAssetIdGet"]=1
     operations["v1AssetsGet"]=1
     operations["v1AssetsIconsSizeGet"]=1
@@ -101,6 +94,13 @@ _()
     operations["v1MetricsSymbolCurrentGet"]=1
     operations["v1MetricsSymbolHistoryGet"]=1
     operations["v1MetricsSymbolListingGet"]=1
+    operations["v2MetricsAssetHistoryGet"]=1
+    operations["v2MetricsAssetListingGet"]=1
+    operations["v2MetricsChainHistoryGet"]=1
+    operations["v2MetricsChainListingGet"]=1
+    operations["v2MetricsExchangeHistoryGet"]=1
+    operations["v2MetricsExchangeListingGet"]=1
+    operations["v2MetricsListingGet"]=1
     operations["v1OhlcvExchangesExchangeIdHistoryGet"]=1
     operations["v1OhlcvPeriodsGet"]=1
     operations["v1OhlcvSymbolIdHistoryGet"]=1
@@ -128,13 +128,6 @@ _()
     operation_parameters["v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet"]="asset_id_base= asset_id_quote= period_id= time_start= time_end= limit= "
     operation_parameters["v1ExchangerateAssetIdBaseGet"]="asset_id_base= filter_asset_id= invert= time= "
     operation_parameters["v1ExchangerateHistoryPeriodsGet"]=""
-    operation_parameters["v1ExternalmetricsAssetHistoryGet"]="metric_id= asset_id= time_start= time_end= time_format= period_id= limit= "
-    operation_parameters["v1ExternalmetricsAssetListingGet"]="asset_id= "
-    operation_parameters["v1ExternalmetricsChainHistoryGet"]="metric_id= chain_id= time_start= time_end= time_format= period_id= limit= "
-    operation_parameters["v1ExternalmetricsChainListingGet"]="chain_id= "
-    operation_parameters["v1ExternalmetricsExchangeHistoryGet"]="metric_id= exchange_id= time_start= time_end= time_format= period_id= limit= "
-    operation_parameters["v1ExternalmetricsExchangeListingGet"]="exchange_id= "
-    operation_parameters["v1ExternalmetricsListingGet"]=""
     operation_parameters["v1AssetsAssetIdGet"]="asset_id= "
     operation_parameters["v1AssetsGet"]="filter_asset_id= "
     operation_parameters["v1AssetsIconsSizeGet"]="size= "
@@ -156,6 +149,13 @@ _()
     operation_parameters["v1MetricsSymbolCurrentGet"]="metric_id= symbol_id= exchange_id= "
     operation_parameters["v1MetricsSymbolHistoryGet"]="metric_id= symbol_id= time_start= time_end= time_format= period_id= limit= "
     operation_parameters["v1MetricsSymbolListingGet"]="metric_id= exchange_id= symbol_id= "
+    operation_parameters["v2MetricsAssetHistoryGet"]="metric_id= asset_id= time_start= time_end= time_format= period_id= limit= "
+    operation_parameters["v2MetricsAssetListingGet"]="asset_id= "
+    operation_parameters["v2MetricsChainHistoryGet"]="metric_id= chain_id= time_start= time_end= time_format= period_id= limit= "
+    operation_parameters["v2MetricsChainListingGet"]="chain_id= "
+    operation_parameters["v2MetricsExchangeHistoryGet"]="metric_id= exchange_id= time_start= time_end= time_format= period_id= limit= "
+    operation_parameters["v2MetricsExchangeListingGet"]="exchange_id= "
+    operation_parameters["v2MetricsListingGet"]=""
     operation_parameters["v1OhlcvExchangesExchangeIdHistoryGet"]="exchange_id= period_id= time_start= time_end= "
     operation_parameters["v1OhlcvPeriodsGet"]=""
     operation_parameters["v1OhlcvSymbolIdHistoryGet"]="symbol_id= period_id= time_start= time_end= limit= include_empty_items= "

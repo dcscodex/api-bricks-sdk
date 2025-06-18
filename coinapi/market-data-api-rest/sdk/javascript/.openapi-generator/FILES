@@ -4,9 +4,9 @@
 .travis.yml
 README.md
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -46,9 +46,9 @@ mocha.opts
 package.json
 src/ApiClient.js
 src/api/ExchangeRatesApi.js
-src/api/ExternalMetricsApi.js
 src/api/MetadataApi.js
-src/api/MetricsApi.js
+src/api/MetricsV1Api.js
+src/api/MetricsV2Api.js
 src/api/OhlcvApi.js
 src/api/OptionsApi.js
 src/api/OrderBookApi.js
@@ -85,9 +85,9 @@ src/model/V1TimeseriesItem.js
 src/model/V1TimeseriesPeriod.js
 src/model/V1Trade.js
 test/api/ExchangeRatesApi.spec.js
-test/api/ExternalMetricsApi.spec.js
 test/api/MetadataApi.spec.js
-test/api/MetricsApi.spec.js
+test/api/MetricsV1Api.spec.js
+test/api/MetricsV2Api.spec.js
 test/api/OhlcvApi.spec.js
 test/api/OptionsApi.spec.js
 test/api/OrderBookApi.spec.js

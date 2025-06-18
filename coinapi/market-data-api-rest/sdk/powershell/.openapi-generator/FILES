@@ -3,9 +3,9 @@ Build.ps1
 README.md
 appveyor.yml
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -41,9 +41,9 @@ docs/V1TimeseriesItem.md
 docs/V1TimeseriesPeriod.md
 docs/V1Trade.md
 src/PSOpenAPITools/Api/ExchangeRatesApi.ps1
-src/PSOpenAPITools/Api/ExternalMetricsApi.ps1
 src/PSOpenAPITools/Api/MetadataApi.ps1
-src/PSOpenAPITools/Api/MetricsApi.ps1
+src/PSOpenAPITools/Api/MetricsV1Api.ps1
+src/PSOpenAPITools/Api/MetricsV2Api.ps1
 src/PSOpenAPITools/Api/OhlcvApi.ps1
 src/PSOpenAPITools/Api/OptionsApi.ps1
 src/PSOpenAPITools/Api/OrderBookApi.ps1
@@ -87,9 +87,9 @@ src/PSOpenAPITools/Private/Out-DebugParameter.ps1
 src/PSOpenAPITools/Private/RSAEncryptionProvider.cs
 src/PSOpenAPITools/en-US/about_PSOpenAPITools.help.txt
 tests/Api/ExchangeRatesApi.Tests.ps1
-tests/Api/ExternalMetricsApi.Tests.ps1
 tests/Api/MetadataApi.Tests.ps1
-tests/Api/MetricsApi.Tests.ps1
+tests/Api/MetricsV1Api.Tests.ps1
+tests/Api/MetricsV2Api.Tests.ps1
 tests/Api/OhlcvApi.Tests.ps1
 tests/Api/OptionsApi.Tests.ps1
 tests/Api/OrderBookApi.Tests.ps1

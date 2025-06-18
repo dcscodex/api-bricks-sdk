@@ -78,13 +78,6 @@ Class | Method | HTTP request | Description
 *ExchangeRatesApi* | [**V1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet**](docs/ExchangeRatesApi.md#V1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet) | **GET** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *ExchangeRatesApi* | [**V1ExchangerateAssetIdBaseGet**](docs/ExchangeRatesApi.md#V1ExchangerateAssetIdBaseGet) | **GET** /v1/exchangerate/{asset_id_base} | Get all current rates
 *ExchangeRatesApi* | [**V1ExchangerateHistoryPeriodsGet**](docs/ExchangeRatesApi.md#V1ExchangerateHistoryPeriodsGet) | **GET** /v1/exchangerate/history/periods | Timeseries periods
-*ExternalMetricsApi* | [**V1ExternalmetricsAssetHistoryGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsAssetHistoryGet) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset
-*ExternalMetricsApi* | [**V1ExternalmetricsAssetListingGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsAssetListingGet) | **GET** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*ExternalMetricsApi* | [**V1ExternalmetricsChainHistoryGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsChainHistoryGet) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain
-*ExternalMetricsApi* | [**V1ExternalmetricsChainListingGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsChainListingGet) | **GET** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*ExternalMetricsApi* | [**V1ExternalmetricsExchangeHistoryGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsExchangeHistoryGet) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
-*ExternalMetricsApi* | [**V1ExternalmetricsExchangeListingGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsExchangeListingGet) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
-*ExternalMetricsApi* | [**V1ExternalmetricsListingGet**](docs/ExternalMetricsApi.md#V1ExternalmetricsListingGet) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics
 *MetadataApi* | [**V1AssetsAssetIdGet**](docs/MetadataApi.md#V1AssetsAssetIdGet) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 *MetadataApi* | [**V1AssetsGet**](docs/MetadataApi.md#V1AssetsGet) | **GET** /v1/assets | List all assets
 *MetadataApi* | [**V1AssetsIconsSizeGet**](docs/MetadataApi.md#V1AssetsIconsSizeGet) | **GET** /v1/assets/icons/{size} | List all asset icons
@@ -96,16 +89,23 @@ Class | Method | HTTP request | Description
 *MetadataApi* | [**V1SymbolsExchangeIdGet**](docs/MetadataApi.md#V1SymbolsExchangeIdGet) | **GET** /v1/symbols/{exchange_id} | List of symbols for the exchange
 *MetadataApi* | [**V1SymbolsGet**](docs/MetadataApi.md#V1SymbolsGet) | **GET** /v1/symbols | List all symbols
 *MetadataApi* | [**V1SymbolsMapExchangeIdGet**](docs/MetadataApi.md#V1SymbolsMapExchangeIdGet) | **GET** /v1/symbols/map/{exchange_id} | List symbol mapping for the exchange
-*MetricsApi* | [**V1MetricsAssetCurrentGet**](docs/MetricsApi.md#V1MetricsAssetCurrentGet) | **GET** /v1/metrics/asset/current | Current metrics for given asset
-*MetricsApi* | [**V1MetricsAssetHistoryGet**](docs/MetricsApi.md#V1MetricsAssetHistoryGet) | **GET** /v1/metrics/asset/history | Historical metrics for asset
-*MetricsApi* | [**V1MetricsAssetListingGet**](docs/MetricsApi.md#V1MetricsAssetListingGet) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
-*MetricsApi* | [**V1MetricsExchangeCurrentGet**](docs/MetricsApi.md#V1MetricsExchangeCurrentGet) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
-*MetricsApi* | [**V1MetricsExchangeHistoryGet**](docs/MetricsApi.md#V1MetricsExchangeHistoryGet) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
-*MetricsApi* | [**V1MetricsExchangeListingGet**](docs/MetricsApi.md#V1MetricsExchangeListingGet) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
-*MetricsApi* | [**V1MetricsListingGet**](docs/MetricsApi.md#V1MetricsListingGet) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
-*MetricsApi* | [**V1MetricsSymbolCurrentGet**](docs/MetricsApi.md#V1MetricsSymbolCurrentGet) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
-*MetricsApi* | [**V1MetricsSymbolHistoryGet**](docs/MetricsApi.md#V1MetricsSymbolHistoryGet) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
-*MetricsApi* | [**V1MetricsSymbolListingGet**](docs/MetricsApi.md#V1MetricsSymbolListingGet) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*MetricsV1Api* | [**V1MetricsAssetCurrentGet**](docs/MetricsV1Api.md#V1MetricsAssetCurrentGet) | **GET** /v1/metrics/asset/current | Current metrics for given asset
+*MetricsV1Api* | [**V1MetricsAssetHistoryGet**](docs/MetricsV1Api.md#V1MetricsAssetHistoryGet) | **GET** /v1/metrics/asset/history | Historical metrics for asset
+*MetricsV1Api* | [**V1MetricsAssetListingGet**](docs/MetricsV1Api.md#V1MetricsAssetListingGet) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
+*MetricsV1Api* | [**V1MetricsExchangeCurrentGet**](docs/MetricsV1Api.md#V1MetricsExchangeCurrentGet) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
+*MetricsV1Api* | [**V1MetricsExchangeHistoryGet**](docs/MetricsV1Api.md#V1MetricsExchangeHistoryGet) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
+*MetricsV1Api* | [**V1MetricsExchangeListingGet**](docs/MetricsV1Api.md#V1MetricsExchangeListingGet) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
+*MetricsV1Api* | [**V1MetricsListingGet**](docs/MetricsV1Api.md#V1MetricsListingGet) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
+*MetricsV1Api* | [**V1MetricsSymbolCurrentGet**](docs/MetricsV1Api.md#V1MetricsSymbolCurrentGet) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
+*MetricsV1Api* | [**V1MetricsSymbolHistoryGet**](docs/MetricsV1Api.md#V1MetricsSymbolHistoryGet) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
+*MetricsV1Api* | [**V1MetricsSymbolListingGet**](docs/MetricsV1Api.md#V1MetricsSymbolListingGet) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*MetricsV2Api* | [**V2MetricsAssetHistoryGet**](docs/MetricsV2Api.md#V2MetricsAssetHistoryGet) | **GET** /v2/metrics/asset/history | Historical metrics for the asset
+*MetricsV2Api* | [**V2MetricsAssetListingGet**](docs/MetricsV2Api.md#V2MetricsAssetListingGet) | **GET** /v2/metrics/asset/listing | Listing of metrics available for specific asset
+*MetricsV2Api* | [**V2MetricsChainHistoryGet**](docs/MetricsV2Api.md#V2MetricsChainHistoryGet) | **GET** /v2/metrics/chain/history | Historical metrics for the chain
+*MetricsV2Api* | [**V2MetricsChainListingGet**](docs/MetricsV2Api.md#V2MetricsChainListingGet) | **GET** /v2/metrics/chain/listing | Listing of metrics available for specific chain
+*MetricsV2Api* | [**V2MetricsExchangeHistoryGet**](docs/MetricsV2Api.md#V2MetricsExchangeHistoryGet) | **GET** /v2/metrics/exchange/history | Historical metrics for the exchange
+*MetricsV2Api* | [**V2MetricsExchangeListingGet**](docs/MetricsV2Api.md#V2MetricsExchangeListingGet) | **GET** /v2/metrics/exchange/listing | Listing of metrics available for specific exchange
+*MetricsV2Api* | [**V2MetricsListingGet**](docs/MetricsV2Api.md#V2MetricsListingGet) | **GET** /v2/metrics/listing | Listing of all supported metrics
 *OhlcvApi* | [**V1OhlcvExchangesExchangeIdHistoryGet**](docs/OhlcvApi.md#V1OhlcvExchangesExchangeIdHistoryGet) | **GET** /v1/ohlcv/exchanges/{exchange_id}/history | Historical data by exchange
 *OhlcvApi* | [**V1OhlcvPeriodsGet**](docs/OhlcvApi.md#V1OhlcvPeriodsGet) | **GET** /v1/ohlcv/periods | List all periods
 *OhlcvApi* | [**V1OhlcvSymbolIdHistoryGet**](docs/OhlcvApi.md#V1OhlcvSymbolIdHistoryGet) | **GET** /v1/ohlcv/{symbol_id}/history | Historical data

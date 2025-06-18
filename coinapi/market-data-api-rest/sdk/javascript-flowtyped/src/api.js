@@ -1917,503 +1917,6 @@ export const ExchangeRatesApi = function(configuration?: Configuration, fetch: F
 
 
 /**
- * ExternalMetricsApi - fetch parameter creator
- * @export
- */
-export const ExternalMetricsApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * Get asset metrics history.
-         * @summary Historical metrics for the asset
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
-            // verify required parameter 'metricId' is not null or undefined
-            if (metricId === null || metricId === undefined) {
-                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v1ExternalmetricsAssetHistoryGet.');
-            }
-            // verify required parameter 'assetId' is not null or undefined
-            if (assetId === null || assetId === undefined) {
-                throw new RequiredError('assetId','Required parameter assetId was null or undefined when calling v1ExternalmetricsAssetHistoryGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/asset/history`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (metricId !== undefined) {
-                localVarQueryParameter['metric_id'] = ((metricId:any):string);
-            }
-
-            if (assetId !== undefined) {
-                localVarQueryParameter['asset_id'] = ((assetId:any):string);
-            }
-
-            if (timeStart !== undefined) {
-                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
-            }
-
-            if (timeEnd !== undefined) {
-                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
-            }
-
-            if (timeFormat !== undefined) {
-                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
-            }
-
-            if (periodId !== undefined) {
-                localVarQueryParameter['period_id'] = ((periodId:any):string);
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = ((limit:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get all metrics that are actually available for the specified asset.
-         * @summary Listing of metrics available for specific asset
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsAssetListingGet(assetId: string, options: RequestOptions): FetchArgs {
-            // verify required parameter 'assetId' is not null or undefined
-            if (assetId === null || assetId === undefined) {
-                throw new RequiredError('assetId','Required parameter assetId was null or undefined when calling v1ExternalmetricsAssetListingGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/asset/listing`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (assetId !== undefined) {
-                localVarQueryParameter['asset_id'] = ((assetId:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get chain metrics history.
-         * @summary Historical metrics for the chain
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
-            // verify required parameter 'metricId' is not null or undefined
-            if (metricId === null || metricId === undefined) {
-                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v1ExternalmetricsChainHistoryGet.');
-            }
-            // verify required parameter 'chainId' is not null or undefined
-            if (chainId === null || chainId === undefined) {
-                throw new RequiredError('chainId','Required parameter chainId was null or undefined when calling v1ExternalmetricsChainHistoryGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/chain/history`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (metricId !== undefined) {
-                localVarQueryParameter['metric_id'] = ((metricId:any):string);
-            }
-
-            if (chainId !== undefined) {
-                localVarQueryParameter['chain_id'] = ((chainId:any):string);
-            }
-
-            if (timeStart !== undefined) {
-                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
-            }
-
-            if (timeEnd !== undefined) {
-                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
-            }
-
-            if (timeFormat !== undefined) {
-                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
-            }
-
-            if (periodId !== undefined) {
-                localVarQueryParameter['period_id'] = ((periodId:any):string);
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = ((limit:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get all metrics that are actually available for the specified blockchain chain.
-         * @summary Listing of metrics available for specific chain
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsChainListingGet(chainId: string, options: RequestOptions): FetchArgs {
-            // verify required parameter 'chainId' is not null or undefined
-            if (chainId === null || chainId === undefined) {
-                throw new RequiredError('chainId','Required parameter chainId was null or undefined when calling v1ExternalmetricsChainListingGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/chain/listing`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (chainId !== undefined) {
-                localVarQueryParameter['chain_id'] = ((chainId:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get exchange metrics history.
-         * @summary Historical metrics for the exchange
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
-            // verify required parameter 'metricId' is not null or undefined
-            if (metricId === null || metricId === undefined) {
-                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v1ExternalmetricsExchangeHistoryGet.');
-            }
-            // verify required parameter 'exchangeId' is not null or undefined
-            if (exchangeId === null || exchangeId === undefined) {
-                throw new RequiredError('exchangeId','Required parameter exchangeId was null or undefined when calling v1ExternalmetricsExchangeHistoryGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/exchange/history`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (metricId !== undefined) {
-                localVarQueryParameter['metric_id'] = ((metricId:any):string);
-            }
-
-            if (exchangeId !== undefined) {
-                localVarQueryParameter['exchange_id'] = ((exchangeId:any):string);
-            }
-
-            if (timeStart !== undefined) {
-                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
-            }
-
-            if (timeEnd !== undefined) {
-                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
-            }
-
-            if (timeFormat !== undefined) {
-                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
-            }
-
-            if (periodId !== undefined) {
-                localVarQueryParameter['period_id'] = ((periodId:any):string);
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = ((limit:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get all metrics that are actually available for the specified exchange.
-         * @summary Listing of metrics available for specific exchange
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsExchangeListingGet(exchangeId: string, options: RequestOptions): FetchArgs {
-            // verify required parameter 'exchangeId' is not null or undefined
-            if (exchangeId === null || exchangeId === undefined) {
-                throw new RequiredError('exchangeId','Required parameter exchangeId was null or undefined when calling v1ExternalmetricsExchangeListingGet.');
-            }
-            const localVarPath = `/v1/externalmetrics/exchange/listing`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            if (exchangeId !== undefined) {
-                localVarQueryParameter['exchange_id'] = ((exchangeId:any):string);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get all metrics available in the system.
-         * @summary Listing of all supported metrics
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsListingGet(options: RequestOptions): FetchArgs {
-            const localVarPath = `/v1/externalmetrics/listing`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-
-            // authentication APIKey required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            // authentication JWT required
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-export type ExternalMetricsApiType = { 
-    v1ExternalmetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
-
-    v1ExternalmetricsAssetListingGet(assetId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
-
-    v1ExternalmetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
-
-    v1ExternalmetricsChainListingGet(chainId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
-
-    v1ExternalmetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
-
-    v1ExternalmetricsExchangeListingGet(exchangeId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
-
-    v1ExternalmetricsListingGet(options?: RequestOptions): Promise<Array<V1MetricInfo>>,
-}
-
-/**
- * ExternalMetricsApi - factory function to inject configuration 
- * @export
- */
-export const ExternalMetricsApi = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): ExternalMetricsApiType {
-    const basePath: string = (configuration && configuration.basePath) || BASE_PATH;
-    return {
-        /**
-         * Get asset metrics history.
-         * @summary Historical metrics for the asset
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsAssetHistoryGet(metricId, assetId, timeStart, timeEnd, timeFormat, periodId, limit, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get all metrics that are actually available for the specified asset.
-         * @summary Listing of metrics available for specific asset
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsAssetListingGet(assetId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsAssetListingGet(assetId, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get chain metrics history.
-         * @summary Historical metrics for the chain
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsChainHistoryGet(metricId, chainId, timeStart, timeEnd, timeFormat, periodId, limit, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get all metrics that are actually available for the specified blockchain chain.
-         * @summary Listing of metrics available for specific chain
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsChainListingGet(chainId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsChainListingGet(chainId, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get exchange metrics history.
-         * @summary Historical metrics for the exchange
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsExchangeHistoryGet(metricId, exchangeId, timeStart, timeEnd, timeFormat, periodId, limit, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get all metrics that are actually available for the specified exchange.
-         * @summary Listing of metrics available for specific exchange
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsExchangeListingGet(exchangeId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsExchangeListingGet(exchangeId, options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-        /**
-         * Get all metrics available in the system.
-         * @summary Listing of all supported metrics
-         * @throws {RequiredError}
-         */
-        v1ExternalmetricsListingGet(options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
-            const localVarFetchArgs = ExternalMetricsApiFetchParamCreator(configuration).v1ExternalmetricsListingGet(options);
-            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            });
-        },
-    }
-};
-
-
-/**
  * MetadataApi - fetch parameter creator
  * @export
  */
@@ -3042,10 +2545,10 @@ export const MetadataApi = function(configuration?: Configuration, fetch: FetchA
 
 
 /**
- * MetricsApi - fetch parameter creator
+ * MetricsV1Api - fetch parameter creator
  * @export
  */
-export const MetricsApiFetchParamCreator = function (configuration?: Configuration) {
+export const MetricsV1ApiFetchParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * Get current asset metrics.
@@ -3574,7 +3077,7 @@ export const MetricsApiFetchParamCreator = function (configuration?: Configurati
     }
 };
 
-export type MetricsApiType = { 
+export type MetricsV1ApiType = { 
     v1MetricsAssetCurrentGet(metricId?: string, assetId?: string, assetIdExternal?: string, exchangeId?: string, options?: RequestOptions): Promise<Array<V1GeneralData>>,
 
     v1MetricsAssetHistoryGet(metricId: string, exchangeId: string, assetId?: string, assetIdExternal?: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<V1MetricData>>,
@@ -3597,10 +3100,10 @@ export type MetricsApiType = {
 }
 
 /**
- * MetricsApi - factory function to inject configuration 
+ * MetricsV1Api - factory function to inject configuration 
  * @export
  */
-export const MetricsApi = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): MetricsApiType {
+export const MetricsV1Api = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): MetricsV1ApiType {
     const basePath: string = (configuration && configuration.basePath) || BASE_PATH;
     return {
         /**
@@ -3609,7 +3112,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsAssetCurrentGet(metricId?: string, assetId?: string, assetIdExternal?: string, exchangeId?: string, options?: RequestOptions = {}): Promise<Array<V1GeneralData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsAssetCurrentGet(metricId, assetId, assetIdExternal, exchangeId, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsAssetCurrentGet(metricId, assetId, assetIdExternal, exchangeId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3624,7 +3127,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsAssetHistoryGet(metricId: string, exchangeId: string, assetId?: string, assetIdExternal?: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<V1MetricData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsAssetHistoryGet(metricId, exchangeId, assetId, assetIdExternal, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsAssetHistoryGet(metricId, exchangeId, assetId, assetIdExternal, timeStart, timeEnd, timeFormat, periodId, limit, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3639,7 +3142,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsAssetListingGet(metricId?: string, exchangeId?: string, chainId?: string, networkId?: string, assetId?: string, assetIdExternal?: string, options?: RequestOptions = {}): Promise<Array<V1ListingItem>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsAssetListingGet(metricId, exchangeId, chainId, networkId, assetId, assetIdExternal, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsAssetListingGet(metricId, exchangeId, chainId, networkId, assetId, assetIdExternal, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3654,7 +3157,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsExchangeCurrentGet(exchangeId: string, metricId?: string, options?: RequestOptions = {}): Promise<Array<V1GeneralData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsExchangeCurrentGet(exchangeId, metricId, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsExchangeCurrentGet(exchangeId, metricId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3669,7 +3172,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<V1MetricData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsExchangeHistoryGet(metricId, exchangeId, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsExchangeHistoryGet(metricId, exchangeId, timeStart, timeEnd, timeFormat, periodId, limit, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3684,7 +3187,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsExchangeListingGet(exchangeId: string, metricId?: string, options?: RequestOptions = {}): Promise<Array<V1ListingItem>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsExchangeListingGet(exchangeId, metricId, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsExchangeListingGet(exchangeId, metricId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3699,7 +3202,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsListingGet(options?: RequestOptions = {}): Promise<Array<V1Metric>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsListingGet(options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsListingGet(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3714,7 +3217,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsSymbolCurrentGet(metricId?: string, symbolId?: string, exchangeId?: string, options?: RequestOptions = {}): Promise<Array<V1GeneralData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsSymbolCurrentGet(metricId, symbolId, exchangeId, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsSymbolCurrentGet(metricId, symbolId, exchangeId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3729,7 +3232,7 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsSymbolHistoryGet(metricId: string, symbolId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<V1MetricData>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsSymbolHistoryGet(metricId, symbolId, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsSymbolHistoryGet(metricId, symbolId, timeStart, timeEnd, timeFormat, periodId, limit, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -3744,7 +3247,504 @@ export const MetricsApi = function(configuration?: Configuration, fetch: FetchAP
          * @throws {RequiredError}
          */
         v1MetricsSymbolListingGet(metricId?: string, exchangeId?: string, symbolId?: string, options?: RequestOptions = {}): Promise<Array<V1ListingItem>> {
-            const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).v1MetricsSymbolListingGet(metricId, exchangeId, symbolId, options);
+            const localVarFetchArgs = MetricsV1ApiFetchParamCreator(configuration).v1MetricsSymbolListingGet(metricId, exchangeId, symbolId, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+    }
+};
+
+
+/**
+ * MetricsV2Api - fetch parameter creator
+ * @export
+ */
+export const MetricsV2ApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Get asset metrics history.
+         * @summary Historical metrics for the asset
+         * @throws {RequiredError}
+         */
+        v2MetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
+            // verify required parameter 'metricId' is not null or undefined
+            if (metricId === null || metricId === undefined) {
+                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v2MetricsAssetHistoryGet.');
+            }
+            // verify required parameter 'assetId' is not null or undefined
+            if (assetId === null || assetId === undefined) {
+                throw new RequiredError('assetId','Required parameter assetId was null or undefined when calling v2MetricsAssetHistoryGet.');
+            }
+            const localVarPath = `/v2/metrics/asset/history`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (metricId !== undefined) {
+                localVarQueryParameter['metric_id'] = ((metricId:any):string);
+            }
+
+            if (assetId !== undefined) {
+                localVarQueryParameter['asset_id'] = ((assetId:any):string);
+            }
+
+            if (timeStart !== undefined) {
+                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
+            }
+
+            if (timeEnd !== undefined) {
+                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
+            }
+
+            if (timeFormat !== undefined) {
+                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
+            }
+
+            if (periodId !== undefined) {
+                localVarQueryParameter['period_id'] = ((periodId:any):string);
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = ((limit:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get all metrics that are actually available for the specified asset.
+         * @summary Listing of metrics available for specific asset
+         * @throws {RequiredError}
+         */
+        v2MetricsAssetListingGet(assetId: string, options: RequestOptions): FetchArgs {
+            // verify required parameter 'assetId' is not null or undefined
+            if (assetId === null || assetId === undefined) {
+                throw new RequiredError('assetId','Required parameter assetId was null or undefined when calling v2MetricsAssetListingGet.');
+            }
+            const localVarPath = `/v2/metrics/asset/listing`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (assetId !== undefined) {
+                localVarQueryParameter['asset_id'] = ((assetId:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get chain metrics history.
+         * @summary Historical metrics for the chain
+         * @throws {RequiredError}
+         */
+        v2MetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
+            // verify required parameter 'metricId' is not null or undefined
+            if (metricId === null || metricId === undefined) {
+                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v2MetricsChainHistoryGet.');
+            }
+            // verify required parameter 'chainId' is not null or undefined
+            if (chainId === null || chainId === undefined) {
+                throw new RequiredError('chainId','Required parameter chainId was null or undefined when calling v2MetricsChainHistoryGet.');
+            }
+            const localVarPath = `/v2/metrics/chain/history`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (metricId !== undefined) {
+                localVarQueryParameter['metric_id'] = ((metricId:any):string);
+            }
+
+            if (chainId !== undefined) {
+                localVarQueryParameter['chain_id'] = ((chainId:any):string);
+            }
+
+            if (timeStart !== undefined) {
+                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
+            }
+
+            if (timeEnd !== undefined) {
+                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
+            }
+
+            if (timeFormat !== undefined) {
+                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
+            }
+
+            if (periodId !== undefined) {
+                localVarQueryParameter['period_id'] = ((periodId:any):string);
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = ((limit:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get all metrics that are actually available for the specified blockchain chain.
+         * @summary Listing of metrics available for specific chain
+         * @throws {RequiredError}
+         */
+        v2MetricsChainListingGet(chainId: string, options: RequestOptions): FetchArgs {
+            // verify required parameter 'chainId' is not null or undefined
+            if (chainId === null || chainId === undefined) {
+                throw new RequiredError('chainId','Required parameter chainId was null or undefined when calling v2MetricsChainListingGet.');
+            }
+            const localVarPath = `/v2/metrics/chain/listing`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (chainId !== undefined) {
+                localVarQueryParameter['chain_id'] = ((chainId:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get exchange metrics history.
+         * @summary Historical metrics for the exchange
+         * @throws {RequiredError}
+         */
+        v2MetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options: RequestOptions): FetchArgs {
+            // verify required parameter 'metricId' is not null or undefined
+            if (metricId === null || metricId === undefined) {
+                throw new RequiredError('metricId','Required parameter metricId was null or undefined when calling v2MetricsExchangeHistoryGet.');
+            }
+            // verify required parameter 'exchangeId' is not null or undefined
+            if (exchangeId === null || exchangeId === undefined) {
+                throw new RequiredError('exchangeId','Required parameter exchangeId was null or undefined when calling v2MetricsExchangeHistoryGet.');
+            }
+            const localVarPath = `/v2/metrics/exchange/history`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (metricId !== undefined) {
+                localVarQueryParameter['metric_id'] = ((metricId:any):string);
+            }
+
+            if (exchangeId !== undefined) {
+                localVarQueryParameter['exchange_id'] = ((exchangeId:any):string);
+            }
+
+            if (timeStart !== undefined) {
+                localVarQueryParameter['time_start'] = ((timeStart:any):Date).toISOString();
+            }
+
+            if (timeEnd !== undefined) {
+                localVarQueryParameter['time_end'] = ((timeEnd:any):Date).toISOString();
+            }
+
+            if (timeFormat !== undefined) {
+                localVarQueryParameter['time_format'] = ((timeFormat:any):string);
+            }
+
+            if (periodId !== undefined) {
+                localVarQueryParameter['period_id'] = ((periodId:any):string);
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = ((limit:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get all metrics that are actually available for the specified exchange.
+         * @summary Listing of metrics available for specific exchange
+         * @throws {RequiredError}
+         */
+        v2MetricsExchangeListingGet(exchangeId: string, options: RequestOptions): FetchArgs {
+            // verify required parameter 'exchangeId' is not null or undefined
+            if (exchangeId === null || exchangeId === undefined) {
+                throw new RequiredError('exchangeId','Required parameter exchangeId was null or undefined when calling v2MetricsExchangeListingGet.');
+            }
+            const localVarPath = `/v2/metrics/exchange/listing`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            if (exchangeId !== undefined) {
+                localVarQueryParameter['exchange_id'] = ((exchangeId:any):string);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get all metrics available in the system.
+         * @summary Listing of all supported metrics
+         * @throws {RequiredError}
+         */
+        v2MetricsListingGet(options: RequestOptions): FetchArgs {
+            const localVarPath = `/v2/metrics/listing`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions: RequestOptions = Object.assign({}, { method: 'GET' }, options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+
+            // authentication APIKey required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? configuration.apiKey("Authorization")
+                    : configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            // authentication JWT required
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+export type MetricsV2ApiType = { 
+    v2MetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
+
+    v2MetricsAssetListingGet(assetId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
+
+    v2MetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
+
+    v2MetricsChainListingGet(chainId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
+
+    v2MetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions): Promise<Array<Object>>,
+
+    v2MetricsExchangeListingGet(exchangeId: string, options?: RequestOptions): Promise<Array<V1MetricInfo>>,
+
+    v2MetricsListingGet(options?: RequestOptions): Promise<Array<V1MetricInfo>>,
+}
+
+/**
+ * MetricsV2Api - factory function to inject configuration 
+ * @export
+ */
+export const MetricsV2Api = function(configuration?: Configuration, fetch: FetchAPI = portableFetch): MetricsV2ApiType {
+    const basePath: string = (configuration && configuration.basePath) || BASE_PATH;
+    return {
+        /**
+         * Get asset metrics history.
+         * @summary Historical metrics for the asset
+         * @throws {RequiredError}
+         */
+        v2MetricsAssetHistoryGet(metricId: string, assetId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsAssetHistoryGet(metricId, assetId, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get all metrics that are actually available for the specified asset.
+         * @summary Listing of metrics available for specific asset
+         * @throws {RequiredError}
+         */
+        v2MetricsAssetListingGet(assetId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsAssetListingGet(assetId, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get chain metrics history.
+         * @summary Historical metrics for the chain
+         * @throws {RequiredError}
+         */
+        v2MetricsChainHistoryGet(metricId: string, chainId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsChainHistoryGet(metricId, chainId, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get all metrics that are actually available for the specified blockchain chain.
+         * @summary Listing of metrics available for specific chain
+         * @throws {RequiredError}
+         */
+        v2MetricsChainListingGet(chainId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsChainListingGet(chainId, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get exchange metrics history.
+         * @summary Historical metrics for the exchange
+         * @throws {RequiredError}
+         */
+        v2MetricsExchangeHistoryGet(metricId: string, exchangeId: string, timeStart?: Date, timeEnd?: Date, timeFormat?: string, periodId?: string, limit?: number, options?: RequestOptions = {}): Promise<Array<Object>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsExchangeHistoryGet(metricId, exchangeId, timeStart, timeEnd, timeFormat, periodId, limit, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get all metrics that are actually available for the specified exchange.
+         * @summary Listing of metrics available for specific exchange
+         * @throws {RequiredError}
+         */
+        v2MetricsExchangeListingGet(exchangeId: string, options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsExchangeListingGet(exchangeId, options);
+            return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            });
+        },
+        /**
+         * Get all metrics available in the system.
+         * @summary Listing of all supported metrics
+         * @throws {RequiredError}
+         */
+        v2MetricsListingGet(options?: RequestOptions = {}): Promise<Array<V1MetricInfo>> {
+            const localVarFetchArgs = MetricsV2ApiFetchParamCreator(configuration).v2MetricsListingGet(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -5077,11 +5077,11 @@ export const TradesApi = function(configuration?: Configuration, fetch: FetchAPI
 export type ApiTypes = { 
     ExchangeRatesApi: ExchangeRatesApiType,
 
-    ExternalMetricsApi: ExternalMetricsApiType,
-
     MetadataApi: MetadataApiType,
 
-    MetricsApi: MetricsApiType,
+    MetricsV1Api: MetricsV1ApiType,
+
+    MetricsV2Api: MetricsV2ApiType,
 
     OhlcvApi: OhlcvApiType,
 

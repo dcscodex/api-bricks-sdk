@@ -300,13 +300,7 @@ case $state in
             "getSpecificRate[Get specific rate]" \
             "v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet[Timeseries data]" \
             "v1ExchangerateAssetIdBaseGet[Get all current rates]" \
-            "v1ExchangerateHistoryPeriodsGet[Timeseries periods]"             "v1ExternalmetricsAssetHistoryGet[Historical metrics for the asset]" \
-            "v1ExternalmetricsAssetListingGet[Listing of metrics available for specific asset]" \
-            "v1ExternalmetricsChainHistoryGet[Historical metrics for the chain]" \
-            "v1ExternalmetricsChainListingGet[Listing of metrics available for specific chain]" \
-            "v1ExternalmetricsExchangeHistoryGet[Historical metrics for the exchange]" \
-            "v1ExternalmetricsExchangeListingGet[Listing of metrics available for specific exchange]" \
-            "v1ExternalmetricsListingGet[Listing of all supported metrics]"             "v1AssetsAssetIdGet[List all assets by asset ID]" \
+            "v1ExchangerateHistoryPeriodsGet[Timeseries periods]"             "v1AssetsAssetIdGet[List all assets by asset ID]" \
             "v1AssetsGet[List all assets]" \
             "v1AssetsIconsSizeGet[List all asset icons]" \
             "v1ChainsChainIdGet[List all chains by chain ID]" \
@@ -325,7 +319,13 @@ case $state in
             "v1MetricsListingGet[Listing of all supported metrics by CoinAPI]" \
             "v1MetricsSymbolCurrentGet[Current metrics for given symbol]" \
             "v1MetricsSymbolHistoryGet[Historical metrics for symbol]" \
-            "v1MetricsSymbolListingGet[Listing of all supported metrics for symbol]"             "v1OhlcvExchangesExchangeIdHistoryGet[Historical data by exchange]" \
+            "v1MetricsSymbolListingGet[Listing of all supported metrics for symbol]"             "v2MetricsAssetHistoryGet[Historical metrics for the asset]" \
+            "v2MetricsAssetListingGet[Listing of metrics available for specific asset]" \
+            "v2MetricsChainHistoryGet[Historical metrics for the chain]" \
+            "v2MetricsChainListingGet[Listing of metrics available for specific chain]" \
+            "v2MetricsExchangeHistoryGet[Historical metrics for the exchange]" \
+            "v2MetricsExchangeListingGet[Listing of metrics available for specific exchange]" \
+            "v2MetricsListingGet[Listing of all supported metrics]"             "v1OhlcvExchangesExchangeIdHistoryGet[Historical data by exchange]" \
             "v1OhlcvPeriodsGet[List all periods]" \
             "v1OhlcvSymbolIdHistoryGet[Historical data]" \
             "v1OhlcvSymbolIdLatestGet[Latest data]"             "v1OptionsExchangeIdCurrentGet[Current data by Exchange]"             "v1OrderbooksSymbolIdCurrentGet[Get current order book]" \
@@ -379,72 +379,6 @@ case $state in
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       v1ExchangerateHistoryPeriodsGet)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsAssetHistoryGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
-"asset_id=:[QUERY] Asset identifier (e.g., &#39;USDC&#39;, &#39;USDT&#39;)"
-"time_start=:[QUERY] Starting time in ISO 8601"
-"time_end=:[QUERY] Ending time in ISO 8601"
-"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
-"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
-"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsAssetListingGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "asset_id=:[QUERY] Asset identifier (e.g., USDC, USDT)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsChainHistoryGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
-"chain_id=:[QUERY] Chain identifier (e.g., &#39;Ethereum&#39;, &#39;Arbitrum&#39;)"
-"time_start=:[QUERY] Starting time in ISO 8601"
-"time_end=:[QUERY] Ending time in ISO 8601"
-"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
-"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
-"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsChainListingGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "chain_id=:[QUERY] Chain identifier (e.g., ETHEREUM, ARBITRUM)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsExchangeHistoryGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
-"exchange_id=:[QUERY] Exchange identifier (e.g., &#39;BINANCE&#39;, &#39;UNISWAP-V3-ETHEREUM&#39;)"
-"time_start=:[QUERY] Starting time in ISO 8601"
-"time_end=:[QUERY] Ending time in ISO 8601"
-"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
-"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
-"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsExchangeListingGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "exchange_id=:[QUERY] Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)"
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      v1ExternalmetricsListingGet)
         local -a _op_arguments
         _op_arguments=(
                               )
@@ -632,6 +566,72 @@ case $state in
 "exchange_id=:[QUERY] Exchange identifier (from the Metadata -&gt; Exchanges)"
 "symbol_id=:[QUERY] Symbol identifier (from the Metadata -&gt; Symbols)"
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsAssetHistoryGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
+"asset_id=:[QUERY] Asset identifier (e.g., &#39;USDC&#39;, &#39;USDT&#39;)"
+"time_start=:[QUERY] Starting time in ISO 8601"
+"time_end=:[QUERY] Ending time in ISO 8601"
+"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
+"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
+"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsAssetListingGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "asset_id=:[QUERY] Asset identifier (e.g., USDC, USDT)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsChainHistoryGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
+"chain_id=:[QUERY] Chain identifier (e.g., &#39;Ethereum&#39;, &#39;Arbitrum&#39;)"
+"time_start=:[QUERY] Starting time in ISO 8601"
+"time_end=:[QUERY] Ending time in ISO 8601"
+"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
+"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
+"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsChainListingGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "chain_id=:[QUERY] Chain identifier (e.g., ETHEREUM, ARBITRUM)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsExchangeHistoryGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "metric_id=:[QUERY] Metric identifier (e.g., &#39;TVL&#39;, &#39;STABLES_BRIDGED_USD&#39;)"
+"exchange_id=:[QUERY] Exchange identifier (e.g., &#39;BINANCE&#39;, &#39;UNISWAP-V3-ETHEREUM&#39;)"
+"time_start=:[QUERY] Starting time in ISO 8601"
+"time_end=:[QUERY] Ending time in ISO 8601"
+"time_format=:[QUERY] If set, returned values will be in unix timestamp format (valid values: unix_sec, unix_millisec, unix_microsec, unix_nanosec)"
+"period_id=:[QUERY] Identifier of requested timeseries period (e.g. &#39;1MIN&#39; or &#39;2MTH&#39;), default value is &#39;1MIN&#39;"
+"limit=:[QUERY] Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsExchangeListingGet)
+        local -a _op_arguments
+        _op_arguments=(
+                    "exchange_id=:[QUERY] Exchange identifier (e.g., BINANCE, UNISWAP-V3-ETHEREUM)"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      v2MetricsListingGet)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       v1OhlcvExchangesExchangeIdHistoryGet)

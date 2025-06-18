@@ -71,13 +71,6 @@ Class | Method | HTTP request | Description
 *OASExchangeRatesApi* | [**v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet**](OASExchangeRatesApi.md#v1ExchangerateAssetIdBaseAssetIdQuoteHistoryGet) | **GET** /v1/exchangerate/{asset_id_base}/{asset_id_quote}/history | Timeseries data
 *OASExchangeRatesApi* | [**v1ExchangerateAssetIdBaseGet**](OASExchangeRatesApi.md#v1ExchangerateAssetIdBaseGet) | **GET** /v1/exchangerate/{asset_id_base} | Get all current rates
 *OASExchangeRatesApi* | [**v1ExchangerateHistoryPeriodsGet**](OASExchangeRatesApi.md#v1ExchangerateHistoryPeriodsGet) | **GET** /v1/exchangerate/history/periods | Timeseries periods
-*OASExternalMetricsApi* | [**v1ExternalmetricsAssetHistoryGet**](OASExternalMetricsApi.md#v1ExternalmetricsAssetHistoryGet) | **GET** /v1/externalmetrics/asset/history | Historical metrics for the asset
-*OASExternalMetricsApi* | [**v1ExternalmetricsAssetListingGet**](OASExternalMetricsApi.md#v1ExternalmetricsAssetListingGet) | **GET** /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset
-*OASExternalMetricsApi* | [**v1ExternalmetricsChainHistoryGet**](OASExternalMetricsApi.md#v1ExternalmetricsChainHistoryGet) | **GET** /v1/externalmetrics/chain/history | Historical metrics for the chain
-*OASExternalMetricsApi* | [**v1ExternalmetricsChainListingGet**](OASExternalMetricsApi.md#v1ExternalmetricsChainListingGet) | **GET** /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain
-*OASExternalMetricsApi* | [**v1ExternalmetricsExchangeHistoryGet**](OASExternalMetricsApi.md#v1ExternalmetricsExchangeHistoryGet) | **GET** /v1/externalmetrics/exchange/history | Historical metrics for the exchange
-*OASExternalMetricsApi* | [**v1ExternalmetricsExchangeListingGet**](OASExternalMetricsApi.md#v1ExternalmetricsExchangeListingGet) | **GET** /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange
-*OASExternalMetricsApi* | [**v1ExternalmetricsListingGet**](OASExternalMetricsApi.md#v1ExternalmetricsListingGet) | **GET** /v1/externalmetrics/listing | Listing of all supported metrics
 *OASMetadataApi* | [**v1AssetsAssetIdGet**](OASMetadataApi.md#v1AssetsAssetIdGet) | **GET** /v1/assets/{asset_id} | List all assets by asset ID
 *OASMetadataApi* | [**v1AssetsGet**](OASMetadataApi.md#v1AssetsGet) | **GET** /v1/assets | List all assets
 *OASMetadataApi* | [**v1AssetsIconsSizeGet**](OASMetadataApi.md#v1AssetsIconsSizeGet) | **GET** /v1/assets/icons/{size} | List all asset icons
@@ -89,16 +82,23 @@ Class | Method | HTTP request | Description
 *OASMetadataApi* | [**v1SymbolsExchangeIdGet**](OASMetadataApi.md#v1SymbolsExchangeIdGet) | **GET** /v1/symbols/{exchange_id} | List of symbols for the exchange
 *OASMetadataApi* | [**v1SymbolsGet**](OASMetadataApi.md#v1SymbolsGet) | **GET** /v1/symbols | List all symbols
 *OASMetadataApi* | [**v1SymbolsMapExchangeIdGet**](OASMetadataApi.md#v1SymbolsMapExchangeIdGet) | **GET** /v1/symbols/map/{exchange_id} | List symbol mapping for the exchange
-*OASMetricsApi* | [**v1MetricsAssetCurrentGet**](OASMetricsApi.md#v1MetricsAssetCurrentGet) | **GET** /v1/metrics/asset/current | Current metrics for given asset
-*OASMetricsApi* | [**v1MetricsAssetHistoryGet**](OASMetricsApi.md#v1MetricsAssetHistoryGet) | **GET** /v1/metrics/asset/history | Historical metrics for asset
-*OASMetricsApi* | [**v1MetricsAssetListingGet**](OASMetricsApi.md#v1MetricsAssetListingGet) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
-*OASMetricsApi* | [**v1MetricsExchangeCurrentGet**](OASMetricsApi.md#v1MetricsExchangeCurrentGet) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
-*OASMetricsApi* | [**v1MetricsExchangeHistoryGet**](OASMetricsApi.md#v1MetricsExchangeHistoryGet) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
-*OASMetricsApi* | [**v1MetricsExchangeListingGet**](OASMetricsApi.md#v1MetricsExchangeListingGet) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
-*OASMetricsApi* | [**v1MetricsListingGet**](OASMetricsApi.md#v1MetricsListingGet) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
-*OASMetricsApi* | [**v1MetricsSymbolCurrentGet**](OASMetricsApi.md#v1MetricsSymbolCurrentGet) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
-*OASMetricsApi* | [**v1MetricsSymbolHistoryGet**](OASMetricsApi.md#v1MetricsSymbolHistoryGet) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
-*OASMetricsApi* | [**v1MetricsSymbolListingGet**](OASMetricsApi.md#v1MetricsSymbolListingGet) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*OASMetricsV1Api* | [**v1MetricsAssetCurrentGet**](OASMetricsV1Api.md#v1MetricsAssetCurrentGet) | **GET** /v1/metrics/asset/current | Current metrics for given asset
+*OASMetricsV1Api* | [**v1MetricsAssetHistoryGet**](OASMetricsV1Api.md#v1MetricsAssetHistoryGet) | **GET** /v1/metrics/asset/history | Historical metrics for asset
+*OASMetricsV1Api* | [**v1MetricsAssetListingGet**](OASMetricsV1Api.md#v1MetricsAssetListingGet) | **GET** /v1/metrics/asset/listing | Listing of all supported metrics for asset
+*OASMetricsV1Api* | [**v1MetricsExchangeCurrentGet**](OASMetricsV1Api.md#v1MetricsExchangeCurrentGet) | **GET** /v1/metrics/exchange/current | Current metrics for given exchange
+*OASMetricsV1Api* | [**v1MetricsExchangeHistoryGet**](OASMetricsV1Api.md#v1MetricsExchangeHistoryGet) | **GET** /v1/metrics/exchange/history | Historical metrics for the exchange
+*OASMetricsV1Api* | [**v1MetricsExchangeListingGet**](OASMetricsV1Api.md#v1MetricsExchangeListingGet) | **GET** /v1/metrics/exchange/listing | Listing of all supported exchange metrics
+*OASMetricsV1Api* | [**v1MetricsListingGet**](OASMetricsV1Api.md#v1MetricsListingGet) | **GET** /v1/metrics/listing | Listing of all supported metrics by CoinAPI
+*OASMetricsV1Api* | [**v1MetricsSymbolCurrentGet**](OASMetricsV1Api.md#v1MetricsSymbolCurrentGet) | **GET** /v1/metrics/symbol/current | Current metrics for given symbol
+*OASMetricsV1Api* | [**v1MetricsSymbolHistoryGet**](OASMetricsV1Api.md#v1MetricsSymbolHistoryGet) | **GET** /v1/metrics/symbol/history | Historical metrics for symbol
+*OASMetricsV1Api* | [**v1MetricsSymbolListingGet**](OASMetricsV1Api.md#v1MetricsSymbolListingGet) | **GET** /v1/metrics/symbol/listing | Listing of all supported metrics for symbol
+*OASMetricsV2Api* | [**v2MetricsAssetHistoryGet**](OASMetricsV2Api.md#v2MetricsAssetHistoryGet) | **GET** /v2/metrics/asset/history | Historical metrics for the asset
+*OASMetricsV2Api* | [**v2MetricsAssetListingGet**](OASMetricsV2Api.md#v2MetricsAssetListingGet) | **GET** /v2/metrics/asset/listing | Listing of metrics available for specific asset
+*OASMetricsV2Api* | [**v2MetricsChainHistoryGet**](OASMetricsV2Api.md#v2MetricsChainHistoryGet) | **GET** /v2/metrics/chain/history | Historical metrics for the chain
+*OASMetricsV2Api* | [**v2MetricsChainListingGet**](OASMetricsV2Api.md#v2MetricsChainListingGet) | **GET** /v2/metrics/chain/listing | Listing of metrics available for specific chain
+*OASMetricsV2Api* | [**v2MetricsExchangeHistoryGet**](OASMetricsV2Api.md#v2MetricsExchangeHistoryGet) | **GET** /v2/metrics/exchange/history | Historical metrics for the exchange
+*OASMetricsV2Api* | [**v2MetricsExchangeListingGet**](OASMetricsV2Api.md#v2MetricsExchangeListingGet) | **GET** /v2/metrics/exchange/listing | Listing of metrics available for specific exchange
+*OASMetricsV2Api* | [**v2MetricsListingGet**](OASMetricsV2Api.md#v2MetricsListingGet) | **GET** /v2/metrics/listing | Listing of all supported metrics
 *OASOhlcvApi* | [**v1OhlcvExchangesExchangeIdHistoryGet**](OASOhlcvApi.md#v1OhlcvExchangesExchangeIdHistoryGet) | **GET** /v1/ohlcv/exchanges/{exchange_id}/history | Historical data by exchange
 *OASOhlcvApi* | [**v1OhlcvPeriodsGet**](OASOhlcvApi.md#v1OhlcvPeriodsGet) | **GET** /v1/ohlcv/periods | List all periods
 *OASOhlcvApi* | [**v1OhlcvSymbolIdHistoryGet**](OASOhlcvApi.md#v1OhlcvSymbolIdHistoryGet) | **GET** /v1/ohlcv/{symbol_id}/history | Historical data

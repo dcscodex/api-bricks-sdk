@@ -3,9 +3,9 @@
 api.ts
 api/apis.ts
 api/exchangeRatesApi.ts
-api/externalMetricsApi.ts
 api/metadataApi.ts
-api/metricsApi.ts
+api/metricsV1Api.ts
+api/metricsV2Api.ts
 api/ohlcvApi.ts
 api/optionsApi.ts
 api/orderBookApi.ts

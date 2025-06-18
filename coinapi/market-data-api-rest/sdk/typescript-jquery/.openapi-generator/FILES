@@ -1,8 +1,8 @@
 .openapi-generator-ignore
 api/ExchangeRatesApi.ts
-api/ExternalMetricsApi.ts
 api/MetadataApi.ts
-api/MetricsApi.ts
+api/MetricsV1Api.ts
+api/MetricsV2Api.ts
 api/OhlcvApi.ts
 api/OptionsApi.ts
 api/OrderBookApi.ts

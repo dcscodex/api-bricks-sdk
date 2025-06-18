@@ -67,9 +67,9 @@ library
       CoinAPIMarketDataREST
       CoinAPIMarketDataREST.API
       CoinAPIMarketDataREST.API.ExchangeRates
-      CoinAPIMarketDataREST.API.ExternalMetrics
       CoinAPIMarketDataREST.API.Metadata
-      CoinAPIMarketDataREST.API.Metrics
+      CoinAPIMarketDataREST.API.MetricsV1
+      CoinAPIMarketDataREST.API.MetricsV2
       CoinAPIMarketDataREST.API.Ohlcv
       CoinAPIMarketDataREST.API.Options
       CoinAPIMarketDataREST.API.OrderBook

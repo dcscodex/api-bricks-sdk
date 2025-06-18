@@ -3,9 +3,9 @@
 README.md
 api_client.ecf
 docs/EXCHANGERATES_API.md
-docs/EXTERNALMETRICS_API.md
 docs/METADATA_API.md
-docs/METRICS_API.md
+docs/METRICSV1_API.md
+docs/METRICSV2_API.md
 docs/MODELS_EXCHANGE_TIMESERIES_ITEM.md
 docs/OHLCV_API.md
 docs/OPTIONS_API.md
@@ -41,9 +41,9 @@ docs/V1_TIMESERIES_ITEM.md
 docs/V1_TIMESERIES_PERIOD.md
 docs/V1_TRADE.md
 src/api/exchange_rates_api.e
-src/api/external_metrics_api.e
 src/api/metadata_api.e
-src/api/metrics_api.e
+src/api/metrics_v1_api.e
+src/api/metrics_v2_api.e
 src/api/ohlcv_api.e
 src/api/options_api.e
 src/api/order_book_api.e
@@ -96,9 +96,9 @@ src/framework/serialization/json_basic_reflector_deserializer.e
 src/framework/serialization/json_type_utilities_ext.e
 test/api_test.ecf
 test/apis/exchangerates_api_test.e
-test/apis/externalmetrics_api_test.e
 test/apis/metadata_api_test.e
-test/apis/metrics_api_test.e
+test/apis/metricsv1_api_test.e
+test/apis/metricsv2_api_test.e
 test/apis/ohlcv_api_test.e
 test/apis/options_api_test.e
 test/apis/orderbook_api_test.e

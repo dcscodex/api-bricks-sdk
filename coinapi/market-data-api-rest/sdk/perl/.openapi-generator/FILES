@@ -5,9 +5,9 @@ README.md
 bin/autodoc
 cpanfile
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -47,9 +47,9 @@ lib/WWW/OpenAPIClient/ApiClient.pm
 lib/WWW/OpenAPIClient/ApiFactory.pm
 lib/WWW/OpenAPIClient/Configuration.pm
 lib/WWW/OpenAPIClient/ExchangeRatesApi.pm
-lib/WWW/OpenAPIClient/ExternalMetricsApi.pm
 lib/WWW/OpenAPIClient/MetadataApi.pm
-lib/WWW/OpenAPIClient/MetricsApi.pm
+lib/WWW/OpenAPIClient/MetricsV1Api.pm
+lib/WWW/OpenAPIClient/MetricsV2Api.pm
 lib/WWW/OpenAPIClient/Object/ModelsExchangeTimeseriesItem.pm
 lib/WWW/OpenAPIClient/Object/OptionsOptionExchangeGroup.pm
 lib/WWW/OpenAPIClient/Object/OptionsStrike.pm
@@ -87,9 +87,9 @@ lib/WWW/OpenAPIClient/Role.pm
 lib/WWW/OpenAPIClient/Role/AutoDoc.pm
 lib/WWW/OpenAPIClient/TradesApi.pm
 t/ExchangeRatesApiTest.t
-t/ExternalMetricsApiTest.t
 t/MetadataApiTest.t
-t/MetricsApiTest.t
+t/MetricsV1ApiTest.t
+t/MetricsV2ApiTest.t
 t/ModelsExchangeTimeseriesItemTest.t
 t/OhlcvApiTest.t
 t/OptionsApiTest.t

@@ -2,9 +2,9 @@
 README.md
 build.gradle
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -45,9 +45,9 @@ gradlew
 gradlew.bat
 settings.gradle
 src/main/kotlin/org/openapitools/client/apis/ExchangeRatesApi.kt
-src/main/kotlin/org/openapitools/client/apis/ExternalMetricsApi.kt
 src/main/kotlin/org/openapitools/client/apis/MetadataApi.kt
-src/main/kotlin/org/openapitools/client/apis/MetricsApi.kt
+src/main/kotlin/org/openapitools/client/apis/MetricsV1Api.kt
+src/main/kotlin/org/openapitools/client/apis/MetricsV2Api.kt
 src/main/kotlin/org/openapitools/client/apis/OhlcvApi.kt
 src/main/kotlin/org/openapitools/client/apis/OptionsApi.kt
 src/main/kotlin/org/openapitools/client/apis/OrderBookApi.kt
@@ -100,9 +100,9 @@ src/main/kotlin/org/openapitools/client/models/V1TimeseriesItem.kt
 src/main/kotlin/org/openapitools/client/models/V1TimeseriesPeriod.kt
 src/main/kotlin/org/openapitools/client/models/V1Trade.kt
 src/test/kotlin/org/openapitools/client/apis/ExchangeRatesApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/ExternalMetricsApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/MetadataApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/MetricsApiTest.kt
+src/test/kotlin/org/openapitools/client/apis/MetricsV1ApiTest.kt
+src/test/kotlin/org/openapitools/client/apis/MetricsV2ApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/OhlcvApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/OptionsApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/OrderBookApiTest.kt

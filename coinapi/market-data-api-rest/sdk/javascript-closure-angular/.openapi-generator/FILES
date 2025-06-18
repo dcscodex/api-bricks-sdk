@@ -1,8 +1,8 @@
 .openapi-generator-ignore
 API/Client/ExchangeRatesApi.js
-API/Client/ExternalMetricsApi.js
 API/Client/MetadataApi.js
-API/Client/MetricsApi.js
+API/Client/MetricsV1Api.js
+API/Client/MetricsV2Api.js
 API/Client/ModelsExchangeTimeseriesItem.js
 API/Client/OhlcvApi.js
 API/Client/OptionsApi.js

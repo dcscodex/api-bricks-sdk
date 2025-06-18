@@ -5,9 +5,9 @@ README.md
 api/openapi.yaml
 appveyor.yml
 docs/apis/ExchangeRatesApi.md
-docs/apis/ExternalMetricsApi.md
 docs/apis/MetadataApi.md
-docs/apis/MetricsApi.md
+docs/apis/MetricsV1Api.md
+docs/apis/MetricsV2Api.md
 docs/apis/OhlcvApi.md
 docs/apis/OptionsApi.md
 docs/apis/OrderBookApi.md
@@ -48,9 +48,9 @@ src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/APIBricks.CoinAPI.MarketDataAPI
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/ApiTestsBase.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/DependencyInjectionTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/ExchangeRatesApiTests.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/ExternalMetricsApiTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/MetadataApiTests.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/MetricsApiTests.cs
+src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/MetricsV1ApiTests.cs
+src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/MetricsV2ApiTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/OhlcvApiTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/OptionsApiTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Api/OrderBookApiTests.cs
@@ -88,10 +88,10 @@ src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/Model/V1TradeTests.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1.Test/README.md
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/APIBricks.CoinAPI.MarketDataAPI.REST.V1.csproj
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/ExchangeRatesApi.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/ExternalMetricsApi.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/IApi.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/MetadataApi.cs
-src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/MetricsApi.cs
+src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/MetricsV1Api.cs
+src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/MetricsV2Api.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/OhlcvApi.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/OptionsApi.cs
 src/APIBricks.CoinAPI.MarketDataAPI.REST.V1/Api/OrderBookApi.cs

@@ -52,25 +52,6 @@ Method | HTTP request | Description
 *v1ExchangerateHistoryPeriodsGetASync* | *GET* /v1/exchangerate/history/periods | Timeseries periods.
 
 
-### ExternalMetricsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*v1ExternalmetricsAssetHistoryGetSync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset.
-*v1ExternalmetricsAssetHistoryGetASync* | *GET* /v1/externalmetrics/asset/history | Historical metrics for the asset.
-*v1ExternalmetricsAssetListingGetSync* | *GET* /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset.
-*v1ExternalmetricsAssetListingGetASync* | *GET* /v1/externalmetrics/asset/listing | Listing of metrics available for specific asset.
-*v1ExternalmetricsChainHistoryGetSync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain.
-*v1ExternalmetricsChainHistoryGetASync* | *GET* /v1/externalmetrics/chain/history | Historical metrics for the chain.
-*v1ExternalmetricsChainListingGetSync* | *GET* /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain.
-*v1ExternalmetricsChainListingGetASync* | *GET* /v1/externalmetrics/chain/listing | Listing of metrics available for specific chain.
-*v1ExternalmetricsExchangeHistoryGetSync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange.
-*v1ExternalmetricsExchangeHistoryGetASync* | *GET* /v1/externalmetrics/exchange/history | Historical metrics for the exchange.
-*v1ExternalmetricsExchangeListingGetSync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange.
-*v1ExternalmetricsExchangeListingGetASync* | *GET* /v1/externalmetrics/exchange/listing | Listing of metrics available for specific exchange.
-*v1ExternalmetricsListingGetSync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics.
-*v1ExternalmetricsListingGetASync* | *GET* /v1/externalmetrics/listing | Listing of all supported metrics.
-
-
 ### MetadataManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -98,7 +79,7 @@ Method | HTTP request | Description
 *v1SymbolsMapExchangeIdGetASync* | *GET* /v1/symbols/map/{exchange_id} | List symbol mapping for the exchange.
 
 
-### MetricsManager
+### MetricsV1Manager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *v1MetricsAssetCurrentGetSync* | *GET* /v1/metrics/asset/current | Current metrics for given asset.
@@ -121,6 +102,25 @@ Method | HTTP request | Description
 *v1MetricsSymbolHistoryGetASync* | *GET* /v1/metrics/symbol/history | Historical metrics for symbol.
 *v1MetricsSymbolListingGetSync* | *GET* /v1/metrics/symbol/listing | Listing of all supported metrics for symbol.
 *v1MetricsSymbolListingGetASync* | *GET* /v1/metrics/symbol/listing | Listing of all supported metrics for symbol.
+
+
+### MetricsV2Manager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*v2MetricsAssetHistoryGetSync* | *GET* /v2/metrics/asset/history | Historical metrics for the asset.
+*v2MetricsAssetHistoryGetASync* | *GET* /v2/metrics/asset/history | Historical metrics for the asset.
+*v2MetricsAssetListingGetSync* | *GET* /v2/metrics/asset/listing | Listing of metrics available for specific asset.
+*v2MetricsAssetListingGetASync* | *GET* /v2/metrics/asset/listing | Listing of metrics available for specific asset.
+*v2MetricsChainHistoryGetSync* | *GET* /v2/metrics/chain/history | Historical metrics for the chain.
+*v2MetricsChainHistoryGetASync* | *GET* /v2/metrics/chain/history | Historical metrics for the chain.
+*v2MetricsChainListingGetSync* | *GET* /v2/metrics/chain/listing | Listing of metrics available for specific chain.
+*v2MetricsChainListingGetASync* | *GET* /v2/metrics/chain/listing | Listing of metrics available for specific chain.
+*v2MetricsExchangeHistoryGetSync* | *GET* /v2/metrics/exchange/history | Historical metrics for the exchange.
+*v2MetricsExchangeHistoryGetASync* | *GET* /v2/metrics/exchange/history | Historical metrics for the exchange.
+*v2MetricsExchangeListingGetSync* | *GET* /v2/metrics/exchange/listing | Listing of metrics available for specific exchange.
+*v2MetricsExchangeListingGetASync* | *GET* /v2/metrics/exchange/listing | Listing of metrics available for specific exchange.
+*v2MetricsListingGetSync* | *GET* /v2/metrics/listing | Listing of all supported metrics.
+*v2MetricsListingGetASync* | *GET* /v2/metrics/listing | Listing of all supported metrics.
 
 
 ### OhlcvManager

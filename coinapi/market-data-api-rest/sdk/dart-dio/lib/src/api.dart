@@ -10,9 +10,9 @@ import 'package:openapi/src/auth/basic_auth.dart';
 import 'package:openapi/src/auth/bearer_auth.dart';
 import 'package:openapi/src/auth/oauth.dart';
 import 'package:openapi/src/api/exchange_rates_api.dart';
-import 'package:openapi/src/api/external_metrics_api.dart';
 import 'package:openapi/src/api/metadata_api.dart';
-import 'package:openapi/src/api/metrics_api.dart';
+import 'package:openapi/src/api/metrics_v1_api.dart';
+import 'package:openapi/src/api/metrics_v2_api.dart';
 import 'package:openapi/src/api/ohlcv_api.dart';
 import 'package:openapi/src/api/options_api.dart';
 import 'package:openapi/src/api/order_book_api.dart';
@@ -80,22 +80,22 @@ class Openapi {
     return ExchangeRatesApi(dio, serializers);
   }
 
-  /// Get ExternalMetricsApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  ExternalMetricsApi getExternalMetricsApi() {
-    return ExternalMetricsApi(dio, serializers);
-  }
-
   /// Get MetadataApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   MetadataApi getMetadataApi() {
     return MetadataApi(dio, serializers);
   }
 
-  /// Get MetricsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get MetricsV1Api instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  MetricsApi getMetricsApi() {
-    return MetricsApi(dio, serializers);
+  MetricsV1Api getMetricsV1Api() {
+    return MetricsV1Api(dio, serializers);
+  }
+
+  /// Get MetricsV2Api instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MetricsV2Api getMetricsV2Api() {
+    return MetricsV2Api(dio, serializers);
   }
 
   /// Get OhlcvApi instance, base route and serializer can be overridden by a given but be careful,

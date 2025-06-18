@@ -8,9 +8,9 @@ Gemfile
 README.md
 Rakefile
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -48,9 +48,9 @@ docs/V1Trade.md
 git_push.sh
 lib/openapi_client.rb
 lib/openapi_client/api/exchange_rates_api.rb
-lib/openapi_client/api/external_metrics_api.rb
 lib/openapi_client/api/metadata_api.rb
-lib/openapi_client/api/metrics_api.rb
+lib/openapi_client/api/metrics_v1_api.rb
+lib/openapi_client/api/metrics_v2_api.rb
 lib/openapi_client/api/ohlcv_api.rb
 lib/openapi_client/api/options_api.rb
 lib/openapi_client/api/order_book_api.rb
@@ -91,9 +91,9 @@ lib/openapi_client/models/v1_trade.rb
 lib/openapi_client/version.rb
 openapi_client.gemspec
 spec/api/exchange_rates_api_spec.rb
-spec/api/external_metrics_api_spec.rb
 spec/api/metadata_api_spec.rb
-spec/api/metrics_api_spec.rb
+spec/api/metrics_v1_api_spec.rb
+spec/api/metrics_v2_api_spec.rb
 spec/api/ohlcv_api_spec.rb
 spec/api/options_api_spec.rb
 spec/api/order_book_api_spec.rb

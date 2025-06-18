@@ -5,9 +5,9 @@
 README.md
 composer.json
 docs/Api/ExchangeRatesApi.md
-docs/Api/ExternalMetricsApi.md
 docs/Api/MetadataApi.md
-docs/Api/MetricsApi.md
+docs/Api/MetricsV1Api.md
+docs/Api/MetricsV2Api.md
 docs/Api/OhlcvApi.md
 docs/Api/OptionsApi.md
 docs/Api/OrderBookApi.md
@@ -44,9 +44,9 @@ docs/Model/V1TimeseriesPeriod.md
 docs/Model/V1Trade.md
 git_push.sh
 lib/Api/ExchangeRatesApi.php
-lib/Api/ExternalMetricsApi.php
 lib/Api/MetadataApi.php
-lib/Api/MetricsApi.php
+lib/Api/MetricsV1Api.php
+lib/Api/MetricsV2Api.php
 lib/Api/OhlcvApi.php
 lib/Api/OptionsApi.php
 lib/Api/OrderBookApi.php
@@ -89,9 +89,9 @@ lib/Model/V1Trade.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ExchangeRatesApiTest.php
-test/Api/ExternalMetricsApiTest.php
 test/Api/MetadataApiTest.php
-test/Api/MetricsApiTest.php
+test/Api/MetricsV1ApiTest.php
+test/Api/MetricsV2ApiTest.php
 test/Api/OhlcvApiTest.php
 test/Api/OptionsApiTest.php
 test/Api/OrderBookApiTest.php

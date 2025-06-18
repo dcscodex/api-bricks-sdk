@@ -73,72 +73,6 @@ package .Clients is
       (Client : in out Client_Type;
        Result : out .Models.V1TimeseriesPeriod_Type_Vectors.Vector);
 
-   --  Historical metrics for the asset
-   --  Get asset metrics history.
-   procedure V_1Externalmetrics_Asset_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Asset_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector);
-
-   --  Listing of metrics available for specific asset
-   --  Get all metrics that are actually available for the specified asset.
-   procedure V_1Externalmetrics_Asset_Listing_Get
-      (Client : in out Client_Type;
-       Asset_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
-
-   --  Historical metrics for the chain
-   --  Get chain metrics history.
-   procedure V_1Externalmetrics_Chain_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Chain_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector);
-
-   --  Listing of metrics available for specific chain
-   --  Get all metrics that are actually available for the specified blockchain chain.
-   procedure V_1Externalmetrics_Chain_Listing_Get
-      (Client : in out Client_Type;
-       Chain_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
-
-   --  Historical metrics for the exchange
-   --  Get exchange metrics history.
-   procedure V_1Externalmetrics_Exchange_History_Get
-      (Client : in out Client_Type;
-       Metric_Id : in Swagger.UString;
-       Exchange_Id : in Swagger.UString;
-       Time_Start : in Swagger.Nullable_Date;
-       Time_End : in Swagger.Nullable_Date;
-       Time_Format : in Swagger.Nullable_UString;
-       Period_Id : in Swagger.Nullable_UString;
-       Limit : in Swagger.Nullable_Integer;
-       Result : out Swagger.Object_Vectors.Vector);
-
-   --  Listing of metrics available for specific exchange
-   --  Get all metrics that are actually available for the specified exchange.
-   procedure V_1Externalmetrics_Exchange_Listing_Get
-      (Client : in out Client_Type;
-       Exchange_Id : in Swagger.UString;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
-
-   --  Listing of all supported metrics
-   --  Get all metrics available in the system.
-   procedure V_1Externalmetrics_Listing_Get
-      (Client : in out Client_Type;
-       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
-
    --  List all assets by asset ID
    procedure V_1Assets_Asset_Id_Get
       (Client : in out Client_Type;
@@ -412,6 +346,72 @@ package .Clients is
        Exchange_Id : in Swagger.Nullable_UString;
        Symbol_Id : in Swagger.Nullable_UString;
        Result : out .Models.V1ListingItem_Type_Vectors.Vector);
+
+   --  Historical metrics for the asset
+   --  Get asset metrics history.
+   procedure V_2Metrics_Asset_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Asset_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector);
+
+   --  Listing of metrics available for specific asset
+   --  Get all metrics that are actually available for the specified asset.
+   procedure V_2Metrics_Asset_Listing_Get
+      (Client : in out Client_Type;
+       Asset_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
+
+   --  Historical metrics for the chain
+   --  Get chain metrics history.
+   procedure V_2Metrics_Chain_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Chain_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector);
+
+   --  Listing of metrics available for specific chain
+   --  Get all metrics that are actually available for the specified blockchain chain.
+   procedure V_2Metrics_Chain_Listing_Get
+      (Client : in out Client_Type;
+       Chain_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
+
+   --  Historical metrics for the exchange
+   --  Get exchange metrics history.
+   procedure V_2Metrics_Exchange_History_Get
+      (Client : in out Client_Type;
+       Metric_Id : in Swagger.UString;
+       Exchange_Id : in Swagger.UString;
+       Time_Start : in Swagger.Nullable_Date;
+       Time_End : in Swagger.Nullable_Date;
+       Time_Format : in Swagger.Nullable_UString;
+       Period_Id : in Swagger.Nullable_UString;
+       Limit : in Swagger.Nullable_Integer;
+       Result : out Swagger.Object_Vectors.Vector);
+
+   --  Listing of metrics available for specific exchange
+   --  Get all metrics that are actually available for the specified exchange.
+   procedure V_2Metrics_Exchange_Listing_Get
+      (Client : in out Client_Type;
+       Exchange_Id : in Swagger.UString;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
+
+   --  Listing of all supported metrics
+   --  Get all metrics available in the system.
+   procedure V_2Metrics_Listing_Get
+      (Client : in out Client_Type;
+       Result : out .Models.V1MetricInfo_Type_Vectors.Vector);
 
    --  Historical data by exchange
    --  Get OHLCV timeseries data returned in time ascending order. Data can be requested by the period and for the specific exchange eg `BITSTAMP`

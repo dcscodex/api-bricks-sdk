@@ -3,9 +3,9 @@
 README.md
 build.gradle
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -53,9 +53,9 @@ src/main/java/org/openapitools/client/ApiInvoker.java
 src/main/java/org/openapitools/client/JsonUtil.java
 src/main/java/org/openapitools/client/Pair.java
 src/main/java/org/openapitools/client/api/ExchangeRatesApi.java
-src/main/java/org/openapitools/client/api/ExternalMetricsApi.java
 src/main/java/org/openapitools/client/api/MetadataApi.java
-src/main/java/org/openapitools/client/api/MetricsApi.java
+src/main/java/org/openapitools/client/api/MetricsV1Api.java
+src/main/java/org/openapitools/client/api/MetricsV2Api.java
 src/main/java/org/openapitools/client/api/OhlcvApi.java
 src/main/java/org/openapitools/client/api/OptionsApi.java
 src/main/java/org/openapitools/client/api/OrderBookApi.java

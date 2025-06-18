@@ -3,9 +3,9 @@
 git_push.sh
 openapiclient-1.0.0-1.rockspec
 openapiclient/api/exchange_rates_api.lua
-openapiclient/api/external_metrics_api.lua
 openapiclient/api/metadata_api.lua
-openapiclient/api/metrics_api.lua
+openapiclient/api/metrics_v1_api.lua
+openapiclient/api/metrics_v2_api.lua
 openapiclient/api/ohlcv_api.lua
 openapiclient/api/options_api.lua
 openapiclient/api/order_book_api.lua
@@ -41,9 +41,9 @@ openapiclient/model/v1_timeseries_item.lua
 openapiclient/model/v1_timeseries_period.lua
 openapiclient/model/v1_trade.lua
 spec/exchange_rates_api_spec.lua
-spec/external_metrics_api_spec.lua
 spec/metadata_api_spec.lua
-spec/metrics_api_spec.lua
+spec/metrics_v1_api_spec.lua
+spec/metrics_v2_api_spec.lua
 spec/models_exchange_timeseries_item_spec.lua
 spec/ohlcv_api_spec.lua
 spec/options_api_spec.lua

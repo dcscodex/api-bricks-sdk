@@ -29,9 +29,9 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/exchange_rates_api.dart';
-part 'api/external_metrics_api.dart';
 part 'api/metadata_api.dart';
-part 'api/metrics_api.dart';
+part 'api/metrics_v1_api.dart';
+part 'api/metrics_v2_api.dart';
 part 'api/ohlcv_api.dart';
 part 'api/options_api.dart';
 part 'api/order_book_api.dart';

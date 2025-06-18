@@ -42,9 +42,9 @@ import V1TimeseriesItem from './model/V1TimeseriesItem';
 import V1TimeseriesPeriod from './model/V1TimeseriesPeriod';
 import V1Trade from './model/V1Trade';
 import ExchangeRatesApi from './api/ExchangeRatesApi';
-import ExternalMetricsApi from './api/ExternalMetricsApi';
 import MetadataApi from './api/MetadataApi';
-import MetricsApi from './api/MetricsApi';
+import MetricsV1Api from './api/MetricsV1Api';
+import MetricsV2Api from './api/MetricsV2Api';
 import OhlcvApi from './api/OhlcvApi';
 import OptionsApi from './api/OptionsApi';
 import OrderBookApi from './api/OrderBookApi';
@@ -266,22 +266,22 @@ export {
     ExchangeRatesApi,
 
     /**
-    * The ExternalMetricsApi service constructor.
-    * @property {module:api/ExternalMetricsApi}
-    */
-    ExternalMetricsApi,
-
-    /**
     * The MetadataApi service constructor.
     * @property {module:api/MetadataApi}
     */
     MetadataApi,
 
     /**
-    * The MetricsApi service constructor.
-    * @property {module:api/MetricsApi}
+    * The MetricsV1Api service constructor.
+    * @property {module:api/MetricsV1Api}
     */
-    MetricsApi,
+    MetricsV1Api,
+
+    /**
+    * The MetricsV2Api service constructor.
+    * @property {module:api/MetricsV2Api}
+    */
+    MetricsV2Api,
 
     /**
     * The OhlcvApi service constructor.

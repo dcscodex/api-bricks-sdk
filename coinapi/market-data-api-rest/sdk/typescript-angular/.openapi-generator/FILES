@@ -5,9 +5,9 @@ api.base.service.ts
 api.module.ts
 api/api.ts
 api/exchangeRates.service.ts
-api/externalMetrics.service.ts
 api/metadata.service.ts
-api/metrics.service.ts
+api/metricsV1.service.ts
+api/metricsV2.service.ts
 api/ohlcv.service.ts
 api/options.service.ts
 api/orderBook.service.ts

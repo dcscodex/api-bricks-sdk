@@ -48,9 +48,9 @@ require 'openapi_client/models/v1_trade'
 
 # APIs
 require 'openapi_client/api/exchange_rates_api'
-require 'openapi_client/api/external_metrics_api'
 require 'openapi_client/api/metadata_api'
-require 'openapi_client/api/metrics_api'
+require 'openapi_client/api/metrics_v1_api'
+require 'openapi_client/api/metrics_v2_api'
 require 'openapi_client/api/ohlcv_api'
 require 'openapi_client/api/options_api'
 require 'openapi_client/api/order_book_api'

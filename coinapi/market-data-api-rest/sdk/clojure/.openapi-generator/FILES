@@ -3,9 +3,8 @@
 git_push.sh
 project.clj
 src/coin_api_market_data_rest_api/api/exchange_rates.clj
-src/coin_api_market_data_rest_api/api/external_metrics.clj
 src/coin_api_market_data_rest_api/api/metadata.clj
-src/coin_api_market_data_rest_api/api/metrics.clj
+src/coin_api_market_data_rest_api/api/metrics_v_.clj
 src/coin_api_market_data_rest_api/api/ohlcv.clj
 src/coin_api_market_data_rest_api/api/options.clj
 src/coin_api_market_data_rest_api/api/order_book.clj

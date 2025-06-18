@@ -2,9 +2,9 @@
 README.md
 build.sbt
 docs/ExchangeRatesApi.md
-docs/ExternalMetricsApi.md
 docs/MetadataApi.md
-docs/MetricsApi.md
+docs/MetricsV1Api.md
+docs/MetricsV2Api.md
 docs/ModelsExchangeTimeseriesItem.md
 docs/OhlcvApi.md
 docs/OptionsApi.md
@@ -44,9 +44,9 @@ project/build.properties
 src/main/resources/reference.conf
 src/main/scala/org/openapitools/client/api/EnumsSerializers.scala
 src/main/scala/org/openapitools/client/api/ExchangeRatesApi.scala
-src/main/scala/org/openapitools/client/api/ExternalMetricsApi.scala
 src/main/scala/org/openapitools/client/api/MetadataApi.scala
-src/main/scala/org/openapitools/client/api/MetricsApi.scala
+src/main/scala/org/openapitools/client/api/MetricsV1Api.scala
+src/main/scala/org/openapitools/client/api/MetricsV2Api.scala
 src/main/scala/org/openapitools/client/api/OhlcvApi.scala
 src/main/scala/org/openapitools/client/api/OptionsApi.scala
 src/main/scala/org/openapitools/client/api/OrderBookApi.scala

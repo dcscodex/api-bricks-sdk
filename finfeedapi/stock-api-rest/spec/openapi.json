@@ -61,8 +61,8 @@
   {
     "trading_status": {
       "symbol": "PYPL",
-      "timestamp_nanos": 1750140503679000000,
-      "timestamp": "2025-06-17T06:08:23.6790000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "is_trading_live": true,
       "is_trading_halted": false,
       "is_trading_in_order_acceptance_period": false,
@@ -83,8 +83,8 @@
   {
     "official_price": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1750140503682000000,
-      "timestamp": "2025-06-17T06:08:23.6820000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "price_type": 81,
       "price_type_code": "Q",
       "price_type_text": "IEX Official Opening Price",
@@ -96,8 +96,8 @@
   {
     "security_event": {
       "symbol": "CRM",
-      "timestamp_nanos": 1750140503683000000,
-      "timestamp": "2025-06-17T06:08:23.6830000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "security_event": 79,
       "security_event_code": "O",
       "security_event_text": "Opening Process Complete",
@@ -108,8 +108,8 @@
   {
     "auction_information": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1750140503684000000,
-      "timestamp": "2025-06-17T06:08:23.6840000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "auction_type": 79,
       "auction_type_code": "O",
       "auction_type_text": "Opening Auction",
@@ -129,8 +129,8 @@
       "is_imbalance_side_sell": false,
       "is_imbalance_side_none": false,
       "extension_number": 0,
-      "scheduled_auction_time_seconds": 1750140803,
-      "scheduled_auction_time": "2025-06-17T06:13:23.0000000Z",
+      "scheduled_auction_time_seconds": 1750227399,
+      "scheduled_auction_time": "2025-06-18T06:16:39.0000000Z",
       "auction_book_clearing_price": 156.45,
       "collar_reference_price": 157,
       "lower_auction_collar": 152.5,
@@ -140,8 +140,8 @@
   {
     "short_sale_price_test": {
       "symbol": "MSFT",
-      "timestamp_nanos": 1750140503687000000,
-      "timestamp": "2025-06-17T06:08:23.6870000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "short_sale_price_test_status": 1,
       "short_sale_price_test_status_code": "1",
       "short_sale_price_test_status_text": "Short Sale Price Test in Effect",
@@ -160,8 +160,8 @@
   {
     "operational_halt_status": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1750140503691000000,
-      "timestamp": "2025-06-17T06:08:23.6910000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "operational_halt_status": 79,
       "operational_halt_status_code": "O",
       "operational_halt_status_text": "IEX specific operational trading halt",
@@ -172,8 +172,8 @@
   {
     "retail_liquidity_indicator": {
       "symbol": "GOOG",
-      "timestamp_nanos": 1750140503692000000,
-      "timestamp": "2025-06-17T06:08:23.6920000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "retail_liquidity_indicator": 65,
       "retail_liquidity_indicator_code": "A",
       "retail_liquidity_indicator_text": "Buy interest for Retail",
@@ -185,8 +185,8 @@
   },
   {
     "system_event": {
-      "timestamp_nanos": 1750140503693000000,
-      "timestamp": "2025-06-17T06:08:23.6930000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "system_event": 79,
       "system_event_code": "O",
       "system_event_text": "Start of Messages – Outside of heartbeat messages on the lower level protocol, the start of day message is the first message sent in any trading session.",
@@ -201,8 +201,8 @@
   {
     "security_directory": {
       "symbol": "INTC",
-      "timestamp_nanos": 1750140503694000000,
-      "timestamp": "2025-06-17T06:08:23.6940000Z",
+      "timestamp_nanos": 1750227099924000000,
+      "timestamp": "2025-06-18T06:11:39.9240000Z",
       "flags": 0,
       "round_lot_size": 100,
       "adjusted_poc_price": 35.36,
@@ -413,8 +413,8 @@
   {
     "add_order": {
       "symbol": "AAPL",
-      "timestamp_nanos": 1750140503973000000,
-      "timestamp": "2025-06-17T06:08:23.9730000Z",
+      "timestamp_nanos": 1750227100020000000,
+      "timestamp": "2025-06-18T06:11:40.0200000Z",
       "is_side_buy": true,
       "size": 100,
       "price": 176.42,
@@ -424,16 +424,16 @@
   {
     "delete_order": {
       "symbol": "TSLA",
-      "timestamp_nanos": 1750140503974000000,
-      "timestamp": "2025-06-17T06:08:23.9740000Z",
+      "timestamp_nanos": 1750227100020000000,
+      "timestamp": "2025-06-18T06:11:40.0200000Z",
       "order_id_reference": 987654321
     }
   },
   {
     "modify_order": {
       "symbol": "NFLX",
-      "timestamp_nanos": 1750140503979000000,
-      "timestamp": "2025-06-17T06:08:23.9790000Z",
+      "timestamp_nanos": 1750227100020000000,
+      "timestamp": "2025-06-18T06:11:40.0200000Z",
       "order_id_reference": 789456123,
       "is_priority_reset": false,
       "size": 150,
@@ -443,8 +443,8 @@
   {
     "executed_order": {
       "symbol": "META",
-      "timestamp_nanos": 1750140503980000000,
-      "timestamp": "2025-06-17T06:08:23.9800000Z",
+      "timestamp_nanos": 1750227100020000000,
+      "timestamp": "2025-06-18T06:11:40.0200000Z",
       "order_id_reference": 555123456,
       "sale_condition_flags": 0,
       "is_intermarket_sweep": false,
@@ -460,8 +460,8 @@
   {
     "clear_book": {
       "symbol": "MSFT",
-      "timestamp_nanos": 1750140503981000000,
-      "timestamp": "2025-06-17T06:08:23.9810000Z"
+      "timestamp_nanos": 1750227100020000000,
+      "timestamp": "2025-06-18T06:11:40.0200000Z"
     }
   }
 ]
@@ -594,14 +594,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   }
 ]
                   }
@@ -622,14 +622,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   }
 ]
                   }
@@ -650,14 +650,14 @@
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "TESLA INC",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   },
   {
     "symbol_id": "NVDA",
     "exchange_id": "IEXG",
     "security_category": "Common Stock",
     "name": "NVIDIA CORP",
-    "date": "2025-06-17"
+    "date": "2025-06-18"
   }
 ]
                   }

@@ -35,10 +35,8 @@ namespace Example
             config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.AddApiKeyPrefix("Authorization", "Bearer");
-            // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -137,10 +135,8 @@ namespace Example
             config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.AddApiKeyPrefix("Authorization", "Bearer");
-            // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure Bearer token for authorization: JWT
+            config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ExchangeRatesApi(config);
             var assetIdBase = "assetIdBase_example";  // string | Requested exchange rates base asset identifier (from the Metadata -> Assets)

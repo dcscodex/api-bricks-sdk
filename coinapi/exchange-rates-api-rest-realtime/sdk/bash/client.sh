@@ -156,9 +156,6 @@ basic_auth_credential=""
 ##
 # The user API key
 apikey_auth_credential=""
-##
-# The user API key
-apikey_auth_credential=""
 
 ##
 # If true, the script will only output the actual cURL command that would be
@@ -264,26 +261,13 @@ header_arguments_to_curl() {
     local api_key_header=""
     local api_key_header_in_cli=""
     api_key_header="Authorization"
-    local api_key_header=""
-    local api_key_header_in_cli=""
-    api_key_header="Authorization"
 
     for key in "${!header_arguments[@]}"; do
         headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
         if [[ "${key}XX" == "${api_key_header}XX" ]]; then
             api_key_header_in_cli="YES"
         fi
-        if [[ "${key}XX" == "${api_key_header}XX" ]]; then
-            api_key_header_in_cli="YES"
-        fi
     done
-    #
-    # If the api_key was not provided in the header, try one from the
-    # environment variable
-    #
-    if [[ -z $api_key_header_in_cli && -n $apikey_auth_credential ]]; then
-        headers_curl+="-H \"${api_key_header}: ${apikey_auth_credential}\""
-    fi
     #
     # If the api_key was not provided in the header, try one from the
     # environment variable
@@ -553,8 +537,6 @@ EOF
     echo -e ""
     echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
     
-    echo -e "  - ${BLUE}Api-key${OFF} - add '${RED}Authorization:<api-key>${OFF}' after ${YELLOW}<operation>${OFF}"
-    
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
@@ -630,7 +612,7 @@ print_version() {
 ##############################################################################
 print_getSpecificRate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}getSpecificRate - Get specific rate${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.
             
@@ -653,7 +635,7 @@ If you are using an exchange rate for mission-critical operations, then for best
 ##############################################################################
 print_v1ExchangerateAssetIdBaseGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1ExchangerateAssetIdBaseGet - Get all current rates${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get the current exchange rate between requested asset and all other assets.
             
@@ -683,7 +665,7 @@ You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / 
 ##############################################################################
 print_v1AssetsAssetIdGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsAssetIdGet - List all assets by asset ID${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The asset ID. ${YELLOW}Specify as: asset_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -699,7 +681,7 @@ print_v1AssetsAssetIdGet_help() {
 ##############################################################################
 print_v1AssetsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsGet - List all assets${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Retrieves all assets.
             
@@ -726,7 +708,7 @@ Properties of the output are providing aggregated information from across all sy
 ##############################################################################
 print_v1AssetsIconsSizeGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}v1AssetsIconsSizeGet - List all asset icons${OFF}${BLUE}(AUTH - HEADER)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Gets the list of icons (of the given size) for all the assets." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -1064,13 +1046,6 @@ case $key in
     # only after the operation argument
     if [[ "$operation" ]]; then
         IFS=':' read -r header_name header_value <<< "$key"
-        #
-        # If the header key is the same as the api_key expected by API in the
-        # header, override the ${apikey_auth_credential} variable
-        #
-        if [[ $header_name == "Authorization" ]]; then
-            apikey_auth_credential=$header_value
-        fi
         #
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable

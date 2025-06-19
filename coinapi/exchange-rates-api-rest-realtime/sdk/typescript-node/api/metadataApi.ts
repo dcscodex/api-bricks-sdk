@@ -31,7 +31,6 @@ let defaultBasePath = 'https://api-realtime.exrates.coinapi.io';
 
 export enum MetadataApiApiKeys {
     APIKey,
-    JWT,
 }
 
 export class MetadataApi {
@@ -42,7 +41,7 @@ export class MetadataApi {
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
         'APIKey': new ApiKeyAuth('header', 'Authorization'),
-        'JWT': new ApiKeyAuth('header', 'Authorization'),
+        'JWT': new HttpBearerAuth(),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -86,6 +85,10 @@ export class MetadataApi {
 
     public setApiKey(key: MetadataApiApiKeys, value: string) {
         (this.authentications as any)[MetadataApiApiKeys[key]].apiKey = value;
+    }
+
+    set accessToken(accessToken: string | (() => string)) {
+        this.authentications.JWT.accessToken = accessToken;
     }
 
     public addInterceptor(interceptor: Interceptor) {
@@ -133,7 +136,7 @@ export class MetadataApi {
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
         }
-        if (this.authentications.JWT.apiKey) {
+        if (this.authentications.JWT.accessToken) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
@@ -206,7 +209,7 @@ export class MetadataApi {
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
         }
-        if (this.authentications.JWT.apiKey) {
+        if (this.authentications.JWT.accessToken) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
@@ -281,7 +284,7 @@ export class MetadataApi {
         if (this.authentications.APIKey.apiKey) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.APIKey.applyToRequest(localVarRequestOptions));
         }
-        if (this.authentications.JWT.apiKey) {
+        if (this.authentications.JWT.accessToken) {
             authenticationPromise = authenticationPromise.then(() => this.authentications.JWT.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));

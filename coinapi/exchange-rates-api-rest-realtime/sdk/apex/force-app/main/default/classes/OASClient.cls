@@ -3,6 +3,5 @@ public class OASClient extends OAS.ApiClient {
         basePath = 'https://api-realtime.exrates.coinapi.io';
         calloutName = 'Exchange_Rates_Realtime_REST_API';
         authentications.put('APIKey', new OAS.ApiKeyHeaderAuth('Authorization'));
-        authentications.put('JWT', new OAS.ApiKeyHeaderAuth('Authorization'));
     }
 }

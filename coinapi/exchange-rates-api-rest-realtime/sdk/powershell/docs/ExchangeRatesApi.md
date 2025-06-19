@@ -27,10 +27,6 @@ $Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
-# Configure API key authorization: JWT
-$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $AssetIdBase = "MyAssetIdBase" # String | Requested exchange rate base asset identifier (from the Metadata -> Assets)
 $AssetIdQuote = "MyAssetIdQuote" # String | Requested exchange rate quote asset identifier (from the Metadata -> Assets)
@@ -86,10 +82,6 @@ $Configuration.ApiKey.Authorization = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
-# Configure API key authorization: JWT
-$Configuration.ApiKey.Authorization = "YOUR_API_KEY"
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$Configuration.ApiKeyPrefix.Authorization = "Bearer"
 
 $AssetIdBase = "MyAssetIdBase" # String | Requested exchange rates base asset identifier (from the Metadata -> Assets)
 $FilterAssetId = "MyFilterAssetId" # String | Comma or semicolon delimited asset identifiers used to filter response (optional) (optional)

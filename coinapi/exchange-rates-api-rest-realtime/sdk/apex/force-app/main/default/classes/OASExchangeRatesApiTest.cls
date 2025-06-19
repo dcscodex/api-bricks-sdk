@@ -60,8 +60,6 @@ private class OASExchangeRatesApiTest {
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASExchangeRatesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
-
 
         js = JSON.serialize(OASV1ExchangeRate.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -156,8 +154,6 @@ private class OASExchangeRatesApiTest {
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASExchangeRatesApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
-
 
         js = JSON.serialize(OASV1ExchangeRates.getExample());
         res.setHeader('Content-Type', 'application/json');

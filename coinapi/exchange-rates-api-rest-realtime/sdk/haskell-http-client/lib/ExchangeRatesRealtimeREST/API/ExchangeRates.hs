@@ -66,7 +66,7 @@ import qualified Prelude as P
 -- 
 -- Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 -- 
--- AuthMethod: 'AuthApiKeyAPIKey', 'AuthApiKeyJWT'
+-- AuthMethod: 'AuthApiKeyAPIKey', 'AuthBasicJWT'
 -- 
 getSpecificRate
   :: Accept accept -- ^ request accept ('MimeType')
@@ -76,7 +76,7 @@ getSpecificRate
 getSpecificRate  _ (AssetIdBase assetIdBase) (AssetIdQuote assetIdQuote) =
   _mkRequest "GET" ["/v1/exchangerate/",toPath assetIdBase,"/",toPath assetIdQuote]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyAPIKey)
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyJWT)
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthBasicJWT)
 
 data GetSpecificRate  
 -- | @application/json@
@@ -97,7 +97,7 @@ instance Produces GetSpecificRate MimePlainText
 -- 
 -- Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 -- 
--- AuthMethod: 'AuthApiKeyAPIKey', 'AuthApiKeyJWT'
+-- AuthMethod: 'AuthApiKeyAPIKey', 'AuthBasicJWT'
 -- 
 v1ExchangerateAssetIdBaseGet
   :: Accept accept -- ^ request accept ('MimeType')
@@ -106,7 +106,7 @@ v1ExchangerateAssetIdBaseGet
 v1ExchangerateAssetIdBaseGet  _ (AssetIdBase assetIdBase) =
   _mkRequest "GET" ["/v1/exchangerate/",toPath assetIdBase]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyAPIKey)
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyJWT)
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthBasicJWT)
 
 data V1ExchangerateAssetIdBaseGet  
 

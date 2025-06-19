@@ -26,8 +26,8 @@ var_asset_id <- "asset_id_example" # character | The asset ID.
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: JWT
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsAssetIdGet(var_asset_iddata_file = "result.txt")
 result <- api_instance$V1AssetsAssetIdGet(var_asset_id)
@@ -77,8 +77,8 @@ var_filter_asset_id <- "filter_asset_id_example" # character | Comma or semicolo
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: JWT
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_iddata_file = "result.txt")
 result <- api_instance$V1AssetsGet(filter_asset_id = var_filter_asset_id)
@@ -128,8 +128,8 @@ var_size <- 56 # integer | The size of the icons.
 api_instance <- MetadataApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: JWT
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1AssetsIconsSizeGet(var_sizedata_file = "result.txt")
 result <- api_instance$V1AssetsIconsSizeGet(var_size)

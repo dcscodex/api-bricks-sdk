@@ -61,10 +61,6 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Client
             /// <summary>
             /// The Authorization header
             /// </summary>
-            Authorization,
-            /// <summary>
-            /// The Authorization header
-            /// </summary>
             Authorization
         }
 
@@ -78,7 +74,6 @@ namespace APIBricks.CoinAPI.ExchangeRatesAPI.Realtime.REST.V1.Client
         {
             return value switch
             {
-                ApiKeyHeader.Authorization => "Authorization",
                 ApiKeyHeader.Authorization => "Authorization",
                 _ => throw new System.ComponentModel.InvalidEnumArgumentException(nameof(value), (int)value, typeof(ApiKeyHeader)),
             };

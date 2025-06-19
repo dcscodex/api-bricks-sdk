@@ -90,10 +90,6 @@ export class ExchangeRatesApi {
         }
 
         // authentication (JWT) required
-        if (this.configuration.apiKey) {
-            headerParams['Authorization'] = this.configuration.apiKey;
-        }
-
 
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
@@ -173,10 +169,6 @@ export class ExchangeRatesApi {
         }
 
         // authentication (JWT) required
-        if (this.configuration.apiKey) {
-            headerParams['Authorization'] = this.configuration.apiKey;
-        }
-
 
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,

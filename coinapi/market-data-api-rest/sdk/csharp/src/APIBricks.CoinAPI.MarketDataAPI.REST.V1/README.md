@@ -178,7 +178,7 @@ Authentication schemes defined for the API:
 - packageCompany: OpenAPI
 - packageCopyright: No Copyright
 - packageDescription: A library generated from a OpenAPI doc
-- packageGuid: {BAB0447E-7EAA-459F-B830-873D7C7C3145}
+- packageGuid: {EC8E6598-4624-49AB-B24F-E5DE957CDF2B}
 - packageName: APIBricks.CoinAPI.MarketDataAPI.REST.V1
 - packageTags: 
 - packageTitle: OpenAPI Library

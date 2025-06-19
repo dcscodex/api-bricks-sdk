@@ -30,15 +30,14 @@ class MetadataApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
-   *   JWT (apiKey)
+   *   JWT (http)
    * 
    * @param assetId The asset ID.
    */
-  def v1AssetsAssetIdGet(assetId: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
+  def v1AssetsAssetIdGet(assetId: String)(implicit apiKey: ApiKeyValue, bearerToken: BearerToken): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets/{asset_id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("asset_id", assetId)
+      .withCredentials(bearerToken).withPathParam("asset_id", assetId)
       .withSuccessResponse[Seq[Asset]](200)
       
 
@@ -50,15 +49,14 @@ class MetadataApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
-   *   JWT (apiKey)
+   *   JWT (http)
    * 
    * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response. (optional, eg. `BTC;ETH`).
    */
-  def v1AssetsGet(filterAssetId: Option[String] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Asset]] =
+  def v1AssetsGet(filterAssetId: Option[String] = None)(implicit apiKey: ApiKeyValue, bearerToken: BearerToken): ApiRequest[Seq[Asset]] =
     ApiRequest[Seq[Asset]](ApiMethods.GET, baseUrl, "/v1/assets", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withApiKey(apiKey, "Authorization", HEADER)
-      .withQueryParam("filter_asset_id", filterAssetId)
+      .withCredentials(bearerToken).withQueryParam("filter_asset_id", filterAssetId)
       .withSuccessResponse[Seq[Asset]](200)
       
 
@@ -70,15 +68,14 @@ class MetadataApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
-   *   JWT (apiKey)
+   *   JWT (http)
    * 
    * @param size The size of the icons.
    */
-  def v1AssetsIconsSizeGet(size: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Seq[Icon]] =
+  def v1AssetsIconsSizeGet(size: Int)(implicit apiKey: ApiKeyValue, bearerToken: BearerToken): ApiRequest[Seq[Icon]] =
     ApiRequest[Seq[Icon]](ApiMethods.GET, baseUrl, "/v1/assets/icons/{size}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("size", size)
+      .withCredentials(bearerToken).withPathParam("size", size)
       .withSuccessResponse[Seq[Icon]](200)
       
 

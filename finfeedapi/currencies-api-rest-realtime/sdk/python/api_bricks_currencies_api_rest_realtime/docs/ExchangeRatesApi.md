@@ -22,7 +22,7 @@ If you are using an exchange rate for mission-critical operations, then for best
 ### Example
 
 * Api Key Authentication (APIKey):
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_currencies_api_rest_realtime
@@ -47,11 +47,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_currencies_api_rest_realtime.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_currencies_api_rest_realtime.ApiClient(configuration) as api_client:
@@ -118,7 +117,7 @@ You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / 
 ### Example
 
 * Api Key Authentication (APIKey):
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 
 ```python
 import api_bricks_currencies_api_rest_realtime
@@ -143,11 +142,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = api_bricks_currencies_api_rest_realtime.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with api_bricks_currencies_api_rest_realtime.ApiClient(configuration) as api_client:

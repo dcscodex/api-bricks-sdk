@@ -85,7 +85,7 @@ update_params_with_auth(Cfg, Headers, QS) ->
                 #{type => 'apiKey',
                   key => <<"Authorization">>,
                   in => header}, 'JWT' =>
-                #{type => 'apiKey',
+                #{type => 'http',
                   key => <<"Authorization">>,
                   in => header}},
 

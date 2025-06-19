@@ -612,7 +612,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-18T06:06:01.7694160Z
+                    time: 2025-06-19T06:12:34.5033144Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -622,7 +622,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-18T06:06:01.7694160Z
+                    time: 2025-06-19T06:12:34.5033144Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -632,7 +632,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-18T06:06:01.7694160Z
+                    time: 2025-06-19T06:12:34.5033144Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -642,7 +642,7 @@ paths:
               examples:
                 Example response:
                   value:
-                    time: 2025-06-18T06:06:01.7694160Z
+                    time: 2025-06-19T06:12:34.5033144Z
                     asset_id_base: BTC
                     asset_id_quote: USD
                     rate: 10000.0
@@ -1033,7 +1033,8 @@ components:
       name: Authorization
       type: apiKey
     JWT:
-      description: JWT token needed to access the endpoints
-      in: header
-      name: Authorization
-      type: apiKey
+      bearerFormat: JWT
+      description: "JWT Authorization header using the Bearer scheme. Example: \"\
+        Bearer {token}\""
+      scheme: bearer
+      type: http

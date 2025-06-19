@@ -3,6 +3,5 @@ public class OASClient extends OAS.ApiClient {
         basePath = 'https://api-realtime.fx.finfeedapi.com';
         calloutName = 'FX_Realtime_REST_API';
         authentications.put('APIKey', new OAS.ApiKeyHeaderAuth('Authorization'));
-        authentications.put('JWT', new OAS.ApiKeyHeaderAuth('Authorization'));
     }
 }

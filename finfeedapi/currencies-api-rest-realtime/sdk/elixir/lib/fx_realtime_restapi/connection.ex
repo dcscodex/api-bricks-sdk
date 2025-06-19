@@ -29,10 +29,12 @@ defmodule FXRealtimeRESTAPI.Connection do
 
   - `base_url`: Overrides the base URL on a per-client basis.
   - `user_agent`: Overrides the User-Agent header.
+  - `bearer_token`: A bearer token for bearer authentication.
   """
   @type options :: [
           {:base_url, String.t()},
           {:user_agent, String.t()},
+          {:bearer_token, String.t() | nil},
         ]
 
   @doc "Forward requests to Tesla."
@@ -101,6 +103,8 @@ defmodule FXRealtimeRESTAPI.Connection do
       )
 
 
+    bearer_token = Keyword.get(options, :bearer_token)
+    middleware = [{Tesla.Middleware.BearerAuth, token: bearer_token} | middleware]
 
 
     [

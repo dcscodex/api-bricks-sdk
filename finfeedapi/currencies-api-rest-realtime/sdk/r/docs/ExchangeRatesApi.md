@@ -28,8 +28,8 @@ var_asset_id_quote <- "asset_id_quote_example" # character | Requested exchange 
 api_instance <- ExchangeRatesApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: JWT
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quotedata_file = "result.txt")
 result <- api_instance$GetSpecificRate(var_asset_id_base, var_asset_id_quote)
@@ -82,8 +82,8 @@ var_invert <- FALSE # character | True will invert all the rates (optional, if t
 api_instance <- ExchangeRatesApi$new()
 # Configure API key authorization: APIKey
 api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: JWT
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: JWT
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$V1ExchangerateAssetIdBaseGet(var_asset_id_base, filter_asset_id = var_filter_asset_id, invert = var_invertdata_file = "result.txt")
 result <- api_instance$V1ExchangerateAssetIdBaseGet(var_asset_id_base, filter_asset_id = var_filter_asset_id, invert = var_invert)

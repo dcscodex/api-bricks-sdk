@@ -35,8 +35,6 @@ private class OASMetadataApiTest {
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASMetadataApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
-
 
         js = JSON.serialize(new List<OASV1Asset>{OASV1Asset.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -81,8 +79,6 @@ private class OASMetadataApiTest {
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASMetadataApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
-
 
         js = JSON.serialize(new List<OASV1Asset>{OASV1Asset.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -127,8 +123,6 @@ private class OASMetadataApiTest {
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASMetadataApi(client);
-        ((OAS.ApiKeyAuth)client.getAuthentication('JWT')).setApiKey('foo-bar-api-key');
-
 
         js = JSON.serialize(new List<OASV1Icon>{OASV1Icon.getExample()});
         res.setHeader('Content-Type', 'application/json');

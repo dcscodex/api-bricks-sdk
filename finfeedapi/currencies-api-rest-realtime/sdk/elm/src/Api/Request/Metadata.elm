@@ -30,8 +30,8 @@ import Json.Encode
 
 {-| List all assets by asset ID
 -}
-v1AssetsAssetIdGet : String -> Api.Request (List Api.Data.V1Asset)
-v1AssetsAssetIdGet assetId_path =
+v1AssetsAssetIdGet : String -> String -> Api.Request (List Api.Data.V1Asset)
+v1AssetsAssetIdGet assetId_path auth_token =
     Api.request
         "GET"
         "/v1/assets/{asset_id}"
@@ -40,15 +40,15 @@ v1AssetsAssetIdGet assetId_path =
         []
         Nothing
         (Json.Decode.list Api.Data.v1AssetDecoder)
-
+        |> Api.withBearerToken auth_token
 
 {-| List all assets
 
 Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 
 -}
-v1AssetsGet : Maybe String -> Api.Request (List Api.Data.V1Asset)
-v1AssetsGet filterAssetId_query =
+v1AssetsGet : Maybe String -> String -> Api.Request (List Api.Data.V1Asset)
+v1AssetsGet filterAssetId_query auth_token =
     Api.request
         "GET"
         "/v1/assets"
@@ -57,15 +57,15 @@ v1AssetsGet filterAssetId_query =
         []
         Nothing
         (Json.Decode.list Api.Data.v1AssetDecoder)
-
+        |> Api.withBearerToken auth_token
 
 {-| List all asset icons
 
 Gets the list of icons (of the given size) for all the assets.
 
 -}
-v1AssetsIconsSizeGet : Int -> Api.Request (List Api.Data.V1Icon)
-v1AssetsIconsSizeGet size_path =
+v1AssetsIconsSizeGet : Int -> String -> Api.Request (List Api.Data.V1Icon)
+v1AssetsIconsSizeGet size_path auth_token =
     Api.request
         "GET"
         "/v1/assets/icons/{size}"
@@ -74,4 +74,4 @@ v1AssetsIconsSizeGet size_path =
         []
         Nothing
         (Json.Decode.list Api.Data.v1IconDecoder)
-
+        |> Api.withBearerToken auth_token

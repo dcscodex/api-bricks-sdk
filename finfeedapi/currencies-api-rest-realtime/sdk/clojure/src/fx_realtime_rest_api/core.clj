@@ -9,7 +9,7 @@
 
 (def auth-definitions
   {"APIKey" {:type :api-key :in :header :param-name "Authorization"}
-   "JWT" {:type :api-key :in :header :param-name "Authorization"}})
+   "JWT" {:type :basic}})
 
 (def default-api-context
   "Default API context."

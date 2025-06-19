@@ -81,8 +81,8 @@ object ExchangeRatesApiExample extends App {
     // Configure API key authorization: APIKey
     implicit val APIKey: ApiKeyValue = ApiKeyValue("YOUR API KEY")
 
-    // Configure API key authorization: JWT
-    implicit val JWT: ApiKeyValue = ApiKeyValue("YOUR API KEY")
+    // Configure HTTP bearer authorization: JWT
+    implicit val JWT: BearerToken = BearerToken("BEARER TOKEN")
 
     // Create invoker to execute requests
     val apiInvoker = ApiInvoker()
@@ -154,9 +154,7 @@ Authentication schemes defined for the API:
 <a id="JWT"></a>
 ### JWT
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Author

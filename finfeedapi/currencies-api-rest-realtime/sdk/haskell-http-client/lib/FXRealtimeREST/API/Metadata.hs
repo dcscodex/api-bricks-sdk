@@ -64,7 +64,7 @@ import qualified Prelude as P
 -- 
 -- List all assets by asset ID
 -- 
--- AuthMethod: 'AuthApiKeyAPIKey', 'AuthApiKeyJWT'
+-- AuthMethod: 'AuthApiKeyAPIKey', 'AuthBasicJWT'
 -- 
 v1AssetsAssetIdGet
   :: Accept accept -- ^ request accept ('MimeType')
@@ -73,7 +73,7 @@ v1AssetsAssetIdGet
 v1AssetsAssetIdGet  _ (AssetId assetId) =
   _mkRequest "GET" ["/v1/assets/",toPath assetId]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyAPIKey)
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyJWT)
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthBasicJWT)
 
 data V1AssetsAssetIdGet  
 -- | @application/json@
@@ -94,7 +94,7 @@ instance Produces V1AssetsAssetIdGet MimePlainText
 -- 
 -- Retrieves all assets.              :::info Our asset identifiers are aligned with the ISO 4217 currency codes standard only for fiat money (government or law regulated currency). :::              :::info Properties of the output are providing aggregated information from across all symbols related to the specific asset. If you need to calculate your aggregation (e.g., limiting only the particular type of symbols), you should use /v1/symbols endpoint as a data source. :::
 -- 
--- AuthMethod: 'AuthApiKeyAPIKey', 'AuthApiKeyJWT'
+-- AuthMethod: 'AuthApiKeyAPIKey', 'AuthBasicJWT'
 -- 
 v1AssetsGet
   :: Accept accept -- ^ request accept ('MimeType')
@@ -102,7 +102,7 @@ v1AssetsGet
 v1AssetsGet  _ =
   _mkRequest "GET" ["/v1/assets"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyAPIKey)
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyJWT)
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthBasicJWT)
 
 data V1AssetsGet  
 
@@ -128,7 +128,7 @@ instance Produces V1AssetsGet MimePlainText
 -- 
 -- Gets the list of icons (of the given size) for all the assets.
 -- 
--- AuthMethod: 'AuthApiKeyAPIKey', 'AuthApiKeyJWT'
+-- AuthMethod: 'AuthApiKeyAPIKey', 'AuthBasicJWT'
 -- 
 v1AssetsIconsSizeGet
   :: Accept accept -- ^ request accept ('MimeType')
@@ -137,7 +137,7 @@ v1AssetsIconsSizeGet
 v1AssetsIconsSizeGet  _ (Size size) =
   _mkRequest "GET" ["/v1/assets/icons/",toPath size]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyAPIKey)
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyJWT)
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthBasicJWT)
 
 data V1AssetsIconsSizeGet  
 -- | @application/json@

@@ -35,6 +35,7 @@ src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/ApiFactory.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/ApiKeyToken.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/ApiResponseEventArgs.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/ApiResponse`1.cs
+src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/BearerToken.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/ClientUtils.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/CookieContainer.cs
 src/APIBricks.FinFeedAPI.CurrenciesAPI.REST.V1.Realtime/Client/DateOnlyJsonConverter.cs

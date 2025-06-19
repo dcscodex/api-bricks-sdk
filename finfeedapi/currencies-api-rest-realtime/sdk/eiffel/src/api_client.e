@@ -32,8 +32,6 @@ feature {NONE} -- Initialization
 			create authentications.make (3) 
 			authentications.force (create {API_KEY_AUTH}.make ("header", "Authorization"), "APIKey")
 			is_api_key_configured := True 
-			authentications.force (create {API_KEY_AUTH}.make ("header", "Authorization"), "JWT")
-			is_api_key_configured := True 
 		end
 
 feature -- Access

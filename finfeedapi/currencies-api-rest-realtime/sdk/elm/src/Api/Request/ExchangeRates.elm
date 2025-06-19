@@ -32,8 +32,8 @@ import Json.Encode
 Retrieves the exchange rate for a specific base and quote asset at a given time or the current rate.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::
 
 -}
-getSpecificRate : String -> String -> Api.Request Api.Data.V1ExchangeRate
-getSpecificRate assetIdBase_path assetIdQuote_path =
+getSpecificRate : String -> String -> String -> Api.Request Api.Data.V1ExchangeRate
+getSpecificRate assetIdBase_path assetIdQuote_path auth_token =
     Api.request
         "GET"
         "/v1/exchangerate/{asset_id_base}/{asset_id_quote}"
@@ -42,15 +42,15 @@ getSpecificRate assetIdBase_path assetIdQuote_path =
         []
         Nothing
         Api.Data.v1ExchangeRateDecoder
-
+        |> Api.withBearerToken auth_token
 
 {-| Get all current rates
 
 Get the current exchange rate between requested asset and all other assets.              :::info If you are using an exchange rate for mission-critical operations, then for best reliability, you should measure the difference between current time and the time returned from the response to ensure that value of the difference between those meets your internal requirements. :::              :::info You can invert the rates by using Y = 1 / X equation, for example BTC/USD = 1 / (USD/BTC); :::
 
 -}
-v1ExchangerateAssetIdBaseGet : String -> Maybe String -> Maybe Bool -> Api.Request Api.Data.V1ExchangeRates
-v1ExchangerateAssetIdBaseGet assetIdBase_path filterAssetId_query invert_query =
+v1ExchangerateAssetIdBaseGet : String -> Maybe String -> Maybe Bool -> String -> Api.Request Api.Data.V1ExchangeRates
+v1ExchangerateAssetIdBaseGet assetIdBase_path filterAssetId_query invert_query auth_token =
     Api.request
         "GET"
         "/v1/exchangerate/{asset_id_base}"
@@ -59,4 +59,4 @@ v1ExchangerateAssetIdBaseGet assetIdBase_path filterAssetId_query invert_query =
         []
         Nothing
         Api.Data.v1ExchangeRatesDecoder
-
+        |> Api.withBearerToken auth_token

@@ -366,12 +366,6 @@ export const ExchangeRatesApiFetchParamCreator = function (configuration?: Confi
             }
 
             // authentication JWT required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -409,12 +403,6 @@ export const ExchangeRatesApiFetchParamCreator = function (configuration?: Confi
             }
 
             // authentication JWT required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
 
             if (filterAssetId !== undefined) {
                 localVarQueryParameter['filter_asset_id'] = ((filterAssetId:any):string);
@@ -516,12 +504,6 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             }
 
             // authentication JWT required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -554,12 +536,6 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             }
 
             // authentication JWT required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
 
             if (filterAssetId !== undefined) {
                 localVarQueryParameter['filter_asset_id'] = ((filterAssetId:any):string);
@@ -601,12 +577,6 @@ export const MetadataApiFetchParamCreator = function (configuration?: Configurat
             }
 
             // authentication JWT required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? configuration.apiKey("Authorization")
-                    : configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943

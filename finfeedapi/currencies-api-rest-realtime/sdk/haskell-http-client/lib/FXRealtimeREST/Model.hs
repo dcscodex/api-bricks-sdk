@@ -401,17 +401,4 @@ instance AuthMethod AuthApiKeyAPIKey where
            & L.over rAuthTypesL (P.filter (/= P.typeOf a))
       else req
 
--- ** AuthApiKeyJWT
-data AuthApiKeyJWT =
-  AuthApiKeyJWT Text -- ^ secret
-  deriving (P.Eq, P.Show, P.Typeable)
-
-instance AuthMethod AuthApiKeyJWT where
-  applyAuthMethod _ a@(AuthApiKeyJWT secret) req =
-    P.pure $
-    if (P.typeOf a `P.elem` rAuthTypes req)
-      then req `setHeader` toHeader ("Authorization", secret)
-           & L.over rAuthTypesL (P.filter (/= P.typeOf a))
-      else req
-
 

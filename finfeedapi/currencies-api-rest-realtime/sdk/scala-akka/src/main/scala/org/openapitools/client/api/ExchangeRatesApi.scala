@@ -32,16 +32,15 @@ class ExchangeRatesApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
-   *   JWT (apiKey)
+   *   JWT (http)
    * 
    * @param assetIdBase Requested exchange rate base asset identifier (from the Metadata -> Assets)
    * @param assetIdQuote Requested exchange rate quote asset identifier (from the Metadata -> Assets)
    */
-  def getSpecificRate(assetIdBase: String, assetIdQuote: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ExchangeRate] =
+  def getSpecificRate(assetIdBase: String, assetIdQuote: String)(implicit apiKey: ApiKeyValue, bearerToken: BearerToken): ApiRequest[ExchangeRate] =
     ApiRequest[ExchangeRate](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}/{asset_id_quote}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("asset_id_base", assetIdBase)
+      .withCredentials(bearerToken).withPathParam("asset_id_base", assetIdBase)
       .withPathParam("asset_id_quote", assetIdQuote)
       .withSuccessResponse[ExchangeRate](200)
       
@@ -54,17 +53,16 @@ class ExchangeRatesApi(baseUrl: String) {
    * 
    * Available security schemes:
    *   APIKey (apiKey)
-   *   JWT (apiKey)
+   *   JWT (http)
    * 
    * @param assetIdBase Requested exchange rates base asset identifier (from the Metadata -> Assets)
    * @param filterAssetId Comma or semicolon delimited asset identifiers used to filter response (optional)
    * @param invert True will invert all the rates (optional, if true then rates will be calculated as `rate = 1 / actual_rate` eg. `USD/BTC` as `BTC/USD`)
    */
-  def v1ExchangerateAssetIdBaseGet(assetIdBase: String, filterAssetId: Option[String] = None, invert: Option[Boolean] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ExchangeRates] =
+  def v1ExchangerateAssetIdBaseGet(assetIdBase: String, filterAssetId: Option[String] = None, invert: Option[Boolean] = None)(implicit apiKey: ApiKeyValue, bearerToken: BearerToken): ApiRequest[ExchangeRates] =
     ApiRequest[ExchangeRates](ApiMethods.GET, baseUrl, "/v1/exchangerate/{asset_id_base}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withApiKey(apiKey, "Authorization", HEADER)
-      .withQueryParam("filter_asset_id", filterAssetId)
+      .withCredentials(bearerToken).withQueryParam("filter_asset_id", filterAssetId)
       .withQueryParam("invert", invert)
       .withPathParam("asset_id_base", assetIdBase)
       .withSuccessResponse[ExchangeRates](200)

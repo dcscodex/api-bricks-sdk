@@ -105,11 +105,9 @@ constructor({ accessToken, apiKeys, basePath, credentials, encodeParam, encoder,
         // init default JWT credential
         if (!this.credentials['JWT']) {
             this.credentials['JWT'] = () => {
-                if (this.apiKeys === null || this.apiKeys === undefined) {
-                    return undefined;
-                } else {
-                    return this.apiKeys['JWT'] || this.apiKeys['Authorization'];
-                }
+                return typeof this.accessToken === 'function'
+                    ? this.accessToken()
+                    : this.accessToken;
             };
         }
     }

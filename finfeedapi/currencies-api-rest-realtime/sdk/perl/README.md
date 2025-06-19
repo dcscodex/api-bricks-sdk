@@ -276,10 +276,6 @@ my $api_instance = WWW::OpenAPIClient::ExchangeRatesApi->new(
     api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
     #api_key_prefix => {'Authorization' => 'Bearer'},
-    # Configure API key authorization: JWT
-    api_key => {'Authorization' => 'YOUR_API_KEY'},
-    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
 my $asset_id_base = "asset_id_base_example"; # string | Requested exchange rate base asset identifier (from the Metadata -> Assets)
@@ -328,7 +324,5 @@ Authentication schemes defined for the API:
 
 ## JWT
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+- **Type**: HTTP Bearer Token authentication (JWT)
 

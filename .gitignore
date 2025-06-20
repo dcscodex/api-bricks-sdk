@@ -10,3 +10,5 @@
 .vs/
 
 **/appsettings.json
+/coinapi/ems-api-rest/sdk/kotlin/build/
+/coinapi/ems-api-rest/sdk/kotlin/.gradle/

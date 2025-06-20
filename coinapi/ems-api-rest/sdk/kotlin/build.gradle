@@ -1,8 +1,8 @@
-group 'org.openapitools'
+group 'com.coinapi'
 version '1.0.0'
 
 wrapper {
-    gradleVersion = '7.5'
+    gradleVersion = '8.10.2'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
 
@@ -35,4 +35,27 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:1.13.0"
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
+}
+
+publishing {
+    publications {
+        create("maven", MavenPublication) {
+            from components.java
+            
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/dcscodex/api-bricks-sdk")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: findProperty("gpr.codex.user")?.toString()
+                password = System.getenv("GITHUB_TOKEN") ?: findProperty("gpr.codex.token")?.toString()
+            }
+        }
+    }
 }
